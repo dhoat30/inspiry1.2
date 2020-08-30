@@ -1,0 +1,96 @@
+/*
+    Theme Name: Fancy Lab
+    Theme URI: https://webduel.co.nz
+    Author: Gurpreet Dhoat
+    Description: customized theme
+    version: 1.1
+*/
+
+@import "modules/footer.css"; 
+@import "modules/header.css"; 
+
+@import "modules/home.css"; 
+
+@import "modules/product-page.css"; 
+@import "modules/related-product.css"; 
+
+
+
+ * { 
+	margin:0; padding:0; box-sizing:border-box; 
+	font-family: 'Work Sans', sans-serif;
+}
+	.underline{ 
+		border-bottom: solid 1px #e1e1e1;
+	}
+
+	.body-contaienr{
+		max-width: 1600px;
+	}
+/*fonts------*/ 
+    .black-bold{ 
+        font-weight: 900; 
+    }
+    .bold{ 
+        font-weight: 700;
+    }
+    .regular{ 
+        font-weight: 500;
+    }
+    .thin{ 
+        font-weight: 300;
+    }
+    .light{ 
+        font-weight: 100;
+    }
+    .font-s-regular{ 
+        font-size: 15px;
+    }
+	.playfair-fonts {
+		font-family: 'Playfair Display', serif;
+	}
+	.work-sans-fonts{ 
+		font-family: 'Work Sans', sans-serif;
+    }
+    
+    .text-decoration-none{ 
+        text-decoration: none;
+    }
+
+	.margin-elements{ 
+		margin: 20px 0;
+	}
+	.margin-row{
+		margin-top: 40px;
+    }
+    
+   
+	.button{ 
+		border-bottom: none !important;
+		font-size: 16px;
+		letter-spacing: 0.2em;
+		line-height: 1.3em;
+		padding: 18px 30px 18px 30px !important;
+		border: none;
+		cursor: pointer;
+    }
+    .white{ 
+        color: white; 
+    }
+    .dark-grey{ 
+        color:#666666;
+    }
+	.black-bc{ 
+		background-color: black;
+    }
+
+    .beige-color-bc{ 
+        background-color:#EFEAE5; 
+    }
+    .off-white-bc{ 
+        background-color: #efefef; 
+    }
+    
+    
+
+

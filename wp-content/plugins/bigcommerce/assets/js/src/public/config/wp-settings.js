@@ -1,0 +1,13 @@
+export const CONFIG = window.bigcommerce_config || {};
+export const CART = CONFIG.cart || {};
+export const IMAGES_URL = CONFIG.images_url || {};
+export const TEMPLATE_URL = CONFIG.template_url || {};
+export const CART_API_BASE = CONFIG.cart.api_url || '';
+export const AJAX_CART_ENABLED = CONFIG.cart.ajax_enabled || '';
+export const AJAX_CART_NONCE = CONFIG.cart.ajax_cart_nonce || '';
+export const COUNTRIES_OBJ = CONFIG.countries || {};
+export const PRODUCT_MESSAGES = CONFIG.product.messages || '';
+export const PRICING_API_URL = CONFIG.pricing.api_url || '';
+export const PRICING_API_NONCE = CONFIG.pricing.ajax_pricing_nonce || '';
+export const MINI_CART = CONFIG.cart.mini_cart.enabled || false;
+export const STORE_DOMAIN = CONFIG.store_domain || '';
