@@ -6,13 +6,13 @@
     version: 1.1
 */
 
-@import "modules/footer.css"; 
-@import "modules/header.css"; 
+@import "css/modules/footer.css"; 
+@import "css/modules/header.css"; 
 
-@import "modules/home.css"; 
+@import "css/modules/home.css"; 
 
-@import "modules/product-page.css"; 
-@import "modules/related-product.css"; 
+@import "css/modules/product-page.css"; 
+@import "css/modules/related-product.css"; 
 
 
 

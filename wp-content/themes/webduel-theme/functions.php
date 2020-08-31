@@ -12,7 +12,7 @@
  //enqueue scripts
  function inspiry_scripts(){ 
     
-    wp_enqueue_style( 'inspiry-style', get_theme_file_uri('/css/style.css' ), array(), filemtime(get_template_directory().'/css/style.css'), 'all' ); //delete version 
+    wp_enqueue_style( 'inspiry-style', get_theme_file_uri('/style.css' ), array(), filemtime(get_template_directory().'/css/style.css'), 'all' ); //delete version 
     wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Work+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap', false);
     wp_enqueue_script('main', get_template_directory_uri() . '/js/scripts.js', array('jquery'), '1.0', true);
 
