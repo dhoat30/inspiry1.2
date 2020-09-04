@@ -1,4 +1,20 @@
-
+let apiButton = document.querySelector('.api-button'); 
+apiButton.addEventListener('click', ()=>{ 
+    console.log('it is wordking')
+    const config ={ 
+        headers: {
+            'accept': 'application/json', 
+            'content-type': 'application/json', 
+            "x-auth-client": "23k00mq7lb0d2k461j5wr6vh5u9xaur",
+            "x-auth-token": "8v5clxzj8a3xmu9fjp0g093t8x4ktco"
+        }
+    }
+    axios.get('https://api.bigcommerce.com/stores/zuh5fsa2r/v3/catalog/products/113', config).then((res)=>{
+        console.log(res); 
+    }).catch((err)=>{
+        console.log(err);
+    })
+});
 
 //remove product image class
 const img = document.querySelector('.bc-medium-img'); 
