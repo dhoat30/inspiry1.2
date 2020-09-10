@@ -2,66 +2,63 @@
 msgid ""
 msgstr ""
 "Language: \n"
-"POT-Creation-Date: 2020-05-04 15:58+0000\n"
+"POT-Creation-Date: 2020-09-05 18:39+0000\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: Loco https://localise.biz/"
 
-#: woo-free-product-sample.php:87
-msgid "Go PRO"
-msgstr ""
-
 #: woo-free-product-sample.php:88
-msgid "Configure"
+msgid "Settings"
 msgstr ""
 
 #: woo-free-product-sample.php:89
 msgid "Docs"
 msgstr ""
 
-#: woo-free-product-sample.php:90
-msgid "Support"
-msgstr ""
-
 #: woo-free-product-sample.php:91
-msgid "Review"
+msgid "Get Pro"
 msgstr ""
 
-#: admin/class-woo-free-product-sample-admin.php:101
-#: admin/class-woo-free-product-sample-admin.php:102
-msgid "Product Sample"
-msgstr ""
-
-#: admin/class-woo-free-product-sample-admin.php:163
-#: admin/class-woo-free-product-sample-admin.php:171
-msgid "Submit a topic"
-msgstr ""
-
-#: admin/class-woo-free-product-sample-admin.php:173
-msgid "Submit a ticket"
-msgstr ""
-
-#: public/class-woo-free-product-sample-public.php:93
+#: includes/class-woo-free-product-sample-helper.php:190
 msgid "Order a Free Sample"
 msgstr ""
 
-#: public/class-woo-free-product-sample-public.php:454
-#: public/class-woo-free-product-sample-public.php:464
-msgid " quantity per order."
+#: admin/class-woo-free-product-sample-admin.php:133
+#: admin/class-woo-free-product-sample-admin.php:134
+msgid "Product Sample"
 msgstr ""
 
-#: public/class-woo-free-product-sample-public.php:490
+#: admin/class-woo-free-product-sample-admin.php:147
+#: admin/class-woo-free-product-sample-admin.php:148
+msgid "Message"
+msgstr ""
+
+#: public/class-woo-free-product-sample-public.php:393
+msgid "  注文ごと。"
+msgstr ""
+
+#: public/class-woo-free-product-sample-public.php:397
+#: public/class-woo-free-product-sample-public.php:413
 #, php-format
-msgid "Sample - \"%s\" have been added to your cart."
+msgid "%1$s."
 msgstr ""
 
-#: public/class-woo-free-product-sample-public.php:509
-#: public/partials/woocommerce/cart/mini-cart.php:62
+#: public/class-woo-free-product-sample-public.php:410
+msgid " 注文あたりの数量。"
+msgstr ""
+
+#: public/class-woo-free-product-sample-public.php:441
+#: public/class-woo-free-product-sample-public.php:478
+#: public/partials/woocommerce/order/order-details-item.php:43
+#: public/partials/woocommerce/cart/mini-cart.php:64
+msgid "サンプル - "
+msgstr ""
+
+#: public/class-woo-free-product-sample-public.php:443
+#: public/class-woo-free-product-sample-public.php:480
+#: public/partials/woocommerce/order/order-details-item.php:45
+#: public/partials/woocommerce/cart/mini-cart.php:66
 msgid "Sample - "
-msgstr ""
-
-#: public/class-woo-free-product-sample-public.php:549
-msgid "  per order."
 msgstr ""
 
 #: admin/includes/class-woo-free-product-sample-settings.php:36
@@ -70,123 +67,37 @@ msgstr ""
 
 #: admin/includes/class-woo-free-product-sample-settings.php:39
 #: admin/includes/class-woo-free-product-sample-settings.php:40
-msgid "Set button label"
+msgid "Set Button Label"
 msgstr ""
 
 #: admin/includes/class-woo-free-product-sample-settings.php:44
+msgid "Disable Maximum Limit"
+msgstr ""
+
 #: admin/includes/class-woo-free-product-sample-settings.php:47
-msgid "Maximum limit type"
+msgid "Disable maximum order limit validation"
 msgstr ""
 
-#: admin/includes/class-woo-free-product-sample-settings.php:55
-#: admin/includes/class-woo-free-product-sample-settings.php:58
-msgid "Maximum quantity per order"
+#: admin/includes/class-woo-free-product-sample-settings.php:51
+#: admin/includes/class-woo-free-product-sample-settings.php:54
+msgid "Maximum Limit Type"
 msgstr ""
 
-#: admin/partials/woo-free-product-sample-settings.php:64
-#: admin/partials/woo-free-product-sample-settings.php:104
-msgid "Upgrade to"
+#: admin/includes/class-woo-free-product-sample-settings.php:64
+#: admin/includes/class-woo-free-product-sample-settings.php:67
+msgid "Maximum Quantity Per Order"
 msgstr ""
 
-#: admin/partials/woo-free-product-sample-settings.php:64
-#: admin/partials/woo-free-product-sample-settings.php:104
-msgid "Premium Now!"
+#: admin/partials/woo-free-product-sample-message.php:23
+msgid "Maximum quantity message"
 msgstr ""
 
-#: admin/partials/woo-free-product-sample-settings.php:66
-#: admin/partials/woo-free-product-sample-settings.php:106
-msgid "For only"
-msgstr ""
-
-#: admin/partials/woo-free-product-sample-settings.php:66
-msgid "$29.00"
-msgstr ""
-
-#: admin/partials/woo-free-product-sample-settings.php:66
-#: admin/partials/woo-free-product-sample-settings.php:106
-msgid "per site"
-msgstr ""
-
-#: admin/partials/woo-free-product-sample-settings.php:69
-#: admin/partials/woo-free-product-sample-settings.php:108
-msgid "Elevate Your WooCommerce Stores"
-msgstr ""
-
-#: admin/partials/woo-free-product-sample-settings.php:69
-#: admin/partials/woo-free-product-sample-settings.php:108
-msgid ""
-"with our\n"
-"                                    light, fast and feature-rich plugins."
-msgstr ""
-
-#: admin/partials/woo-free-product-sample-settings.php:73
-#: admin/partials/woo-free-product-sample-settings.php:112
-msgid "Upgrade Now"
-msgstr ""
-
-#: admin/partials/woo-free-product-sample-settings.php:78
-msgid "Premium Features"
-msgstr ""
-
-#: admin/partials/woo-free-product-sample-settings.php:81
-#: admin/partials/woo-free-product-sample-settings.php:120
-msgid "Display the button for global."
-msgstr ""
-
-#: admin/partials/woo-free-product-sample-settings.php:84
-#: admin/partials/woo-free-product-sample-settings.php:123
-msgid "Conditional logic"
-msgstr ""
-
-#: admin/partials/woo-free-product-sample-settings.php:84
-#: admin/partials/woo-free-product-sample-settings.php:123
-msgid "Exclude products capability if don’t need."
-msgstr ""
-
-#: admin/partials/woo-free-product-sample-settings.php:87
-#: admin/partials/woo-free-product-sample-settings.php:126
-msgid "Sample price"
-msgstr ""
-
-#: admin/partials/woo-free-product-sample-settings.php:87
-#: admin/partials/woo-free-product-sample-settings.php:126
-msgid "Set custom price for sample products."
-msgstr ""
-
-#: admin/partials/woo-free-product-sample-settings.php:90
-#: admin/partials/woo-free-product-sample-settings.php:129
-msgid "Custom shipping class & tax rules"
-msgstr ""
-
-#: admin/partials/woo-free-product-sample-settings.php:90
-#: admin/partials/woo-free-product-sample-settings.php:129
-msgid "Set shipping class & tax rule for the sample products."
-msgstr ""
-
-#: admin/partials/woo-free-product-sample-settings.php:93
-#: admin/partials/woo-free-product-sample-settings.php:132
-msgid "Custom SKU"
-msgstr ""
-
-#: admin/partials/woo-free-product-sample-settings.php:93
-#: admin/partials/woo-free-product-sample-settings.php:132
-msgid "Set custom SKU for sample products."
-msgstr ""
-
-#: admin/partials/woo-free-product-sample-settings.php:106
-msgid "$29"
-msgstr ""
-
-#: admin/partials/woo-free-product-sample-settings.php:138
-msgid "Dedicated Support Team"
-msgstr ""
-
-#: admin/partials/woo-free-product-sample-settings.php:139
-msgid "We are available round the clock for any support."
+#: admin/partials/woo-free-product-sample-message.php:29
+msgid "{product} and {qty} for dynamic content."
 msgstr ""
 
 #: admin/includes/fields/multi-select.php:3
-msgid "Select products"
+msgid "All"
 msgstr ""
 
 #. Name of the plugin

@@ -18,7 +18,6 @@ if ( empty( $sku ) ) {
 
 <span class="bc-product-single__meta-label">
 	<?php esc_html_e( 'SKU:', 'bigcommerce' ); ?>
-	
 </span>
 
 <?php echo esc_html( $sku ); ?>

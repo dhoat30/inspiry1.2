@@ -1,5 +1,10 @@
 # Changelog
 
+## [3.23.0]
+
+### Added
+- Admin notice about required PHP and WP version implications in upcoming version 4.0
+
 ## [3.22.0]
 
 ### Added

@@ -36,8 +36,8 @@ class Woo_Free_Product_Sample_Settings {
                 'label'         => __( 'Button Label', 'woo-free-product-sample' ),
                 'type'          => 'text',
                 'class'         => 'widefat',
-                'description'   => __( 'Set button label', 'woo-free-product-sample' ),
-                'placeholder'   => __( 'Set button label', 'woo-free-product-sample' ),
+                'description'   => __( 'Set Button Label', 'woo-free-product-sample' ),
+                'placeholder'   => __( 'Set Button Label', 'woo-free-product-sample' ),
             ),
             array(
                 'name'          => 'disable_limit_per_order',

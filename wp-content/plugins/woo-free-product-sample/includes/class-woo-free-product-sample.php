@@ -50,7 +50,7 @@ class Woo_Free_Product_Sample {
 		if ( defined( 'WFPS_VERSION' ) ) {
 			$this->version = WFPS_VERSION;
 		} else {
-			$this->version = '2.1.2';
+			$this->version = '2.1.3';
 		}
 		$this->plugin_name = 'woo-free-product-sample';
 
@@ -83,8 +83,20 @@ class Woo_Free_Product_Sample {
 		 * The class responsible for defining settings options responsibility
 		 * of the plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/includes/class-woo-free-product-sample-settings.php';		
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/includes/class-woo-free-product-sample-settings.php';	
+		
+		/**
+		 * The class responsible for defining message options responsibility
+		 * of the plugin.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-woo-free-product-sample-message.php';	
 
+		/**
+		 * The class responsible for defining helper options responsibility
+		 * of the plugin.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-woo-free-product-sample-helper.php';			
+		
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
@@ -126,7 +138,7 @@ class Woo_Free_Product_Sample {
 		$this->loader->add_action( 'plugins_loaded', $plugin_admin, 'wfps_set_default_options' );
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'wfps_settings_menu' );
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'wfps_menu_register_settings' );
-		$this->loader->add_filter( 'request_support_ticket', $plugin_admin, 'wfps_request_support_ticket' );
+
 	}
 
 	/**
@@ -145,7 +157,6 @@ class Woo_Free_Product_Sample {
 		$this->loader->add_filter( 'woocommerce_before_calculate_totals', $plugin_public, 'wfps_apply_sample_price_to_cart_item', 10 );			
 		$this->loader->add_filter( 'woocommerce_add_cart_item_data', $plugin_public, 'wfps_store_id', 10, 2 );
 		$this->loader->add_filter( 'wc_add_to_cart_message_html', $plugin_public, 'wfps_add_to_cart_message', 99, 4 );
-		$this->loader->add_filter( 'woocommerce_add_to_cart_validation', $plugin_public, 'wfps_set_limit_per_order', 99, 4 );
 		$this->loader->add_filter( 'woocommerce_get_cart_item_from_session', $plugin_public, 'wfps_get_cart_items_from_session', 10, 2 );
 		$this->loader->add_action( 'woocommerce_add_order_item_meta', $plugin_public, 'wfps_save_posted_data_into_order', 10, 2 );
 		$this->loader->add_filter( 'woocommerce_locate_template', $plugin_public, 'wfps_set_locate_template', 10, 3 );	

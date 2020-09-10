@@ -29,8 +29,13 @@ $product1 = new \BigCommerce\Post_Types\Product\Product( $post_id );
 
 	<!-- data-js="bc-product-meta" is required. -->
 	<div class="bc-product-page-meta" data-js="bc-product-meta">
-		<?php echo $title; ?>
+    <?php echo $title; 
+    $post_id = get_the_ID();
+    echo do_shortcode( "[wishlist_button id=$post_id]" );
+    ?>
+    
 		<?php echo $description; ?>
+    
 		<h3 class="product-short-description-title work-sans-fonts">DETAILS 
                     </h3>
                     <span class="margin-elements product-short-description work-sans-fonts">
@@ -59,6 +64,17 @@ $product1 = new \BigCommerce\Post_Types\Product\Product( $post_id );
 
 <?php echo $specs;?>
 <?php echo $related; ?>
+
+
+
+
+
+
+
+
+
+
+
 
 
 

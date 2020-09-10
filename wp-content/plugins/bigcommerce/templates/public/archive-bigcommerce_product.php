@@ -13,5 +13,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 get_header();
 echo apply_filters( 'bigcommerce/template/product/archive', '' );
-
 get_footer();

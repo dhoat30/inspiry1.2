@@ -1,13 +1,13 @@
-<?php get_header();?>
-   
-   <?php 
-    while(have_posts()){
-        the_post(); 
-        ?>
-        <h1><?php the_title( );?></h1>
-        <div><?php the_content();?></div>
+<?php 
+get_header(); 
+?>
+    <div class="row-container margin-row">
+        <h1 class="playfair-fonts regular center-align page-title-sz"> Cart</h1>
         <?php
-    }
-   ?>
+        echo do_shortcode("[bigcommerce_cart]");
+        ?>
+    </div>  
 
-<?php get_footer();?>
+<?php
+ get_footer(); 
+?>

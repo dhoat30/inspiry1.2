@@ -1,20 +1,53 @@
-let apiButton = document.querySelector('.api-button'); 
-apiButton.addEventListener('click', ()=>{ 
-    console.log('it is wordking')
-    const config ={ 
-        headers: {
-            'accept': 'application/json', 
-            'content-type': 'application/json', 
-            "x-auth-client": "23k00mq7lb0d2k461j5wr6vh5u9xaur",
-            "x-auth-token": "8v5clxzj8a3xmu9fjp0g093t8x4ktco"
-        }
+
+
+//fabric calculator
+let fabricType = document.getElementById('fabric-type'); 
+let fabricWidth = document.getElementById('fabric-width'); 
+let trackLength = document.getElementById('track-length');
+let pattern = document.getElementById('pattern'); 
+let patternInputHorizontal = document.getElementById('pattern-value-hr'); 
+let patternInputVertical = document.getElementById('pattern-value-vr'); 
+let formHiddenFields = document.querySelector('.form-hidden-field'); 
+
+let calcDataField = document.getElementById('calculated-data'); 
+let fButton = document.getElementById('f-button'); 
+
+let calForm = document.getElementById('cal-form')
+calForm.addEventListener('submit', (e)=>{
+     e.preventDefault(); 
+
+   console.log(fabricWidth.value)
+    fabricWidth = parseFloat(fabricWidth.value); 
+    trackLength = parseFloat(trackLength.value); 
+   console.log("after parse " + fabricWidth); 
+    
+
+    let calcData; 
+    
+    if(fabricType.value == 'inverted' || fabricType.value == 'pencil'){ 
+        let a = trackLength * 2; 
+        calcData = a/fabricWidth; 
     }
-    axios.get('https://api.bigcommerce.com/stores/zuh5fsa2r/v3/catalog/products/113', config).then((res)=>{
-        console.log(res); 
-    }).catch((err)=>{
-        console.log(err);
-    })
-});
+    else { 
+        calcData = 20; 
+    }
+
+    if(pattern.value == 'yes'){ 
+        console.log(pattern.value); 
+        
+    }
+
+    
+
+    calcDataField.innerHTML = calcData;
+    calcData = 0 ; 
+    console.log('worked')
+
+
+})
+
+
+
 
 //remove product image class
 const img = document.querySelector('.bc-medium-img'); 
@@ -178,3 +211,4 @@ closeIcon.addEventListener('click', ()=>{
   
   
 //pop up overlay control
+

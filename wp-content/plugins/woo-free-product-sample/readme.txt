@@ -3,7 +3,7 @@ Contributors: thewpnext, hossain88
 Donate Link: http://thewpnext.com
 Tags: free, product, sample, free-sample, free-product-sample, free-sample-product, woocommerce, dokan, e-commerce, ecommerce
 Requires at least: 4.4
-Tested up to: 5.4.1
+Tested up to: 5.5.1
 WC requires at least: 3.1
 WC tested up to: 4.1.0
 Requires PHP: 5.6
@@ -27,9 +27,11 @@ The easy way to handle free product sample. [Free Product Sample for WooCommerce
 
 ## 🛍️ Supercharge Your business with the Free Proudct Sample for WooCommerce.
 
-Capture compelling and real customer by giving capability to order a product sample. 
+Capture compelling and real customer by giving capability to show default quantity.
 
-**🔥 Free Sample Order Button:** Free Sample button will display beside Add to Cart button. Capability to order a product as a sample.
+## 3 WAYS TO SET DEFAULT QUANTITIES
+
+**🔥 Set a global, storewide WooCommerce default quantity
 
 **🔥 Button for Simple and Variable Product both:** Give access to order variable product as a sample.
 
@@ -177,3 +179,6 @@ Fix maximum order quantity in the cart page
 
 = 2.1.2 =
 Check product stock and display
+
+= 2.1.3 =
+Add message menu for to display validation notice

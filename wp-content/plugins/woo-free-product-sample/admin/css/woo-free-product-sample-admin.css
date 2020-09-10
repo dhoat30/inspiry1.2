@@ -492,6 +492,7 @@ table.wp-list-table .column-wfps_forms {
     height:35px;
     padding-top: 0;
     margin-top: 0;
+    width: 100%;
 }
 
 .wfps-license-activation-btn,

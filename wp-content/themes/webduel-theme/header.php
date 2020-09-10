@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html <?php language_attributes();?>>
 <head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
 <meta name="robots" content="noindex">
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <meta charset="<?php bloginfo('charset');?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="profile" href="https://gmpg.org/xfn/11"/>
@@ -18,7 +19,7 @@
                </a> 
             </div>
             <div class="login-area playfair-fonts font-s-regular">
-                <a href="#" class="text-decoration-none dark-grey">
+                <a href="http://localhost/inspiry/login/" class="text-decoration-none dark-grey">
                     <span class="dashicons dashicons-admin-users"></span> LOGIN / REGISTER
                 </a>
             </div>

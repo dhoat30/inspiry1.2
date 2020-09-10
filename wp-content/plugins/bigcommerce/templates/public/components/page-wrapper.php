@@ -10,9 +10,6 @@
 ?>
 <main id="main" class="site-main" role="main">
 	<div class="entry-content">
-		<?php echo $content; 
-		
-		?>
-		
+		<?php echo $content; ?>
 	</div>
 </main><!-- .site-main -->

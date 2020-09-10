@@ -8,7 +8,7 @@
  * Plugin Name:       Free Product Sample for WooCommerce
  * Plugin URI:        https://wordpress.org/plugins/woo-free-product-sample
  * Description:       Display an add to cart button in the product detail page to order product as free sample.  
- * Version:           2.1.2
+ * Version:           2.1.3
  * Author:            TheWPNext
  * Author URI:        https://www.thewpnext.com
  * License:           GPL-2.0+
@@ -17,7 +17,7 @@
  * Domain Path:       /languages
  * Requires PHP:      5.6
  * Requires at least: 4.4
- * Tested up to:      5.4.1
+ * Tested up to:      5.5.1
  *
  * WC requires at least: 3.1
  * WC tested up to:   4.1.0 
@@ -30,7 +30,7 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-define( 'WFPS_VERSION', '2.1.2' );
+define( 'WFPS_VERSION', '2.1.3' );
 define( 'WFPS_MINIMUM_PHP_VERSION', '5.6.0' );
 define( 'WFPS_MINIMUM_WP_VERSION', '4.4' );
 define( 'WFPS_MINIMUM_WC_VERSION', '3.0.9' );
@@ -43,6 +43,8 @@ define( 'WFPS_ADMIN_DIR_PATH', WFPS_ROOT_DIR_PATH . 'admin/' );
 define( 'WFPS_PUBLIC_PATH', WFPS_ROOT_DIR_PATH . 'public/' );
 define( 'WFPS_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
 define( 'WFPS_PLUGIN_NAME', 'Free Product Sample for WooCommerce' );
+
+include WFPS_ROOT_DIR_PATH . 'includes/woo-free-product-sample-functions.php';
 
 /**
  * Free Product Sample for WooCommerce Start.
