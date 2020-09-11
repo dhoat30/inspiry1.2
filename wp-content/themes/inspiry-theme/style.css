@@ -1,0 +1,113 @@
+/*
+    Theme Name: Inspiry
+    Theme URI: https://webduel.co.nz
+    Author: Gurpreet Dhoat
+    Description: customized theme
+    version: 1.1
+*/
+@import "css/product-page.css";
+@import "css/product-page-custom-styling.css"; 
+* {
+    box-sizing: border-box;
+    padding: 0; 
+    margin: 0;
+  }
+
+	.underline{ 
+		border-bottom: solid 1px #e1e1e1;
+	}
+
+	.body-container{
+        max-width: 1600px;
+    }
+    .row-container{
+        width: 95%; 
+        margin: 0 auto;
+    }
+    
+/*fonts------*/ 
+
+/*alignment*/ 
+    .left-align{ 
+        text-align: left;
+    }
+    .center-align{
+        text-align: center; 
+    }
+
+/*font size*/ 
+    .page-title-sz{ 
+        font-size: 70px;
+    }
+    .black-bold{ 
+        font-weight: 900; 
+    }
+    .bold{ 
+        font-weight: 700;
+    }
+    .regular{ 
+        font-weight: 500;
+    }
+    .thin{ 
+        font-weight: 300;
+    }
+    .light{ 
+        font-weight: 100;
+    }
+    .font-s-regular{ 
+        font-size: 15px;
+    }
+	.playfair-fonts {
+		font-family: 'Playfair Display', serif;
+	}
+	.work-sans-fonts{ 
+		font-family: 'Work Sans', sans-serif;
+    }
+    
+    .text-decoration-none{ 
+        text-decoration: none;
+    }
+
+/*global margin*/ 
+	.margin-elements{ 
+		margin: 20px 0;
+	}
+	.margin-row{
+		margin-top: 40px;
+    }
+    
+   
+	.button{ 
+		border-bottom: none !important;
+		font-size: 16px;
+		letter-spacing: 0.2em;
+		line-height: 1.3em;
+		padding: 18px 30px 18px 30px !important;
+		border: none;
+		cursor: pointer;
+    }
+    .white{ 
+        color: white; 
+    }
+    .dark-grey{ 
+        color:#666666;
+    }
+	.black-bc{ 
+		background-color: black;
+    }
+
+    .beige-color-bc{ 
+        background-color:#EFEAE5; 
+    }
+    .off-white-bc{ 
+        background-color: #efefef; 
+    }
+    
+    
+
+
+
+  
+  
+
+
