@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html <?php language_attributes();?>>
 <head>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
 <meta name="robots" content="noindex">
     <meta charset="<?php bloginfo('charset');?>">

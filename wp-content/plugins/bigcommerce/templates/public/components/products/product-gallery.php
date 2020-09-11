@@ -41,7 +41,7 @@ $has_zoom = $zoom ? 'bc-product-image-zoom' : '';
 					foreach ( $image_ids as $image_id ) {
 						$image_src = wp_get_attachment_image_url( $image_id, $image_size );
 						$image_full = $zoom ? sprintf( 'data-zoom="%s"', wp_get_attachment_image_url( $image_id, $zoom_size ) ) : '';
-						$image_srcset = wp_get_attachment_image_srcset( $image_id, $image_size );
+						$image_srcset = wp_get_attachment_image_srcset( $image_id, 'bc-large' );
 						?>
 						<!-- class="swiper-slide" is required -->
 						<div class="swiper-slide bc-product-gallery__image-slide" data-index="<?php echo $index++; ?>">

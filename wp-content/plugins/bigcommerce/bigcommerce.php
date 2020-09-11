@@ -3,9 +3,9 @@
 Plugin Name:  BigCommerce for WordPress
 Description:  Scale your ecommerce business with WordPress on the front-end and BigCommerce on the back end. Free up server resources from things like catalog management, processing payments, and managing fulfillment logistics.
 Author:       BigCommerce
-Version:      3.23.0
+Version:      4.0.0
 Author URI:   https://www.bigcommerce.com/wordpress
-Requires PHP: 5.6.24
+Requires PHP: 7.0.0
 Text Domain:  bigcommerce
 License:      GPLv2 or later
 */
@@ -15,7 +15,7 @@ define( 'BIGCOMMERCE_WP_OPTIMAL_VERSION', '5.2' );
 
 if ( version_compare( PHP_VERSION, BIGCOMMERCE_PHP_OPTIMAL_VERSION, '<' ) || version_compare( get_bloginfo( 'version' ), BIGCOMMERCE_WP_OPTIMAL_VERSION, '<' ) ) {
 	add_action( 'admin_notices', function() {
-		$message = sprintf( esc_html__( 'By end of September, BC4WP 4.2.0 will require PHP %s+ and WP %s+. Unfortunately, your site does not meet these requirements and may not function is correctly if you upgrade. While we will gradually increase the minimum required PHP version each BC4WP release, until we get to PHP %s+, please do not attempt to upgrade to BC4WP 4.0+ unless you also upgrade your PHP and WP versions.', 'bigcommerce' ), BIGCOMMERCE_PHP_OPTIMAL_VERSION, BIGCOMMERCE_WP_OPTIMAL_VERSION, BIGCOMMERCE_PHP_OPTIMAL_VERSION );
+		$message = sprintf( esc_html__( 'By end of September, BC4WP 4.2.0 will require PHP %s+ and WP %s+. Unfortunately, your site does not meet these requirements and may not function is correctly if you upgrade. While we will gradually increase the minimum required PHP version each BC4WP release, until we get to PHP %s+, please do not attempt to upgrade BC4WP unless you also upgrade your PHP and WP versions.', 'bigcommerce' ), BIGCOMMERCE_PHP_OPTIMAL_VERSION, BIGCOMMERCE_WP_OPTIMAL_VERSION, BIGCOMMERCE_PHP_OPTIMAL_VERSION );
 		$link = " <a href=\"https://support.bigcommerce.com/s/blog-article/aAn4O000000CdFBSA0/important-changes-for-bigcommerce-for-wordpress-40\" target=\"_blank\">Learn more</a>";
 		$script = 
 <<<EOL
@@ -98,3 +98,4 @@ function bigcommerce_get_env( $key ) {
 
 	return $value;
 }
+

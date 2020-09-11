@@ -1,76 +1,12 @@
-
-
-//fabric calculator
-let fabricType = document.getElementById('fabric-type'); 
-let fabricWidth = document.getElementById('fabric-width'); 
-let trackLength = document.getElementById('track-length');
-let pattern = document.getElementById('pattern'); 
-let patternInputHorizontal = document.getElementById('pattern-value-hr'); 
-let patternInputVertical = document.getElementById('pattern-value-vr'); 
-let formHiddenFields = document.querySelector('.form-hidden-field'); 
-
-let calcDataField = document.getElementById('calculated-data'); 
-let fButton = document.getElementById('f-button'); 
-
-let calForm = document.getElementById('cal-form')
-calForm.addEventListener('submit', (e)=>{
-     e.preventDefault(); 
-
-   console.log(fabricWidth.value)
-    fabricWidth = parseFloat(fabricWidth.value); 
-    trackLength = parseFloat(trackLength.value); 
-   console.log("after parse " + fabricWidth); 
-    
-
-    let calcData; 
-    
-    if(fabricType.value == 'inverted' || fabricType.value == 'pencil'){ 
-        let a = trackLength * 2; 
-        calcData = a/fabricWidth; 
-    }
-    else { 
-        calcData = 20; 
-    }
-
-    if(pattern.value == 'yes'){ 
-        console.log(pattern.value); 
-        
-    }
-
-    
-
-    calcDataField.innerHTML = calcData;
-    calcData = 0 ; 
-    console.log('worked')
-
-
-})
-
-
-
-
-//remove product image class
-const img = document.querySelector('.bc-medium-img'); 
-img.classList.remove('bc-product__gallery');
-img.classList.add('image-container');
-
-//wishlist button 
-/*
-const wishlistBtn = document.querySelector('.bc-pdp-wish-list-toggle'); 
-const ulList = document.querySelector('.bc-pdp-wish-lists');
-wishlistBtn.addEventListener('click', ()=>{
-    wishlistBtn.classList.toggle('bc-show-lists');
-    ulList.classList.toggle('bc-show-lists');
-    console.log('clicked');
-})*/
-
 //click event
+
 const calculatorButton = document.querySelector('.sizing-calculator-button'); 
 const calculatorOverlay = document.querySelector('.calculator-overlay'); 
 const overlayBackground = document.querySelector('.overlay-background');
 const closeIcon = document.querySelector('.close'); 
 
 calculatorButton.addEventListener('click', ()=>{
+    console.log('it is working')
     overlayBackground.classList.add('overlay-background--visible');
     calculatorOverlay.classList.add("calculator-overlay--visible");
     
@@ -211,4 +147,69 @@ closeIcon.addEventListener('click', ()=>{
   
   
 //pop up overlay control
+
+
+
+
+
+    //fabric calculator
+    /*
+ let fabricType = document.getElementById('fabric-type'); 
+ let fabricWidth = document.getElementById('fabric-width'); 
+ let trackLength = document.getElementById('track-length');
+ let pattern = document.getElementById('pattern'); 
+ let patternInputHorizontal = document.getElementById('pattern-value-hr'); 
+ let patternInputVertical = document.getElementById('pattern-value-vr'); 
+ let formHiddenFields = document.querySelector('.form-hidden-field'); 
+ 
+ let calcDataField = document.getElementById('calculated-data'); 
+ let fButton = document.getElementById('f-button'); 
+ 
+ let calForm = document.getElementById('cal-form')
+ calForm.addEventListener('submit', (e)=>{
+      e.preventDefault(); 
+ 
+    console.log(fabricWidth.value)
+     fabricWidth = parseFloat(fabricWidth.value); 
+     trackLength = parseFloat(trackLength.value); 
+    console.log("after parse " + fabricWidth); 
+     
+ 
+     let calcData; 
+     
+     if(fabricType.value == 'inverted' || fabricType.value == 'pencil'){ 
+         let a = trackLength * 2; 
+         calcData = a/fabricWidth; 
+     }
+     else { 
+         calcData = 20; 
+     }
+ 
+     if(pattern.value == 'yes'){ 
+         console.log(pattern.value); 
+         
+     }
+ 
+     
+ 
+     calcDataField.innerHTML = calcData;
+     calcData = 0 ; 
+     console.log('worked')
+ 
+ 
+ })*/
+ 
+   
+
+
+
+//wishlist button 
+/*
+const wishlistBtn = document.querySelector('.bc-pdp-wish-list-toggle'); 
+const ulList = document.querySelector('.bc-pdp-wish-lists');
+wishlistBtn.addEventListener('click', ()=>{
+    wishlistBtn.classList.toggle('bc-show-lists');
+    ulList.classList.toggle('bc-show-lists');
+    console.log('clicked');
+})*/
 
