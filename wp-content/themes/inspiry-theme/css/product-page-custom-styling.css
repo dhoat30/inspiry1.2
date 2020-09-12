@@ -1,5 +1,4 @@
 
-
 /*product information*/ 
 /* product title */ 
 .product-title{ 
@@ -49,20 +48,23 @@
     vertical-align: middle;
 }
 
-.price{ 
+.bc-get-prices-wrapper.bc-product__pricing--visible, .bc-get-prices-wrapper.bc-show-pricing-spinner, .bc-product__pricing--api.bc-product__pricing--visible, .bc-product__pricing--api.bc-show-pricing-spinner, .bc-product__pricing--cached.bc-product__pricing--visible, .bc-product__pricing--cached.bc-show-pricing-spinner { 
     color: #999;
     display: inline-block;
     font-size: 35px;
     font-weight: 400;
     line-height: 1.3em;
+    margin-top: 20px;
 }
 .lay-buy{ 
     color: #444444;
     line-height: 1.3em;
     font-weight: 500;
+    cursor: pointer;
 }
 .information-overlay{ 
     color: #666666;
+    cursor: pointer;
 }
 
 .order-sample-button, .sizing-calculator-button{ 

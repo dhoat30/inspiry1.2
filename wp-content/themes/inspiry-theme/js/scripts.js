@@ -1,3 +1,13 @@
+import {laybuy} from './laybuy';
+alert('this is working');
+console.log('hello')
+
+//laybuy event 
+let laybuyBtn = document.querySelector('.lay-buy-open '); 
+laybuyBtn.addEventListener('click', ()=>{
+    console.log("it sis working"); 
+})
+
 //click event
 
 const calculatorButton = document.querySelector('.sizing-calculator-button'); 

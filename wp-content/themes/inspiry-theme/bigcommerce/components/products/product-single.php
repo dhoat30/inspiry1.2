@@ -27,12 +27,10 @@ use BigCommerce\Post_Types\Product\Product;
 	<div class="bc-product-single__meta" data-js="bc-product-meta">
 		<?php echo $title; ?>
 		<?php echo $description; ?>
+		<?php echo $specs; ?>
 
-		<h3 class="product-short-description-title work-sans-fonts">DETAILS 
-                    </h3>
-                    <span class="margin-elements product-short-description work-sans-fonts">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris porttitor, lacus et euismod porttitor, turpis tortor viverra dolor, id hendrerit dui nunc quis nulla. Nunc et nunc non turpis gravida ornare eu eget orci. Aliquam faucibus, sapien a euismod posuere, nibh leo auctor lacus, non scelerisque diam erat tincidunt dolor.
-                    </span> 
+		
+                    
 					<div class="underline grey margin-elements"></div>
 					
 					<!--calculator and sample-->
@@ -56,7 +54,7 @@ use BigCommerce\Post_Types\Product\Product;
 	<?php echo $description; ?>
 </section>
 
-<?php echo $specs; ?>
+
 
 <?php echo $reviews; ?>
 

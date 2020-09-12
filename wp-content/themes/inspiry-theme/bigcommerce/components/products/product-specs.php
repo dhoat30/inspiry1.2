@@ -5,15 +5,19 @@
  */
 ?>
 <?php if ( ! empty( $specs ) ) { ?>
+
 	<section class="bc-single-product__specifications">
-		<h4 class="bc-single-product__section-title"><?php echo esc_html__( 'Specifications', 'bigcommerce' ); ?></h4>
-		<ul class="bc-product__spec-list">
+		<!--edited by Webduel--> 
+		<h4 class="product-short-description-title work-sans-fonts"><?php echo esc_html__( 'DETAILS', 'bigcommerce' ); ?></h4>
+		
+		<table>
 			<?php foreach ( $specs as $key => $value ) { ?>
-				<li class="bc-product__spec">
-					<span class="bc-product__spec-title"><?php echo esc_html( $key ); ?></span>
-					<span class="bc-product__spec-value"><?php echo esc_html( $value ); ?></span>
-				</li>
+				<tr>
+					<td class="attr-title playfair-fonts ft-wt-med font-s-med"><?php echo esc_html( $key ); ?></td>
+					<td class="attr-value work-sans-fonts font-s-regular"><?php echo esc_html( $value ); ?></td>
+				</tr>
+				
 			<?php } ?>
-		</ul>
+		</table>
 	</section>
 <?php } ?>

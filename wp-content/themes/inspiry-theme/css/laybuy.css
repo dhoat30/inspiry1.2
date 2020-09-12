@@ -1,0 +1,61 @@
+#laybuy-popup{ 
+    background-color: rgba(255,255,255,0.3);
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 10;
+    overflow: scroll;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.laybuy-popup-content{ 
+    width: 90%;
+    max-width: 700px;
+    background-color: rgba(255,255,255,1);
+    padding: 40px 20px;
+    position: relative;
+}
+
+.laybuy-logo-overlay{ 
+    width: 200px; 
+    height: auto;
+    margin: 0 auto;
+    display: block;
+}
+
+.g-heading2{ 
+    color: #786DFF;
+    font-style: italic;
+    font-size: 18px;
+    font-weight: 400;
+    text-align: center;
+    margin: 20px 0;
+}
+.laybuySteps { 
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+   list-style: none;
+}
+.laybuySteps li{ 
+    text-align: center;
+    width: 150px;
+}
+.laybuySteps img{ 
+    width:80px; 
+    height: auto;
+}
+
+.close-laybuy{ 
+    position: absolute;
+    right: 20px; 
+    top: 20px;
+    font-size: 30px;
+}
+
