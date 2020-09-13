@@ -25,7 +25,7 @@ use BigCommerce\Post_Types\Product\Product;
 
 	<!-- data-js="bc-product-meta" is required. -->
 	<div class="bc-product-single__meta" data-js="bc-product-meta">
-		<?php echo $title; ?>
+    <?php echo $title; ?>
 		<?php echo $description; ?>
 		<?php echo $specs; ?>
 
@@ -42,21 +42,28 @@ use BigCommerce\Post_Types\Product\Product;
 				<a href="#" class="sizing-calculator-button"><img src="http://localhost/inspiry/wp-content/uploads/2020/08/icon-calc.png" alt="order a sample"> Sizing Calculator</a>
 	
 		<?php echo $price; ?>
-		<?php echo $form; ?>
-
-		<p class="availability margin-elements">Availability: <span class="days">7 - 10 Days</span></p>
-
+    <?php echo $form; ?>
+    <?php
+        // Under loop
+        $post_id = get_the_ID();
+       echo get_favorites_button($post_id);
+       echo get_favorites_count($post_id);
+    ?>
+		<p class="availability work-sans-fonts regular-text">Availability: <span class="days">7 - 10 Days</span></p>
+    
+    <p class="share-section work-sans-fonts regular-text">Share: <?php echo do_shortcode( '[Sassy_Social_Share]' );?></p>
+    
 	</div>
 </section>
 
 <section class="bc-single-product__description">
 	<h4 class="bc-single-product__section-title"><?php echo esc_html__( 'Product Description', 'bigcommerce' ); ?></h4>
-	<?php echo $description; ?>
+ 
+  <?php  echo $product->get_property('warranty') ;?>
 </section>
 
 
 
-<?php echo $reviews; ?>
 
 <?php echo $related; ?>
 

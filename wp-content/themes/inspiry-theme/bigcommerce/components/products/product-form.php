@@ -31,7 +31,7 @@ use BigCommerce\Post_Types\Product\Product;
 
 	<div class="bc-product-form__quantity">
 		<?php if ( $quantity_field_type !== 'hidden' ) { ?>
-		<label class="bc-product-form__quantity-label">
+		<label class="bc-product-form__quantity-label work-sans-fonts font-s-regular thin">
 			<span class="bc-product-single__meta-label"><?php esc_html_e( 'Quantity', 'bigcommerce' ); ?>:</span>
 		</label>
 		<?php } ?>

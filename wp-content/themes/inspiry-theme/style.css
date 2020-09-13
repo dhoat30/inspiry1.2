@@ -5,8 +5,12 @@
     Description: customized theme
     version: 1.1
 */
+@import "css/header.css"; 
+@import "css/footer.css";
+
 @import "css/product-page.css";
 @import "css/product-page-custom-styling.css"; 
+@import "css/related-product.css";
 @import "css/specs.css";
 @import "css/laybuy.css";
 
@@ -42,6 +46,10 @@
 /*font size*/ 
     .page-title-sz{ 
         font-size: 70px;
+    }
+    .section-ft-size{ 
+        font-size: 40px !important;
+        text-transform: uppercase;
     }
     .font-s-regular{ 
         font-size: 15px;
@@ -120,6 +128,15 @@
     /*shadow */ 
     .box-shadow{ 
         box-shadow: 3px 3px 20px 1px rgba(0,0,0,0.2);
+    }
+
+    /*underlines */ 
+    .small-underline{ 
+        width: 65px;
+        height: 2px;
+        background: #111;
+        display: block;
+        margin: 13px auto 0;
     }
     
     

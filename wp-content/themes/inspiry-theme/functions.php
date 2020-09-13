@@ -28,3 +28,5 @@ add_action( 'wp_enqueue_scripts', 'inspiry_scripts' );
   }
  
   add_action('after_setup_theme', 'inspiry_config', 0);
+
+  //register widget 

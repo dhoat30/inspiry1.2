@@ -1,0 +1,33 @@
+.related-product-container .product-title{ 
+    font-size: 20px;
+}
+.related-product-container .price{ 
+    font-size: 20px;
+}
+.related-product-container .margin-elements{ 
+    margin: 0;
+}
+.related-product-container .lay-buy{ 
+    display: none;
+}
+.related-product-container{ 
+    padding: 0;
+}
+
+.bc-single-product__related h4{ 
+    display: none;
+}
+.bc-single-product__related .bc-product__pricing--api.bc-product__pricing--visible{ 
+    font-size: 20px;
+    margin-top: 0;
+}
+.bc-single-product__related .bc-product__meta {
+    padding: 25px 0 0;
+   
+}
+
+.bc-single-product__section-title--related{ 
+    text-align: center;
+}
+
+

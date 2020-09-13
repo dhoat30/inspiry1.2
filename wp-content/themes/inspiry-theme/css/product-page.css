@@ -35,6 +35,15 @@ width: 100%;
     position: relative;
     max-width: 55vw;
 }
+@media only screen and (max-width: 767px) {
+    .bc-product-gallery__images {
+        width: 100%;
+        margin: 0 0 0 0 !important;
+        position: relative;
+        max-width: 95vw;
+
+    }
+  }
 
 /*image sizing*/ 
 .bc-product-gallery__image-slide img {
@@ -46,7 +55,7 @@ width: 100%;
 }
 /*gallery-sizing*/
 .bc-product-gallery__thumb-slide {
-    width: calc(20% - 10px);
+    width:150px;
     margin: 0 10px 10px 0;
     padding: 0;
     border: 0;

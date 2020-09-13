@@ -7,10 +7,9 @@
     right: 0;
     z-index: 10;
     overflow: scroll;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     display: none;
+    justify-content: center;
+    align-items: center; 
 }
 
 .laybuy-popup-content{ 
@@ -57,5 +56,18 @@
     right: 20px; 
     top: 20px;
     font-size: 30px;
+    cursor: pointer;
+}
+
+/*laybuy*/ 
+.lay-buy{ 
+    color: #444444;
+    line-height: 1.3em;
+    font-weight: 500;
+    cursor: pointer;
+}
+.information-overlay{ 
+    color: #666666;
+    cursor: pointer;    
 }
 

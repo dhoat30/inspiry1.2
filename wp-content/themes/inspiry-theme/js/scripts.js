@@ -1,12 +1,18 @@
-import {laybuy} from './laybuy';
-alert('this is working');
-console.log('hello')
+
 
 //laybuy event 
 let laybuyBtn = document.querySelector('.lay-buy-open '); 
 laybuyBtn.addEventListener('click', ()=>{
-    console.log("it sis working"); 
+    console.log('laybuy clicked');
+    document.getElementById('laybuy-popup').style.display ="flex"; 
+});
+
+let laybuyCloseBtn = document.querySelector('.close-laybuy'); 
+laybuyCloseBtn.addEventListener('click', ()=>{
+    document.getElementById('laybuy-popup').style.display ="none";
 })
+
+
 
 //click event
 

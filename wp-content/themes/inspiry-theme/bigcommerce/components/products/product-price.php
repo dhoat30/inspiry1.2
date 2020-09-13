@@ -61,8 +61,8 @@ $product = new \BigCommerce\Post_Types\Product\Product( $post_id );
 		
 		$price = intval($value);
 		
-	?> <br>
-						<span class="lay-buy">or 6 weekly interest-free payments from <?php 
+	?> 
+						<span class="lay-buy work-sans-fonts">or 6 weekly interest-free payments from <?php 
 						 echo  number_format ( $price/6, 2 ); 
 						 
 						 ?></span> 
