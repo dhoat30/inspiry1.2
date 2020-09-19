@@ -1,0 +1,10 @@
+.bc-cart-item__remove-button {
+    padding: 5px 10px;
+}
+
+.bc-cart-actions button.bc-btn {
+    background-color: #495a54 !important;
+}
+.bc-cart-subtotal{
+    color: #495a54;
+}

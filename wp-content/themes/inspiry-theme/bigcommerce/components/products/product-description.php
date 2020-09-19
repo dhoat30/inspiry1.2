@@ -11,4 +11,4 @@ use BigCommerce\Post_Types\Product\Product;
 
 ?>
 
-<div class="bc-product__description"><?php echo $content; ?></div>
+<div class="bc-product__description work-sans-fonts"><?php echo $content; ?></div>

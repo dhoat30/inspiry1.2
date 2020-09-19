@@ -40,7 +40,7 @@ use BigCommerce\Taxonomies\Brand\Brand;
 					data-cart_item_id="<?php echo esc_attr( $item['id'] ); ?>"
 					type="button"
 			>
-				<?php esc_html_e( '(Remove)', 'bigcommerce' ); ?>
+				<?php esc_html_e( 'Remove', 'bigcommerce' ); ?>
 			</button>
 		</div>
 		<div class="bc-cart-item-meta">

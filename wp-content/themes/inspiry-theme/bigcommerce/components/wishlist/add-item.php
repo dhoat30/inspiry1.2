@@ -15,6 +15,8 @@
 </button>
 
 <ul class="bc-pdp-wish-lists" data-js="bc-pdp-wish-lists">
+	<div class="loader-icon"></div>
+	<div class="loader-confirmation">Added</div>
 	<?php foreach ( $links as $link ) { ?>
 		<li class="bc-wish-lists-item"><a href="<?php echo esc_url( $link['url'] ); ?>" class="bc-wish-list-item-anchor"><?php echo esc_html( $link['label'] ); ?></a></li>
 	<?php } ?>

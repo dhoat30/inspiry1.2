@@ -43,12 +43,7 @@ use BigCommerce\Post_Types\Product\Product;
 	
 		<?php echo $price; ?>
     <?php echo $form; ?>
-    <?php
-        // Under loop
-        $post_id = get_the_ID();
-       echo get_favorites_button($post_id);
-       echo get_favorites_count($post_id);
-    ?>
+    
 		<p class="availability work-sans-fonts regular-text">Availability: <span class="days">7 - 10 Days</span></p>
     
     <p class="share-section work-sans-fonts regular-text">Share: <?php echo do_shortcode( '[Sassy_Social_Share]' );?></p>

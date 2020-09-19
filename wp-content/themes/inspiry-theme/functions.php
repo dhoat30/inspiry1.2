@@ -25,8 +25,30 @@ add_action( 'wp_enqueue_scripts', 'inspiry_scripts' );
           'Inspiry_footer_menu' => 'Inspiry Footer Menu'
        )
        );  
+
+       add_theme_support( 'title-tag');
   }
  
   add_action('after_setup_theme', 'inspiry_config', 0);
 
-  //register widget 
+  //admin bar
+  if ( ! current_user_can( 'manage_options' ) ) {
+   show_admin_bar( false );
+}
+//sidebar
+add_action( 'widgets_init', 'mat_widget_areas' );
+function mat_widget_areas() {
+    register_sidebar( array(
+        'name' => 'Theme Sidebar',
+        'id' => 'mat-sidebar',
+        'description' => 'The main sidebar shown on the right in our awesome theme',
+        'before_widget' => '<li id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</li>',
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>',
+    ));
+}
+
+
+
+

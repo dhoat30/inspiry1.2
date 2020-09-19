@@ -1,0 +1,27 @@
+
+
+.geodir-entry-title a{ 
+    color: #495a54 !important; 
+    font-size: 20px;
+    padding-bottom: 5px;
+    display: inline-block;
+}
+.geodir-field-business_hours>span {
+    color: #495a54;
+    font-size: 15px; 
+    font-family: 'Work Sans', sans-serif !important;
+
+}
+
+.gd-list-rating-link{ 
+    color: #495a54;
+}
+
+.geodir-field-address>span{ 
+    font-size: 15px !important;
+    font-family: 'Work Sans', sans-serif !important;
+
+}
+.gd-read-more{ 
+    color: #495a54;
+}

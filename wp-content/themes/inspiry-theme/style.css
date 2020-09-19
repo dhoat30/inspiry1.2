@@ -14,10 +14,21 @@
 @import "css/specs.css";
 @import "css/laybuy.css";
 
+@import "css/loader.css";
+@import "css/account.css";
+@import "css/cart.css";
+
+/*geo directroy styling*/ 
+@import "css/trade-directory/gd-page-location.css"; 
+@import "css/trade-directory/archive-items.css";
+@import "css/trade-directory/detail-page.css";
+
 * {
     box-sizing: border-box;
     padding: 0; 
     margin: 0;
+    font-family: 'Playfair Display', serif;
+
     
   }
 
@@ -27,10 +38,17 @@
 
 	.body-container{
         max-width: 1600px;
+        background-color: #EFEAE5;
     }
     .row-container{
         width: 95%; 
         margin: 0 auto;
+    }
+    .white-bc{ 
+        background-color: white;
+    }
+    .row-padding{ 
+        padding: 10px 20px; 
     }
     
 /*fonts------*/ 
@@ -44,7 +62,7 @@
     }
 
 /*font size*/ 
-    .page-title-sz{ 
+    .lg-font-sz{ 
         font-size: 70px;
     }
     .section-ft-size{ 
@@ -56,7 +74,9 @@
     }
     .font-s-med{ 
         font-size: 18px;
-        letter-spacing: 1px;
+    }
+    .column-s-font{ 
+        font-size: 25px; 
     }
 /*font weight*/ 
 
@@ -83,7 +103,7 @@
 		font-family: 'Playfair Display', serif;
 	}
 	.work-sans-fonts{ 
-		font-family: 'Work Sans', sans-serif;
+		font-family: 'Work Sans', sans-serif !important;
     }
     
     .text-decoration-none{ 
@@ -137,6 +157,12 @@
         background: #111;
         display: block;
         margin: 13px auto 0;
+    }
+
+    /* a link */ 
+    .rm-txt-dec{ 
+        text-decoration: none;
+        color: #495a54;
     }
     
     

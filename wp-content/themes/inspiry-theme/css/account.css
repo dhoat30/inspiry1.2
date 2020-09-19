@@ -1,0 +1,46 @@
+.bc-subnav__list{ 
+    justify-content: center;
+    margin: 40px 0;
+}
+.bc-subnav__list-item{ 
+    margin:2px;
+}
+
+/*current selected page*/ 
+.bc-subnav__list-item--current a{ 
+    box-shadow: inset 5px 5px 10px #333;
+}
+/*remove space between list item*/
+.bc-subnav__list-item+.bc-subnav__list-item { 
+    margin-left:0; 
+}
+
+.bc-subnav__list a{ 
+    background-color: #495a54; 
+    padding: 10px 20px; 
+    color: #EFEAE5 !important;
+    font-family: 'Playfair Display', serif;
+}
+
+/*wishlist page*/
+.bc-link {
+    color: #495a54 !important;
+}
+
+/*order history*/ 
+.bc-order__link a{ 
+    color: #495a54;
+}
+
+/*log in page*/ 
+.button-primary{ 
+    background-color: #495a54 !important;
+    color: #EFEAE5;
+}
+.bc-btn--register{
+    color: #EFEAE5;
+    background-color:#495a54 !important;
+}
+.bc-account-login__form-inner a{ 
+color: #495a54 !important;
+}

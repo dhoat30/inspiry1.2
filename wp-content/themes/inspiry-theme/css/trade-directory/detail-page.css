@@ -1,0 +1,15 @@
+.trade-hero-image img{ 
+    width: 100% !important;
+    height: 300px !important;
+    object-fit: cover;
+}
+/*header Section */ 
+.trade-header-section{ 
+    position: relative;
+    bottom: 150px;
+    left: 20px;
+}
+.trade-profile-img img{ 
+    width: 200px;
+    height: 200px;
+}

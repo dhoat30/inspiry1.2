@@ -1,7 +1,39 @@
+//wishlist
+let aClick = document.querySelectorAll('.bc-wish-list-item-anchor');
+
+aClick.forEach((val)=>{
+    val.addEventListener('click', (e)=>{
+        e.preventDefault(); 
+       
+        let wishURL = e.path[0].href; 
+        
+        //Ajax request 
+        var xhr = new XMLHttpRequest(); 
+    
+        xhr.open('GET', wishURL, true); 
+        
+        //adding the loader icon
+        document.querySelector('.loader-icon').style.display = 'inline-block'; 
+
+        xhr.onload = function (){ 
+            //removing the loader icon
+            document.querySelector('.loader-icon').style.display = 'none'; 
+            //displaying the loader icon
+            document.querySelector('.loader-confirmation').style.display = 'block';
+           console.log('success')
+        }
+
+        document.querySelector('.loader-confirmation').style.display = 'none';
+
+    
+        xhr.send();
+    
+    })
+})
 
 
 //laybuy event 
-let laybuyBtn = document.querySelector('.lay-buy-open '); 
+let laybuyBtn = document.querySelector('.lay-buy-open'); 
 laybuyBtn.addEventListener('click', ()=>{
     console.log('laybuy clicked');
     document.getElementById('laybuy-popup').style.display ="flex"; 
