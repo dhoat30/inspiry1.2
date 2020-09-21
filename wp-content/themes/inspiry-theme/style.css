@@ -164,12 +164,32 @@
         text-decoration: none;
         color: #495a54;
     }
+
+    /*breadcrumbs*/ 
+    #breadcrumbs{ 
+        color: #666666;
+        text-decoration: none;
+        font-family: 'Work Sans', sans-serif !important;
+        font-size: 14px;
+        padding-bottom: 10px;
+    }
+    #breadcrumbs a{ 
+        color: #666666;
+        text-decoration: none;
+        font-family: 'Work Sans', sans-serif !important;
+        font-size: 14px;
+        padding-bottom: 10px;
+    }
     
-    
+.visible{ 
+    opacity: 1;
+    visibility: visible;
+}
 
+.invisible{ 
+    opacity: 0;
+    visibility: hidden;
+}
 
-
-  
-  
 
 

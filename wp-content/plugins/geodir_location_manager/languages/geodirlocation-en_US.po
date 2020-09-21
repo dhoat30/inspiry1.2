@@ -1,0 +1,2544 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: GeoDirectory Location Manager 2.0.1.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-07-30 12:32+0530\n"
+"PO-Revision-Date: 2020-07-30 12:32+0530\n"
+"Last-Translator: \n"
+"Language-Team: AyeCode Ltd <contact@ayecode.io>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;__ngettext:1,2;__ngettext_noop:1,2;_c;_e;_ex:1,2c;"
+"_n:1,2;_n_noop:1,2;_nc:4c,1,2;_nx:4c,1,2;_nx_noop:4c,1,2;_x:1,2c;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;gettext;"
+"gettext_noop\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 2.2.4\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: includes/admin/admin-functions.php:39
+#: includes/admin/class-geodir-location-admin-cities-table-list.php:40
+#: includes/admin/settings/class-geodir-location-settings-locations.php:329
+#: includes/admin/views/html-add-edit-location.php:41
+#: includes/admin/views/html-add-edit-neighbourhood.php:50
+#: includes/admin/views/html-merge-location.php:17
+#: includes/admin/views/html-merge-location.php:30
+#: includes/admin/views/html-merge-location.php:46
+#: includes/general-functions.php:1507 includes/template-functions.php:518
+#: includes/template-functions.php:791 includes/template-functions.php:1136
+#: includes/widgets/class-geodir-location-widget-location-meta.php:52
+msgid "City"
+msgstr ""
+
+#: includes/admin/admin-functions.php:41
+#: includes/admin/class-geodir-location-admin-cities-table-list.php:42
+#: includes/admin/class-geodir-location-admin-regions-table-list.php:40
+#: includes/admin/settings/class-geodir-location-settings-locations.php:294
+#: includes/admin/views/html-add-edit-location.php:49
+#: includes/admin/views/html-add-edit-neighbourhood.php:58
+#: includes/admin/views/html-add-edit-seo-data.php:17
+#: includes/admin/views/html-merge-location.php:19
+#: includes/admin/views/html-merge-location.php:32
+#: includes/admin/views/html-merge-location.php:51
+#: includes/general-functions.php:1482 includes/template-functions.php:469
+#: includes/template-functions.php:787 includes/template-functions.php:1135
+#: includes/widgets/class-geodir-location-widget-location-meta.php:51
+msgid "Region"
+msgstr ""
+
+#: includes/admin/admin-functions.php:43
+#: includes/admin/class-geodir-location-admin-cities-table-list.php:43
+#: includes/admin/class-geodir-location-admin-countries-table-list.php:40
+#: includes/admin/class-geodir-location-admin-regions-table-list.php:42
+#: includes/admin/settings/class-geodir-location-settings-locations.php:259
+#: includes/admin/views/html-add-edit-location.php:57
+#: includes/admin/views/html-add-edit-neighbourhood.php:66
+#: includes/admin/views/html-add-edit-seo-data.php:24
+#: includes/admin/views/html-merge-location.php:20
+#: includes/admin/views/html-merge-location.php:33
+#: includes/admin/views/html-merge-location.php:56
+#: includes/general-functions.php:1453 includes/template-functions.php:420
+#: includes/template-functions.php:783 includes/template-functions.php:1134
+#: includes/widgets/class-geodir-location-widget-location-meta.php:50
+msgid "Country"
+msgstr ""
+
+#: includes/admin/admin-functions.php:45
+#: includes/admin/views/html-add-edit-neighbourhood.php:42
+#: includes/class-geodir-location-neighbourhood.php:561
+#: includes/custom-functions.php:20 includes/template-functions.php:567
+#: includes/template-functions.php:795 includes/template-functions.php:1137
+#: includes/widgets/class-geodir-location-widget-location-meta.php:53
+msgid "Neighbourhood"
+msgstr ""
+
+#: includes/admin/admin-functions.php:53
+msgid "This will show/hide the city from the address when being displayed."
+msgstr ""
+
+#: includes/admin/admin-functions.php:54
+msgid "Show city in address?"
+msgstr ""
+
+#: includes/admin/admin-functions.php:62
+msgid ""
+"Enter city field label in address section. (leave as standard if you plan to "
+"translate)"
+msgstr ""
+
+#: includes/admin/admin-functions.php:63
+msgid "City label"
+msgstr ""
+
+#: includes/admin/admin-functions.php:70
+msgid "This will show/hide the region from the address when being displayed."
+msgstr ""
+
+#: includes/admin/admin-functions.php:71
+msgid "Show region in address?"
+msgstr ""
+
+#: includes/admin/admin-functions.php:79
+msgid ""
+"Enter region field label in address section. (leave as standard if you plan "
+"to translate)"
+msgstr ""
+
+#: includes/admin/admin-functions.php:80
+msgid "Region label"
+msgstr ""
+
+#: includes/admin/admin-functions.php:87
+msgid "This will show/hide the country from the address when being displayed."
+msgstr ""
+
+#: includes/admin/admin-functions.php:88
+msgid "Show country in address?"
+msgstr ""
+
+#: includes/admin/admin-functions.php:96
+msgid ""
+"Enter country field label in address section. (leave as standard if you plan "
+"to translate)"
+msgstr ""
+
+#: includes/admin/admin-functions.php:97
+msgid "Country label"
+msgstr ""
+
+#: includes/admin/admin-functions.php:104
+msgid ""
+"This will show/hide the neighbourhood from the address when being displayed."
+msgstr ""
+
+#: includes/admin/admin-functions.php:105
+msgid "Show neighbourhood in address?"
+msgstr ""
+
+#: includes/admin/admin-functions.php:113
+msgid ""
+"Enter neighbourhood field label in address section. (leave as standard if "
+"you plan to translate)"
+msgstr ""
+
+#: includes/admin/admin-functions.php:114
+msgid "Neighbourhood label"
+msgstr ""
+
+#: includes/admin/admin-functions.php:133
+msgid "Location Manager"
+msgstr ""
+
+#: includes/admin/admin-functions.php:134
+msgid ""
+"Check this box if you would like to completely remove all of its data when "
+"Location Manager is deleted."
+msgstr ""
+
+#: includes/admin/admin-functions.php:211
+msgid "Fix location duplicate slugs"
+msgstr ""
+
+#: includes/admin/admin-functions.php:212 includes/custom-functions.php:2639
+msgid "Run"
+msgstr ""
+
+#: includes/admin/admin-functions.php:213
+msgid "This will fix location duplicate slugs."
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-assets.php:37
+#: includes/admin/class-geodir-location-admin-assets.php:58
+msgid "GeoDirectory"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-cities-table-list.php:41
+#: includes/admin/class-geodir-location-admin-countries-table-list.php:41
+#: includes/admin/class-geodir-location-admin-neighbourhoods-table-list.php:41
+#: includes/admin/class-geodir-location-admin-regions-table-list.php:41
+#: includes/admin/views/html-add-edit-location.php:32
+#: includes/admin/views/html-add-edit-neighbourhood.php:33
+#: includes/admin/views/html-merge-location.php:18
+#: includes/admin/views/html-merge-location.php:31
+msgid "Slug"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-cities-table-list.php:44
+#: includes/admin/class-geodir-location-admin-neighbourhoods-table-list.php:42
+#: includes/admin/views/html-add-edit-location.php:72
+#: includes/admin/views/html-add-edit-neighbourhood.php:81
+#: includes/admin/views/html-merge-location.php:21
+#: includes/admin/views/html-merge-location.php:34
+#: includes/admin/views/html-merge-location.php:61
+#: includes/api/class-geodir-location-rest-locations-controller.php:482
+msgid "Latitude"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-cities-table-list.php:45
+#: includes/admin/class-geodir-location-admin-neighbourhoods-table-list.php:43
+#: includes/admin/views/html-add-edit-location.php:80
+#: includes/admin/views/html-add-edit-neighbourhood.php:89
+#: includes/admin/views/html-merge-location.php:22
+#: includes/admin/views/html-merge-location.php:35
+#: includes/admin/views/html-merge-location.php:66
+#: includes/api/class-geodir-location-rest-locations-controller.php:488
+msgid "Longitude"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-cities-table-list.php:46
+#: includes/admin/class-geodir-location-admin-countries-table-list.php:44
+#: includes/admin/class-geodir-location-admin-neighbourhoods-table-list.php:45
+#: includes/admin/class-geodir-location-admin-regions-table-list.php:43
+msgid "Image"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-cities-table-list.php:47
+#: includes/admin/class-geodir-location-admin-countries-table-list.php:47
+#: includes/admin/class-geodir-location-admin-neighbourhoods-table-list.php:46
+#: includes/admin/class-geodir-location-admin-regions-table-list.php:45
+msgid "Listings"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-cities-table-list.php:50
+#: includes/admin/class-geodir-location-admin-dashboard.php:43
+#: includes/admin/class-geodir-location-admin-import-export.php:64
+#: includes/admin/class-geodir-location-admin-neighbourhoods.php:129
+#: includes/admin/settings/class-geodir-location-settings-locations.php:74
+#: includes/admin/settings/class-geodir-location-settings-locations.php:173
+#: includes/class-geodir-location-api.php:292
+#: includes/widgets/class-geodir-location-widget-locations.php:60
+msgid "Neighbourhoods"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-cities-table-list.php:52
+#: includes/admin/views/html-merge-location.php:23
+#: includes/admin/views/html-merge-location.php:36
+msgid "Default"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-cities-table-list.php:65
+#: includes/admin/class-geodir-location-admin-neighbourhoods-table-list.php:69
+#: includes/admin/class-geodir-location-admin-neighbourhoods-table-list.php:113
+#, php-format
+msgid "ID: %d"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-cities-table-list.php:101
+msgid "View neighbourhoods"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-cities-table-list.php:104
+#: includes/admin/views/html-add-edit-neighbourhood.php:24
+msgid "Add neighbourhood"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-cities-table-list.php:118
+msgid "View city"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-cities-table-list.php:119
+msgid "Edit location"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-cities-table-list.php:121
+msgid "Delete location"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-cities-table-list.php:134
+#: includes/admin/class-geodir-location-admin-neighbourhoods-table-list.php:155
+msgid "Delete"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-cities-table-list.php:135
+msgid "Merge"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-cities-table-list.php:160
+#: includes/admin/class-geodir-location-admin-neighbourhoods-table-list.php:180
+#: includes/admin/class-geodir-location-admin-regions-table-list.php:143
+msgid "Filter"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-cities.php:71
+#: includes/admin/class-geodir-location-admin-countries-table-list.php:46
+#: includes/admin/class-geodir-location-admin-dashboard.php:40
+#: includes/admin/class-geodir-location-admin-regions-table-list.php:44
+#: includes/admin/settings/class-geodir-location-settings-locations.php:71
+#: includes/admin/settings/class-geodir-location-settings-locations.php:158
+#: includes/admin/views/html-import-export-cat-locations.php:127
+#: includes/admin/views/html-import-export-cpt-locations.php:101
+#: includes/class-geodir-location-api.php:280
+#: includes/custom-functions.php:2670
+#: includes/widgets/class-geodir-location-widget-locations.php:57
+msgid "Cities"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-cities.php:71
+#: includes/admin/class-geodir-location-admin-neighbourhoods.php:131
+#: includes/admin/views/html-add-edit-neighbourhood.php:26
+msgid "Add New"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-cities.php:87
+#: includes/template-functions.php:989
+msgid "Search location"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-cities.php:92
+msgid "No location found"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-cities.php:102
+msgid "Merge Location"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-cities.php:102
+msgid "Back to Cities"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-cities.php:124
+#: includes/admin/class-geodir-location-admin-countries.php:160
+#: includes/admin/class-geodir-location-admin-neighbourhoods.php:67
+msgid "Action failed. Please refresh the page and retry."
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-cities.php:177
+#: includes/admin/class-geodir-location-admin-neighbourhoods.php:100
+#, php-format
+msgid "Item deleted successfully."
+msgid_plural "%d items deleted successfully."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/admin/class-geodir-location-admin-cities.php:179
+#: includes/admin/class-geodir-location-admin-neighbourhoods.php:102
+msgid "No item deleted."
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-countries-table-list.php:42
+msgid "Country after translation"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-countries-table-list.php:43
+msgid "Slug after translation"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-countries-table-list.php:45
+#: includes/admin/class-geodir-location-admin-dashboard.php:39
+#: includes/admin/class-geodir-location-admin-regions.php:61
+#: includes/admin/settings/class-geodir-location-settings-locations.php:70
+#: includes/admin/settings/class-geodir-location-settings-locations.php:143
+#: includes/admin/views/html-import-export-cat-locations.php:126
+#: includes/admin/views/html-import-export-cpt-locations.php:100
+#: includes/class-geodir-location-api.php:269
+#: includes/custom-functions.php:2681
+#: includes/widgets/class-geodir-location-widget-locations.php:58
+msgid "Regions"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-countries-table-list.php:127
+msgid "View country"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-countries-table-list.php:128
+#: includes/admin/class-geodir-location-admin-regions-table-list.php:108
+msgid "Update meta title & description"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-countries-table-list.php:140
+msgid "Translate"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-countries.php:71
+#: includes/admin/class-geodir-location-admin-dashboard.php:38
+#: includes/admin/settings/class-geodir-location-settings-locations.php:69
+#: includes/admin/settings/class-geodir-location-settings-locations.php:112
+#: includes/admin/settings/class-geodir-location-settings-locations.php:128
+#: includes/admin/views/html-import-export-cat-locations.php:125
+#: includes/admin/views/html-import-export-cpt-locations.php:99
+#: includes/class-geodir-location-api.php:258
+#: includes/custom-functions.php:2692
+#: includes/widgets/class-geodir-location-widget-locations.php:59
+msgid "Countries"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-countries.php:87
+msgid "Search country"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-countries.php:90
+msgid ""
+"COUNTRY SLUG TRANSLATION: Translate the countries via .po file that you want "
+"and then upload the .mo file to your server, then tick the countries you "
+"translated and click the Apply button. This will translate country slug in "
+"url."
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-countries.php:94
+#: includes/admin/class-geodir-location-admin-neighbourhoods.php:154
+#: includes/admin/class-geodir-location-admin-regions.php:81
+msgid "No item found"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-countries.php:104
+msgid "Country Meta"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-countries.php:116
+msgid "Requested country not found!"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-countries.php:203
+#, php-format
+msgid "Country translated successfully."
+msgid_plural "%d countries translated successfully."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/admin/class-geodir-location-admin-countries.php:205
+msgid "No item updated."
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-dashboard.php:28
+#: includes/admin/class-geodir-location-admin-import-export.php:60
+#: includes/admin/settings/class-geodir-location-settings-locations.php:27
+#: includes/custom-functions.php:21
+msgid "Locations"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-dashboard.php:73
+msgid "Total"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-import-export.php:61
+msgid "Locations + CPT Description"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-import-export.php:62
+msgid "Category + Locations Description"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-import-export.php:203
+#, php-format
+msgid ""
+"%d item(s) could not be added due to blank/invalid value for \"city, region, "
+"country, latitude, longitude\"."
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-import-export.php:206
+#, php-format
+msgid ""
+"%d item(s) could not be added due to blank/invalid value for \"term_id, "
+"country_slug / region_slug / city_slug\"."
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-import-export.php:209
+#, php-format
+msgid ""
+"%d item(s) could not be added due to blank/invalid value for "
+"\"neighbourhood_name, latitude, longitude\"."
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-import-export.php:264
+#, php-format
+msgid "GD IMPORT LOCATIONS [ROW %d]:"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-import-export.php:274
+#: includes/admin/class-geodir-location-admin-import-export.php:866
+msgid "data is empty."
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-import-export.php:289
+msgid "blank value for city / region / country / latitude / longitude."
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-import-export.php:305
+#: includes/admin/class-geodir-location-admin-import-export.php:322
+msgid "fail to update location."
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-import-export.php:329
+#: includes/admin/class-geodir-location-admin-import-export.php:936
+#: includes/admin/class-geodir-location-admin-import-export.php:944
+msgid "invalid data."
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-import-export.php:338
+msgid "fail to import location."
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-import-export.php:344
+#: includes/admin/class-geodir-location-admin-import-export.php:739
+#: includes/admin/class-geodir-location-admin-import-export.php:950
+#: includes/admin/class-geodir-location-admin-import-export.php:1534
+msgid "No data found in csv file."
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-import-export.php:386
+#: includes/admin/class-geodir-location-admin-import-export.php:589
+#: includes/admin/class-geodir-location-admin-import-export.php:791
+#: includes/admin/class-geodir-location-admin-import-export.php:1400
+msgid "No records to export."
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-import-export.php:428
+#: includes/admin/class-geodir-location-admin-import-export.php:631
+#: includes/admin/class-geodir-location-admin-import-export.php:833
+#: includes/admin/class-geodir-location-admin-import-export.php:1442
+msgid ""
+"ERROR: Could not create csv file. This is usually due to inconsistent file "
+"permissions."
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-import-export.php:655
+#, php-format
+msgid "GD IMPORT CAT + LOCATIONS DESCRIPTION [ROW %d]:"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-import-export.php:665
+#: includes/admin/class-geodir-location-admin-import-export.php:1476
+msgid "data is empty!"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-import-export.php:671
+msgid "term_id is empty!"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-import-export.php:687
+#: includes/admin/class-geodir-location-admin-import-export.php:1494
+#: includes/admin/class-geodir-location-admin-import-export.php:1507
+#: includes/admin/class-geodir-location-admin-import-export.php:1514
+msgid "country_slug is empty!"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-import-export.php:694
+#: includes/admin/class-geodir-location-admin-import-export.php:1499
+msgid "region_slug is empty!"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-import-export.php:717
+#, php-format
+msgid "%s city not found!"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-import-export.php:856
+#, php-format
+msgid "GD IMPORT NEIGHBOURHOODS [ROW %d]:"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-import-export.php:881
+msgid "blank/invalid value for neighbourhood_name / latitude / longitude."
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-import-export.php:893
+msgid ""
+"location not found with hood_location_id or matching city, region, country!"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-import-export.php:920
+#: includes/admin/class-geodir-location-admin-import-export.php:929
+msgid "fail to update neighbourhood."
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-import-export.php:1040
+msgid "Please select csv file."
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-import-export.php:1244
+#, php-format
+msgid "Total %d item(s) found."
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-import-export.php:1245
+#, php-format
+msgid "%d item(s) added."
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-import-export.php:1246
+#, php-format
+msgid "%d item(s) updated."
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-import-export.php:1247
+#, php-format
+msgid "%d item(s) ignored due to already exists."
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-import-export.php:1248
+#, php-format
+msgid "%d item(s) could not be saved due to invalid data."
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-import-export.php:1249
+#, php-format
+msgid "Please transfer all new images to <b>'%s'</b> folder."
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-import-export.php:1466
+#, php-format
+msgid "GD IMPORT LOCATIONS + CPT DESCRIPTION [ROW %d]:"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-import-export.php:1482
+msgid "Description is empty!"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-neighbourhoods-table-list.php:40
+msgid "Name"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-neighbourhoods-table-list.php:44
+#: includes/template-functions.php:31
+msgid "Location"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-neighbourhoods-table-list.php:141
+msgid "View neighbourhood"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-neighbourhoods-table-list.php:142
+msgid "Edit neighbourhood"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-neighbourhoods-table-list.php:143
+msgid "Delete neighbourhood"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-neighbourhoods.php:149
+msgid "Search neighbourhood"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-regions-table-list.php:107
+msgid "View region"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-regions.php:76
+msgid "Search region"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-regions.php:92
+msgid "Region Meta"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin-regions.php:106
+msgid "Requested region not found!"
+msgstr ""
+
+#: includes/admin/class-geodir-location-admin.php:160
+#, php-format
+msgid ""
+"There are duplicate slugs found for some locations. Go to GoeDirectory > "
+"Status > Tools & run a tool <a href=\"%1$s\">Fix location duplicate slugs</"
+"a> to fix duplicate slugs."
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:67
+msgid "Settings"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:68
+#: includes/admin/views/html-add-edit-location.php:23
+msgid "Add Location"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:200
+msgid "URL Settings"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:208
+msgid "Home page should go to"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:212
+msgid "Site root (ex: mysite.com/)"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:213
+msgid "Current location page (ex: mysite.com/location/glasgow/)"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:221
+msgid "Archive urls"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:225
+msgid "Add current url location to the archive page urls"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:226
+#: includes/admin/settings/class-geodir-location-settings-locations.php:241
+msgid "Disable"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:234
+msgid "Archive urls on details page"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:235
+msgid ""
+"The details page is unique as its url can contain partial locations or none "
+"at all so it must be set here."
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:238
+msgid "Add the listings city location to the urls"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:239
+msgid "Add the listings region location to the urls"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:240
+msgid "Add the listings country location to the urls"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:251
+msgid "Enable locations"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:263
+msgid ""
+"Enable default country (country drop-down will not appear on add listing and "
+"location switcher)."
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:264
+msgid "Enable Multi Countries"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:265
+msgid "Enable Selected Countries"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:273
+#: includes/admin/settings/class-geodir-location-settings-locations.php:278
+msgid "Select Countries"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:274
+msgid ""
+"Only selected countries will appear in country drop-down on add listing page "
+"and location switcher. Make sure to have default country in your selected "
+"countries list for proper site functioning."
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:287
+msgid "Hide country part of url for LISTING, CPT and LOCATION pages?"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:298
+msgid ""
+"Enable default region (region drop-down will not appear on add listing and "
+"location switcher)."
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:299
+msgid "Enable multi regions"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:300
+msgid "Enable selected regions"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:308
+msgid "Select Regions"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:309
+msgid ""
+"Only selected regions will appear in region drop-down on add listing page "
+"and location switcher. Make sure to have default region in your selected "
+"regions list for proper site functioning."
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:313
+msgid "Search for a region..."
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:322
+msgid "Hide region part of url for LISTING, CPT and LOCATION pages?"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:333
+msgid ""
+"Enable default city (City drop-down will not appear on add listing and "
+"location switcher)."
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:334
+msgid "Enable multi cities"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:335
+msgid "Enable selected cities"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:343
+msgid "Select Cities"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:344
+msgid ""
+"Only selected cities will appear in city drop-down on add listing page and "
+"location switcher. Make sure to have default city in your selected cities "
+"list for proper site functioning."
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:348
+msgid "Search for a city..."
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:356
+msgid "Enable neighbourhoods?"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:357
+msgid "Select the option if you wish to enable neighbourhood options."
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:366
+msgid "Add listing form"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:374
+msgid "Disable address autocomplete?"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:375
+msgid ""
+"This will stop the address suggestions when typing in address box on add "
+"listing page."
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:382
+msgid "Show all locations in dropdown?"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:383
+msgid ""
+" This is useful if you have a small directory but can break your site if you "
+"have many locations"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:390
+msgid "Disable set address on map from changing address fields"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:391
+msgid ""
+" This is useful if you have a small directory and you have custom locations "
+"or your locations are not known by the Google API and they break the "
+"address. (highly recommended not to enable this)"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:398
+msgid "Disable move map pin from changing address fields"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:399
+msgid ""
+"This is useful if you have a small directory and you have custom locations "
+"or your locations are not known by the Google API and they break the "
+"address. (highly recommended not to enable this)"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:449
+msgid "Other"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:457
+msgid "Load more limit"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:458
+msgid ""
+"Load no of locations by default in [gd_location_switcher] shortcode and then "
+"add load more."
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:467
+msgid "Enable location search autocompleter?"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:468
+msgid ""
+"This will enable location autocomplete search on the location search bar."
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:475
+msgid "Min chars needed to trigger location autocomplete"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:476
+msgid ""
+"Enter the minimum characters users need to be typed to trigger location "
+"autocomplete. Ex: 3."
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:488
+msgid "Disable nearest cities?"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:489
+msgid ""
+"In location switcher and search form first time focus to location search "
+"input shows nearest city results based on user IP. Tick to disable this "
+"nearest city results on first time focus to input."
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:496
+msgid "Disable term auto count?"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:497
+msgid ""
+"On shared hosting with lots of listings, saving a listing may take a long "
+"time because of auto term counts, if you disable them here you should "
+"manually run the GD Tools > Location category counts, often until you can "
+"upgrade your hosting and re-enable it here, otherwise your location term and "
+"review counts can be wrong."
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:516
+msgid "Yoast SEO sitemap"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:524
+msgid "Exclude location pages in xml sitemap"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:525
+msgid ""
+"Please check the box if you do NOT want to include location pages in your "
+"xml sitemap."
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:532
+msgid "Exclude post types location pages in xml sitemap"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:533
+msgid ""
+"Please check the box if you do NOT want to include post types location pages "
+"in your xml sitemap."
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:540
+msgid "Exclude categories location pages in xml sitemap"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:541
+msgid ""
+"Please check the box if you do NOT want to include categories location pages "
+"in your xml sitemap."
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:548
+msgid "Exclude tags location pages in xml sitemap"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:549
+msgid ""
+"Please check the box if you do NOT want to include tags location pages in "
+"your xml sitemap."
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:682
+msgid "Filter by country"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:684
+msgid "All countries"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:715
+msgid "Filter by region"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:717
+msgid "All regions"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:752
+msgid "Filter by city"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:754
+msgid "All cities"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:771
+msgid "Filter by neighbourhood"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-location-settings-locations.php:773
+msgid "All neighbourhoods"
+msgstr ""
+
+#: includes/admin/views/html-add-edit-location.php:11
+#: includes/admin/views/html-add-edit-neighbourhood.php:12
+msgid "Set Address On Map"
+msgstr ""
+
+#: includes/admin/views/html-add-edit-location.php:25
+msgid "Edit Location:"
+msgstr ""
+
+#: includes/admin/views/html-add-edit-location.php:41
+msgid "The location city name."
+msgstr ""
+
+#: includes/admin/views/html-add-edit-location.php:49
+msgid "The location region name."
+msgstr ""
+
+#: includes/admin/views/html-add-edit-location.php:57
+msgid "The location country name."
+msgstr ""
+
+#: includes/admin/views/html-add-edit-location.php:60
+#: includes/admin/views/html-add-edit-neighbourhood.php:69
+msgid "Choose a country..."
+msgstr ""
+
+#: includes/admin/views/html-add-edit-location.php:72
+#: includes/admin/views/html-add-edit-neighbourhood.php:81
+msgid "The latitude of the location."
+msgstr ""
+
+#: includes/admin/views/html-add-edit-location.php:80
+#: includes/admin/views/html-add-edit-neighbourhood.php:89
+msgid "The longitude of the location."
+msgstr ""
+
+#: includes/admin/views/html-add-edit-location.php:92
+#: includes/admin/views/html-add-edit-location.php:101
+msgid "Timezone"
+msgstr ""
+
+#: includes/admin/views/html-add-edit-location.php:92
+msgid "Select a city/timezone."
+msgstr ""
+
+#: includes/admin/views/html-add-edit-location.php:95
+msgid "Select a city/timezone&hellip;"
+msgstr ""
+
+#: includes/admin/views/html-add-edit-location.php:101
+msgid "Set the site timezone. Ex: +5:30 or GMT+5:30 or UTC+5:30."
+msgstr ""
+
+#: includes/admin/views/html-add-edit-location.php:110
+#: includes/admin/views/html-add-edit-neighbourhood.php:97
+#: includes/admin/views/html-add-edit-seo-data.php:30
+msgid "Meta Title"
+msgstr ""
+
+#: includes/admin/views/html-add-edit-location.php:110
+#: includes/admin/views/html-add-edit-neighbourhood.php:97
+#: includes/admin/views/html-add-edit-seo-data.php:30
+msgid "The meta title."
+msgstr ""
+
+#: includes/admin/views/html-add-edit-location.php:118
+#: includes/admin/views/html-add-edit-neighbourhood.php:105
+#: includes/admin/views/html-add-edit-seo-data.php:38
+msgid "Meta Description"
+msgstr ""
+
+#: includes/admin/views/html-add-edit-location.php:118
+#: includes/admin/views/html-add-edit-neighbourhood.php:105
+#: includes/admin/views/html-add-edit-seo-data.php:38
+msgid "The meta description."
+msgstr ""
+
+#: includes/admin/views/html-add-edit-location.php:126
+#: includes/admin/views/html-add-edit-neighbourhood.php:113
+#: includes/admin/views/html-add-edit-seo-data.php:46
+#: includes/widgets/class-geodir-location-widget-location-meta.php:66
+msgid "Location Description"
+msgstr ""
+
+#: includes/admin/views/html-add-edit-location.php:126
+msgid "The location description."
+msgstr ""
+
+#: includes/admin/views/html-add-edit-location.php:136
+#: includes/admin/views/html-add-edit-neighbourhood.php:122
+#: includes/admin/views/html-add-edit-seo-data.php:55
+msgid "Featured Image"
+msgstr ""
+
+#: includes/admin/views/html-add-edit-location.php:137
+#: includes/admin/views/html-add-edit-neighbourhood.php:123
+#: includes/admin/views/html-add-edit-seo-data.php:56
+msgid "This is implemented by some themes to show a location specific image."
+msgstr ""
+
+#: includes/admin/views/html-add-edit-location.php:148
+#: includes/admin/views/html-add-edit-seo-data.php:67
+msgid "Image Tagline"
+msgstr ""
+
+#: includes/admin/views/html-add-edit-location.php:148
+#: includes/admin/views/html-add-edit-seo-data.php:67
+msgid "The location image tagline."
+msgstr ""
+
+#: includes/admin/views/html-add-edit-location.php:162
+msgid "Save Location"
+msgstr ""
+
+#: includes/admin/views/html-add-edit-neighbourhood.php:26
+msgid "Edit neighbourhood:"
+msgstr ""
+
+#: includes/admin/views/html-add-edit-neighbourhood.php:42
+msgid "The neighbourhood name."
+msgstr ""
+
+#: includes/admin/views/html-add-edit-neighbourhood.php:113
+msgid "The neighbourhood description."
+msgstr ""
+
+#: includes/admin/views/html-add-edit-neighbourhood.php:148
+#: includes/admin/views/html-add-edit-seo-data.php:89
+#, php-format
+msgid "%s Description"
+msgstr ""
+
+#: includes/admin/views/html-add-edit-neighbourhood.php:152
+#, php-format
+msgid "%s description to show for this neighbourhood."
+msgstr ""
+
+#: includes/admin/views/html-add-edit-neighbourhood.php:162
+msgid "Save Neighbourhood"
+msgstr ""
+
+#: includes/admin/views/html-add-edit-seo-data.php:46
+msgid "The location description of the city."
+msgstr ""
+
+#: includes/admin/views/html-add-edit-seo-data.php:94
+#, php-format
+msgid "%s description to show for this region."
+msgstr ""
+
+#: includes/admin/views/html-add-edit-seo-data.php:96
+#, php-format
+msgid "%s description to show for this country."
+msgstr ""
+
+#: includes/admin/views/html-add-edit-seo-data.php:106
+msgid "Save"
+msgstr ""
+
+#: includes/admin/views/html-import-export-cat-locations.php:28
+#, php-format
+msgid "%s Categories"
+msgstr ""
+
+#: includes/admin/views/html-import-export-cat-locations.php:32
+#: includes/admin/views/html-import-export-cat-locations.php:116
+msgid "All"
+msgstr ""
+
+#: includes/admin/views/html-import-export-cat-locations.php:51
+msgid "Toggle panel - Category + Locations Description: Import CSV"
+msgstr ""
+
+#: includes/admin/views/html-import-export-cat-locations.php:52
+msgid "Category + Locations Description: Import CSV"
+msgstr ""
+
+#: includes/admin/views/html-import-export-cat-locations.php:59
+msgid ""
+"Export csv from GD Locations  + Categories Descriptions and update "
+"descriptions in exported csv file then import csv here. Location description "
+"updated to matching term_id & location slugs."
+msgstr ""
+
+#: includes/admin/views/html-import-export-cat-locations.php:63
+#: includes/admin/views/html-import-export-cpt-locations.php:44
+#: includes/admin/views/html-import-export-locations.php:62
+#: includes/admin/views/html-import-export-neighbourhoods.php:51
+msgid "Select & Upload CSV"
+msgstr ""
+
+#: includes/admin/views/html-import-export-cat-locations.php:79
+#: includes/admin/views/html-import-export-cpt-locations.php:60
+#: includes/admin/views/html-import-export-locations.php:89
+#: includes/admin/views/html-import-export-neighbourhoods.php:78
+msgid "Import Data Status :"
+msgstr ""
+
+#: includes/admin/views/html-import-export-cat-locations.php:90
+#: includes/admin/views/html-import-export-cpt-locations.php:71
+#: includes/admin/views/html-import-export-locations.php:100
+#: includes/admin/views/html-import-export-neighbourhoods.php:89
+msgid "Import data now"
+msgstr ""
+
+#: includes/admin/views/html-import-export-cat-locations.php:91
+#: includes/admin/views/html-import-export-cpt-locations.php:72
+#: includes/admin/views/html-import-export-locations.php:101
+#: includes/admin/views/html-import-export-neighbourhoods.php:90
+msgid "Continue Import Data"
+msgstr ""
+
+#: includes/admin/views/html-import-export-cat-locations.php:92
+#: includes/admin/views/html-import-export-cpt-locations.php:73
+#: includes/admin/views/html-import-export-locations.php:102
+#: includes/admin/views/html-import-export-neighbourhoods.php:91
+msgid "Terminate Import Data"
+msgstr ""
+
+#: includes/admin/views/html-import-export-cat-locations.php:94
+#: includes/admin/views/html-import-export-cpt-locations.php:75
+#: includes/admin/views/html-import-export-locations.php:104
+#: includes/admin/views/html-import-export-neighbourhoods.php:93
+msgid "Wait, processing import data..."
+msgstr ""
+
+#: includes/admin/views/html-import-export-cat-locations.php:108
+#: includes/admin/views/html-import-export-cpt-locations.php:89
+#: includes/admin/views/html-import-export-locations.php:118
+msgid "Toggle panel - Locations: Export CSV"
+msgstr ""
+
+#: includes/admin/views/html-import-export-cat-locations.php:109
+msgid "Category + Locations Description: Export CSV"
+msgstr ""
+
+#: includes/admin/views/html-import-export-cat-locations.php:114
+msgid "CPT Categories:"
+msgstr ""
+
+#: includes/admin/views/html-import-export-cat-locations.php:121
+#: includes/admin/views/html-import-export-cpt-locations.php:96
+#: includes/widgets/class-geodir-location-widget-location-meta.php:45
+msgid "Location Type:"
+msgstr ""
+
+#: includes/admin/views/html-import-export-cat-locations.php:124
+msgid "Default for All"
+msgstr ""
+
+#: includes/admin/views/html-import-export-cat-locations.php:131
+#: includes/admin/views/html-import-export-cpt-locations.php:105
+#: includes/admin/views/html-import-export-locations.php:129
+#: includes/admin/views/html-import-export-neighbourhoods.php:113
+msgid "Max entries per csv file:"
+msgstr ""
+
+#: includes/admin/views/html-import-export-cat-locations.php:132
+#: includes/admin/views/html-import-export-cpt-locations.php:106
+#: includes/admin/views/html-import-export-locations.php:130
+#: includes/admin/views/html-import-export-neighbourhoods.php:114
+msgid ""
+"Please select the maximum number of entries per csv file (defaults to 1000, "
+"you might want to lower this to prevent memory issues on some installs)"
+msgstr ""
+
+#: includes/admin/views/html-import-export-cat-locations.php:135
+#: includes/admin/views/html-import-export-cpt-locations.php:109
+#: includes/admin/views/html-import-export-locations.php:133
+#: includes/admin/views/html-import-export-neighbourhoods.php:117
+msgid "Progress:"
+msgstr ""
+
+#: includes/admin/views/html-import-export-cat-locations.php:136
+#: includes/admin/views/html-import-export-cpt-locations.php:110
+#: includes/admin/views/html-import-export-locations.php:134
+#: includes/admin/views/html-import-export-neighbourhoods.php:118
+msgid "Elapsed Time:"
+msgstr ""
+
+#: includes/admin/views/html-import-export-cat-locations.php:140
+#: includes/admin/views/html-import-export-cpt-locations.php:114
+#: includes/admin/views/html-import-export-locations.php:138
+#: includes/admin/views/html-import-export-neighbourhoods.php:122
+msgid "Export CSV"
+msgstr ""
+
+#: includes/admin/views/html-import-export-cpt-locations.php:32
+msgid "Toggle panel - Locations + CPT Description: Import CSV"
+msgstr ""
+
+#: includes/admin/views/html-import-export-cpt-locations.php:33
+msgid "Locations + CPT Description: Import CSV"
+msgstr ""
+
+#: includes/admin/views/html-import-export-cpt-locations.php:40
+msgid ""
+"Export csv from Locations + CPT Description and update descriptions in "
+"exported csv file then import csv here. CPT description updated to matching "
+"location slugs."
+msgstr ""
+
+#: includes/admin/views/html-import-export-cpt-locations.php:90
+msgid "Locations + CPT Description: Export CSV"
+msgstr ""
+
+#: includes/admin/views/html-import-export-locations.php:35
+#, php-format
+msgid "All (%d)"
+msgstr ""
+
+#: includes/admin/views/html-import-export-locations.php:49
+msgid "Toggle panel - Locations: Import CSV"
+msgstr ""
+
+#: includes/admin/views/html-import-export-locations.php:50
+msgid "Locations: Import CSV"
+msgstr ""
+
+#: includes/admin/views/html-import-export-locations.php:57
+msgid "Update item if location with location_id/city_slug already exists."
+msgstr ""
+
+#: includes/admin/views/html-import-export-locations.php:58
+msgid "Ignore item if location with location_id/city_slug already exists."
+msgstr ""
+
+#: includes/admin/views/html-import-export-locations.php:62
+#: includes/admin/views/html-import-export-neighbourhoods.php:51
+msgid "Download Sample CSV"
+msgstr ""
+
+#: includes/admin/views/html-import-export-locations.php:119
+msgid "Locations: Export CSV"
+msgstr ""
+
+#: includes/admin/views/html-import-export-locations.php:124
+msgid "Country:"
+msgstr ""
+
+#: includes/admin/views/html-import-export-locations.php:126
+msgid "Filter a country..."
+msgstr ""
+
+#: includes/admin/views/html-import-export-neighbourhoods.php:38
+msgid "Toggle panel - Neighbourhoods: Import CSV"
+msgstr ""
+
+#: includes/admin/views/html-import-export-neighbourhoods.php:39
+msgid "Neighbourhoods: Import CSV"
+msgstr ""
+
+#: includes/admin/views/html-import-export-neighbourhoods.php:46
+msgid ""
+"Update item if neighbourhood with neighbourhood_id/neighbourhood_slug "
+"already exists."
+msgstr ""
+
+#: includes/admin/views/html-import-export-neighbourhoods.php:47
+msgid ""
+"Ignore item if neighbourhood with neighbourhood_id/neighbourhood_slug "
+"already exists."
+msgstr ""
+
+#: includes/admin/views/html-import-export-neighbourhoods.php:107
+msgid "Toggle panel - Neighbourhoods: Export CSV"
+msgstr ""
+
+#: includes/admin/views/html-import-export-neighbourhoods.php:108
+msgid "Neighbourhoods: Export CSV"
+msgstr ""
+
+#: includes/admin/views/html-merge-location.php:41
+msgid ""
+"NOTE: Select city for set primary city. Country must have ISO country name."
+msgstr ""
+
+#: includes/admin/views/html-merge-location.php:72
+msgid "Set Primary"
+msgstr ""
+
+#: includes/api/class-geodir-location-rest-location-types-controller.php:56
+#: includes/api/class-geodir-location-rest-location-types-controller.php:103
+msgid "Sorry, you are not allowed to view locations."
+msgstr ""
+
+#: includes/api/class-geodir-location-rest-location-types-controller.php:166
+msgid "An alphanumeric identifier for the location type."
+msgstr ""
+
+#: includes/api/class-geodir-location-rest-location-types-controller.php:172
+msgid "The title for the location type."
+msgstr ""
+
+#: includes/api/class-geodir-location-rest-location-types-controller.php:178
+msgid "A human-readable description of the location type."
+msgstr ""
+
+#: includes/api/class-geodir-location-rest-location-types-controller.php:184
+msgid "REST base route for the location type."
+msgstr ""
+
+#: includes/api/class-geodir-location-rest-locations-controller.php:75
+#: includes/api/class-geodir-location-rest-neighbourhoods-controller.php:75
+msgid "Unique identifier for the location type."
+msgstr ""
+
+#: includes/api/class-geodir-location-rest-locations-controller.php:215
+#: includes/api/class-geodir-location-rest-neighbourhoods-controller.php:211
+msgid "Invalid location type."
+msgstr ""
+
+#: includes/api/class-geodir-location-rest-locations-controller.php:219
+msgid "Sorry, you are not allowed to view location."
+msgstr ""
+
+#: includes/api/class-geodir-location-rest-locations-controller.php:256
+msgid "Invalid location slug."
+msgstr ""
+
+#: includes/api/class-geodir-location-rest-locations-controller.php:422
+msgid "A human-readable description of the country."
+msgstr ""
+
+#: includes/api/class-geodir-location-rest-locations-controller.php:427
+msgid "The name for the country."
+msgstr ""
+
+#: includes/api/class-geodir-location-rest-locations-controller.php:432
+msgid "The translated name for the country."
+msgstr ""
+
+#: includes/api/class-geodir-location-rest-locations-controller.php:437
+msgid "The ISO2 code for the country."
+msgstr ""
+
+#: includes/api/class-geodir-location-rest-locations-controller.php:458
+#: includes/api/class-geodir-location-rest-neighbourhoods-controller.php:428
+msgid "Country slug."
+msgstr ""
+
+#: includes/api/class-geodir-location-rest-locations-controller.php:464
+#: includes/api/class-geodir-location-rest-neighbourhoods-controller.php:434
+msgid "Region slug."
+msgstr ""
+
+#: includes/api/class-geodir-location-rest-locations-controller.php:470
+#: includes/api/class-geodir-location-rest-neighbourhoods-controller.php:440
+msgid "City slug."
+msgstr ""
+
+#: includes/api/class-geodir-location-rest-locations-controller.php:476
+msgid "IP to find nearest locations."
+msgstr ""
+
+#: includes/api/class-geodir-location-rest-locations-controller.php:494
+#: includes/api/class-geodir-location-rest-neighbourhoods-controller.php:451
+msgid "Order sort attribute ascending or descending."
+msgstr ""
+
+#: includes/api/class-geodir-location-rest-locations-controller.php:504
+#: includes/api/class-geodir-location-rest-neighbourhoods-controller.php:461
+#: includes/api/class-geodir-location-rest-neighbourhoods-controller.php:471
+msgid "Sort collection by location attribute."
+msgstr ""
+
+#: includes/api/class-geodir-location-rest-neighbourhoods-controller.php:215
+msgid "Sorry, you are not allowed to view neighbourhood."
+msgstr ""
+
+#: includes/api/class-geodir-location-rest-neighbourhoods-controller.php:251
+msgid "Invalid neighbourhood slug."
+msgstr ""
+
+#: includes/api/class-geodir-location-rest-neighbourhoods-controller.php:402
+msgid "The neighbourhood id."
+msgstr ""
+
+#: includes/api/class-geodir-location-rest-neighbourhoods-controller.php:407
+msgid "The name for the neighbourhood."
+msgstr ""
+
+#: includes/api/class-geodir-location-rest-neighbourhoods-controller.php:446
+msgid "Location id."
+msgstr ""
+
+#: includes/class-geodir-location-ajax.php:171
+#: includes/class-geodir-location-ajax.php:825
+msgid "City is empty!"
+msgstr ""
+
+#: includes/class-geodir-location-ajax.php:174
+#: includes/class-geodir-location-ajax.php:828
+msgid "Region is empty!"
+msgstr ""
+
+#: includes/class-geodir-location-ajax.php:177
+#: includes/class-geodir-location-ajax.php:831
+msgid "Country is empty!"
+msgstr ""
+
+#: includes/class-geodir-location-ajax.php:180
+#: includes/class-geodir-location-ajax.php:834
+msgid "Latitude is empty!"
+msgstr ""
+
+#: includes/class-geodir-location-ajax.php:183
+#: includes/class-geodir-location-ajax.php:837
+msgid "Longitude is empty!"
+msgstr ""
+
+#: includes/class-geodir-location-ajax.php:205
+#, php-format
+msgid "Location %s, %s, %s already exists!"
+msgstr ""
+
+#: includes/class-geodir-location-ajax.php:235
+msgid "Location updated successfully."
+msgstr ""
+
+#: includes/class-geodir-location-ajax.php:238
+msgid "Location added successfully."
+msgstr ""
+
+#: includes/class-geodir-location-ajax.php:335
+msgid "Latitude / longitude is empty!"
+msgstr ""
+
+#: includes/class-geodir-location-ajax.php:338
+msgid "Neighbourhood name is empty!"
+msgstr ""
+
+#: includes/class-geodir-location-ajax.php:345
+msgid "Location not found!"
+msgstr ""
+
+#: includes/class-geodir-location-ajax.php:352
+msgid "Requested neighbourhood does not found!"
+msgstr ""
+
+#: includes/class-geodir-location-ajax.php:358
+#, php-format
+msgid "Neighbourhood with name \"%s\" already exists!"
+msgstr ""
+
+#: includes/class-geodir-location-ajax.php:382
+msgid "Nothing to update!"
+msgstr ""
+
+#: includes/class-geodir-location-ajax.php:385
+#: includes/class-geodir-location-ajax.php:449
+msgid "Data saved successfully."
+msgstr ""
+
+#: includes/class-geodir-location-ajax.php:415
+msgid "Invalid location type!"
+msgstr ""
+
+#: includes/class-geodir-location-ajax.php:418
+msgid "Country slug is empty!"
+msgstr ""
+
+#: includes/class-geodir-location-ajax.php:421
+msgid "Region slug is empty!"
+msgstr ""
+
+#: includes/class-geodir-location-ajax.php:471
+msgid "You are not allowed to delete this location."
+msgstr ""
+
+#: includes/class-geodir-location-ajax.php:476
+msgid "Requested location does not exists."
+msgstr ""
+
+#: includes/class-geodir-location-ajax.php:480
+msgid "Default location can not be deleted!"
+msgstr ""
+
+#: includes/class-geodir-location-ajax.php:484
+msgid "Location deleted successfully."
+msgstr ""
+
+#: includes/class-geodir-location-ajax.php:486
+msgid "Fail to delete location!"
+msgstr ""
+
+#: includes/class-geodir-location-ajax.php:510
+msgid "Requested location does not exists!"
+msgstr ""
+
+#: includes/class-geodir-location-ajax.php:515
+msgid "Default location set successfully."
+msgstr ""
+
+#: includes/class-geodir-location-ajax.php:537
+#: includes/class-geodir-location-ajax.php:595
+msgid "Select country"
+msgstr ""
+
+#: includes/class-geodir-location-ajax.php:542
+#: includes/class-geodir-location-ajax.php:600
+#: includes/template-functions.php:1051 includes/template-functions.php:1169
+msgid "Select region"
+msgstr ""
+
+#: includes/class-geodir-location-ajax.php:547
+#: includes/class-geodir-location-ajax.php:605
+#: includes/template-functions.php:1090 includes/template-functions.php:1170
+msgid "Select city"
+msgstr ""
+
+#: includes/class-geodir-location-ajax.php:575
+#: includes/class-geodir-location-ajax.php:633
+msgid "Select neighbourhood"
+msgstr ""
+
+#: includes/class-geodir-location-ajax.php:786
+msgid "Requested neighbourhood does not exists!"
+msgstr ""
+
+#: includes/class-geodir-location-ajax.php:790
+msgid "Neighbourhood deleted successfully."
+msgstr ""
+
+#: includes/class-geodir-location-ajax.php:792
+msgid "Fail to delete neighbourhood!"
+msgstr ""
+
+#: includes/class-geodir-location-ajax.php:821
+msgid "No locations selected to merge!"
+msgstr ""
+
+#: includes/class-geodir-location-ajax.php:845
+msgid "Requested locations not found!"
+msgstr ""
+
+#: includes/class-geodir-location-ajax.php:911
+#, php-format
+msgid "Location merged successfully. Go back to %sCities%s"
+msgstr ""
+
+#: includes/class-geodir-location-api.php:77
+msgid "Limit results to specific country."
+msgstr ""
+
+#: includes/class-geodir-location-api.php:84
+msgid "Limit results to specific region."
+msgstr ""
+
+#: includes/class-geodir-location-api.php:91
+msgid "Limit results to specific city."
+msgstr ""
+
+#: includes/class-geodir-location-api.php:99
+msgid "Limit results to specific neighbourhood."
+msgstr ""
+
+#: includes/class-geodir-location-api.php:107
+msgid "Filter posts by near address. Ex: 230 Vine Street, Philadelphia"
+msgstr ""
+
+#: includes/class-geodir-location-api.php:113
+msgid "IP to find nearest posts."
+msgstr ""
+
+#: includes/class-geodir-location-api.php:119
+msgid "Filter by latitude. Ex: 39.9558230481."
+msgstr ""
+
+#: includes/class-geodir-location-api.php:125
+msgid "Filter by longitude. Ex: -75.1440811157."
+msgstr ""
+
+#: includes/class-geodir-location-api.php:131
+#, php-format
+msgid "Filter posts within distance xx %s."
+msgstr ""
+
+#: includes/class-geodir-location-api.php:259
+msgid "All countries."
+msgstr ""
+
+#: includes/class-geodir-location-api.php:270
+msgid "All regions."
+msgstr ""
+
+#: includes/class-geodir-location-api.php:281
+msgid "All cities."
+msgstr ""
+
+#: includes/class-geodir-location-api.php:293
+msgid "All neighbourhoods."
+msgstr ""
+
+#: includes/class-geodir-location-api.php:781
+msgid "feet"
+msgstr ""
+
+#: includes/class-geodir-location-api.php:784
+msgid "meters"
+msgstr ""
+
+#: includes/class-geodir-location-api.php:794
+msgid "km"
+msgstr ""
+
+#: includes/class-geodir-location-api.php:796
+msgid "miles"
+msgstr ""
+
+#: includes/class-geodir-location-api.php:809
+msgid "Distance"
+msgstr ""
+
+#: includes/class-geodir-location-manager.php:138
+msgid ""
+"Your version of PHP is below the minimum version of PHP required by "
+"GeoDirectory. Please contact your host and request that your version be "
+"upgraded to 5.3 or later."
+msgstr ""
+
+#: includes/custom-functions.php:22
+msgid "Location SEO"
+msgstr ""
+
+#: includes/custom-functions.php:86
+msgid "Enable Location Filter:"
+msgstr ""
+
+#: includes/custom-functions.php:87
+msgid "Enable location filter on related post."
+msgstr ""
+
+#: includes/custom-functions.php:459 includes/template-functions.php:458
+#: includes/template-functions.php:507 includes/template-functions.php:555
+#: includes/template-functions.php:606
+msgid "Loading..."
+msgstr ""
+
+#: includes/custom-functions.php:459 includes/template-functions.php:458
+#: includes/template-functions.php:507 includes/template-functions.php:555
+#: includes/template-functions.php:606
+msgid "Load more"
+msgstr ""
+
+#: includes/custom-functions.php:465 includes/template-functions.php:464
+#: includes/template-functions.php:513 includes/template-functions.php:561
+#: includes/template-functions.php:612
+msgid "No Results"
+msgstr ""
+
+#: includes/custom-functions.php:612
+msgid "Select"
+msgstr ""
+
+#: includes/custom-functions.php:615 includes/custom-functions.php:2358
+#: includes/template-functions.php:832
+#: includes/widgets/class-geodir-location-widget-location-switcher.php:75
+msgid "Everywhere"
+msgstr ""
+
+#: includes/custom-functions.php:743 includes/custom-functions.php:1134
+msgid "Select Region"
+msgstr ""
+
+#: includes/custom-functions.php:745 includes/custom-functions.php:1138
+msgid "Select City"
+msgstr ""
+
+#: includes/custom-functions.php:1241 includes/custom-functions.php:1254
+#, php-format
+msgid "Please choose any address of the (%s) country only."
+msgstr ""
+
+#: includes/custom-functions.php:1252
+#, php-format
+msgid "Please choose any address of the (%s) countries only."
+msgstr ""
+
+#: includes/custom-functions.php:1258
+msgid "No countries available."
+msgstr ""
+
+#: includes/custom-functions.php:1295 includes/custom-functions.php:1308
+#, php-format
+msgid "Please choose any address of the (%s) region only."
+msgstr ""
+
+#: includes/custom-functions.php:1306
+#, php-format
+msgid "Please choose any address of the (%s) regions only."
+msgstr ""
+
+#: includes/custom-functions.php:1326 includes/custom-functions.php:1337
+#, php-format
+msgid "Please choose any address of the (%s) city only."
+msgstr ""
+
+#: includes/custom-functions.php:1335
+#, php-format
+msgid "Please choose any address of the (%s) cities only."
+msgstr ""
+
+#: includes/custom-functions.php:1921
+msgid "Category Top Description"
+msgstr ""
+
+#: includes/custom-functions.php:1923
+msgid "Use main description for all locations"
+msgstr ""
+
+#: includes/custom-functions.php:1923
+msgid "The following location tags are available here:"
+msgstr ""
+
+#: includes/custom-functions.php:1934
+msgid "Category + Country Top Description"
+msgstr ""
+
+#: includes/custom-functions.php:1934 includes/custom-functions.php:1964
+#: includes/custom-functions.php:1998
+msgid "(Leave blank to display default description of category for location)"
+msgstr ""
+
+#: includes/custom-functions.php:1937 includes/custom-functions.php:1966
+#: includes/custom-functions.php:2000
+msgid "Saving..."
+msgstr ""
+
+#: includes/custom-functions.php:1937 includes/custom-functions.php:1966
+#: includes/custom-functions.php:2000
+msgid "Saved"
+msgstr ""
+
+#: includes/custom-functions.php:1937 includes/custom-functions.php:1966
+#: includes/custom-functions.php:2000
+msgid "Not saved!"
+msgstr ""
+
+#: includes/custom-functions.php:1942 includes/custom-functions.php:1975
+#: includes/custom-functions.php:2009
+#, php-format
+msgid "Category description for location %s"
+msgstr ""
+
+#: includes/custom-functions.php:1958 includes/custom-functions.php:1993
+#: includes/custom-functions.php:2024
+msgid "Description auto saved on change value."
+msgstr ""
+
+#: includes/custom-functions.php:1964
+msgid "Category + Region Top Description"
+msgstr ""
+
+#: includes/custom-functions.php:1998
+msgid "Category + City Top Description"
+msgstr ""
+
+#: includes/custom-functions.php:2635
+msgid "Location category counts"
+msgstr ""
+
+#: includes/custom-functions.php:2637
+msgid ""
+"Refresh the category counts for each location (can take time on large sites)"
+msgstr ""
+
+#: includes/custom-functions.php:2659
+msgid "No cities found."
+msgstr ""
+
+#: includes/custom-functions.php:2725 includes/custom-functions.php:2754
+#: includes/custom-functions.php:2769 includes/custom-functions.php:2784
+msgid "Calculating..."
+msgstr ""
+
+#: includes/custom-functions.php:2726 includes/custom-functions.php:2727
+msgid "Waiting..."
+msgstr ""
+
+#: includes/custom-functions.php:2758 includes/custom-functions.php:2773
+#: includes/custom-functions.php:2787 includes/custom-functions.php:2789
+#: includes/custom-functions.php:2793
+msgid "Complete!"
+msgstr ""
+
+#: includes/custom-functions.php:3027 includes/template-functions.php:996
+#: includes/widgets/class-geodir-location-widget-location-switcher.php:483
+#: includes/widgets/class-geodir-location-widget-location-switcher.php:485
+#: includes/widgets/class-geodir-location-widget-location-switcher.php:544
+msgid "Near:"
+msgstr ""
+
+#: includes/custom-functions.php:3027 includes/template-functions.php:997
+msgid "Me"
+msgstr ""
+
+#: includes/custom-functions.php:3042 includes/custom-functions.php:3067
+#: includes/custom-functions.php:3069 includes/custom-functions.php:3071
+#: includes/template-functions.php:1003
+#: includes/widgets/class-geodir-location-widget-location-switcher.php:473
+#: includes/widgets/class-geodir-location-widget-location-switcher.php:476
+#: includes/widgets/class-geodir-location-widget-location-switcher.php:479
+#: includes/widgets/class-geodir-location-widget-location-switcher.php:481
+#: includes/widgets/class-geodir-location-widget-location-switcher.php:565
+msgid "In:"
+msgstr ""
+
+#: includes/custom-functions.php:3042
+#: includes/widgets/class-geodir-location-widget-location-switcher.php:473
+#: includes/widgets/class-geodir-location-widget-location-switcher.php:561
+msgid "(Neighbourhood)"
+msgstr ""
+
+#: includes/custom-functions.php:3067
+#: includes/widgets/class-geodir-location-widget-location-switcher.php:476
+#: includes/widgets/class-geodir-location-widget-location-switcher.php:559
+msgid "(City)"
+msgstr ""
+
+#: includes/custom-functions.php:3069
+#: includes/widgets/class-geodir-location-widget-location-switcher.php:479
+#: includes/widgets/class-geodir-location-widget-location-switcher.php:557
+msgid "(Region)"
+msgstr ""
+
+#: includes/custom-functions.php:3071
+#: includes/widgets/class-geodir-location-widget-location-switcher.php:481
+#: includes/widgets/class-geodir-location-widget-location-switcher.php:555
+msgid "(Country)"
+msgstr ""
+
+#: includes/custom-functions.php:3078
+msgid "Near: My Location"
+msgstr ""
+
+#: includes/custom-functions.php:3080
+msgid "Near: GPS Location"
+msgstr ""
+
+#: includes/general-functions.php:634
+msgid "Select Country"
+msgstr ""
+
+#: includes/general-functions.php:734
+msgid "Select Neighbourhood"
+msgstr ""
+
+#: includes/general-functions.php:1233
+msgid "Location SEO image removed successfully."
+msgstr ""
+
+#: includes/general-functions.php:3019
+#: includes/widgets/class-geodir-location-widget-location-switcher.php:61
+#: includes/widgets/class-geodir-location-widget-location-switcher.php:94
+msgid "Change Location"
+msgstr ""
+
+#: includes/general-functions.php:3045
+#: includes/widgets/class-geodir-location-widget-location-switcher.php:66
+msgid "Clear Location"
+msgstr ""
+
+#: includes/template-functions.php:29
+msgid "Home"
+msgstr ""
+
+#: includes/template-functions.php:349
+msgid "Click to change location"
+msgstr ""
+
+#: includes/template-functions.php:619
+msgid "Click on a link to filter results or on arrow to drilldown."
+msgstr ""
+
+#: includes/template-functions.php:801
+msgid "Please wait..&hellip;"
+msgstr ""
+
+#: includes/template-functions.php:970
+msgid "Please select merge city."
+msgstr ""
+
+#: includes/template-functions.php:971
+msgid "Are sure you want to make this city default?"
+msgstr ""
+
+#: includes/template-functions.php:972
+msgid "Please enter listing url prefix"
+msgstr ""
+
+#: includes/template-functions.php:973
+msgid "Invalid character in listing url prefix"
+msgstr ""
+
+#: includes/template-functions.php:974
+msgid "Please enter location url prefix"
+msgstr ""
+
+#: includes/template-functions.php:975
+msgid "Invalid character in location url prefix"
+msgstr ""
+
+#: includes/template-functions.php:976
+msgid "Please enter location and category url separator"
+msgstr ""
+
+#: includes/template-functions.php:977
+msgid "Invalid character in location and category url separator"
+msgstr ""
+
+#: includes/template-functions.php:978
+msgid "Please enter listing detail url separator"
+msgstr ""
+
+#: includes/template-functions.php:979
+msgid "Invalid character in listing detail url separator"
+msgstr ""
+
+#: includes/template-functions.php:980 includes/template-functions.php:982
+msgid "Please wait..."
+msgstr ""
+
+#: includes/template-functions.php:981
+msgid "Sorry, nothing found!"
+msgstr ""
+
+#: includes/template-functions.php:983
+msgid "We are searching for"
+msgstr ""
+
+#: includes/template-functions.php:984
+msgid "Please select country to update translation."
+msgstr ""
+
+#: includes/template-functions.php:985
+msgid "Are you sure?"
+msgstr ""
+
+#: includes/template-functions.php:986
+msgid "Search City"
+msgstr ""
+
+#: includes/template-functions.php:987
+msgid "Search Region"
+msgstr ""
+
+#: includes/template-functions.php:988
+msgid "Search Country"
+msgstr ""
+
+#: includes/template-functions.php:991
+msgid "Unable to find your location."
+msgstr ""
+
+#: includes/template-functions.php:992
+msgid "Permission denied in finding your location."
+msgstr ""
+
+#: includes/template-functions.php:993
+msgid "Your location is currently unknown."
+msgstr ""
+
+#: includes/template-functions.php:994
+msgid "Attempt to find location took too long."
+msgstr ""
+
+#: includes/template-functions.php:995
+msgid "Browser unable to find your location."
+msgstr ""
+
+#: includes/template-functions.php:998
+msgid "User defined"
+msgstr ""
+
+#: includes/template-functions.php:999
+msgid ""
+"Deleting location will also DELETE any LISTINGS in this location. Are you "
+"sure want to DELETE this location?"
+msgstr ""
+
+#: includes/template-functions.php:1000
+msgid "Are you sure you want to delete this neighbourhood?"
+msgstr ""
+
+#: includes/template-functions.php:1001
+msgid "Please select at least one location."
+msgstr ""
+
+#: includes/template-functions.php:1169
+msgid "Select region or type a new"
+msgstr ""
+
+#: includes/template-functions.php:1170
+msgid "Select city or type a new"
+msgstr ""
+
+#: includes/template-functions.php:1177
+msgid "Choose a country&hellip;"
+msgstr ""
+
+#: includes/template-functions.php:1180 includes/template-functions.php:1220
+msgid "Click on above field and type to filter list."
+msgstr ""
+
+#: includes/template-functions.php:1194
+msgid "Click on above field and type to filter list or add a new region."
+msgstr ""
+
+#: includes/template-functions.php:1208
+msgid "Click on above field and type to filter list or add a new city."
+msgstr ""
+
+#: includes/template-functions.php:1217
+msgid "Choose a neighbourhood&hellip;"
+msgstr ""
+
+#: includes/widget-functions.php:167 includes/widget-functions.php:291
+#, php-format
+msgid "Showing locations %1$s-%2$s of %3$s"
+msgstr ""
+
+#: includes/widget-functions.php:389 includes/widget-functions.php:437
+#: includes/widgets/class-geodir-location-widget-locations.php:148
+msgid "Country slug"
+msgstr ""
+
+#: includes/widget-functions.php:390 includes/widget-functions.php:438
+msgid "Filter the listings by country slug."
+msgstr ""
+
+#: includes/widget-functions.php:401 includes/widget-functions.php:450
+#: includes/widgets/class-geodir-location-widget-locations.php:159
+msgid "Region slug"
+msgstr ""
+
+#: includes/widget-functions.php:402 includes/widget-functions.php:451
+msgid "Filter the listings by region slug."
+msgstr ""
+
+#: includes/widget-functions.php:413 includes/widget-functions.php:463
+#: includes/widgets/class-geodir-location-widget-locations.php:170
+msgid "City slug"
+msgstr ""
+
+#: includes/widget-functions.php:414 includes/widget-functions.php:464
+msgid "Filter the listings by city slug."
+msgstr ""
+
+#: includes/widget-functions.php:425 includes/widget-functions.php:476
+msgid "Neighbourhood slug"
+msgstr ""
+
+#: includes/widget-functions.php:426 includes/widget-functions.php:477
+msgid "Filter the listings by neighbourhood slug."
+msgstr ""
+
+#: includes/widget-functions.php:445 includes/widget-functions.php:458
+#: includes/widget-functions.php:471 includes/widget-functions.php:484
+msgid "Filters"
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-description.php:24
+msgid "GD > Location Description"
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-description.php:27
+msgid "Displays the current location description."
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-description.php:43
+#: includes/widgets/class-geodir-location-widget-location-meta.php:36
+#: includes/widgets/class-geodir-location-widget-location-switcher.php:43
+#: includes/widgets/class-geodir-location-widget-locations.php:43
+#: includes/widgets/class-geodir-location-widget-near-me.php:43
+msgid "Title:"
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-description.php:44
+#: includes/widgets/class-geodir-location-widget-location-switcher.php:44
+#: includes/widgets/class-geodir-location-widget-locations.php:44
+#: includes/widgets/class-geodir-location-widget-near-me.php:44
+msgid "The widget title."
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-location-meta.php:25
+msgid "GD > Location Meta"
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-location-meta.php:28
+msgid ""
+"Displays the meta title, meta description, location description, image for "
+"location."
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-location-meta.php:37
+msgid "Extra main title if needed."
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-location-meta.php:46
+msgid "Select location type."
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-location-meta.php:49
+msgid "Auto"
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-location-meta.php:61
+msgid "Key:"
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-location-meta.php:62
+msgid "This is the location meta field key."
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-location-meta.php:65
+msgid "Location Name"
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-location-meta.php:67
+msgid "Location Meta Title"
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-location-meta.php:68
+msgid "Location Meta Description"
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-location-meta.php:69
+msgid "Location Image"
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-location-meta.php:70
+msgid "Location Image Tagline"
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-location-meta.php:78
+#: includes/widgets/class-geodir-location-widget-locations.php:80
+msgid "Show post image as a fallback?"
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-location-meta.php:79
+#: includes/widgets/class-geodir-location-widget-locations.php:81
+msgid ""
+"If location image not available then show last post image added under this "
+"location."
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-location-meta.php:88
+msgid "Image size:"
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-location-meta.php:89
+msgid "The WP image size as a text string."
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-location-meta.php:99
+msgid "No Wrap:"
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-location-meta.php:100
+msgid "Remove wrapping div."
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-location-meta.php:106
+msgid "Alignment:"
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-location-meta.php:107
+msgid "How the item should be positioned on the page."
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-location-meta.php:109
+#: includes/widgets/class-geodir-location-widget-location-meta.php:123
+#: includes/widgets/class-geodir-location-widget-location-meta.php:136
+#: includes/widgets/class-geodir-location-widget-location-meta.php:150
+msgid "None"
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-location-meta.php:110
+msgid "Block"
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-location-meta.php:111
+#: includes/widgets/class-geodir-location-widget-location-meta.php:124
+msgid "Left"
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-location-meta.php:112
+#: includes/widgets/class-geodir-location-widget-location-meta.php:125
+msgid "Center"
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-location-meta.php:113
+#: includes/widgets/class-geodir-location-widget-location-meta.php:126
+msgid "Right"
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-location-meta.php:120
+msgid "Text Align:"
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-location-meta.php:121
+msgid "How the text should be aligned."
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-location-meta.php:133
+msgid "Hide item on view:"
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-location-meta.php:134
+msgid "You can set at what view the item will become hidden."
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-location-meta.php:137
+#: includes/widgets/class-geodir-location-widget-location-meta.php:151
+msgid "Grid view 2"
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-location-meta.php:138
+#: includes/widgets/class-geodir-location-widget-location-meta.php:152
+msgid "Grid view 3"
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-location-meta.php:139
+#: includes/widgets/class-geodir-location-widget-location-meta.php:153
+msgid "Grid view 4"
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-location-meta.php:140
+#: includes/widgets/class-geodir-location-widget-location-meta.php:154
+msgid "Grid view 5"
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-location-meta.php:147
+msgid "Hide secondary info on view"
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-location-meta.php:148
+msgid ""
+"You can set at what view the secondary info such as label will become hidden."
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-location-meta.php:161
+msgid "Extra class:"
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-location-meta.php:162
+msgid "Give the wrapper an extra class so you can style things as you want."
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-location-switcher.php:24
+msgid "GD > Location Switcher"
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-location-switcher.php:27
+msgid "Displays the location switcher."
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-location-switcher.php:69
+#: includes/widgets/class-geodir-location-widget-location-switcher.php:71
+#, php-format
+msgid "Near: %s"
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-location-switcher.php:69
+msgid "My Location"
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-location-switcher.php:71
+msgid "GPS Location"
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-location-switcher.php:73
+#, php-format
+msgid "In: %s (%s)"
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-location-switcher.php:75
+#, php-format
+msgid "In: %s"
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-location-switcher.php:95
+msgid "To find awesome listings near you!"
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-location-switcher.php:98
+msgid "city, region, country"
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-location-switcher.php:465
+msgid "Search history"
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-location-switcher.php:466
+msgid "Remove from history"
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-location-switcher.php:589
+msgid "Search was not successful for the following reason :"
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-location-switcher.php:598
+msgid "Search was not successful for the requested address."
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-locations.php:24
+msgid "GD > Locations"
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-locations.php:27
+msgid "Displays the locations."
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-locations.php:52
+msgid "Show Locations:"
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-locations.php:53
+msgid "Select which locations to show in a list. Default: Cities"
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-locations.php:67
+msgid "Output type"
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-locations.php:68
+msgid "This determines the style of the output list."
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-locations.php:72
+msgid "List"
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-locations.php:73
+msgid "Image Grid"
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-locations.php:90
+msgid "Number of locations:"
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-locations.php:91
+msgid ""
+"Number of locations to be shown on each page. Use 0(zero) or \"\"(blank) to "
+"show all locations."
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-locations.php:98
+msgid "Show pagination on top?"
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-locations.php:106
+msgid "Show pagination at bottom?"
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-locations.php:115
+msgid "Show advanced pagination details:"
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-locations.php:116
+msgid ""
+"This will add extra pagination info like \"Showing locations x-y of z\" "
+"after/before pagination."
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-locations.php:120
+msgid "Never Display"
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-locations.php:121
+msgid "After pagination"
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-locations.php:122
+msgid "Before pagination"
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-locations.php:128
+msgid "Disable location filter?"
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-locations.php:129
+msgid "Don't filter results for current location."
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-locations.php:137
+msgid "Show current location only"
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-locations.php:138
+msgid ""
+"Tick to show only current country / region / city / neighbourhood when "
+"location filter is active & country / region / city / neighbourhood is set."
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-locations.php:149
+msgid ""
+"Filter the locations by country slug when location filter enabled. Default: "
+"current country."
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-locations.php:160
+msgid ""
+"Filter the locations by region slug when location filter enabled. Default: "
+"current region."
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-locations.php:171
+msgid ""
+"Filter the locations by city slug when location filter enabled. Default: "
+"current city."
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-near-me.php:24
+msgid "GD > Near Me Button"
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-near-me.php:27
+msgid "Displays near me button to share geo position."
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-near-me.php:51
+msgid "Button title:"
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-near-me.php:52
+msgid "Near me button title."
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-near-me.php:55
+#: includes/widgets/class-geodir-location-widget-near-me.php:75
+msgid "Near Me"
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-near-me.php:60
+msgid "Button css class:"
+msgstr ""
+
+#: includes/widgets/class-geodir-location-widget-near-me.php:61
+msgid "Near me button css class."
+msgstr ""

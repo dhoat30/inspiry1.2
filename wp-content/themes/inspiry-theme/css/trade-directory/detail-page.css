@@ -1,15 +1,89 @@
-.trade-hero-image img{ 
+
+.trade-hero-image{ 
     width: 100% !important;
     height: 300px !important;
     object-fit: cover;
 }
+.trade-hero-overlay{ 
+    background: white;
+}
 /*header Section */ 
 .trade-header-section{ 
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.trade-profile-img{ 
+    width:20%;
+}
+.header-middle-column{ 
+    width: 50%; 
+}
+.header-contact{ 
+    width: 20%;
+}
+
+.header-address{ 
+    display: flex; 
+    flex-direction: row;
+}
+.header-address i{ 
+    padding-right:5px;
     position: relative;
-    bottom: 150px;
-    left: 20px;
+    top:2px;
 }
 .trade-profile-img img{ 
     width: 200px;
     height: 200px;
+    position: relative;
+    bottom: 100px;
+}
+
+.header-contact-btn button{ 
+    background: #495a54 !important;
+    border-bottom: none !important;
+    font-size: 16px;
+    letter-spacing: 0.2em;
+    line-height: 1.3em;
+    padding: 15px 30px 15px 30px !important;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-family: 'work sans', sans-serif;
+    margin-bottom: 15px;
+    float:right; 
+}
+
+
+/*trade  main row*/ 
+.trade-middle-column{ 
+    margin: 0 auto;
+    width: 50%;
+}
+
+.trade-nav-container .nav{ 
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    list-style: none;
+}
+.trade-nav-container .nav li{ 
+    cursor: pointer;
+    padding: 10px 20px;
+}
+
+.trade-nav-container .nav li:hover{ 
+   color:white;
+    background: #495a54;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+}
+
+
+.active-nav{ 
+background-color:#495a54;
+color: white; 
+transition-duration: 0.5s;
+transition-timing-function: ease-in-out; 
 }

@@ -1,0 +1,987 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: GeoDirectory Claim Listings 2.0.1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-07-30 14:13+0530\n"
+"PO-Revision-Date: 2020-07-30 14:14+0530\n"
+"Last-Translator: \n"
+"Language-Team: AyeCode Ltd <contact@ayecode.io>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;__ngettext:1,2;__ngettext_noop:1,2;_c;_e;_ex:1,2c;"
+"_n:1,2;_n_noop:1,2;_nc:4c,1,2;_nx:4c,1,2;_nx_noop:4c,1,2;_x:1,2c;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;gettext;"
+"gettext_noop\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 2.2.4\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: includes/admin/admin-functions.php:16
+msgid "Are you sure want to approve claim request?"
+msgstr ""
+
+#: includes/admin/admin-functions.php:17
+msgid "Are you sure want to reject claim request?"
+msgstr ""
+
+#: includes/admin/admin-functions.php:18
+msgid "Are you sure want to undo?"
+msgstr ""
+
+#: includes/admin/admin-functions.php:19
+msgid "Are you sure want to delete claim request?"
+msgstr ""
+
+#: includes/admin/admin-functions.php:20
+#: includes/admin/class-geodir-claim-admin-claims-table-list.php:162
+msgid "Approve"
+msgstr ""
+
+#: includes/admin/admin-functions.php:21
+msgid "Approving..."
+msgstr ""
+
+#: includes/admin/admin-functions.php:22
+#: includes/class-geodir-claim-privacy.php:264
+msgid "Approved"
+msgstr ""
+
+#: includes/admin/admin-functions.php:23
+#: includes/admin/class-geodir-claim-admin-claims-table-list.php:163
+msgid "Reject"
+msgstr ""
+
+#: includes/admin/admin-functions.php:24
+msgid "Rejecting..."
+msgstr ""
+
+#: includes/admin/admin-functions.php:25
+#: includes/class-geodir-claim-privacy.php:267
+msgid "Rejected"
+msgstr ""
+
+#: includes/admin/admin-functions.php:26
+#: includes/admin/class-geodir-claim-admin-claims-table-list.php:164
+msgid "Undo"
+msgstr ""
+
+#: includes/admin/admin-functions.php:27
+msgid "Undo..."
+msgstr ""
+
+#: includes/admin/admin-functions.php:28
+#: includes/admin/class-geodir-claim-admin-claims-table-list.php:165
+msgid "Delete"
+msgstr ""
+
+#: includes/admin/admin-functions.php:29
+msgid "Deleting..."
+msgstr ""
+
+#: includes/admin/admin-functions.php:30
+msgid "Deleted"
+msgstr ""
+
+#: includes/admin/admin-functions.php:48
+#: includes/admin/settings/class-geodir-claim-settings-claims.php:28
+#: includes/admin/settings/class-geodir-claim-settings-general.php:26
+#: includes/class-geodir-claim-privacy.php:44
+msgid "Claim Listings"
+msgstr ""
+
+#: includes/admin/admin-functions.php:49
+msgid ""
+"Check this box if you would like to completely remove all of its data when "
+"Claim Listings is deleted."
+msgstr ""
+
+#: includes/admin/admin-functions.php:69
+msgid "Claims"
+msgstr ""
+
+#: includes/admin/admin-functions.php:124
+msgid "Claimed"
+msgstr ""
+
+#: includes/admin/admin-functions.php:125
+msgid "Add field to claim the listing."
+msgstr ""
+
+#: includes/admin/admin-functions.php:129
+msgid "Is Claimed?"
+msgstr ""
+
+#: includes/admin/admin-functions.php:130
+msgid "Business Owner/Associate?"
+msgstr ""
+
+#: includes/admin/admin-functions.php:131
+msgid "Mark listing as a claimed."
+msgstr ""
+
+#: includes/admin/class-geodir-claim-admin-claims-dashboard.php:46
+msgid "Pending Claims"
+msgstr ""
+
+#: includes/admin/class-geodir-claim-admin-claims-dashboard.php:83
+msgid "Claimed Listings"
+msgstr ""
+
+#: includes/admin/class-geodir-claim-admin-claims-table-list.php:59
+msgid "Listing"
+msgstr ""
+
+#: includes/admin/class-geodir-claim-admin-claims-table-list.php:60
+#: includes/class-geodir-claim-privacy.php:249
+msgid "Status"
+msgstr ""
+
+#: includes/admin/class-geodir-claim-admin-claims-table-list.php:61
+msgid "Post Type"
+msgstr ""
+
+#: includes/admin/class-geodir-claim-admin-claims-table-list.php:62
+#: includes/class-geodir-claim-post.php:638
+msgid "User"
+msgstr ""
+
+#: includes/admin/class-geodir-claim-admin-claims-table-list.php:63
+#: includes/class-geodir-claim-privacy.php:244 templates/post-claim-form.php:37
+msgid "Full Name"
+msgstr ""
+
+#: includes/admin/class-geodir-claim-admin-claims-table-list.php:64
+#: templates/post-claim-form.php:41
+msgid "Phone"
+msgstr ""
+
+#: includes/admin/class-geodir-claim-admin-claims-table-list.php:65
+#: includes/class-geodir-claim-post.php:652
+msgid "Position"
+msgstr ""
+
+#: includes/admin/class-geodir-claim-admin-claims-table-list.php:66
+#: includes/class-geodir-claim-post.php:671
+msgid "Post Author"
+msgstr ""
+
+#: includes/admin/class-geodir-claim-admin-claims-table-list.php:67
+#: includes/class-geodir-claim-post.php:675
+msgid "Date"
+msgstr ""
+
+#: includes/admin/class-geodir-claim-admin-claims-table-list.php:69
+msgid "Full Details"
+msgstr ""
+
+#: includes/admin/class-geodir-claim-admin-claims-table-list.php:84
+msgid "View"
+msgstr ""
+
+#: includes/admin/class-geodir-claim-admin-claims-table-list.php:203
+msgid "paid"
+msgstr ""
+
+#: includes/admin/class-geodir-claim-admin-claims-table-list.php:205
+msgid "requires payment"
+msgstr ""
+
+#: includes/admin/class-geodir-claim-admin-claims-table-list.php:252
+msgid "Filter"
+msgstr ""
+
+#: includes/admin/class-geodir-claim-admin-claims-table-list.php:357
+#, php-format
+msgctxt "geodir-claim"
+msgid "All <span class=\"count\">(%s)</span>"
+msgid_plural "All <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/admin/class-geodir-claim-admin-claims-table-list.php:365
+#, php-format
+msgctxt "geodir-claim"
+msgid "Pending <span class=\"count\">(%s)</span>"
+msgid_plural "Pending <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/admin/class-geodir-claim-admin-claims-table-list.php:373
+#, php-format
+msgctxt "geodir-claim"
+msgid "Approved <span class=\"count\">(%s)</span>"
+msgid_plural "Approved <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/admin/class-geodir-claim-admin-claims-table-list.php:381
+#, php-format
+msgctxt "geodir-claim"
+msgid "Rejected <span class=\"count\">(%s)</span>"
+msgid_plural "Rejected <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/admin/class-geodir-claim-admin-claims.php:66
+msgid "Action failed. Please refresh the page and retry."
+msgstr ""
+
+#: includes/admin/class-geodir-claim-admin-claims.php:112
+#, php-format
+msgid "Item deleted successfully."
+msgid_plural "%d items deleted successfully."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/admin/class-geodir-claim-admin-claims.php:114
+msgid "No item deleted."
+msgstr ""
+
+#: includes/admin/class-geodir-claim-admin-claims.php:137
+#: includes/admin/settings/class-geodir-claim-settings-claims.php:74
+#: includes/admin/settings/class-geodir-claim-settings-claims.php:118
+msgid "Listing Claims"
+msgstr ""
+
+#: includes/admin/class-geodir-claim-admin-claims.php:161
+msgid "Search listing claims"
+msgstr ""
+
+#: includes/admin/class-geodir-claim-admin.php:66
+#: includes/admin/settings/class-geodir-claim-settings-claims.php:57
+#, php-format
+msgid "%d listing claim pending review"
+msgid_plural "%d listing claims pending review"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/admin/class-geodir-claim-admin.php:97
+msgid "GD Actions"
+msgstr ""
+
+#: includes/admin/class-geodir-claim-admin.php:177
+#: includes/admin/class-geodir-claim-admin.php:198
+msgid "GeoDirectory"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-claim-settings-claims.php:75
+#: includes/admin/settings/class-geodir-claim-settings-general.php:43
+msgid "Settings"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-claim-settings-claims.php:113
+msgid "Post Type Settings"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-claim-settings-claims.php:133
+msgid "Claim Listing Options"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-claim-settings-claims.php:141
+msgid "Auto approve via email verification?"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-claim-settings-claims.php:142
+msgid ""
+"Tick to enable auto approve claim listing by sending verification link via "
+"email."
+msgstr ""
+
+#: includes/admin/settings/class-geodir-claim-settings-claims.php:148
+msgid "Auto approve on payment received?"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-claim-settings-claims.php:149
+msgid ""
+"Tick to enable auto approve claim listing when using pay to claim (requires "
+"Pricing Manager addon)."
+msgstr ""
+
+#: includes/admin/settings/class-geodir-claim-settings-claims.php:187
+msgid "Filter by post type"
+msgstr ""
+
+#: includes/admin/settings/class-geodir-claim-settings-claims.php:189
+msgid "All post types"
+msgstr ""
+
+#: includes/class-geodir-claim-ajax.php:35
+msgid "<strong>NOTICE</strong>: Please login to claim your listing."
+msgstr ""
+
+#: includes/class-geodir-claim-ajax.php:75
+#: includes/class-geodir-claim-ajax.php:225
+#: includes/class-geodir-claim-ajax.php:253
+#: includes/class-geodir-claim-ajax.php:281
+#: includes/class-geodir-claim-ajax.php:309
+msgid "Invalid access."
+msgstr ""
+
+#: includes/class-geodir-claim-ajax.php:102
+#: includes/class-geodir-claim-ajax.php:175
+msgid "Login to claim this listing!"
+msgstr ""
+
+#: includes/class-geodir-claim-ajax.php:110
+#: includes/class-geodir-claim-ajax.php:180
+msgid "No post found!"
+msgstr ""
+
+#: includes/class-geodir-claim-ajax.php:128
+#: includes/class-geodir-claim-ajax.php:185
+msgid "This listing is already claimed!"
+msgstr ""
+
+#: includes/class-geodir-claim-ajax.php:136
+#: includes/class-geodir-claim-form.php:154
+msgid ""
+"It looks like you already have a claim pending review for this listing, you "
+"will be notified by email once we have reviewed your claim."
+msgstr ""
+
+#: includes/class-geodir-claim-ajax.php:147
+#: includes/class-geodir-claim-ajax.php:215
+msgid "Claim not allowed for this listing!"
+msgstr ""
+
+#: includes/class-geodir-claim-ajax.php:199
+#: includes/class-geodir-claim-form.php:132
+msgid ""
+"A verification link has been sent to your email address, please click the "
+"link in the email to verify your listing claim."
+msgstr ""
+
+#: includes/class-geodir-claim-ajax.php:201
+#: includes/class-geodir-claim-form.php:134
+msgid ""
+"Your request to claim this listing has been sent successfully. You will be "
+"notified by email once a decision has been made."
+msgstr ""
+
+#: includes/class-geodir-claim-ajax.php:210
+msgid "Something went wrong, please try again!"
+msgstr ""
+
+#: includes/class-geodir-claim-ajax.php:230
+#: includes/class-geodir-claim-ajax.php:258
+#: includes/class-geodir-claim-ajax.php:286
+#: includes/class-geodir-claim-ajax.php:314
+msgid "Claim request not found."
+msgstr ""
+
+#: includes/class-geodir-claim-ajax.php:243
+msgid "Something went wrong, can not approve claim request."
+msgstr ""
+
+#: includes/class-geodir-claim-ajax.php:271
+msgid "Something went wrong, can not undo claim request."
+msgstr ""
+
+#: includes/class-geodir-claim-ajax.php:299
+msgid "Something went wrong, can not reject claim request."
+msgstr ""
+
+#: includes/class-geodir-claim-ajax.php:327
+msgid "Something went wrong, can not delete claim request."
+msgstr ""
+
+#: includes/class-geodir-claim-email.php:63
+#: includes/class-geodir-claim-email.php:103
+msgid "Claim listing request"
+msgstr ""
+
+#: includes/class-geodir-claim-email.php:64
+msgid ""
+"This will send a BCC email to the site admin on claim listing requested by "
+"user."
+msgstr ""
+
+#: includes/class-geodir-claim-email.php:71
+msgid "Claim request approved"
+msgstr ""
+
+#: includes/class-geodir-claim-email.php:72
+msgid ""
+"This will send a BCC email to the site admin on claim listing request "
+"approved."
+msgstr ""
+
+#: includes/class-geodir-claim-email.php:79
+msgid "Claim request rejected"
+msgstr ""
+
+#: includes/class-geodir-claim-email.php:80
+msgid ""
+"This will send a BCC email to the site admin on claim listing request "
+"rejected."
+msgstr ""
+
+#: includes/class-geodir-claim-email.php:87
+msgid "Claim request verification"
+msgstr ""
+
+#: includes/class-geodir-claim-email.php:88
+msgid ""
+"This will send a BCC email to the site admin on claim listing request "
+"verification required."
+msgstr ""
+
+#: includes/class-geodir-claim-email.php:109
+#: includes/class-geodir-claim-email.php:155
+#: includes/class-geodir-claim-email.php:195
+#: includes/class-geodir-claim-email.php:235
+#: includes/class-geodir-claim-email.php:275
+msgid "Enable email"
+msgstr ""
+
+#: includes/class-geodir-claim-email.php:110
+msgid "Send an email to admin on claim listing request from user."
+msgstr ""
+
+#: includes/class-geodir-claim-email.php:116
+#: includes/class-geodir-claim-email.php:162
+#: includes/class-geodir-claim-email.php:202
+#: includes/class-geodir-claim-email.php:242
+#: includes/class-geodir-claim-email.php:282
+msgid "Subject"
+msgstr ""
+
+#: includes/class-geodir-claim-email.php:117
+#: includes/class-geodir-claim-email.php:163
+#: includes/class-geodir-claim-email.php:203
+#: includes/class-geodir-claim-email.php:243
+#: includes/class-geodir-claim-email.php:283
+msgid "The email subject."
+msgstr ""
+
+#: includes/class-geodir-claim-email.php:126
+#: includes/class-geodir-claim-email.php:172
+#: includes/class-geodir-claim-email.php:212
+#: includes/class-geodir-claim-email.php:252
+#: includes/class-geodir-claim-email.php:292
+msgid "Body"
+msgstr ""
+
+#: includes/class-geodir-claim-email.php:127
+#: includes/class-geodir-claim-email.php:173
+#: includes/class-geodir-claim-email.php:213
+#: includes/class-geodir-claim-email.php:253
+#: includes/class-geodir-claim-email.php:293
+msgid "The email body, this can be text or HTML."
+msgstr ""
+
+#: includes/class-geodir-claim-email.php:132
+#: includes/class-geodir-claim-email.php:178
+#: includes/class-geodir-claim-email.php:218
+#: includes/class-geodir-claim-email.php:258
+#: includes/class-geodir-claim-email.php:298
+msgid "Available template tags:"
+msgstr ""
+
+#: includes/class-geodir-claim-email.php:149
+msgid "Claim listing submitted"
+msgstr ""
+
+#: includes/class-geodir-claim-email.php:156
+msgid "Send an email to user on claim listing request submitted."
+msgstr ""
+
+#: includes/class-geodir-claim-email.php:189
+msgid "Claim listing approved"
+msgstr ""
+
+#: includes/class-geodir-claim-email.php:196
+msgid "Send an email to user on claim listing request approved."
+msgstr ""
+
+#: includes/class-geodir-claim-email.php:229
+msgid "Claim listing rejected"
+msgstr ""
+
+#: includes/class-geodir-claim-email.php:236
+msgid "Send an email to user on claim listing request rejected."
+msgstr ""
+
+#: includes/class-geodir-claim-email.php:269
+msgid "Claim listing verification required"
+msgstr ""
+
+#: includes/class-geodir-claim-email.php:276
+msgid "Send an email to user on claim listing verification required."
+msgstr ""
+
+#: includes/class-geodir-claim-email.php:368
+msgid "CLICK HERE TO VERIFY"
+msgstr ""
+
+#: includes/class-geodir-claim-email.php:454
+msgid "[[#site_name#]] Claim listing requested"
+msgstr ""
+
+#: includes/class-geodir-claim-email.php:461
+msgid ""
+"Dear Admin,\n"
+"\n"
+"A user has requested to become the owner of the listing [#listing_link#], "
+"you will have to login to review this claim.\n"
+"\n"
+"Thank You."
+msgstr ""
+
+#: includes/class-geodir-claim-email.php:485
+msgid "[[#site_name#]] Claim listing submitted"
+msgstr ""
+
+#: includes/class-geodir-claim-email.php:492
+msgid ""
+"Dear [#to_name#],\n"
+"\n"
+"You have requested to become the owner of the listing [#listing_link#].\n"
+"\n"
+"We may contact you to confirm your request is genuine. You will receive a "
+"email once a decision has been made.\n"
+"\n"
+"Thank You."
+msgstr ""
+
+#: includes/class-geodir-claim-email.php:518
+msgid "[[#site_name#]] Claim listing has been Approved"
+msgstr ""
+
+#: includes/class-geodir-claim-email.php:525
+msgid ""
+"Dear [#to_name#],\n"
+"\n"
+"Your request to become the owner of the listing [#listing_link#] has been "
+"APPROVED.\n"
+"\n"
+"Thank You."
+msgstr ""
+
+#: includes/class-geodir-claim-email.php:549
+msgid "[[#site_name#]] Claim listing has been Rejected"
+msgstr ""
+
+#: includes/class-geodir-claim-email.php:556
+msgid ""
+"Dear [#to_name#],\n"
+"\n"
+"Your request to become the owner of the listing [#listing_link#] has been "
+"REJECTED.\n"
+"\n"
+"If you feel this is a wrong decision please reply to this email with your "
+"reasons.\n"
+"\n"
+"Thank You."
+msgstr ""
+
+#: includes/class-geodir-claim-email.php:582
+msgid "[[#site_name#]] Claim listing verification required"
+msgstr ""
+
+#: includes/class-geodir-claim-email.php:589
+msgid ""
+"Dear [#to_name#],\n"
+"\n"
+"Your request to become the owner of the below listing [#listing_link#] needs "
+"to be verified.\n"
+"\n"
+"By clicking the VERIFY link below you are stating you are legally associated "
+"with this business and have the owners consent to edit the listing.\n"
+"\n"
+"If you are not associated with this business and edit the listing with "
+"malicious intent you will be solely liable for any legal action or claims "
+"for damages.\n"
+"\n"
+"To verify the claim, visit the following address:\n"
+"[#claim_verify_link#]\n"
+"\n"
+"Thank You."
+msgstr ""
+
+#: includes/class-geodir-claim-form.php:78
+#: includes/class-geodir-claim-form.php:1008
+msgid "Invalid post id!"
+msgstr ""
+
+#: includes/class-geodir-claim-form.php:107
+#: includes/class-geodir-claim-form.php:110
+#: includes/class-geodir-claim-form.php:942
+#: includes/class-geodir-claim-form.php:944
+#: includes/class-geodir-claim-form.php:1035
+#: includes/class-geodir-claim-form.php:1037
+msgid "Invalid package id!"
+msgstr ""
+
+#: includes/class-geodir-claim-form.php:120
+#: includes/class-geodir-claim-form.php:953
+#: includes/class-geodir-claim-form.php:1046
+msgid "Could not create invoice for claim request!"
+msgstr ""
+
+#: includes/class-geodir-claim-form.php:171
+msgid "GeoDirectory Claim Form"
+msgstr ""
+
+#: includes/class-geodir-claim-form.php:172
+msgid ""
+"Allow your users to send the business details to admin to claim the listing. "
+"You can add and remove fields as needed."
+msgstr ""
+
+#: includes/class-geodir-claim-form.php:991
+msgid "Invalid user full name!"
+msgstr ""
+
+#: includes/class-geodir-claim-form.php:995
+msgid "Invalid user phone number!"
+msgstr ""
+
+#: includes/class-geodir-claim-form.php:999
+msgid "Invalid user position value!"
+msgstr ""
+
+#: includes/class-geodir-claim-form.php:1003
+msgid "Invalid comments!"
+msgstr ""
+
+#: includes/class-geodir-claim-ninja-forms-packages-field.php:40
+msgid "GD Claim Package"
+msgstr ""
+
+#: includes/class-geodir-claim-ninja-forms-packages-field.php:46
+#: includes/class-geodir-claim-payment.php:80
+#: includes/class-geodir-claim-payment.php:157
+msgid "Select Package"
+msgstr ""
+
+#: includes/class-geodir-claim-payment.php:148
+#: includes/widgets/class-geodir-claim-widget-post-claim.php:64
+#: includes/widgets/class-geodir-claim-widget-post-claim.php:129
+msgid "Claim Listing"
+msgstr ""
+
+#: includes/class-geodir-claim-payment.php:154
+msgid "Claim Packages"
+msgstr ""
+
+#: includes/class-geodir-claim-payment.php:155
+msgid ""
+"Select packages that a user must select to claim the listing, if this is a "
+"paid package then they will be able to pay to approve the claim."
+msgstr ""
+
+#: includes/class-geodir-claim-post.php:85
+msgid "Could not find claim data."
+msgstr ""
+
+#: includes/class-geodir-claim-post.php:99
+#: includes/class-geodir-claim-post.php:130
+msgid "Could not save claim data."
+msgstr ""
+
+#: includes/class-geodir-claim-post.php:410
+#: includes/class-geodir-claim-post.php:471
+#: includes/class-geodir-claim-post.php:532
+#: includes/class-geodir-claim-post.php:593
+msgid "Could not found claim data."
+msgstr ""
+
+#: includes/class-geodir-claim-post.php:418
+#: includes/class-geodir-claim-post.php:479
+#: includes/class-geodir-claim-post.php:540
+msgid "Could not process claim request."
+msgstr ""
+
+#: includes/class-geodir-claim-post.php:427
+#: includes/class-geodir-claim-post.php:488
+#: includes/class-geodir-claim-post.php:549
+msgid "Claim request can not be processed for this post."
+msgstr ""
+
+#: includes/class-geodir-claim-post.php:435
+msgid "Claim request not approved."
+msgstr ""
+
+#: includes/class-geodir-claim-post.php:458
+#: includes/class-geodir-claim-post.php:519
+#: includes/class-geodir-claim-post.php:580
+msgid "Can not save claim data."
+msgstr ""
+
+#: includes/class-geodir-claim-post.php:496
+msgid "Claim request not rejected."
+msgstr ""
+
+#: includes/class-geodir-claim-post.php:557
+msgid "Could not undone claim request."
+msgstr ""
+
+#: includes/class-geodir-claim-post.php:601
+msgid "Could not delete claim request."
+msgstr ""
+
+#: includes/class-geodir-claim-post.php:617
+msgid "Can not delete claim request."
+msgstr ""
+
+#: includes/class-geodir-claim-post.php:631
+msgid "Listing title"
+msgstr ""
+
+#: includes/class-geodir-claim-post.php:642
+msgid "Full name"
+msgstr ""
+
+#: includes/class-geodir-claim-post.php:647
+msgid "Number"
+msgstr ""
+
+#: includes/class-geodir-claim-post.php:658
+msgid "IP"
+msgstr ""
+
+#: includes/class-geodir-claim-post.php:663 templates/post-claim-form.php:49
+msgid "Message"
+msgstr ""
+
+#: includes/class-geodir-claim-post.php:687
+msgid "View submission"
+msgstr ""
+
+#: includes/class-geodir-claim-post.php:688
+msgid "Ninja Forms"
+msgstr ""
+
+#: includes/class-geodir-claim-post.php:739
+#, php-format
+msgid "You are not allowed to add/claim the listing under %s."
+msgstr ""
+
+#: includes/class-geodir-claim-post.php:741
+#, php-format
+msgid "You have reached the limit of %s you can add/claim at this time."
+msgstr ""
+
+#: includes/class-geodir-claim-privacy.php:20
+msgid "GeoDirectory Claim Listings"
+msgstr ""
+
+#: includes/class-geodir-claim-privacy.php:23
+#: includes/class-geodir-claim-privacy.php:27
+msgid "User Listing Claims"
+msgstr ""
+
+#: includes/class-geodir-claim-privacy.php:45
+msgid ""
+"We collect information about you during the claim listing process on our "
+"site. This information may include, but is not limited to, your name, email "
+"address, phone number, position in business and any other details that might "
+"be requested from you for the purpose of verifying you have the authority to "
+"manage the listing."
+msgstr ""
+
+#: includes/class-geodir-claim-privacy.php:46
+msgid "Handling this data also allows us to:"
+msgstr ""
+
+#: includes/class-geodir-claim-privacy.php:48
+msgid "- Verify that you have the authority to manage the claimed listing."
+msgstr ""
+
+#: includes/class-geodir-claim-privacy.php:49
+msgid ""
+"- Make you the owner of the claimed listing which can make your name and "
+"avatar visible to the public."
+msgstr ""
+
+#: includes/class-geodir-claim-privacy.php:50
+msgid ""
+"- Contact you to inform you if your claim has been approved or rejected."
+msgstr ""
+
+#: includes/class-geodir-claim-privacy.php:91
+msgid "GeoDirectory: Listing Claims"
+msgstr ""
+
+#: includes/class-geodir-claim-privacy.php:92
+msgid "User&#8217;s claim listing data."
+msgstr ""
+
+#: includes/class-geodir-claim-privacy.php:147
+#: includes/class-geodir-claim-privacy.php:148
+msgid "Anonymous"
+msgstr ""
+
+#: includes/class-geodir-claim-privacy.php:174
+#, php-format
+msgid "Claim item %d contains personal data but could not be anonymized."
+msgstr ""
+
+#: includes/class-geodir-claim-privacy.php:239
+msgid "Claim ID"
+msgstr ""
+
+#: includes/class-geodir-claim-privacy.php:240
+msgid "Post ID"
+msgstr ""
+
+#: includes/class-geodir-claim-privacy.php:241
+msgid "Post Title"
+msgstr ""
+
+#: includes/class-geodir-claim-privacy.php:242
+msgid "User ID"
+msgstr ""
+
+#: includes/class-geodir-claim-privacy.php:243
+msgid "Username"
+msgstr ""
+
+#: includes/class-geodir-claim-privacy.php:245
+msgid "Contact Number"
+msgstr ""
+
+#: includes/class-geodir-claim-privacy.php:246
+msgid "User Position"
+msgstr ""
+
+#: includes/class-geodir-claim-privacy.php:247
+msgid "User Comments"
+msgstr ""
+
+#: includes/class-geodir-claim-privacy.php:248
+msgid "User IP"
+msgstr ""
+
+#: includes/class-geodir-claim-privacy.php:250
+msgid "Claim Date"
+msgstr ""
+
+#: includes/class-geodir-claim-privacy.php:270
+msgid "No Decision"
+msgstr ""
+
+#: includes/class-geodir-claim-privacy.php:305
+msgid "Post Claimed"
+msgstr ""
+
+#: includes/class-geodir-claim-privacy.php:306
+msgid "Yes"
+msgstr ""
+
+#: includes/class-geodir-claim-privacy.php:306
+msgid "No"
+msgstr ""
+
+#: includes/class-geodir-claim.php:231
+msgid ""
+"GeoDirectory plugin is required for the Claim Listings plugin to work "
+"properly."
+msgstr ""
+
+#: includes/class-geodir-claim.php:308
+#, php-format
+msgid "Your claim requires a payment to complete.  %sCheckout%s"
+msgstr ""
+
+#: includes/core-functions.php:16
+msgctxt "Claim status"
+msgid "Pending"
+msgstr ""
+
+#: includes/core-functions.php:17
+msgctxt "Claim status"
+msgid "Approved"
+msgstr ""
+
+#: includes/core-functions.php:18
+msgctxt "Claim status"
+msgid "Rejected"
+msgstr ""
+
+#: includes/template-functions.php:28 templates/post-claim-form.php:59
+msgid "Send"
+msgstr ""
+
+#: includes/template-functions.php:29
+msgid "Sending..."
+msgstr ""
+
+#: includes/template-functions.php:129
+msgid "It looks like you already verified your listing claim."
+msgstr ""
+
+#: includes/template-functions.php:131
+msgid "Something went wrong with your claim listing request."
+msgstr ""
+
+#: includes/template-functions.php:139
+#, php-format
+msgid ""
+"Claim listing verified, you are now the owner of this listing! %sClick here"
+"%s to see any owner changes."
+msgstr ""
+
+#: includes/widgets/class-geodir-claim-widget-post-claim.php:33
+msgid "GD > Post Claim"
+msgstr ""
+
+#: includes/widgets/class-geodir-claim-widget-post-claim.php:36
+msgid "Displays the button to claim post."
+msgstr ""
+
+#: includes/widgets/class-geodir-claim-widget-post-claim.php:53
+msgid "Title:"
+msgstr ""
+
+#: includes/widgets/class-geodir-claim-widget-post-claim.php:54
+msgid "The widget title."
+msgstr ""
+
+#: includes/widgets/class-geodir-claim-widget-post-claim.php:61
+msgid "Text:"
+msgstr ""
+
+#: includes/widgets/class-geodir-claim-widget-post-claim.php:62
+msgid "The text shown than opens the lightbox."
+msgstr ""
+
+#: includes/widgets/class-geodir-claim-widget-post-claim.php:69
+msgid "Output Type:"
+msgstr ""
+
+#: includes/widgets/class-geodir-claim-widget-post-claim.php:70
+msgid "How the link to open the lightbox is displayed."
+msgstr ""
+
+#: includes/widgets/class-geodir-claim-widget-post-claim.php:73
+msgid "Button"
+msgstr ""
+
+#: includes/widgets/class-geodir-claim-widget-post-claim.php:74
+msgid "Link"
+msgstr ""
+
+#: templates/post-claim-form.php:28
+#, php-format
+msgid "Claim Listing: %s"
+msgstr ""
+
+#: templates/post-claim-form.php:32
+msgid ""
+"Fill out the form below, we will verify your claim and email you "
+"confirmation."
+msgstr ""
+
+#: templates/post-claim-form.php:45
+msgid "Position in Business"
+msgstr ""
+
+#: templates/post-claim-form.php:50
+msgid "Hi I am the owner of this business and i would like to claim it."
+msgstr ""
