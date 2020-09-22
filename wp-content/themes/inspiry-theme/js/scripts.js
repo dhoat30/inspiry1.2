@@ -20,20 +20,28 @@ window.onload = function() {
                 document.querySelector('.trade-about-nav-content').style.display = "block";
                 document.querySelector('.trade-contact-nav-content').style.display = "none";
                 document.querySelector('.trade-project-nav-content').style.display = "none"; 
-
+                document.querySelector('.trade-gallery-nav-content').style.display = "none"; 
             }
             else if(e.target.innerHTML == "Contact"){ 
+
                 document.querySelector('.trade-about-nav-content').style.display = "none";
                 document.querySelector('.trade-project-nav-content').style.display = "none"; 
                 document.querySelector('.trade-contact-nav-content').style.display = "block"; 
-
+                document.querySelector('.trade-gallery-nav-content').style.display = "none"; 
 
             }
             else if(e.target.innerHTML == "Projects"){ 
                 document.querySelector('.trade-about-nav-content').style.display = "none";
                 document.querySelector('.trade-contact-nav-content').style.display = "none"; 
                 document.querySelector('.trade-project-nav-content').style.display = "block"; 
+                document.querySelector('.trade-gallery-nav-content').style.display = "none"; 
 
+            }
+            else if(e.target.innerHTML == "Gallery"){ 
+                document.querySelector('.trade-about-nav-content').style.display = "none";
+                document.querySelector('.trade-contact-nav-content').style.display = "none"; 
+                document.querySelector('.trade-project-nav-content').style.display = "none"; 
+                document.querySelector('.trade-gallery-nav-content').style.display = "block"; 
 
             }
         })

@@ -22,7 +22,7 @@
 @import "css/trade-directory/gd-page-location.css"; 
 @import "css/trade-directory/archive-items.css";
 @import "css/trade-directory/detail-page.css";
-
+@import "css/trade-directory/gd-project-detail.css"; 
 * {
     box-sizing: border-box;
     padding: 0; 
@@ -38,7 +38,8 @@
 
 	.body-container{
         max-width: 1600px;
-        background-color: #EFEAE5;
+        
+        padding-bottom: 50px;
     }
     .row-container{
         width: 95%; 

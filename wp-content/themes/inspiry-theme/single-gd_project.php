@@ -8,22 +8,13 @@ get_header();
     ?>
     <div class="body-container">
         
-        <div class="trade-hero">
-                    <?php  echo do_shortcode('[gd_post_images type="slider" ajax_load="1" slideshow="1" show_title="1" animation="slide" controlnav="1"]');  ?>              
-
+        <div class="project-hero">
+                    <?php  echo do_shortcode('[gd_post_images type="image" ajax_load="1" slideshow="1" show_title="1" animation="slide" controlnav="1" types="post_images" fallback_types="logo" image_size="1536x1536"]');  ?>              
         </div>
+
         <div class="row-container">
             
-            <div class="trade-header-section">
-                <div class="trade-profile-img">
-                    <?php 
-                    //striping the value at the end of the img url
-                    $img_url = do_shortcode( '[gd_post_meta key="logo" show="value-raw" no_wrap="1"]');
-                    $profile_img = substr($img_url, 0, strpos($img_url,".jpg"));
-                    ?>
-                    <img src="<?php echo $profile_img.'.jpg'?>" alt="">
-                </div>
-
+            <div class="project-header-section">
                 <div class="header-middle-column">
 
                     <?php
@@ -34,15 +25,15 @@ get_header();
                     <div class="header-title">
                         <h2 class="section-ft-size"><?php echo do_shortcode( '[gd_post_meta key="post_title" show="value-raw" no_wrap="1"]');?></h2>
                     </div>
+                    <div class="place-title">
+                         <?php echo do_shortcode('[gd_linked_posts link_type="to" post_type="gd_place" sort_by="az" title_tag="h3" layout="1" post_limit="1" view_all_link="0"]'); ?>
+                    </div>
                     <!--
                     <div class="header-reviews">
                        <?php //echo do_shortcode("[gd_post_rating]"); ?>  
                     </div>
                     -->
-                    <div class="header-address regular">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <?php echo do_shortcode('[gd_post_address show="value" address_template="%%city%%"]'); ?>
-                    </div>
+                   
                 </div>  
 
                 <div class="header-contact">
@@ -69,24 +60,24 @@ get_header();
         
         
     
-        <div class="row-container trade-main-row">
+        <div class="row-container project-main-row">
             
-            <div class="trade-middle-column">
-                <div class="trade-nav-container" id="trade-nav-container">
+            <div class="project-middle-column">
+                <div class="project-nav-container" id="project-nav-container">
                     <ul class="nav">
-                        <li class="trade-nav-link active-nav">Profile</li>
-                        <li class="trade-nav-link">Contact</li>
-                        <li class="trade-nav-link">Projects</li>
-                        <li class="trade-nav-link">Gallery</li>
+                        <li class="project-nav-link active-nav">Profile</li>
+                        <li class="project-nav-link">Contact</li>
+                        <li class="project-nav-link">Projects</li>
+                        <li class="project-nav-link">Gallery</li>
                     </ul>
 
-                    <div class="trade-about-nav-content work-sans-fonts font-s-regular">
+                    <div class="project-about-nav-content work-sans-fonts font-s-regular">
                         <?php 
                         echo do_shortcode( '[gd_post_meta key="post_content" show="value-raw" no_wrap="1"]');
                         ?>
                     </div>
 
-                    <div class="trade-contact-nav-content">
+                    <div class="project-contact-nav-content">
                         <table class="work-sans-fonts">
                             <tr>
                                 <td><i class="fas fa-phone-alt"></i></td>
@@ -119,13 +110,13 @@ get_header();
                         ?>
                     </div>
 
-                    <div class="trade-project-nav-content">
+                    <div class="project-project-nav-content">
                         <?php 
                             echo do_shortcode( '[gd_linked_posts title="" link_type="from" post_type="gd_project" sort_by="az" title_tag="h3" layout="3" post_limit="50"]');
                         ?>
                     </div>
 
-                    <div class="trade-gallery-nav-content">
+                    <div class="project-gallery-nav-content">
                         <?php echo do_shortcode('[gd_post_images type="gallery" ajax_load="1" slideshow="1" show_title="1" animation="slide" controlnav="1" link_to="lightbox"]'); ?>
                     </div>
 

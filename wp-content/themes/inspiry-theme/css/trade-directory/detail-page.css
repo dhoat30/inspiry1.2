@@ -13,9 +13,12 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
+    height: 160px;
 }
 .trade-profile-img{ 
     width:20%;
+    position: relative;
+    bottom: 100px;
 }
 .header-middle-column{ 
     width: 50%; 
@@ -23,6 +26,34 @@
 .header-contact{ 
     width: 20%;
 }
+@media only screen and (max-width: 900px) {
+    .trade-header-section{ 
+ 
+        justify-content: center;
+        height: auto;
+    }
+    .trade-profile-img{ 
+        width:100%;
+    }
+    .trade-profile-img img{ 
+        display: block;
+        margin: 0 auto;
+    }
+    .header-middle-column{ 
+        width: 100%; 
+        margin-top: -50px; 
+    }
+    .header-contact{ 
+        width: 100%;
+    }
+    .header-contact-btn button{ 
+        position: fixed;
+        bottom: 0;
+        right: 20px;
+        z-index:100;
+    }
+    
+  }
 
 .header-address{ 
     display: flex; 
@@ -36,8 +67,6 @@
 .trade-profile-img img{ 
     width: 200px;
     height: 200px;
-    position: relative;
-    bottom: 100px;
 }
 
 .header-contact-btn button{ 
@@ -57,9 +86,12 @@
 
 
 /*trade  main row*/ 
+
+
 .trade-middle-column{ 
     margin: 0 auto;
-    width: 50%;
+    width:50%;
+   
 }
 
 .trade-nav-container .nav{ 
@@ -67,6 +99,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     list-style: none;
+    margin: 0 0 20px 0;
 }
 .trade-nav-container .nav li{ 
     cursor: pointer;
@@ -80,10 +113,89 @@
     transition-timing-function: ease-in-out;
 }
 
-
+.trade-about-nav-content{ 
+    display: block; 
+}
+.trade-contact-nav-content{ 
+    display: none; 
+    margin-left:20px;
+}
+.trade-project-nav-content{ 
+    display: none; 
+    margin-left:20px;
+}
+.trade-gallery-nav-content{
+    display: none;
+    margin-left:20px;
+}
 .active-nav{ 
 background-color:#495a54;
 color: white; 
 transition-duration: 0.5s;
 transition-timing-function: ease-in-out; 
+}
+@media only screen and (max-width: 910px) {
+    .trade-middle-column{ 
+        width: 100%;
+      
+    }
+    .trade-nav-container .nav{ 
+        margin: 20px 0 20px 0;
+    }
+}
+
+/*contact tab*/ 
+.trade-contact-nav-content table tr td>div{
+    color: #495a54; 
+    margin: 0 0 10px 10px ;
+    font-family: 'work sans', sans-serif !important;
+    font-weight: 500 !important;
+}
+.trade-contact-nav-content table tr td a{
+    color: #495a54; 
+    font-family: 'work sans', sans-serif;
+    font-weight: 500;  
+}
+.trade-contact-nav-content table tr{ 
+    font-size: 18px;
+    color: #495a54; 
+}
+.trade-contact-nav-content .social-media-icons i{
+    margin: 10px 5px 10px 0;
+    font-size: 30px;
+}
+
+/*project */ 
+.trade-project-nav-content .geodir-category-list-view{ 
+    display: flex; 
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+.trade-project-nav-content .geodir-category-list-view>li{ 
+    width: 250px !important;  
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.5s;
+    -moz-transition-duration: 0.5s;
+    -webkit-transition-duration: 0.5s;
+}
+.trade-project-nav-content .geodir-category-list-view>li:hover{ 
+    transform: translate(0px,-5px); 
+}
+.geodir-image-container ul.geodir-images li img {
+    border-radius: 0 !important;
+}
+
+.trade-project-nav-content .gd-badge-meta-new, .geodir-post-rating, .geodir-post-fav{ 
+    display: none !important;
+}
+.trade-project-nav-content .geodir-post-content-container{ 
+    margin-top: -10px !important;
+}
+.trade-project-nav-content .geodir-field-post_content{ 
+    color: black; 
+    font-family: 'work sans', sans-serif;
+}
+.trade-project-nav-content .geodir-entry-title a{ 
+    text-decoration: none;
 }
