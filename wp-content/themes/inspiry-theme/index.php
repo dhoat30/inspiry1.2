@@ -1,15 +1,16 @@
 <?php 
 get_header(); 
-echo('this is an index page');
+
   while(have_posts()){
     the_post(); 
     ?>
     <div class="body-contaienr">
       <div class="row-container">
         <h1 class="center-align section-ft-size playfair-fonts"><?php the_title();?></h1>
-        <div><?php the_content();?></div>
+        <p><?php the_content();?></p>
       </div>
     </div>
+    
     <?php
 }
 

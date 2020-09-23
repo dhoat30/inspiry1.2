@@ -27,6 +27,10 @@
     color: #495a54 !important;
 }
 
+/*register area*/ 
+.bc-account-login__register-list li { 
+    font-family: 'work sans', sans-serif !important;
+}
 /*order history*/ 
 .bc-order__link a{ 
     color: #495a54;
@@ -44,3 +48,12 @@
 .bc-account-login__form-inner a{ 
 color: #495a54 !important;
 }
+
+/*trade button*/ 
+.bc-btn--register{ 
+    margin-top: 10px;
+}
+.trade-login-btn{ 
+    color: white !important;
+}
+

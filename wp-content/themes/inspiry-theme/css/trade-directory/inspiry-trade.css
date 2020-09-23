@@ -1,0 +1,49 @@
+.inspiry-trade h1{ 
+    margin: 40px 0 10px 0;
+}
+.inspiry-trade h2{ 
+ line-height: 1.6em;
+ margin: 0 auto 40px auto;
+max-width: 800px;
+}
+
+.inspiry-trade .trade-register-button{ 
+    margin: -10px auto;
+    display: block;
+}
+/*cards */ 
+.inspiry-trade .card-row{ 
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    max-width: 1200px;
+    margin: 100px auto;
+    justify-content: space-around;
+}
+.inspiry-trade .card-title{ 
+    width: 300px;
+}
+
+.inspiry-trade .card-title h3{ 
+    margin: 20px 0 10px 0 ;
+}
+
+.inspiry-trade .card-content{ 
+    display: flex;
+    flex: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.inspiry-trade .card-content ul{
+    width: 230px;
+    margin-top:20px;
+    
+}
+.inspiry-trade .card-content li{
+   font-family: "work sans", sans-serif;
+   font-size: 22px;
+   color: #808080;
+   margin-left: 20px;
+   margin-top: 15px;
+    padding: 0 10px;
+}

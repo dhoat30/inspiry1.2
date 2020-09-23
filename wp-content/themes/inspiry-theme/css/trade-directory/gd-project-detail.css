@@ -11,16 +11,37 @@
 }
 
 /*title */ 
-
-.project-header-section .gd-list-item-left { 
-    display: none !important;
+.project-header-section .header-middle-column{ 
+    margin: 50px 0 !important;
 }
-.place-title span, .geodir-field-address, .geodir-field-post_content, .gd-badge-meta-new{ 
+.place-title .gd-list-item-left{
+    display: none !important; 
+}
+.place-title .geodir-post-content-container{ 
     display: none;
 }
-ul.geodir-category-list-view>li{ 
-    border:none !important;
+
+.place-title .geodir-post-address-container{ 
+    display: none; 
 }
-.place-title ul.geodir-category-list-view>li{
-    padding: 0px !important;
+.place-title .gd-badge-meta-new { 
+    display: none;
 }
+.place-title ul.geodir-category-list-view>li {
+    padding: 0 !important;
+    border-bottom: none;
+    margin-bottom: 0 !important;
+}
+.place-title h2 a{ 
+    text-decoration: none;
+}
+.place-title h2 a:hover{ 
+    text-decoration: underline;
+}
+
+/*main content*/ 
+.project-content>div{ 
+    font-family:"work-sans", sans-serif;
+}
+
+/*gallery*/ 

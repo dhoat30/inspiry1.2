@@ -23,19 +23,25 @@
 @import "css/trade-directory/archive-items.css";
 @import "css/trade-directory/detail-page.css";
 @import "css/trade-directory/gd-project-detail.css"; 
+@import "css/trade-directory/account.css";
+@import "css/trade-directory/inspiry-trade.css";
+/*slider */ 
+@import "css/slider.css";
 * {
     box-sizing: border-box;
     padding: 0; 
     margin: 0;
     font-family: 'Playfair Display', serif;
-
     
   }
 
-	.underline{ 
+	.underline-bg{ 
 		border-bottom: solid 1px #e1e1e1;
 	}
-
+    .underline-dg{ 
+        border-bottom: solid 1px #444444;
+        width: 200px;
+	}
 	.body-container{
         max-width: 1600px;
         
@@ -43,6 +49,10 @@
     }
     .row-container{
         width: 95%; 
+        margin: 0 auto;
+    }
+    .full-width-paragraph-container{
+        max-width: 900px; 
         margin: 0 auto;
     }
     .white-bc{ 
@@ -75,6 +85,7 @@
     }
     .font-s-med{ 
         font-size: 18px;
+        line-height: 1.6em;
     }
     .column-s-font{ 
         font-size: 25px; 
@@ -113,12 +124,14 @@
 
 /*global margin*/ 
 	.margin-elements{ 
-		margin: 20px 0;
+		margin: 20px auto;
 	}
 	.margin-row{
 		margin-top: 40px;
     }
-    
+    .small-margin-bottom{ 
+        margin-bottom: 10px;
+    }
    
 	.button{ 
 		border-bottom: none !important;
@@ -133,7 +146,7 @@
         color: white; 
     }
     .dark-grey{ 
-        color:#666666;
+        color:#444444;
     }
 	.black-bc{ 
 		background-color: black;
@@ -164,7 +177,12 @@
     .rm-txt-dec{ 
         text-decoration: none;
         color: #495a54;
+        
     }
+    .rm-txt-dec:hover{ 
+        text-decoration: underline;
+    }
+
 
     /*breadcrumbs*/ 
     #breadcrumbs{ 

@@ -6,10 +6,21 @@ jQuery(document).ready(function($) {
   // add
   $('body').on('click touch', '.woosw-btn', function(e) {
     var $this = $(this);
-    var product_id = $this.attr('data-id');
+    var id = $this.attr('data-id');
+    var pid = $this.attr('data-pid');
+    var product_id = $this.attr('data-product_id');
+
+    if (typeof pid !== typeof undefined && pid !== false) {
+      id = pid;
+    }
+
+    if (typeof product_id !== typeof undefined && product_id !== false) {
+      id = product_id;
+    }
+
     var data = {
       action: 'wishlist_add',
-      product_id: product_id,
+      product_id: id,
     };
 
     if ($this.hasClass('woosw-added')) {

@@ -101,6 +101,9 @@ After that, use the shortcode to display the button where you want.
 
 == Changelog ==
 
+= 2.2.3 =
+* Fixed: data-pid or data-product_id for element on Elementor
+
 = 2.2.2 =
 * Fixed: Some minor CSS & JS issues
 

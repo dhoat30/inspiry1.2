@@ -16,19 +16,41 @@
                <a href="#" class="text-decoration-none dark-grey">
                <span class="dashicons dashicons-heart"></span>
                </a> 
+              
             </div>
-            <div class="login-area playfair-fonts font-s-regular">
+            <div class="login-area playfair-fonts font-s-regular profile-trigger ">
                 <a href="http://localhost/inspiry/login/" class="text-decoration-none dark-grey">
-                    <span class="dashicons dashicons-admin-users"></span> LOGIN / REGISTER
+                    <?php 
+                        if(is_user_logged_in()){
+                            global $current_user; wp_get_current_user();  
+                            ?>
+                                 <span class="dashicons dashicons-admin-users"></span> <?php echo  $current_user->display_name;?>
+                                 <i class="fas fa-chevron-down regular arrow-icon"></i>
+                                <nav>
+                                <?php
+                                    wp_nav_menu( array( 
+                                        'theme_location' => 'my-account-nav-top', 
+                                        'container_class' => "my-account-nav"
+                                    )); 
+                                ?>
+                                </nav>         
+                            <?php
+                        }
+                        else{
+                            ?>
+                                <span class="dashicons dashicons-admin-users"></span> LOGIN / REGISTER
+                            <?php
+                        }
+                    ?>
                 </a>
             </div>
             <div class="shopping-cart playfair-fonts font-s-regular">
-                <a href="#" class="text-decoration-none dark-grey">
+                <a href="http://localhost/inspiry/cart/" class="text-decoration-none dark-grey">
                      <span class="dashicons-before dashicons-cart"></span> SHOPPING CART
                 </a>
             </div>
             <div class="shopping-cart playfair-fonts font-s-regular dark-grey">
-               <span class="dashicons-before dashicons-search"></span> Search
+               <?php  echo  do_shortcode('[ivory-search id="7686" title="Default Search Form"]');?>
             </div>
         </div>
         <div class="logo-container">
@@ -42,4 +64,8 @@
                     ));
             ?>
         </nav>
+
+        
+
+
     </section>

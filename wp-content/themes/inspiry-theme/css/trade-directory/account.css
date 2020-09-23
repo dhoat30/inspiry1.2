@@ -1,0 +1,32 @@
+
+/*trade page*/ 
+.bsui .btn-primary{ 
+    background: #495a54 !important; 
+    border-color: 495a54;
+}
+.uwp-footer-links a{ 
+    color: #495a54;
+}
+.uwp-register-class, .uwp-login-class  h3{ 
+    display: none;
+}
+.uwp-login-class, .uwp-account-class .card-body{ 
+    margin: 0 auto;
+    width: 60%;
+    max-width: 800px;
+    min-width: 300px;
+}
+
+.uwp_account_page_username a{ 
+    color: #495a54 !important;
+    font-weight: 500;
+   
+}
+.uwp_account_page_username { 
+    padding-bottom: 10px;
+}
+
+
+/*log in page*/ 
+
+/*account page*/ 

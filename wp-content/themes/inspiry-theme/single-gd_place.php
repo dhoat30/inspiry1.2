@@ -41,6 +41,7 @@ get_header();
                     -->
                     <div class="header-address regular">
                         <i class="fas fa-map-marker-alt"></i>
+                            
                         <?php echo do_shortcode('[gd_post_address show="value" address_template="%%city%%"]'); ?>
                     </div>
                 </div>  
@@ -104,11 +105,13 @@ get_header();
                                 <td><i class="fas fa-map-marker-alt"></i></td>
                                 <td><?php echo do_shortcode('[gd_post_meta key="address" show="value-raw" no_wrap="1]');?></td>
                             </tr>
-                            <tr class="social-media-icons">
+                           
+                        </table>
+                        <table>
+                        <tr class="social-media-icons">
                                 
                                 <td><a href='<?php echo  do_shortcode( '[gd_post_meta key="facebook" show="value-raw" no_wrap="1"]');?>' target="_blank"><?php echo  do_shortcode( '[gd_post_meta key="facebook" show="icon" no_wrap="1"]');?></a></td>
                                 <td><a href='<?php echo  do_shortcode( '[gd_post_meta key="instagram" show="value-raw" no_wrap="1"]');?>' target="_blank"><?php echo  do_shortcode( '[gd_post_meta key="instagram" show="icon" no_wrap="1"]');?></a></td>
-                                <td><a href='<?php echo  do_shortcode( '[gd_post_meta key="twitter" show="value-raw" no_wrap="1"]');?>' target="_blank"><?php echo  do_shortcode( '[gd_post_meta key="twitter" show="icon" no_wrap="1"]');?></a></td>
                                 <td><a href='<?php echo  do_shortcode( '[gd_post_meta key="twitter" show="value-raw" no_wrap="1"]');?>' target="_blank"><?php echo  do_shortcode( '[gd_post_meta key="twitter" show="icon" no_wrap="1"]');?></a></td>
                             </tr>
                         </table>

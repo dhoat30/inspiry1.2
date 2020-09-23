@@ -1,7 +1,127 @@
 
-//trade nav 
+let $ = jQuery; 
+
 
 window.onload = function() {
+    //slider
+    //slider /////////////////////////////////////
+const slides = document.querySelectorAll('.slide');
+const next = document.querySelector('#next');
+const prev = document.querySelector('#prev');
+const auto = true; // Auto scroll
+const intervalTime = 3000;
+let slideInterval;
+
+const nextSlide = () => {
+  // Get current class
+  const current = document.querySelector('.current');
+  // Remove current class
+  current.classList.remove('current');
+  // Check for next slide
+  if (current.nextElementSibling) {
+    // Add current to next sibling
+    current.nextElementSibling.classList.add('current');
+  } else {
+    // Add current to start
+    slides[0].classList.add('current');
+  }
+  setTimeout(() => current.classList.remove('current'));
+};
+
+const prevSlide = () => {
+  // Get current class
+  const current = document.querySelector('.current');
+  // Remove current class
+  current.classList.remove('current');
+  // Check for prev slide
+  if (current.previousElementSibling) {
+    // Add current to prev sibling
+    current.previousElementSibling.classList.add('current');
+  } else {
+    // Add current to last
+    slides[slides.length - 1].classList.add('current');
+  }
+  setTimeout(() => current.classList.remove('current'));
+};
+
+// Button events
+next.addEventListener('click', e => {
+  nextSlide();
+  if (auto) {
+    clearInterval(slideInterval);
+    slideInterval = setInterval(nextSlide, intervalTime);
+  }
+});
+
+prev.addEventListener('click', e => {
+  prevSlide();
+  if (auto) {
+    clearInterval(slideInterval);
+    slideInterval = setInterval(nextSlide, intervalTime);
+  }
+});
+
+// Auto slide
+if (auto) {
+  // Run next slide at interval time
+  slideInterval = setInterval(nextSlide, intervalTime);
+}
+
+  //settings for slider
+    var width = 720;
+    var animationSpeed = 1000;
+    var pause = 3000;
+    var currentSlide = 1;
+
+    //cache DOM elements
+    var $slider = $('#slider');
+    var $slideContainer = $('.slides', $slider);
+    var $slides = $('.slide', $slider);
+
+    var interval;
+
+    function startSlider() {
+        interval = setInterval(function() {
+            $slideContainer.animate({'margin-left': '-='+width}, animationSpeed, function() {
+                if (++currentSlide === $slides.length) {
+                    currentSlide = 1;
+                    $slideContainer.css('margin-left', 0);
+                }
+            });
+        }, pause);
+    }
+    function pauseSlider() {
+        clearInterval(interval);
+    }
+
+    $slideContainer
+        .on('mouseenter', pauseSlider)
+        .on('mouseleave', startSlider);
+
+    startSlider();
+
+   
+    $('.profile-trigger').hover(function(e){
+        
+        $('.my-account-nav').slideToggle(200, function(){ 
+            $('.arrow-icon').toggleClass('fa-chevron-up');
+        }); 
+        })
+
+    
+    
+    //My profile navbar top 
+/* let loginAreaBtn = document.querySelector('.profile-trigger'); 
+
+ loginAreaBtn.addEventListener('click', (e)=>{
+   e.preventDefault();
+    console.log('log in area');
+     document.querySelector('.my-account-nav').style.display = "block";
+ })
+
+*/
+
+    //trade nav 
     var header = document.querySelector(".trade-nav-container .nav");
     var listItems = header.getElementsByClassName("trade-nav-link");
     for (var i = 0; i < listItems.length; i++) {

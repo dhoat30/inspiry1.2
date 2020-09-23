@@ -1,3 +1,5 @@
+
+
 .top-banner{ 
     width: 100%; 
     padding: 10px 0; 
@@ -38,4 +40,37 @@
 }
 .navbar a:hover{ 
     background-color:#EFEAE5; 
+}
+
+/*login area*/ 
+.login-area a{ 
+    text-transform: capitalize;
+}
+
+/*my account navbar*/ 
+.profile-trigger{ 
+ position: relative; 
+}
+.my-account-nav{
+    background-color: #EFEAE5;
+    padding: 10px 0px 10px 0;
+    width: 150px;
+    display: none;
+    position: absolute;
+}
+.my-account-nav ul { 
+    list-style: none;
+}
+.my-account-nav li{ 
+    padding: 10px 30px 10px 10px;
+   
+}
+.my-account-nav li:hover{ 
+   background-color: #6666662a;
+
+}
+
+.my-account-nav a{ 
+    text-decoration: none;
+    color: #666666;
 }

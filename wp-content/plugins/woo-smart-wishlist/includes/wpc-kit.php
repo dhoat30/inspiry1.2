@@ -192,7 +192,7 @@ if ( ! class_exists( 'WPCleverKit' ) ) {
                                     <ul class="plugin-action-buttons">
                                         <li>
 											<?php if ( $this->is_plugin_installed( $_plugin ) ) {
-												if ( is_plugin_active( $_plugin['slug'] . '/' . $_plugin['file'] ) ) {
+												if ( $this->is_plugin_active( $_plugin ) ) {
 													?>
                                                     <a href="<?php echo esc_url( $this->deactivate_plugin_link( $_plugin ) ); ?>"
                                                        class="button deactivate-now">
@@ -236,8 +236,38 @@ if ( ! class_exists( 'WPCleverKit' ) ) {
 									-->
                                 </div>
                             </div>
-                            <div class="plugin-card-bottom">
-								<?php if ( isset( $plugin_info['rating'], $plugin_info['num_ratings'] ) ) { ?>
+							<?php if ( $this->is_plugin_installed( $_plugin, true ) ) {
+								?>
+                                <div class="plugin-card-bottom premium">
+                                    <div class="text">
+                                        <strong>✓ Premium version was installed.</strong><br/>
+                                        Please deactivate the free version when using the premium version.
+                                    </div>
+                                    <div class="btn">
+										<?php
+										if ( $this->is_plugin_active( $_plugin, true ) ) {
+											?>
+                                            <a href="<?php echo esc_url( $this->deactivate_plugin_link( $_plugin, true ) ); ?>"
+                                               class="button deactivate-now">
+												<?php esc_html_e( 'Deactivate', 'wpckit' ); ?>
+                                            </a>
+											<?php
+										} else {
+											?>
+                                            <a href="<?php echo esc_url( $this->activate_plugin_link( $_plugin, true ) ); ?>"
+                                               class="button activate-now">
+												<?php esc_html_e( 'Activate', 'wpckit' ); ?>
+                                            </a>
+											<?php
+										}
+										?>
+                                    </div>
+                                </div>
+								<?php
+							} else {
+								echo '<div class="plugin-card-bottom">';
+
+								if ( isset( $plugin_info['rating'], $plugin_info['num_ratings'] ) ) { ?>
                                     <div class="vers column-rating">
 										<?php
 										wp_star_rating(
@@ -250,27 +280,29 @@ if ( ! class_exists( 'WPCleverKit' ) ) {
 										?>
                                         <span class="num-ratings">(<?php echo esc_html( number_format_i18n( $plugin_info['num_ratings'] ) ); ?>)</span>
                                     </div>
-								<?php } ?>
+								<?php }
 
-								<?php if ( isset( $plugin_info['version'] ) ) { ?>
+								if ( isset( $plugin_info['version'] ) ) { ?>
                                     <div class="column-updated">
 										<?php echo esc_html__( 'Version', 'wpckit' ) . ' ' . $plugin_info['version']; ?>
                                     </div>
-								<?php } ?>
+								<?php }
 
-								<?php if ( isset( $plugin_info['active_installs'] ) ) { ?>
+								if ( isset( $plugin_info['active_installs'] ) ) { ?>
                                     <div class="column-downloaded">
 										<?php echo number_format_i18n( $plugin_info['active_installs'] ) . esc_html__( '+ Active Installations', 'wpckit' ); ?>
                                     </div>
-								<?php } ?>
+								<?php }
 
-								<?php if ( isset( $plugin_info['last_updated'] ) ) { ?>
+								if ( isset( $plugin_info['last_updated'] ) ) { ?>
                                     <div class="column-compatibility">
                                         <strong><?php esc_html_e( 'Last Updated:', 'wpckit' ); ?></strong>
                                         <span><?php printf( esc_html__( '%s ago', 'wpckit' ), esc_html( human_time_diff( strtotime( $plugin_info['last_updated'] ) ) ) ); ?></span>
                                     </div>
-								<?php } ?>
-                            </div>
+								<?php }
+
+								echo '</div>';
+							} ?>
                         </div>
 						<?php
 					}
@@ -284,20 +316,40 @@ if ( ! class_exists( 'WPCleverKit' ) ) {
 			<?php
 		}
 
-		public function is_plugin_installed( $plugin ) {
-			return file_exists( WP_PLUGIN_DIR . '/' . $plugin['slug'] . '/' . $plugin['file'] );
+		public function is_plugin_installed( $plugin, $premium = false ) {
+			if ( $premium ) {
+				return file_exists( WP_PLUGIN_DIR . '/' . $plugin['slug'] . '-premium/' . $plugin['file'] );
+			} else {
+				return file_exists( WP_PLUGIN_DIR . '/' . $plugin['slug'] . '/' . $plugin['file'] );
+			}
+		}
+
+		public function is_plugin_active( $plugin, $premium = false ) {
+			if ( $premium ) {
+				return is_plugin_active( $plugin['slug'] . '-premium/' . $plugin['file'] );
+			} else {
+				return is_plugin_active( $plugin['slug'] . '/' . $plugin['file'] );
+			}
 		}
 
 		public function install_plugin_link( $plugin ) {
 			return wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=' . $plugin['slug'] ), 'install-plugin_' . $plugin['slug'] );
 		}
 
-		public function activate_plugin_link( $plugin ) {
-			return wp_nonce_url( admin_url( 'admin.php?page=wpclever-kit&action=activate&plugin=' . $plugin['slug'] . '/' . $plugin['file'] . '#' . $plugin['slug'] ), 'activate-plugin_' . $plugin['slug'] . '/' . $plugin['file'] );
+		public function activate_plugin_link( $plugin, $premium = false ) {
+			if ( $premium ) {
+				return wp_nonce_url( admin_url( 'admin.php?page=wpclever-kit&action=activate&plugin=' . $plugin['slug'] . '-premium/' . $plugin['file'] . '#' . $plugin['slug'] ), 'activate-plugin_' . $plugin['slug'] . '-premium/' . $plugin['file'] );
+			} else {
+				return wp_nonce_url( admin_url( 'admin.php?page=wpclever-kit&action=activate&plugin=' . $plugin['slug'] . '/' . $plugin['file'] . '#' . $plugin['slug'] ), 'activate-plugin_' . $plugin['slug'] . '/' . $plugin['file'] );
+			}
 		}
 
-		public function deactivate_plugin_link( $plugin ) {
-			return wp_nonce_url( admin_url( 'admin.php?page=wpclever-kit&action=deactivate&plugin=' . $plugin['slug'] . '/' . $plugin['file'] . '#' . $plugin['slug'] ), 'deactivate-plugin_' . $plugin['slug'] . '/' . $plugin['file'] );
+		public function deactivate_plugin_link( $plugin, $premium = false ) {
+			if ( $premium ) {
+				return wp_nonce_url( admin_url( 'admin.php?page=wpclever-kit&action=deactivate&plugin=' . $plugin['slug'] . '-premium/' . $plugin['file'] . '#' . $plugin['slug'] ), 'deactivate-plugin_' . $plugin['slug'] . '-premium/' . $plugin['file'] );
+			} else {
+				return wp_nonce_url( admin_url( 'admin.php?page=wpclever-kit&action=deactivate&plugin=' . $plugin['slug'] . '/' . $plugin['file'] . '#' . $plugin['slug'] ), 'deactivate-plugin_' . $plugin['slug'] . '/' . $plugin['file'] );
+			}
 		}
 	}
 

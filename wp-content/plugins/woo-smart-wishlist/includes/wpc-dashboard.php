@@ -4,7 +4,7 @@ defined( 'ABSPATH' ) || exit;
 if ( ! class_exists( 'WPCleverDashboard' ) ) {
 	class WPCleverDashboard {
 		function __construct() {
-			add_action( 'wp_dashboard_setup', array( $this, 'add_dashboard_widget' ) );
+			//add_action( 'wp_dashboard_setup', array( $this, 'add_dashboard_widget' ) );
 			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 		}
 
