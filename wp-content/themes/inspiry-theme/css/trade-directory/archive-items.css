@@ -25,3 +25,22 @@
 .gd-read-more{ 
     color: #495a54;
 }
+
+/*post content*/ 
+.geodir-field-post_content{ 
+    font-family: 'work sans', sans-serif;
+}
+/*save to board styling*/ 
+.geodir-list-save-container {
+    margin: 10px 0;
+}
+
+/*meta new*/ 
+.gd-badge-meta-new{ 
+    display: none;
+}
+
+/*card spacing*/ 
+body ul.geodir-category-list-view.geodir-gridview.gridview_onethird>li {
+    margin-bottom: 50px;
+}

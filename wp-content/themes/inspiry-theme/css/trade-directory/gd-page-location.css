@@ -1,5 +1,5 @@
 ul.geodir-category-list-view>li{ 
-    border-bottom: 2px solid #EFEAE5; 
+    border-bottom: none; 
 }
 ul.geodir-category-list-view li>div{ 
     padding: 20px 0 0 0;
