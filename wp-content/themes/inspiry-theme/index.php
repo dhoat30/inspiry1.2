@@ -1,18 +1,25 @@
 <?php 
 get_header(); 
-
-  while(have_posts()){
-    the_post(); 
-    ?>
-    <div class="body-contaienr">
-      <div class="row-container">
-        <h1 class="center-align section-ft-size playfair-fonts"><?php the_title();?></h1>
-        <p><?php the_content();?></p>
-      </div>
-    </div>
-    
-    <?php
-}
-
-get_footer();
 ?>
+<div class="body-container general-page-template">
+    <div class="row-container">
+        <?php 
+            while(have_posts()){
+                the_post(); 
+                ?>
+                    <h1><?php the_title();?></h1>
+                    <div>
+                        <?php the_content();?>
+                    </div>
+
+                <?php
+            }
+        ?>
+    </div>
+</div>
+    
+
+<?php 
+    get_footer();
+?>
+

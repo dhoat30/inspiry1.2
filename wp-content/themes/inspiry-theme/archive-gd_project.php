@@ -16,11 +16,11 @@ get_header();
     </div>
       <div class='row-container white-bc row-padding'>
           <div><?php the_content();?></div>
-        
       </div>
     </div>
     
     <?php
+
 }
 
 get_footer();
