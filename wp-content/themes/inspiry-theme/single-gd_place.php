@@ -42,7 +42,9 @@ get_header();
                     <div class="header-address regular">
                         <i class="fas fa-map-marker-alt"></i>
                         <?php echo do_shortcode('[gd_post_address show="value" address_template="%%city%%"]'); ?>
-                        <?php echo do_shortcode('[wishlist_button id=$post_id]');?>
+                        <?php 
+                        $post_id = get_the_ID();
+                        echo do_shortcode('[wishlist_button id=$post_id]');?>
                     </div>
                 </div>  
 

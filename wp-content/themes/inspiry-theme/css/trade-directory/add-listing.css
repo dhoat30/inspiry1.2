@@ -1,0 +1,26 @@
+.add-listing-form{ 
+    max-width: 900px;
+    margin: 0 auto;
+}
+.add-listing-form label, input, select, li{ 
+    font-family: 'work-sans', sans-serif !important;
+}
+.add-listing-form .select2{ 
+    max-width: 900px !important;
+}
+
+.geodir-note { 
+    font-family: 'work-sans', sans-serif !important;
+}
+
+.add-listing-form .geodir_button{ 
+    color: white;
+    background: #495a54; 
+    padding: 10px 10px;
+}
+.add-listing-form .geodir_preview_button{ 
+    background: white; 
+    color: #495a54;
+    border: 1px solid #495a54;
+    text-decoration: none;
+}
