@@ -6,12 +6,21 @@ window.onload = function() {
   
 //profile navbar
    
-    $('.profile-trigger').hover(function(e){
+    $('.profile-name-value').click(function(e){
+        let user = document.querySelector('.profile-name-value').innerHTML;  
         
-        $('.my-account-nav').slideToggle(200, function(){ 
-            $('.arrow-icon').toggleClass('fa-chevron-up');
-        }); 
-        })
+        if(user.includes('LOGIN / REGISTER'))
+        { 
+            console.log('Log In'); 
+        }
+        else{ 
+            e.preventDefault(); 
+            $('.my-account-nav').slideToggle(200, function(){ 
+                $('.arrow-icon').toggleClass('fa-chevron-up');
+            }); 
+        }
+        
+})
 
     
     
@@ -22,9 +31,9 @@ window.onload = function() {
       listItems[i].addEventListener("click", function() {
       var current = document.getElementsByClassName("active-nav");
       current[0].className = current[0].className.replace(" active-nav", "");
-      this.className += " active-nav";
-      });
-    }
+        this.className += " active-nav";
+        });
+        }
 
     let tradeNavLink = document.querySelectorAll('.trade-nav-link'); 
 
@@ -111,7 +120,7 @@ laybuyCloseBtn.addEventListener('click', ()=>{
 
 
 
-//click event
+//Wallpaper Calculator click event
 
 const calculatorButton = document.querySelector('.sizing-calculator-button'); 
 const calculatorOverlay = document.querySelector('.calculator-overlay'); 

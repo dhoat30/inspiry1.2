@@ -20,17 +20,23 @@
 add_action( 'wp_enqueue_scripts', 'inspiry_scripts' ); 
 
 
- //add na menu
+ //add nav menu
  function inspiry_config(){ 
     register_nav_menus( 
        array(
           'inspiry_main_menu' => 'Inspiry Main Menu',
-          'inspiry_footer_menu' => 'Inspiry Footer Menu'
-          
+          'inspiry_footer_menu' => 'Inspiry Footer Menu', 
+          'footer-trade-menu' => 'Footer Trade Menu', 
+          'footer-help-info' => 'Footer Help & info', 
+          'footer-ideas-inspiration' => 'Footer Ideas & Inspiration', 
+          'footer-store' => 'Footer Store', 
+          'footer-ways-to-shop' => 'Footer Ways To Shop'
        )
        );  
 
        add_theme_support( 'title-tag');
+
+         add_post_type_support( 'gd_list', 'thumbnail' );      
   }
  
   add_action('after_setup_theme', 'inspiry_config', 0);
@@ -54,4 +60,7 @@ function mat_widget_areas() {
 }
 
 
+
+//post to post 
+ 
 

@@ -26,6 +26,10 @@
 .bc-link {
     color: #495a54 !important;
 }
+ .bc-wish-list-btn--new{ 
+    color: white !important; 
+    background: #495a54 !important; 
+}
 
 /*register area*/ 
 .bc-account-login__register-list li { 
@@ -47,6 +51,17 @@
 }
 .bc-account-login__form-inner a{ 
 color: #495a54 !important;
+}
+
+/*account profile area*/ 
+.bc-btn--account{ 
+    background-color: #495a54 !important ;
+    font-family: 'Playfair Display', serif !important;
+}
+
+/*address area*/ 
+.bc-account-addresses button{ 
+    color: #495a54 !important;
 }
 
 /*trade button*/ 

@@ -13,13 +13,13 @@
     <section class="header">
         <div class="top-banner beige-color-bc">
             <div class="wishlist">
-               <a href="#" class="text-decoration-none dark-grey">
+               <a href="<?php echo get_home_url().'/bigcommerce-wishlist' ?>" class="text-decoration-none dark-grey">
                <span class="dashicons dashicons-heart"></span>
                </a> 
               
             </div>
             <div class="login-area playfair-fonts font-s-regular profile-trigger ">
-                <a href="http://localhost/inspiry/login/" class="text-decoration-none dark-grey">
+                <a href="http://localhost/inspiry/login/" class="profile-name-value text-decoration-none dark-grey">
                     <?php 
                         if(is_user_logged_in()){
                             global $current_user; wp_get_current_user();  

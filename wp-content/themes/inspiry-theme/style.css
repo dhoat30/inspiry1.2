@@ -18,6 +18,9 @@
 @import "css/account.css";
 @import "css/cart.css";
 
+
+/*pages */ 
+@import "css/page.css";
 /*geo directroy styling*/ 
 @import "css/trade-directory/gd-page-location.css"; 
 @import "css/trade-directory/archive-items.css";
@@ -27,6 +30,11 @@
 @import "css/trade-directory/inspiry-trade.css";
 /*slider */ 
 @import "css/slider.css";
+
+
+/*footer*/ 
+@import "css/contact.css";
+
 * {
     box-sizing: border-box;
     padding: 0; 
@@ -40,7 +48,6 @@
 	}
     .underline-dg{ 
         border-bottom: solid 1px #444444;
-        width: 200px;
 	}
 	.body-container{
         max-width: 1600px;
@@ -50,6 +57,7 @@
     .row-container{
         width: 95%; 
         margin: 0 auto;
+        position: relative;
     }
     .full-width-paragraph-container{
         max-width: 900px; 
@@ -60,6 +68,16 @@
     }
     .row-padding{ 
         padding: 10px 20px; 
+    }
+    /*global margin*/ 
+	.margin-elements{ 
+		margin: 20px auto;
+	}
+	.margin-row{
+		margin-top: 40px;
+    }
+    .small-margin-bottom{ 
+        margin-bottom: 10px;
     }
     
 /*fonts------*/ 
@@ -122,16 +140,7 @@
         text-decoration: none;
     }
 
-/*global margin*/ 
-	.margin-elements{ 
-		margin: 20px auto;
-	}
-	.margin-row{
-		margin-top: 40px;
-    }
-    .small-margin-bottom{ 
-        margin-bottom: 10px;
-    }
+
    
 	.button{ 
 		border-bottom: none !important;
@@ -147,6 +156,12 @@
     }
     .dark-grey{ 
         color:#444444;
+    }
+    .light-grey{ 
+        color: #666;
+    }
+    .dark-green{ 
+        color: #495a54; 
     }
 	.black-bc{ 
 		background-color: black;
@@ -210,5 +225,26 @@
     visibility: hidden;
 }
 
+
+/*save button*/ 
+.geodir-list-save-container .gd-badge {
+    background-color: #fff !important;
+    color: #495a54 !important;
+    border: solid #495a54 !important;
+    transition: 0.3s ease-in-out;   
+     font-size: 16px;
+     border-radius: 0;
+
+}
+.geodir-list-save-container .gd-badge:hover {
+    background-color: #495a54 !important;
+    color: #fff !important;
+    border: solid #495a54 !important;
+}
+.gd-badge-meta-saved .gd-badge {
+    background-color: #495a54 !important;
+    color: #fff !important;
+    border: solid #495a54 !important;
+}
 
 

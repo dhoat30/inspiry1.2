@@ -1,0 +1,57 @@
+.contact-us-page{ 
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items:center;
+}
+
+.contact-us-page>div{ 
+    width:40%;
+}
+@media only screen and (max-width: 700px){ 
+    .contact-us-page>div{ 
+        width:100%;
+    }
+}
+
+/*form*/ 
+.contact-us-page input[type="button"]{ 
+  background: #495a54 !important;
+  width: 200px !important;
+  font-family: 'Playfair Display', serif !important;
+}
+.contact-us-page label{ 
+    font-weight: 500 !important;
+    font-family: 'work sans', sans-serif !important;
+  }
+  
+  .nf-form-fields-required{ 
+      display:none;
+  }
+
+/*contact info*/ 
+.contact-us-page .contact-info a{
+    font-size: 18px;
+    margin: 5px 0;
+    display: inline-block;
+}
+.contact-us-page .contact-info a:hover{
+    text-decoration: none !important;
+}
+.contact-us-page .contact-info i{ 
+    font-size: 22px;
+    padding-right: 10px;
+}
+
+/*social media*/ 
+.contact-us-page .social-media{ 
+    margin: 20px 0;
+    width: 200px;
+}
+.contact-us-page .social-media a{ 
+    font-size: 40px;
+    color: #495a54;
+    display: inline-block;
+    margin: 10px 5px 0 0; 
+}

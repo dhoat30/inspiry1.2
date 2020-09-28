@@ -43,7 +43,6 @@ use BigCommerce\Post_Types\Product\Product;
 	
 		<?php echo $price; ?>
     <?php echo $form; ?>
-    
 		<p class="availability work-sans-fonts regular-text">Availability: <span class="days">7 - 10 Days</span></p>
     
     <p class="share-section work-sans-fonts regular-text">Share: <?php echo do_shortcode( '[Sassy_Social_Share]' );?></p>

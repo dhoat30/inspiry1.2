@@ -54,3 +54,4 @@ use BigCommerce\Post_Types\Product\Product;
 		<div class="bc-ajax-add-to-cart__message-wrapper" data-js="bc-ajax-add-to-cart-message"></div>
 	<?php } ?>
 </form>
+

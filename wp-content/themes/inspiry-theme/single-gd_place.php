@@ -41,8 +41,10 @@ get_header();
                     -->
                     <div class="header-address regular">
                         <i class="fas fa-map-marker-alt"></i>
-                            
                         <?php echo do_shortcode('[gd_post_address show="value" address_template="%%city%%"]'); ?>
+                        <?php echo do_shortcode( '[gd_list_save save_icon_class="fas fa-thumbtack" saved_icon_class="fas fa-thumbtack" bg_color="#495a54" txt_color="#ffffff" size="medium"]'); ?>
+
+
                     </div>
                 </div>  
 
@@ -71,7 +73,6 @@ get_header();
         
     
         <div class="row-container trade-main-row">
-            
             <div class="trade-middle-column">
                 <div class="trade-nav-container" id="trade-nav-container">
                     <ul class="nav">
@@ -141,7 +142,6 @@ get_header();
 
         <div>
 
-            <?php  echo do_shortcode( '[gd_post_fav icon="fas fa-heart" icon_color_off="#ff3333" icon_color_on="#009e20"]');?>
         </div>
 
 
@@ -151,7 +151,9 @@ get_header();
     <?php
 }
 ?>
+<?php 
 
+?>
 <?php
 get_footer();
 ?>

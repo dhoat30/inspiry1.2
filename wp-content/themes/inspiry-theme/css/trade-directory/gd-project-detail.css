@@ -38,6 +38,21 @@
 .place-title h2 a:hover{ 
     text-decoration: underline;
 }
+.place-title .gd-badge-meta i{ 
+    font-size: 20px;
+    border-radius: 0;
+    padding: 3px;
+}
+
+
+.place-title .geodir-list-save-container { 
+    display: none;
+}
+@media only screen and (max-width: 596px){ 
+    .place-title .geodir-list-save-container { 
+        margin-left: 0px;
+    }
+}
 
 /*main content*/ 
 .project-content>div{ 

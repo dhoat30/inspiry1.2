@@ -26,9 +26,16 @@ get_header();
                             <h2 class="section-ft-size"><?php echo do_shortcode( '[gd_post_meta key="post_title" show="value-raw" no_wrap="1"]');?></h2>
                         </div>
 
-                        <div class="place-title">
-                            <?php echo do_shortcode('[gd_linked_posts link_type="to" post_type="gd_place" sort_by="az" title_tag="h3" layout="1" post_limit="1" view_all_link="0"]'); ?>
+                        <div class="trade-info-section">
+                            <div class="place-title">
+                                <?php echo do_shortcode('[gd_linked_posts link_type="to" post_type="gd_place" sort_by="az" title_tag="h3" layout="1" post_limit="1" view_all_link="0"]'); ?>
+                            </div>
+                            <div class="save-button">
+                                <?php echo do_shortcode('[gd_list_save save_icon_class="fas fa-thumbtack" saved_icon_class="fas fa-thumbtack" bg_color="#495a54" txt_color="#ffffff" size="medium"]'); ?>
+                            </div>
+
                         </div>
+                        
                         <!--
                         <div class="header-reviews">
                         <?php //echo do_shortcode("[gd_post_rating]"); ?>  
@@ -73,9 +80,7 @@ get_header();
             <div class="row-container">
                 <div class="project-gallery">
                     <h3 class="margin-row column-s-font small-margin-bottom">Gallery</h3>
-                    <?php 
-                        echo do_shortcode( '[gd_post_images type="gallery" ajax_load="1" slideshow="1" show_title="1" animation="slide" controlnav="1"]');
-                    ?>
+                    <?php echo do_shortcode('[gd_post_images type="gallery" ajax_load="1" slideshow="1" show_title="1" animation="slide" controlnav="1" link_to="lightbox"]'); ?>
                 </div>
                 
             </div>
@@ -89,6 +94,8 @@ get_header();
     <?php
 }
 ?>
+
+                                           
 
 <?php
 get_footer();
