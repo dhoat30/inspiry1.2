@@ -7,29 +7,18 @@ get_header();
             /* Backgorund Images */
    
                 .slide:first-child {
-                    background: url('https://source.unsplash.com/RyRpq9SUwAU/1600x900') no-repeat
+                    background: url('http://localhost/inspiry/wp-content/uploads/2020/09/trade-image-3.jpg') no-repeat
                     center top/cover;
                 }
                 .slide:nth-child(2) {
-                    background: url('https://source.unsplash.com/BeOW_PJjA0w/1600x900') no-repeat
+                    background: url('http://localhost/inspiry/wp-content/uploads/2020/09/trade-image-2.jpg') no-repeat
                     center top/cover;
                 }
                 .slide:nth-child(3) {
-                    background: url('https://source.unsplash.com/TMOeGZw9NY4/1600x900') no-repeat
+                    background: url('http://localhost/inspiry/wp-content/uploads/2020/09/trade-img-1.jpg') no-repeat
                     center top/cover;
                 }
-                .slide:nth-child(4) {
-                    background: url('https://source.unsplash.com/yXpA_eCbtzI/1600x900') no-repeat
-                    center top/cover;
-                }
-                .slide:nth-child(5) {
-                    background: url('https://source.unsplash.com/ULmaQh9Gvbg/1600x900') no-repeat
-                    center top/cover;
-                } 
-                .slide:nth-child(6)  {
-                    background: url('https://source.unsplash.com/ggZuL3BTSJU/1600x900') no-repeat
-                    center center/cover;
-                }
+               
         </style>
                 <div class="slider">
                     <div class="slide current">
@@ -82,7 +71,7 @@ get_header();
                     We provide a space for you and your business to create innovate and grow. 
                     Reach more people and get networking with like minded individuals all through Inspiry Trade
                 </h2>
-                <a class="bc-btn bc-btn--register trade-register-button" href='<?php echo get_home_url(). "/register-2" ?>'> Create A Trade Account</a>
+                <a class="bc-btn bc-btn--register trade-register-button" href='<?php echo get_home_url(). "/trade-registration" ?>'> Create A Trade Account</a>
 
             </div>
 
@@ -183,6 +172,72 @@ get_header();
 
 
          </div>
+
+         <script>
+        const slides = document.querySelectorAll('.slide');
+const next = document.querySelector('#next');
+const prev = document.querySelector('#prev');
+const auto = true; // Auto scroll
+const intervalTime = 5000;
+let slideInterval;
+
+const nextSlide = () => {
+  // Get current class
+  const current = document.querySelector('.current');
+  // Remove current class
+  current.classList.remove('current');
+  // Check for next slide
+  if (current.nextElementSibling) {
+    // Add current to next sibling
+    current.nextElementSibling.classList.add('current');
+  } else {
+    // Add current to start
+    slides[0].classList.add('current');
+  }
+  setTimeout(() => current.classList.remove('current'));
+};
+
+const prevSlide = () => {
+  // Get current class
+  const current = document.querySelector('.current');
+  // Remove current class
+  current.classList.remove('current');
+  // Check for prev slide
+  if (current.previousElementSibling) {
+    // Add current to prev sibling
+    current.previousElementSibling.classList.add('current');
+  } else {
+    // Add current to last
+    slides[slides.length - 1].classList.add('current');
+  }
+  setTimeout(() => current.classList.remove('current'));
+};
+
+// Button events
+next.addEventListener('click', e => {
+    console.log('clicked');
+  nextSlide();
+  if (auto) {
+    clearInterval(slideInterval);
+    slideInterval = setInterval(nextSlide, intervalTime);
+  }
+});
+
+prev.addEventListener('click', e => {
+  prevSlide();
+  if (auto) {
+    clearInterval(slideInterval);
+    slideInterval = setInterval(nextSlide, intervalTime);
+  }
+});
+
+// Auto slide
+if (auto) {
+  // Run next slide at interval time
+  slideInterval = setInterval(nextSlide, intervalTime);
+}
+
+    </script>
 
         <?php
 

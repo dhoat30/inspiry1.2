@@ -7,7 +7,6 @@ get_header();
             while(have_posts()){
                 the_post(); 
                 ?>
-                    <h1 class="section-ft-size center-align"><?php the_title();?></h1>
                     <div>
                         <?php the_content();?>
                     </div>

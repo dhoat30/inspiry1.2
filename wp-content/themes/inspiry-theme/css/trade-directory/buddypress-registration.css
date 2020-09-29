@@ -1,0 +1,29 @@
+.register-page{ 
+    width: 90%;
+    max-width: 900px;
+    margin: 50px auto 0 auto;
+    font-family: 'work-sans', sans-serif !important;
+}
+
+#buddypress #submit{ 
+    background: #495a54;
+    color: white;
+    padding: 10px 20px;
+}
+#buddypress .wp-hide-pw{ 
+
+    padding: 10px  10px !important;
+    border: none
+}
+
+.buddypress-wrap .bp-feedback.info .bp-icon:before{ 
+    background-color: #495a54;
+}
+.buddypress-wrap .bp-feedback.info .bp-icon{ 
+    background-color: #495a54;
+
+}
+
+#buddypress h2, legend{ 
+    font-family: 'work-sans', sans-serif;
+}

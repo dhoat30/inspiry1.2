@@ -1,3 +1,7 @@
+/*ged notification*/ 
+.gd-notification{ 
+    background: #495a54; 
+}
 .add-listing-form{ 
     max-width: 900px;
     margin: 0 auto;

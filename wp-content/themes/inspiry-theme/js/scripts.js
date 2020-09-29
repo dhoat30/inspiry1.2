@@ -3,24 +3,34 @@ let $ = jQuery;
 
 
 window.onload = function() {
+    
+   
+   
+    
   
 //profile navbar
-   
-    $('.profile-name-value').click(function(e){
-        let user = document.querySelector('.profile-name-value').innerHTML;  
-        
-        if(user.includes('LOGIN / REGISTER'))
-        { 
-            console.log('Log In'); 
-        }
-        else{ 
-            e.preventDefault(); 
-            $('.my-account-nav').slideToggle(200, function(){ 
-                $('.arrow-icon').toggleClass('fa-chevron-up');
-            }); 
-        }
-        
-})
+   let profileNavbar = {
+       eventListener: function (){ 
+        $('.profile-name-value').click(function(e){
+            let user = document.querySelector('.profile-name-value').innerHTML;  
+            console.log("click working");
+            if(user.includes('LOGIN / REGISTER'))
+            { 
+                console.log('Log In'); 
+            }
+            else{ 
+                e.preventDefault(); 
+                $('.my-account-nav').slideToggle(200, function(){ 
+                    $('.arrow-icon').toggleClass('fa-chevron-up');
+                }); 
+            }
+            
+    })
+       }
+   }
+
+   profileNavbar.eventListener();
+    
 
     
     
@@ -334,4 +344,9 @@ wishlistBtn.addEventListener('click', ()=>{
     ulList.classList.toggle('bc-show-lists');
     console.log('clicked');
 })*/
+
+
+//buddypress removal of a strin
+
+
 
