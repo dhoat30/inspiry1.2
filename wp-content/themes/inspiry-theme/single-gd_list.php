@@ -6,7 +6,7 @@ while(have_posts()){
 ?>  
   <div class="body-container">
     <div class="row-container"></div>
-      <h1 class="section-ft-size center-align"> <?php the_title(); ?></h1>
+      <h1 class="section-ft-size center-align margin-elements"> <?php the_title(); ?></h1>
       
       <div><?php the_content();?></div>
   </div>

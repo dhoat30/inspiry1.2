@@ -1,0 +1,11 @@
+.geodir-category-list-view>li{ 
+    width: 300px !important;
+}
+
+.geodir-list-loop-container{ 
+    width: 95%;
+    margin: 0 auto;
+}
+.geodir-list-loop-actions-container a{ 
+    color: #495a54;
+}

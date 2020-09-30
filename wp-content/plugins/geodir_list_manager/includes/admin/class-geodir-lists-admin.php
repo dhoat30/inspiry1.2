@@ -96,7 +96,9 @@ class GeoDir_Lists_Admin {
                     'admin_box' => array(
                         'show' => 'to',
                         'context' => 'side'
-                    )
+                    ),
+                    'duplicate_connections' => true,
+                    
                 )
             );
         }
