@@ -46,6 +46,8 @@ add_action( 'wp_enqueue_scripts', 'inspiry_scripts' );
    show_admin_bar( false );
 }
 //sidebar
+
+
 add_action( 'widgets_init', 'mat_widget_areas' );
 function mat_widget_areas() {
     register_sidebar( array(
@@ -61,6 +63,39 @@ function mat_widget_areas() {
 
 
 
-//post to post 
+//custom post register
+add_filter( 'register_post_type_args', 'add_hierarchy_support', 10, 2 );
+function add_hierarchy_support( $args, $post_type ){
+
+    if ($post_type === 'boards') { // <-- enter desired post type here
+
+        $args['hierarchical'] = true;
+        $args['supports'] = array_merge($args['supports'], array ('page-attributes') );
+    }
+
+    return $args;
+}
+
+add_theme_support('post-thumbnails');
+add_post_type_support( 'boards', 'thumbnail' ); 
+function register_custom_type(){ 
+   register_post_type('boards', array(
+      'supports' => array('title', 'thumbnail', 'page-attributes', 'editor'), 
+      'public' => true, 
+      "show_ui" => true, 
+      'labels' => array(
+         'name' => 'Boards', 
+         'add_new_item' => 'Add New Board', 
+         'edit_item' => 'Edit Board', 
+         'all_items' => 'All Boards', 
+         'singular_name' => 'Note'
+      ), 
+      'menu_icon' => 'dashicons-heart'
+   )
+   ); 
+}
+
+add_action('init', 'register_custom_type'); 
+
  
 

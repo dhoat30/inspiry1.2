@@ -1,8 +1,24 @@
 <?php 
 get_header(); 
+?>
+<?php 
+//wp query to get parent title of boards 
 
+$boardLoop = new WP_Query(array(
+    'post_type' => 'boards', 
+    'post_parent' => 0
+));
 
+while($boardLoop->have_posts()){
+    $boardLoop->the_post(); 
+    
+    ?> 
 
+<?php 
+}
+?>
+
+<?php 
   while(have_posts()){
     the_post(); 
     ?>
@@ -30,9 +46,36 @@ get_header();
                             <div class="place-title">
                                 <?php echo do_shortcode('[gd_linked_posts link_type="to" post_type="gd_place" sort_by="az" title_tag="h3" layout="1" post_limit="1" view_all_link="0"]'); ?>
                             </div>
+
+                            <!--save button --> 
                             <div class="save-button">
                                 <?php echo do_shortcode('[gd_list_save save_icon_class="fas fa-thumbtack" saved_icon_class="fas fa-thumbtack" bg_color="#495a54" txt_color="#ffffff" size="medium"]'); ?>
                             </div>
+
+                            <!--custom board post ui-->
+                            
+
+                            <div class="design-board-save-btn-container">
+                                <i class="far fa-heart open-board-container"></i>
+                            </div>
+
+                            <div class="choose-board-container">
+                                    <div class="choose-board">Choose Board</div>
+                                    <div class="close-icon">X</div>
+                                    <ul class="board-list">
+                                        <?php 
+                                            while($boardLoop->have_posts()){ 
+                                                $boardLoop->the_post(); 
+                                                ?>
+                                                        <li><?php the_title();?></li>
+
+                                                <?php
+                                                wp_reset_postdata(  );
+                                            }
+                                        ?>
+                                    </ul>
+                                    <div class="create-new-board"><span>+</span> Create New Board</div>
+                                </div>
 
                         </div>
                         

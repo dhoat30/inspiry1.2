@@ -3,12 +3,39 @@ let $ = jQuery;
 
 
 window.onload = function() {
-    
-   
-   
-    
+    //Design board save button
+    class DesignBoardSaveBtn{ 
+        constructor(){ 
+            this.heartBtn = $('.design-board-save-btn-container .open-board-container');
+            this.closeIcon = $('.close-icon'); 
+           this.events(); 
+        }
+        //events
+        events(){ 
+            console.log('running events'); 
+            //show choose board container
+            this.heartBtn.on('click', this.showChooseBoardContainer); 
+            //hide choose board container
+            this.closeIcon.on('click', this.hideChooseBoardContainer)
+        }
+
+        //functions 
+        showChooseBoardContainer(){ 
+            $('.choose-board-container').slideDown();
+        }
+
+        //hide container function 
+        hideChooseBoardContainer(){ 
+            $('.choose-board-container').slideUp();
+
+        }
+    }
+
+    const designBoardSaveBtn = new DesignBoardSaveBtn();
   
 //profile navbar
+
+
    let profileNavbar = {
        eventListener: function (){ 
         $('.profile-name-value').click(function(e){
@@ -35,6 +62,7 @@ window.onload = function() {
     
     
     //trade nav 
+    
     var header = document.querySelector(".trade-nav-container .nav");
     var listItems = header.getElementsByClassName("trade-nav-link");
     for (var i = 0; i < listItems.length; i++) {
@@ -83,10 +111,20 @@ window.onload = function() {
 }
 
 //wishlist
-let aClick = document.querySelectorAll('.bc-wish-list-item-anchor');
+class WishlistAjax{
+    constructor(){ 
+        console.log('Wishlist Ajax');
+        this.aClick = document.querySelectorAll('.bc-wish-list-item-anchor');
+        this.events();
+    }
 
-aClick.forEach((val)=>{
-    val.addEventListener('click', (e)=>{
+    //events 
+    events(){
+        this.aClick.addEventListener('click', this.runAjax); 
+    }
+
+    //functions
+    runAjax(){ 
         e.preventDefault(); 
        
         let wishURL = e.path[0].href; 
@@ -111,22 +149,41 @@ aClick.forEach((val)=>{
 
     
         xhr.send();
+    }
+}
+
+const wishlistAjax = new WishlistAjax();
     
-    })
-})
 
 
 //laybuy event 
-let laybuyBtn = document.querySelector('.lay-buy-open'); 
-laybuyBtn.addEventListener('click', ()=>{
-    console.log('laybuy clicked');
-    document.getElementById('laybuy-popup').style.display ="flex"; 
-});
+class Laybuy{
+    constructor(){ 
+        this.laybuyBtn = document.querySelector('.lay-buy-open'); 
+        this.laybuyCloseBtn = document.querySelector('.close-laybuy');
+        this.events(); 
+    }
 
-let laybuyCloseBtn = document.querySelector('.close-laybuy'); 
-laybuyCloseBtn.addEventListener('click', ()=>{
-    document.getElementById('laybuy-popup').style.display ="none";
-})
+    events(){ 
+        this.laybuyBtn.addEventListener('click', this.openLaybuy); 
+        this.laybuyCloseBtn.addEventListener('click', this.closeLaybuy); 
+    } 
+
+    openLaybuy(){ 
+        console.log('laybuy clicked');
+        document.getElementById('laybuy-popup').style.display ="flex"; 
+    }
+
+    closeLaybuy(){ 
+        document.getElementById('laybuy-popup').style.display ="none";
+    }
+}
+
+const laybuy = new Laybuy();
+
+
+
+
 
 
 
