@@ -9,6 +9,7 @@
  */
 
  //enqueue scripts
+
  function inspiry_scripts(){ 
    wp_enqueue_script('jquery');
    wp_enqueue_style( 'inspiry-style', get_theme_file_uri('/style.css' ), array(), filemtime(get_template_directory().'/style.css'), 'all' ); //delete version 
@@ -16,6 +17,10 @@
 
    wp_enqueue_script('main', get_template_directory_uri() . '/js/scripts.js', array('jquery'), '1.0', true);
 
+   wp_localize_script('main', 'inspiryData', array(
+      'root_url' => get_site_url(),
+      'nonce' => wp_create_nonce('wp_rest')
+    ));
 }
 add_action( 'wp_enqueue_scripts', 'inspiry_scripts' ); 
 
@@ -64,25 +69,15 @@ function mat_widget_areas() {
 
 
 //custom post register
-add_filter( 'register_post_type_args', 'add_hierarchy_support', 10, 2 );
-function add_hierarchy_support( $args, $post_type ){
-
-    if ($post_type === 'boards') { // <-- enter desired post type here
-
-        $args['hierarchical'] = true;
-        $args['supports'] = array_merge($args['supports'], array ('page-attributes') );
-    }
-
-    return $args;
-}
 
 add_theme_support('post-thumbnails');
 add_post_type_support( 'boards', 'thumbnail' ); 
 function register_custom_type(){ 
    register_post_type('boards', array(
-      'supports' => array('title', 'thumbnail', 'page-attributes', 'editor'), 
+      'supports' => array('title', 'page-attributes'), 
       'public' => true, 
       "show_ui" => true, 
+      'hierarchical' => true,
       'labels' => array(
          'name' => 'Boards', 
          'add_new_item' => 'Add New Board', 
@@ -91,11 +86,50 @@ function register_custom_type(){
          'singular_name' => 'Note'
       ), 
       'menu_icon' => 'dashicons-heart'
+      
    )
    ); 
 }
 
 add_action('init', 'register_custom_type'); 
 
- 
+ //make private page parent/child
+ add_filter('page_attributes_dropdown_pages_args', 'my_attributes_dropdown_pages_args', 1, 1);
+
+function my_attributes_dropdown_pages_args($dropdown_args) {
+
+    $dropdown_args['post_status'] = array('publish','draft', 'private');
+
+    return $dropdown_args;
+}
+
+
+
+//routes
+
+add_action('rest_api_init', 'inspiry_board_route');
+
+function inspiry_board_route(){ 
+    register_rest_route('inspiry/v1/', 'manageBoard', array(
+        'methods' => 'POST',
+        'callback' => 'createBoard'
+    ));
+
+    register_rest_route('inspiry/v1/', 'manageBoard', array(
+        'methods' => 'DELETE',
+        'callback' => 'deleteBoard'
+    ));
+}
+
+function createBoard(){ 
+   wp_insert_post(array(
+      'post_type' => 'boards', 
+      'post_status' => 'private', 
+      'post_title' => 'Save Board Post'
+  )); 
+}
+
+function deleteBoard(){ 
+    return 'Thanks for deleting a board';
+}
 

@@ -3,12 +3,17 @@ let $ = jQuery;
 
 
 window.onload = function() {
+
+   
     //Design board save button
     class DesignBoardSaveBtn{ 
         constructor(){ 
             this.heartBtn = $('.design-board-save-btn-container .open-board-container');
-            this.closeIcon = $('.close-icon'); 
+            this.closeIcon = $('.choose-board-container .close-icon'); 
+            this.createBoard = $('.choose-board-container .create-new-board'); 
+
            this.events(); 
+           this.fillHeartIcon(); 
         }
         //events
         events(){ 
@@ -16,7 +21,10 @@ window.onload = function() {
             //show choose board container
             this.heartBtn.on('click', this.showChooseBoardContainer); 
             //hide choose board container
-            this.closeIcon.on('click', this.hideChooseBoardContainer)
+            this.closeIcon.on('click', this.hideChooseBoardContainer); 
+            //create a board
+            this.createBoard.on('click', this.createBoardFunc); 
+            
         }
 
         //functions 
@@ -28,6 +36,32 @@ window.onload = function() {
         hideChooseBoardContainer(){ 
             $('.choose-board-container').slideUp();
 
+        }
+
+        //fill heart icon
+        fillHeartIcon(){
+            if(this.heartBtn.data('exists') == 'yes'){ 
+                this.heartBtn.addClass('fas fa-heart');
+            } 
+    
+        }
+
+        //create board function 
+        createBoardFunc(){ 
+            console.log('create board');
+            $.ajax({
+                url: inspiryData.root_url + '/wp-json/inspiry/v1/manageBoard',
+                type: 'POST', 
+                success: (response)=>{
+                    console.log('pass post request 2');
+
+                    console.log(response)
+                }, 
+                error: (response)=>{
+                    console.log('failed post request');
+                    console.log(response)
+                }
+            })
         }
     }
 

@@ -60,3 +60,76 @@
 }
 
 /*gallery*/ 
+
+
+/*board save button area*/ 
+
+.design-board-save-btn-container i{ 
+    font-size: 30px;
+    cursor: pointer;
+    color: red;
+
+}
+
+.choose-board-container{ 
+    margin: 20px 0;
+    display: none;
+    position: relative;
+    width: 220px;
+    box-shadow: 3px 3px 20px 1px rgba(0,0,0,0.2);
+}
+.choose-board-container .choose-board{ 
+    border-bottom: 1px solid #495a54;
+    padding: 10px 10px;
+    font-weight: 600;
+}
+.choose-board-container .close-icon{ 
+    font-size: 20px;
+    font-family: 'work-sans',sans-serif;
+    position: absolute;
+     top: 10px; 
+     right: 10px;
+     font-weight: 200;
+     cursor: pointer;
+}
+
+.choose-board-container ul {
+    padding: 10px 10px;
+        list-style: none;
+        font-size: 14px;
+        min-height: 150px;
+}
+.choose-board-container ul li{ 
+    cursor: pointer;
+}
+
+.choose-board-container .create-new-board{ 
+    border-top: 1px solid #495a54;
+    padding:0 10px 10px 10px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 0;
+    cursor: pointer;
+ 
+}
+.choose-board-container .create-new-board span{ 
+    font-size: 30px;
+    position: relative;
+    font-weight: 200;
+    top: 4px;
+}
+
+
+/*board from*/ 
+.new-board-form-container{ 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    max-width: 500px;
+    transform: translate(-50%, -50%); 
+    background: white;
+}
+.new-board-form-container .form-title{ 
+    padding: 10px 20px;
+}
+

@@ -53,10 +53,28 @@ while($boardLoop->have_posts()){
                             </div>
 
                             <!--custom board post ui-->
-                            
+                            <?php 
+                                $existStatus = 'no'; 
+
+                                $existQuery = new WP_Query(array(
+                                    'author' => get_current_user_id(), 
+                                    'post_type' => 'boards', 
+                                    'meta_query' => array(
+                                        array(
+                                            'key' => 'saved_project_id', 
+                                            'compare' => '=', 
+                                            'value' => get_the_id()
+                                        )
+                                    )
+                                )); 
+
+                                if($existQuery->found_posts){ 
+                                    $existStatus = 'yes'; 
+                                }
+                            ?>
 
                             <div class="design-board-save-btn-container">
-                                <i class="far fa-heart open-board-container"></i>
+                                <i data-exists='<?php echo $existStatus?>' class="far fa-heart open-board-container" ></i>
                             </div>
 
                             <div class="choose-board-container">
@@ -138,6 +156,24 @@ while($boardLoop->have_posts()){
 }
 ?>
 
+<div class="new-board-form-container"> 
+    <div class="work-sans-fonts regular form-title font-s-med">Create Board</div>
+    <div class="form-underline"></div>
+    <div class="form">
+        <form id="new-board-form">
+            <label for="name">Give your board a title*</label>
+            <input type="text" name="board-name" id="board-name">
+            <label for="description">Description</label>
+            <textarea name="board-description" id="board-description" cols="30" rows="10"></textarea>
+            <div class="form-underline"></div>
+            <div class="btn-container">
+            <button type="button" class="cancel-btn"> Cancel</button>
+            <button type="submit" class="save-btn"> Save</button>
+
+            </div>
+        </form>
+    </div>
+</div>
                                            
 
 <?php
