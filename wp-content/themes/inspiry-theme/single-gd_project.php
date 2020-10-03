@@ -38,7 +38,8 @@ while($boardLoop->have_posts()){
                         yoast_breadcrumb( '<p id="breadcrumbs">','</p>' );
                         }
                         ?>
-                        <div class="header-title">
+                       
+                        <div class="header-title" data-postid='<?php echo get_the_id()?>'>
                             <h2 class="section-ft-size"><?php echo do_shortcode( '[gd_post_meta key="post_title" show="value-raw" no_wrap="1"]');?></h2>
                         </div>
 
@@ -85,7 +86,9 @@ while($boardLoop->have_posts()){
                                             while($boardLoop->have_posts()){ 
                                                 $boardLoop->the_post(); 
                                                 ?>
-                                                        <li><?php the_title();?></li>
+                                                        <li class="board-list-item" data-boardID='<?php echo get_the_id(); ?>'><?php 
+                                                            
+                                                        the_title();?></li>
 
                                                 <?php
                                                 wp_reset_postdata(  );
@@ -155,23 +158,25 @@ while($boardLoop->have_posts()){
     <?php
 }
 ?>
+<div class="project-save-form-section">
+   
+    <div class="project-save-form-container"> 
+        <div class="work-sans-fonts regular form-title font-s-med">Create Board</div>
+        <div class="form-underline"></div>
+        <div class="form">
+            <form id="new-board-form">
+                <label for="name">Give your board a title*</label>
+                <input type="text" name="board-name" id="board-name">
+                <label for="description">Description</label>
+                <textarea name="board-description" id="board-description" cols="30" rows="10"></textarea>
+                
+                <div class="btn-container">
+                    <button type="button" class="cancel-btn btn"> Cancel</button>
+                    <button type="submit" class="save-btn btn btn-dk-green"> Save</button>
 
-<div class="new-board-form-container"> 
-    <div class="work-sans-fonts regular form-title font-s-med">Create Board</div>
-    <div class="form-underline"></div>
-    <div class="form">
-        <form id="new-board-form">
-            <label for="name">Give your board a title*</label>
-            <input type="text" name="board-name" id="board-name">
-            <label for="description">Description</label>
-            <textarea name="board-description" id="board-description" cols="30" rows="10"></textarea>
-            <div class="form-underline"></div>
-            <div class="btn-container">
-            <button type="button" class="cancel-btn"> Cancel</button>
-            <button type="submit" class="save-btn"> Save</button>
-
-            </div>
-        </form>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
                                            

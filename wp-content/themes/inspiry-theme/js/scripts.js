@@ -10,10 +10,11 @@ window.onload = function() {
         constructor(){ 
             this.heartBtn = $('.design-board-save-btn-container .open-board-container');
             this.closeIcon = $('.choose-board-container .close-icon'); 
-            this.createBoard = $('.choose-board-container .create-new-board'); 
-
+            this.showCreateBoardForm = $('.choose-board-container .create-new-board'); 
+            this.boardListItems = $('.choose-board-container .board-list li'); 
            this.events(); 
            this.fillHeartIcon(); 
+         
         }
         //events
         events(){ 
@@ -22,9 +23,16 @@ window.onload = function() {
             this.heartBtn.on('click', this.showChooseBoardContainer); 
             //hide choose board container
             this.closeIcon.on('click', this.hideChooseBoardContainer); 
-            //create a board
-            this.createBoard.on('click', this.createBoardFunc); 
-            
+            //show a board form
+            this.showCreateBoardForm.on('click', this.showForm); 
+            //hide a board form
+            $('.project-save-form-section .cancel-btn').on('click', this.hideForm);
+
+            //create a new board 
+            $('.project-save-form-section .save-btn').on('click', this.createBoardFunc);
+
+            //add to a board
+            this.boardListItems.on('click', this.addToBoard.bind(this)); 
         }
 
         //functions 
@@ -46,23 +54,123 @@ window.onload = function() {
     
         }
 
-        //create board function 
-        createBoardFunc(){ 
-            console.log('create board');
-            $.ajax({
-                url: inspiryData.root_url + '/wp-json/inspiry/v1/manageBoard',
-                type: 'POST', 
-                success: (response)=>{
-                    console.log('pass post request 2');
+        //show create boad form
+        showForm(){ 
+            $('.project-save-form-section').show();
+        }
 
-                    console.log(response)
+        hideForm(){ 
+            $('.project-save-form-section').hide();
+        }
+
+        //add project to board
+        addToBoard(e){
+            let boardID = e.delegateTarget.dataset.boardid; 
+            let postID = $('.project-detail-page .header-title').data('postid'); 
+            let postTitle = $('.project-detail-page .header-title h2').html(); 
+            
+            $.ajax({
+                beforeSend: (xhr)=>{
+                    xhr.setRequestHeader('X-WP-NONCE', inspiryData.nonce)
+                },
+                url: inspiryData.root_url + '/wp-json/inspiry/v1/addToBoard',
+                type: 'POST', 
+                data: {
+                    'board-id': boardID, 
+                    'post-id': postID, 
+                    'post-title': postTitle
+                },
+                success: (response)=>{
+                    console.log('this is a success area')
+                    if(response){ 
+                        console.log(response);
+                       
+                    }
                 }, 
                 error: (response)=>{
-                    console.log('failed post request');
+                    console.log('this is an error');
                     console.log(response)
                 }
-            })
+            });
+
+           
         }
+
+        demo(){ 
+            console.log( 'this is demo function '); 
+        }
+        //create board function 
+        createBoardFunc(e){ 
+
+            let boardName = $('#board-name').val(); 
+           
+            e.preventDefault();
+            $.ajax({
+                beforeSend: (xhr)=>{
+                    xhr.setRequestHeader('X-WP-NONCE', inspiryData.nonce)
+                },
+                url: inspiryData.root_url + '/wp-json/inspiry/v1/manageBoard',
+                type: 'POST', 
+                data: {
+                    'board-name': boardName
+                },
+                success: (response)=>{
+                    console.log('this is a success area')
+                    if(response){ 
+                        console.log(response);
+                        //show the list board name in the list 
+                        $('.choose-board-container .board-list').append(`<li data-board-id=${response}>${boardName}</li>`);
+                        //hide the form
+                        $('.project-save-form-section').hide();   
+
+                        function addToBoard2(){
+                            
+                            let postID = $('.project-detail-page .header-title').data('postid'); 
+                            let postTitle = $('.project-detail-page .header-title h2').html(); 
+                            
+                            $.ajax({
+                                beforeSend: (xhr)=>{
+                                    xhr.setRequestHeader('X-WP-NONCE', inspiryData.nonce)
+                                },
+                                url: inspiryData.root_url + '/wp-json/inspiry/v1/addToBoard',
+                                type: 'POST', 
+                                data: {
+                                    'board-id': response, 
+                                    'post-id': postID, 
+                                    'post-title': postTitle
+                                },
+                                success: (response)=>{
+                                    console.log('this is a success area')
+                                    if(response){ 
+                                        console.log(response);
+                                       
+                                    }
+                                }, 
+                                error: (response)=>{
+                                    console.log('this is an error');
+                                    console.log(response)
+                                }
+                            });
+                
+                        }
+
+                        addToBoard2();
+
+
+                
+                      
+
+                       
+                    }
+                }, 
+                error: (response)=>{
+                    console.log('this is an error');
+                    console.log(response)
+                }
+            });
+            
+        }
+        
     }
 
     const designBoardSaveBtn = new DesignBoardSaveBtn();

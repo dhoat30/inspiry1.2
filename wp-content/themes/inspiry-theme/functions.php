@@ -104,6 +104,12 @@ function my_attributes_dropdown_pages_args($dropdown_args) {
 }
 
 
+// remove "Private: " from titles
+function remove_private_prefix($title) {
+	$title = str_replace('Private: ', '', $title);
+	return $title;
+}
+add_filter('the_title', 'remove_private_prefix');
 
 //routes
 
@@ -115,18 +121,61 @@ function inspiry_board_route(){
         'callback' => 'createBoard'
     ));
 
+    register_rest_route('inspiry/v1/', 'addToBoard', array(
+      'methods' => 'POST',
+      'callback' => 'addProjectToBoard'
+  ));
+
     register_rest_route('inspiry/v1/', 'manageBoard', array(
         'methods' => 'DELETE',
         'callback' => 'deleteBoard'
     ));
 }
 
-function createBoard(){ 
-   wp_insert_post(array(
-      'post_type' => 'boards', 
-      'post_status' => 'private', 
-      'post_title' => 'Save Board Post'
+function createBoard($data){ 
+   if(is_user_logged_in()){
+      $boardName = sanitize_text_field($data['board-name']);
+      
+      return wp_insert_post(array(
+         'post_type' => 'boards', 
+         'post_status' => 'private', 
+         'post_title' => $boardName
   )); 
+
+
+   }
+   else{
+      die('Only logged in users can create a board');
+   }
+   
+  
+}
+
+function addProjectToBoard($data){ 
+  
+   
+   if(is_user_logged_in()){
+     
+      $projectID = sanitize_text_field($data['post-id']);
+      $boardID = sanitize_text_field($data['board-id']);
+      $postTitle = sanitize_text_field($data['post-title']);
+      
+      return wp_insert_post(array(
+         'post_type' => 'boards', 
+         'post_status' => 'private', 
+         'post_title' => $postTitle,
+         'post_parent' => $boardID, 
+         'meta_input' => array(
+            'saved_project_id' => $projectID
+         )
+  )); 
+
+
+   }
+   else{
+      die('Only logged in users can create a board');
+   }
+   
 }
 
 function deleteBoard(){ 
