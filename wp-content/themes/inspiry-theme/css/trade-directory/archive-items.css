@@ -1,7 +1,7 @@
 
 
 .geodir-entry-title a{ 
-    color: #495a54 !important; 
+    color: #708393 !important; 
     font-size: 20px;
     padding-bottom: 5px;
     display: inline-block;
@@ -12,14 +12,14 @@
     text-decoration: underline;
 }
 .geodir-field-business_hours>span {
-    color: #495a54;
+    color: #708393;
     font-size: 15px; 
     font-family: 'Work Sans', sans-serif !important;
 
 }
 
 .gd-list-rating-link{ 
-    color: #495a54;
+    color: #708393;
 }
 
 .geodir-field-address>span{ 
@@ -28,7 +28,7 @@
     letter-spacing: 1px;
 }
 .gd-read-more{ 
-    color: #495a54;
+    color: #708393;
 }
 
 /*post content*/ 

@@ -11,6 +11,14 @@
 }
 
 /*title */ 
+.project-detail-page .geodir_locations {
+    height: 30px;
+}
+.project-detail-page .place-title h2 a {
+    min-width: 300px;
+    text-decoration: none;
+    width: 500px;
+}
 .project-header-section .header-middle-column{ 
     margin: 50px 0 !important;
 }
@@ -24,7 +32,7 @@
 .place-title .geodir-post-address-container{ 
     display: none; 
 }
-.place-title .gd-badge-meta-new { 
+.place-title .gd-badge-meta { 
     display: none;
 }
 .place-title ul.geodir-category-list-view>li {
@@ -38,25 +46,18 @@
 .place-title h2 a:hover{ 
     text-decoration: underline;
 }
-.place-title .gd-badge-meta i{ 
-    font-size: 20px;
-    border-radius: 0;
-    padding: 3px;
-}
 
-
-.place-title .geodir-list-save-container { 
-    display: none;
+/*trade info*/ 
+.project-detail-page .trade-info-section .share-icon{ 
+    margin: 10px 0; 
+    font-family: 'work-sans', sans-serif;
 }
-@media only screen and (max-width: 596px){ 
-    .place-title .geodir-list-save-container { 
-        margin-left: 0px;
-    }
-}
-
 /*main content*/ 
 .project-content>div{ 
     font-family:"work-sans", sans-serif;
+}
+.project-detail-page .project-main-row{ 
+    margin-top: -30px;
 }
 
 /*board loader*/ 

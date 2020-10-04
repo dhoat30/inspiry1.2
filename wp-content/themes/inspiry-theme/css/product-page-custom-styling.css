@@ -67,7 +67,7 @@
     margin-top: 20px;
 }
 .bc-btn--add_to_cart{ 
-    background-color: #495a54 !important;
+    background-color: #708393 !important;
 }
 
 /*wishlist*/ 
@@ -82,21 +82,21 @@
     align-items: center;
     max-width: 100%;
     background-color: #f5f5f5;
-    border: 1px solid #495a54;
-    color: #495a54;
+    border: 1px solid #708393;
+    color: #708393;
     transition: opacity .3s ease;
     text-align: left;
     margin-top: 20px;
 }
 
 .bc-wish-list-item-anchor{ 
-    color:#495a54!important;
+    color:#708393!important;
     font-size: 16px !important;
     display: inline-block;
     margin-bottom: 10px;
 }
 .bc-wish-list-btn--new{ 
-    color: #495a54 !important;
+    color: #708393 !important;
 }
 
 

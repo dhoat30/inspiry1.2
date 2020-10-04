@@ -1,0 +1,148 @@
+/*board save button area*/ 
+
+.design-board-save-btn-container i{ 
+    font-size: 40px;
+    
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    color: #C09F93;
+}
+.design-board-save-btn-container i:hover{ 
+    background:#FFF1EB;
+   
+}
+
+.choose-board-container{ 
+    margin: 20px 0;
+    display: none;
+    position: relative;
+    width: 450px;
+    box-shadow: 3px 3px 20px 1px rgba(0,0,0,0.2);
+}
+.choose-board-container .choose-board{ 
+    border-bottom: 1px solid #708393;
+    padding: 10px 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.choose-board-container .close-icon{ 
+    font-size: 20px;
+    font-family: 'work-sans',sans-serif;
+    position: absolute;
+     top: 10px; 
+     right: 10px;
+     font-weight: 200;
+     cursor: pointer;
+}
+
+.choose-board-container ul {
+    padding: 10px 0px;
+    list-style: none;
+    font-size: 14px;
+    min-height: 150px;
+    height: 200px;
+    overflow: scroll;
+
+}
+.choose-board-container ul li{ 
+    cursor: pointer;
+    padding: 10px 10px;
+    font-size: 18px;
+
+    cursor: pointer;
+}
+.choose-board-container ul li:hover{ 
+    color: #708393;
+}
+
+.choose-board-container .create-new-board{ 
+    border-top: 1px solid black;
+    padding:0 10px 10px 10px;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 0;
+    cursor: pointer;
+    background:#FFF1EB;
+    letter-spacing: 1px;
+    
+ 
+}
+.choose-board-container .create-new-board span{ 
+    font-size: 40px;
+    position: relative;
+    font-weight: 200;
+    top: 4px;
+    left: 1;
+    border-radius: 50%;
+    background: #C09F93;
+    padding: 0px 10px;
+    margin-right: 10px;
+    font-weight: 400;
+    color: black;
+    letter-spacing: 1px;
+}
+
+/*board form*/ 
+.project-save-form-section{ 
+    position: fixed;
+    top: 0; 
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.3);
+    width: 100%;
+    height: 100vh;
+    z-index: 1000;
+    display: none;
+}
+.project-save-form-container{ 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    max-width: 500px;
+    transform: translate(-50%, -50%); 
+    background: white;
+    z-index: 1500;
+}
+
+
+
+.project-save-form-container .form-title{ 
+    padding: 20px 20px;
+}
+.project-save-form-container .form-underline{ 
+    border-top: 1px solid #708393;
+    opacity: 50%;
+}
+.project-save-form-container form{ 
+    padding: 10px 20px 30px 20px; 
+}
+
+.project-save-form-container form input, label{ 
+    display: block;
+}
+.project-save-form-container form label{ 
+    margin: 20px 0 5px 0;
+    font-family: 'work-sans', sans-serif;
+    font-weight: 300;
+}
+.project-save-form-container form input{ 
+    width: 300px;
+    height: 40px;
+    padding: 5px;
+    font-family: 'work-sans', sans-serif;
+}
+.project-save-form-container form textarea{ 
+    border: 1px solid #708393 !important;
+    width: 300px;
+    padding: 5px;
+    font-family: 'work-sans', sans-serif;
+}
+.project-save-form-container .btn-container{ 
+    display: flex; 
+    flex-direction: row;
+    flex-wrap: wrap-reverse;
+    margin-top: 30px;
+}

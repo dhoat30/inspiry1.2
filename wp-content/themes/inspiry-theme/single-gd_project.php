@@ -47,8 +47,10 @@ while($boardLoop->have_posts()){
                             <div class="place-title">
                                 <?php echo do_shortcode('[gd_linked_posts link_type="to" post_type="gd_place" sort_by="az" title_tag="h3" layout="1" post_limit="1" view_all_link="0"]'); ?>
                             </div>
+                            <div class="share-icon">
+                                Share: <?php echo do_shortcode('[Sassy_Social_Share]');?>
 
-                            
+                            </div>
                             <!--custom board post ui-->
                             <?php 
                                 $existStatus = 'no'; 
@@ -78,7 +80,6 @@ while($boardLoop->have_posts()){
                                 <i data-exists='<?php echo $existStatus?>' class="far fa-heart open-board-container" ></i>
                             </div>
                             
-
 
                             <div class="choose-board-container">
                                     <div class="choose-board">Choose Board</div>

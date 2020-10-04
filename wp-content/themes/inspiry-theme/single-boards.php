@@ -36,6 +36,14 @@ get_header();
         </div>
     </div>
 </div>
+
+<div class="pin-options-container">
+    <ul>
+        <li><i class="fas fa-share-alt"></i> Share</li>
+        <li><i class="far fa-trash-alt"></i> Delete</li>
+        <li><i class="fas fa-globe"></i> Website</li>
+    </ul>
+</div>
     
 
 <?php 

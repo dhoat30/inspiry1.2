@@ -78,10 +78,9 @@ window.onload = function() {
 
         //fill heart icon
         fillHeartIcon(){
-            if(this.heartBtn.data('exists') == 'yes'){ 
-                this.heartBtn.addClass('fas fa-heart');
+            if($('.design-board-save-btn-container i').attr('data-exists') == 'yes'){ 
+                $('.design-board-save-btn-container i').addClass('fas fa-heart');
             } 
-    
         }
 
         //show create boad form
@@ -101,7 +100,7 @@ window.onload = function() {
 
             //show loader icon
             $(e.target).closest('.board-list-item').find('.loader').addClass('loader--visible');
-           $.ajax({
+            $.ajax({
                 beforeSend: (xhr)=>{
                     xhr.setRequestHeader('X-WP-NONCE', inspiryData.nonce)
                 },
@@ -120,7 +119,10 @@ window.onload = function() {
                     if(response){ 
                         console.log(response);
                         $('.project-detail-page .design-board-save-btn-container i').attr('data-exists', 'yes');
-                       
+
+                        //fill heart
+                        $('.design-board-save-btn-container i').addClass('fas fa-heart');
+
                     }
                 }, 
                 error: (response)=>{
@@ -195,7 +197,6 @@ window.onload = function() {
                         $('.choose-board-container .board-list').append(`<li data-board-id=${response}>${boardName}</li>`);
                         //hide the form
                         $('.project-save-form-section').hide();   
-
                         function addToBoard2(){
                             
                             let postID = $('.project-detail-page .header-title').data('postid'); 
@@ -216,7 +217,8 @@ window.onload = function() {
                                     console.log('this is a success area')
                                     if(response){ 
                                         console.log(response);
-                                       
+                                        $('.design-board-save-btn-container i').addClass('fas fa-heart');
+
                                     }
                                 }, 
                                 error: (response)=>{
