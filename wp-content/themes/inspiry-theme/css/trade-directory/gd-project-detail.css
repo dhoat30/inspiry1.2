@@ -59,5 +59,11 @@
     font-family:"work-sans", sans-serif;
 }
 
-/*gallery*/ 
+/*board loader*/ 
+.project-detail-page .board-list .board-list-item{ 
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
 

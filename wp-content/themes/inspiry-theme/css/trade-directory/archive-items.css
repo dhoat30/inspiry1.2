@@ -25,7 +25,7 @@
 .geodir-field-address>span{ 
     font-size: 15px !important;
     font-family: 'Work Sans', sans-serif !important;
-
+    letter-spacing: 1px;
 }
 .gd-read-more{ 
     color: #495a54;

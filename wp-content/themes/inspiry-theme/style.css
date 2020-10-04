@@ -47,6 +47,7 @@
     box-sizing: border-box;
     padding: 0; 
     margin: 0;
+    
     font-family: 'Playfair Display', serif;
   }
 
@@ -238,8 +239,9 @@
     #breadcrumbs a{ 
         color: #666666;
         text-decoration: none;
-        font-family: 'Work Sans', sans-serif !important;
+        font-family: 'Playfair Display', serif !important;
         font-size: 14px;
+        letter-spacing: 1px;
         padding-bottom: 10px;
     }
     
@@ -253,7 +255,19 @@
     visibility: hidden;
 }
 
-
+/*error and success messages*/ 
+.error-bg{ 
+    background: #F59C9C; 
+    color: #BA0505; 
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+.success-bg{ 
+    background: #D7FAD0; 
+    color: #00D331; 
+}
 /*save button*/ 
 .geodir-list-save-container .gd-badge {
     background-color: #fff !important;
@@ -281,23 +295,31 @@
 /*board save button area*/ 
 
 .design-board-save-btn-container i{ 
-    font-size: 30px;
+    font-size: 40px;
+    
+    padding: 10px;
+    border-radius: 50%;
     cursor: pointer;
-    color: red;
-
+    color: #C09F93;
+}
+.design-board-save-btn-container i:hover{ 
+    background:#FFF1EB;
+   
 }
 
 .choose-board-container{ 
     margin: 20px 0;
     display: none;
     position: relative;
-    width: 220px;
+    width: 450px;
     box-shadow: 3px 3px 20px 1px rgba(0,0,0,0.2);
 }
 .choose-board-container .choose-board{ 
     border-bottom: 1px solid #495a54;
     padding: 10px 10px;
     font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 .choose-board-container .close-icon{ 
     font-size: 20px;
@@ -311,14 +333,18 @@
 
 .choose-board-container ul {
     padding: 10px 0px;
-        list-style: none;
-        font-size: 14px;
-        min-height: 150px;
+    list-style: none;
+    font-size: 14px;
+    min-height: 150px;
+    height: 200px;
+    overflow: scroll;
+
 }
 .choose-board-container ul li{ 
     cursor: pointer;
-    padding: 3px 10px;
-    font-size: 14px;
+    padding: 10px 10px;
+    font-size: 18px;
+
     cursor: pointer;
 }
 .choose-board-container ul li:hover{ 
@@ -326,19 +352,30 @@
 }
 
 .choose-board-container .create-new-board{ 
-    border-top: 1px solid #495a54;
+    border-top: 1px solid black;
     padding:0 10px 10px 10px;
-    font-size: 14px;
+    font-size: 20px;
     font-weight: 600;
     line-height: 0;
     cursor: pointer;
+    background:#FFF1EB;
+    letter-spacing: 1px;
+    
  
 }
 .choose-board-container .create-new-board span{ 
-    font-size: 30px;
+    font-size: 40px;
     position: relative;
     font-weight: 200;
     top: 4px;
+    left: 1;
+    border-radius: 50%;
+    background: #C09F93;
+    padding: 0px 10px;
+    margin-right: 10px;
+    font-weight: 400;
+    color: black;
+    letter-spacing: 1px;
 }
 
 /*board form*/ 
@@ -406,3 +443,28 @@
 
 
 
+/*loader*/ 
+
+.loader {
+    border: 5px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 5px solid #C09F93;
+    width: 30px;
+    height: 30px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+    display: none;
+  }
+  .loader--visible{
+      display: block;
+  }
+  /* Safari */
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }

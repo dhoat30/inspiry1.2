@@ -8,7 +8,8 @@ get_header();
         <?php 
             $boardLoop = new WP_Query(array(
                 'post_type' => 'boards', 
-                'post_parent' => 0
+                'post_parent' => 0, 
+                'posts_per_page' => -1
             ));
 
             while($boardLoop->have_posts()){

@@ -48,35 +48,37 @@ while($boardLoop->have_posts()){
                                 <?php echo do_shortcode('[gd_linked_posts link_type="to" post_type="gd_place" sort_by="az" title_tag="h3" layout="1" post_limit="1" view_all_link="0"]'); ?>
                             </div>
 
-                            <!--save button --> 
-                            <div class="save-button">
-                                <?php echo do_shortcode('[gd_list_save save_icon_class="fas fa-thumbtack" saved_icon_class="fas fa-thumbtack" bg_color="#495a54" txt_color="#ffffff" size="medium"]'); ?>
-                            </div>
-
+                            
                             <!--custom board post ui-->
                             <?php 
                                 $existStatus = 'no'; 
 
-                                $existQuery = new WP_Query(array(
-                                    'author' => get_current_user_id(), 
-                                    'post_type' => 'boards', 
-                                    'meta_query' => array(
-                                        array(
-                                            'key' => 'saved_project_id', 
-                                            'compare' => '=', 
-                                            'value' => get_the_id()
+                                if(is_user_logged_in( )){ 
+                                    $existQuery = new WP_Query(array(
+                                        'author' => get_current_user_id(), 
+                                        'post_type' => 'boards', 
+                                        'meta_query' => array(
+                                            array(
+                                                'key' => 'saved_project_id', 
+                                                'compare' => '=', 
+                                                'value' => get_the_id()
+                                            )
                                         )
-                                    )
-                                )); 
-
-                                if($existQuery->found_posts){ 
-                                    $existStatus = 'yes'; 
+                                    )); 
+    
+                                    if($existQuery->found_posts){ 
+                                        $existStatus = 'yes'; 
+                                    }
                                 }
+
+                               
                             ?>
 
                             <div class="design-board-save-btn-container">
                                 <i data-exists='<?php echo $existStatus?>' class="far fa-heart open-board-container" ></i>
                             </div>
+                            
+
 
                             <div class="choose-board-container">
                                     <div class="choose-board">Choose Board</div>
@@ -86,9 +88,14 @@ while($boardLoop->have_posts()){
                                             while($boardLoop->have_posts()){ 
                                                 $boardLoop->the_post(); 
                                                 ?>
-                                                        <li class="board-list-item" data-boardID='<?php echo get_the_id(); ?>'><?php 
+                                                        <li class="board-list-item" data-boardID='<?php echo get_the_id(); ?>'>
+                                                        
+                                                        <?php 
                                                             
-                                                        the_title();?></li>
+                                                        the_title();?>
+                                                        <div class="loader"></div>
+
+                                                        </li>
 
                                                 <?php
                                                 wp_reset_postdata(  );
@@ -173,7 +180,8 @@ while($boardLoop->have_posts()){
                 <div class="btn-container">
                     <button type="button" class="cancel-btn btn"> Cancel</button>
                     <button type="submit" class="save-btn btn btn-dk-green"> Save</button>
-
+                  
+                    <div class="loader"></div>
                 </div>
             </form>
         </div>

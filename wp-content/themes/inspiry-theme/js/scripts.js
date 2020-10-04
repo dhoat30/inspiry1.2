@@ -98,8 +98,10 @@ window.onload = function() {
             let boardID = e.delegateTarget.dataset.boardid; 
             let postID = $('.project-detail-page .header-title').data('postid'); 
             let postTitle = $('.project-detail-page .header-title h2').html(); 
-            
-            $.ajax({
+
+            //show loader icon
+            $(e.target).closest('.board-list-item').find('.loader').addClass('loader--visible');
+           $.ajax({
                 beforeSend: (xhr)=>{
                     xhr.setRequestHeader('X-WP-NONCE', inspiryData.nonce)
                 },
@@ -110,16 +112,22 @@ window.onload = function() {
                     'post-id': postID, 
                     'post-title': postTitle
                 },
+                complete: () =>{
+                    $(e.target).closest('.board-list-item').find('.loader').removeClass('loader--visible');
+                },
                 success: (response)=>{
                     console.log('this is a success area')
                     if(response){ 
                         console.log(response);
+                        $('.project-detail-page .design-board-save-btn-container i').attr('data-exists', 'yes');
                        
                     }
                 }, 
                 error: (response)=>{
                     console.log('this is an error');
                     console.log(response)
+                    $(e.target).closest('.board-list-item').find('.loader').removeClass('loader--visible');
+
                 }
             });
 
@@ -164,6 +172,9 @@ window.onload = function() {
             let boardName = $('#board-name').val(); 
            
             e.preventDefault();
+            $('.project-save-form-section .loader').show();
+
+           
             $.ajax({
                 beforeSend: (xhr)=>{
                     xhr.setRequestHeader('X-WP-NONCE', inspiryData.nonce)
@@ -172,6 +183,9 @@ window.onload = function() {
                 type: 'POST', 
                 data: {
                     'board-name': boardName
+                },
+                complete:()=>{
+                    $('.project-save-form-section .loader').hide();
                 },
                 success: (response)=>{
                     console.log('this is a success area')
@@ -225,6 +239,7 @@ window.onload = function() {
                 error: (response)=>{
                     console.log('this is an error');
                     console.log(response)
+                    $('#new-board-form').before(` <div class="error-bg">Board Already Exists</div>`);
                 }
             });
             
