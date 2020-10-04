@@ -37,7 +37,9 @@
 /*slider */ 
 @import "css/slider.css";
 
-
+/*board post type*/ 
+@import "css/trade-directory/single-board.css"; 
+@import 'css/trade-directory/board-archive-page.css';
 /*footer*/ 
 @import "css/contact.css";
 
@@ -221,7 +223,7 @@
         
     }
     .rm-txt-dec:hover{ 
-        text-decoration: underline;
+        text-decoration: none;
     }
 
 
@@ -276,20 +278,6 @@
 
 
 
-/*board-page styling*/ 
-.board-page{ 
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-.board-page>div{ 
-    width: 300px;
-}
-.board-page img{ 
-    width: 300px;
-    height: 300px;
-    object-fit: cover;
-}
 /*board save button area*/ 
 
 .design-board-save-btn-container i{ 
@@ -353,7 +341,7 @@
     top: 4px;
 }
 
-/*board from*/ 
+/*board form*/ 
 .project-save-form-section{ 
     position: fixed;
     top: 0; 

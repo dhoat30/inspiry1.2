@@ -16,28 +16,36 @@ get_header();
                 ?>  
                     
 
-                    <div>
-                    <a href="<?php the_permalink(); ?>">    <h5 ><?php the_title();?></h5></a>
-                        <?php the_content();?>
-                        <?php 
-                        //GET THE CHILD ID
-                            //Instead of calling and passing query parameter differently, we're doing it exclusively
-                            $all_locations = get_pages( array(
-                                'post_type'         => 'boards', //here's my CPT
-                                'post_status'       => array( 'private', 'pending', 'publish') //my custom choice
-                            ) );
-
-                            //Using the function
-                            $parent_id =get_the_id();
-                            $inherited_locations = get_page_children( $parent_id, $all_locations );
-
-                            // echo what we get back from WP to the browser (@bhlarsen's part :) )
-                            $child_id = $inherited_locations[0]->ID;
-                            
-                            ?>
-                        <div><?php echo get_the_post_thumbnail($child_id);?></div>
-                       
+                    <div class="board-card">
+                        <a class="rm-txt-dec" href="<?php the_permalink(); ?>">   
                         
+                            <?php 
+                            //GET THE CHILD ID
+                                //Instead of calling and passing query parameter differently, we're doing it exclusively
+                                $all_locations = get_pages( array(
+                                    'post_type'         => 'boards', //here's my CPT
+                                    'post_status'       => array( 'private', 'pending', 'publish') //my custom choice
+                                ) );
+
+                                //Using the function
+                                $parent_id =get_the_id();
+                                $inherited_locations = get_page_children( $parent_id, $all_locations );
+                                $pinCount = count($inherited_locations);
+                                // echo what we get back from WP to the browser (@bhlarsen's part :) )
+                                $child_id = $inherited_locations[0]->ID;
+                                $childThumbnail = get_field('saved_project_id', $child_id); 
+                                ?>
+                            <div class="img-div"><?php echo get_the_post_thumbnail($childThumbnail);?></div>
+                            <h5 class="font-s-med"><?php the_title();?></h5>
+                            <div class="pin-count"><?php echo $pinCount;
+                                if($pinCount <= 1){ 
+                                    echo ' Pin';
+                                }
+                                else{
+                                    echo ' Pins';
+                                }
+                            ?></div>
+                        </a>
 
                     </div>
                 <?php

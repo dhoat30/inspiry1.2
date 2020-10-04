@@ -3,7 +3,35 @@ let $ = jQuery;
 
 
 window.onload = function() {
+    //Design Board Single Page
+    class DesignBoardSinglePage{ 
+        constructor(){ 
+           this.events(); 
+        }
 
+        //events
+        events(){ 
+            $('.board-loop-page .board-card').mouseenter(this.showDeleteIcon.bind(this)); 
+            $('.board-loop-page .board-card').mouseleave(this.hideDeleteIcon.bind(this)); 
+
+        }
+
+        //functions 
+        showDeleteIcon(e){ 
+            e.preventDefault(); 
+            var currentCard = $(e.target).closest('.board-card').find('.delete-icon');
+           currentCard.show(300);
+            
+        }
+        hideDeleteIcon(e){ 
+            e.preventDefault(500); 
+            var currentCard = $(e.target).closest('.board-card').find('.delete-icon');
+           currentCard.hide();
+            
+        }
+    }
+
+    const designBoardSinglePage = new DesignBoardSinglePage(); 
    
     //Design board save button
     class DesignBoardSaveBtn{ 
@@ -33,6 +61,8 @@ window.onload = function() {
 
             //add to a board
             this.boardListItems.on('click', this.addToBoard.bind(this)); 
+            //delete a pin 
+            $('.board-loop-page .board-card .delete-icon').on('click', this.deletePin);
         }
 
         //functions 
@@ -96,9 +126,38 @@ window.onload = function() {
            
         }
 
-        demo(){ 
-            console.log( 'this is demo function '); 
+        //delete form 
+        deletePin(e){
+           console.log('delete is working'); 
+
+           let pinID = e.delegateTarget.dataset.pinid; 
+            console.log(pinID);
+           $.ajax({
+            beforeSend: (xhr)=>{
+                xhr.setRequestHeader('X-WP-NONCE', inspiryData.nonce)
+            },
+            url: inspiryData.root_url + '/wp-json/inspiry/v1/manageBoard',
+            data: {
+                'pin-id': pinID, 
+            },
+            type: 'DELETE',
+            success: (response)=>{
+                console.log('this is a success area')
+                if(response){ 
+                    console.log(response);
+                    
+                }
+            }, 
+            error: (response)=>{
+                console.log('this is an error');
+                console.log(response)
+            }
+        });
+           
+
+           
         }
+
         //create board function 
         createBoardFunc(e){ 
 

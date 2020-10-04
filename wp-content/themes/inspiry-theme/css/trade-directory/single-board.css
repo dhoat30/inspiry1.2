@@ -1,0 +1,50 @@
+/*board-page styling*/ 
+.board-loop-page .board-flex{ 
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.board-loop-page .board-flex>div{ 
+    margin: 0 30px 0 0;
+    transition: 500ms ease-in-out;
+}
+.board-loop-page .board-flex>div:hover{ 
+   transform: scale(1.04,1.04);
+}
+
+.board-loop-page .board-card img{ 
+    width: 250px;
+    height: 300px;
+    object-fit: cover;
+}
+.board-loop-page .board-card a{ 
+    text-decoration: none !important;
+}
+.board-loop-page .board-card a:hover{ 
+    text-decoration: underline !important;
+}
+
+/*delete icon*/ 
+.board-loop-page .board-card{ 
+    position: relative;
+}   
+.board-loop-page .board-card .delete-icon{ 
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 20px;
+    background: rgba(255,255,255,0.6);
+    padding: 5px;
+    cursor: pointer;
+    display: none;
+
+}  
+.board-loop-page .board-card .delete-icon>div{ 
+    display: inline;
+    font-family: 'work-sans', sans-serif;
+    font-size: 12px;
+    position: relative;
+    bottom: 3px;
+    margin-left: 5px;
+}
+

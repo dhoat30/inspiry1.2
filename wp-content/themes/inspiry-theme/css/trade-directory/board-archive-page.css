@@ -1,0 +1,25 @@
+/*board-page*/ 
+.board-page .img-div img{ 
+    width: 250px; 
+    height: 300px;
+    object-fit: cover;
+}
+.board-page>div{ 
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; 
+}
+
+.board-page .board-card{ 
+    margin: 20px;
+}
+
+.board-page .pin-count{
+    font-family: 'work-sans', sans-serif;
+}
+.board-page .board-card{ 
+    transition: 500ms ease-in-out;
+}
+.board-page .board-card:hover{ 
+    transform: scale(1.04,1.04);
+}
