@@ -1,10 +1,10 @@
 === Business Directory Plugin | GeoDirectory ===
 Contributors: stiofansisland, paoltaia, ayecode
 Donate link: https://wpgeodirectory.com
-Tags: business directory, real estate, job board, classifieds, listings
+Tags: business directory, real estate, job board, classifieds, listings, directory plugin, address book, addressbook, addresses, bio, biographies, bios, business, business directory plugin, businesses, church, directories, directory, directory widget, geodirectory, googlemap, googlemaps, google maps, list, lists, member directory, members directories, members directory, microformat, microformats, multisite, profile, profiles, staff, user, users, vcard, wordpress business directory, wordpress directory, wordpress directory plugin, yelp clone, tripadvisor clone, yellow pages clone, wordpress business directory plugin, wordpress directory theme, wordpress business directory theme, wordpress city directory plugin, wordpress local directory plugin, city directory
 Requires at least: 4.5
 Tested up to: 5.5
-Stable tag: 2.0.0.101
+Stable tag: 2.1.0.3
 Requires PHP: 5.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -13,13 +13,13 @@ The best Business Directory Plugin. Build any directories: Business directory, r
 
 == Description ==
 
-[Addons](https://wpgeodirectory.com/downloads/category/addons/) | [Themes](https://wpgeodirectory.com/downloads/category/themes/) | [Demos](https://wpgeo.directory/) | [Docs](https://wpgeodirectory.com/docs-v2/) | [Showcase](https://wpgeodirectory.com/category/showcase/)
+[Addons](https://wpgeodirectory.com/downloads/category/addons/) | [Themes](https://wpgeodirectory.com/downloads/category/themes/) | [Demos](https://wpgeo.directory/) | [Docs](https://docs.wpgeodirectory.com/) | [Showcase](https://wpgeodirectory.com/category/showcase/)
 
-Turn any WordPress theme into a lightning-fast global business directory. Now 100% compatible with Gutenberg and the most popular page builders such as Elementor, Beaver Builder, Divi, SiteOrigin Page Builder, and more! It includes an extensive new set of shortcodes, Gutenberg Blocks, and Widgets. 
+Turn any WordPress theme into a lightning-fast global business directory. Now 100% compatible with Gutenberg and the most popular page builders such as Elementor, Beaver Builder, Divi, SiteOrigin Page Builder, and more! It includes an extensive new set of shortcodes, Gutenberg Blocks, and Widgets.
 
 [youtube https://www.youtube.com/watch?v=fEdOOucOtUg]
 
-= The best business directory plugin for WordPress=
+= The best business directory plugin for WordPress =
 
 Create a location-based business directory with our plugin, 100% compatible with any theme and page builders. In a few clicks, you could be the next Yelp or Tripadvisor.
 
@@ -136,11 +136,11 @@ Get timely and friendly support for both the Core Business Directory Plugin and 
 
 Automatic installation is the easiest option. To do an automatic install of GeoDirectory, log in to your WordPress dashboard, navigate the Plugins menu, and click Add New.
 
-In the search field, type GeoDirectory, and click Search Plugins. Once you've found our business directory plugin, you install it by simply clicking Install Now. [GeoDirectory basic installation](https://wpgeodirectory.com/docs/basic-installation/)
+In the search field, type GeoDirectory, and click Search Plugins. Once you've found our business directory plugin, you install it by simply clicking Install Now. [GeoDirectory basic installation](https://docs.wpgeodirectory.com/category/7-installation)
 
 = Manual installation =
 
-The manual installation method involves downloading our Directory plugin and uploading it to your webserver via your favorite FTP application. The WordPress codex will tell you more [here](https://codex.wordpress.org/Managing_Plugins#Manual_Plugin_Installation). [GeoDirectory basic installation](https://wpgeodirectory.com/docs/basic-installation/)
+The manual installation method involves downloading our Directory plugin and uploading it to your webserver via your favorite FTP application. The WordPress codex will tell you more [here](https://codex.wordpress.org/Managing_Plugins#Manual_Plugin_Installation). [GeoDirectory basic installation](https://docs.wpgeodirectory.com/category/7-installation)
 
 = Updating =
 
@@ -152,17 +152,17 @@ Automatic updates should seamlessly work. We always suggest you backup up your w
 
 Any Business Directory, such as:
 Stores directory
-People directory (Team, Member, Staff) 
+People directory (Team, Member, Staff)
 Hotels directory
 Healthcare directory
 Restaurants directory
 Bars Directory
-Pets Directory 
+Pets Directory
 Church directory
 Travel review directories
 Software review sites
 Professional directory
-Events Directory 
+Events Directory
 A Yellow Pages directory
 
 But because GeoDirectory allows you to create any listing's type, each with unique custom fields, you can use GeoDirectory as Event Calendar plugin, a Real Estate Plugin, a Job Board Plugin, a Classifieds plugin and much more.
@@ -173,11 +173,11 @@ Yes, but you'll need our Location Manager add-on.
 
 = Can users add and edit their listings via the front-end? =
 
-Absolutely yes, Users can submit their listings from the front end and also edit them unlimited times. 
+Absolutely yes, Users can submit their listings from the front end and also edit them unlimited times.
 
 = Which theme is compatible with GeoDirectory? =
 
-Any theme is compatible with GeoDirectory, and if you find any bug with a theme, ask for support, and we will fix it. 
+Any theme is compatible with GeoDirectory, and if you find any bug with a theme, ask for support, and we will fix it.
 
 = Does GeoDirectory work with Elementor and other popular page builders? =
 
@@ -204,7 +204,16 @@ We don't offer free trials, but we have a 30-day money-back guarantee if you are
 
 == Changelog ==
 
-__WARNING: GDv2 is a significant update over GDv1 and may require some manual work such as adding widgets to sidebars to recreate your current layout, as always, we recommend to try this on a staging site first. [Learn more](https://wpgeodirectory.com/docs-v2/geodirectory/upgrade-from-gdv1/)__
+__WARNING: GDv2 is a significant update over GDv1 and may require some manual work such as adding widgets to sidebars to recreate your current layout, as always, we recommend to try this on a staging site first. [Learn more](https://docs.wpgeodirectory.com/article/260-upgrading-from-gdv1-to-gdv2)__
+
+= 2.1.0.3 =
+[GeoDirectory changelog for version 2.1.0.3](https://wpgeodirectory.com/change-logs-v2/#v2.1.0.3).
+
+= 2.1.0.2 =
+[GeoDirectory changelog for version 2.1.0.2](https://wpgeodirectory.com/change-logs-v2/#v2.1.0.2).
+
+= 2.1.0.0 =
+[GeoDirectory changelog for version 2.1.0.0](https://wpgeodirectory.com/change-logs-v2/#v2.1.0.0).
 
 = 2.0.0.101 =
 [GeoDirectory changelog for version 2.0.0.101](https://wpgeodirectory.com/change-logs-v2/#v2.0.0.101).
@@ -346,10 +355,11 @@ __WARNING: GDv2 is a significant update over GDv1 and may require some manual wo
 
 = 2.0.0.51 =
 [GeoDirectory changelog for version 2.0.0.51](https://wpgeodirectory.com/change-logs-v2/#v2.0.0.51).
+
 == Upgrade Notice ==
 
 = 2.0.0.58 =
 NOTICE: The latest version of GDv2 (2.0.0.58+) contains a security release (does not affect GDv1), please update to 2.0.0.58+.
 
 = 2.0.0.0 =
-NOTICE: GDv2 is a major update that will require some manual steps to restore some directory functionality when updating from GDv1. [Documentation](https://wpgeodirectory.com/docs-v2/geodirectory/upgrade-from-gdv1/)
+NOTICE: GDv2 is a major update that will require some manual steps to restore some directory functionality when updating from GDv1. [Documentation](https://docs.wpgeodirectory.com/article/260-upgrading-from-gdv1-to-gdv2)

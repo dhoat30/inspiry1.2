@@ -3,9 +3,9 @@ Contributors: stiofansisland, paoltaia, ayecode
 Donate link: https://wpgeodirectory.com
 Tags: buddypress, buddypress integration, geodir buddypress, geodirectory, geodirectory buddypress
 Requires at least: 4.9
-Tested up to: 5.4
+Tested up to: 5.5
 Requires PHP: 5.6
-Stable tag: 2.0.0.7
+Stable tag: 2.1.0.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -21,6 +21,12 @@ The GeoDirectory BuddyPress Integration plugin allows you to integrate GeoDirect
 * BuddyPress plugin
 
 == Changelog ==
+
+= 2.1.0.0 =
+* Changes for AyeCode UI compatibility - CHANGED
+
+= 2.0.0.8 =
+* Add listing broken due to plugin conflict - FIXED
 
 = 2.0.0.7 =
 * Notifications count issue on admin bar bp notification - FIXED

@@ -26,17 +26,17 @@ class GeoDir_Claim_Widget_Post_Claim extends WP_Super_Duper {
 		$options = array(
 			'textdomain'     => GEODIRECTORY_TEXTDOMAIN,
 			'block-icon'     => 'businessman',
-			'block-category' => 'common',
+			'block-category' => 'geodirectory',
 			'block-keywords' => "['claim','geodir','geodirectory']",
 			'class_name'     => __CLASS__,
 			'base_id'        => 'gd_claim_post',
 			'name'           => __( 'GD > Post Claim', 'geodir-claim' ),
 			'widget_ops'     => array(
-				'classname'     => 'geodir-post-claim',
-				'description'   => esc_html__( 'Displays the button to claim post.', 'geodir-claim' ),
-				'geodirectory'  => true,
-                'gd_wgt_showhide' => 'show_on',
-                'gd_wgt_restrict' => array( 'gd-detail' )
+				'classname'       => 'geodir-post-claim' . ( geodir_design_style() ? ' bsui' : '' ),
+				'description'     => esc_html__( 'Displays the button to claim post.', 'geodir-claim' ),
+				'geodirectory'    => true,
+				'gd_wgt_showhide' => 'show_on',
+				'gd_wgt_restrict' => array( 'gd-detail' )
 			)
 		);
 
@@ -48,73 +48,138 @@ class GeoDir_Claim_Widget_Post_Claim extends WP_Super_Duper {
 	 *
 	 */
 	public function set_arguments() {
+		$design_style = geodir_design_style();
+
 		$arguments = array(
 			'title' => array(
-                'title' => __( 'Title:', 'geodir-claim' ),
-                'desc' => __( 'The widget title.', 'geodir-claim' ),
-                'type' => 'text',
-                'default' => '',
-                'desc_tip' => true,
-                'advanced' => false
-            ),
-            'text'  => array(
-                'title' => __( 'Text:', 'geodir-claim' ),
-                'desc' => __( 'The text shown than opens the lightbox.', 'geodir-claim' ),
-                'type' => 'text',
-                'default' => __( 'Claim Listing', 'geodir-claim' ),
-                'desc_tip' => true,
-                'advanced' => false
-            ),
-            'output'  => array(
-                'title' => __( 'Output Type:', 'geodir-claim' ),
-                'desc' => __( 'How the link to open the lightbox is displayed.', 'geodir-claim' ),
-                'type' => 'select',
-                'options' =>  array(
-                    'button' => __('Button', 'geodir-claim' ),
-                    'link' => __( 'Link', 'geodir-claim' ),
-                ),
-                'default' => 'button',
-                'desc_tip' => true,
-                'advanced' => true
-            )
+				'title' => __( 'Title:', 'geodir-claim' ),
+				'desc' => __( 'The widget title.', 'geodir-claim' ),
+				'type' => 'text',
+				'default' => '',
+				'desc_tip' => true,
+				'advanced' => false
+			),
+			'text'  => array(
+				'title' => __( 'Text:', 'geodir-claim' ),
+				'desc' => __( 'The text shown than opens the lightbox.', 'geodir-claim' ),
+				'type' => 'text',
+				'default' => __( 'Claim Listing', 'geodir-claim' ),
+				'desc_tip' => true,
+				'advanced' => false
+			),
+			'output'  => array(
+				'title' => __( 'Output Type:', 'geodir-claim' ),
+				'desc' => __( 'How the link to open the lightbox is displayed.', 'geodir-claim' ),
+				'type' => 'select',
+				'options' =>  array(
+					'button' => __('Button', 'geodir-claim' ),
+					'link' => __( 'Link', 'geodir-claim' ),
+				),
+				'default' => 'button',
+				'desc_tip' => true,
+				'advanced' => false,
+				'group' => __( 'Design', 'geodirectory' )
+			)
+		);
+
+		if ( $design_style ) {
+			$arguments['btn_size'] = array(
+				'type' => 'select',
+				'title' => __( 'Button Size:', 'geodir-claim' ),
+				'desc' => __( 'Button size.', 'geodir-claim' ),
+				'options' => array(
+					'' => __( 'Default', 'geodirectory' ),
+					'sm' => __( 'Small', 'geodirectory' ),
+					'lg' => __( 'Large', 'geodirectory' ),
+				),
+				'default' => 'default',
+				'desc_tip' => true,
+				'advanced' => false,
+				'element_require' => '[%output%]=="button"',
+				'group' => __( 'Design', 'geodirectory' )
+			);
+
+			$arguments['btn_color'] = array(
+				'type' => 'select',
+				'title' => __( 'Button Color:', 'geodir-claim' ),
+				'desc' => __( 'Button color.', 'geodir-claim' ),
+				'options' => array(
+					'' => __( 'Default', 'geodirectory' ),
+					'none' => __( 'None', 'geodirectory' ),
+				) + geodir_aui_colors( false, true ),
+				'default' => 'primary',
+				'desc_tip' => true,
+				'advanced' => false,
+				'element_require' => '[%output%]=="button"',
+				'group' => __( 'Design', 'geodirectory' )
+			);
+
+			$arguments['text_color'] = array(
+				'type' => 'select',
+				'title' => __( 'Text Color:', 'geodir-claim' ),
+				'desc' => __( 'Text color.', 'geodir-claim' ),
+				'options' => array(
+					'' => __( 'Default', 'geodirectory' ),
+					'none' => __( 'None', 'geodirectory' ),
+				) + geodir_aui_colors(),
+				'default' => '',
+				'desc_tip' => true,
+				'advanced' => false,
+				'group' => __( 'Design', 'geodirectory' )
+			);
+
+			$arguments['alignment']  = array(
+				'type' => 'select',
+				'title' => __( 'Alignment:', 'geodir-claim' ),
+				'desc' => __( 'How the item should be positioned on the page.', 'geodir-claim' ),
+				'options' =>  array(
+					"" => __( 'None', 'geodirectory' ),
+					"left" => __( 'Left', 'geodirectory' ),
+					"center" => __( 'Center', 'geodirectory' ),
+					"right" => __( 'Right', 'geodirectory' ),
+				),
+				'desc_tip' => true,
+				'advanced' => false,
+				'group' => __( 'Design', 'geodirectory' )
+			);
+		}
+
+		$arguments['css_class'] = array(
+			'type' => 'text',
+			'title' => __( 'Link CSS class: ', 'geodir-claim' ),
+			'desc' => __( 'Give the wrapper an extra class so you can style things as you want.', 'geodir-claim' ),
+			'placeholder' => '',
+			'default' => '',
+			'desc_tip' => true,
+			'advanced' => false,
+			'group' => __( 'Design', 'geodirectory' )
 		);
 
 		return $arguments;
 	}
 
-
 	/**
-	 * Outputs the linked posts on the front-end.
+	 * Block output.
 	 *
-	 * @param array $args
-	 * @param array $widget_args
-	 * @param string $content
-	 *
-	 * @return mixed|string|void
+	 * @param array $instance Settings for the widget instance.
+	 * @param array $args     Display arguments.
+	 * @return bool|string
 	 */
-	public function output( $args = array(), $widget_args = array(), $content = '' ) {
-		$html = $this->output_html( $widget_args, $args );
+	public function output( $instance = array(), $args = array(), $content = '' ) {
+		$output = $this->output_html( $instance, $args );
 
-		if ( $html ) {
-			$html = '<div class="geodir_post_meta gd-post-claim-wrap">' . $html . '</div>';
-		}
-
-        return $html;
+		return $output;
 	}
 
 	/**
-     * Generates claim post widget HTML.
-     *
-     * @global object $post                    The current post object.
-     *
-     * @param array|string $args               Display arguments including before_title, after_title, before_widget, and
-     *                                         after_widget.
-     * @param array|string $instance           The settings for the particular instance of the widget.
+	 * Generate block HTML.
 	 *
+	 * @param array $instance Settings for the widget instance.
+	 * @param array $args     Display arguments.
 	 * @return bool|string
-     */
-    public function output_html( $args = '', $instance = '' ) {
-        global $post;
+	 */
+	public function output_html( $instance = array(), $args = array() ) {
+		global $post;
 
 		if ( empty( $post ) ) {
 			return false;
@@ -125,14 +190,23 @@ class GeoDir_Claim_Widget_Post_Claim extends WP_Super_Duper {
 		}
 
 		$defaults = array(
-            'title' => '',
+			'title' => '',
 			'text' => __( 'Claim Listing', 'geodir-claim' ),
-            'output' => 'button',
-        );
+			'output' => 'button',
+			// AUI
+			'btn_size' => '',
+			'btn_color' => 'primary',
+			'text_color' => '',
+			'alignment' => '',
+			'css_class' => '',
+		);
 
-        $instance = wp_parse_args( $instance, $defaults );
+		$instance = wp_parse_args( $instance, $defaults );
 
-		$button_text = apply_filters( 'geodir_claim_widget_button_text', $instance['text'], $post->ID );
+		$design_style = geodir_design_style();
+
+		$button_text = apply_filters( 'geodir_claim_widget_button_text', $instance['text'], $post->ID, $instance );
+		$button_text = __( $button_text, 'geodirectory' );
 
 		if ( ! is_user_logged_in() ) {
 			$current_url = remove_query_arg( array( 'gd_do','gd_go' ), geodir_curPageURL() );
@@ -144,18 +218,75 @@ class GeoDir_Claim_Widget_Post_Claim extends WP_Super_Duper {
 			$target = 'gd_claim_ajax_lightbox(\'geodir_claim_post_form\',\'\',' . absint( $post->ID ) . ',\'\'); return false;';
 		}
 
-		if ( ! empty( $instance['output'] ) && $instance['output'] == 'button' ) {
-			$output = '<button class="btn btn-default geodir-claim-post-form-link" onclick="' . $target . '">' . esc_attr( $button_text ) . '</button>';
-		} else {
-			$output = '<a class="geodir-claim-post-form-link" href="#" onclick="' . $target . '">' . esc_attr( $button_text ) . '</a>';
+		$wrap_class = '';
+		$action_class = ' geodir-claim-post-form-link';
+
+		if ( $design_style ) {
+			if ( $instance['alignment'] != '' ) {
+				// Alignment
+				$wrap_class .= " text-" . sanitize_html_class( $instance['alignment'] );
+			}
+
+			if ( $instance['text_color'] != '' ) {
+				// Text color
+				$action_class .= ' text-' . sanitize_html_class( $instance['text_color'] );
+			}
+
+			if ( $instance['output'] == 'button' ) {
+				// Button size
+				if ( $instance['btn_size'] != '' ) {
+					$action_class .= ' btn-' . sanitize_html_class( $instance['btn_size'] );
+				}
+
+				// Button color
+				if ( $instance['btn_color'] != '' ) {
+					$action_class .= ' btn-' . sanitize_html_class( $instance['btn_color'] );
+				}
+			}
 		}
 
-	    // fire on load
-	    if(is_user_logged_in() && isset($_REQUEST['gd_do']) && $_REQUEST['gd_do']=='claim'){
-		    $output .= "<script>jQuery(function() {jQuery('.geodir-claim-post-form-link').trigger( \"click\" );});</script>";
-	    }
+		// CSS class
+		if ( $instance['css_class'] != '' ) {
+			$action_class .= ' ' . esc_attr( trim( $instance['css_class'] ) );
+		}
+
+		$output = '<div class="geodir_post_meta gd-post-claim-wrap' . $wrap_class . '">';
+
+		if ( $design_style ) {
+			if ( ! empty( $instance['output'] ) && $instance['output'] == 'button' ) {
+				$action_class = 'btn ' . $action_class;
+				$type = 'button';
+				$href = '';
+			} else {
+				$type = 'a';
+				$href = 'javascript:void(0);';
+			}
+
+			$output .= aui()->button(
+				array(
+					'type' => $type,
+					'href' => $href,
+					'class' => $action_class,
+					'content' => $button_text,
+					'onclick' => $target,
+					'no_wrap' => true
+				)
+			);
+		} else {
+			if ( ! empty( $instance['output'] ) && $instance['output'] == 'button' ) {
+				$output .= '<button class="btn ' . $action_class . '" onclick="' . $target . '">' . esc_attr( $button_text ) . '</button>';
+			} else {
+				$output .= '<a class="' . $action_class . '" href="javascript:void(0)" onclick="' . $target . '">' . esc_attr( $button_text ) . '</a>';
+			}
+		}
+
+		// Fire on load
+		if ( is_user_logged_in() && isset( $_REQUEST['gd_do'] ) && $_REQUEST['gd_do'] == 'claim' ) {
+			$output .= "<script>jQuery(function() {jQuery('.geodir-claim-post-form-link').trigger( \"click\" );});</script>";
+		}
+
+		$output .= '</div>';
 
 		return $output;
 	}
 }
-

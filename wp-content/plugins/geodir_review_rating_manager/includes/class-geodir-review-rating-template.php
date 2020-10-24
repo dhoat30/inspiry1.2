@@ -88,7 +88,6 @@ class GeoDir_Review_Rating_Template{
 
         if (!empty($ratings) && !empty($rating_style)) :
             $rating_html .= '<div class="gd_ratings_module_box">
-            <!-- <h4>' . __('Individually rated for:', 'geodir_reviewratings') . '</h4> -->
             <div class="gd-rating-box-in clearfix">
                 <div class="gd-rating-box-in-right">
                     <div class="gd-rate-category clearfix">';
@@ -302,42 +301,17 @@ class GeoDir_Review_Rating_Template{
         }
 
         if ( !empty( $comment_imgs ) ) {
-            ob_start();
-            ?>
-            <div id="place-gallery-<?php echo $comment_id; ?>" class="place-gallery geodir-image-container">
-                <div class="clearfix reviews_rating_images_all_images">
-                    <ul class="geodir-gallery geodir-images clearfix">
-                        <?php
-                        $image_size = 'medium';
-                        $link_tag_open = "<a href='%s' class='geodir-lightbox-image' data-lity>";
-                        $link_tag_close = "<i class=\"fas fa-search-plus\" aria-hidden=\"true\"></i></a>";
-                            foreach( $comment_imgs as $image ) {
-                                    echo '<li>';
-                                    $img_tag = geodir_get_image_tag($image,$image_size );
-                                    $meta = isset($image->metadata) ? maybe_unserialize($image->metadata) : '';
-                                    $img_tag =  wp_image_add_srcset_and_sizes( $img_tag, $meta , 0 );
 
-                                    // image link
-                                    $link = geodir_get_image_src($image, 'large');
+            $design_style = geodir_design_style();
 
-                                    // ajaxify images
-                                    $img_tag = geodir_image_tag_ajaxify($img_tag);
+            $template = $design_style ? $design_style."/comment-images.php" : "legacy/comment-images.php";
+            $args = array(
+                'comment_id'    => $comment_id,
+                'comment_imgs'    => $comment_imgs,
+            );
 
-                                    // output image
-                                    echo $link_tag_open ? sprintf($link_tag_open,esc_url($link)) : '';
-                                    echo $img_tag;
-                                    echo $link_tag_close;
+            $comment_img_html = geodir_get_template_html( $template , $args, '', plugin_dir_path( GEODIR_REVIEWRATING_PLUGIN_FILE ). "templates/");
 
-                                    echo '</li>';
-                                
-                            }
-
-                        ?>
-                    </ul>
-                </div>
-            </div>
-            <?php
-            $comment_img_html =	ob_get_clean();
         }
 
         return (object)array( 'images' => $comment_imgs, 'html' => $comment_img_html );
@@ -364,7 +338,8 @@ class GeoDir_Review_Rating_Template{
         $multiple = true;
 
         // the file upload template
-        echo geodir_get_template_html( "file-upload.php", array(
+        $template = geodir_design_style() ? "bootstrap/file-upload.php" : "file-upload.php";
+        echo geodir_get_template_html( $template, array(
             'id'                  => $id,
             'is_required'         => false,
             'files'	              => $files,
@@ -396,6 +371,7 @@ class GeoDir_Review_Rating_Template{
 
         $ratings = geodir_reviewrating_rating_categories();
         if ($ratings) {
+            $design_style = geodir_design_style();
             $rating_style_html = '';
             foreach($ratings as $rating){
                 if (!in_array($post->post_type, explode(",", $rating->post_type))) {
@@ -454,7 +430,16 @@ class GeoDir_Review_Rating_Template{
             }
 
             if($rating_style_html != ''){
+
+                if($design_style){
+                    echo '<div class="form-group form-control h-auto rounded px-3 pt-3 pb-2  gd-rating-input-group ">';
+                }
+
                 echo "<div class='gd-extra-ratings'>".$rating_style_html."</div>";
+
+                if($design_style){
+                    echo '</div>';
+                }
             }
         }
     }

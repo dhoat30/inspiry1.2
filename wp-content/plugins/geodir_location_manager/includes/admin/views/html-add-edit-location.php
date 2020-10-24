@@ -58,7 +58,7 @@ if ( ! empty( $location['location_id'] ) ) {
 				</th>
 				<td class="forminp">
 					<select id="location_country" name="location_country" data-placeholder="<?php esc_attr_e( 'Choose a country...', 'geodirlocation' ); ?>" class="regular-text geodir-select" required>
-						<?php geodir_get_country_dl( $location['country'] ); ?>
+						<?php echo geodir_get_country_dl( $location['country'] ); ?>
 					</select>
 				</td>
 			</tr>
@@ -151,6 +151,30 @@ if ( ! empty( $location['location_id'] ) ) {
 					<textarea name="location_image_tagline" id="location_image_tagline" class="regular-text code"><?php echo esc_attr( $location['image_tagline'] ); ?></textarea>
 				</td>
 			</tr>
+			<?php 
+			$post_types = geodir_get_posttypes();
+			foreach ( $post_types as $post_type ) {
+				if ( ! GeoDir_Post_types::supports( $post_type, 'location' ) ) {
+					continue;
+				}
+
+				$id = 'location_cpt_description_' . $post_type;
+				$name = 'location_cpt_description[' . $post_type .']';
+				$post_type_name = geodir_post_type_name( $post_type, true );
+				$_cpt_desc = ! empty( $location['cpt_desc'] ) && isset( $location['cpt_desc'][ $post_type ] ) ? $location['cpt_desc'][ $post_type ] : '';
+
+				$settings = apply_filters( 'geodir_location_cpt_desc_editor_settings', array( 'media_buttons' => false, 'editor_height' => 80, 'textarea_rows' => 5, 'textarea_name' => $name ), $id, $name );
+				?>
+				<tr valign="top">
+					<th scope="row" class="titledesc">
+						<label for="<?php echo $id; ?>"><?php echo wp_sprintf( __( '%s Description', 'geodirlocation' ), $post_type_name ); ?></label>
+					</th>
+					<td class="forminp forminp-textarea">
+						<?php wp_editor( $_cpt_desc, $id, $settings ); ?>
+						<p class="description"><?php echo wp_sprintf( __( '%s description to show for this city.', 'geodirlocation' ), $post_type_name ); ?></p>
+					</td>
+				</tr>
+			<?php } ?>
 			<tr valign="top">
 				<td class="forminp" colspan="2">
 				</td>

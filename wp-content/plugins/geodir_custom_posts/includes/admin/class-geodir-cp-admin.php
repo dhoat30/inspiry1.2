@@ -66,7 +66,7 @@ class GeoDir_CP_Admin {
 					'tab_name'   => sprintf( __( 'Linked from: %s', 'geodir_custom_posts' ), $pt ),
 					'tab_icon'   => 'fas fa-link',
 					'tab_key'    => '',
-					'tab_content'=> '[gd_linked_posts link_type="from" post_type="' . $pt . '" sort_by="' . esc_attr( $sort_by ) . '" title_tag="h3" layout="gridview_onehalf" post_limit="5"]'
+					'tab_content'=> '[gd_listings post_type="' . $pt . '" linked_posts="from" sort_by="' . esc_attr( $sort_by ) . '" post_limit=5 layout=2 mb=3]'
 				);
 			}
 		}
@@ -87,7 +87,7 @@ class GeoDir_CP_Admin {
 					'tab_name'   => sprintf( __( 'Linked to: %s', 'geodir_custom_posts' ), $pt ),
 					'tab_icon'   => 'fas fa-link',
 					'tab_key'    => '',
-					'tab_content'=> '[gd_linked_posts link_type="to" post_type="' . $pt . '" sort_by="' . esc_attr( $sort_by ) . '" title_tag="h3" layout="gridview_one" post_limit="1"]'
+					'tab_content'=> '[gd_listings post_type="' . $pt . '" linked_posts="to" sort_by="' . esc_attr( $sort_by ) . '" post_limit=1 layout=1 mb=3]'
 				);
 			}
 		}

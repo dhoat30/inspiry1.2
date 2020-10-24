@@ -2,9 +2,10 @@
 get_header(); 
 ?>
 <div class="body-container">
+    <h1 class="center-align section-ft-size"><?php the_title();?></h1>
+
     <div class="row-container board-page">
         <div>
-      
         <?php 
             $boardLoop = new WP_Query(array(
                 'post_type' => 'boards', 
@@ -16,8 +17,15 @@ get_header();
                 $boardLoop->the_post(); 
                 ?>  
                     
+                
+                    <div class="board-card-archive">
+                        <i class="fas fa-ellipsis-h option-icon"></i>
+                        <div class="pin-options-container box-shadow">
+                            <ul class="dark-grey">
+                                <li class="delete-board-btn" data-pinid='<?php the_ID();?>'><i class="far fa-trash-alt"></i> Delete</li>
+                            </ul>
+                        </div>
 
-                    <div class="board-card">
                         <a class="rm-txt-dec" href="<?php the_permalink(); ?>">   
                         
                             <?php 
@@ -51,14 +59,23 @@ get_header();
                     </div>
                 <?php
             }
-            wp_reset_query()
+            wp_reset_query();
         ?>
 
 
         </div>
     </div>
 </div>
-    
+<div class="overlay"></div>                       
+<div class="share-icon-container box-shadow">
+                            <div class="work-sans-fonts regular font-s-med"> Share this pin </div>
+                            <div class="underline"></div>
+                            <div>
+                                <?php echo do_shortcode('[Sassy_Social_Share  url="http:'.get_the_permalink(get_field('saved_project_id')).'"]');?>
+                            </div>
+                            <span>X</span>
+
+</div> 
 
 <?php 
     get_footer();

@@ -43,6 +43,7 @@ class GeoDir_Pricing_Cart_Invoicing extends GeoDir_Pricing_Cart {
 		}
 
 		add_action( 'wpinv_item_is_taxable', array( __CLASS__, 'gdp_to_gdi_set_zero_tax' ), 10, 4 ) ;
+		add_action( 'wpinv_subscription_post_renew', array( __CLASS__, 'handle_subscription_renew' ), 10, 3 );
 		add_action( 'wpinv_subscription_cancelled', array( __CLASS__, 'to_gdp_handle_subscription_cancel' ), 10, 2 );
 		add_action( 'wpinv_subscription_completed', array( __CLASS__, 'to_gdp_handle_subscription_complete' ), 10, 2 );
 		add_action( 'wpinv_checkout_cart_line_item_summary', array( __CLASS__, 'cart_line_item_summary' ), 10, 4 );
@@ -356,6 +357,38 @@ class GeoDir_Pricing_Cart_Invoicing extends GeoDir_Pricing_Cart {
 		}
 
 		return $is_taxable;
+	}
+
+	public static function handle_subscription_renew( $subscription_id, $expiration, $subscription ) {
+		$invoice = ! empty( $subscription->parent_payment_id ) ? wpinv_get_invoice( $subscription->parent_payment_id ) : NULL;
+		
+		if ( ! empty( $invoice ) && ! empty( $invoice->ID ) && $invoice->is_recurring() && ( $item_ID = (int) $invoice->get_recurring() ) ) {
+			if ( get_post_meta( $item_ID, '_wpinv_type', true ) == 'package' && ( $package_id = (int) self::get_package_id( $item_ID ) ) ) {
+				$items = GeoDir_Pricing_Post_Package::get_items( array( 'invoice_id' => $invoice->ID, 'package_id' => $package_id ) );
+
+				if ( empty( $items ) )  {
+					return false;
+				}
+
+				foreach ( $items as $post_package_item ) {
+					if ( empty( $post_package_item->post_id ) ) {
+						continue;
+					}
+					$post_id = absint( $post_package_item->post_id );
+
+					$prev_expire_date = geodir_get_post_meta( $post_id, 'expire_date', true );
+					if ( ! geodir_pricing_date_never_expire( $prev_expire_date ) && strtotime( $prev_expire_date ) <= strtotime( date_i18n( 'Y-m-d' ) ) ) {
+						$prev_expire_date = '';
+					}
+
+					// New expire date
+					$expire_date = geodir_pricing_new_expire_date( geodir_pricing_package_alive_days( $package_id ), $prev_expire_date );
+
+					// Set new expire date
+					geodir_save_post_meta( $post_id, 'expire_date', $expire_date );
+				}
+			}
+		}
 	}
 
 	public static function to_gdp_handle_subscription_complete( $subscription_id, $subscription ) {
@@ -1289,7 +1322,7 @@ class GeoDir_Pricing_Cart_Invoicing extends GeoDir_Pricing_Cart {
 				} elseif ( $invoice->needs_payment() ) {
 					$nonce   = wp_create_nonce('getpaid_ajax_form');
 					$id      = $invoice->ID;
-					$message = wp_sprintf( __( 'Your claim requires a payment to complete.  %sCheckout%s', 'geodir_pricing' ),'<a href="' .  $invoice->get_checkout_payment_url() . '" class="gd-noti-button getpaid-payment-button" data-invoice="' . $id .'" data-nonce="' . $nonce .'" target="_top"><i class="fas fa-shopping-cart"></i> ', '</a>' );
+					$message = wp_sprintf( __( 'Your claim requires a payment to complete.  %sCheckout%s', 'geodir_pricing' ), '<a href="' .  $invoice->get_checkout_payment_url() . '" class="gd-noti-button getpaid-payment-button" data-invoice="' . $id .'" data-nonce="' . $nonce .'" target="_top"><i class="fas fa-shopping-cart"></i> ', '</a>' );
 				}
 			}
 		}

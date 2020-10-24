@@ -39,7 +39,6 @@ function heateorSssClearShorturlCache(){
     jQuery('#shorturl_cache_loading').css('display', 'block');
     jQuery.ajax({
         type: 'GET',
-        dataType: 'json',
         url: heateorSssSharingAjaxUrl,
         data: {
             action: 'heateor_sss_clear_shorturl_cache'
@@ -55,7 +54,6 @@ function heateorSssClearShareCountCache(){
     jQuery('#share_count_cache_loading').css('display', 'block');
     jQuery.ajax({
         type: 'GET',
-        dataType: 'json',
         url: heateorSssSharingAjaxUrl,
         data: {
             action: 'heateor_sss_clear_share_count_cache'

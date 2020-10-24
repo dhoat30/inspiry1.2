@@ -96,6 +96,11 @@ class GeoDir_Claim_AJAX {
 	public static function claim_post_form() {
 		global $post;
 
+		if ( geodir_design_style() ) {
+			self::claim_post_form_aui();
+			return;
+		}
+
 		check_ajax_referer( 'geodir_basic_nonce', 'security' );
 
 		if ( ! is_user_logged_in() ) {
@@ -153,6 +158,75 @@ class GeoDir_Claim_AJAX {
 	}
 
 	/**
+	 * Get claim form html with AUI.
+	 *
+	 * @since 2.0.0.0
+	 *
+	 * @return string
+	 */
+	public static function claim_post_form_aui() {
+		global $post;
+
+		check_ajax_referer( 'geodir_basic_nonce', 'security' );
+
+		if ( ! is_user_logged_in() ) {
+			self::print_header();
+
+			echo self::alert( __( 'Login to claim this listing!', 'geodir-claim' ) );
+			wp_die();
+		}
+
+		$post_id = isset( $_REQUEST['p'] ) ? absint( $_REQUEST['p'] ) : url_to_postid( wp_get_referer() );
+
+		$post = $post_id ? get_post( $post_id ) : NULL;
+		if ( empty( $post ) ) {
+			self::print_header();
+
+			echo self::alert( __( 'No post found!', 'geodir-claim' ), 'danger' );
+			wp_die();
+		}
+
+		// fake the post_id for ninja forms
+		add_filter( 'url_to_postid', function ( $url ) {
+				global $post;
+				return add_query_arg( 'p', $post->ID, $url );
+			}
+		);
+
+		self::print_header( $post->ID );
+
+		if ( GeoDir_Claim_Post::post_claim_allowed( $post->ID ) ) {
+			// Check for an outstanding claim.
+			if ( GeoDir_Claim_Post::is_claimed( $post->ID ) ) {
+				echo self::alert( __( 'This listing is already claimed!', 'geodir-claim' ) );
+			} elseif ( GeoDir_Claim_Post::is_claim_pending( $post->ID ) ) {
+				echo self::alert( __( 'It looks like you already have a claim pending review for this listing, you will be notified by email once we have reviewed your claim.', 'geodir-claim' ) );
+			} else {
+				echo geodir_claim_post_get_form( $post->ID );
+			}
+		} else {
+			echo aself::alert( __( 'Claim not allowed for this listing!', 'geodir-claim' ) );
+		}
+		wp_die();
+	}
+
+	/**
+	 * Prints the header in the popups
+	 *
+	 * @since 2.0.0.0
+	 */
+	public static function print_header( $post_id = 0 ) {
+		$title = $post_id > 0 ? get_the_title( $post_id ) : '';
+		$title = $title ? wp_sprintf( __( 'Claim Listing: %s', 'geodir-claim' ), $title ) : __( 'Claim Listing', 'geodir-claim' );
+		?>
+		<div class="modal-header pt-0 mt-0 mb-3 mx-n3 d-flex justify-content-start  align-items-center">
+			<h5 class="modal-title"><?php echo $title; ?></h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="<?php esc_attr_e( 'Close', 'geodir-claim' ) ; ?>"><span aria-hidden="true">&times;</span></button>
+		</div>
+		<?php
+	}
+
+	/**
      * Submit claim post form.
      *
      * @since 2.0.0
@@ -168,26 +242,26 @@ class GeoDir_Claim_AJAX {
 		$validate = apply_filters( 'geodir_validate_ajax_claim_listing_data', true, $_POST );
 
 		if ( is_wp_error( $validate ) ) {
-			wp_send_json_error( array( 'message' => $validate->get_error_message() ) );
+			wp_send_json_error( array( 'message' => self::alert( $validate->get_error_message(), 'danger' ) ) );
 		}
 
 		if ( ! is_user_logged_in() ) {
-			wp_send_json_error( array( 'message' => __( 'Login to claim this listing!', 'geodir-claim' ) ) );
+			wp_send_json_error( array( 'message' => self::alert( __( 'Login to claim this listing!', 'geodir-claim' ) ) ) );
 		}
 
 		$post = $post_id ? get_post( $post_id ) : NULL;
 		if ( empty( $post ) ) {
-			wp_send_json_error( array( 'message' => __( 'No post found!', 'geodir-claim' ) ) );
+			wp_send_json_error( array( 'message' => self::alert( __( 'No post found!', 'geodir-claim' ), 'danger' ) ) );
 		}
 
 		if ( GeoDir_Claim_Post::post_claim_allowed( $post->ID ) ) {
 			if ( GeoDir_Claim_Post::is_claimed( $post->ID ) ) {
-				wp_send_json_error( array( 'message' => __( 'This listing is already claimed!', 'geodir-claim' ) ) );
+				wp_send_json_error( array( 'message' => self::alert( __( 'This listing is already claimed!', 'geodir-claim' ) ) ) );
 			} else {
 				$handle = GeoDir_Claim_Form::handle_claim_submit( $_POST );
 
 				if ( is_wp_error( $handle ) ) { // Claim request error
-					wp_send_json_error( array( 'message' => $handle->get_error_message() ) );
+					wp_send_json_error( array( 'message' => self::alert( $handle->get_error_message(), 'danger' ) ) );
 				} else {
 					if ( $handle ) { // Claim request success
 						// clear cache
@@ -196,9 +270,9 @@ class GeoDir_Claim_AJAX {
 						$claim = GeoDir_Claim_Post::get_item( $handle );
 
 						if ( geodir_get_option( 'claim_auto_approve' ) && empty( $claim->payment_id ) ) {
-							$message = __( 'A verification link has been sent to your email address, please click the link in the email to verify your listing claim.', 'geodir-claim' );
+							$message = self::alert( __( 'A verification link has been sent to your email address, please click the link in the email to verify your listing claim.', 'geodir-claim' ), 'success' );
 						} else {
-							$message = __( 'Your request to claim this listing has been sent successfully. You will be notified by email once a decision has been made.', 'geodir-claim' );
+							$message = self::alert( __( 'Your request to claim this listing has been sent successfully. You will be notified by email once a decision has been made.', 'geodir-claim' ), 'success' );
 						}
 
 						$message = apply_filters( 'geodir_claim_submit_success_message', $message, $claim, $post_id );
@@ -207,12 +281,12 @@ class GeoDir_Claim_AJAX {
 
 						wp_send_json_success( $data );
 					} else { // Claim request fails
-						wp_send_json_error( array( 'message' => __( 'Something went wrong, please try again!', 'geodir-claim' ) ) );
+						wp_send_json_error( array( 'message' => self::alert( __( 'Something went wrong, please try again!', 'geodir-claim' ), 'danger' ) ) );
 					}
 				}
 			}
 		} else {
-			wp_send_json_error( array( 'message' => __( 'Claim not allowed for this listing!', 'geodir-claim' ) ) );
+			wp_send_json_error( array( 'message' => self::alert( __( 'Claim not allowed for this listing!', 'geodir-claim' ) ) ) );
 		}
 	}
 
@@ -326,5 +400,19 @@ class GeoDir_Claim_AJAX {
 		} else {
 			wp_send_json_error( array( 'message' => __( 'Something went wrong, can not delete claim request.', 'geodir-claim' ) ) );
 		}
+	}
+
+	public static function alert( $message, $type = 'info' ) {
+		if ( ! geodir_design_style() ) {
+			return $message;
+		}
+
+		return aui()->alert(
+			array(
+				'type'=> $type,
+				'content'=> $message,
+				'class' => 'mb-0'
+			)
+		);
 	}
 }

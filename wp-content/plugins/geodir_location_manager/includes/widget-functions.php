@@ -302,16 +302,19 @@ function geodir_popular_location_pagination($total, $per_page, $pageno, $params 
     $params = wp_parse_args($params, $defaults);
     $params = apply_filters('geodir_popular_location_pagination_params', $params, $total, $per_page, $pageno);
 
+	$design_style = geodir_design_style();
+
     $more_info = $params['more_info'];
     $pagination_info = $params['pagination_info'];
     $before = $params['before'];
     $after = $params['after'];
-    $prelabel = $params['prelabel'];
-    $nxtlabel = $params['nxtlabel'];
+    $prelabel = $design_style ? '<i class="fas fa-chevron-left"></i>' : $params['prelabel'];
+    $nxtlabel = $design_style ? '<i class="fas fa-chevron-right"></i>' : $params['nxtlabel'];
     $pages_to_show = $params['pages_to_show'];
     $always_show = $params['always_show'];
     $class = !empty($params['class']) ? sanitize_html_class($params['class']) : '';
-
+	$links = array();
+	
     if (empty($prelabel)) {
         $prelabel = '<strong>&laquo;</strong>';
     }
@@ -328,13 +331,19 @@ function geodir_popular_location_pagination($total, $per_page, $pageno, $params 
         $pageno = 1;
     }
 
+
+
+	$bs_link_class = $design_style ? 'page-link' : '';
+	
+
     ob_start();
     if ($max_page > 1 || $always_show) {
         $start_no = ( $pageno - 1 ) * $per_page + 1;
         $end_no = min($pageno * $per_page, $total);
         
         if ($more_info != '' && !empty($pagination_info)) {
-            $pagination_info = '<div class="gd-pagination-details gd-pagination-details-' . $more_info . '">' . wp_sprintf($pagination_info, $start_no, $end_no, $total) . '</div>';
+	        $paging_class = $design_style ? 'text-muted' : '';
+            $pagination_info = '<div class="gd-pagination-details gd-pagination-details-' . $more_info . ' '.$paging_class.'">' . wp_sprintf($pagination_info, $start_no, $end_no, $total) . '</div>';
             
             if ($more_info == 'before') {
                 $before = $before . $pagination_info;
@@ -344,35 +353,60 @@ function geodir_popular_location_pagination($total, $per_page, $pageno, $params 
         }
             
         echo "<div class='gd-pagi-container'> $before <div class='Navi geodir-ajax-pagination " . $class . "'>";
-        if ($pageno > 1) {
-            echo '<a class="gd-page-sc-fst gd-wgt-page" data-page="1" href="javascript:void(0);">&laquo;</a>&nbsp;';
+
+	    $space  = $design_style ? '' : '&nbsp;';
+
+        if ($pageno > 1 && !$design_style) {
+	        $links[] = '<a class="gd-page-sc-fst gd-wgt-page '.$bs_link_class.'" data-page="1" href="javascript:void(0);">&laquo;</a>'.$space;
         }
         
         if (($pageno - 1) > 0) {
-            echo '<a class="gd-page-sc-prev gd-wgt-page" data-page="' . (int)($pageno - 1) . '" href="javascript:void(0);">' . $prelabel . '</a>&nbsp;';
+	        $links[] = '<a class="gd-page-sc-prev gd-wgt-page '.$bs_link_class.'" data-page="' . (int)($pageno - 1) . '" href="javascript:void(0);">' . $prelabel . '</a>'.$space;
         }
         
         for ($i = $pageno - $half_pages_to_show; $i <= $pageno + $half_pages_to_show; $i++) {
             if ($i >= 1 && $i <= $max_page) {
                 if ($i == $pageno) {
-                    echo "<strong class='on' class='gd-page-sc-act'>$i</strong>";
+	                $links[] = "<strong class='on $bs_link_class current' class='gd-page-sc-act'>$i</strong>";
                 } else {
-                    echo ' <a class="gd-page-sc-no gd-wgt-page" data-page="' . (int)$i . '" href="javascript:void(0);">' . $i . '</a> ';
+	                $links[] = ' <a class="gd-page-sc-no gd-wgt-page '.$bs_link_class.'" data-page="' . (int)$i . '" href="javascript:void(0);">' . $i . '</a> ';
                 }
             }
         }
-        
+
+
+
         if (($pageno + 1) <= $max_page) {
-            echo '&nbsp;<a class="gd-page-sc-nxt gd-wgt-page" data-page="' . (int)($pageno + 1) . '" href="javascript:void(0);">' . $nxtlabel . '</a>';
+
+	        $links[] = $space . '<a class="gd-page-sc-nxt gd-wgt-page '.$bs_link_class.'" data-page="' . (int)($pageno + 1) . '" href="javascript:void(0);">' . $nxtlabel . '</a>';
         }
         
-        if ($pageno < $max_page) {
-            echo '&nbsp;<a class="gd-page-sc-lst gd-wgt-page" data-page="' . (int)$max_page . '" href="javascript:void(0);">&raquo;</a>';
+        if ($pageno < $max_page && !$design_style) {
+	        $links[] = $space . '<a class="gd-page-sc-lst gd-wgt-page '.$bs_link_class.'" data-page="' . (int)$max_page . '" href="javascript:void(0);">&raquo;</a>';
         }
+
+	    echo implode("", $links );
+
         echo "</div> $after </div>";
     }
-    $output = ob_get_contents();
-    ob_end_clean();
+    $output = ob_get_clean();
+
+	if ( $design_style ) {
+		$paging_args = array(
+			'class'              => 'pagination-sm',
+			'mid_size'           => 2,
+			'prev_text'          => '<i class="fas fa-chevron-left"></i>',
+			'next_text'          => '<i class="fas fa-chevron-right"></i>',
+			'screen_reader_text' => __( 'Posts navigation' ),
+			'before_paging' => $more_info == 'before' ? $pagination_info : '',
+			'after_paging'  => $more_info == 'after' ? $pagination_info : '',
+			'type'               => 'array',
+			'total'              => $total,
+			'links'              => $links
+		);
+		$output = aui()->pagination($paging_args);
+	}
+	
 
     return trim($output);
 }

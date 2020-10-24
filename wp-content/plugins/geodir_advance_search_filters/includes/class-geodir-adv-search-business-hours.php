@@ -359,7 +359,16 @@ class GeoDir_Adv_Search_Business_Hours {
 				}
 			}
 
-			$params[] = '<label class="gd-adv-search-label gd-adv-search-range gd-adv-search-' . $htmlvar_name . '" data-name="s' . $htmlvar_name . '" data-value="' . esc_attr( sanitize_text_field( $_REQUEST['sopen_now'] ) ) . '"><i class="fas fa-times" aria-hidden="true"></i> <label class="gd-adv-search-label-t">' . $frontend_title . '</label>' . $this_search . '</label>';
+			$design_style = geodir_design_style();
+
+			$label_class = 'gd-adv-search-label';
+			$sublabel_class = 'gd-adv-search-label-t';
+			if ( $design_style ) {
+				$label_class .= ' badge badge-info mr-2';
+				$sublabel_class .= ' mb-0 mr-1';
+			}
+
+			$params[] = '<label class="' . $label_class . ' gd-adv-search-range gd-adv-search-' . $htmlvar_name . '" data-name="s' . $htmlvar_name . '" data-value="' . esc_attr( sanitize_text_field( $_REQUEST['sopen_now'] ) ) . '"><i class="fas fa-times" aria-hidden="true"></i> <label class="' . $sublabel_class . '">' . $frontend_title . '</label>' . $this_search . '</label>';
 		}
 
 		return $params;

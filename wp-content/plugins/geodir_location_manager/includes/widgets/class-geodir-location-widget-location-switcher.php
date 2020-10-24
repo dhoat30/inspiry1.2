@@ -17,13 +17,13 @@ class GeoDir_Location_Widget_Location_Switcher extends WP_Super_Duper {
 		$options = array(
 			'textdomain'     => 'geodirlocation',
 			'block-icon'     => 'location-alt',
-			'block-category' => 'common',
+			'block-category' => 'geodirectory',
 			'block-keywords' => "['geodirlocation','location','locations']",
 			'class_name'     => __CLASS__,
 			'base_id'        => 'gd_location_switcher',
 			'name'           => __( 'GD > Location Switcher', 'geodirlocation' ),
 			'widget_ops'     => array(
-				'classname'     => 'geodir-lm-location-switcher',
+				'classname'     => 'geodir-lm-location-switcher bsui',
 				'description'   => esc_html__( 'Displays the location switcher.', 'geodirlocation' ),
 				'geodirectory'  => true,
 				'gd_show_pages' => array(),
@@ -38,6 +38,9 @@ class GeoDir_Location_Widget_Location_Switcher extends WP_Super_Duper {
 	 *
 	 */
 	public function set_arguments() {
+
+		$design_style = geodir_design_style();
+
 		$arguments = array(
 			'title'  => array(
                 'title' => __('Title:', 'geodirlocation'),
@@ -49,55 +52,87 @@ class GeoDir_Location_Widget_Location_Switcher extends WP_Super_Duper {
             )
 		);
 
+		if($design_style) {
+			$arguments['mt']  = geodir_get_sd_margin_input('mt');
+			$arguments['mr']  = geodir_get_sd_margin_input('mr');
+			$arguments['mb']  = geodir_get_sd_margin_input('mb');
+			$arguments['ml']  = geodir_get_sd_margin_input('ml');
+		}
+
 		return $arguments;
 	}
 
 	public function output( $args = array(), $widget_args = array(), $content = '' ) {
-		global $geodirectory;
-		$location = $geodirectory->location;
-		ob_start();
-		?>
-		<div class="geodir-location-search-input-wrap">
-			<a href="#location-switcher" title="<?php _e('Change Location','geodirlocation');?>">
-				<div class="geodir-location-switcher-display">
-					<?php
-					echo '<span class="gd-icon-hover-swap geodir-search-input-label" onclick="var event = arguments[0] || window.event; geodir_cancelBubble(event); window.location = geodir_params.location_base_url;">';
-					echo '<i class="fas fa-map-marker-alt gd-show"></i>';
-					echo '<i class="fas fa-times geodir-search-input-label-clear gd-hide" title="' . esc_attr__( 'Clear Location', 'geodirlocation' ) . '"></i>';
-					echo '</span>';
-					if ( $location->type == 'me' ) {
-						echo " " . wp_sprintf( __( 'Near: %s', 'geodirlocation' ), __( 'My Location', 'geodirectory' ) );
-					} elseif ( $location->type == 'gps' ) {
-						echo " " . wp_sprintf( __( 'Near: %s', 'geodirlocation' ), __( 'GPS Location', 'geodirlocation' ) );
-					} elseif ( ! empty( $location->type ) ) {
-						echo " " . wp_sprintf( __( 'In: %s (%s)', 'geodirlocation' ), __( $location->{$location->type}, 'geodirlocation' ), __( ucfirst( $location->type ),  'geodirlocation' ) );
-					} else {
-						echo " " . wp_sprintf( __( 'In: %s', 'geodirlocation' ),__( 'Everywhere', 'geodirlocation' ) );
-					}
-					?>
-					<i class="fas fa-caret-down"></i>
-				</div>
-			</a>
-		</div>
-		<?php
-		$output = ob_get_clean();
 
-		return $output;
+		$design_style = geodir_design_style();
+		$template = $design_style ? $design_style."/location-switcher.php" : "legacy/location-switcher.php";
+
+		// wrap class
+		$wrap_class = geodir_build_aui_class($args);
+		$template_args = array(
+			'args'  => $args,
+			'wrap_class'    => $wrap_class
+		);
+		return geodir_get_template_html( $template, $template_args, '', plugin_dir_path( GEODIR_LOCATION_PLUGIN_FILE ). "/templates/" );
+
 	}
 }
 
 // non class stuff
 add_action( 'wp_footer', 'geodir_location_autocomplete_script' );
 function geodir_location_autocomplete_script() {
+	$design_style = geodir_design_style();
+
+	if ( $design_style ) {
+	?>
+		<!-- Modal -->
+		<div class="modal fade bsui" id="gdlm-switcher" tabindex="-1" aria-labelledby="dlm-switcher-title" aria-hidden="true">
+			<div class="modal-dialog ">
+				<div class="modal-content ">
+					<div class="modal-header text-center">
+						<div class="modal-title text-center w-100">
+							<h5 class="w-100" id="dlm-switcher-title"><?php _e("Change Location","geodirlocation");?></h5>
+							<h6 class="w-100 h6 text-muted"><?php _e("Find awesome listings near you!","geodirlocation");?></h6>
+						</div>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body text-center">
+						<div class="dropdown">
+							<?php
+							echo aui()->input(
+								array(
+									'class'              => 'geodir-location-search',
+									'label'              => esc_html__( "Change Location","geodirlocation"),
+									'type'              => 'text',
+									'placeholder'       => esc_html__( "city, region, country" , 'geodirlocation'),
+									'extra_attributes'  => array(
+										'data-toggle'   =>  "dropdown"
+									)
+								)
+							);
+							?>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php
+	} else {
 	?>
 	<div class="geodir-location-search-wrap lity-hide lity-show" style="display: none;">
-		<div class="gdlmls-title"><?php _e('Change Location','geodirlocation');?></div>
-		<div class="gdlmls-sub-title"><?php _e('To find awesome listings near you!','geodirlocation');?></div>
+		<div class="gdlmls-title"><?php _e( 'Change Location', 'geodirlocation' ); ?></div>
+		<div class="gdlmls-sub-title"><?php _e( 'Find awesome listings near you!', 'geodirlocation' ); ?></div>
 
 		<div class="geodir-location-search-input-wrap">
-			<input type="text" class="geodir-location-search" placeholder="<?php esc_attr_e( 'city, region, country', 'geodirlocation' ); ?>">
+			<input type="text" class="geodir-location-search"
+			       placeholder="<?php esc_attr_e( 'city, region, country', 'geodirlocation' ); ?>">
 		</div>
 	</div>
+	<?php
+	}
+	?>
 	<script>
 		/*
 		Location suggestion schema
@@ -180,13 +215,13 @@ function geodir_location_autocomplete_script() {
 				gdlm_ls_current_location_suggestion($input);
 
 			}else{
-				jQuery($input).after("<div class='gd-suggestions-dropdown gdlm-location-suggestions gd-ios-scrollbars'>" +
-					"<ul class='gdlmls-near'></ul>" +
-					"<ul class='gdlmls-neighbourhood'></ul>" +
-					"<ul class='gdlmls-city'></ul>" +
-					"<ul class='gdlmls-region'></ul>" +
-					"<ul class='gdlmls-country'></ul>" +
-					"<ul class='gdlmls-more'></ul>" +
+				jQuery($input).after("<div class='<?php if($design_style){ echo "dropdown-menu dropdown-caret-0 w-100 show scrollbars-ios overflow-auto p-0 m-0";}?> gd-suggestions-dropdown gdlm-location-suggestions gd-ios-scrollbars'>" +
+					"<ul class='gdlmls-near list-unstyled p-0 m-0 '></ul>" +
+					"<ul class='gdlmls-neighbourhood list-unstyled p-0 m-0'></ul>" +
+					"<ul class='gdlmls-city list-unstyled p-0 m-0'></ul>" +
+					"<ul class='gdlmls-region list-unstyled p-0 m-0'></ul>" +
+					"<ul class='gdlmls-country list-unstyled p-0 m-0'></ul>" +
+					"<ul class='gdlmls-more list-unstyled p-0 m-0'></ul>" +
 					"</div>");
 				gdlm_ls_init_suggestions($input);
 				gdlm_ls_current_location_suggestion($input);
@@ -293,7 +328,9 @@ function geodir_location_autocomplete_script() {
 						<?php
 					}
 					?>
-					gdlm_ls_google_suggestions($input);
+					if ((typeof google !== 'undefined' && typeof google.maps !== 'undefined')) {
+						gdlm_ls_google_suggestions($input);
+					}
 				} else {
 					jQuery(gdlmls_selected).parent().find("ul.gdlmls-more").empty();
 				}
@@ -461,28 +498,29 @@ function geodir_location_autocomplete_script() {
 			var output;
 			var history = '';
 			var $delete = '';
+			var $common_class = '<?php if($design_style){ echo 'list-group-item-action c-pointer px-1 py-1 m-0 d-flex justify-content-between'; }?>';
 			if($data.history){
 				history = '<i class="fas fa-history" title="<?php _e('Search history','geodirlocation');?>"></i> ';
-				$delete = '<i onclick="var event = arguments[0] || window.event; geodir_cancelBubble(event);gdlm_ls_del_location_history(\''+$data.slug+'\');jQuery(this).parent().remove();" class="fas fa-times " title="<?php esc_attr_e('Remove from history','geodirlocation');?>"></i> ';
+				$delete = '<span><i onclick="var event = arguments[0] || window.event; geodir_cancelBubble(event);gdlm_ls_del_location_history(\''+$data.slug+'\');jQuery(this).parent().remove();" class="fas fa-times" title="<?php esc_attr_e('Remove from history','geodirlocation');?>"></i></span> ';
 			}else if($type == 'neighbourhood' || $type == 'city' || $type == 'region' || $type == 'country'){
 				history = '<i class="fas fa-map-marker-alt"></i> ';
 			}
 			console.log($data);
 			if($type=='neighbourhood'){
 				if($data.area){$data.city = $data.area;}
-				output = '<li data-type="'+$type+'" ontouchstart="this.click()" onclick="gdlm_click_action(\''+$type+'\',\''+gdlm_ls_slashit($data.title)+'\',\''+gdlm_ls_slashit($data.city)+'\',\''+$data.country_slug+'\',\''+$data.region_slug+'\',\''+$data.city_slug+'\',\''+$data.slug+'\');">'+history+'<?php esc_attr_e( 'In:', 'geodirectory' ); ?> <b>'+ $data.title + '</b>, '+ $data.city + ' <?php esc_attr_e( '(Neighbourhood)', 'geodirlocation' ); ?>'+$delete+'</li>';
+				output = '<li class="'+$common_class+'" data-type="'+$type+'" ontouchstart="this.click()" onclick="gdlm_click_action(\''+$type+'\',\''+gdlm_ls_slashit($data.title)+'\',\''+gdlm_ls_slashit($data.city)+'\',\''+$data.country_slug+'\',\''+$data.region_slug+'\',\''+$data.city_slug+'\',\''+$data.slug+'\');"><span>'+history+'<?php esc_attr_e( 'In:', 'geodirectory' ); ?> <b>'+ $data.title + '</b>, '+ $data.city + ' <?php esc_attr_e( '(Neighbourhood)', 'geodirlocation' ); ?></span>'+$delete+'</li>';
 			}else if($type=='city'){
 				if($data.area){$data.region = $data.area;}
-				output = '<li data-type="'+$type+'" ontouchstart="this.click()" onclick="gdlm_click_action(\''+$type+'\',\''+gdlm_ls_slashit($data.title)+'\',\''+gdlm_ls_slashit($data.region)+'\',\''+$data.country_slug+'\',\''+$data.region_slug+'\',\''+$data.slug+'\');">'+history+'<?php esc_attr_e( 'In:', 'geodirectory' ); ?> <b>'+ $data.title + '</b>, '+$data.region+' <?php esc_attr_e( '(City)', 'geodirlocation' ); ?>'+$delete+'</li>';
+				output = '<li class="'+$common_class+'" data-type="'+$type+'" ontouchstart="this.click()" onclick="gdlm_click_action(\''+$type+'\',\''+gdlm_ls_slashit($data.title)+'\',\''+gdlm_ls_slashit($data.region)+'\',\''+$data.country_slug+'\',\''+$data.region_slug+'\',\''+$data.slug+'\');"><span>'+history+'<?php esc_attr_e( 'In:', 'geodirectory' ); ?> <b>'+ $data.title + '</b>, '+$data.region+' <?php esc_attr_e( '(City)', 'geodirlocation' ); ?></span>'+$delete+'</li>';
 			}else if($type=='region'){
 				if($data.area){$data.country = $data.area;}
-				output = '<li data-type="'+$type+'" ontouchstart="this.click()" onclick="gdlm_click_action(\''+$type+'\',\''+gdlm_ls_slashit($data.title)+'\',\''+gdlm_ls_slashit($data.country)+'\',\''+$data.country_slug+'\',\''+$data.slug+'\');">'+history+'<?php esc_attr_e( 'In:', 'geodirectory' ); ?> <b>'+ $data.title + '</b>, '+$data.country+' <?php esc_attr_e( '(Region)', 'geodirlocation' ); ?>'+$delete+'</li>';
+				output = '<li class="'+$common_class+'" data-type="'+$type+'" ontouchstart="this.click()" onclick="gdlm_click_action(\''+$type+'\',\''+gdlm_ls_slashit($data.title)+'\',\''+gdlm_ls_slashit($data.country)+'\',\''+$data.country_slug+'\',\''+$data.slug+'\');"><span>'+history+'<?php esc_attr_e( 'In:', 'geodirectory' ); ?> <b>'+ $data.title + '</b>, '+$data.country+' <?php esc_attr_e( '(Region)', 'geodirlocation' ); ?></span>'+$delete+'</li>';
 			}else if($type=='country'){
-				output = '<li data-type="'+$type+'" ontouchstart="this.click()" onclick="gdlm_click_action(\''+$type+'\',\''+gdlm_ls_slashit($data.title)+'\',\'\',\''+$data.slug+'\');">'+history+'<?php esc_attr_e( 'In:', 'geodirectory' ); ?> <b>'+ $data.title + '</b> <?php esc_attr_e( '(Country)', 'geodirlocation' ); ?>'+$delete+'</li>';
+				output = '<li class="'+$common_class+'" data-type="'+$type+'" ontouchstart="this.click()" onclick="gdlm_click_action(\''+$type+'\',\''+gdlm_ls_slashit($data.title)+'\',\'\',\''+$data.slug+'\');"><span class=""><span>'+history+'<?php esc_attr_e( 'In:', 'geodirectory' ); ?> <b>'+ $data.title + '</b> <?php esc_attr_e( '(Country)', 'geodirlocation' ); ?></span>'+$delete+'</li>';
 			}else if($type=='near'){
-				output = '<li data-type="'+$type+'" class="gd-near-me" ontouchstart="this.click()" onclick="gdlm_click_action(\''+$type+'\',\''+gdlm_ls_slashit($data.title)+'\',\'\',\''+$data.slug+'\');"><i class="fas fa-location-arrow"></i> <?php esc_attr_e( 'Near:', 'geodirectory' ); ?> '+ $data.title + '</li>';
+				output = '<li data-type="'+$type+'" class="gd-near-me text-primary '+$common_class+'" ontouchstart="this.click()" onclick="gdlm_click_action(\''+$type+'\',\''+gdlm_ls_slashit($data.title)+'\',\'\',\''+$data.slug+'\');"><span><i class="fas fa-location-arrow"></i> <?php esc_attr_e( 'Near:', 'geodirectory' ); ?> '+ $data.title + '</span></li>';
 			}else if($type=='near-search'){
-				output = '<li data-type="'+$type+'" ontouchstart="this.click()" onclick="gdlm_click_action(\''+$type+'\',\''+gdlm_ls_slashit($data.description)+'\');"><i class="fas fa-search"></i> <?php esc_attr_e( 'Near:', 'geodirectory' ); ?> '+ $data.description + '</li>';
+				output = '<li class="'+$common_class+'" data-type="'+$type+'" ontouchstart="this.click()" onclick="gdlm_click_action(\''+$type+'\',\''+gdlm_ls_slashit($data.description)+'\');"><span><i class="fas fa-search"></i> <?php esc_attr_e( 'Near:', 'geodirectory' ); ?> '+ $data.description + '</span></li>';
 			}
 
 			return output;
@@ -794,8 +832,44 @@ function geodir_location_autocomplete_script() {
 			return str;
 		}
 
+		/**
+		 * Open the location switcher
+		 */
+		function geodir_lm_setup_switcher_trigger(){
+
+			var no_show = false;
+			// Clear the location and redirect to the base location page
+			jQuery(".gdlmls-menu-icon").click(function(event){
+				no_show = true;
+				event.preventDefault();
+				window.location = geodir_params.location_base_url;
+			});
+
+			// detect the menu item location switcher click
+			jQuery('a[href$="#location-switcher"]').click(function(event){
+				// prevent the hash being added to the url
+				event.preventDefault();
+				// only fire if the click is not the clear location button.
+				if(!no_show){
+					<?php if($design_style){ ?>
+					jQuery('#gdlm-switcher').modal('show').on('shown.bs.modal', function (e) {
+						jQuery('.modal .geodir-location-search').focus().click();
+					});
+					<?php }else{ ?>
+					// init the lightbox
+					$lightbox = lity('.geodir-location-search-wrap');
+					// add class so we can position
+					jQuery($lightbox.element()).addClass('geodir-location-switcher-lightbox');
+					// set the focus on the input so it auto loads the nearest cities
+					jQuery('.lity-content .geodir-location-search').focus();
+					<?php } ?>
+				}
 
 
+			});
+
+		}
+		jQuery(document).ready(function() {geodir_lm_setup_switcher_trigger()});
 	</script>
 <?php
 }

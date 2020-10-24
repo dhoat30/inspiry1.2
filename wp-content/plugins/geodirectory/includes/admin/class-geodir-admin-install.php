@@ -460,16 +460,18 @@ class GeoDir_Admin_Install {
 	 */
 	public static function create_pages() {
 
+		$gutenberg = geodir_is_gutenberg();
+
 		$pages = apply_filters( 'geodirectory_create_pages', array(
 			'page_add' => array(
 				'name'    => _x( 'add-listing', 'Page slug', 'geodirectory'),
 				'title'   => _x( 'Add Listing', 'Page title', 'geodirectory'),
-				'content' => GeoDir_Defaults::page_add_content(),
+				'content' => GeoDir_Defaults::page_add_content(false, $gutenberg),
 			),
 			'page_search' => array(
 				'name'    => _x( 'search', 'Page slug', 'geodirectory'),
 				'title'   => _x( 'Search page', 'Page title', 'geodirectory'),
-				'content' => GeoDir_Defaults::page_search_content(),
+				'content' => GeoDir_Defaults::page_search_content(false, $gutenberg),
 			),
 			'page_terms_conditions' => array(
 				'name'    => _x( 'terms-and-conditions', 'Page slug', 'geodirectory'),
@@ -479,22 +481,22 @@ class GeoDir_Admin_Install {
 			'page_location' => array(
 				'name'    => _x( 'location', 'Page slug', 'geodirectory'),
 				'title'   => _x( 'Location', 'Page title', 'geodirectory'),
-				'content' => GeoDir_Defaults::page_location_content(),
+				'content' => GeoDir_Defaults::page_location_content(false, $gutenberg),
 			),
 			'page_archive' => array(
 				'name'    => _x( 'gd-archive', 'Page slug', 'geodirectory'),
 				'title'   => _x( 'GD Archive', 'Page title', 'geodirectory'),
-				'content' => GeoDir_Defaults::page_archive_content(),
+				'content' => GeoDir_Defaults::page_archive_content(false, $gutenberg),
 			),
 			'page_archive_item' => array(
 				'name'    => _x( 'gd-archive-item', 'Page slug', 'geodirectory'),
 				'title'   => _x( 'GD Archive Item', 'Page title', 'geodirectory'),
-				'content' => GeoDir_Defaults::page_archive_item_content(),
+				'content' => GeoDir_Defaults::page_archive_item_content(false, $gutenberg),
 			),
 			'page_details' => array(
 				'name'    => _x( 'gd-details', 'Page slug', 'geodirectory'),
 				'title'   => _x( 'GD Details', 'Page title', 'geodirectory'),
-				'content' => GeoDir_Defaults::page_details_content(),
+				'content' => GeoDir_Defaults::page_details_content(false, $gutenberg),
 			),
 
 			
@@ -542,6 +544,9 @@ class GeoDir_Admin_Install {
      * @since 2.0.0
 	 */
 	private static function create_options() {
+		// Before set default options.
+		self::before_create_options();
+
 		// Include settings so that we can run through defaults
 		include_once( dirname( __FILE__ ) . '/class-geodir-admin-settings.php' );
 		
@@ -865,7 +870,7 @@ class GeoDir_Admin_Install {
 	public static function plugin_row_meta( $links, $file ) {
 		if ( GEODIRECTORY_PLUGIN_BASENAME == $file ) {
 			$row_meta = array(
-				'docs'    => '<a href="' . esc_url( apply_filters( 'geodirectory_docs_url', 'https://wpgeodirectory.com/docs-v2/' ) ) . '" aria-label="' . esc_attr__( 'View GeoDirectory documentation', 'geodirectory' ) . '">' . esc_html__( 'Docs', 'geodirectory' ) . '</a>',
+				'docs'    => '<a href="' . esc_url( apply_filters( 'geodirectory_docs_url', 'https://docs.wpgeodirectory.com/' ) ) . '" aria-label="' . esc_attr__( 'View GeoDirectory documentation', 'geodirectory' ) . '">' . esc_html__( 'Docs', 'geodirectory' ) . '</a>',
 				'support' => '<a href="' . esc_url( apply_filters( 'geodirectory_support_url', 'https://wpgeodirectory.com/support/' ) ) . '" aria-label="' . esc_attr__( 'Visit GeoDirectory support', 'geodirectory' ) . '">' . esc_html__( 'Support', 'geodirectory' ) . '</a>',
 				'translation' => '<a href="' . esc_url( apply_filters( 'geodirectory_translation_url', 'https://wpgeodirectory.com/translate/projects' ) ) . '" aria-label="' . esc_attr__( 'View translations', 'geodirectory' ) . '">' . esc_html__( 'Translations', 'geodirectory' ) . '</a>',
 			);
@@ -1172,7 +1177,6 @@ class GeoDir_Admin_Install {
      * @global object $wpdb WordPress Database object.
      */
 	public static function upgrades(){
-
 		/**
 		 * DB type change for post_images
 		 */
@@ -1193,6 +1197,38 @@ class GeoDir_Admin_Install {
 		// Rank Math schedule flush rewrite rules.
 		if ( class_exists( 'RankMath\\Helper' ) ) {
 			update_option( 'geodir_rank_math_flush_rewrite', 1 );
+		}
+	}
+
+	/**
+	 * Execute before default options are set.
+	 *
+	 * @since 2.1.0.0
+	 *
+	 * @return void
+	 */
+	public static function before_create_options() {
+		// Maybe add try AUI notice
+		self::maybe_try_aui();
+	}
+
+	/**
+	 * Check and set default AUI option value.
+	 *
+	 * @since 2.1.0.0
+	 *
+	 * @return void
+	 */
+	public static function maybe_try_aui() {
+		if ( self::is_new_install() ) {
+			// New installs should be set to use it by default.
+		} else {
+			if ( get_option( 'geodirectory_version' ) && version_compare( get_option( 'geodirectory_version' ), '2.0.9.0', '<' ) && ! geodir_get_option( 'design_style' ) ) {
+				// Update blank to set default.
+				geodir_update_option( 'design_style', '' );
+
+				GeoDir_Admin_Notices::add_notice( 'try_aui' );
+			}
 		}
 	}
 }

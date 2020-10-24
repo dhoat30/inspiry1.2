@@ -3,9 +3,9 @@ Contributors: stiofansisland, paoltaia, ayecode
 Donate link: https://wpgeodirectory.com
 Tags: geodir pricing, package, price package, pricing, pricing manager
 Requires at least: 4.9
-Tested up to: 5.4
+Tested up to: 5.5
 Requires PHP: 5.6
-Stable tag: 2.5.1.2
+Stable tag: 2.6.0.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -18,6 +18,11 @@ Pricing Manager is a powerful price manager that allows you to monetize your dir
 The interface allows efficient management of package features, such as images, website links and telephone numbers. You can set an expiry date for listings and edit the fields that are shown next to each price package.
 
 == Changelog =
+
+= 2.6.0.0 =
+* Change page title on edit package - CHANGED
+* Changes for AyeCode UI compatibility - CHANGED
+* Sometime it sends pre-expiry notifications for auto-recurring listings - FIXED
 
 = 2.5.1.2 =
 * Saves wrong trial interval value during package to WooCommerce product synchronization - FIXED

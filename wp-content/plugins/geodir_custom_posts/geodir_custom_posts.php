@@ -11,7 +11,7 @@
  * Plugin Name:       GeoDirectory Custom Post Types
  * Plugin URI:        https://wpgeodirectory.com/downloads/custom-post-types/
  * Description:       Allows to create multiple custom post types as you need, allowing you to divide categories and manage features and parameters per CPT.
- * Version:           2.0.1.0
+ * Version:           2.1.0.0
  * Requires at least: 4.9
  * Requires PHP:      5.6
  * Author:            AyeCode Ltd
@@ -30,7 +30,11 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 if ( ! defined( 'GEODIR_CP_VERSION' ) ) {
-	define( 'GEODIR_CP_VERSION', '2.0.1.0' );
+	define( 'GEODIR_CP_VERSION', '2.1.0.0' );
+}
+
+if ( ! defined( 'GEODIR_CP_MIN_CORE' ) ) {
+	define( 'GEODIR_CP_MIN_CORE', '2.1.0.0' );
 }
 
 /**
@@ -47,6 +51,11 @@ function geodir_load_custom_posts() {
 
 	if ( ! defined( 'GEODIR_CP_PLUGIN_FILE' ) ) {
 		define( 'GEODIR_CP_PLUGIN_FILE', __FILE__ );
+	}
+
+	// Min core version check
+	if ( ! function_exists( 'geodir_min_version_check' ) || ! geodir_min_version_check( 'Custom Post Types', GEODIR_CP_MIN_CORE ) ) {
+		return '';
 	}
 
 	/**

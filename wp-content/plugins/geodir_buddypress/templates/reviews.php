@@ -1,22 +1,24 @@
 <?php
 /**
- * The template for displaying Comments.
+ * The template to display reviews
  *
- * The area of the page that contains both current comments
- * and the comment form. The actual display of comments is
- * handled by a callback to twentytwelve_comment() which is
- * located in the functions.php file.
+ * This template can be overridden by copying it to yourtheme/geodir_buddypress/reviews.php.
  *
- * @package WordPress
- * @subpackage Twenty_Twelve
- * @since Twenty Twelve 1.0
+ * HOWEVER, on occasion GeoDirectory will need to update template files and you
+ * (the theme developer) will need to copy the new files to your theme to
+ * maintain compatibility. We try to do this as little as possible, but it does
+ * happen. When this occurs the version of the template file will be bumped and
+ * the readme will list any important changes.
+ *
+ * @see     https://wpgeodirectory.com/docs-v2/faq/customizing/#templates
+ * @package Geodir_BuddyPress/Templates
+ * @version 2.1.0.0
  */
 
-/*
- * If the current post is protected by a password and
- * the visitor has not yet entered the password we will
- * return early without loading the comments.
- */
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 ?>
 <div id="comments" class="geodir-comments-area gdbp-comments-area">
 

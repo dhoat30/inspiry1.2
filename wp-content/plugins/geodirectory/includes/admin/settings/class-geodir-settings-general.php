@@ -163,7 +163,20 @@ class GeoDir_Settings_General extends GeoDir_Settings_Page {
 					'default'  => '1',
 				),
 
-
+				// @todo to be move to own design section
+				array(
+					'id' => 'design_style',
+					'name' => __('Default Design Style', 'geodirectory'),
+					'desc' => __('The default design style to use.', 'geodirectory'),
+					'type' => 'select',
+					'options' => array(
+						'bootstrap' =>  __('Bootstrap', 'geodirectory'),
+						'' =>  __('Legacy (non-bootstrap)', 'geodirectory'),
+					),
+					'class' => 'uwp-select',
+					'desc_tip' => true,
+					'default' => 'bootstrap',
+				),
 
 
 				array( 'type' => 'sectionend', 'id' => 'developer_options' ),
@@ -893,7 +906,7 @@ class GeoDir_Settings_General extends GeoDir_Settings_Page {
 					'class'      => 'geodir-select',
 					'options'    => geodir_user_roles(array('administrator')),
 					'desc_tip'   => true,
-					'docs'       => "https://wpgeodirectory.com/docs-v2/",
+					'docs'       => "https://docs.wpgeodirectory.com/",
 					//'advanced' => true
 				),
 
@@ -914,7 +927,7 @@ class GeoDir_Settings_General extends GeoDir_Settings_Page {
 					'id'   => 'user_trash_posts',
 					'type' => 'checkbox',
 					'default'  => '1',
-					'docs'       => "https://wpgeodirectory.com/docs-v2/",
+					'docs'       => "https://docs.wpgeodirectory.com/",
 
 				),
 				array(
@@ -985,6 +998,8 @@ class GeoDir_Settings_General extends GeoDir_Settings_Page {
 
 				self::get_maps_api_setting(),
 
+				self::get_maps_lazy_load_setting(),
+
 				self::get_map_language_setting(),
 
 				array(
@@ -998,7 +1013,7 @@ class GeoDir_Settings_General extends GeoDir_Settings_Page {
 				),
 
 				array(
-					'name' => __('Enable map cache', 'geodirectory'), // @todo we ned to port this over from GDv1
+					'name' => __('Enable map cache', 'geodirectory'), // @todo we need to port this over from GDv1
 					'desc' => __('This will cache the map JSON for 24 hours or until a GD listing is saved.', 'geodirectory'),
 					'id' => 'map_cache',
 					'type' => 'checkbox',
@@ -1075,6 +1090,31 @@ class GeoDir_Settings_General extends GeoDir_Settings_Page {
 			'type'       => 'select',
 			'class'      => 'geodir-select',
 			'options'    => self::supported_maps_apis(),
+			'desc_tip' => true,
+			'advanced' => true
+		);
+	}
+
+	/**
+	 * Map lazy load settings.
+	 *
+	 * @since 2.1.0.0
+	 *
+	 * @return array Settings.
+	 */
+	public static function get_maps_lazy_load_setting(){
+		return array(
+			'name'       => __( 'Lazy Load Maps', 'geodirectory' ),
+			'desc'       => __( "How to load maps on frontend.", 'geodirectory' ),
+			'id'         => 'maps_lazy_load',
+			'default'    => '',
+			'type'       => 'select',
+			'class'      => 'geodir-select',
+			'options'    => array(
+				'' => __( 'Off (no lazy loading)', 'geodirectory' ),
+				'auto' => __( 'Auto (load when map visible on page scroll)', 'geodirectory' ),
+				'click' => __( 'Click to Load (show a button to load map)', 'geodirectory' ),
+			),
 			'desc_tip' => true,
 			'advanced' => true
 		);

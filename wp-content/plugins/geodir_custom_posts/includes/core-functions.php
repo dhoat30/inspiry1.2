@@ -60,9 +60,10 @@ function geodir_cp_loc_term_count( $terms_count, $terms ) {
 
 function geodir_cp_params() {
 	$params = array(
-    );
+		'aui' => geodir_design_style()
+	);
 
-    return apply_filters( 'geodir_cp_params', $params );
+	return apply_filters( 'geodir_cp_params', $params );
 }
 
 /**
@@ -195,4 +196,8 @@ function geodir_cp_parse_width_height( $value ) {
 	}
 	
     return $value;
+}
+
+function geodir_cp_templates_path() {
+	return GEODIR_CP_PLUGIN_DIR . '/templates/';
 }

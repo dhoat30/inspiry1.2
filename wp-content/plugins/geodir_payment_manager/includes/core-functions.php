@@ -384,7 +384,8 @@ function geodir_pricing_send_pre_expiry_reminders() {
 				$sent = get_post_meta( $row->post_id, '_geodir_reminder_sent', true );
 
 				if ( ! ( ! empty( $sent ) && in_array( $today, $sent ) ) ) {
-					$recurring = geodir_pricing_get_meta( (int) $row->package_id, 'recurring', true );
+					$recurring = geodir_pricing_is_recurring( (int) $row->package_id );
+
 					if ( empty( $recurring ) ) {
 						update_post_meta( $row->post_id, '_gdpm_recurring', false );
 					}
@@ -514,13 +515,13 @@ function geodir_pricing_post_has_renew_period( $post_id, $expire_date = '' ) {
 	return apply_filters( 'geodir_pricing_post_has_renew_period', $return );
 }
 
-function geodir_pricing_is_post_expire_active() {    
+function geodir_pricing_is_post_expire_active() {
     $active = (bool)geodir_get_option( 'pm_listing_expiry' );
 
     return apply_filters( 'geodir_pricing_is_post_expire_active', $active );
 }
 
-function geodir_pricing_is_pre_expiry_reminder_active() {    
+function geodir_pricing_is_pre_expiry_reminder_active() {
     $active = (bool)geodir_get_option( 'email_user_pre_expiry_reminder' );
 
     return apply_filters( 'geodir_pricing_is_pre_expiry_reminder_active', $active );
@@ -749,21 +750,107 @@ function geodir_pricing_display_lifetime( $value, $unit, $translated = true ) {
 		} else {
 			switch ( $unit ) {
 				case 'D':
-					$lifetime = $value > 1 ? '%d days' : '%s day';
+					$lifetime = $value > 1 ? wp_sprintf( '%d days', $value ) : wp_sprintf( '%s day', $value );
 					break;
 				case 'W':
-					$lifetime = $value > 1 ? '%d weeks' : '%d week';
+					$lifetime = $value > 1 ? wp_sprintf( '%d weeks', $value ) : wp_sprintf( '%d week', $value );
 					break;
 				case 'M':
-					$lifetime = $value > 1 ? '%d months' : '%d month';
+					$lifetime = $value > 1 ? wp_sprintf( '%d months', $value ) : wp_sprintf( '%d month', $value );
 					break;
 				case 'Y':
-					$lifetime = $value > 1 ? '%d years' : '%d year';
+					$lifetime = $value > 1 ? wp_sprintf( '%d years', $value ) : wp_sprintf( '%d year', $value );
 			}
 		}
 	}
 
 	return apply_filters( 'geodir_pricing_display_lifetime', $lifetime, $value, $unit, $translated );
+}
+
+function geodir_pricing_display_free_trial( $value, $unit, $translated = true ) {
+	$units = geodir_pricing_lifetime_units();
+
+	$value = absint( $value );
+	$unit = ! empty( $unit ) ? strtoupper( $unit ) : '';
+	if ( ! isset( $units[ $unit ] ) || empty( $value ) ) {
+		$free_trial = '';
+	} else {
+		if ( $translated ) {
+			switch ( $unit ) {
+				case 'D':
+					$free_trial = wp_sprintf( _n( '%d day', '%d days', $value, 'geodir_pricing' ), $value );
+					break;
+				case 'W':
+					$free_trial = wp_sprintf( _n( '%d week', '%d weeks', $value, 'geodir_pricing' ), $value );
+					break;
+				case 'M':
+					$free_trial = wp_sprintf( _n( '%d month', '%d months', $value, 'geodir_pricing' ), $value );
+					break;
+				case 'Y':
+					$free_trial = wp_sprintf( _n( '%d year', '%d years', $value, 'geodir_pricing' ), $value );
+					break;
+			}
+		} else {
+			switch ( $unit ) {
+				case 'D':
+					$free_trial = $value > 1 ? wp_sprintf( '%d days', $value ) : wp_sprintf( '%s day', $value );
+					break;
+				case 'W':
+					$free_trial = $value > 1 ? wp_sprintf( '%d weeks', $value ) : wp_sprintf( '%d week', $value );
+					break;
+				case 'M':
+					$free_trial = $value > 1 ? wp_sprintf( '%d months', $value ) : wp_sprintf( '%d month', $value );
+					break;
+				case 'Y':
+					$free_trial = $value > 1 ? wp_sprintf( '%d years', $value ) : wp_sprintf( '%d year', $value );
+			}
+		}
+	}
+
+	return apply_filters( 'geodir_pricing_display_free_trial', $free_trial, $value, $unit, $translated );
+}
+
+function geodir_pricing_table_display_lifetime( $value, $unit, $translated = true ) {
+	$units = geodir_pricing_lifetime_units();
+
+	$value = absint( $value );
+	$unit = ! empty( $unit ) ? strtoupper( $unit ) : '';
+	if ( ! isset( $units[ $unit ] ) || empty( $value ) ) {
+		$lifetime = $translated ? __( 'lifetime', 'geodir_pricing' ) : 'lifetime';
+	} else {
+		if ( $translated ) {
+			switch ( $unit ) {
+				case 'D':
+					$lifetime = $value > 1 ? wp_sprintf( __( '%d days', 'geodir_pricing' ), $value ) : __( 'day', 'geodir_pricing' );
+					break;
+				case 'W':
+					$lifetime = $value > 1 ? wp_sprintf( __( '%d weeks', 'geodir_pricing' ), $value ) : __( 'week', 'geodir_pricing' );
+					break;
+				case 'M':
+					$lifetime = $value > 1 ? wp_sprintf( __( '%d months', 'geodir_pricing' ), $value ) : __( 'month', 'geodir_pricing' );
+					break;
+				case 'Y':
+					$lifetime = $value > 1 ? wp_sprintf( __( '%d years', 'geodir_pricing' ), $value ) : __( 'year', 'geodir_pricing' );
+					break;
+			}
+		} else {
+			switch ( $unit ) {
+				case 'D':
+					$lifetime = $value > 1 ? wp_sprintf( '%d days', $value ) : 'day';
+					break;
+				case 'W':
+					$lifetime = $value > 1 ? wp_sprintf( '%d weeks', $value ) : 'week';
+					break;
+				case 'M':
+					$lifetime = $value > 1 ? wp_sprintf( '%d months', $value ) : 'month';
+					break;
+				case 'Y':
+					$lifetime = $value > 1 ? wp_sprintf( '%d years', $value ) : 'year';
+			}
+		}
+	}
+
+	return apply_filters( 'geodir_pricing_table_display_lifetime', $lifetime, $value, $unit, $translated );
 }
 
 function geodir_pricing_lifetime_unit_options( $package = array(), $value = '' ) {
@@ -922,4 +1009,31 @@ function geodir_pricing_date_never_expire( $date ) {
 	}
 
 	return false;
+}
+
+function geodir_pricing_exclude_field_options( $post_type = 'gd_place', $package = array() ) {
+	$custom_fields = geodir_post_custom_fields( '', 'all', $post_type,'none' );
+
+	$exclude_field = array();
+	if ( ! empty( $custom_fields ) ) {
+		foreach( $custom_fields as $key => $field ) {
+			if ( ! empty( $field['is_default'] ) ) {
+				$skip = true;
+			} else {
+				$skip = false;
+			}
+		
+			$skip = apply_filters( 'geodir_pricing_package_skip_exclude_field_' . $field['htmlvar_name'], $skip, $field, $package );
+
+			if ( apply_filters( 'geodir_pricing_package_skip_exclude_field', $skip, $field, $package ) ) {
+				continue;
+			}
+
+			$exclude_field[ $field['htmlvar_name'] ] = __( $field['admin_title'], 'geodirectory' );
+		}
+
+		asort( $exclude_field );
+	}
+
+	return apply_filters( 'geodir_pricing_package_exclude_field_options', $exclude_field, $package );
 }

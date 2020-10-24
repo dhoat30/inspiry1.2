@@ -979,11 +979,11 @@ function geodir_location_map_extra($prefix = '') {
  *
  * @param string $prefix The prefix for all elements.
  */
-function geodir_location_autofill_address($prefix = '') {
-    global $pagenow,$geodirectory;
+function geodir_location_autofill_address( $prefix = '' ) {
+	global $pagenow, $geodirectory;
 
-    if (geodir_is_page('add-listing') || (is_admin() && ($pagenow == 'post.php' || isset($_REQUEST['post_type'])))) {
-        $country_option = geodir_get_option( 'lm_default_country' );
+	if ( geodir_is_page( 'add-listing' ) || ( is_admin() && ( $pagenow == 'post.php' || isset( $_REQUEST['post_type'] ) ) ) ) {
+		$country_option = geodir_get_option( 'lm_default_country' );
 		$country_codes = array();
 		if ( $country_option == 'default' ) {
 			$default_location = $geodirectory->location->get_default_location();
@@ -1000,157 +1000,251 @@ function geodir_location_autofill_address($prefix = '') {
 				}
 			}
 		}
-		if (geodir_get_option( 'lm_location_address_fill' )) {
-        } else {
+		if ( geodir_get_option( 'lm_location_address_fill' ) ) {
+		} else {
 			$_country_codes = ! empty( $country_codes ) ? ",countrycodes: '" . strtolower( implode( ',', $country_codes ) ) . "'" : '';
-		?>
-                jQuery(function($) {
-                    // Setup OpenStreetMap autocomplete address search
-                    if (window.gdMaps == 'osm' && $('input[name="street"]').length) {
-                        geodir_osm_autocomplete_search();
-                    }
-                });
-                function geodir_osm_autocomplete_search() {
-                    try {
-                        if (window.gdMaps == 'osm' && jQuery('input[name="street"]').length) {
-                            $form = jQuery('input[name="street"]').closest('form');
-                            jQuery('input[name="street"]', $form).autocomplete({
-                                source: function(request, response) {
-                                    jQuery.ajax({
-                                        url: (location.protocol === 'https:' ? 'https:' : 'https:') + '//nominatim.openstreetmap.org/search',
-                                        dataType: "json",
-                                        data: {
-                                            q: request.term,
-                                            format: 'json',
-                                            addressdetails: 1,
-                                            limit: 5,
-                                            'accept-language': geodir_params.mapLanguage<?php echo $_country_codes; ?>
-                                        },
-                                        success: function(data, textStatus, jqXHR) {
-                                            jQuery('input[name="street"]', $form).removeClass('ui-autocomplete-loading');
-                                            response(data);
-                                        },
-                                        error: function(jqXHR, textStatus, errorThrown) {
-                                            console.log(errorThrown);
-                                        },
-                                        complete: function(jqXHR, textStatus) {
-                                            jQuery('input[name="street"]', $form).removeClass('ui-autocomplete-loading');
-                                        }
-                                    });
-                                },
-                                autoFocus: true,
-                                minLength: 1,
-                                appendTo: jQuery('input[name="street"]', $form).closest('.geodir_form_row'),
-                                open: function(event, ui) {
-                                    jQuery('input[name="street"]', $form).removeClass('ui-autocomplete-loading');
-                                },
-                                select: function(event, ui) {
-                                    item = gd_osm_parse_item(ui.item);
-                                    event.preventDefault();
-                                    jQuery('input[name="street"]', $form).val(item.display_address);
-                                    geocodeResponseOSM(item, true);
-                                },
-                                close: function(event, ui) {
-                                    jQuery('input[name="street"]', $form).removeClass('ui-autocomplete-loading');
-                                }
-                            }).autocomplete("instance")._renderItem = function(ul, item) {
-                                if (!ul.hasClass('gd-osm-results')) {
-                                    ul.addClass('gd-osm-results');
-                                }
+			?>
+	var gdlmKeyupTimeout = null, gdlmData;
+	jQuery(function($) {<?php if ( geodir_lazy_load_map() ) { ?>
+	jQuery('input[name="street"]').geodirLoadMap({
+		loadJS: true,
+		callback: function() {<?php } ?>
+		// Setup OpenStreetMap autocomplete address search
+		if (window.gdMaps == 'osm' && $('input[name="street"]').length) {
+			<?php if ( geodir_design_style() ) { ?>
+			geodir_aui_osm_autocomplete_init();
+			<?php } else { ?>
+			geodir_osm_autocomplete_search(this);
+			<?php } ?>
+		}
 
-                                var label = item.display_name;
+		initialize_autofill_address();<?php if ( geodir_lazy_load_map() ) { ?>
+		}
+	});<?php } ?>
+	});
+	<?php if ( geodir_design_style() ) { ?>
+	function geodir_aui_osm_autocomplete_init() {
+		jQuery('input[name="street"]').after("<div class='dropdown-menu dropdown-caret-0 w-100 show scrollbars-ios overflow-auto p-0 m-0 gd-suggestions-dropdown gdlm-street-suggestions gd-ios-scrollbars'><ul class='gdlmls-street list-unstyled p-0 m-0'></ul></div>");
 
-                                /*
-                                 item = gd_osm_parse_item(item);
-                                 if (item.display_address) {
-                                 label = gd_highlight(label, item.display_address, '<span class="gdOQ">', '</span>');
-                                 }
-                                 */
+		jQuery('input[name="street"]').on('keyup', function(e) {
+			if (gdlmKeyupTimeout != null) {
+				clearTimeout(gdlmKeyupTimeout);
+			}
+			gdlmKeyupTimeout = setTimeout(geodir_aui_osm_autocomplete_search(this), 500);
+		});
 
-                                if (label && this.term) {
-                                    label = gd_highlight(label, this.term);
-                                }
+		jQuery('input[name="street"]').on('focus', function(e){
+			if(jQuery(this).parent().find(".gdlmls-street .list-group-item-action").length){
+				jQuery(".gdlm-street-suggestions").show();
+			}
+		})
 
-                                return jQuery("<li>").width(jQuery('input[name="street"]', $form).outerWidth()).append('<i class="fas fa-map-marker-alt" aria-hidden="true"></i><span>' + label + '</span>').appendTo(ul);
-                            };
-                        }
-                    } catch (err) {
-                        console.log(err.message);
-                    }
-                }
+		jQuery('body').on('click', function(e){
+			if (jQuery(e.target).closest(".input-group").find("input[name='street']").length) {
+			} else {
+				jQuery(".gdlm-street-suggestions").hide();
+			}
+		})
+	}
 
-    jQuery(function() {
-        initialize_autofill_address();
-    });
-    <?php } ?>
+	function geodir_aui_osm_autocomplete_search(el) {
+		var $form, term, 
+		$form = jQuery(el).closest('form');
 
-    var placeSearch, autocomplete;
-    var componentForm = {
-        street_number: 'short_name',
-        route: 'long_name',
-        locality: 'long_name',
-        administrative_area_level_1: 'short_name',
-        country: 'long_name',
-        postal_code: 'short_name'
-    };
+		gdlmKeyupTimeout = null; // Reset timeout
+		term = jQuery(el).val();
+		term = term ? term.trim() : '';
+		if (term) {
+			jQuery.ajax({
+				url: 'https://nominatim.openstreetmap.org/search',
+				dataType: "json",
+				data: {
+					q: term,
+					format: 'json',
+					addressdetails: 1,
+					limit: 5,
+					'accept-language': geodir_params.mapLanguage<?php echo $_country_codes; ?>
+					<?php do_action( 'geodir_location_osm_autocomplete_address_search_params' ); ?>
+				},
+				success: function(data, textStatus, jqXHR) {
+					var items = '';
+					if (data) {
+						gdlmData = data;
+						jQuery.each(data, function(i, value) {
+							items += geodir_aui_osm_autocomplete_li(value, term, i);
+						});
+					}
 
-    function initialize_autofill_address() {
-        var options = {
-        <?php
-        /**
-         * Filter the types of addresses to auto complete.
-         *
-         * ['geocodes'] work best but other users may want to filter this.
-         */
-        echo apply_filters("goedir_lm_autofill_address_types","types: ['geocode'],");
-        if ( ! empty( $country_codes ) && count( $country_codes ) < 6 ) {
+					jQuery(el).parent().find("ul.gdlmls-street").empty().append(items);
+
+					if (items) {
+						jQuery(".gdlm-street-suggestions").show();
+					} else {
+						jQuery(".gdlm-street-suggestions").hide();
+					}
+				},
+				error: function(jqXHR, textStatus, errorThrown) {
+					console.log(errorThrown);
+				},
+				complete: function(jqXHR, textStatus) {
+				}
+			});
+		} else {
+			jQuery(el).parent().find("ul.gdlmls-street").empty();
+		}
+	}
+
+	function geodir_aui_osm_autocomplete_li(address, term, i) {
+		var output, label;
+		label = address.display_name;
+		if (label && term) {
+			label = gd_highlight(label, term);
+			label = label.replace(' class="gdOH"', ' class="gdOH text-dark"');
+		}
+		output = '<li class="list-group-item-action c-pointer px-1 py-1 m-0 d-flex small text-muted" ontouchstart="this.click()" onclick="geodir_aui_osm_autocomplete_select(this, '+ i +');">';
+		output += '<i class="fas fa-map-marker-alt mr-1" aria-hidden="true"></i><span>' + label + '</span>';
+		output += '</li>';
+		return output;
+	}
+
+	function geodir_aui_osm_autocomplete_select(el, i) {
+		address = gd_osm_parse_item(gdlmData[i]);
+		jQuery(el).closest('form').find('input[name="street"]').val(address.display_address);
+		jQuery(".gdlm-street-suggestions").hide();
+		jQuery(el).closest(".gdlm-street-suggestions").find("ul.gdlmls-street").empty();
+		geocodeResponseOSM(address, true);
+	}
+
+	<?php } else { ?>
+	function geodir_osm_autocomplete_search() {
+		try {
+			if (window.gdMaps == 'osm' && jQuery('input[name="street"]').length) {
+				$form = jQuery('input[name="street"]').closest('form');
+				jQuery('input[name="street"]', $form).autocomplete({
+					source: function(request, response) {
+						jQuery.ajax({
+							url: (location.protocol === 'https:' ? 'https:' : 'https:') + '//nominatim.openstreetmap.org/search',
+							dataType: "json",
+							data: {
+								q: request.term,
+								format: 'json',
+								addressdetails: 1,
+								limit: 5,
+								'accept-language': geodir_params.mapLanguage<?php echo $_country_codes; ?>
+							},
+							success: function(data, textStatus, jqXHR) {
+								jQuery('input[name="street"]', $form).removeClass('ui-autocomplete-loading');
+								response(data);
+							},
+							error: function(jqXHR, textStatus, errorThrown) {
+								console.log(errorThrown);
+							},
+							complete: function(jqXHR, textStatus) {
+								jQuery('input[name="street"]', $form).removeClass('ui-autocomplete-loading');
+							}
+						});
+					},
+					autoFocus: true,
+					minLength: 1,
+					appendTo: jQuery('input[name="street"]', $form).closest('.geodir_form_row'),
+					open: function(event, ui) {
+						jQuery('input[name="street"]', $form).removeClass('ui-autocomplete-loading');
+					},
+					select: function(event, ui) {
+						item = gd_osm_parse_item(ui.item);
+						event.preventDefault();
+						jQuery('input[name="street"]', $form).val(item.display_address);
+						geocodeResponseOSM(item, true);
+					},
+					close: function(event, ui) {
+						jQuery('input[name="street"]', $form).removeClass('ui-autocomplete-loading');
+					}
+				}).autocomplete("instance")._renderItem = function(ul, item) {
+					if (!ul.hasClass('gd-osm-results')) {
+						ul.addClass('gd-osm-results');
+					}
+
+					var label = item.display_name;
+					if (label && this.term) {
+						label = gd_highlight(label, this.term);
+					}
+
+					return jQuery("<li>").width(jQuery('input[name="street"]', $form).outerWidth()).append('<i class="fas fa-map-marker-alt" aria-hidden="true"></i><span>' + label + '</span>').appendTo(ul);
+				};
+			}
+		} catch (err) {
+			console.log(err.message);
+		}
+	}
+<?php } } ?>
+
+	var placeSearch, autocomplete;
+	var componentForm = {
+		street_number: 'short_name',
+		route: 'long_name',
+		locality: 'long_name',
+		administrative_area_level_1: 'short_name',
+		country: 'long_name',
+		postal_code: 'short_name'
+	};
+
+	function initialize_autofill_address() {
+		var options = {
+		<?php
+		/**
+		 * Filter the types of addresses to auto complete.
+		 *
+		 * ['geocodes'] work best but other users may want to filter this.
+		 */
+		echo apply_filters("goedir_lm_autofill_address_types","types: ['geocode'],");
+		if ( ! empty( $country_codes ) && count( $country_codes ) < 6 ) {
 			$_country_codes = count( $country_codes ) > 1 ? "['" . implode( "','", $country_codes ) . "']" : "'" . $country_codes[0] . "'";
 			echo 'componentRestrictions: {country: ' . $_country_codes . '}';
 		}
-        ?>
+		?>
 		};
 
-        if (window.gdMaps == 'google' && typeof google !== 'undefined' && typeof google.maps !== 'undefined') {
-            // Create the autocomplete object, restricting the search
-            // to geographical location types.
-            autocomplete = new google.maps.places.Autocomplete(
-                /** @type {HTMLInputElement} */
-                (document.getElementById('<?php echo $prefix . 'street'; ?>')), options);
-            // When the user selects an address from the dropdown,
-            // populate the address fields in the form.
-            google.maps.event.addListener(autocomplete, 'place_changed', function() {
-                geodir_fillInAddress();
-            });
-        }
-    }
+		if (window.gdMaps == 'google' && typeof google !== 'undefined' && typeof google.maps !== 'undefined') {
+			// Create the autocomplete object, restricting the search
+			// to geographical location types.
+			autocomplete = new google.maps.places.Autocomplete(
+				/** @type {HTMLInputElement} */
+				(document.getElementById('<?php echo $prefix . 'street'; ?>')), options);
+			// When the user selects an address from the dropdown,
+			// populate the address fields in the form.
+			google.maps.event.addListener(autocomplete, 'place_changed', function() {
+				geodir_fillInAddress();
+			});
+		}
+	}
 
-    // [START region_fillform]
-    function geodir_fillInAddress() {
-        // Get the place details from the autocomplete object.
-        var place = autocomplete.getPlace();
-        // blank fields
-        jQuery("#<?php echo $prefix . 'country'; ?>").val('').trigger('change.select2');
-        if (!jQuery('#<?php echo $prefix . 'region'; ?> option[value=""]').length) {
-            jQuery("#<?php echo $prefix . 'region'; ?>").append('<option value=""><?php _e( 'Select Region', 'geodirlocation' ); ?></option>');
-        }
-        jQuery("#<?php echo $prefix . 'region'; ?>").val('').trigger('change.select2');
-        if (!jQuery('#<?php echo $prefix . 'city'; ?> option[value=""]').length) {
-            jQuery("#<?php echo $prefix . 'city'; ?>").append('<option value=""><?php _e( 'Select City', 'geodirlocation' ); ?></option>');
-        }
-        jQuery("#<?php echo $prefix . 'city'; ?>").val('').trigger('change.select2');
-        jQuery('#<?php echo $prefix . 'zip'; ?>').val('');
+	// [START region_fillform]
+	function geodir_fillInAddress() {
+		// Get the place details from the autocomplete object.
+		var place = autocomplete.getPlace();
+		// blank fields
+		jQuery("#<?php echo $prefix . 'country'; ?>").val('').trigger('change.select2');
+		if (!jQuery('#<?php echo $prefix . 'region'; ?> option[value=""]').length) {
+			jQuery("#<?php echo $prefix . 'region'; ?>").append('<option value=""><?php _e( 'Select Region', 'geodirlocation' ); ?></option>');
+		}
+		jQuery("#<?php echo $prefix . 'region'; ?>").val('').trigger('change.select2');
+		if (!jQuery('#<?php echo $prefix . 'city'; ?> option[value=""]').length) {
+			jQuery("#<?php echo $prefix . 'city'; ?>").append('<option value=""><?php _e( 'Select City', 'geodirlocation' ); ?></option>');
+		}
+		jQuery("#<?php echo $prefix . 'city'; ?>").val('').trigger('change.select2');
+		jQuery('#<?php echo $prefix . 'zip'; ?>').val('');
 
-        var newArr = new Array();
-        newArr[0] = place;
-        user_address = false; // set the user address as NOT changed so the selected address is inserted.
-        geocodeResponse(newArr);
+		var newArr = new Array();
+		newArr[0] = place;
+		user_address = false; // set the user address as NOT changed so the selected address is inserted.
+		geocodeResponse(newArr);
 
-        user_address = true; // set the user address as changed so its not overwritten by map move.
-        geodir_codeAddress(true);
-    }
-    // [END region_fillform]
-    <?php
-    }
+		user_address = true; // set the user address as changed so its not overwritten by map move.
+		geodir_codeAddress(true);
+	}
+	// [END region_fillform]
+	<?php
+	}
 }
 
 /**

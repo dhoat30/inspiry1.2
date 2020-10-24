@@ -105,6 +105,7 @@ function geodir_advanced_search_autocomplete_script(){
 	global $geodirectory;
 //	print_r($geodirectory->settings);
 	if(!geodir_get_option('advs_enable_autocompleter')){return;}
+	$design_style = geodir_design_style();
 	?>
 	<script>
 
@@ -160,9 +161,9 @@ function geodir_advanced_search_autocomplete_script(){
 				jQuery($input).parent().find(".gdas-search-suggestions").show();
 
 			}else{
-				jQuery($input).after("<div class='gd-suggestions-dropdown gdas-search-suggestions gd-ios-scrollbars'>" +
-					"<ul class='gdasac-listing'></ul>" +
-					"<ul class='gdasac-category'></ul>" +
+				jQuery($input).after("<div class='<?php if($design_style){ echo "dropdown-menu dropdown-caret-0 w-100 show scrollbars-ios overflow-auto p-0 m-0"; } ?> gd-suggestions-dropdown gdas-search-suggestions gd-ios-scrollbars' >" +
+					"<ul class='gdasac-listing list-unstyled p-0 m-0 '></ul>" +
+					"<ul class='gdasac-category list-unstyled p-0 m-0 '></ul>" +
 					"</div>");
 				gdas_ac_init_suggestions($input);
 				if ( gdasac_suggestions_with != 'posts' ) {
@@ -196,9 +197,9 @@ function geodir_advanced_search_autocomplete_script(){
 		function gdas_ac_categories(el){
 			$input = jQuery(gdasac_selected);
 			var post_type = jQuery($input).parent().parent().find("input[name='stype']").val();
-			var post_type_slug = jQuery($input).parent().parent().find("input[name='stype']").data("slug");
+			var post_type_slug = jQuery($input).closest('.geodir-search').find("input[name='stype']").data("slug");
 			if(!post_type_slug) {
-				post_type_slug = jQuery($input).parent().parent().find(".search_by_post").find(':selected').data("slug");
+				post_type_slug = jQuery($input).closest('.geodir-search').find(".search_by_post").find(':selected').data("slug");
 			}
 			if (typeof post_type_slug == 'undefined') {
 				post_type_slug = jQuery(".search_by_post").find(':selected').data("slug");
@@ -245,9 +246,9 @@ function geodir_advanced_search_autocomplete_script(){
 		function gdas_ac_listings(el){
 			$input = jQuery(gdasac_selected);
 			var post_type = jQuery($input).parent().parent().find("input[name='stype']").val();
-			var post_type_slug = jQuery($input).parent().parent().find("input[name='stype']").data("slug");
+			var post_type_slug = jQuery($input).closest('.geodir-search').find("input[name='stype']").data("slug");
 			if(!post_type_slug) {
-				post_type_slug = jQuery($input).parent().parent().find(".search_by_post").find(':selected').data("slug");
+				post_type_slug = jQuery($input).closest('.geodir-search').find(".search_by_post").find(':selected').data("slug");
 			}
 			var search = jQuery($input).val();
 
@@ -336,14 +337,18 @@ function geodir_advanced_search_autocomplete_script(){
 			var output = '';
 			var history = '';
 			var $delete = '';
+			var $common_class = '<?php if($design_style){ echo 'list-group-item-action c-pointer p-0 m-0 d-flex justify-content-start  align-items-center text-muted'; }?>';
+			var $common_class_icon = '<?php if($design_style){ echo ' d-flex align-items-center justify-content-center p-0 m-0 mr-2'; }?>';
+			var $common_class_title = '<?php if($design_style){ echo 'dropdown-header h6 p-2 m-0 bg-light'; }?>';
+			var $icon_size = '<?php if($design_style){ echo 'height:38px;width:38px;'; }?>';
 
 			if(gdasac_li_type != ''){
 				if($type=='category'){
-					output += '<li class="gdas-section-title" ontouchstart="this.click()" onclick="var event = arguments[0] || window.event; geodir_cancelBubble(event);"><?php esc_attr_e( 'Categories', 'geodirectory' ); ?></li>';
+					output += '<li class="gdas-section-title '+$common_class_title+'" ontouchstart="this.click()" onclick="var event = arguments[0] || window.event; geodir_cancelBubble(event);"><?php esc_attr_e( 'Categories', 'geodirectory' ); ?></li>';
 				}else if($type=='listing'){
-					output += '<li class="gdas-section-title"><?php esc_attr_e( 'Listings', 'geodirectory' ); ?></li>';
+					output += '<li class="gdas-section-title '+$common_class_title+'"><?php esc_attr_e( 'Listings', 'geodirectory' ); ?></li>';
 				}else{
-					output += '<li class="gdas-section-title">'+$type.charAt(0).toUpperCase() + $type.slice(1)+'</li>';
+					output += '<li class="gdas-section-title '+$common_class_title+'">'+$type.charAt(0).toUpperCase() + $type.slice(1)+'</li>';
 				}
 			}
 
@@ -355,20 +360,20 @@ function geodir_advanced_search_autocomplete_script(){
 				$delete = '<i ontouchstart="this.click()" onclick="var event = arguments[0] || window.event; geodir_cancelBubble(event);gdas_ac_del_location_history(\''+$data.slug+'\');jQuery(this).parent().remove();" class="fas fa-times " title="<?php esc_attr_e('Remove from history','geodirlocation');?>"></i> ';
 			}else if($type == 'category' && $data.fa_icon){
 				var icon_color = $data.fa_icon_color ? '#fff' : '';
-				history = '<span class="gdasac-icon" style="background-color:'+$data.fa_icon_color+';color:'+icon_color+';"><i class="'+$data.fa_icon+'"></i></span> ';
+				history = '<span class="gdasac-icon '+$common_class_icon+'" style="background-color:'+$data.fa_icon_color+';color:'+icon_color+';'+$icon_size+'"><i class="'+$data.fa_icon+' fa-fw"></i></span> ';
 			}else if($type == 'category'){
-				history = '<i class="fas fa-folder-open"></i> ';
+				history = '<span class="gdasac-icon '+$common_class_icon+'" style="'+$icon_size+'"><i class="fas fa-folder-open"></i></span> ';
 			}else if($type == 'listing' && $data.featured_image.thumbnail){
-				history = '<span class="gdasac-icon"><img src="'+$data.featured_image.thumbnail+'" /></span> ';
+				history = '<span class="gdasac-icon '+$common_class_icon+'" style="'+$icon_size+'"><img src="'+$data.featured_image.thumbnail+'" class="w-100" /></span> ';
 			}else{
-				history = '<i class="fas fa-map-marker-alt"></i> ';
+				history = '<span class="gdasac-icon '+$common_class_icon+'" style="'+$icon_size+'"><i class="fas fa-map-marker-alt"></i></span> ';
 			}
 			if($type=='category'){
 				if($data.area){$data.city = $data.area;}
-				output += '<li data-type="'+$type+'" ontouchstart="this.click()" onclick="gdasac_click_action(\''+$type+'\',\''+$data.link+'\');">'+history+'<b>'+ $data.name + '</b>'+$delete+'</li>';
+				output += '<li class="'+$common_class+'" data-type="'+$type+'" ontouchstart="this.click()" onclick="gdasac_click_action(\''+$type+'\',\''+$data.link+'\');">'+history+'<b>'+ $data.name + '</b>'+$delete+'</li>';
 			}else if($type=='listing'){
 				if($data.area){$data.region = $data.area;}
-				output += '<li data-type="'+$type+'" ontouchstart="this.click()" onclick="gdasac_click_action(\''+$type+'\',\''+$data.link+'\');">'+history+'<b>'+ $data.title.rendered + '</b>'+$delete+'</li>';
+				output += '<li class="'+$common_class+'" data-type="'+$type+'" ontouchstart="this.click()" onclick="gdasac_click_action(\''+$type+'\',\''+$data.link+'\');">'+history+'<b>'+ $data.title.rendered + '</b>'+$delete+'</li>';
 			}
 
 			return output;

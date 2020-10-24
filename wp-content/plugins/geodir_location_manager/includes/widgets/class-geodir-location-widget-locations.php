@@ -17,13 +17,13 @@ class GeoDir_Location_Widget_Locations extends WP_Super_Duper {
 		$options = array(
 			'textdomain'     => 'geodirlocation',
 			'block-icon'     => 'location-alt',
-			'block-category' => 'common',
+			'block-category' => 'geodirectory',
 			'block-keywords' => "['geodirlocation','location','locations']",
 			'class_name'     => __CLASS__,
 			'base_id'        => 'gd_locations',
 			'name'           => __( 'GD > Locations', 'geodirlocation' ),
 			'widget_ops'     => array(
-				'classname'     => 'geodir-lm-locations',
+				'classname'     => 'geodir-lm-locations bsui',
 				'description'   => esc_html__( 'Displays the locations.', 'geodirlocation' ),
 				'gd_wgt_restrict' => '',
                 'geodirectory' => true,
@@ -38,6 +38,9 @@ class GeoDir_Location_Widget_Locations extends WP_Super_Duper {
 	 *
 	 */
 	public function set_arguments() {
+
+		$design_style = geodir_design_style();
+
 		$arguments = array(
 			'title'  => array(
                 'title' => __('Title:', 'geodirlocation'),
@@ -178,11 +181,118 @@ class GeoDir_Location_Widget_Locations extends WP_Super_Duper {
             )
 		);
 
+		if ( $design_style ) {
+
+			$arguments['type'] = array(
+				'title' => __('Type', 'geodirectory'),
+				'desc' => __('Select the badge type.', 'geodirectory'),
+				'type' => 'select',
+				'options'   =>  array(
+					"" => __('Badge', 'geodirectory'),
+					"pill" => __('Pill', 'geodirectory'),
+					"link" => __('Button Link', 'geodirectory'),
+					"button" => __('Button', 'geodirectory'),
+				),
+				'default'  => '',
+				'desc_tip' => true,
+				'advanced' => false,
+				'group'     => __("Design","geodirectory")
+			);
+
+			$arguments['icon_class']  = array(
+				'type' => 'text',
+				'title' => __('Icon class:', 'geodirectory'),
+				'desc' => __('You can show a font-awesome icon here by entering the icon class.', 'geodirectory'),
+				'placeholder' => 'fas fa-caret-right',
+				'default' => '',
+				'desc_tip' => true,
+				'group'     => __("Design","geodirectory")
+			);
+
+			$arguments['shadow'] = array(
+				'title' => __('Shadow', 'geodirectory'),
+				'desc' => __('Select the shadow badge type.', 'geodirectory'),
+				'type' => 'select',
+				'options'   =>  array(
+					"" => __('None', 'geodirectory'),
+					"small" => __('small', 'geodirectory'),
+					"medium" => __('medium', 'geodirectory'),
+					"large" => __('large', 'geodirectory'),
+				),
+				'default'  => '',
+				'desc_tip' => true,
+				'advanced' => false,
+				'group'     => __("Design","geodirectory")
+			);
+
+			$arguments['color'] = array(
+				'title' => __('Color', 'geodirectory'),
+				'desc' => __('Select the the color.', 'geodirectory'),
+				'type' => 'select',
+				'options'   =>  array(
+					                "" => __('Custom colors', 'geodirectory'),
+				                )+geodir_aui_colors(true, true, true),
+				'default'  => '',
+				'desc_tip' => true,
+				'advanced' => false,
+				'group'     => __("Design","geodirectory")
+			);
+
+
+			$arguments['bg_color']  = array(
+				'type' => 'color',
+				'title' => __('Background color:', 'geodirectory'),
+				'desc' => __('Color for the background.', 'geodirectory'),
+				'placeholder' => '',
+				'default' => '#0073aa',
+				'desc_tip' => true,
+				'group'     => __("Design","geodirectory"),
+				'element_require' => $design_style ?  '[%color%]==""' : '',
+			);
+			$arguments['txt_color']  = array(
+				'type' => 'color',
+//			'disable_alpha'=> true,
+				'title' => __('Text color:', 'geodirectory'),
+				'desc' => __('Color for the text.', 'geodirectory'),
+				'placeholder' => '',
+				'desc_tip' => true,
+				'default'  => '#ffffff',
+				'group'     => __("Design","geodirectory"),
+				'element_require' => $design_style ?  '[%color%]==""' : '',
+			);
+			$arguments['size']  = array(
+				'type' => 'select',
+				'title' => __('Size', 'geodirectory'),
+				'desc' => __('Size of the item.', 'geodirectory'),
+				'options' =>  array(
+					"" => __('Default', 'geodirectory'),
+					"h6" => __('XS (badge)', 'geodirectory'),
+					"h5" => __('S (badge)', 'geodirectory'),
+					"h4" => __('M (badge)', 'geodirectory'),
+					"h3" => __('L (badge)', 'geodirectory'),
+					"h2" => __('XL (badge)', 'geodirectory'),
+					"h1" => __('XXL (badge)', 'geodirectory'),
+					"btn-lg" => __('L (button)', 'geodirectory'),
+					"btn-sm" => __('S (button)', 'geodirectory'),
+				),
+				'default' => '',
+				'desc_tip' => true,
+				'group'     => __("Design","geodirectory"),
+			);
+
+			$arguments['mt']  = geodir_get_sd_margin_input('mt');
+			$arguments['mr']  = geodir_get_sd_margin_input('mr');
+			$arguments['mb']  = geodir_get_sd_margin_input('mb');
+			$arguments['ml']  = geodir_get_sd_margin_input('ml');
+		}
+
 		return $arguments;
 	}
 
 	public function output( $args = array(), $widget_args = array(), $content = '' ) {
 		extract( $widget_args, EXTR_SKIP );
+
+		$params = $args;
 
 		/**
 		 * Filter the widget title.
@@ -327,6 +437,37 @@ class GeoDir_Location_Widget_Locations extends WP_Super_Duper {
 		 * @param mixed $id_base The widget ID.
 		 */
 		$params['city'] = apply_filters( 'geodir_popular_location_widget_city_filter', ( ! empty( $args['city'] ) ? $args['city'] : '' ), $args, $this->id_base );
+
+		$design_style = geodir_design_style();
+
+		if ( $design_style ) {
+			$params['css_class'] = '';
+			$params['css_class'] .= !empty( $params['button_class'] ) ? $params['button_class'] : '';
+			// margins
+			if ( !empty( $params['mt'] ) ) { $params['css_class'] .= " mt-".sanitize_html_class($params['mt'])." "; }
+			if ( !empty( $params['mr'] ) ) { $params['css_class'] .= " mr-".sanitize_html_class($params['mr'])." "; }
+			if ( !empty( $params['mb'] ) ) { $params['css_class'] .= " mb-".sanitize_html_class($params['mb'])." "; }
+			if ( !empty( $params['ml'] ) ) { $params['css_class'] .= " ml-".sanitize_html_class($params['ml'])." "; }
+
+			if(!empty($params['size'])){
+				switch ($params['size']) {
+					case 'h6': $params['size'] = 'h6';break;
+					case 'h5': $params['size'] = 'h5';break;
+					case 'h4': $params['size'] = 'h4';break;
+					case 'h3': $params['size'] = 'h3';break;
+					case 'h2': $params['size'] = 'h2';break;
+					case 'h1': $params['size'] = 'h1';break;
+					case 'btn-lg': $params['size'] = ''; $params['css_class'] = 'btn-lg';break;
+					case 'btn-sm':$params['size'] = '';  $params['css_class'] = 'btn-sm';break;
+					default:
+						$params['size'] = '';
+
+				}
+
+			}
+		}
+
+
 
 		$params['widget_atts'] = $params;
 

@@ -454,11 +454,11 @@ function geodir_get_location_array( $args = null, $switcher = false ) {
 		$locations = $new_locations;
 	}
 
-	if (!empty($location_args['format'])) {
-		if ($location_args['format']['type'] == 'array')
+	if ( ! empty( $location_args['format'] ) ) {
+		if ( $location_args['format']['type'] == 'array' )
 			return $locations ;
-		elseif ($location_args['format']['type'] == 'jason')
-			return json_encode($locations) ;
+		elseif ( $location_args['format']['type'] == 'json' )
+			return json_encode( $locations ) ;
 		else {
 			$base_location_link = geodir_get_location_link('base');
 			$container_wrapper = '' ;
@@ -479,11 +479,13 @@ function geodir_get_location_array( $args = null, $switcher = false ) {
 				$item_wrapper_attr = $location_args['format']['item_wrapper_attr'] ;
 
 
+			$design_style = geodir_design_style();
+//			print_r( $location_args );echo '###';
 			####
-			ob_start();
 			if(isset($location_args['output_type']) && $location_args['output_type']=='grid'){
-				geodir_get_template(
-					'loop/location-grid.php',
+				$template = $design_style ? $design_style."/location-grid.php" : "loop/location-grid.php";
+				return geodir_get_template_html(
+					$template,
 					array(
 						'container_wrapper' => $container_wrapper,
 						'base_location_link'  => $base_location_link,
@@ -496,9 +498,12 @@ function geodir_get_location_array( $args = null, $switcher = false ) {
 					'',
 					plugin_dir_path( GEODIR_LOCATION_PLUGIN_FILE ). "/templates/"
 				);
+
 			}else{
-				geodir_get_template(
-					'loop/location-list.php',
+
+				$template = $design_style ? $design_style."/location-list.php" : "loop/location-list.php";
+				return geodir_get_template_html(
+					$template,
 					array(
 						'container_wrapper' => $container_wrapper,
 						'base_location_link'  => $base_location_link,
@@ -507,13 +512,13 @@ function geodir_get_location_array( $args = null, $switcher = false ) {
 						'item_wrapper_attr'  => $item_wrapper_attr,
 						'locations'  => $locations,
 						'location_args'  => $location_args,
+						'btn_args'  => $location_args['widget_atts']
 					),
 					'',
 					plugin_dir_path( GEODIR_LOCATION_PLUGIN_FILE ). "/templates/"
 				);
 			}
 
-			return ob_get_clean();
 		}
 	}
 	return $locations ;
@@ -644,7 +649,7 @@ function geodir_get_limited_country_dl( $selected_option ) {
         $out_put .= '<option ' . selected($selected_option, $country, false) . ' value="' . esc_attr($country) . '" data-country_code="' . $ccode . '"' . $attribs . '>' . $name . '</option>';
     }
 
-    echo $out_put;
+    return $out_put;
 }
 
 /**
@@ -1441,7 +1446,7 @@ function geodir_location_admin_location_filter_box() {
 	//Get a list of all countries containing listings...
 	$gd_countries = geodir_post_location_countries( true, false );
 
-	// ... Or abort if none exisits
+	// ... Or abort if none exists
 	if ( empty( $gd_countries ) ) {
 		return;
 	}
@@ -3034,6 +3039,7 @@ function geodir_location_switcher_menu_item_name($sorted_menu_items){
 		foreach($sorted_menu_items as $key => $menu_item){
 			if(isset($menu_item->url) && $menu_item->url=='#location-switcher'){
 				global $geodirectory;
+				$design_style = geodir_design_style();
 				$location_name = $menu_item->title;
 				$location_set = true;
 				if(!empty($geodirectory->location->neighbourhood)){$location_name = $geodirectory->location->neighbourhood;}
@@ -3042,7 +3048,11 @@ function geodir_location_switcher_menu_item_name($sorted_menu_items){
 				elseif(!empty($geodirectory->location->country)){$location_name = $geodirectory->location->country;}
 				else{$location_set = false;}
 				if($location_set ){
-					$sorted_menu_items[$key]->title = '<span class="gdlmls-menu-icon"><i class="fas fa-map-marker-alt"></i><i class="fas fa-times gd-hide" title="'.__('Clear Location','geodirlocation').'"></i></span> '.$location_name;
+					if($design_style){
+						$sorted_menu_items[$key]->title = '<span class="gdlmls-menu-icon bsui"><span class="hover-swap"><i class="fas fa-map-marker-alt hover-content-original"></i><i class="fas fa-times hover-content c-pointer" title="'.__('Clear Location','geodirlocation').'" data-toggle="tooltip"></i></span></span> '.$location_name;
+					}else{
+						$sorted_menu_items[$key]->title = '<span class="gdlmls-menu-icon"><i class="fas fa-map-marker-alt"></i><i class="fas fa-times gd-hide" title="'.__('Clear Location','geodirlocation').'"></i></span> '.$location_name;
+					}
 				}else{
 					$sorted_menu_items[$key]->title = '<i class="fas fa-map-marker-alt"></i> '.$location_name;
 				}

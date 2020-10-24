@@ -1,16 +1,27 @@
 <?php
 /**
- * Plugin Name: GeoDirectory List Manager
- * Plugin URI: https://wpgeodirectory.com
- * Description: GeoDirectory Lists manager.
- * Version: 2.1.0.5
- * Author: AyeCode Ltd
- * Author URI: https://wpgeodirectory.com
- * License: GPL-2.0+
- * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain: gd-lists
- * Update URL: https://wpgeodirectory.com
- * Update ID: 69994
+ * GeoDirectory List Manager
+ *
+ * @package           GeoDir_List_Manager
+ * @author            AyeCode Ltd
+ * @copyright         2019 AyeCode Ltd
+ * @license           GPLv3
+ *
+ * @wordpress-plugin
+ * Plugin Name:       GeoDirectory List Manager
+ * Plugin URI:        https://wpgeodirectory.com/downloads/list-manager/
+ * Description:       Allows users to create and save their own special lists of listings.
+ * Version:           2.1.1.1
+ * Requires at least: 4.9
+ * Requires PHP:      5.6
+ * Author:            AyeCode Ltd
+ * Author URI:        https://ayecode.io
+ * License:           GPLv3
+ * License URI:       http://www.gnu.org/licenses/gpl-3.0.html
+ * Text Domain:       gd-lists
+ * Domain Path:       /languages
+ * Update URL:        https://wpgeodirectory.com
+ * Update ID:         69994
  */
 
 // If this file is called directly, abort.
@@ -19,7 +30,11 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 if ( ! defined( 'GD_LISTS_VERSION' ) ) {
-    define( 'GD_LISTS_VERSION', "2.1.0.5" );
+    define( 'GD_LISTS_VERSION', "2.1.1.1" );
+}
+
+if ( ! defined( 'GD_LISTS_MIN_CORE' ) ) {
+	define( 'GD_LISTS_MIN_CORE', '2.1.0.0' );
 }
 
 // check user is_admin or not.
@@ -151,9 +166,12 @@ include_once ( dirname( __FILE__).'/includes/class-geodir-lists.php' );
  * @return object GeoDir_Lists Returns an instance of the class.
  */
 function init_gd_lists() {
+	// Min core version check
+	if ( ! function_exists( 'geodir_min_version_check' ) || ! geodir_min_version_check( 'List Manager', GD_LISTS_MIN_CORE ) ) {
+		return '';
+	}
 
-    return GeoDir_Lists::get_instance();
-
+	return GeoDir_Lists::get_instance();
 }
 
 add_action('plugins_loaded','init_gd_lists', apply_filters('init_gd_lists_action', 10));

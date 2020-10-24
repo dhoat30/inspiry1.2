@@ -63,8 +63,9 @@ class GeoDir_Lists_Admin {
      * @since 2.0.0
      */
     public function enqueue_styles_and_scripts(){
+        $suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 
-        wp_register_script( 'list-manager-admin-script', GD_LISTS_PLUGIN_URL . 'assets/js/geodir_list_manager_admin.js', array( 'jquery' ), '2.0.0', true );
+        wp_register_script( 'list-manager-admin-script', GD_LISTS_PLUGIN_URL . 'assets/js/geodir_list_manager_admin' . $suffix . '.js', array( 'jquery' ), '2.0.0', true );
         wp_enqueue_script( 'list-manager-admin-script' );
 
         wp_register_style('list-manager-admin-style', GD_LISTS_PLUGIN_URL . 'assets/css/geodir_list_manager_admin.css', array(), '2.0.0');
@@ -96,9 +97,7 @@ class GeoDir_Lists_Admin {
                     'admin_box' => array(
                         'show' => 'to',
                         'context' => 'side'
-                    ),
-                    'duplicate_connections' => true,
-                    
+                    )
                 )
             );
         }

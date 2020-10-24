@@ -314,9 +314,11 @@ final class GeoDir_Pricing {
 	 */
 	public function add_styles() {
 		// Register styles
-		wp_register_style( 'geodir-pricing', GEODIR_PRICING_PLUGIN_URL . '/assets/css/style.css', array(), GEODIR_PRICING_VERSION );
+		if ( ! geodir_design_style() ) {
+			wp_register_style( 'geodir-pricing', GEODIR_PRICING_PLUGIN_URL . '/assets/css/style.css', array(), GEODIR_PRICING_VERSION );
 
-		wp_enqueue_style( 'geodir-pricing' );
+			wp_enqueue_style( 'geodir-pricing' );
+		}
 	}
 
 	/**

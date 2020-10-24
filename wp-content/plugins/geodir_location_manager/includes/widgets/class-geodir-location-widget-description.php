@@ -17,13 +17,13 @@ class GeoDir_Location_Widget_Description extends WP_Super_Duper {
 		$options = array(
 			'textdomain'     => 'geodirlocation',
 			'block-icon'     => 'location-alt',
-			'block-category' => 'common',
+			'block-category' => 'geodirectory',
 			'block-keywords' => "['geodirlocation','location','location description']",
 			'class_name'     => __CLASS__,
 			'base_id'        => 'gd_location_description',
 			'name'           => __( 'GD > Location Description', 'geodirlocation' ),
 			'widget_ops'     => array(
-				'classname'     => 'geodir-lm-location-description',
+				'classname'     => 'geodir-lm-location-description bsui',
 				'description'   => esc_html__( 'Displays the current location description.', 'geodirlocation' ),
 				'geodirectory'  => true,
 				'gd_show_pages' => array(),
@@ -48,6 +48,33 @@ class GeoDir_Location_Widget_Description extends WP_Super_Duper {
                 'advanced' => false
             )
 		);
+
+		$design_style = geodir_design_style();
+
+		if ( $design_style ) {
+			// background
+			$arguments['bg']  = geodir_get_sd_background_input('mt');
+
+			// margins
+			$arguments['mt']  = geodir_get_sd_margin_input('mt');
+			$arguments['mr']  = geodir_get_sd_margin_input('mr');
+			$arguments['mb']  = geodir_get_sd_margin_input('mb',array('default'=>3));
+			$arguments['ml']  = geodir_get_sd_margin_input('ml');
+
+			// padding
+			$arguments['pt']  = geodir_get_sd_padding_input('pt');
+			$arguments['pr']  = geodir_get_sd_padding_input('pr');
+			$arguments['pb']  = geodir_get_sd_padding_input('pb');
+			$arguments['pl']  = geodir_get_sd_padding_input('pl');
+
+			// border
+			$arguments['border']  = geodir_get_sd_border_input('border');
+			$arguments['rounded']  = geodir_get_sd_border_input('rounded');
+			$arguments['rounded_size']  = geodir_get_sd_border_input('rounded_size');
+
+			// shadow
+			$arguments['shadow']  = geodir_get_sd_shadow_input('shadow');
+		}
 
 		return $arguments;
 	}
@@ -102,6 +129,12 @@ class GeoDir_Location_Widget_Description extends WP_Super_Duper {
 		 * @param string $gd_city The current city slug.
 		 */
 		$location_desc = apply_filters( 'geodir_location_description', $location_desc, $gd_country, $gd_region, $gd_city );
+
+		// preview
+		if(empty($location_desc) && $this->is_preview()){
+			$location_desc = __("<b>This is a placeholder</b> for the location description. You set the description under each location settings, when on the relevant location page the text will show here.","geodirlocation");
+		}
+
 		if ( empty( $location_desc ) ) {
 			return NULL;
 		}
@@ -109,7 +142,10 @@ class GeoDir_Location_Widget_Description extends WP_Super_Duper {
 		$location_desc = str_replace( '%%location%%', $location_title, $location_desc );
 		$location_desc = str_replace( '%location%', $location_title, $location_desc );
 
-		$output = '<div class="geodir-location-desc">' . $location_desc . '</div>';
+		// wrap class
+		$class = geodir_build_aui_class($args);
+
+		$output = '<p class="geodir-location-desc '.$class.'">' . $location_desc . '</p>';
 
 		return $output;
 	}	

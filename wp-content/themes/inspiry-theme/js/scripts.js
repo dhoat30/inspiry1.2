@@ -3,32 +3,101 @@ let $ = jQuery;
 
 
 window.onload = function() {
+
     //Design Board Single Page
     class DesignBoardSinglePage{ 
         constructor(){ 
            this.events(); 
+           
         }
 
         //events
         events(){ 
-            $('.board-loop-page .board-card').mouseenter(this.showDeleteIcon.bind(this)); 
-            $('.board-loop-page .board-card').mouseleave(this.hideDeleteIcon.bind(this)); 
+            //show and hide option icon
+            $('.board-card').mouseenter(this.showOptionIcon.bind(this)); 
+            $('.board-card').mouseleave(this.hideOptionIcon.bind(this)); 
+            
+            //show options on click
+            $('.board-card .option-icon').on('click', this.showOptions.bind(this));
+           $(document).mouseup(this.hideOptionContainer.bind(this));
+
+           $('.board-card-archive .option-icon').on('click', this.showOptionsArchive.bind(this));
+           $(document).mouseup(this.hideOptionContainerArchive.bind(this));
+
+
+           //show share icon container
+           $('.share-btn').on('click', this.showShareContainer);
+           $('.share-icon-container span').on('click', this.hideShareContaienr); 
+            
+            //board page
+            $('.board-card-archive').mouseenter(this.showOptionIconArchive.bind(this)); 
+            $('.board-card-archive').mouseleave(this.hideOptionIconArchive.bind(this)); 
 
         }
 
         //functions 
-        showDeleteIcon(e){ 
+        //share container
+        hideShareContaienr(){ 
+            $('.share-icon-container').hide(300);
+            $('.overlay').fadeOut(300);   
+
+        }
+        showShareContainer(e){ 
+            var shareContainer = $('.share-icon-container')
+            shareContainer.show(300);
+            $('.overlay').fadeIn(300);   
+        }
+
+        //show & hide options 
+        hideOptionContainer(e){ 
+            var pinOptionContainer = $('.pin-options-container');
+            if (!pinOptionContainer.is(e.target) && pinOptionContainer.has(e.target).length === 0) 
+            {
+                pinOptionContainer.hide(300); 
+            }
+        }
+        showOptions(e){ 
+            var pinOptionContainer = $(e.target).closest('.board-card').find('.pin-options-container');
+            pinOptionContainer.show(300);
+        }
+
+        hideOptionContainerArchive(e){ 
+            var pinOptionContainer = $('.pin-options-container');
+            if (!pinOptionContainer.is(e.target) && pinOptionContainer.has(e.target).length === 0) 
+            {
+                pinOptionContainer.hide(300); 
+            }
+        }
+        showOptionsArchive(e){ 
+            var pinOptionContainer = $(e.target).closest('.board-card-archive').find('.pin-options-container');
+            pinOptionContainer.show(300);
+        }
+
+
+        //show option icon
+        showOptionIcon(e){ 
             e.preventDefault(); 
-            var currentCard = $(e.target).closest('.board-card').find('.delete-icon');
-           currentCard.show(300);
-            
+           
+            var optionSelector = $(e.target).closest('.board-card').find('.option-icon');
+            optionSelector.show();
         }
-        hideDeleteIcon(e){ 
-            e.preventDefault(500); 
-            var currentCard = $(e.target).closest('.board-card').find('.delete-icon');
-           currentCard.hide();
-            
+
+        hideOptionIcon(e){ 
+            e.preventDefault(); 
+            var optionSelector = $(e.target).closest('.board-card').find('.option-icon');
+            optionSelector.hide();
         }
+        //board archive
+       showOptionIconArchive(e){ 
+           console.log('hover');
+           var optionSelector = $(e.target).closest('.board-card-archive').find('.option-icon');
+           optionSelector.show();
+       }
+       hideOptionIconArchive(e){ 
+        e.preventDefault(); 
+        var optionSelector = $(e.target).closest('.board-card-archive').find('.option-icon');
+        optionSelector.hide();
+    }
     }
 
     const designBoardSinglePage = new DesignBoardSinglePage(); 
@@ -62,7 +131,10 @@ window.onload = function() {
             //add to a board
             this.boardListItems.on('click', this.addToBoard.bind(this)); 
             //delete a pin 
-            $('.board-loop-page .board-card .delete-icon').on('click', this.deletePin);
+            $('.board-card .delete-btn').on('click', this.deletePin);
+
+            //delete Board
+            $('.board-card-archive .delete-board-btn').on('click', this.deleteBoard);
         }
 
         //functions 
@@ -91,6 +163,8 @@ window.onload = function() {
         hideForm(){ 
             $('.project-save-form-section').hide();
         }
+
+        
 
         //add project to board
         addToBoard(e){
@@ -135,8 +209,36 @@ window.onload = function() {
 
            
         }
-
-        //delete form 
+        //delete board
+        deleteBoard(e){
+           
+            let boardID = e.delegateTarget.dataset.pinid; 
+           console.log(boardID);
+          $.ajax({
+           beforeSend: (xhr)=>{
+               xhr.setRequestHeader('X-WP-NONCE', inspiryData.nonce)
+           },
+           url: inspiryData.root_url + '/wp-json/inspiry/v1/deleteBoard',
+           data: {
+               'board-id': boardID, 
+           },
+           type: 'DELETE',
+           success: (response)=>{
+               console.log('this is a success area')
+               if(response){ 
+                   console.log(response);
+                   $(e.target).closest('.board-card-archive').remove();
+               }
+           }, 
+           error: (response)=>{
+               console.log('this is an error');
+               console.log(response)
+           }
+       });
+             
+           
+        }
+        //delete pin 
         deletePin(e){
            console.log('delete is working'); 
 
@@ -155,7 +257,7 @@ window.onload = function() {
                 console.log('this is a success area')
                 if(response){ 
                     console.log(response);
-                    
+                    $(e.target).closest('.board-card').remove();
                 }
             }, 
             error: (response)=>{

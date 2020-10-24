@@ -3,9 +3,9 @@ Contributors: stiofansisland, paoltaia, ayecode
 Donate link: https://wpgeodirectory.com
 Tags: geodirectory, location, location manager, locations, multi locations
 Requires at least: 4.9
-Tested up to: 5.4
+Tested up to: 5.5
 Requires PHP: 5.6
-Stable tag: 2.0.1.3
+Stable tag: 2.1.0.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -30,6 +30,25 @@ Obviously there is no need to create all the locations in advance. Users can add
 3. Go to WordPress Admin -> GeoDirectory -> Settings -> Multilocations and customize behaviour as needed
 
 == Changelog ==
+
+= 2.1.0.3 =
+* Add listing under default country/region/city not working with bootstrap style - FIXED
+
+= 2.1.0.2 =
+* Add listing country field not working when selected countries enabled - FIXED
+
+= 2.1.0.1 =
+* Add/edit neighbourhood no longer working - FIXED
+
+= 2.1.0.0 =
+* Changes for AyeCode UI compatibility - CHANGED
+* CPT Description fields missing in add/edit location form - FIXED
+* Lazy Load map feature added - ADDED
+
+= 2.0.1.4 =
+* Yoast SEO single page breadcrumbs contains category link without location - FIXED
+* WordPress v5.5 compatibility changes - CHANGED
+* Rank Math breadcrumbs shows links in wrong order when home link is disabled - FIXED
 
 = 2.0.1.3 =
 * Show neighbourhood name using GD > Post Meta - CHANGED
@@ -61,10 +80,10 @@ Obviously there is no need to create all the locations in advance. Users can add
 * Unable to save category location for different location wise - FIXED
 * [gd_location_meta] added to show location title, description, image - ADDED
 * Sitemap Bug – Showing c instead of time - FIXED
-* Add neighbourhood fiels in post meta keys list - ADDED
+* Add neighbourhood field in post meta keys list - ADDED
 * Elementor Pro can break CPT location archive links in some cases - FIXED
 * GD > Locations grid view not showing image for neighbourhoods - FIXED
-* [gd_locarions] show post image as fallback image - CHANGED
+* [gd_locations] show post image as fallback image - CHANGED
 
 = 2.0.0.24 =
 * Option added to show current location in locations widget/shortcode - ADDED

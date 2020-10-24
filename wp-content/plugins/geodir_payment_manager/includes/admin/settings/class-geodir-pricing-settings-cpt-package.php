@@ -176,7 +176,7 @@ if ( ! class_exists( 'GeoDir_Pricing_Settings_Cpt_Package', false ) ) :
 					array(
 						'type' 	=> 'title',
 						'id'   	=> 'package_settings',
-						'title' => __( 'Add New Package', 'geodir_pricing' ),
+						'title' => ( ! empty( $package_data['id'] ) ? wp_sprintf( __( 'Edit Package #%d', 'geodir_pricing' ), $package_data['id'] ) : __( 'Add New Package', 'geodir_pricing' ) ),
 						'desc' 	=> '',
 					),
 					array( 
@@ -347,7 +347,7 @@ if ( ! class_exists( 'GeoDir_Pricing_Settings_Cpt_Package', false ) ) :
 						'id'       	=> 'package_exclude_field',
 						'title'     => __( 'Exclude Fields', 'geodir_pricing' ),
 						'desc' 		=> __( 'Select post fields to exclude for this package.', 'geodir_pricing' ),
-						'options'   => self::exclude_field_options( self::$post_type, $package_data ),
+						'options'   => geodir_pricing_exclude_field_options( self::$post_type, $package_data ),
 						'placeholder' => __( 'Select Fields', 'geodir_pricing' ),
 						'class'		=> 'geodir-select',
 						'desc_tip' 	=> true,
@@ -653,33 +653,6 @@ if ( ! class_exists( 'GeoDir_Pricing_Settings_Cpt_Package', false ) ) :
 			$categories = geodir_category_tree_options( $post_type, false );
 
 			return apply_filters( 'geodir_pricing_package_exclude_category_options', $categories, $package );
-		}
-
-		public static function exclude_field_options( $post_type = 'gd_place', $package = array() ) {
-			$custom_fields = geodir_post_custom_fields( '', 'all', $post_type,'none' );
-
-			$exclude_field = array();
-			if ( ! empty( $custom_fields ) ) {
-				foreach( $custom_fields as $key => $field ) {
-					if ( ! empty( $field['is_default'] ) ) {
-						$skip = true;
-					} else {
-						$skip = false;
-					}
-				
-					$skip = apply_filters( 'geodir_pricing_package_skip_exclude_field_' . $field['htmlvar_name'], $skip, $field, $package );
-
-					if ( apply_filters( 'geodir_pricing_package_skip_exclude_field', $skip, $field, $package ) ) {
-						continue;
-					}
-
-					$exclude_field[ $field['htmlvar_name'] ] = __( $field['admin_title'], 'geodirectory' );
-				}
-
-				asort( $exclude_field );
-			}
-
-			return apply_filters( 'geodir_pricing_package_exclude_field_options', $exclude_field, $package );
 		}
 
 		public function cpt_packages_page( $option ) {

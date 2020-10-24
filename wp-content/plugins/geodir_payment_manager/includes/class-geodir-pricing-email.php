@@ -1237,6 +1237,6 @@ Thank You.", "geodir_pricing" );
 		}
 		$value[] = date_i18n( 'Y-m-d' );
 
-		update_post_meta( $email_vars['post']->ID, '_geodir_reminder_sent', $value );
+		update_post_meta( $email_vars['post']->ID, '_geodir_reminder_sent', array_unique( array_filter( $value ) ) );
 	}
 }

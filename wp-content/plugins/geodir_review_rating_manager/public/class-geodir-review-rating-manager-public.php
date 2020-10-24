@@ -24,37 +24,48 @@ class GeoDir_Review_Rating_Manager_Public {
 
     public function __construct() {
         add_filter('geodir_overall_rating_label', array(__CLASS__,'overall_label_text'));
+        add_action( 'geodir_comment_links_after_edit', array(__CLASS__,'like_button') );
+        add_action( 'wp_enqueue_scripts', array( __CLASS__, 'enqueue_aui' ), 10 );
     }
 
     public static function overall_label_text(){
-        return __('Overall','geodir_reviewratings');
+        return  __('Overall','geodir_reviewratings');
     }
 
     public function enqueue_styles() {
+        
+        $design_style = geodir_design_style();
+
         wp_enqueue_script( 'jquery' );
 
         if ( geodir_is_page('detail') ) {
             $suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+            if(!$design_style){
+                wp_register_script( 'geodir-reviewrating-review-script', GEODIR_REVIEWRATING_PLUGINDIR_URL.'/assets/js/comments-script' . $suffix . '.js' );
+                wp_enqueue_script( 'geodir-reviewrating-review-script' );
 
-            wp_register_script( 'geodir-reviewrating-review-script', GEODIR_REVIEWRATING_PLUGINDIR_URL.'/assets/js/comments-script' . $suffix . '.js' );
-            wp_enqueue_script( 'geodir-reviewrating-review-script' );
+                wp_register_style( 'geodir-reviewratingrating-style', GEODIR_REVIEWRATING_PLUGINDIR_URL .'/assets/css/style.css' );
+                wp_enqueue_style( 'geodir-reviewratingrating-style' );
+            }
 
-            wp_register_style( 'geodir-reviewratingrating-style', GEODIR_REVIEWRATING_PLUGINDIR_URL .'/assets/css/style.css' );
-            wp_enqueue_style( 'geodir-reviewratingrating-style' );
 
             if (!wp_script_is( 'geodir-plupload', 'enqueued' )) {
                 wp_enqueue_script('geodir-plupload');
             }
 
-            if (!wp_script_is( 'geodir-lity', 'enqueued' )) {
-                wp_enqueue_script('geodir-lity');
+            if(!$design_style) {
+                if ( ! wp_script_is( 'geodir-lity', 'enqueued' ) ) {
+                    wp_enqueue_script( 'geodir-lity' );
+                }
             }
 
             // SCRIPT FOR UPLOAD
             wp_enqueue_script('plupload-all');
             wp_enqueue_script('jquery-ui-sortable');
-            wp_register_script( 'geodir-reviewrating-plupload-script', GEODIR_REVIEWRATING_PLUGINDIR_URL.'/assets/js/geodir-plupload' . $suffix . '.js' );
-            wp_enqueue_script( 'geodir-reviewrating-plupload-script' );
+            if(!$design_style) {
+                wp_register_script( 'geodir-reviewrating-plupload-script', GEODIR_REVIEWRATING_PLUGINDIR_URL . '/assets/js/geodir-plupload' . $suffix . '.js' );
+                wp_enqueue_script( 'geodir-reviewrating-plupload-script' );
+            }
 
         }
 
@@ -119,7 +130,112 @@ class GeoDir_Review_Rating_Manager_Public {
             'geodir_err_file_type' => wp_sprintf(__('File type error. Allowed image types: %s', 'geodir_reviewratings'), $allowed_img_types),
             'geodir_text_remove' => __('Remove', 'geodir_reviewratings'),
         );
-        wp_localize_script('geodir-reviewrating-plupload-script','geodir_reviewrating_plupload_localize',$geodir_plupload_init);
+
+        if ( geodir_is_page('detail') ) {
+            $script = $design_style ? 'plupload-all' : 'geodir-reviewrating-plupload-script';
+            wp_localize_script( $script, 'geodir_reviewrating_plupload_localize', $geodir_plupload_init );
+            
+        }
+    }
+
+    public static function enqueue_aui(){
+        $design_style = geodir_design_style();
+        if ($design_style && geodir_is_page('detail') ) {
+            wp_add_inline_script( 'geodir', self::single_page_script() );
+        }
+    }
+    
+    public static function single_page_script(){
+        ob_start();
+			if(0){ ?><script><?php }?>
+            jQuery(document).delegate(".comments_review_likeunlike", "click", function() {
+                var $this = this;
+                var cont = jQuery($this).closest('.comments_review_likeunlike');
+                var comment_id = jQuery($this).data('comment-id');
+                var task = jQuery($this).data('like-action');
+                var wpnonce = jQuery(cont).data('wpnonce');
+                if (!comment_id || !wpnonce || !(task == 'like' || task == 'unlike'))
+                    return false;
+
+                var btnlike = jQuery($this).find('.gdrr-btn-like').context.outerHTML;
+                jQuery($this).find('.gdrr-btn-like').replaceWith('<i class="fa fa-refresh fa-spin"></i>');
+                jQuery.post(geodir_reviewrating_all_js_msg.geodir_reviewrating_admin_ajax_url + "&ajax_action=review_update_frontend", {
+                    task: task,
+                    comment_id: comment_id,
+                    _wpnonce: wpnonce
+                }).done(function(data) {
+                    if (data && data !== '0') {
+                        cont.replaceWith(data);
+                    } else {
+                        jQuery('.fa-refresh', cont).replaceWith(btnlike);
+                    }
+                });
+            });
+
+            if (geodir_params.multirating && jQuery('.gd-rating-input-wrap').closest('#commentform').length) {
+                var $frm_obj = jQuery('.gd-rating-input-wrap').closest('#commentform'),commentField,commentTxt,errors;
+                var optional_multirating = geodir_reviewrating_all_js_msg.geodir_reviewrating_optional_multirating;
+
+                jQuery('input[name="submit"]', $frm_obj).on('click', function(e) {
+                    errors = 0;
+                    jQuery('#err_no_rating', $frm_obj).remove();
+                    jQuery('#err_no_comment', $frm_obj).remove();
+                    $comment = jQuery('textarea[name="comment"]', $frm_obj);
+                    is_review = jQuery('#comment_parent', $frm_obj).val();
+                    is_review = parseInt(is_review) == 0 ? true : false;
+                    commentField = typeof tinyMCE != 'undefined' && typeof tinyMCE.editors != 'undefined' && typeof tinyMCE.editors['comment'] == 'object' ? tinyMCE.editors['comment'] : null;
+
+                    if (is_review) {
+                        jQuery('.gd-rating-input-wrap', $frm_obj).each(function() {
+                            var rat_obj = this;
+                            // Overall ratings
+                            jQuery(rat_obj).find('[name=geodir_overallrating]').each(function() {
+                                var star_obj = this;
+                                var star = parseInt(jQuery(star_obj).val());
+                                if (!star > 0) {
+                                    errors++;
+                                }
+                            });
+
+                            if (!errors) {
+                                // Multi ratings
+                                jQuery(rat_obj).find('[name^=geodir_rating]').each(function() {
+                                    var star_obj = this;
+                                    var mandatory = optional_multirating && jQuery(star_obj).attr('name') != 'geodir_overallrating' ? false : true;
+                                    var star = parseInt(jQuery(star_obj).val());
+                                    if (!star > 0 && mandatory) {
+                                        errors++;
+                                    }
+                                });
+                            }
+
+                            if (errors > 0) {
+                                jQuery(rat_obj).after('<div id="err_no_rating" class="err-no-rating alert alert-danger">' + geodir_params.gd_cmt_err_no_rating + '</div>');
+                                jQuery("#err_no_rating").get(0).scrollIntoView();
+                                return false;
+                            }
+                        });
+                    } else {
+                    }
+                    if (errors > 0) {
+                        return false;
+                    }
+                    if (commentField) {
+                        commentField.editorManager.triggerSave();
+                    }
+                    commentTxt = jQuery.trim($comment.val());
+                    if (!commentTxt) {
+                        error = is_review ? geodir_reviewrating_all_js_msg.err_empty_review : geodir_reviewrating_all_js_msg.err_empty_reply;
+                        $comment.before('<div id="err_no_comment" class="err-no-rating alert alert-danger">' + error + '</div>');
+                        $comment.focus();
+                        return false;
+                    }
+                    return true;
+                });
+            }
+            <?php if(0){ ?></script><?php }
+
+        return ob_get_clean();
     }
 
     /**
@@ -489,6 +605,8 @@ class GeoDir_Review_Rating_Manager_Public {
         $ratings_html = '';
         $rating_html = '';
         if(!empty($comment) && !is_admin()){
+
+            $design_style = geodir_design_style();
             if(geodir_get_option('rr_enable_rating') && !$comment->comment_parent):
                 $comment_ratings = geodir_reviewrating_get_comment_rating_by_id($comment->comment_ID);
                 $ratings = @unserialize($comment_ratings->ratings);
@@ -510,6 +628,16 @@ class GeoDir_Review_Rating_Manager_Public {
                 $like_unlike = GeoDir_Review_Rating_Like_Unlike::geodir_reviewrating_comments_like_unlike($comment->comment_ID, false);
             endif;
 
+            if ( $design_style ) {
+                if($rating_html){
+                    $content = '<div class="border-bottom  mb-2 mt-n3" >' . $rating_html . '</div>' . $content;
+                }
+
+                if ( isset( $comment_images->html ) ) {
+                    $content .= $comment_images->html;
+                }
+
+            }else{
             ob_start(); ?>
             <div class="gdreview_section">
                 <div class="clearfix">
@@ -539,10 +667,20 @@ class GeoDir_Review_Rating_Manager_Public {
 
             $content = ob_get_clean();
 
+            }
+
             return $content;
         } else {
             return $content;
         }
+    }
+
+    public static function like_button($comment){
+        if(geodir_get_option('rr_enable_rate_comment') && !is_admin()){
+            $like_unlike = GeoDir_Review_Rating_Like_Unlike::geodir_reviewrating_comments_like_unlike($comment->comment_ID, false);
+            echo $like_unlike;
+        }
+
     }
 
     /**
@@ -593,59 +731,16 @@ class GeoDir_Review_Rating_Manager_Public {
         );
 
         $comment_sorting_form_field_val = apply_filters( 'geodir_reviews_rating_comment_shorting', $comment_sorting_form_field_val );
-        ?>
-        <form name="comment_sorting_form" id="comment_sorting_form" method="get" action="<?php comments_link(); ?>">
-            <?php
-            $query_variables = $_GET;
 
-            $hidden_vars = '';
-            if (!empty($query_variables)) {
-                foreach ($query_variables as $key => $val) {
-                    $key = sanitize_text_field($key);
-                    $val = sanitize_text_field($val);
-                    if ( $key != 'comment_sorting')
-                        $hidden_vars .= '<input type="hidden" name="' . esc_attr($key) . '" value="' . esc_attr($val) . '" />';
-                }
-            }
+        $design_style = geodir_design_style();
 
-            echo $hidden_vars;
-            ?>
-            <select name="comment_sorting" class="comment_sorting" onchange="jQuery(this).closest('#comment_sorting_form').submit()">
-                <?php
-                $page_comments = get_option('page_comments');
-                $default_shorting = 'latest';
+        $template = $design_style ? $design_style."/comment-sorting.php" : "legacy/comment-sorting.php";
+        $args = array(
+            'comment_sorting_form_field_val'    => $comment_sorting_form_field_val,
+        );
 
-                if ( $page_comments ) {
-                    $default_comments_page = get_option('default_comments_page');
-
-                    if ( $default_comments_page == 'newest' ) {
-                        $default_shorting = 'latest';
-                    } else if ( $default_comments_page == 'oldest' ) {
-                        $default_shorting = 'oldest';
-                    }
-                }
-                /**
-                 * Filter the default comments sorting.
-                 *
-                 * @since 1.1.7
-                 * @package GeoDirectory_Review_Rating_Manager
-                 *
-                 * @param string $comment_sorting Sorting name to sort comments.
-                 */
-                $comment_sorting = apply_filters( 'geodir_reviewrating_comments_shorting_default', $default_shorting );
-                $comment_sorting = isset( $_REQUEST['comment_sorting'] ) && !empty( $_REQUEST['comment_sorting'] ) && isset( $comment_sorting_form_field_val[$_REQUEST['comment_sorting']] ) ? $_REQUEST['comment_sorting'] : $comment_sorting;
-
-                if (isset($comment_sorting_form_field_val) && !empty($comment_sorting_form_field_val)) {
-                    foreach($comment_sorting_form_field_val as $key => $value) {
-                        ?>
-                        <option <?php if($comment_sorting ==  $key){echo 'selected="selected"';} ?> value="<?php echo $key; ?>"><?php _e($value, 'geodir_reviewratings');?></option>
-                        <?php
-                    }
-                }
-                ?>
-            </select>
-        </form>
-        <?php
+        echo geodir_get_template_html( $template , $args, '', plugin_dir_path( GEODIR_REVIEWRATING_PLUGIN_FILE ). "templates/");
+        
 
     }
 
@@ -735,7 +830,9 @@ class GeoDir_Review_Rating_Manager_Public {
      */
     function geodir_reviewrating_comment_replylink($link){
 
-        $link = '<div class="gdrr-comment-replaylink">'.$link.'</div>';
+        if(!geodir_design_style()){
+            $link = '<div class="gdrr-comment-replaylink">'.$link.'</div>';
+        }
 
         return $link;
     }

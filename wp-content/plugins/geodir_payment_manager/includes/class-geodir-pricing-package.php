@@ -1146,8 +1146,8 @@ class GeoDir_Pricing_Package {
 			return $desc_limit;
 		}
 
-		if ( ! empty( $package->use_desc_limit ) ) {
-			$desc_limit = absint( $package->desc_limit );
+		if ( (bool) geodir_pricing_get_meta( $package->id, 'use_desc_limit', true ) ) {
+			$desc_limit = absint( geodir_pricing_get_meta( $package->id, 'desc_limit', true ) );
 		} else {
 			$desc_limit = NULL;
 		}
@@ -1558,5 +1558,28 @@ class GeoDir_Pricing_Package {
 		wp_cache_set( $cache_key, $is_recurring, 'pricing_packages' );
 
 		return $is_recurring;
+	}
+
+	public static function add_listing_url( $package ) {
+		if ( ! is_object( $package ) ) {
+			$package = self::get_package( $package );
+		}
+
+		if ( ! ( is_object( $package ) && ! empty( $package->id ) ) ) {
+			return NULL;
+		}
+
+		$add_listing_url = wp_cache_get( 'geodir_pricing_package_add_listing_url' . $package->id, 'pricing_packages' );
+		if ( $add_listing_url !== false ) {
+			return $add_listing_url;
+		}
+
+		$add_listing_url = add_query_arg( array( 'package_id' => $package->id ), geodir_get_addlisting_link( $package->post_type ) );
+
+		$add_listing_url = apply_filters( 'geodir_pricing_package_add_listing_url', $add_listing_url, $package );
+
+		wp_cache_set( 'geodir_pricing_package_add_listing_url' . $package->id, $add_listing_url, 'pricing_packages' );
+
+		return $add_listing_url;
 	}
 }

@@ -153,6 +153,17 @@ class GeoDir_Adv_Search_Query {
 						if ( ! empty( $_REQUEST[ $htmlvar_name ] ) ) {
 							$value = $_REQUEST[ $htmlvar_name ];
 
+							// new one field range picker
+							$design_style = geodir_design_style();
+							if(!is_array($value) && $design_style && strpos($value, ' ') !== false){
+								$parts = explode(" ",$value);
+								if(!empty($parts[2])){
+									$value = array();
+									$value['from'] = $parts[0];
+									$value['to'] = $parts[2];
+								}
+							}
+
 							if ( $field->data_type == 'DATE' ) {
 								if ( is_array( $value ) ) {
 									$value_from = ! empty( $value['from'] ) ? date_i18n( 'Y-m-d', strtotime( sanitize_text_field( $value['from'] ) ) ) : '';
@@ -182,8 +193,9 @@ class GeoDir_Adv_Search_Query {
 										$field_where[] = $wpdb->prepare( "{$table}.{$htmlvar_name} <= %s", array( $value_to ) );
 									}
 								} else {
-									$value = date_i18n( 'H:i:s', strtotime( sanitize_text_field( $value ) ) );
-									$field_where[] = $wpdb->prepare( "{$table}.{$htmlvar_name} = %s", array( $value ) );
+									$value = date_i18n( 'H:i:s', strtotime( sanitize_text_field( $value ) ) ); // old style
+									$value2 = date_i18n( 'H:i', strtotime( sanitize_text_field( $value ) ) ); // new style
+									$field_where[] = $wpdb->prepare( " ( {$table}.{$htmlvar_name} = %s || {$table}.{$htmlvar_name} = %s) ", array( $value,$value2  ) );
 								}
 							}
 						}

@@ -33,6 +33,9 @@ if ( ! class_exists( 'GeoDir_Location_Settings_Locations', false ) ) :
 			add_action( 'geodir_settings_save_' . $this->id, array( $this, 'save' ) );
 			add_action( 'geodir_sections_' . $this->id, array( $this, 'output_sections' ) );
 
+			// WordPress XML Sitemaps settings
+			add_filter( 'geodir_locations_options', array( $this, 'wp_sitemaps_settings' ) );
+
 			// Yoast SEO settings
 			add_filter( 'geodir_locations_options', array( $this, 'yoast_seo_options' ) );
 
@@ -560,7 +563,49 @@ if ( ! class_exists( 'GeoDir_Location_Settings_Locations', false ) ) :
 			}
 			return $settings;
 		}
-		
+
+		public function wp_sitemaps_settings( $settings ) {
+			if ( ! function_exists( 'wp_register_sitemap_provider' ) ) {
+				return $settings;
+			}
+
+			$location_types = GeoDir_Location_API::get_location_types();
+
+			$location_type_options = array();
+			foreach ( $location_types as $type => $data ) {
+				$location_type_options[ $type ] = $data['title'];
+			}
+
+			$sitemaps_options = array(
+				array( 
+					'name' => __( 'WordPress XML Sitemaps', 'geodirlocation' ), 
+					'type' => 'title', 
+					'desc' => '', 
+					'id' => 'geodir_location_wp_sitemaps_settings' 
+				),
+				array(
+					'type' => 'multiselect',
+					'id' => 'location_sitemaps_locations',
+					'name' => __( 'Location Types', 'geodirlocation' ),
+					'desc' => __( 'Select location types to show in WordPress core XML sitemaps.', 'geodirlocation' ),
+					'class' => 'geodir-select',
+					'default' => '',
+					'placeholder' => __( 'Select Locations', 'geodirlocation' ),
+					'options' => $location_type_options,
+					'desc_tip' => true,
+					'advanced' => false,
+				),
+				array(
+					'type' => 'sectionend', 
+					'id' => 'geodir_location_wp_sitemaps_settings'
+				),
+			);
+
+			$settings = array_merge( $settings, $sitemaps_options );
+
+			return $settings;
+		}
+
 		public static function countries_page( $option ) {
 			GeoDir_Location_Admin_Countries::page_output();
 		}

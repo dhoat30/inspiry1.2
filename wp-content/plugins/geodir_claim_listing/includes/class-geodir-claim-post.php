@@ -722,7 +722,17 @@ class GeoDir_Claim_Post {
 			$can_add_post = GeoDir_Post_Limit::user_can_add_post( array( 'post_type' => $post_type ) );
 
 			if ( ! $can_add_post ) {
-				$message = geodir_notification( array( 'claim_listing_error' => self::posts_limit_message( $post_type, (int) get_current_user_id() ) ) );
+				$message = self::posts_limit_message( $post_type, (int) get_current_user_id() );
+
+				if ( geodir_design_style() ) {
+					$message = aui()->alert( array(
+						'type'=> 'info',
+						'content'=> $message,
+						'class' => 'mb-0'
+					) );
+				} else {
+					$message = geodir_notification( array( 'claim_listing_error' => $message ) );
+				}
 
 				$output = apply_filters( 'geodir_posts_limit_claim_listing_message', $message, $post_type );
 			}

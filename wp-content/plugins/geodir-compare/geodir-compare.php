@@ -1,27 +1,27 @@
 <?php
 /**
- * This is the main GeoDirectory compare plugin file, here we declare and call the important stuff
+ * GeoDirectory Compare Listings
  *
- * @package           Geodir_Compare
+ * @package           GeoDir_Compare
+ * @author            AyeCode Ltd
  * @copyright         2019 AyeCode Ltd
  * @license           GPLv3
- * @since             1.0.0
  *
- * @geodir_compare
- * Plugin Name: GeoDirectory Compare Listings
- * Plugin URI:  https://wpgeodirectory.com/
- * Description: Let's your visitors compare 2-5 listings side by side
- * Version: 2.0.0.3
- * Author: AyeCode Ltd
- * Author URI: https://wpgeodirectory.com/
- * Requires at least: 4.5
- * Tested up to: 5.3.2
- * License: GPLv3
- * License URI: http://www.gnu.org/licenses/gpl-3.0.html
- * Text Domain: geodir-compare
- * Domain Path: /languages
- * Update URL: https://wpgeodirectory.com
- * Update ID: 724713
+ * @wordpress-plugin
+ * Plugin Name:       GeoDirectory Compare Listings
+ * Plugin URI:        https://wpgeodirectory.com/downloads/compare-listings/
+ * Description:       Compare listings side by side and compare vital information.
+ * Version:           2.1.0.0
+ * Requires at least: 4.9
+ * Requires PHP:      5.6
+ * Author:            AyeCode Ltd
+ * Author URI:        https://ayecode.io
+ * License:           GPLv3
+ * License URI:       http://www.gnu.org/licenses/gpl-3.0.html
+ * Text Domain:       geodir-compare
+ * Domain Path:       /languages
+ * Update URL:        https://wpgeodirectory.com
+ * Update ID:         724713
  */
 
 if ( ! defined( 'WPINC' ) ) {
@@ -29,7 +29,11 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 if ( ! defined( 'GEODIR_COMPARE_VERSION' ) ) {
-	define( 'GEODIR_COMPARE_VERSION', '2.0.0.3' );
+	define( 'GEODIR_COMPARE_VERSION', '2.1.0.0' );
+}
+
+if ( ! defined( 'GEODIR_COMPARE_MIN_CORE' ) ) {
+	define( 'GEODIR_COMPARE_MIN_CORE', '2.1.0.0' );
 }
 
 if ( ! defined( 'GEODIR_COMPARE_PLUGIN_FILE' ) ) {
@@ -43,7 +47,13 @@ if ( ! defined( 'GEODIR_COMPARE_PLUGIN_FILE' ) ) {
  * 
  * @since    1.0.0
  */
-function geodir_load_geodir_compare() {	
+function geodir_load_geodir_compare() {
+
+	// min core version check
+	if( !function_exists("geodir_min_version_check") || !geodir_min_version_check("Compare Listings",GEODIR_COMPARE_MIN_CORE)){
+		return '';
+	}
+
 	require_once ( plugin_dir_path( GEODIR_COMPARE_PLUGIN_FILE ) . 'includes/class-geodir-compare.php' );
 	GeoDir_Compare::instance();
 }

@@ -19,6 +19,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 function geodir_pricing_register_widgets() {
 
 	if ( get_option( 'geodir_pricing_version' ) ) {
+		// Widgets
+		register_widget( 'GeoDir_Pricing_Widget_Pricing' );
+
 		// Non Widgets
 		new GeoDir_Pricing_Widget_Single_Expired_Text();
 	}
@@ -157,23 +160,34 @@ function geodir_pricing_locate_template( $template, $template_name, $template_pa
  * @return string Post expired text.
  */
 function geodir_pricing_post_expired_text( $post, $echo = true ) {
+	$design_style = geodir_design_style();
+
 	if ( ! empty( $post ) && ! empty( $post->post_type ) ) {
 		$cpt_name = geodir_strtolower( geodir_post_type_singular_name( $post->post_type ) );
 	} else {
 		$cpt_name = __( 'business', 'geodir_pricing' );
 	}
 
-    ob_start();
+	$template = $design_style ? $design_style . '/view/post-expired-text.php' : 'view/post-expired-text.php';
 
-    geodir_get_template( 'view/post-expired-text.php', array(
+	$template_args = array(
 		'cpt_name' => $cpt_name
-	) );
+	);
 
-    if ( $echo ) {
-        echo ob_get_clean();
-    } else {
-        return ob_get_clean();
-    }
+	$template_args = apply_filters( 'geodir_pricing_post_expired_template_args', $template_args, $post );
+
+	$output = geodir_get_template_html( 
+		$template, 
+		$template_args,
+		'',
+		geodir_pricing_templates_path()
+	);
+
+	if ( $echo ) {
+		echo $output;
+	} else {
+		return $output;
+	}
 }
 
 /**
@@ -241,7 +255,7 @@ function geodir_pricing_detail_author_actions() {
 	}
 }
 
-function geodir_pricing_post_renew_link( $post_id ) {
+function geodir_pricing_post_renew_link( $post_id, $url_only = false ) {
 	if ( empty( $post_id ) ) {
 		return NULL;
 	}
@@ -257,17 +271,21 @@ function geodir_pricing_post_renew_link( $post_id ) {
 		$renew_url = geodir_pricing_post_renew_url( $post_id );
 
 		if ( $renew_url ) {
-			$renew_link .= '<span class="gd_user_action renew_link">';
-				$renew_link .= '<i class="fas fa-sync" aria-hidden="true"></i> ';
-				$renew_link .= '<a href="' . esc_url( $renew_url ) . '" title="' . esc_attr__( 'Renew Listing', 'geodir_pricing' ) . '">' . __( 'Renew', 'geodir_pricing' ) . '</a>';
-			$renew_link .= '</span>';
+			if ( $url_only ) {
+				$renew_link = $renew_url;
+			} else {
+				$renew_link .= '<span class="gd_user_action renew_link">';
+					$renew_link .= '<i class="fas fa-sync" aria-hidden="true"></i> ';
+					$renew_link .= '<a href="' . esc_url( $renew_url ) . '" title="' . esc_attr__( 'Renew Listing', 'geodir_pricing' ) . '">' . __( 'Renew', 'geodir_pricing' ) . '</a>';
+				$renew_link .= '</span>';
+			}
 		}
 	}
 
-	return apply_filters( 'geodir_pricing_post_renew_link', $renew_link, $post_id );
+	return apply_filters( 'geodir_pricing_post_renew_link', $renew_link, $post_id, $url_only );
 }
 
-function geodir_pricing_post_upgrade_link( $post_id ) {
+function geodir_pricing_post_upgrade_link( $post_id, $url_only = false ) {
 	if ( empty( $post_id ) ) {
 		return NULL;
 	}
@@ -283,14 +301,18 @@ function geodir_pricing_post_upgrade_link( $post_id ) {
 		$upgrade_url = geodir_pricing_post_upgrade_url( $post_id );
 
 		if ( $upgrade_url ) {
-			$upgrade_link = '<span class="gd_user_action upgrade_link">';
-				$upgrade_link .= '<i class="fas fa-sync" aria-hidden="true"></i> ';
-				$upgrade_link .= '<a href="' . esc_url( $upgrade_url ) . '" title="' . esc_attr__( 'Upgrade Listing', 'geodir_pricing' ) . '">' . __( 'Upgrade', 'geodir_pricing' ) . '</a>';
-			$upgrade_link .= '</span>';
+			if ( $url_only ) {
+				$upgrade_link = $upgrade_url;
+			} else {
+				$upgrade_link = '<span class="gd_user_action upgrade_link">';
+					$upgrade_link .= '<i class="fas fa-sync" aria-hidden="true"></i> ';
+					$upgrade_link .= '<a href="' . esc_url( $upgrade_url ) . '" title="' . esc_attr__( 'Upgrade Listing', 'geodir_pricing' ) . '">' . __( 'Upgrade', 'geodir_pricing' ) . '</a>';
+				$upgrade_link .= '</span>';
+			}
 		}
 	}
 
-	return apply_filters( 'geodir_pricing_post_upgrade_link', $upgrade_link, $post_id );
+	return apply_filters( 'geodir_pricing_post_upgrade_link', $upgrade_link, $post_id, $url_only );
 }
 
 function geodir_pricing_cfi_textarea_attributes( $attributes, $cf ) {
@@ -336,4 +358,204 @@ function geodir_pricing_tiny_mce_before_init( $mceInit, $editor_id ) {
 	}
 
 	return $mceInit;
+}
+
+function geodir_pricing_templates_path() {
+	return GEODIR_PRICING_PLUGIN_DIR . '/templates/';
+}
+
+function geodir_pricing_package_features( $package, $args = array() ) {
+	if ( empty( $package ) ) {
+		return array();
+	}
+	
+	if ( ! is_object( $package ) ) {
+		$package = GeoDir_Pricing_Package::get_package( $package );
+	}
+
+	if ( ! ( is_object( $package ) && ! empty( $package->id ) ) ) {
+		return array();
+	}
+
+	$defaults = array(
+		'color_default' => 'secondary',
+		'color_highlight' => 'primary',
+		'fa_icon_tick' => 'fas fa-check-circle',
+		'fa_icon_untick' => 'fas fa-times-circle'
+	);
+
+	$params = wp_parse_args( $args, $defaults );
+
+	$features = array();
+
+	// Auto renewal
+	$recurring = array( 
+		'order' => 1,
+		'text' => __( 'Auto renewing', 'geodir_pricing' )
+	);
+	if ( geodir_pricing_is_recurring( $package->id ) ) {
+		$recurring['icon'] = $params['fa_icon_tick'];
+		$recurring['color'] = $params['color_highlight'];
+	} else {
+		$recurring['icon'] = $params['fa_icon_untick'];
+		$recurring['color'] = $params['color_default'];
+	}
+	$features['recurring'] = $recurring;
+
+	// Free trial
+	$has_free_trial = false;
+	if ( ! empty( $package->trial ) && geodir_pricing_is_recurring( $package->id ) ) {
+		$has_free_trial = geodir_pricing_display_free_trial( $package->trial_interval, $package->trial_unit );
+	}
+
+	$free_trial = array( 
+		'order' => 2
+	);
+	if ( $has_free_trial ) {
+		$free_trial['text'] = wp_sprintf( __( '%s free trial', 'geodir_pricing' ), geodir_ucwords( $has_free_trial ) );
+		$free_trial['icon'] = $params['fa_icon_tick'];
+		$free_trial['color'] = $params['color_highlight'];
+	} else {
+		$free_trial['text'] = __( 'Free trial', 'geodir_pricing' );
+		$free_trial['icon'] = $params['fa_icon_untick'];
+		$free_trial['color'] = $params['color_default'];
+	}
+	$features['free_trial'] = $free_trial;
+
+	if ( GeoDir_Post_types::supports( $package->post_type, 'featured' ) ) {
+		$post_type_name = geodir_post_type_singular_name( $package->post_type );
+
+		// Featured
+		$featured = array( 
+			'order' => 3,
+			'text' => wp_sprintf( __( 'Featured %s', 'geodir_pricing' ), geodir_strtolower( $post_type_name ) )
+		);
+		if ( geodir_pricing_is_featured( $package->id ) ) {
+			$featured['icon'] = $params['fa_icon_tick'];
+			$featured['color'] = $params['color_highlight'];
+		} else {
+			$featured['icon'] = $params['fa_icon_untick'];
+			$featured['color'] = $params['color_default'];
+		}
+		$features['featured'] = $featured;
+	}
+
+	// Images
+	$images = array( 
+		'order' => 4
+	);
+	if ( geodir_pricing_has_files( $package->id ) ) {
+		$image_limit = (int) geodir_pricing_get_meta( $package->id, 'image_limit', true );
+
+		if ( $image_limit > 0 ) {
+			$images['text'] = wp_sprintf( _n( '%d photo', '%d photos', $image_limit, 'geodir_pricing' ), $image_limit );
+		} else {
+			$images['text'] = __( 'Unlimited photos', 'geodir_pricing' );
+		}
+		$images['icon'] = $params['fa_icon_tick'];
+		$images['color'] = $params['color_highlight'];
+	} else {
+		$images['text'] = __( 'No photo', 'geodir_pricing' );
+		$images['icon'] = $params['fa_icon_untick'];
+		$images['color'] = $params['color_default'];
+	}
+	$features['images'] = $images;
+
+	// Categories
+	$categories_limit = (int) geodir_pricing_category_limit( $package->id );
+
+	$categories = array( 
+		'order' => 5,
+		'icon' => $params['fa_icon_tick'],
+		'color' => $params['color_highlight']
+	);
+	if ( $categories_limit > 0 ) {
+		$categories['text'] = wp_sprintf( _n( '%d category', '%d categories', $categories_limit, 'geodir_pricing' ), $categories_limit );
+	} else {
+		$categories['text'] = __( 'Unlimited categories', 'geodir_pricing' );
+	}
+	$features['categories'] = $categories;
+
+	// Tags
+	$tags_limit = (int) geodir_pricing_tag_limit( $package->id );
+
+	$tags = array( 
+		'order' => 6,
+		'icon' => $params['fa_icon_tick'],
+		'color' => $params['color_highlight']
+	);
+	if ( $tags_limit > 0 ) {
+		$tags['text'] = wp_sprintf( _n( '%d tag', '%d tags', $tags_limit, 'geodir_pricing' ), $tags_limit );
+	} else {
+		$tags['text'] = __( 'Unlimited tags', 'geodir_pricing' );
+	}
+	$features['tags'] = $tags;
+
+	// Description limit
+	$description = array( 
+		'order' => 7,
+		'text' => __( 'Unlimited description', 'geodir_pricing' )
+	);
+	if ( ! ( (int) geodir_pricing_package_desc_limit( $package->id ) > 0 ) ) {
+		$description['icon'] = $params['fa_icon_tick'];
+		$description['color'] = $params['color_highlight'];
+	} else {
+		$description['icon'] = $params['fa_icon_untick'];
+		$description['color'] = $params['color_default'];
+	}
+	$features['description'] = $description;
+
+	// HTML Editor
+	$html_editor = array( 
+		'order' => 8,
+		'text' => __( 'HTML editor for description', 'geodir_pricing' )
+	);
+	if ( ! geodir_pricing_disable_html_editor( $package->id ) ) {
+		$html_editor['icon'] = $params['fa_icon_tick'];
+		$html_editor['color'] = $params['color_highlight'];
+	} else {
+		$html_editor['icon'] = $params['fa_icon_untick'];
+		$html_editor['color'] = $params['color_default'];
+	}
+	$features['html_editor'] = $html_editor;
+
+	$field_options = geodir_pricing_exclude_field_options( $package->post_type, (array) $package );
+	$field_options = apply_filters( 'geodir_pricing_package_field_options', $field_options, $package );
+
+	// Fields
+	$exclude_fields = geodir_pricing_get_meta( $package->id, 'exclude_field', true );
+	$_exclude_fields = array();
+	if ( ! empty( $exclude_fields ) ) {
+		foreach ( $exclude_fields as $exclude_field ) {
+			if ( isset( $field_options[ $exclude_field ] ) ) {
+				$_exclude_fields[] = $field_options[ $exclude_field ];
+			}
+		}
+	}
+
+	$fields = array( 
+		'order' => 9
+	);
+	if ( empty( $_exclude_fields ) ) {
+		$fields['text'] = __( 'All fields', 'geodir_pricing' );
+		$fields['icon'] = $params['fa_icon_tick'];
+		$fields['color'] = $params['color_highlight'];
+	} else {
+		$fields['text'] = __( 'No', 'geodir_pricing' ) . ' ' . geodir_strtolower( implode( ', ', $_exclude_fields ) );
+		$fields['icon'] = $params['fa_icon_untick'];
+		$fields['color'] = $params['color_default'];
+	}
+	$features['fields'] = $fields;
+
+	$features = apply_filters( 'geodir_pricing_package_features', $features, $package, $params, $args );
+
+	if ( ! empty( $features ) ) {
+		usort( $features, 'geodir_pricing_package_sort_features' );
+	}
+
+	return $features;
+}
+
+function geodir_pricing_package_sort_features( $item1, $item2 ) {
+	return ( ( isset( $item1['order'] ) && isset( $item1['order'] ) && (float) $item1['order'] <= (float) $item2['order'] ) ? -1 : 1 );
 }

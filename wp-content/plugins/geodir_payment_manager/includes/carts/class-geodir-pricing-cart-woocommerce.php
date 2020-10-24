@@ -1445,7 +1445,7 @@ class GeoDir_Pricing_Cart_WooCommerce extends GeoDir_Pricing_Cart {
 						$message = wp_sprintf( __( 'Your request to claim the listing has been approved. View the listing %shere%s.', 'geodir_pricing' ), '<a href="' . get_permalink( $post_id ) . '">', '</a>' );
 					}
 				} else {
-					$message = wp_sprintf( __( 'Your claim requires a payment to complete.  %sCheckout%s', 'geodir_pricing' ),'<a href="' .  wc_get_checkout_url() . '" class="gd-noti-button" target="_top"><i class="fas fa-shopping-cart"></i> ', '</a>' );
+					$message = wp_sprintf( __( 'Your claim requires a payment to complete.  %sCheckout%s', 'geodir_pricing' ), '<a href="' .  wc_get_checkout_url() . '" class="gd-noti-button" target="_top"><i class="fas fa-shopping-cart"></i> ', '</a>' );
 				}
 			}
 		}

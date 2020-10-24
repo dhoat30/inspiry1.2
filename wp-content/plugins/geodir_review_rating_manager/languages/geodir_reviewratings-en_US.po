@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: GeoDirectory Review Rating Manager 2.0.1.0\n"
+"Project-Id-Version: GeoDirectory Review Rating Manager 2.1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-03 12:47+0530\n"
-"PO-Revision-Date: 2020-07-03 12:47+0530\n"
+"POT-Creation-Date: 2020-10-07 16:45+0530\n"
+"PO-Revision-Date: 2020-10-07 16:45+0530\n"
 "Last-Translator: Stiofan <info@geotheme.com>\n"
 "Language-Team: AyeCode Ltd <contact@ayecode.io>\n"
 "Language: en_US\n"
@@ -85,8 +85,8 @@ msgstr ""
 #: admin/settings/class-geodir-reviews-fields-settings.php:196
 #: admin/settings/class-geodir-reviews-fields-settings.php:200
 #: admin/settings/class-geodir-reviews-fields-settings.php:211
-#: includes/class-geodir-review-rating-template.php:185
-#: includes/class-geodir-review-rating-template.php:193
+#: includes/class-geodir-review-rating-template.php:184
+#: includes/class-geodir-review-rating-template.php:192
 msgid "Spam"
 msgstr ""
 
@@ -95,8 +95,8 @@ msgstr ""
 #: admin/settings/class-geodir-reviews-fields-settings.php:197
 #: admin/settings/class-geodir-reviews-fields-settings.php:201
 #: admin/settings/class-geodir-reviews-fields-settings.php:212
-#: includes/class-geodir-review-rating-template.php:186
-#: includes/class-geodir-review-rating-template.php:194
+#: includes/class-geodir-review-rating-template.php:185
+#: includes/class-geodir-review-rating-template.php:193
 msgid "Trash"
 msgstr ""
 
@@ -334,30 +334,30 @@ msgstr ""
 
 #: admin/settings/class-geodir-reviews-fields-settings.php:195
 #: admin/settings/class-geodir-reviews-fields-settings.php:209
-#: includes/class-geodir-review-rating-template.php:184
+#: includes/class-geodir-review-rating-template.php:183
 msgid "Approve"
 msgstr ""
 
 #: admin/settings/class-geodir-reviews-fields-settings.php:199
 #: admin/settings/class-geodir-reviews-fields-settings.php:210
-#: includes/class-geodir-review-rating-template.php:192
+#: includes/class-geodir-review-rating-template.php:191
 msgid "Unapprove"
 msgstr ""
 
 #: admin/settings/class-geodir-reviews-fields-settings.php:203
-#: includes/class-geodir-review-rating-template.php:200
+#: includes/class-geodir-review-rating-template.php:199
 msgid "Not Spam"
 msgstr ""
 
 #: admin/settings/class-geodir-reviews-fields-settings.php:204
 #: admin/settings/class-geodir-reviews-fields-settings.php:207
-#: includes/class-geodir-review-rating-template.php:201
-#: includes/class-geodir-review-rating-template.php:208
+#: includes/class-geodir-review-rating-template.php:200
+#: includes/class-geodir-review-rating-template.php:207
 msgid "Delete Permanently"
 msgstr ""
 
 #: admin/settings/class-geodir-reviews-fields-settings.php:206
-#: includes/class-geodir-review-rating-template.php:207
+#: includes/class-geodir-review-rating-template.php:206
 msgid "Restore"
 msgstr ""
 
@@ -374,7 +374,7 @@ msgid "Newest"
 msgstr ""
 
 #: admin/settings/class-geodir-reviews-fields-settings.php:247
-#: public/class-geodir-review-rating-manager-public.php:590
+#: public/class-geodir-review-rating-manager-public.php:728
 msgid "Oldest"
 msgstr ""
 
@@ -503,7 +503,7 @@ msgid ""
 "installed plugins, please install it now."
 msgstr ""
 
-#: geodir_review_rating_manager.php:55
+#: geodir_review_rating_manager.php:58
 #, php-format
 msgid "%s requires %sGeoDirectory%s plugin to be installed and active."
 msgstr ""
@@ -556,28 +556,6 @@ msgstr ""
 msgid "Number of likes for the reviews."
 msgstr ""
 
-#: includes/class-geodir-review-rating-like-unlike.php:42
-msgid "You must be logged-in to like a review comment."
-msgstr ""
-
-#: includes/class-geodir-review-rating-like-unlike.php:47
-#, php-format
-msgid "%d people like this."
-msgstr ""
-
-#: includes/class-geodir-review-rating-like-unlike.php:52
-msgid "You and 1 other like this."
-msgstr ""
-
-#: includes/class-geodir-review-rating-like-unlike.php:52
-#, php-format
-msgid "You and %d others like this."
-msgstr ""
-
-#: includes/class-geodir-review-rating-like-unlike.php:54
-msgid "You like this."
-msgstr ""
-
 #: includes/class-geodir-review-rating-privacy.php:17
 msgid "GeoDirectory Review Rating Manager"
 msgstr ""
@@ -624,21 +602,17 @@ msgstr ""
 msgid "User Agent"
 msgstr ""
 
-#: includes/class-geodir-review-rating-template.php:91
-msgid "Individually rated for:"
-msgstr ""
-
-#: includes/class-geodir-review-rating-template.php:217
+#: includes/class-geodir-review-rating-template.php:216
 #: includes/class-geodir-review-rating.php:202
 msgid "Show Multi Ratings"
 msgstr ""
 
-#: includes/class-geodir-review-rating-template.php:224
+#: includes/class-geodir-review-rating-template.php:223
 #: includes/class-geodir-review-rating.php:200
 msgid "Show Images"
 msgstr ""
 
-#: includes/class-geodir-review-rating-template.php:244
+#: includes/class-geodir-review-rating-template.php:243
 msgid "Submitted on:"
 msgstr ""
 
@@ -722,83 +696,122 @@ msgstr ""
 msgid "-- Select multirating style --"
 msgstr ""
 
-#: public/class-geodir-review-rating-manager-public.php:30
+#: public/class-geodir-review-rating-manager-public.php:32
 msgid "Overall"
 msgstr ""
 
-#: public/class-geodir-review-rating-manager-public.php:94
+#: public/class-geodir-review-rating-manager-public.php:105
 msgid "Allowed Files"
 msgstr ""
 
-#: public/class-geodir-review-rating-manager-public.php:115
+#: public/class-geodir-review-rating-manager-public.php:126
 #, php-format
 msgid "You have reached your upload limit of %s images."
 msgstr ""
 
-#: public/class-geodir-review-rating-manager-public.php:116
+#: public/class-geodir-review-rating-manager-public.php:127
 #, php-format
 msgid "You may only upload total %s images."
 msgstr ""
 
-#: public/class-geodir-review-rating-manager-public.php:117
+#: public/class-geodir-review-rating-manager-public.php:128
 #, php-format
 msgid "You may only upload another %s images."
 msgstr ""
 
-#: public/class-geodir-review-rating-manager-public.php:118
+#: public/class-geodir-review-rating-manager-public.php:129
 #, php-format
 msgid "File size error : You tried to upload an image over %s"
 msgstr ""
 
-#: public/class-geodir-review-rating-manager-public.php:119
+#: public/class-geodir-review-rating-manager-public.php:130
 #, php-format
 msgid "File type error. Allowed image types: %s"
 msgstr ""
 
-#: public/class-geodir-review-rating-manager-public.php:120
+#: public/class-geodir-review-rating-manager-public.php:131
 msgid "Remove"
 msgstr ""
 
-#: public/class-geodir-review-rating-manager-public.php:589
+#: public/class-geodir-review-rating-manager-public.php:727
 msgid "Latest"
 msgstr ""
 
-#: public/class-geodir-review-rating-manager-public.php:591
+#: public/class-geodir-review-rating-manager-public.php:729
 msgid "Lowest Rating"
 msgstr ""
 
-#: public/class-geodir-review-rating-manager-public.php:592
+#: public/class-geodir-review-rating-manager-public.php:730
 msgid "Highest Rating"
 msgstr ""
 
-#: public/class-geodir-review-rating-manager-public.php:681
+#: public/class-geodir-review-rating-manager-public.php:776
 msgid "Least Images"
 msgstr ""
 
-#: public/class-geodir-review-rating-manager-public.php:682
+#: public/class-geodir-review-rating-manager-public.php:777
 msgid "Highest Images"
 msgstr ""
 
-#: public/class-geodir-review-rating-manager-public.php:686
+#: public/class-geodir-review-rating-manager-public.php:781
 msgid "Lowest Reviews"
 msgstr ""
 
-#: public/class-geodir-review-rating-manager-public.php:687
+#: public/class-geodir-review-rating-manager-public.php:782
 msgid "Highest Reviews"
 msgstr ""
 
-#: public/class-geodir-review-rating-manager-public.php:1024
+#: public/class-geodir-review-rating-manager-public.php:1121
 msgid "Rating style"
 msgstr ""
 
-#: public/class-geodir-review-rating-manager-public.php:1025
+#: public/class-geodir-review-rating-manager-public.php:1122
 msgid "Rating category"
 msgstr ""
 
-#: public/class-geodir-review-rating-manager-public.php:1026
+#: public/class-geodir-review-rating-manager-public.php:1123
 msgid "Comment image"
 msgstr ""
 
-#: public/class-geodir-review-rating-manager-public.php:1027
+#: public/class-geodir-review-rating-manager-public.php:1124
 msgid "Comment reviews"
+msgstr ""
+
+#: templates/bootstrap/comment-like.php:20 templates/legacy/comment-like.php:20
+msgid "You must be logged-in to like a review comment."
+msgstr ""
+
+#: templates/bootstrap/comment-like.php:26
+msgid "Liked"
+msgstr ""
+
+#: templates/bootstrap/comment-like.php:26
+msgid "Like"
+msgstr ""
+
+#: templates/bootstrap/comment-sorting.php:64
+#, php-format
+msgid "Sort: %s"
+msgstr ""
+
+#: templates/bootstrap/comment-sorting.php:75
+msgid "Sort Reviews"
+msgstr ""
+
+#: templates/legacy/comment-like.php:25
+#, php-format
+msgid "%d people like this."
+msgstr ""
+
+#: templates/legacy/comment-like.php:30
+msgid "You and 1 other like this."
+msgstr ""
+
+#: templates/legacy/comment-like.php:30
+#, php-format
+msgid "You and %d others like this."
+msgstr ""
+
+#: templates/legacy/comment-like.php:32
+msgid "You like this."
 msgstr ""

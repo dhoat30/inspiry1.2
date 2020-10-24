@@ -267,7 +267,7 @@ class UsersWP_Form_Builder {
                 'is_active'           =>  1,
                 'default_value'       =>  '',
                 'is_required'         =>  0,
-                'option_values'       =>  __('Select Gender/,Male,Female,Other', 'userswp'),
+                'option_values'       =>  __('Male,Female,Other', 'userswp'),
                 'required_msg'        =>  '',
                 'field_icon'          =>  'fas fa-user',
                 'css_class'           =>  ''
@@ -1442,10 +1442,6 @@ class UsersWP_Form_Builder {
             $validation_pattern = isset($request_field['validation_pattern']) ? sanitize_text_field($request_field['validation_pattern']) : '';
             $validation_msg = isset($request_field['validation_msg']) ? sanitize_text_field($request_field['validation_msg']) : '';
 
-	        if ( empty( $htmlvar_name ) && $field_type == 'fieldset') {
-		        $htmlvar_name = $field_type_key;
-	        }
-
 	        if ( empty( $htmlvar_name ) ) {
 		        $htmlvar_name = sanitize_key( str_replace( array( '-', ' ', '"', "'" ), array( '_', '_', '', '' ), $request_field['site_title'] ) );
 		        if ( str_replace( '_', '', $htmlvar_name ) != '' ) {
@@ -1530,7 +1526,7 @@ class UsersWP_Form_Builder {
                             break;
 
                         case 'textarea':
-                        case 'html':
+                        case 'editor':
                         case 'url':
                         case 'file':
 
@@ -1716,7 +1712,7 @@ class UsersWP_Form_Builder {
                         }
                         break;
                     case 'textarea':
-                    case 'html':
+                    case 'editor':
                     case 'url':
                     case 'file':
 

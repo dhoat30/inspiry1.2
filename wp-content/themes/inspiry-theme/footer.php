@@ -78,6 +78,7 @@
     </footer>
 
 <?php wp_footer();?>
+<!--
 <script>
   document.write(
     '<script src="http://' +
@@ -86,5 +87,6 @@
       'script>'
   );
 </script>
+--> 
 </body>
 </html>

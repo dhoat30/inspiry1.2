@@ -28,7 +28,7 @@ class GeoDir_Widget_Compare_List extends WP_Super_Duper {
             'class_name'            => __CLASS__,
             'name'                  => __('GD > Compare List','geodir-compare'),
             'widget_ops'            => array(
-                'classname'         => 'geodir-compare-list',
+                'classname'         => 'geodir-compare-list bsui',
                 'description'       => esc_html__('Displays a listings comparison table.','geodir-compare'),
             ),
             'arguments'     => array(
@@ -112,10 +112,11 @@ class GeoDir_Widget_Compare_List extends WP_Super_Duper {
 
         //Abort early if we don't have any gd items
         if( empty( $items ) || !$post_type ) {
-            return sprintf( 
-                '<div class="geodir-compare-page-empty-list">%s</div>',
-                __( 'There are no listings to compare', 'geodir-compare' )
-            );
+            // return sprintf( 
+            //     '<div class="geodir-compare-page-empty-list">%s</div>',
+            //     __( 'There are no listings to compare', 'geodir-compare' )
+            // );
+            return geodir_no_compare_found();
         }
 
         //Fetch listings
@@ -124,13 +125,25 @@ class GeoDir_Widget_Compare_List extends WP_Super_Duper {
         //And comparison fields
         $fields = $this->get_comparison_fields( $post_type );
 
-//	    print_r( $fields );
-       
-        //Then display them
-        return '<div class="geodir-compare-page-wrapper gd-ios-scrollbars">' .
-                    $this->get_comparison_body( $listings, $fields, $post_type, $allow_remove ) . 
-                '</div>';
+        $design_style = geodir_design_style();
+		$template = $design_style ? $design_style . "/compare-list.php" : "legacy/compare-list.php";
 
+		// wrap class
+		$wrap_class = geodir_build_aui_class( $args );
+
+		$template_args = array(
+			'args'  			=> $args,
+			'wrap_class'    	=> $wrap_class,
+			'listings'			=> $listings,
+			'fields'			=> $fields,
+			'post_type'			=> $post_type,
+			'allow_remove'		=> $allow_remove,
+
+		);
+
+		//Then display them
+		return geodir_get_template_html( $template, $template_args, '', plugin_dir_path( GEODIR_COMPARE_PLUGIN_FILE ). "/templates/" );
+       
     }
 
     /**

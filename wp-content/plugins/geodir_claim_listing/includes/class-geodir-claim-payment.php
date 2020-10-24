@@ -68,16 +68,31 @@ class GeoDir_Claim_Payment {
 	}
 
 	public static function claim_form_package_select($post_id){
-		$gd_post = geodir_get_post_info(absint($post_id));
+		$gd_post = geodir_get_post_info( absint( $post_id ) );
 
-		$package_id = !empty($gd_post->package_id) ? absint($gd_post->package_id) : 0;
-		if(!empty($gd_post) && empty($gd_post->claimed) && $package_id){
-			$packages = self::get_upgrade_price_packages($gd_post->post_type,$package_id);
+		$package_id = ! empty( $gd_post->package_id ) ? absint( $gd_post->package_id ) : 0;
 
-			if(!empty($packages)){
+		if ( ! empty( $gd_post ) && empty( $gd_post->claimed ) && $package_id ) {
+			$packages = self::get_upgrade_price_packages( $gd_post->post_type, $package_id );
+
+			if ( ! empty( $packages ) ) {
+				if ( geodir_design_style() ) {
+					echo aui()->select( 
+						array(
+							'id' => 'gd_claim_user_package',
+							'name' => 'gd_claim_user_package',
+							'title' => __( 'Select Package', 'geodir_pricing' ),
+							'required' => true,
+							'label_type' => 'vertical',
+							'label' => __( 'Select Package', 'geodir_pricing' ) . '<span class="text-danger">*</span>',
+							'options' => $packages,
+							'select2' => true
+						)
+					);
+				} else {
 			?>
 			<div class="required_field geodir_form_row clearfix geodir-claim-field-comments">
-				<label for="gd_claim_user_package"><?php _e('Select Package','geodir-claim');?> <span>*</span></label>
+				<label for="gd_claim_user_package"><?php _e('Select Package','geodir_pricing');?> <span>*</span></label>
 				<select name="gd_claim_user_package" id="gd_claim_user_package" style="" class="regular-text" tabindex="-1" aria-hidden="true">
 					<?php
 					foreach($packages as $id => $title){
@@ -87,6 +102,7 @@ class GeoDir_Claim_Payment {
 				</select>
 			</div>
 			<?php
+				}
 			}
 		}
 	}

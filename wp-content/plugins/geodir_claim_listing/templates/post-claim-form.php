@@ -1,8 +1,8 @@
 <?php
 /**
- * The template for displaying post claim form
+ * Single Listing Claim Form
  *
- * This template can be overridden by copying it to yourtheme/geodir_claim_listing/post claim-form.php.
+ * This template can be overridden by copying it to yourtheme/geodirectory/post-claim-form.php.
  *
  * HOWEVER, on occasion GeoDirectory will need to update template files and you
  * (the theme developer) will need to copy the new files to your theme to
@@ -10,10 +10,9 @@
  * happen. When this occurs the version of the template file will be bumped and
  * the readme will list any important changes.
  *
- * @see     http://docs.wpgeodirectory.com/customizing-geodirectory-templates/
- * @since   2.0.0
- * @package Geodir_Claim_Listing
- * @author  AyeCode Ltd
+ * @see        https://wpgeodirectory.com/docs-v2/faq/customizing/#templates
+ * @package    Geodir_Claim_Listing
+ * @version    2.1.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

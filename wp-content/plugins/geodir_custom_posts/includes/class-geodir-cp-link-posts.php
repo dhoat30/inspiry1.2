@@ -212,7 +212,7 @@ WHERE
 	 * @return string The html to output for the custom field.
 	 */
 	public static function cfi_link_posts( $html, $cf ) {
-		global $gd_post;
+		global $gd_post, $geodir_label_type;
 
 		$htmlvar_name = $cf['htmlvar_name'];
 
@@ -243,11 +243,13 @@ WHERE
 
 			$attrs = 'data-max-posts="' . $max_posts . '" data-source-cpt="' . $cf['post_type'] . '" data-dest-cpt="' . $htmlvar_name . '"';
 			if ( $max_posts != 1 ) {
+				$multiple = true;
 				$field_name = $htmlvar_name . '[]';
 				$select_type = 'multiselect';
 				$attrs .= ' multiple="multiple"';
 				$cpt_name = geodir_post_type_name( $htmlvar_name );
 			} else {
+				$multiple = false;
 				$field_name = $htmlvar_name;
 				$select_type = 'select';
 				$cpt_name = geodir_post_type_singular_name( $htmlvar_name );
@@ -256,15 +258,18 @@ WHERE
 			$placeholder = ! empty( $cf['placeholder_value'] ) ? __( $cf['placeholder_value'], 'geodirectory' ) : wp_sprintf( __( 'Choose %s &hellip;', 'geodir_custom_posts' ), $cpt_name );
 
 			$options = '';
+			$options_arr = array();
 			if ( ! empty( $value ) ) {
 				if ( is_array( $value ) ) {
 					foreach ( $value as $value_id ) {
 						if ( $value_id > 0 ) {
 							$options .= '<option value="' . $value_id . '" selected="selected">' . get_the_title( $value_id ) . '</option>';
+							$options_arr[ $value_id ] = get_the_title( $value_id );
 						}
 					}
 				} else {
 					$options .= '<option value="' . $value . '" selected="selected">' . get_the_title( $value ) . '</option>';
+					$options_arr[ $value ] = get_the_title( $value );
 				}
 			}
 
@@ -276,8 +281,55 @@ WHERE
 				$link_title = wp_sprintf( __( 'Fill %s listing data from linked %s data.', 'geodir_custom_posts' ), $from_post_type, $to_post_type );
 			}
 
+			$html = '<input type="hidden" name="'. $field_name .'" value="" />';
+			// AUI
+			if ( geodir_design_style() ) {
+				$extra_attributes = array();
+				$extra_attributes['data-placeholder'] = esc_attr( $placeholder );
+				$extra_attributes['data-source-cpt'] = $cf['post_type'];
+				$extra_attributes['data-dest-cpt'] = $cf['name'];
+				$extra_attributes['data-data-max-posts'] = $max_posts;
+				$extra_attributes['data-nonce'] = esc_attr( wp_create_nonce( 'geodir-select-search-' . $cf['post_type'] . '-' . $cf['name'] ) );
+				$extra_attributes['data-allow-clear'] = true;
+				$extra_attributes['data-min-input-length'] = 2;
+
+				if ( ! empty( $cf['validation_pattern'] ) ) {
+					$extra_attributes['pattern'] = $cf['validation_pattern'];
+				}
+
+				// required
+				$required = ! empty( $cf['is_required'] ) ? ' <span class="text-danger">*</span>' : '';
+
+				// admin only
+				$admin_only = geodir_cfi_admin_only( $cf );
+
+				$pull_button = '';
+				if ( ! empty( $fill_fields ) ) {
+					$pull_button = '<span class="geodir-fill-data btn btn-secondary btn-sm float-right c-pointer" data-toggle="tooltip" data-from-post-type="' . $cf['post_type'] . '" data-to-post-type="' . $htmlvar_name . '" data-from-post-id="' . ( ! empty( $gd_post->ID ) ? $gd_post->ID : '' ) . '" data-confirm="' . esc_attr( $link_confirm ) . '" title="' . esc_attr( $link_title ) . '"><i class="fas fa-sync-alt" aria-hidden="true"></i></span>';
+					$description .= $pull_button;
+				}
+
+				$html .= aui()->select( array(
+					'id' => $cf['name'],
+					'name' => $cf['name'],
+					'title' => $label,
+					'placeholder' => $placeholder,
+					'value' => $value,
+					'required' => ! empty( $cf['is_required'] ) ? true : false,
+					'label_show' => true,
+					'label_type' => !empty( $geodir_label_type ) ? $geodir_label_type : 'horizontal',
+					'label' => $label . $admin_only . $required,
+					'validation_text' => ! empty( $cf['validation_msg'] ) ? $cf['validation_msg'] : '',
+					'validation_pattern' => ! empty( $cf['validation_pattern'] ) ? $cf['validation_pattern'] : '',
+					'help_text' => $description,
+					'extra_attributes' => $extra_attributes,
+					'options' => $options_arr,
+					'multiple' => $multiple,
+					'select2' => true,
+					'class' => 'geodir-select-search-post'
+				) );
+			} else {
 			ob_start();
-			echo '<input type="hidden" name="'. $field_name .'" value="" />';
 			?>
 			<div id="<?php echo $htmlvar_name; ?>_row" class="geodir_form_row clearfix geodir_custom_fields gd-fieldset-details<?php echo $class; ?>">
 				<label for="<?php echo $htmlvar_name; ?>">
@@ -292,7 +344,8 @@ WHERE
 				<?php } ?>
 			</div>
 			<?php
-			$html = ob_get_clean();
+			$html .= ob_get_clean();
+			}
 		}
 
 		return $html;
@@ -617,9 +670,16 @@ WHERE
 
 		$where = array();
 		if ( ! empty( $post_id ) ) {
+			if ( wp_is_post_revision( $post_id ) ) {
+				$post_id = wp_get_post_parent_id( $post_id );
+			}
+
 			$where[] = $wpdb->prepare( "post_id = %d", $post_id );
 		}
 		if ( ! empty( $linked_id ) ) {
+			if ( wp_is_post_revision( $linked_id ) ) {
+				$linked_id = wp_get_post_parent_id( $linked_id );
+			}
 			$where[] = $wpdb->prepare( "linked_id = %d", $linked_id );
 		}
 		if ( ! empty( $post_type ) && $post_type != 'any' ) {
@@ -784,10 +844,6 @@ WHERE
 			$title = $cf['frontend_title'] != '' ?  __( $cf['frontend_title'], 'geodirectory' ) : '';
 			$output = geodir_field_output_process( $output );
 
-			if ( $location == 'none' ) {
-				return do_shortcode( '[gd_linked_posts title="' . esc_attr( $title ) . '" post_limit=5 id=' . $gd_post->ID . ' post_type=' . $cf['name'] . ']' );
-			}
-
 			$items = self::get_items( $gd_post->ID, $cf['name'] );
 
 			$posts = array();
@@ -906,8 +962,15 @@ WHERE
 			return $params;
 		}
 
+		$design_style = geodir_design_style();
+
+		$label_class = 'gd-adv-search-label';
+		if ( $design_style ) {
+			$label_class .= ' badge badge-info mr-2';
+		}
+
 		if ( ! empty( $value ) ) {
-			$params[] = '<label class="gd-adv-search-label gd-adv-search-default gd-adv-search-' . $htmlvar_name . '" data-name="s' . $htmlvar_name . '"><i class="fas fa-times" aria-hidden="true"></i> ' . $value . '</label>';
+			$params[] = '<label class="' . $label_class . ' gd-adv-search-default gd-adv-search-' . $htmlvar_name . '" data-name="s' . $htmlvar_name . '"><i class="fas fa-times" aria-hidden="true"></i> ' . $value . '</label>';
 		}
 
 		return $params;

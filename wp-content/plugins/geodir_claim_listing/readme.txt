@@ -3,9 +3,9 @@ Contributors: stiofansisland, paoltaia, ayecode
 Donate link: https://wpgeodirectory.com
 Tags: claim, claim business, claim listings, geodir claim, claim manager
 Requires at least: 4.9
-Tested up to: 5.4
+Tested up to: 5.5
 Requires PHP: 5.6
-Stable tag: 2.0.1.0
+Stable tag: 2.1.0.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
  
@@ -24,6 +24,9 @@ With the pricing manager you can set it so the claim requires payment before bei
 Claim Manager has a basic built in claim form or you can build your own claim form using the free Ninja Forms plugin.
 
 == Changelog =
+
+= 2.1.0.0 =
+* Changes for AyeCode UI compatibility - CHANGED
 
 = 2.0.1.0 =
 * Posts limit feature changes - CHANGED

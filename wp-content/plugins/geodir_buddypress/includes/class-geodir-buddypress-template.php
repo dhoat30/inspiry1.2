@@ -23,7 +23,10 @@ class GeoDir_BuddyPress_Template{
      * @param array $args Query arguments.
      */
     public static function geodir_buddypress_listings_html( $args = array() ) {
-
+		if ( geodir_design_style() ) {
+			self::geodir_buddypress_listings_html_aui( $args );
+			return;
+		}
         global $geodirectory, $posts_per_page, $found_posts, $paged;
         $current_posts_per_page = $posts_per_page;
         $current_found_posts = $found_posts;
@@ -129,6 +132,159 @@ class GeoDir_BuddyPress_Template{
         $paged = $current_paged;
     }
 
+	/**
+     * BuddyPress Listings Tab content for AUI style.
+     *
+     * @package GeoDir_BuddyPress
+     *
+     * @param array $args Query arguments.
+     */
+    public static function geodir_buddypress_listings_html_aui( $args = array() ) {
+        global $geodirectory, $posts_per_page, $found_posts, $paged;
+        $current_posts_per_page = $posts_per_page;
+        $current_found_posts = $found_posts;
+        $current_paged = $paged;
+
+        $posts_per_page = $posts_per_page > 0 ? $posts_per_page : 5;
+        $posts_per_page = geodir_get_option( 'geodir_buddypress_listings_count', $posts_per_page );
+
+        $post_type = $args['post_type'];
+        $sort_by = $args['sort_by'];
+        $list_sort = apply_filters( 'gdbp_listing_list_sort', $sort_by );
+        $posts_per_page = apply_filters( 'gdbp_listing_post_limit', $posts_per_page );
+        $post_type_name = !empty( $args['post_type_name'] ) ? geodir_strtolower( $args['post_type_name'] ) : __( 'listings', 'geodir_buddypress' );
+
+		$design_style = geodir_design_style();
+
+        add_filter( 'geodir_bp_listings_orderby', 'geodir_buddypress_posts_orderby', 99, 5 );
+        // pagination
+        add_action( 'geodir_after_listing', 'geodir_buddypress_pagination_aui', 20 );
+
+        $query_args = array(
+            'posts_per_page' => $posts_per_page,
+            'is_geodir_loop' => true,
+            'gd_location' 	 => false,
+            'post_type' => $post_type,
+            'order_by' => $list_sort
+        );
+        
+        if ($post_type == 'gd_event') {
+            if (is_user_logged_in() && get_current_user_id() == bp_displayed_user_id()) {
+
+            } else {
+                $query_args['geodir_event_type'] = 'upcoming';
+                add_filter( 'geodir_filter_bp_listings_where', 'geodir_filter_event_widget_listings_where', 10, 2 );
+            }
+        }
+
+        if ( (bool)bp_is_current_component( 'favorites' ) ) {
+            $query_args['filter_favorite'] = true;
+        }
+
+        global $geodir_is_widget_listing;
+
+        $query_args['count_only'] = true;
+        $found_posts = geodir_buddypress_get_bp_listings( $query_args );
+        $query_args['count_only'] = false;
+
+        $widget_listings = geodir_buddypress_get_bp_listings( $query_args );
+
+        if ( empty( $widget_listings ) ) {
+           echo aui()->alert(
+				array(
+					'type'=> 'info',
+					'content'=> wp_sprintf( __( 'There were no %s found.', 'geodir_buddypress' ), $post_type_name )
+				)
+			);
+        } else {
+            // currently set values
+            global $post, $geodir_event_widget_listview, $map_jason, $map_canvas_arr, $found_posts;
+
+            $current_post = $post;
+            $current_map_jason = $map_jason;
+            $current_map_canvas_arr = $map_canvas_arr;
+            $geodir_is_widget_listing = true;
+            $my_lisitngs = false;
+            $old_event_widget_listview = $geodir_event_widget_listview;
+            if ( bp_loggedin_user_id() && bp_displayed_user_id() == bp_loggedin_user_id() ) {
+                $my_lisitngs = true;
+                $_REQUEST['geodir_dashbord'] = true;
+            }
+
+            if ( $post_type == 'gd_event' ) {
+                $geodir_event_widget_listview = true;
+            }
+
+            echo '<div class="clearfix geodir-loop-actions-container bsui"><div class="justify-content-end mb-3" role="toolbar" aria-label="' . esc_attr__( 'Listing sort and view options', 'geodir_buddypress' ) . '">';
+            geodir_display_sort_options($post_type);
+            geodir_extra_loop_actions();
+            echo '</div></div>';
+
+            // All listings html
+			$column_gap = '';
+			$row_gap = '';
+			$card_border = '';
+			$card_shadow = '';
+			
+			// Card border class
+			$card_border_class = '';
+			if ( ! empty( $card_border ) ) {
+				if ( $card_border == 'none' ) {
+					$card_border_class = 'border-0';
+				} else {
+					$card_border_class = 'border-' . sanitize_html_class( $card_border );
+				}
+			}
+
+			// Card shadow class
+			$card_shadow_class = '';
+			if ( ! empty( $card_shadow ) ) {
+				if ( $card_shadow == 'small' ) {
+					$card_shadow_class = 'shadow-sm';
+				} elseif ( $card_shadow == 'medium' ) {
+					$card_shadow_class = 'shadow';
+				} elseif( $card_shadow == 'large' ) {
+					$card_shadow_class = 'shadow-lg';
+				}
+			}
+
+            echo '<div class="geodir-loop-container bsui">';
+
+			$template = $design_style . '/content-widget-listing.php';
+
+			echo geodir_get_template_html( $template, array(
+				'widget_listings' => $widget_listings,
+				'column_gap_class' => $column_gap ? 'mb-'.absint( $column_gap ) : 'mb-4',
+				'row_gap_class' => $row_gap ? 'px-'.absint($row_gap) : '',
+				'card_border_class' => $card_border_class,
+				'card_shadow_class' => $card_shadow_class,
+			) );
+
+            echo '</div>';
+
+            echo '<div class="clearfix geodir-loop-paging-container bsui">';
+            do_action( 'geodir_after_listing' );
+            echo '</div>';
+
+            // release original values
+            global $geodir_event_widget_listview, $map_jason, $map_canvas_arr;
+
+            $GLOBALS['post'] = $current_post;
+            setup_postdata( $current_post );
+            $geodir_event_widget_listview = $old_event_widget_listview;
+            $map_jason = $current_map_jason;
+            $map_canvas_arr = $current_map_canvas_arr;
+            if ( $my_lisitngs ) {
+                unset( $_REQUEST['geodir_dashbord'] );
+            }
+        }
+
+        global $posts_per_page, $paged;
+        $posts_per_page = $current_posts_per_page;
+        $found_posts = $current_found_posts;
+        $paged = $current_paged;
+    }
+
     /**
      * BuddyPress reviews Tab template.
      *
@@ -138,7 +294,11 @@ class GeoDir_BuddyPress_Template{
      * @return string Modified Comment template path.
      */
     public static function geodir_buddypress_comment_template( $comment_template ) {
-        return GEODIR_BUDDYPRESS_PLUGIN_PATH . '/templates/reviews.php';
+        $design_style = geodir_design_style();
+
+        $template = $design_style ? GEODIR_BUDDYPRESS_PLUGIN_PATH . '/templates/' . $design_style . '/reviews.php' : GEODIR_BUDDYPRESS_PLUGIN_PATH . '/templates/reviews.php';
+
+        return $template;
     }
 
     /**

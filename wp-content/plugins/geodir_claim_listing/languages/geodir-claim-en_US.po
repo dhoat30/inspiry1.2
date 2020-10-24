@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: GeoDirectory Claim Listings 2.0.1.0\n"
+"Project-Id-Version: GeoDirectory Claim Listings 2.1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-30 14:13+0530\n"
-"PO-Revision-Date: 2020-07-30 14:14+0530\n"
+"POT-Creation-Date: 2020-10-07 16:24+0530\n"
+"PO-Revision-Date: 2020-10-07 16:24+0530\n"
 "Last-Translator: \n"
 "Language-Team: AyeCode Ltd <contact@ayecode.io>\n"
 "Language: en_US\n"
@@ -150,12 +150,13 @@ msgid "User"
 msgstr ""
 
 #: includes/admin/class-geodir-claim-admin-claims-table-list.php:63
-#: includes/class-geodir-claim-privacy.php:244 templates/post-claim-form.php:37
+#: includes/class-geodir-claim-privacy.php:244
+#: templates/bootstrap/post-claim-form.php:37 templates/post-claim-form.php:36
 msgid "Full Name"
 msgstr ""
 
 #: includes/admin/class-geodir-claim-admin-claims-table-list.php:64
-#: templates/post-claim-form.php:41
+#: templates/bootstrap/post-claim-form.php:49 templates/post-claim-form.php:40
 msgid "Phone"
 msgstr ""
 
@@ -314,78 +315,99 @@ msgid "<strong>NOTICE</strong>: Please login to claim your listing."
 msgstr ""
 
 #: includes/class-geodir-claim-ajax.php:75
-#: includes/class-geodir-claim-ajax.php:225
-#: includes/class-geodir-claim-ajax.php:253
-#: includes/class-geodir-claim-ajax.php:281
-#: includes/class-geodir-claim-ajax.php:309
+#: includes/class-geodir-claim-ajax.php:299
+#: includes/class-geodir-claim-ajax.php:327
+#: includes/class-geodir-claim-ajax.php:355
+#: includes/class-geodir-claim-ajax.php:383
 msgid "Invalid access."
 msgstr ""
 
-#: includes/class-geodir-claim-ajax.php:102
+#: includes/class-geodir-claim-ajax.php:107
 #: includes/class-geodir-claim-ajax.php:175
+#: includes/class-geodir-claim-ajax.php:249
 msgid "Login to claim this listing!"
 msgstr ""
 
-#: includes/class-geodir-claim-ajax.php:110
-#: includes/class-geodir-claim-ajax.php:180
+#: includes/class-geodir-claim-ajax.php:115
+#: includes/class-geodir-claim-ajax.php:185
+#: includes/class-geodir-claim-ajax.php:254
 msgid "No post found!"
 msgstr ""
 
-#: includes/class-geodir-claim-ajax.php:128
-#: includes/class-geodir-claim-ajax.php:185
+#: includes/class-geodir-claim-ajax.php:133
+#: includes/class-geodir-claim-ajax.php:201
+#: includes/class-geodir-claim-ajax.php:259
 msgid "This listing is already claimed!"
 msgstr ""
 
-#: includes/class-geodir-claim-ajax.php:136
+#: includes/class-geodir-claim-ajax.php:141
+#: includes/class-geodir-claim-ajax.php:203
 #: includes/class-geodir-claim-form.php:154
 msgid ""
 "It looks like you already have a claim pending review for this listing, you "
 "will be notified by email once we have reviewed your claim."
 msgstr ""
 
-#: includes/class-geodir-claim-ajax.php:147
-#: includes/class-geodir-claim-ajax.php:215
+#: includes/class-geodir-claim-ajax.php:152
+#: includes/class-geodir-claim-ajax.php:208
+#: includes/class-geodir-claim-ajax.php:289
 msgid "Claim not allowed for this listing!"
 msgstr ""
 
-#: includes/class-geodir-claim-ajax.php:199
+#: includes/class-geodir-claim-ajax.php:220 templates/post-claim-form.php:27
+#, php-format
+msgid "Claim Listing: %s"
+msgstr ""
+
+#: includes/class-geodir-claim-ajax.php:220
+#: includes/class-geodir-claim-payment.php:164
+#: includes/widgets/class-geodir-claim-widget-post-claim.php:66
+#: includes/widgets/class-geodir-claim-widget-post-claim.php:194
+msgid "Claim Listing"
+msgstr ""
+
+#: includes/class-geodir-claim-ajax.php:224
+msgid "Close"
+msgstr ""
+
+#: includes/class-geodir-claim-ajax.php:273
 #: includes/class-geodir-claim-form.php:132
 msgid ""
 "A verification link has been sent to your email address, please click the "
 "link in the email to verify your listing claim."
 msgstr ""
 
-#: includes/class-geodir-claim-ajax.php:201
+#: includes/class-geodir-claim-ajax.php:275
 #: includes/class-geodir-claim-form.php:134
 msgid ""
 "Your request to claim this listing has been sent successfully. You will be "
 "notified by email once a decision has been made."
 msgstr ""
 
-#: includes/class-geodir-claim-ajax.php:210
+#: includes/class-geodir-claim-ajax.php:284
 msgid "Something went wrong, please try again!"
 msgstr ""
 
-#: includes/class-geodir-claim-ajax.php:230
-#: includes/class-geodir-claim-ajax.php:258
-#: includes/class-geodir-claim-ajax.php:286
-#: includes/class-geodir-claim-ajax.php:314
+#: includes/class-geodir-claim-ajax.php:304
+#: includes/class-geodir-claim-ajax.php:332
+#: includes/class-geodir-claim-ajax.php:360
+#: includes/class-geodir-claim-ajax.php:388
 msgid "Claim request not found."
 msgstr ""
 
-#: includes/class-geodir-claim-ajax.php:243
+#: includes/class-geodir-claim-ajax.php:317
 msgid "Something went wrong, can not approve claim request."
 msgstr ""
 
-#: includes/class-geodir-claim-ajax.php:271
+#: includes/class-geodir-claim-ajax.php:345
 msgid "Something went wrong, can not undo claim request."
 msgstr ""
 
-#: includes/class-geodir-claim-ajax.php:299
+#: includes/class-geodir-claim-ajax.php:373
 msgid "Something went wrong, can not reject claim request."
 msgstr ""
 
-#: includes/class-geodir-claim-ajax.php:327
+#: includes/class-geodir-claim-ajax.php:401
 msgid "Something went wrong, can not delete claim request."
 msgstr ""
 
@@ -654,22 +676,18 @@ msgid "GD Claim Package"
 msgstr ""
 
 #: includes/class-geodir-claim-ninja-forms-packages-field.php:46
-#: includes/class-geodir-claim-payment.php:80
-#: includes/class-geodir-claim-payment.php:157
+#: includes/class-geodir-claim-payment.php:84
+#: includes/class-geodir-claim-payment.php:87
+#: includes/class-geodir-claim-payment.php:95
+#: includes/class-geodir-claim-payment.php:173
 msgid "Select Package"
 msgstr ""
 
-#: includes/class-geodir-claim-payment.php:148
-#: includes/widgets/class-geodir-claim-widget-post-claim.php:64
-#: includes/widgets/class-geodir-claim-widget-post-claim.php:129
-msgid "Claim Listing"
-msgstr ""
-
-#: includes/class-geodir-claim-payment.php:154
+#: includes/class-geodir-claim-payment.php:170
 msgid "Claim Packages"
 msgstr ""
 
-#: includes/class-geodir-claim-payment.php:155
+#: includes/class-geodir-claim-payment.php:171
 msgid ""
 "Select packages that a user must select to claim the listing, if this is a "
 "paid package then they will be able to pay to approve the claim."
@@ -745,7 +763,8 @@ msgstr ""
 msgid "IP"
 msgstr ""
 
-#: includes/class-geodir-claim-post.php:663 templates/post-claim-form.php:49
+#: includes/class-geodir-claim-post.php:663
+#: templates/bootstrap/post-claim-form.php:73 templates/post-claim-form.php:48
 msgid "Message"
 msgstr ""
 
@@ -757,12 +776,12 @@ msgstr ""
 msgid "Ninja Forms"
 msgstr ""
 
-#: includes/class-geodir-claim-post.php:739
+#: includes/class-geodir-claim-post.php:749
 #, php-format
 msgid "You are not allowed to add/claim the listing under %s."
 msgstr ""
 
-#: includes/class-geodir-claim-post.php:741
+#: includes/class-geodir-claim-post.php:751
 #, php-format
 msgid "You have reached the limit of %s you can add/claim at this time."
 msgstr ""
@@ -884,7 +903,7 @@ msgid ""
 "properly."
 msgstr ""
 
-#: includes/class-geodir-claim.php:308
+#: includes/class-geodir-claim.php:310
 #, php-format
 msgid "Your claim requires a payment to complete.  %sCheckout%s"
 msgstr ""
@@ -904,7 +923,8 @@ msgctxt "Claim status"
 msgid "Rejected"
 msgstr ""
 
-#: includes/template-functions.php:28 templates/post-claim-form.php:59
+#: includes/template-functions.php:28
+#: templates/bootstrap/post-claim-form.php:94 templates/post-claim-form.php:58
 msgid "Send"
 msgstr ""
 
@@ -912,15 +932,15 @@ msgstr ""
 msgid "Sending..."
 msgstr ""
 
-#: includes/template-functions.php:129
+#: includes/template-functions.php:130
 msgid "It looks like you already verified your listing claim."
 msgstr ""
 
-#: includes/template-functions.php:131
+#: includes/template-functions.php:132
 msgid "Something went wrong with your claim listing request."
 msgstr ""
 
-#: includes/template-functions.php:139
+#: includes/template-functions.php:140
 #, php-format
 msgid ""
 "Claim listing verified, you are now the owner of this listing! %sClick here"
@@ -935,53 +955,129 @@ msgstr ""
 msgid "Displays the button to claim post."
 msgstr ""
 
-#: includes/widgets/class-geodir-claim-widget-post-claim.php:53
+#: includes/widgets/class-geodir-claim-widget-post-claim.php:55
 msgid "Title:"
 msgstr ""
 
-#: includes/widgets/class-geodir-claim-widget-post-claim.php:54
+#: includes/widgets/class-geodir-claim-widget-post-claim.php:56
 msgid "The widget title."
 msgstr ""
 
-#: includes/widgets/class-geodir-claim-widget-post-claim.php:61
+#: includes/widgets/class-geodir-claim-widget-post-claim.php:63
 msgid "Text:"
 msgstr ""
 
-#: includes/widgets/class-geodir-claim-widget-post-claim.php:62
+#: includes/widgets/class-geodir-claim-widget-post-claim.php:64
 msgid "The text shown than opens the lightbox."
 msgstr ""
 
-#: includes/widgets/class-geodir-claim-widget-post-claim.php:69
+#: includes/widgets/class-geodir-claim-widget-post-claim.php:71
 msgid "Output Type:"
 msgstr ""
 
-#: includes/widgets/class-geodir-claim-widget-post-claim.php:70
+#: includes/widgets/class-geodir-claim-widget-post-claim.php:72
 msgid "How the link to open the lightbox is displayed."
 msgstr ""
 
-#: includes/widgets/class-geodir-claim-widget-post-claim.php:73
+#: includes/widgets/class-geodir-claim-widget-post-claim.php:75
 msgid "Button"
 msgstr ""
 
-#: includes/widgets/class-geodir-claim-widget-post-claim.php:74
+#: includes/widgets/class-geodir-claim-widget-post-claim.php:76
 msgid "Link"
 msgstr ""
 
-#: templates/post-claim-form.php:28
-#, php-format
-msgid "Claim Listing: %s"
+#: includes/widgets/class-geodir-claim-widget-post-claim.php:81
+#: includes/widgets/class-geodir-claim-widget-post-claim.php:99
+#: includes/widgets/class-geodir-claim-widget-post-claim.php:114
+#: includes/widgets/class-geodir-claim-widget-post-claim.php:128
+#: includes/widgets/class-geodir-claim-widget-post-claim.php:143
+#: includes/widgets/class-geodir-claim-widget-post-claim.php:155
+msgid "Design"
 msgstr ""
 
-#: templates/post-claim-form.php:32
+#: includes/widgets/class-geodir-claim-widget-post-claim.php:88
+msgid "Button Size:"
+msgstr ""
+
+#: includes/widgets/class-geodir-claim-widget-post-claim.php:89
+msgid "Button size."
+msgstr ""
+
+#: includes/widgets/class-geodir-claim-widget-post-claim.php:91
+#: includes/widgets/class-geodir-claim-widget-post-claim.php:107
+#: includes/widgets/class-geodir-claim-widget-post-claim.php:122
+msgid "Default"
+msgstr ""
+
+#: includes/widgets/class-geodir-claim-widget-post-claim.php:92
+msgid "Small"
+msgstr ""
+
+#: includes/widgets/class-geodir-claim-widget-post-claim.php:93
+msgid "Large"
+msgstr ""
+
+#: includes/widgets/class-geodir-claim-widget-post-claim.php:104
+msgid "Button Color:"
+msgstr ""
+
+#: includes/widgets/class-geodir-claim-widget-post-claim.php:105
+msgid "Button color."
+msgstr ""
+
+#: includes/widgets/class-geodir-claim-widget-post-claim.php:108
+#: includes/widgets/class-geodir-claim-widget-post-claim.php:123
+#: includes/widgets/class-geodir-claim-widget-post-claim.php:136
+msgid "None"
+msgstr ""
+
+#: includes/widgets/class-geodir-claim-widget-post-claim.php:119
+msgid "Text Color:"
+msgstr ""
+
+#: includes/widgets/class-geodir-claim-widget-post-claim.php:120
+msgid "Text color."
+msgstr ""
+
+#: includes/widgets/class-geodir-claim-widget-post-claim.php:133
+msgid "Alignment:"
+msgstr ""
+
+#: includes/widgets/class-geodir-claim-widget-post-claim.php:134
+msgid "How the item should be positioned on the page."
+msgstr ""
+
+#: includes/widgets/class-geodir-claim-widget-post-claim.php:137
+msgid "Left"
+msgstr ""
+
+#: includes/widgets/class-geodir-claim-widget-post-claim.php:138
+msgid "Center"
+msgstr ""
+
+#: includes/widgets/class-geodir-claim-widget-post-claim.php:139
+msgid "Right"
+msgstr ""
+
+#: includes/widgets/class-geodir-claim-widget-post-claim.php:149
+msgid "Link CSS class: "
+msgstr ""
+
+#: includes/widgets/class-geodir-claim-widget-post-claim.php:150
+msgid "Give the wrapper an extra class so you can style things as you want."
+msgstr ""
+
+#: templates/bootstrap/post-claim-form.php:27 templates/post-claim-form.php:31
 msgid ""
 "Fill out the form below, we will verify your claim and email you "
 "confirmation."
 msgstr ""
 
-#: templates/post-claim-form.php:45
+#: templates/bootstrap/post-claim-form.php:61 templates/post-claim-form.php:44
 msgid "Position in Business"
 msgstr ""
 
-#: templates/post-claim-form.php:50
+#: templates/bootstrap/post-claim-form.php:78 templates/post-claim-form.php:49
 msgid "Hi I am the owner of this business and i would like to claim it."
 msgstr ""

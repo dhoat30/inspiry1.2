@@ -77,3 +77,10 @@ function geodir_search_upgrade_2010() {
 	// Set schedule
 	geodir_search_schedule_events();
 }
+
+/**
+ * Update DB Version to 2.0.1.0.
+ */
+function geodir_search_update_2010_db_version() {
+	GeoDir_Adv_Search_Admin_Install::update_db_version( '2.0.1.0' );
+}

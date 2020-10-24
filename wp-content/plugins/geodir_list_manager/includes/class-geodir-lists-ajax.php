@@ -57,7 +57,7 @@ if ( ! class_exists( 'GeoDir_Lists_AJAX' ) ) {
 				if(is_wp_error( $result ) ){
 					wp_send_json_error( $result->get_error_message() );
 				}else{
-					$result = "<div class='lity-show gd-list-popup gd-edit-list-popup'>".$result."</div>";
+					$result = "<div class='lity-show gd-list-popup gd-edit-list-popup" . ( geodir_design_style() ? ' bsui' : '' ) . "'>".$result."</div>";
 					$data = array('html_content'=>$result);
 					wp_send_json_success($data);
 				}
@@ -98,7 +98,7 @@ if ( ! class_exists( 'GeoDir_Lists_AJAX' ) ) {
 				if(is_wp_error( $result ) ){
 					wp_send_json_error( $result->get_error_message() );
 				}else{
-					$result = "<div class='lity-show gd-list-popup gd-add-to-list-popup'>".$result."</div>";
+					$result = "<div class='lity-show gd-list-popup gd-add-to-list-popup" . ( geodir_design_style() ? ' bsui' : '' ) . "'>".$result."</div>";
 					$data = array('html_content'=>$result);
 					wp_send_json_success($data);
 				}
@@ -119,7 +119,7 @@ if ( ! class_exists( 'GeoDir_Lists_AJAX' ) ) {
 				if(is_wp_error( $result ) ){
 					wp_send_json_error( $result->get_error_message() );
 				}else{
-					$result = "<div class='lity-show gd-list-popup gd-add-new-list-popup'>".$result."</div>";
+					$result = "<div class='lity-show gd-list-popup gd-add-new-list-popup" . ( geodir_design_style() ? ' bsui' : '' ) . "'>".$result."</div>";
 					$data = array('html_content'=>$result);
 					wp_send_json_success($data);
 				}
@@ -150,7 +150,11 @@ if ( ! class_exists( 'GeoDir_Lists_AJAX' ) ) {
 					wp_send_json_error( $result->get_error_message() );
 				}else{
 					$in_user_lists = GeoDir_Lists_Data::in_user_lists($post_id);
-					$data = array('in_user_lists'=>$in_user_lists);
+
+					$data = array(
+						'in_user_lists' => $in_user_lists,
+						'button' => GeoDir_Lists_Forms::get_list_save_button( $list_id, $post_id )
+					);
 
 					wp_send_json_success($data);
 				}

@@ -11,7 +11,7 @@
  * Plugin Name:       GeoDirectory Pricing Manager
  * Plugin URI:        https://wpgeodirectory.com/downloads/pricing-manager/
  * Description:       Pricing Manager is a powerful price manager that allows you to monetize your directory quickly and easily via a pay per listing business model.
- * Version:           2.5.1.2
+ * Version:           2.6.0.0
  * Requires at least: 4.9
  * Requires PHP:      5.6
  * Author:            AyeCode Ltd
@@ -30,7 +30,11 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 if ( ! defined( 'GEODIR_PRICING_VERSION' ) ) {
-	define( 'GEODIR_PRICING_VERSION', '2.5.1.2' );
+	define( 'GEODIR_PRICING_VERSION', '2.6.0.0' );
+}
+
+if ( ! defined( 'GEODIR_PRICING_MIN_CORE' ) ) {
+	define( 'GEODIR_PRICING_MIN_CORE', '2.1.0.0' );
 }
 
 /**
@@ -47,6 +51,11 @@ function geodir_load_pricing_manager() {
 
 	if ( ! defined( 'GEODIR_PRICING_PLUGIN_FILE' ) ) {
 		define( 'GEODIR_PRICING_PLUGIN_FILE', __FILE__ );
+	}
+
+	// Min core version check
+	if ( ! function_exists( 'geodir_min_version_check' ) || ! geodir_min_version_check( 'Pricing Manager', GEODIR_PRICING_MIN_CORE ) ) {
+		return '';
 	}
 
 	/**

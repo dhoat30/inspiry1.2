@@ -478,7 +478,9 @@ $icon_size = GeoDir_Maps::get_marker_size($marker_icon, array('w' => 20, 'h' => 
         <?php ob_start();?>
         var old_country = jQuery("#<?php echo $prefix.'country';?>").val();
         var old_region = jQuery("#<?php echo $prefix.'region';?>").val();
-        
+        var old_city = jQuery("#<?php echo $prefix.'city';?>").val();
+        var old_zip = jQuery("#<?php echo $prefix.'zip';?>").val();
+
         if (user_address == false || jQuery('#<?php echo $prefix.'street';?>').val() == '') {
             jQuery("#<?php echo $prefix.'street';?>").val(getAddress).trigger("blur");
         }
@@ -492,19 +494,25 @@ $icon_size = GeoDir_Maps::get_marker_size($marker_icon, array('w' => 20, 'h' => 
             oldstr_address2 = getAddress2;
         }
 
-        jQuery("#<?php echo $prefix.'zip';?>").val(getZip);
+        var updateZip = true;
+        if (!getZip && old_zip && old_city && old_city == getCity) {
+            updateZip = false;
+        }
+        if (updateZip) {
+            jQuery("#<?php echo $prefix.'zip';?>").val(getZip);
+        }
         if (getZip) {
             oldstr_zip = getZip;
         }
         if (set_map_val_in_fields) {
             if (getCountry) {
                setCountry = jQuery('#<?php echo $prefix . 'country'; ?> option[data-country_code="' + getCountryISO + '"]').val();
-			   if (!setCountry) {
-				   setCountry = getCountry;
-			   } else {
-				   getCountry = setCountry;
-			   }
-			   jQuery("#<?php echo $prefix . 'country'; ?>").val(setCountry).trigger('change.select2');
+               if (!setCountry) {
+                   setCountry = getCountry;
+               } else {
+                   getCountry = setCountry;
+               }
+               jQuery("#<?php echo $prefix . 'country'; ?>").val(setCountry).trigger('change.select2');
             }
             if (getState) {
                 if (jQuery("input#<?php echo $prefix . 'region'; ?>").length) {
@@ -757,7 +765,11 @@ $icon_size = GeoDir_Maps::get_marker_size($marker_icon, array('w' => 20, 'h' => 
     <?php $geodir_map_name = GeoDir_Maps::active_map();
     if($geodir_map_name!='none'){ ?>
     jQuery(function ($) {
-        $("#<?php echo $prefix.'map';?>").goMap({
+		<?php if ( geodir_lazy_load_map() ) { ?>
+		jQuery("#<?php echo $prefix.'map';?>").geodirLoadMap({
+		loadJS: true,
+		callback: function() {<?php } ?>
+        var $addressMap = $("#<?php echo $prefix.'map';?>").goMap({
             latitude: <?php echo $prefix;?>CITY_MAP_CENTER_LAT,
             longitude: <?php echo $prefix;?>CITY_MAP_CENTER_LNG,
             zoom: <?php echo $prefix;?>CITY_MAP_ZOOMING_FACT,
@@ -817,6 +829,9 @@ $icon_size = GeoDir_Maps::get_marker_size($marker_icon, array('w' => 20, 'h' => 
                 updateMarkerPosition(baseMarker.getPosition());
             });
             google.maps.event.addListener($.goMap.map, 'zoom_changed', function () {
+				if (typeof $.goMap.map === 'undefined') {
+					$.goMap.map = $addressMap;
+				}
                 updateMapZoom($.goMap.map.zoom);
             });
 
@@ -867,6 +882,9 @@ $icon_size = GeoDir_Maps::get_marker_size($marker_icon, array('w' => 20, 'h' => 
                 updateMarkerPositionOSM(baseMarker.getLatLng());
             });
             $.goMap.map.on('zoom', function(e) {
+				if (typeof $.goMap.map === 'undefined') {
+					$.goMap.map = $addressMap;
+				}
                 updateMapZoom($.goMap.map.getZoom());
             });
 
@@ -881,7 +899,9 @@ $icon_size = GeoDir_Maps::get_marker_size($marker_icon, array('w' => 20, 'h' => 
                     $.goMap.map.setZoom(minZoomLevel);
                 }
             });
-        }
+        }<?php if ( geodir_lazy_load_map() ) { ?>
+		}
+	});<?php } ?>
     });
     <?php }?>
     /* ]]> */

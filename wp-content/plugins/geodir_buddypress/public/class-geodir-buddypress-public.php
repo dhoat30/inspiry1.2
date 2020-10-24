@@ -518,14 +518,34 @@ class GeoDir_BuddyPress_Public {
      *
      * @package GeoDirectory_BuddyPress_Integration
      *
+     * @global array $geodir_buddypress_recorded Store recorded activities.
+     *
      * @param string $action BuddyPress Constructed activity action.
      * @param object $activity BuddyPress Activity data object.
      * @return string Modified Action.
      */
     function geodir_buddypress_new_listing_comment_activity( $action, $activity ) {
-        if ( $activity->type != 'activity_comment' && $activity->type != 'new_blog_comment' ) {
+		global $geodir_buddypress_recorded;
+
+		if ( $activity->type != 'activity_comment' && $activity->type != 'new_blog_comment' ) {
 			return $action;
 		}
+
+		if ( empty( $geodir_buddypress_recorded ) ) {
+			$geodir_buddypress_recorded = array();
+		}
+
+		$record_id = $activity->type . ':' . $activity->item_id . ':';
+		if ( ! empty( $activity->secondary_item_id ) ) {
+			$record_id .= $activity->secondary_item_id;
+		}
+
+		// Activity recorded already.
+		if ( in_array( $record_id, $geodir_buddypress_recorded ) ) {
+			return $action;
+		}
+
+		$geodir_buddypress_recorded[] = $record_id;
 
 		switch_to_blog( $activity->item_id );
 

@@ -108,7 +108,7 @@ class GeoDir_Review_Rating_Manager {
 
         /* Show Post Rating */
         if(geodir_get_option('rr_enable_rating') && geodir_get_option('rr_enable_sorting')){
-            add_action("geodir_after_review_list_title", array( $plugin_public, 'sort_ratings_select'),10);
+            add_action("geodir_after_review_list_title", array( $plugin_public, 'sort_ratings_select'),15);
         }
 
         if(geodir_get_option('rr_enable_rating')){

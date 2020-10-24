@@ -27,6 +27,7 @@ function geodir_claim_params() {
 	$params = array(
 		'text_send' => __( 'Send', 'geodir-claim' ),
 		'text_sending' => __( 'Sending...', 'geodir-claim' ),
+		'aui' => geodir_design_style()
 	);
 
     return apply_filters( 'geodir_claim_params', $params );
@@ -206,7 +207,11 @@ function geodir_claim_post_get_form( $post_ID ) {
 		return;
 	}
 
-	$content = geodir_get_template_html( 'post-claim-form.php', array(
+	$design_style = geodir_design_style();
+
+	$template = $design_style ? $design_style . '/post-claim-form.php' : 'post-claim-form.php' ;
+
+	$content = geodir_get_template_html( $template, array(
 		'post_id' => $post_ID,
 	) );
 

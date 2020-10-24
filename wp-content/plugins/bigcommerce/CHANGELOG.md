@@ -1,5 +1,35 @@
 # Changelog
 
+## [4.3.1]
+
+### Fixed
+- Fixed product duplication on import and single product front-end visibility when default customer group is not set in BC settings
+- Fixed an issue with Quick View buttons/modals not triggering their respective Quick View dialog when multiple product 
+  grids are on the same page.
+
+
+## [4.3.0]
+
+### Added
+- Added required additional onboarding step for setting a Checkout URL
+- Allow img tag in product custom fields
+
+### Fixed
+- Fixed add new product component block error
+- Fixed HTML in Settings helptext
+- Visible on storefront BC setting not reflected in WP
+- Fixed front-end exception if channel is not set
+
+
+## [4.2.0]
+
+### Added
+- Added Checkout URL documentation link in Settings
+
+### Changed
+- Updated product quick view modal to work after ajax refresh
+
+
 ## [4.1.0]
 
 ### Added
@@ -1275,6 +1305,9 @@
   in fact, reset postdata, so far as Gutenberg 3.2.0 is concerned.
 
 
+[4.3.1]: https://github.com/bigcommerce/bigcommerce-for-wordpress/compare/4.3.0...4.3.1
+[4.3.0]: https://github.com/bigcommerce/bigcommerce-for-wordpress/compare/4.2.0...4.3.0
+[4.2.0]: https://github.com/bigcommerce/bigcommerce-for-wordpress/compare/4.1.0...4.2.0
 [4.1.0]: https://github.com/bigcommerce/bigcommerce-for-wordpress/compare/4.0.0...4.1.0
 [4.0.0]: https://github.com/bigcommerce/bigcommerce-for-wordpress/compare/3.22.0...4.0.0
 [3.22.0]: https://github.com/bigcommerce/bigcommerce-for-wordpress/compare/3.21.0...3.22.0

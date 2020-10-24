@@ -545,6 +545,90 @@ function geodir_date_format_php_to_jqueryui( $php_format ) {
 	return $jqueryui_format;
 }
 
+/*
+ * Matches each symbol of PHP date format standard with Flatpickr equivalent codeword
+ *
+ * @since 2.1.0.0
+ * @param string $php_format The PHP date format.
+ * @return string The Flatpickr format date string.
+ */
+function geodir_date_format_php_to_aui( $php_format ) {
+	$symbols = array(
+		// Day
+		'd' => 'd', // Day of the month, 2 digits with leading zeros. Example: 01 to 31
+		'D' => 'D', // A textual representation of a day. Example: Mon through Sun
+		'j' => 'j', // Day of the month without leading zeros. Example: 1 to 31
+		'l' => 'l', // A full textual representation of the day of the week. Example: Sunday through Saturday
+		'N' => '',
+		'S' => 'J', // Day of the month without leading zeros and ordinal suffix. Example: 1st, 2nd, to 31st
+		'w' => 'w', // Numeric representation of the day of the week. Example: 0 (for Sunday) through 6 (for Saturday)
+		'z' => '',
+		'c' => 'Z', // ISO Date format. Example: 2017-03-04T01:23:43.000Z
+		'U' => 'U', // The number of seconds since the Unix Epoch. Example: 1413704993
+		// Week
+		'W' => 'W', // Numeric representation of the week. Example: 0 (first week of the year) through 52 (last week of the year)
+		// Month
+		'F' => 'F', // A full textual representation of a month. Example: January through December
+		'm' => 'm', // Numeric representation of a month, with leading zero. Example: 01 through 12
+		'M' => 'M', // A short textual representation of a month. Example: Jan through Dec
+		'n' => 'n', // Numeric representation of a month, without leading zeros. Example: 1 through 12
+		't' => '',
+		// Year
+		'L' => '',
+		'o' => '',
+		'Y' => 'Y', // A full numeric representation of a year, 4 digits. Example: 1999 or 2003
+		'y' => 'y', // A two digit representation of a year. Example: 99 or 03
+		// Time
+		'a' => 'K', // AM/PM
+		'A' => 'K', // AM/PM
+		'B' => '',
+		'g' => 'h', // Hours. Example: 1 to 12
+		'G' => 'H', // Hours (24 hours). Example: 00 to 23
+		'h' => 'G', // Hours, 2 digits with leading zeros. Example: 1 to 12
+		'H' => 'H', // Hours (24 hours). Example: 00 to 23
+		'i' => 'i', // Minutes. Example: 00 to 59
+		's' => 'S', // Seconds, 2 digits. Example: 00 to 59
+		'u' => ''
+	);
+
+	$aui_format = "";
+	$escaping = false;
+
+	for ( $i = 0; $i < strlen( $php_format ); $i++ ) {
+		$char = $php_format[$i];
+
+		// PHP date format escaping character
+		if ( $char === '\\' ) {
+			$i++;
+
+			if ( $escaping ) {
+				$aui_format .= $php_format[$i];
+			} else {
+				$aui_format .= '\'' . $php_format[$i];
+			}
+
+			$escaping = true;
+		} else {
+			if ( $escaping ) {
+				$aui_format .= "'";
+				$escaping = false;
+			}
+
+			if ( isset( $symbols[$char] ) ) {
+				$aui_format .= $symbols[$char];
+			} else {
+				$aui_format .= $char;
+			}
+		}
+	}
+
+	if ( $escaping ) {
+		$aui_format .= "'";
+	}
+
+	return $aui_format;
+}
+
 /**
  * Maybe untranslate date string for saving to the database.
  *
@@ -1778,4 +1862,123 @@ function geodir_setcookie( $name, $value, $expire = 0, $secure = false, $httponl
  */
 function geodir_getcookie( $name ) {
 	return ! empty( $_COOKIE ) && isset( $_COOKIE[ $name ] ) ? $_COOKIE[ $name ] : '';
+}
+
+function geodir_aui_colors($include_branding = false, $include_outlines = false, $outline_button_only_text = false){
+	$theme_colors = array();
+	
+	$theme_colors["primary"] = __('Primary', 'geodirectory');
+	$theme_colors["secondary"] = __('Secondary', 'geodirectory');
+	$theme_colors["success"] = __('Success', 'geodirectory');
+	$theme_colors["danger"] = __('Danger', 'geodirectory');
+	$theme_colors["warning"] = __('Warning', 'geodirectory');
+	$theme_colors["info"] = __('Info', 'geodirectory');
+	$theme_colors["light"] = __('Light', 'geodirectory');
+	$theme_colors["dark"] = __('Dark', 'geodirectory');
+	$theme_colors["white"] = __('White', 'geodirectory');
+	$theme_colors["purple"] = __('Purple', 'geodirectory');
+	$theme_colors["salmon"] = __('Salmon', 'geodirectory');
+	$theme_colors["cyan"] = __('Cyan', 'geodirectory');
+	$theme_colors["gray"] = __('Gray', 'geodirectory');
+	$theme_colors["indigo"] = __('Indigo', 'geodirectory');
+	$theme_colors["orange"] = __('Orange', 'geodirectory');
+
+	if($include_outlines){
+		$button_only =  $outline_button_only_text ? " ".__("(button only)","geodirectory") : '';
+		$theme_colors["outline-primary"] = __('Primary outline', 'geodirectory') . $button_only;
+		$theme_colors["outline-secondary"] = __('Secondary outline', 'geodirectory') . $button_only;
+		$theme_colors["outline-success"] = __('Success outline', 'geodirectory') . $button_only;
+		$theme_colors["outline-danger"] = __('Danger outline', 'geodirectory') . $button_only;
+		$theme_colors["outline-warning"] = __('Warning outline', 'geodirectory') . $button_only;
+		$theme_colors["outline-info"] = __('Info outline', 'geodirectory') . $button_only;
+		$theme_colors["outline-light"] = __('Light outline', 'geodirectory') . $button_only;
+		$theme_colors["outline-dark"] = __('Dark outline', 'geodirectory') . $button_only;
+		$theme_colors["outline-white"] = __('White outline', 'geodirectory') . $button_only;
+		$theme_colors["outline-purple"] = __('Purple outline', 'geodirectory') . $button_only;
+		$theme_colors["outline-salmon"] = __('Salmon outline', 'geodirectory') . $button_only;
+		$theme_colors["outline-cyan"] = __('Cyan outline', 'geodirectory') . $button_only;
+		$theme_colors["outline-gray"] = __('Gray outline', 'geodirectory') . $button_only;
+		$theme_colors["outline-indigo"] = __('Indigo outline', 'geodirectory') . $button_only;
+		$theme_colors["outline-orange"] = __('Orange outline', 'geodirectory') . $button_only;
+	}
+	
+
+	if($include_branding){
+		$theme_colors = $theme_colors  + geodir_aui_branding_colors();
+	}
+
+	return $theme_colors;
+}
+
+function geodir_aui_branding_colors(){
+	return array(
+		"facebook" => __('Facebook', 'geodirectory'),
+		"twitter" => __('Twitter', 'geodirectory'),
+		"instagram" => __('Instagram', 'geodirectory'),
+		"linkedin" => __('Linkedin', 'geodirectory'),
+		"flickr" => __('Flickr', 'geodirectory'),
+		"github" => __('GitHub', 'geodirectory'),
+		"youtube" => __('YouTube', 'geodirectory'),
+		"wordpress" => __('WordPress', 'geodirectory'),
+		"google" => __('Google', 'geodirectory'),
+		"yahoo" => __('Yahoo', 'geodirectory'),
+		"vkontakte" => __('Vkontakte', 'geodirectory'),
+	);
+}
+
+/**
+ * Get the post id of the first post that has content for a field key.
+ *
+ * This is used to help with block previews.
+ * 
+ * @param string $field_key
+ * @param string $post_type
+ *
+ * @return int|null|string
+ */
+function geodir_get_post_id_with_content($field_key = '',$post_type = 'gd_place'){
+	global $wpdb;
+
+	$post_id = 0;
+	$table = geodir_db_cpt_table( $post_type );
+	$result = $wpdb->get_var($wpdb->prepare("SELECT post_id FROM $table WHERE `post_status` = 'publish' AND %s != '' AND %s IS NOT NULL",$field_key,$field_key));
+	if(!empty($result)){
+		$post_id = $result;
+	}
+
+	return $post_id;
+
+}
+
+/**
+ * Checks a version number against the core version and adds a admin notice if requirements are not met.
+ *
+ * @param $name
+ * @param $version
+ *
+ * @return bool
+ */
+function geodir_min_version_check($name,$version){
+	if (version_compare(GEODIRECTORY_VERSION, $version, '<')) {
+		add_action( 'admin_notices', function () use (&$name){
+			?>
+			<div class="notice notice-error is-dismissible">
+				<p><?php echo sprintf( __("%s requires a newer version of GeoDirectory and will not run until the GeoDirectory plugin is updated.","geodirectory"),$name); ?></p>
+			</div>
+			<?php
+		});
+
+		return false;
+	}
+
+	return true;
+}
+
+/**
+ * Return the bsui class for AUI if AUI design is active.
+ * 
+ * @return string
+ */
+function geodir_bsui_class(){
+	return geodir_design_style() ? 'bsui' : '';
 }

@@ -442,7 +442,7 @@ class GeoDir_Location_SEO {
 
 	public static function wpseo_sitemap_init() {
 		global $wpseo_sitemaps, $gd_sitemap_global;
-		
+
 		if ( ! self::wpseo_is_sitemap_page( false, true ) || empty( $wpseo_sitemaps ) ) {
 			return;
 		}
@@ -1806,63 +1806,43 @@ class GeoDir_Location_SEO {
 	 *
 	 * @return mixed
 	 */
-	public static function rank_math_breadcrumb_links( $crumbs ) {
+	public static function rank_math_breadcrumb_links( $crumbs, $class_breadcrumbs = array() ) {
 		global $geodirectory;
 
 		$breadcrumb = array();
 
-		$location_manager     = class_exists('GeoDir_Location_Manager') ? true : false;
-		$neighbourhood_active = $location_manager && geodir_get_option( 'lm_enable_neighbourhoods' ) ? true : false;
+		$neighbourhood_active = (bool) GeoDir_Location_Neighbourhood::is_active();
 		$show_countries 	  = geodir_get_option( 'lm_default_country' ) == 'default' && geodir_get_option( 'lm_hide_country_part' ) ? false : true;
 		$show_regions 		  = geodir_get_option( 'lm_default_region' ) == 'default' && geodir_get_option( 'lm_hide_region_part' ) ? false : true;
 
 		$gd_post_type   = geodir_get_current_posttype();
 		$location_terms = geodir_get_current_location_terms( 'query_vars', $gd_post_type );
 
-		//Maybe hide country
-		if(! $show_countries ) {
+		// Maybe hide country
+		if ( ! $show_countries ) {
 			unset( $location_terms['country'] );
 		}
 
-		//Maybe hide region
-		if(! $show_regions ) {
+		// Maybe hide region
+		if ( ! $show_regions ) {
 			unset( $location_terms['region'] );
 		}
 
-		$has_filter = has_filter( 'post_type_archive_link', array($geodirectory->permalinks,'post_type_archive_link') );
+		$has_filter = has_filter( 'post_type_archive_link', array( $geodirectory->permalinks, 'post_type_archive_link' ) );
 
-		if($has_filter){
-			remove_filter( 'post_type_archive_link', array($geodirectory->permalinks,'post_type_archive_link') );
+		if ( $has_filter ) {
+			remove_filter( 'post_type_archive_link', array( $geodirectory->permalinks, 'post_type_archive_link' ) );
 		}
 
 		$location_link = get_post_type_archive_link( $gd_post_type );
 
-		if($has_filter){
-			add_filter( 'post_type_archive_link', array($geodirectory->permalinks,'post_type_archive_link'), 10, 2 );
+		if ( $has_filter ) {
+			add_filter( 'post_type_archive_link', array( $geodirectory->permalinks, 'post_type_archive_link' ), 10, 2 );
 		}
 
-		$location_link = trailingslashit($location_link);
+		$location_link = trailingslashit( $location_link );
 
 		if ( geodir_is_page( 'detail' ) || geodir_is_page( 'listing' ) ) {
-			$geodir_show_location_url = geodir_get_option( 'geodir_show_location_url' );
-			
-			if ( $geodir_show_location_url == 'country_city' ) {
-				if ( isset( $location_terms['region'] ) && ! $location_manager ) {
-					unset( $location_terms['region'] );
-				}
-			} else if ( $geodir_show_location_url == 'region_city' ) {
-				if ( isset( $location_terms['country'] ) && ! $location_manager ) {
-					unset( $location_terms['country'] );
-				}
-			} else {
-				if ( isset( $location_terms['country'] ) && ! $location_manager ) {
-					unset( $location_terms['country'] );
-				}
-				if ( isset( $location_terms['region'] ) && ! $location_manager ) {
-					unset( $location_terms['region'] );
-				}
-			}
-
 			if ( ! empty( $location_terms ) ) {
 				$geodir_get_locations = function_exists( 'get_actual_location_name' ) ? true : false;
 
@@ -1906,16 +1886,16 @@ class GeoDir_Location_SEO {
 							$location_link .= "&$key=" . $location_term;
 						}
 						
-						if( !empty( $gd_location_link_text ) &&  !empty( $location_link ) ){
+						if ( ! empty( $gd_location_link_text ) &&  ! empty( $location_link ) ) {
 							$breadcrumb[] = array( $gd_location_link_text, $location_link );
 						}
 					}
 				}
 
-				$offset = apply_filters('rankmath_breadcrumb_links_offset', 2, $breadcrumb, $crumbs);
-				$length = apply_filters('rankmath_breadcrumb_links_length', 0, $breadcrumb, $crumbs);
+				if ( is_array( $breadcrumb ) && count( $breadcrumb ) > 0 ) {
+					$offset = apply_filters( 'rankmath_breadcrumb_links_offset', 2, $breadcrumb, $crumbs );
+					$length = apply_filters( 'rankmath_breadcrumb_links_length', 0, $breadcrumb, $crumbs );
 
-				if(is_array($breadcrumb) && count($breadcrumb) > 0 ){
 					array_splice( $crumbs, $offset, $length, $breadcrumb );
 				}
 			}
@@ -1940,63 +1920,43 @@ class GeoDir_Location_SEO {
 	 *
 	 * @return mixed
 	 */
-	public static function wpseo_breadcrumb_links($crumbs){
+	public static function wpseo_breadcrumb_links( $crumbs ) {
 		global $geodirectory;
 
 		$breadcrumb = array();
 
-		$location_manager     = class_exists('GeoDir_Location_Manager') ? true : false;
-		$neighbourhood_active = $location_manager && geodir_get_option( 'lm_enable_neighbourhoods' ) ? true : false;
+		$neighbourhood_active = (bool) GeoDir_Location_Neighbourhood::is_active();
 		$show_countries 	  = geodir_get_option( 'lm_default_country' ) == 'default' && geodir_get_option( 'lm_hide_country_part' ) ? false : true;
 		$show_regions 		  = geodir_get_option( 'lm_default_region' ) == 'default' && geodir_get_option( 'lm_hide_region_part' ) ? false : true;
 
 		$gd_post_type   = geodir_get_current_posttype();
 		$location_terms = geodir_get_current_location_terms( 'query_vars', $gd_post_type );
 
-		//Maybe hide country
-		if(! $show_countries ) {
+		// Maybe hide country
+		if ( ! $show_countries ) {
 			unset( $location_terms['country'] );
 		}
 
-		//Maybe hide region
-		if(! $show_regions ) {
+		// Maybe hide region
+		if ( ! $show_regions ) {
 			unset( $location_terms['region'] );
 		}
 
-		$has_filter = has_filter( 'post_type_archive_link', array($geodirectory->permalinks,'post_type_archive_link') );
+		$has_filter = has_filter( 'post_type_archive_link', array( $geodirectory->permalinks, 'post_type_archive_link' ) );
 
-		if($has_filter){
-			remove_filter( 'post_type_archive_link', array($geodirectory->permalinks,'post_type_archive_link') );
+		if ( $has_filter ) {
+			remove_filter( 'post_type_archive_link', array( $geodirectory->permalinks, 'post_type_archive_link' ) );
 		}
 
 		$location_link = get_post_type_archive_link( $gd_post_type );
 
-		if($has_filter){
-			add_filter( 'post_type_archive_link', array($geodirectory->permalinks,'post_type_archive_link'), 10, 2 );
+		if ( $has_filter ) {
+			add_filter( 'post_type_archive_link', array( $geodirectory->permalinks, 'post_type_archive_link' ), 10, 2 );
 		}
 
-		$location_link = trailingslashit($location_link);
+		$location_link = trailingslashit( $location_link );
 
-		if ( geodir_is_page( 'detail' ) || geodir_is_page( 'listing' ) ) {
-			$geodir_show_location_url = geodir_get_option( 'geodir_show_location_url' );
-			
-			if ( $geodir_show_location_url == 'country_city' ) {
-				if ( isset( $location_terms['region'] ) && ! $location_manager ) {
-					unset( $location_terms['region'] );
-				}
-			} else if ( $geodir_show_location_url == 'region_city' ) {
-				if ( isset( $location_terms['country'] ) && ! $location_manager ) {
-					unset( $location_terms['country'] );
-				}
-			} else {
-				if ( isset( $location_terms['country'] ) && ! $location_manager ) {
-					unset( $location_terms['country'] );
-				}
-				if ( isset( $location_terms['region'] ) && ! $location_manager ) {
-					unset( $location_terms['region'] );
-				}
-			}
-
+		if ( geodir_is_page( 'single' ) || geodir_is_page( 'listing' ) ) {
 			if ( ! empty( $location_terms ) ) {
 				$geodir_get_locations = function_exists( 'get_actual_location_name' ) ? true : false;
 
@@ -2052,11 +2012,18 @@ class GeoDir_Location_SEO {
 				$offset = apply_filters('wpseo_breadcrumb_links_offset', 2, $breadcrumb, $crumbs);
 				$length = apply_filters('wpseo_breadcrumb_links_length', 0, $breadcrumb, $crumbs);
 
-				if(is_array($breadcrumb) && count($breadcrumb) > 0 ){
+				if ( is_array( $breadcrumb ) && count( $breadcrumb ) > 0 ) {
 					array_splice( $crumbs, $offset, $length, $breadcrumb );
 				}
 			}
 
+			if ( geodir_is_page( 'single' ) && ! empty( $crumbs ) ) {
+				foreach ( $crumbs as $i => $crumb ) {
+					if ( ! empty( $crumb['term_id'] ) && ! empty( $crumb['url'] ) ) {
+						$crumbs[ $i ]['url'] = get_term_link( (int) $crumb['term_id'] );
+					}
+				}
+			}
 		}
 
 		return $crumbs;
@@ -2338,7 +2305,7 @@ class GeoDir_Location_SEO {
 	}
 
 	/**
-	 * Retrive post type archive link.
+	 * Retrieve post type archive link.
 	 *
 	 * @since 2.0.1.2
 	 *
@@ -2362,6 +2329,17 @@ class GeoDir_Location_SEO {
 		}
 
 		return $link;
+	}
+
+	public static function wp_sitemaps_init() {
+		if ( ! function_exists( 'wp_register_sitemap_provider' ) ) {
+			return;
+		}
+
+		// Register location sitemaps.
+		$provider = new GeoDir_Location_Sitemaps_Locations();
+
+		wp_register_sitemap_provider( 'geodirlocations', $provider );
 	}
 }
 

@@ -1,24 +1,27 @@
 === GeoDirectory Compare Listings ===
 Contributors: stiofansisland, paoltaia, ayecode
-Donate link: https://wpgeodirectory.com/
-Tags: geodirectory, compare, listings compare
-Requires at least: 4.5
-Tested up to: 5.3.2
-Stable tag: 2.0.0.3
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Donate link: https://wpgeodirectory.com
+Tags: compare, compare listing, compare listings, geodirectory
+Requires at least: 4.9
+Tested up to: 5.5
+Requires PHP: 5.6
+Stable tag: 2.1.0.0
+License: GPLv3
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-GeoDirectory Compare allows your visitors to compare several listings side by side.
+ Compare listings side by side and compare vital information.
 
 == Description ==
 
-Let your users compare listings side by side and compare vital info about the listings.
+= Compare all the things! =
 
-Users can add up to 5 listings to compare at one time.
+Use the Compare Listings addon to let your users view listings side by side and compare vital information.
 
-You can also use the shortcode or block to embed a comparison table into a page or blog post with specific listing IDs.
+Many types of directory websites can benefit from a quick and easy comparison chart. For example, users of classifieds or accommodation directory can quickly compare things like features and prices of multiple listings. Indeed, many directory types can take advantage of such functionality.
 
-The add to compare button can be fully customized to match your needs, both the icons and text for added/remove can be customized as well as the colors and size of the button.
+= Compare Listings key features =
+
+Will this be the feature your users can't live without? Many large directories are using such functionality. We have taken the best features from them all to create our addon.
 
 == Installation ==
 
@@ -28,6 +31,9 @@ The add to compare button can be fully customized to match your needs, both the 
 4. (Optional) Go to the widgets page and add the Geodir Compare widget.
 
 == Changelog ==
+
+= 2.1.0.0 =
+* Changes for AyeCode UI compatibility - CHANGED
 
 = 2.0.0.3 =
 * Empty listing results compare message messes the page layout - FIXED

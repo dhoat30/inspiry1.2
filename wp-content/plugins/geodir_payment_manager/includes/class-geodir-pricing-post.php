@@ -68,7 +68,9 @@ class GeoDir_Pricing_Post {
 		add_filter( 'geodir_claim_submit_success_message', array( __CLASS__, 'claim_submit_success_message' ), 11, 3 );
 
 		// author actions filters
-		add_filter('geodir_post_status_author_page',array( __CLASS__, 'post_status_author_page' ), 10, 3);
+		add_filter( 'geodir_author_actions', array( __CLASS__, 'author_actions' ), 11, 2 );
+		//add_filter('geodir_post_status_author_page',array( __CLASS__, 'post_status_author_page' ), 10, 3);
+		add_filter('geodir_filter_status_array_on_author_page', array( __CLASS__, 'status_array_on_author_page' ), 10, 1 );
 		
 		// GD BuddyPress listings set custom status.
 		add_filter( 'geodir_bp_listings_where', array( __CLASS__, 'bp_listings_where' ), 11, 2 );
@@ -113,33 +115,77 @@ class GeoDir_Pricing_Post {
 
 		return $notifications;
 	}
-	
-	public static function post_status_author_page($status,$real_status,$post_id){
+
+	public static function status_array_on_author_page( $status_parts ) {
+		global $wpdb, $geodir_pricing_manager, $gd_post;
+
+		if ( ! empty( $status_parts ) && ! empty( $gd_post ) && ! empty( $gd_post->post_author ) && $gd_post->post_author == get_current_user_id() ) {
+			$post_id = $gd_post->ID;
+			$real_status = $wpdb->get_var( "SELECT post_status from {$wpdb->posts} WHERE ID = {$post_id}" );
+
+			if ( $real_status == 'pending' ) {
+				$has_invoice = $geodir_pricing_manager->cart->has_invoice( $post_id, 'new' );
+
+				if ( ! empty( $has_invoice ) ) {
+					$editlink = geodir_edit_post_link( $post_id );
+					$status_parts['title'] = __( 'Pending Payment', 'geodir_pricing' );
+					$status_parts['url'] = $editlink;
+					$status_parts['icon'] = 'fas fa-shopping-cart';
+				}
+			} elseif ( $real_status == 'gd-expired' ) {
+				$revision_id = 0;
+				$post_revisions = wp_get_post_revisions( $post_id, array( 'check_enabled' => false,'author' => get_current_user_id() ) );
+
+				if ( ! empty( $post_revisions ) ) {
+					$revision = reset( $post_revisions );
+					$revision_id = absint( $revision->ID );
+				}
+
+				$has_invoice = $geodir_pricing_manager->cart->has_invoice( $revision_id );
+
+				$editlink = geodir_edit_post_link( $post_id );
+				if ( ! empty( $has_invoice ) ) {
+					$status_parts['title'] = __( 'Pending Payment', 'geodir_pricing' );
+					$status_parts['url'] = $editlink;
+					$status_parts['icon'] = 'fas fa-shopping-cart';
+				} else {
+					$status_parts['title'] = __( 'Expired', 'geodir_pricing' );
+					$status_parts['url'] = geodir_pricing_post_renew_link( $post_id ) ? geodir_pricing_post_renew_url( $post_id ) : $editlink;
+				}
+			}
+		}
+
+		return $status_parts;
+	}
+
+	public static function post_status_author_page( $status, $real_status, $post_id ) {
 		global $geodir_pricing_manager;
 
-		//$payment_status = self::post_payment_status($post_id,$real_status);
-		$revision_id = 0;
-		$post_revisions = wp_get_post_revisions( $post_id, array( 'check_enabled' => false,'author' => get_current_user_id() ) );
-		if(!empty($post_revisions)){
-			$revision = reset( $post_revisions );
-			$revision_id = absint( $revision->ID );
-		}
-		// if pending check if payment is required
-		if($real_status=='pending'){
-			$has_invoice = $geodir_pricing_manager->cart->has_invoice($post_id,'new');
-			if(!empty($has_invoice)){
-				$editlink = geodir_edit_post_link($post_id);
-				$status = "<strong><a href='$editlink'>(".__( 'Pending Payment', 'geodir_pricing' ).")</a></strong>";
-			}
-		}elseif($real_status=='gd-expired'){
+		// If pending check if payment is required
+		if ( $real_status == 'pending' ) {
+			$has_invoice = $geodir_pricing_manager->cart->has_invoice( $post_id, 'new' );
 
-			$has_invoice = $geodir_pricing_manager->cart->has_invoice($revision_id);
-			$editlink = geodir_edit_post_link($post_id);
-			if(!empty($has_invoice)){
-				$editlink = geodir_edit_post_link($post_id);
-				$status = "<strong><a href='$editlink'>(".__( 'Pending Payment', 'geodir_pricing' ).")</a></strong>";
-			}else{
-				$status = "<strong><a href='$editlink'>(".__( 'Expired', 'geodir_pricing' ).")</a></strong>";
+			if ( ! empty( $has_invoice ) ) {
+				$editlink = geodir_edit_post_link( $post_id );
+				$status = __( 'Pending Payment', 'geodir_pricing' );
+			}
+		} elseif ( $real_status == 'gd-expired' ) {
+			$revision_id = 0;
+			$post_revisions = wp_get_post_revisions( $post_id, array( 'check_enabled' => false,'author' => get_current_user_id() ) );
+
+			if ( ! empty( $post_revisions ) ) {
+				$revision = reset( $post_revisions );
+				$revision_id = absint( $revision->ID );
+			}
+
+			$has_invoice = $geodir_pricing_manager->cart->has_invoice( $revision_id );
+
+			$editlink = geodir_edit_post_link( $post_id );
+			if ( ! empty( $has_invoice ) ) {
+				$editlink = geodir_edit_post_link( $post_id );
+				$status = __( 'Pending Payment', 'geodir_pricing' );
+			} else {
+				$status = __( 'Expired', 'geodir_pricing' );
 			}
 		}
 		
@@ -242,16 +288,20 @@ class GeoDir_Pricing_Post {
 				$claim = GeoDir_Claim_Post::get_item( $claim->id );
 		
 				if ( absint( $claim->status ) == 1 ) {
-					$message = wp_sprintf( __( 'Your request to claim the listing has been approved. View the listing %shere%s.', 'geodir_pricing' ), '<a href="' . get_permalink( $post_id ) . '">', '</a>' );
+					$message = self::alert( wp_sprintf( __( 'Your request to claim the listing has been approved. View the listing %shere%s.', 'geodir_pricing' ), '<a href="' . get_permalink( $post_id ) . '">', '</a>' ), 'success' );
 				} elseif ( absint( $claim->status ) == 0 ) {
 					if ( geodir_get_option( 'claim_auto_approve' ) ) {
-						$message = __( 'A verification link has been sent to your email address, please click the link in the email to verify your listing claim.', 'geodir-claim' );
+						$message = self::alert( __( 'A verification link has been sent to your email address, please click the link in the email to verify your listing claim.', 'geodir_pricing' ), 'success' );
 					} else {
-						$message = __( 'Your request to claim this listing has been sent successfully. You will be notified by email once a decision has been made.', 'geodir-claim' );
+						$message = self::alert( __( 'Your request to claim this listing has been sent successfully. You will be notified by email once a decision has been made.', 'geodir_pricing' ), 'success' );
 					}
 				}
-			} elseif ( ! empty( $payment->invoice_id ) ) {
+			} elseif ( empty( $payment->status ) ) {
 				$message = $geodir_pricing_manager->cart->claim_submit_success_message( $message, $claim, $post_id );
+
+				if ( $message ) {
+					$message = self::alert( $message, 'success' );
+				}
 			}
 		}
 
@@ -301,7 +351,7 @@ class GeoDir_Pricing_Post {
 	}
 
 	public static function package_id_input( $html, $field ) {
-		global $gd_post;
+		global $gd_post, $geodir_label_type;
 
 		$htmlvar_name 	= $field['htmlvar_name'];
 		$value 			= geodir_get_cf_value( $field );
@@ -309,59 +359,148 @@ class GeoDir_Pricing_Post {
 		$field_desc 	= ! empty( $field['desc'] ) ? __( $field['desc'], 'geodirectory' ) : '';
 		$task			= ! empty( $_REQUEST['task'] ) ? sanitize_text_field( $_REQUEST['task'] ) : '';
 
+		//Fetch packages and include the current post package just in case it is inactive
+		$packages 		= geodir_pricing_get_packages( 
+			array( 
+				'post_type'     => $field['post_type'],
+				'must_include'  => $value,
+			) 
+		);
+
+		$is_admin = is_admin() && current_user_can( 'manage_options' ) ? true : false;
+
+		$options = array();
+		foreach ( $packages as $key => $package ) {
+			$title = '';
+
+			if ( ! empty( $package->fa_icon ) ) {
+				$title .= '<i class="' . esc_attr( $package->fa_icon ) . '" aria-hidden="true"></i> ';
+			}
+
+			$title .= __( $package->title, 'geodirectory' );
+
+			if ( $is_admin ) {
+				$title .= ' ( <a href="' . admin_url( 'edit.php?post_type=' . $field['post_type'] . '&page=' . $field['post_type'] . '-settings&tab=cpt-package&section=add-package&id=' . $package->id ) . '" target="_blank">' . $package->id . '</a> )';
+			}
+
+			$options[ $package->id ] = $title;
+		}
+
 		ob_start();
 		if ( ! is_admin() && $task == 'upgrade' && ! empty( $_REQUEST['pid'] ) && $value > 0 ) {
+			if ( geodir_design_style() ) {
+				// Required
+				$required = ! empty( $field['is_required'] ) ? ' <span class="text-danger">*</span>' : '';
 
-			//Fetch packages and include the current post package just in case it is inactive
-			$packages 		= geodir_pricing_get_packages( 
-				array( 
-					'post_type'     => $field['post_type'],
-					'must_include'  => $value,
-				) 
-			);
-			?>
-			<div id="<?php echo $htmlvar_name; ?>_row" class="required_field geodir_form_row clearfix gd-fieldset-details geodir-pricing-field">
-				<label><?php echo $field_title . ' <span>*</span>'; ?></label>
-				<div role="radiogroup gd_price_package_group" style="float:left;width:70%">
-					<?php foreach ( $packages as $key => $package ) { 
-						if ( $package->id == geodir_get_post_meta( (int)$_REQUEST['pid'], 'package_id', true ) ) {
-							continue;
-						}
-						$package_redirect = apply_filters( 'geodir_pricing_onchange_package_redirect_to', '', $package->id, $value, $gd_post->ID, $field['post_type'] ); ?>
-					<div id='<?php echo 'gd_price_package_'. $package->id; ?>' class="geodir_package"><span class="gd-radios" role="radio"><input name="<?php echo $htmlvar_name; ?>" id="<?php echo $htmlvar_name . '_' . $package->id; ?>" <?php checked( (int) $value, $package->id ); ?> value="<?php echo $package->id; ?>" class="gd-checkbox" field_type="radio" type="radio" onclick="geodir_pricing_select_post_package(this, <?php echo absint( $package->id ); ?>, '<?php echo $package_redirect; ?>');" /> <i class="<?php echo $package->fa_icon; ?>"></i> <?php echo __( $package->title, 'geodirectory' ); ?></span></div>
-					<?php } ?>
-				 </div>
-				 <span class="geodir_message_note"><?php echo $field_desc; ?></span>
-				 <span class="geodir_message_error"><?php echo !empty($field['required_msg']) ? __($field['required_msg'], 'geodir_pricing') : __('You must select a package.', 'geodir_pricing'); ?></span>
-			</div>
-			<?php
+				// Admin only
+				$admin_only = geodir_cfi_admin_only( $field );
+
+				$package_ids = array_keys( $options);
+				$f_package_id = ! empty( $package_ids ) ? $package_ids[0] : '';
+
+				$package_redirect = apply_filters( 'geodir_pricing_onchange_package_redirect_to', '', $f_package_id, $value, $gd_post->ID, $field['post_type'] );
+				if ( ! empty( $package_redirect ) ) {
+					$package_redirect = add_query_arg( array( 'package_id' => '__PACKAGE_ID__' ), remove_query_arg( 'package_id', $package_redirect ) );
+					$package_redirect = str_replace( '__PACKAGE_ID__', "' + this.value + '", $package_redirect );
+				}
+
+				$current_package_id = geodir_get_post_meta( (int) $_REQUEST['pid'], 'package_id', true );
+				if ( isset( $options[ $current_package_id ] ) ) {
+					unset( $options[ $current_package_id ] );
+				}
+
+				$html = aui()->radio(
+					array(
+						'id'               => $htmlvar_name,
+						'name'             => $htmlvar_name,
+						'type'             => 'radio',
+						'title'            => esc_attr( $field_title ),
+						'label'            => esc_attr( $field_title ) . $admin_only . $required,
+						'label_type'       => ! empty( $geodir_label_type ) ? $geodir_label_type : 'horizontal',
+						'class'            => '',
+						'value'            => $value,
+						'options'          => $options,
+						'inline'           => false,
+						'extra_attributes' => array(
+							'onclick' => 'geodir_pricing_select_post_package(this, this.value, \'' . $package_redirect . '\');'
+						)
+					)
+				);
+
+				echo $html;
+			} else {
+				?>
+				<div id="<?php echo $htmlvar_name; ?>_row" class="required_field geodir_form_row clearfix gd-fieldset-details geodir-pricing-field">
+					<label><?php echo $field_title . ' <span>*</span>'; ?></label>
+					<div role="radiogroup gd_price_package_group" style="float:left;width:70%">
+						<?php foreach ( $options as $package_id => $package_title ) { 
+							if ( $package_id == geodir_get_post_meta( (int)$_REQUEST['pid'], 'package_id', true ) ) {
+								continue;
+							}
+							$package_redirect = apply_filters( 'geodir_pricing_onchange_package_redirect_to', '', $package_id, $value, $gd_post->ID, $field['post_type'] ); ?>
+						<div id='<?php echo 'gd_price_package_'. $package_id; ?>' class="geodir_package"><span class="gd-radios" role="radio"><input name="<?php echo $htmlvar_name; ?>" id="<?php echo $htmlvar_name . '_' . $package_id; ?>" <?php checked( (int) $value, $package_id ); ?> value="<?php echo $package_id; ?>" class="gd-checkbox" field_type="radio" type="radio" onclick="geodir_pricing_select_post_package(this, <?php echo absint( $package_id ); ?>, '<?php echo $package_redirect; ?>');" /> <?php echo $package_title; ?></span></div>
+						<?php } ?>
+					 </div>
+					 <span class="geodir_message_note"><?php echo $field_desc; ?></span>
+					 <span class="geodir_message_error"><?php echo !empty($field['required_msg']) ? __($field['required_msg'], 'geodir_pricing') : __('You must select a package.', 'geodir_pricing'); ?></span>
+				</div>
+				<?php
+			}
 		} else {
-			//Fetch packages and include the current post package just in case it is inactive
-			$packages 		= geodir_pricing_get_packages( 
-				array( 
-					'post_type'     => $field['post_type'],
-					'must_include'  => $value,
-				) 
-			);
+			if ( geodir_design_style() ) {
+				// Required
+				$required = ! empty( $field['is_required'] ) ? ' <span class="text-danger">*</span>' : '';
 
-			$is_admin = is_admin() && current_user_can( 'manage_options' ) ? true : false;
-			?>
-			<div id="<?php echo $htmlvar_name; ?>_row" class="required_field geodir_form_row clearfix gd-fieldset-details geodir-pricing-field">
-				<label><?php echo $field_title . ' <span>*</span>'; ?></label>
-				<div role="radiogroup gd_price_package_group" style="float:left;width:70%">
-					<?php foreach ( $packages as $key => $package ) { 
-						$_package_id = $is_admin ? ' ( <a href="' . admin_url( 'edit.php?post_type=' . $field['post_type'] . '&page=' . $field['post_type'] . '-settings&tab=cpt-package&section=add-package&id=' . $package->id ) . '" target="_blank">' . $package->id . '</a> )' : '';
-						$package_redirect = apply_filters( 'geodir_pricing_onchange_package_redirect_to', '', $package->id, $value, $gd_post->ID, $field['post_type'] ); ?>
-					<div id='<?php echo 'gd_price_package_'. $package->id; ?>'  class="geodir_package"><span class="gd-radios" role="radio"><input name="<?php echo $htmlvar_name; ?>" id="<?php echo $htmlvar_name . '_' . $package->id; ?>" <?php checked( (int) $value, $package->id ); ?> value="<?php echo $package->id; ?>" class="gd-checkbox" field_type="radio" type="radio" onclick="geodir_pricing_select_post_package(this, <?php echo absint( $package->id ); ?>, '<?php echo $package_redirect; ?>');" /> <i class="<?php echo $package->fa_icon; ?>"></i> <?php echo __( $package->title, 'geodirectory' ) . $_package_id; ?></span></div>
-					<?php } ?>
-				 </div>
-				 <span class="geodir_message_note"><?php echo $field_desc; ?></span>
-				 <span class="geodir_message_error"><?php echo !empty($field['required_msg']) ? __($field['required_msg'], 'geodir_pricing') : __('You must select a package.', 'geodir_pricing'); ?></span>
-			</div>
-			<?php
+				// Admin only
+				$admin_only = geodir_cfi_admin_only( $field );
+
+				$package_ids = array_keys( $options);
+				$f_package_id = ! empty( $package_ids ) ? $package_ids[0] : '';
+
+				$package_redirect = apply_filters( 'geodir_pricing_onchange_package_redirect_to', '', $f_package_id, $value, $gd_post->ID, $field['post_type'] );
+				if ( ! empty( $package_redirect ) ) {
+					$package_redirect = add_query_arg( array( 'package_id' => '__PACKAGE_ID__' ), remove_query_arg( 'package_id', $package_redirect ) );
+					$package_redirect = str_replace( '__PACKAGE_ID__', "' + this.value + '", $package_redirect );
+				}
+
+				$html = aui()->radio(
+					array(
+						'id'               => $htmlvar_name,
+						'name'             => $htmlvar_name,
+						'type'             => 'radio',
+						'title'            => esc_attr( $field_title ),
+						'label'            => esc_attr( $field_title ) . $admin_only . $required,
+						'label_type'       => ! empty( $geodir_label_type ) ? $geodir_label_type : 'horizontal',
+						'class'            => '',
+						'value'            => $value,
+						'options'          => $options,
+						'inline'           => false,
+						'extra_attributes' => array(
+							'onclick' => 'geodir_pricing_select_post_package(this, this.value, \'' . $package_redirect . '\');'
+						)
+					)
+				);
+
+				echo $html;
+			} else {
+				?>
+				<div id="<?php echo $htmlvar_name; ?>_row" class="required_field geodir_form_row clearfix gd-fieldset-details geodir-pricing-field">
+					<label><?php echo $field_title . ' <span>*</span>'; ?></label>
+					<div role="radiogroup gd_price_package_group" style="float:left;width:70%">
+						<?php 
+						foreach ( $options as $package_id => $package_title ) {
+							$package_redirect = apply_filters( 'geodir_pricing_onchange_package_redirect_to', '', $package_id, $value, $gd_post->ID, $field['post_type'] ); 
+						?>
+						<div id='<?php echo 'gd_price_package_'. $package_id; ?>'  class="geodir_package"><span class="gd-radios" role="radio"><input name="<?php echo $htmlvar_name; ?>" id="<?php echo $htmlvar_name . '_' . $package_id; ?>" <?php checked( (int) $value, $package_id ); ?> value="<?php echo $package_id; ?>" class="gd-checkbox" field_type="radio" type="radio" onclick="geodir_pricing_select_post_package(this, <?php echo absint( $package_id ); ?>, '<?php echo $package_redirect; ?>');" /> <?php echo $package_title; ?></span></div>
+						<?php } ?>
+					 </div>
+					 <span class="geodir_message_note"><?php echo $field_desc; ?></span>
+					 <span class="geodir_message_error"><?php echo !empty($field['required_msg']) ? __($field['required_msg'], 'geodir_pricing') : __('You must select a package.', 'geodir_pricing'); ?></span>
+				</div>
+				<?php
+			}
 		}
-		
-		
+
 		$html = ob_get_clean();
 
 		return $html;
@@ -1041,5 +1180,43 @@ class GeoDir_Pricing_Post {
 		}
 
 		return $show;
+	}
+
+	public static function author_actions( $author_actions, $post_id ) {
+		if ( ! empty( $post_id ) && is_user_logged_in() ) {
+			// Renew link
+			if ( $renew_link = geodir_pricing_post_renew_link( $post_id, true ) ) {
+				$author_actions['renew'] = array(
+					'title' => esc_attr__( 'Renew', 'geodir-franchise' ),
+					'icon' => 'fas fa-sync',
+					'url' => $renew_link
+				);
+			}
+
+			// Upgrade link
+			if ( $upgrade_link = geodir_pricing_post_upgrade_link( $post_id, true ) ) {
+				$author_actions['upgrade'] = array(
+					'title' => esc_attr__( 'Upgrade', 'geodir-franchise' ),
+					'icon' => 'fas fa-sync',
+					'url' => $upgrade_link
+				);
+			}
+		}
+
+		return $author_actions;
+	}
+
+	public static function alert( $message, $type = 'info' ) {
+		if ( ! geodir_design_style() ) {
+			return $message;
+		}
+
+		return aui()->alert(
+			array(
+				'type'=> $type,
+				'content'=> $message,
+				'class' => 'mb-0'
+			)
+		);
 	}
 }

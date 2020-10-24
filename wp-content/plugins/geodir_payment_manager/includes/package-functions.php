@@ -32,7 +32,15 @@ function geodir_pricing_get_package( $package = null, $output = OBJECT, $filter 
 }
 
 function geodir_pricing_get_meta( $package_id, $meta_key = '', $single = false ) {
-	return GeoDir_Pricing_Package::get_meta( $package_id, $meta_key, $single );
+	$meta = GeoDir_Pricing_Package::get_meta( $package_id, $meta_key, $single );
+
+	$meta = apply_filters( 'geodir_pricing_get_meta', $meta, (int) $package_id, $meta_key, $single );
+
+	if ( $meta_key && is_scalar( $meta_key ) ) {
+		$meta = apply_filters( 'geodir_pricing_get_meta_' . $meta_key, $meta, (int) $package_id, $single );
+	}
+
+	return $meta;
 }
 
 function geodir_pricing_update_meta( $package_id, $meta_key, $meta_value, $prev_value = '' ) {
@@ -68,7 +76,9 @@ function geodir_pricing_has_upgrades( $package_id ) {
 }
 
 function geodir_pricing_disable_html_editor( $package_id ) {
-	return geodir_pricing_get_meta( (int) $package_id, 'disable_editor', true );
+	$disable_html_editor = (bool) geodir_pricing_get_meta( (int) $package_id, 'disable_editor', true );
+
+	return apply_filters( 'geodir_pricing_disable_html_editor', $disable_html_editor, (int) $package_id );
 }
 
 function geodir_pricing_category_limit( $package_id ) {
@@ -95,4 +105,12 @@ function geodir_pricing_is_featured( $package_id ) {
 
 function geodir_pricing_has_files( $package_id, $file_type = 'post_images' ) {
 	return (bool) GeoDir_Pricing_Package::check_field_visibility( true, $file_type, $package_id );
+}
+
+function geodir_pricing_is_recurring( $package ) {
+	return GeoDir_Pricing_Package::is_recurring( $package );
+}
+
+function geodir_pricing_add_listing_url( $package ) {
+	return GeoDir_Pricing_Package::add_listing_url( $package );
 }

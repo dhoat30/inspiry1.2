@@ -131,8 +131,9 @@ if( ! class_exists( 'GeoDir_Lists' ) ) {
          * @since 2.0.0
          */
         public function enqueue_scripts() {
+            $suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 
-            wp_register_script( 'list-manager-public-script', GD_LISTS_PLUGIN_URL . 'assets/js/geodir_list_manager_public.js', array( 'jquery' ), '', true );
+            wp_register_script( 'list-manager-public-script', GD_LISTS_PLUGIN_URL . 'assets/js/geodir_list_manager_public' . $suffix . '.js', array( 'jquery' ), '', true );
             wp_enqueue_script( 'list-manager-public-script' );
 
             $vars = array(
@@ -141,12 +142,15 @@ if( ! class_exists( 'GeoDir_Lists' ) ) {
                 'save_list_text' => __( 'Save', 'gd-lists' ),
                 'saved_list_text' => __( 'Saved', 'gd-lists' ),
                 'saving_list_text' => __( 'Saving...', 'gd-lists' ),
+				'aui' => geodir_design_style()
             );
             $vars = apply_filters('gd_lists_localize_vars', $vars);
             wp_localize_script( 'list-manager-public-script', 'gd_list_manager_vars', $vars);
 
-            wp_register_style('list-manager-public-style', GD_LISTS_PLUGIN_URL . 'assets/css/geodir_list_manager_public.css', array(), '2.0.0');
-            wp_enqueue_style('list-manager-public-style' );
+            if ( ! geodir_design_style() ) {
+                wp_register_style('list-manager-public-style', GD_LISTS_PLUGIN_URL . 'assets/css/geodir_list_manager_public.css', array(), '2.0.0');
+                wp_enqueue_style('list-manager-public-style' );
+            }
 
         }
 
@@ -195,15 +199,6 @@ if( ! class_exists( 'GeoDir_Lists' ) ) {
                  */
                 require_once( GD_LISTS_PLUGIN_DIR . '/includes/class_buddypress_functions.php' );
 
-            }
-
-            // Check if UsersWp exists or not.
-            if( gd_list_check_userswp_exsits() ) {
-
-                /**
-                 * The class responsible for defining all Userswp related functions.
-                 */
-                require_once( GD_LISTS_PLUGIN_DIR . '/includes/class_userswp_functions.php' );
             }
 
             // ajax

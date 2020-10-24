@@ -3,9 +3,9 @@ Contributors: stiofansisland, paoltaia, ayecode
 Donate link: https://wpgeodirectory.com
 Tags: advance search, geodirectory, geodirectory search, search
 Requires at least: 4.9
-Tested up to: 5.4
+Tested up to: 5.5
 Requires PHP: 5.6
-Stable tag: 2.0.1.2
+Stable tag: 2.1.0.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -34,6 +34,13 @@ While the "Near" field will query locations and return results sorted by distanc
 2. Activate the plugin "GeoDirectory Advance Search Filters" through the 'Plugins' menu in WordPress
 
 == Changelog ==
+
+= 2.1.0.1 =
+* Change Jquery doc ready to pure JS doc ready so jQuery can be loaded without render blocking  - CHANGED
+* Price range field is not working properly with bootstrap style - FIXED
+
+= 2.1.0.0 =
+* Changes for AyeCode UI compatibility - CHANGED
 
 = 2.0.1.2 =
 * Web accessibility compatibility changes - CHANGED

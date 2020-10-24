@@ -3,9 +3,9 @@ Contributors: stiofansisland, paoltaia, ayecode
 Donate link: https://wpgeodirectory.com
 Tags: business rating, geodirectory review, geodirectory rating, listing review, rating, review, review rating manager, star rating
 Requires at least: 4.9
-Tested up to: 5.4
+Tested up to: 5.5
 Requires PHP: 5.6
-Stable tag: 2.0.1.0
+Stable tag: 2.1.0.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -28,6 +28,9 @@ Quality, price, cleanliness, friendliness – there is no limit to the criteria 
 - No half star limitations for rating outputs, our percentage bases background fill means the score indicated is exact and not limited to half stars.
 
 == Changelog ==
+
+= 2.1.0.0 =
+* Changes for AyeCode UI compatibility - CHANGED
 
 = 2.0.1.0 =
 * Review sorting options displays over review ratings on small screen - FIXED

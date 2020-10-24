@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: GeoDirectory Advance Search Filters 2.0.1.2\n"
+"Project-Id-Version: GeoDirectory Advance Search Filters 2.1.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-30 12:19+0530\n"
-"PO-Revision-Date: 2020-07-30 12:19+0530\n"
+"POT-Creation-Date: 2020-10-16 11:08+0530\n"
+"PO-Revision-Date: 2020-10-16 11:08+0530\n"
 "Last-Translator: \n"
 "Language-Team: AyeCode Ltd <contact@ayecode.io>\n"
 "Language: en_US\n"
@@ -198,7 +198,7 @@ msgstr ""
 #: includes/admin/settings/class-geodir-adv-search-settings-cpt-search.php:725
 #: includes/class-geodir-adv-search-business-hours.php:65
 #: includes/class-geodir-adv-search-business-hours.php:346
-#: includes/class-geodir-adv-search-business-hours.php:479
+#: includes/class-geodir-adv-search-business-hours.php:488
 #: includes/class-geodir-adv-search-fields.php:121
 #: includes/class-geodir-adv-search-fields.php:122
 msgid "Open Hours"
@@ -343,7 +343,7 @@ msgid "First Search Range Text"
 msgstr ""
 
 #: includes/admin/views/html-admin-settings-cpt-search-setting-item.php:159
-#: includes/template-functions.php:431
+#: includes/template-functions.php:433 includes/template-functions.php:1539
 msgid "Less than"
 msgstr ""
 
@@ -356,7 +356,7 @@ msgid "Last Search Range Text"
 msgstr ""
 
 #: includes/admin/views/html-admin-settings-cpt-search-setting-item.php:169
-#: includes/template-functions.php:434
+#: includes/template-functions.php:436 includes/template-functions.php:1542
 msgid "More than"
 msgstr ""
 
@@ -506,111 +506,151 @@ msgstr ""
 msgid "Weekend"
 msgstr ""
 
-#: includes/class-geodir-adv-search-business-hours.php:443
+#: includes/class-geodir-adv-search-business-hours.php:452
 msgid "Merge Business Hours"
 msgstr ""
 
-#: includes/class-geodir-adv-search-business-hours.php:444
 #: includes/class-geodir-adv-search-business-hours.php:453
+#: includes/class-geodir-adv-search-business-hours.php:462
 msgid "Run"
 msgstr ""
 
-#: includes/class-geodir-adv-search-business-hours.php:445
+#: includes/class-geodir-adv-search-business-hours.php:454
 msgid "Merge post business hours to enhance Open Hours searching."
 msgstr ""
 
-#: includes/class-geodir-adv-search-business-hours.php:452
+#: includes/class-geodir-adv-search-business-hours.php:461
 msgid "Adjust Business Hours with DST"
 msgstr ""
 
-#: includes/class-geodir-adv-search-business-hours.php:454
+#: includes/class-geodir-adv-search-business-hours.php:463
 msgid ""
 "Adjust listing business open/close hours with daylight saving time(DST) "
 "offset for timezones which observes daylight saving time(DST)."
 msgstr ""
 
-#: includes/class-geodir-adv-search-business-hours.php:480
+#: includes/class-geodir-adv-search-business-hours.php:489
 msgid "Filter posts by open hours."
 msgstr ""
 
-#: includes/class-geodir-adv-search-business-hours.php:486
+#: includes/class-geodir-adv-search-business-hours.php:495
 msgid "Filters"
 msgstr ""
 
-#: includes/class-geodir-adv-search-fields.php:246
-#: includes/class-geodir-adv-search-fields.php:424
-#: includes/class-geodir-adv-search-fields.php:559
-#: includes/template-functions.php:779
+#: includes/class-geodir-adv-search-fields.php:160
+msgid "Advanced Filters"
+msgstr ""
+
+#: includes/class-geodir-adv-search-fields.php:255
+#: includes/class-geodir-adv-search-fields.php:270
+msgid "Category"
+msgstr ""
+
+#: includes/class-geodir-adv-search-fields.php:290
+#: includes/class-geodir-adv-search-fields.php:683
+#: includes/class-geodir-adv-search-fields.php:855
+#: includes/template-functions.php:785 includes/template-functions.php:1887
 msgid "Yes"
 msgstr ""
 
-#: includes/class-geodir-adv-search-fields.php:291
-#: includes/class-geodir-adv-search-fields.php:365
-#: includes/class-geodir-adv-search-fields.php:620
-#: includes/class-geodir-adv-search-fields.php:993
-#, php-format
-msgid "From: %s"
-msgstr ""
-
-#: includes/class-geodir-adv-search-fields.php:291
-#: includes/class-geodir-adv-search-fields.php:620
-#, php-format
-msgid "%s Start Date"
-msgstr ""
-
-#: includes/class-geodir-adv-search-fields.php:292
-#: includes/class-geodir-adv-search-fields.php:366
-#: includes/class-geodir-adv-search-fields.php:621
-#: includes/class-geodir-adv-search-fields.php:994
-#, php-format
-msgid "To: %s"
-msgstr ""
-
-#: includes/class-geodir-adv-search-fields.php:292
-#: includes/class-geodir-adv-search-fields.php:621
-#, php-format
-msgid "%s End Date"
-msgstr ""
-
-#: includes/class-geodir-adv-search-fields.php:303
-#: includes/class-geodir-adv-search-fields.php:636
-#, php-format
-msgid "%s Date"
-msgstr ""
-
-#: includes/class-geodir-adv-search-fields.php:365
-#: includes/class-geodir-adv-search-fields.php:993
-#, php-format
-msgid "%s Start Time"
-msgstr ""
-
-#: includes/class-geodir-adv-search-fields.php:366
-#: includes/class-geodir-adv-search-fields.php:994
-#, php-format
-msgid "%s End Time"
-msgstr ""
-
-#: includes/class-geodir-adv-search-fields.php:377
-#: includes/class-geodir-adv-search-fields.php:991
-#: includes/class-geodir-adv-search-fields.php:1007
-#, php-format
-msgid "%s Time"
-msgstr ""
-
-#: includes/class-geodir-adv-search-fields.php:618
+#: includes/class-geodir-adv-search-fields.php:347
+#: includes/class-geodir-adv-search-fields.php:923
+#: includes/class-geodir-adv-search-fields.php:1015
 #, php-format
 msgid "%s Dates"
 msgstr ""
 
-#: includes/class-geodir-adv-search-fields.php:694
+#: includes/class-geodir-adv-search-fields.php:349
+#: includes/class-geodir-adv-search-fields.php:434
+#: includes/class-geodir-adv-search-fields.php:517
+#: includes/class-geodir-adv-search-fields.php:617
+#: includes/class-geodir-adv-search-fields.php:925
+#: includes/class-geodir-adv-search-fields.php:1017
+#: includes/class-geodir-adv-search-fields.php:1420
+#: includes/class-geodir-adv-search-fields.php:1523
+#, php-format
+msgid "From: %s"
+msgstr ""
+
+#: includes/class-geodir-adv-search-fields.php:349
+#: includes/class-geodir-adv-search-fields.php:434
+#: includes/class-geodir-adv-search-fields.php:925
+#: includes/class-geodir-adv-search-fields.php:1017
+#, php-format
+msgid "%s Start Date"
+msgstr ""
+
+#: includes/class-geodir-adv-search-fields.php:350
+#: includes/class-geodir-adv-search-fields.php:435
+#: includes/class-geodir-adv-search-fields.php:518
+#: includes/class-geodir-adv-search-fields.php:618
+#: includes/class-geodir-adv-search-fields.php:926
+#: includes/class-geodir-adv-search-fields.php:1018
+#: includes/class-geodir-adv-search-fields.php:1421
+#: includes/class-geodir-adv-search-fields.php:1524
+#, php-format
+msgid "To: %s"
+msgstr ""
+
+#: includes/class-geodir-adv-search-fields.php:350
+#: includes/class-geodir-adv-search-fields.php:435
+#: includes/class-geodir-adv-search-fields.php:926
+#: includes/class-geodir-adv-search-fields.php:1018
+#, php-format
+msgid "%s End Date"
+msgstr ""
+
+#: includes/class-geodir-adv-search-fields.php:382
+#: includes/class-geodir-adv-search-fields.php:446
+#: includes/class-geodir-adv-search-fields.php:958
+#: includes/class-geodir-adv-search-fields.php:1033
+#, php-format
+msgid "%s Date"
+msgstr ""
+
+#: includes/class-geodir-adv-search-fields.php:515
+#: includes/class-geodir-adv-search-fields.php:565
+#: includes/class-geodir-adv-search-fields.php:629
+#: includes/class-geodir-adv-search-fields.php:1418
+#: includes/class-geodir-adv-search-fields.php:1465
+#: includes/class-geodir-adv-search-fields.php:1521
+#: includes/class-geodir-adv-search-fields.php:1552
+#, php-format
+msgid "%s Time"
+msgstr ""
+
+#: includes/class-geodir-adv-search-fields.php:517
+#: includes/class-geodir-adv-search-fields.php:617
+#: includes/class-geodir-adv-search-fields.php:1420
+#: includes/class-geodir-adv-search-fields.php:1523
+#, php-format
+msgid "%s Start Time"
+msgstr ""
+
+#: includes/class-geodir-adv-search-fields.php:518
+#: includes/class-geodir-adv-search-fields.php:618
+#: includes/class-geodir-adv-search-fields.php:1421
+#: includes/class-geodir-adv-search-fields.php:1524
+#, php-format
+msgid "%s End Time"
+msgstr ""
+
+#: includes/class-geodir-adv-search-fields.php:541
+#: includes/class-geodir-adv-search-fields.php:557
+#: includes/class-geodir-adv-search-fields.php:1445
+#: includes/class-geodir-adv-search-fields.php:1457
+msgid "Clear field"
+msgstr ""
+
+#: includes/class-geodir-adv-search-fields.php:1093
 msgid "Nearest"
 msgstr ""
 
-#: includes/class-geodir-adv-search-fields.php:704
+#: includes/class-geodir-adv-search-fields.php:1103
 msgid "Farthest"
 msgstr ""
 
-#: includes/class-geodir-adv-search-fields.php:717
+#: includes/class-geodir-adv-search-fields.php:1116
 msgid "Select Option"
 msgstr ""
 
@@ -627,41 +667,41 @@ msgid ""
 "that your version be upgraded to 5.3 or later."
 msgstr ""
 
-#: includes/functions.php:342
+#: includes/functions.php:347
 msgid "Categories"
 msgstr ""
 
-#: includes/functions.php:344
+#: includes/functions.php:349
 msgid "Listings"
 msgstr ""
 
-#: includes/functions.php:354
+#: includes/functions.php:359
 msgid "Search history"
 msgstr ""
 
-#: includes/functions.php:355
+#: includes/functions.php:360
 msgid "Remove from history"
 msgstr ""
 
-#: includes/functions.php:433
+#: includes/functions.php:438
 #, php-format
 msgid "Business hours merged for %d post."
 msgid_plural "Business hours merged for %d posts."
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/functions.php:435
+#: includes/functions.php:440
 msgid "No post to merge business hours."
 msgstr ""
 
-#: includes/functions.php:445
+#: includes/functions.php:450
 #, php-format
 msgid "Business hours adjusted for %d item with daylight saving time."
 msgid_plural "Business hours adjusted for %d items with daylight saving time."
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/functions.php:447
+#: includes/functions.php:452
 msgid "No item to adjust business hours with daylight saving time."
 msgstr ""
 
@@ -713,11 +753,12 @@ msgstr ""
 msgid "Browser unable to find your location."
 msgstr ""
 
-#: includes/template-functions.php:47 includes/template-functions.php:814
+#: includes/template-functions.php:47 includes/template-functions.php:820
+#: includes/template-functions.php:1922
 msgid "More"
 msgstr ""
 
-#: includes/template-functions.php:48
+#: includes/template-functions.php:48 includes/template-functions.php:1922
 msgid "Less"
 msgstr ""
 
@@ -777,36 +818,43 @@ msgstr ""
 msgid "Always open"
 msgstr ""
 
-#: includes/template-functions.php:239 includes/template-functions.php:617
+#: includes/template-functions.php:241 includes/template-functions.php:623
+#: includes/template-functions.php:1347 includes/template-functions.php:1728
 msgid "Select option"
 msgstr ""
 
-#: includes/template-functions.php:466
+#: includes/template-functions.php:472 includes/template-functions.php:1576
 msgid "Start search value"
 msgstr ""
 
-#: includes/template-functions.php:467
+#: includes/template-functions.php:473 includes/template-functions.php:1577
 msgid "End search value"
 msgstr ""
 
-#: includes/template-functions.php:754 includes/template-functions.php:1109
+#: includes/template-functions.php:760 includes/template-functions.php:1149
+#: includes/template-functions.php:1862
 msgid "Within"
 msgstr ""
 
-#: includes/template-functions.php:1092 includes/template-functions.php:1162
+#: includes/template-functions.php:1132 includes/template-functions.php:1217
 #, php-format
 msgid "from %s"
 msgstr ""
 
-#: includes/template-functions.php:1094 includes/template-functions.php:1164
+#: includes/template-functions.php:1134 includes/template-functions.php:1219
 #, php-format
 msgid "to %s"
 msgstr ""
 
-#: includes/template-functions.php:1123
+#: includes/template-functions.php:1163
 msgid "less than"
 msgstr ""
 
-#: includes/template-functions.php:1125
+#: includes/template-functions.php:1165
 msgid "more than"
+msgstr ""
+
+#: includes/template-functions.php:1221
+#, php-format
+msgid "%s to %s"
 msgstr ""

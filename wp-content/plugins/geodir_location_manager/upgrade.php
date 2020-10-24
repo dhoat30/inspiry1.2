@@ -56,3 +56,10 @@ function geodir_location_upgrade_2010() {
 	// Check and add cpt_desc column in seo table.
 	GeoDir_Location_SEO::check_column_cpt_desc();
 }
+
+/**
+ * Update DB Version to 2.0.1.0.
+ */
+function geodir_location_update_2010_db_version() {
+	GeoDir_Location_Admin_Install::update_db_version( '2.0.1.0' );
+}

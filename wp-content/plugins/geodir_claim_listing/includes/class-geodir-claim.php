@@ -279,9 +279,11 @@ final class GeoDir_Claim {
 	 */
 	public function add_styles() {
 		// Register styles
-		wp_register_style( 'geodir-claim', GEODIR_CLAIM_PLUGIN_URL . '/assets/css/style.css', array(), GEODIR_CLAIM_VERSION );
+		if ( ! geodir_design_style() ) {
+			wp_register_style( 'geodir-claim', GEODIR_CLAIM_PLUGIN_URL . '/assets/css/style.css', array(), GEODIR_CLAIM_VERSION );
 
-		wp_enqueue_style( 'geodir-claim' );
+			wp_enqueue_style( 'geodir-claim' );
+		}
 	}
 
 	/**

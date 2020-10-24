@@ -135,6 +135,9 @@ final class GeoDir_Compare {
         //Include the main admin class
         require_once $includes_path . 'admin/admin.php';
 
+        //Include the required template functions file.
+        require_once( $includes_path . 'template-functions.php' );
+
         //Include the widgets class
         require_once $includes_path . 'widgets/class-geodir-widget-compare-button.php';
 		require_once $includes_path . 'widgets/class-geodir-widget-compare-list.php';
@@ -276,24 +279,35 @@ final class GeoDir_Compare {
 
         $assets_url = plugin_dir_url( GEODIR_COMPARE_PLUGIN_FILE ) . 'includes/assets/';
         $assets_dir = plugin_dir_path( GEODIR_COMPARE_PLUGIN_FILE ) . 'includes/assets/';
+	    $design_style = geodir_design_style();
 
         //Javascript
-        wp_register_script( 'geodir-compare', $assets_url . 'scripts.js', array( 'jquery', 'geodir_lity' ), filemtime( $assets_dir . 'scripts.js' ), true );
-        $vars                   = array(
-            'items_full'        => __( 'Your comparision list is full. Please remove one item first.', 'geodir-compare' ),
-			'compare'           => __( 'Compare', 'geodir-compare' ),
-			'ajax_error'        => __( 'There was an error while processing the request.', 'geodir-compare' ),
-			'ajax_url'          => admin_url( 'admin-ajax.php' ),
-			'cookie_domain'     => COOKIE_DOMAIN,
-			'cookie_path'       => COOKIEPATH,
-			'cookie_time'       => DAY_IN_SECONDS,
-        );
-        wp_localize_script( 'geodir-compare', 'GD_Compare', $vars);
-        wp_enqueue_script( 'geodir-compare' );
+	    $vars                   = array(
+		    'items_full'        => __( 'Your comparision list is full. Please remove one item first.', 'geodir-compare' ),
+		    'compare'           => __( 'Compare', 'geodir-compare' ),
+		    'ajax_error'        => __( 'There was an error while processing the request.', 'geodir-compare' ),
+		    'ajax_url'          => admin_url( 'admin-ajax.php' ),
+		    'cookie_domain'     => COOKIE_DOMAIN,
+		    'cookie_path'       => COOKIEPATH,
+		    'cookie_time'       => DAY_IN_SECONDS,
+	    );
+	    if( ! $design_style ) {
+		    wp_register_script( 'geodir-compare', $assets_url . 'scripts.js', array(
+			    'jquery',
+			    'geodir_lity'
+		    ), filemtime( $assets_dir . 'scripts.js' ), true );
+		    wp_enqueue_script(  'geodir-compare' );
+	    }
+	    $script = $design_style ? 'geodir' : 'geodir-compare';
+	    wp_localize_script($script , 'GD_Compare', $vars );
+
 
         //CSS
-        wp_enqueue_style('geodir-compare', $assets_url . 'styles.css', array(), filemtime( $assets_dir . 'styles.css' ));
 
-        }
+        if( ! $design_style ) {
+			wp_enqueue_style('geodir-compare', $assets_url . 'styles.css', array(), filemtime( $assets_dir . 'styles.css' ));
+		}
+
+    }
 
 }

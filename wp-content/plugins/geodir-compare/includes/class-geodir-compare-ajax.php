@@ -61,33 +61,76 @@ class GeoDir_Compare_Ajax {
 			$post_type = $post_types[$post_type]->label;
 		}
 
+		$design_style = geodir_design_style();
+
 		$link = '';
 		if( is_array( $items ) ){
 			$items = implode( ',', $items );
 			$link  = get_the_permalink( geodir_get_option('geodir_compare_listings_page') );
-			$link = sprintf( 
-				'<a href="%s" class="geodir-compare-padded-left">%s</a>',
-				esc_url( add_query_arg( 'compareids', $items, $link ) ),
-				__( 'View shareable link', 'geodir-compare' )
+
+			if($design_style){
+				$link = sprintf(
+					'<a href="%s" class="ml-2 btn btn-sm btn-outline-primary">%s</a>',
+					esc_url( add_query_arg( 'compareids', $items, $link ) ),
+					__( 'View shareable link', 'geodir-compare' )
+				);
+			}else{
+				$link = sprintf(
+					'<a href="%s" class="geodir-compare-padded-left">%s</a>',
+					esc_url( add_query_arg( 'compareids', $items, $link ) ),
+					__( 'View shareable link', 'geodir-compare' )
+				);
+			}
+
+		}
+
+
+
+		if($design_style){
+			printf(
+				'<div class="modal-header pt-0 mt-0 mb-3 mx-n3 d-flex justify-content-start  align-items-center">
+        <h5 class="modal-title">%s %s</h5> %s
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>',
+				__('Compare', 'geodir-compare'),
+				esc_html( $post_type ),
+				$link
+			);
+		}else{
+			printf(
+				'<div class="geodir-compare-flex geodir-compare-padded"><h2>%s %s</h2> %s</div>',
+				__('Compare', 'geodir-compare'),
+				esc_html( $post_type ),
+				$link
 			);
 		}
-		
 
-		printf( 
-			'<div class="geodir-compare-flex geodir-compare-padded"><h2>%s %s</h2> %s</div>',
-			__('Compare', 'geodir-compare'),
-			esc_html( $post_type ),
-			$link
-		);
 
 		//Print additional messages
 		if(! empty( $_REQUEST['removed'] ) ) {
 			$id = absint( $_REQUEST['removed'] );
-			printf( 
-				'<p class="geodir-compare-notice"><strong>%s</strong> %s</p>',
-				get_the_title( $id ),
-				__('was successfully removed from the comparison list', 'geodir-compare')
-			);
+
+			if( $design_style ) {
+				echo aui()->alert(array(
+						'type'=> 'info',
+						'content'=> sprintf(
+							'<strong>%s</strong> %s',
+							get_the_title( $id ),
+							__( 'was successfully removed from the comparison list', 'geodir-compare' )
+						),
+						'dismissible'   => true
+					)
+				);
+				;
+			}else{
+				printf(
+					'<p class="geodir-compare-notice"><strong>%s</strong> %s</p>',
+					get_the_title( $id ),
+					__( 'was successfully removed from the comparison list', 'geodir-compare' )
+				);
+			}
 		}
 
 	}
@@ -120,14 +163,26 @@ class GeoDir_Compare_Ajax {
 	 */
 	public function print_list( $compare_with,  $post_type , $reached_maximum = false ) {
 
+		$design_style = geodir_design_style();
+
 		//Maximum notice
 		if( $reached_maximum ) {
 
 			//Header
 			$this->print_header( $post_type );
 
-			_e( 'You have reached the maximum number of items to compare. Remove some first.', 'geodir-compare' );
-			echo '<ul class="geodir-compare-popup-list-container">';
+			if($design_style){
+				echo aui()->alert(array(
+						'type'=> 'info',
+						'content'=> __( 'You have reached the maximum number of items to compare. Remove some first.', 'geodir-compare' )
+					)
+				);
+				echo '<ul class="geodir-compare-popup-list-container list-group p-0 m-0">';
+			}else{
+				_e( 'You have reached the maximum number of items to compare. Please remove some first.', 'geodir-compare' );
+				echo '<ul class="geodir-compare-popup-list-container">';
+			}
+
 			$this->print_list_contents( $compare_with,  $post_type );
 			echo '</ul>';
 
@@ -173,20 +228,42 @@ class GeoDir_Compare_Ajax {
 	 */
 	public function print_list_contents( $items,  $post_type ) {
 
+		$design_style = geodir_design_style();
 		foreach( $items as $id ){
 
-			printf( 
-				'<li>%s <div class="geodir-compare-popup-list-details"><h3>%s</h3><div class="geodir-compare-popup-list-actions">%s</div></div></li>',
-				geodir_compare_get_listing_image( $id ),
-				get_the_title( $id ),
-				sprintf( 
-					'<a href="#" class="geodir-compare-popup-remove" onclick="geodir_compare_remove(\'%s\', \'%s\')">%s</a>',
-					$id,
-					$post_type,
-					__( 'Remove', 'geodir-compare' )
-				)
+			if($design_style){
+				printf(
+					'<li class="list-group-item list-group-item-action list-unstyled d-flex justify-content-between  align-items-center">
+<span>
+<span style="height: 60px;width:60px;" class="d-inline-block mr-3">%s</span> 
+<h6 class="d-inline-block h4">%s</h6>
+</span>
+<div class="geodir-compare-popup-list-actions">%s</div></li>',
+					geodir_compare_get_listing_image( $id ),
+					get_the_title( $id ),
+					sprintf(
+						'<a href="#" class="geodir-compare-popup-remove btn btn-danger" onclick="geodir_compare_remove(\'%s\', \'%s\')">%s</a>',
+						$id,
+						$post_type,
+						__( 'Remove', 'geodir-compare' )
+					)
 
-			);
+				);
+			}else{
+				printf(
+					'<li>%s <div class="geodir-compare-popup-list-details"><h3>%s</h3><div class="geodir-compare-popup-list-actions">%s</div></div></li>',
+					geodir_compare_get_listing_image( $id ),
+					get_the_title( $id ),
+					sprintf(
+						'<a href="#" class="geodir-compare-popup-remove" onclick="geodir_compare_remove(\'%s\', \'%s\')">%s</a>',
+						$id,
+						$post_type,
+						__( 'Remove', 'geodir-compare' )
+					)
+
+				);
+			}
+
 
 		}
 	}
@@ -204,7 +281,7 @@ class GeoDir_Compare_Ajax {
 
 		//Prepare the item ids to compare with
 		$compare_with = $this->get_items();
-		$post_type    = $_REQUEST['post_type'];
+		$post_type    = esc_attr($_REQUEST['post_type']);
 		if(!geodir_is_gd_post_type($post_type)){exit;}
 
 		$items = array();

@@ -11,9 +11,10 @@
 function geodir_cp_admin_params() {
 	$params = array(
 		'confirm_delete_post_type' => __( 'Are you wish to delete this post type?', 'geodir_custom_posts' ),
-    );
+		'aui' => geodir_design_style()
+	);
 
-    return apply_filters( 'geodir_cp_admin_params', $params );
+	return apply_filters( 'geodir_cp_admin_params', $params );
 }
 
 function geodir_cp_skip_address_field_output( $skip, $field_id, $field, $cf ) {

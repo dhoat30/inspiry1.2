@@ -68,6 +68,7 @@ if ( ( ! empty( $geodir_settings ) && ( ! empty( $geodir_settings['admin_uninsta
 			'lm_everywhere_in_region_dropdown',
 			'lm_everywhere_in_city_dropdown',
 			'geodir_update_locations_default_options',
+			'location_sitemaps_locations',
 			'uninstall_geodir_location_manager',
 		);
 

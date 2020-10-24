@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: GeoDirectory Custom Post Types 2.0.1.0\n"
+"Project-Id-Version: GeoDirectory Custom Post Types 2.1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-23 11:25+0530\n"
-"PO-Revision-Date: 2020-06-23 11:25+0530\n"
+"POT-Creation-Date: 2020-10-07 16:25+0530\n"
+"PO-Revision-Date: 2020-10-07 16:25+0530\n"
 "Last-Translator: Stiofan <info@geotheme.com>\n"
 "Language-Team: AyeCode Ltd <contact@ayecode.io>\n"
 "Language: en_US\n"
@@ -24,11 +24,11 @@ msgstr ""
 msgid "Are you wish to delete this post type?"
 msgstr ""
 
-#: includes/admin/admin-functions.php:54
+#: includes/admin/admin-functions.php:55
 msgid "Custom Post Types"
 msgstr ""
 
-#: includes/admin/admin-functions.php:55
+#: includes/admin/admin-functions.php:56
 msgid ""
 "Check this box if you would like to completely remove all of its data when "
 "Custom Post Types is deleted."
@@ -89,13 +89,13 @@ msgid "No post types founds."
 msgstr ""
 
 #: includes/admin/class-geodir-cp-admin.php:66
-#: includes/class-geodir-cp-link-posts.php:904
+#: includes/class-geodir-cp-link-posts.php:960
 #, php-format
 msgid "Linked from: %s"
 msgstr ""
 
 #: includes/admin/class-geodir-cp-admin.php:87
-#: includes/class-geodir-cp-link-posts.php:901
+#: includes/class-geodir-cp-link-posts.php:957
 #, php-format
 msgid "Linked to: %s"
 msgstr ""
@@ -173,32 +173,32 @@ msgstr ""
 msgid "Link to all user's posts?"
 msgstr ""
 
-#: includes/class-geodir-cp-link-posts.php:256
+#: includes/class-geodir-cp-link-posts.php:258
 #, php-format
 msgid "Choose %s &hellip;"
 msgstr ""
 
-#: includes/class-geodir-cp-link-posts.php:275
+#: includes/class-geodir-cp-link-posts.php:280
 #, php-format
 msgid ""
 "Are you sure you want to fill %s listing data from selected linked %s data?"
 msgstr ""
 
-#: includes/class-geodir-cp-link-posts.php:276
+#: includes/class-geodir-cp-link-posts.php:281
 #, php-format
 msgid "Fill %s listing data from linked %s data."
 msgstr ""
 
-#: includes/class-geodir-cp-link-posts.php:928
+#: includes/class-geodir-cp-link-posts.php:991
 msgid "You are now allowed to link this listing to the selected listing."
 msgstr ""
 
-#: includes/class-geodir-cp-link-posts.php:931
+#: includes/class-geodir-cp-link-posts.php:994
 #, php-format
 msgid "%s listing is not allowed to linked from %s listing."
 msgstr ""
 
-#: includes/class-geodir-cp-link-posts.php:934
+#: includes/class-geodir-cp-link-posts.php:997
 msgid "Invalid post type found to link posts."
 msgstr ""
 
@@ -346,6 +346,46 @@ msgstr ""
 msgid "Separate %s tags with commas"
 msgstr ""
 
+#: includes/class-geodir-cp-widgets.php:37
+msgid "Linked Posts"
+msgstr ""
+
+#: includes/class-geodir-cp-widgets.php:38
+msgid "Filter posts linked from or linked to current post."
+msgstr ""
+
+#: includes/class-geodir-cp-widgets.php:40
+msgid "No filter"
+msgstr ""
+
+#: includes/class-geodir-cp-widgets.php:41
+msgid "Linked from current post"
+msgstr ""
+
+#: includes/class-geodir-cp-widgets.php:42
+msgid "Linked to current post"
+msgstr ""
+
+#: includes/class-geodir-cp-widgets.php:47
+#: includes/class-geodir-cp-widgets.php:58
+msgid "Filters"
+msgstr ""
+
+#: includes/class-geodir-cp-widgets.php:52
+msgid "Linked Post ID"
+msgstr ""
+
+#: includes/class-geodir-cp-widgets.php:53
+msgid ""
+"Filter posts linked from or linked to this post id. Leave blank to use "
+"current post id."
+msgstr ""
+
+#: includes/class-geodir-cp-widgets.php:54
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:53
+msgid "Leave blank to use current post id."
+msgstr ""
+
 #: includes/class-geodir-cp.php:135
 msgid ""
 "Your version of PHP is below the minimum version of PHP required by "
@@ -353,7 +393,7 @@ msgid ""
 "your version be upgraded to 5.3 or later."
 msgstr ""
 
-#: includes/core-functions.php:153
+#: includes/core-functions.php:154
 msgid "Post type related data deleted successfully."
 msgstr ""
 
@@ -365,204 +405,315 @@ msgstr ""
 msgid "Displays GeoDirectory post types."
 msgstr ""
 
-#: includes/widgets/class-geodir-cp-widget-cpt-listings.php:51
-#: includes/widgets/class-geodir-cp-widget-post-linked.php:42
+#: includes/widgets/class-geodir-cp-widget-cpt-listings.php:53
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:43
 msgid "Title:"
 msgstr ""
 
-#: includes/widgets/class-geodir-cp-widget-cpt-listings.php:52
-#: includes/widgets/class-geodir-cp-widget-post-linked.php:43
+#: includes/widgets/class-geodir-cp-widget-cpt-listings.php:54
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:44
 msgid "The widget title."
 msgstr ""
 
-#: includes/widgets/class-geodir-cp-widget-cpt-listings.php:59
+#: includes/widgets/class-geodir-cp-widget-cpt-listings.php:61
 msgid "Exclude CPT:"
 msgstr ""
 
-#: includes/widgets/class-geodir-cp-widget-cpt-listings.php:60
+#: includes/widgets/class-geodir-cp-widget-cpt-listings.php:62
 msgid "Tick CPTs to hide from list."
 msgstr ""
 
-#: includes/widgets/class-geodir-cp-widget-cpt-listings.php:69
+#: includes/widgets/class-geodir-cp-widget-cpt-listings.php:71
 msgid "Display:"
 msgstr ""
 
-#: includes/widgets/class-geodir-cp-widget-cpt-listings.php:70
+#: includes/widgets/class-geodir-cp-widget-cpt-listings.php:72
 msgid "Select display type."
 msgstr ""
 
-#: includes/widgets/class-geodir-cp-widget-cpt-listings.php:73
+#: includes/widgets/class-geodir-cp-widget-cpt-listings.php:75
 msgid "Default (image & name)"
 msgstr ""
 
-#: includes/widgets/class-geodir-cp-widget-cpt-listings.php:74
+#: includes/widgets/class-geodir-cp-widget-cpt-listings.php:76
 msgid "Image only"
 msgstr ""
 
-#: includes/widgets/class-geodir-cp-widget-cpt-listings.php:75
+#: includes/widgets/class-geodir-cp-widget-cpt-listings.php:77
 msgid "Name only"
 msgstr ""
 
-#: includes/widgets/class-geodir-cp-widget-cpt-listings.php:82
+#: includes/widgets/class-geodir-cp-widget-cpt-listings.php:84
 msgid "Image Width:"
 msgstr ""
 
-#: includes/widgets/class-geodir-cp-widget-cpt-listings.php:83
+#: includes/widgets/class-geodir-cp-widget-cpt-listings.php:85
 msgid "CPT image width. Ex: 90px, 25%, auto"
 msgstr ""
 
-#: includes/widgets/class-geodir-cp-widget-cpt-listings.php:90
+#: includes/widgets/class-geodir-cp-widget-cpt-listings.php:93
 msgid "Image Height:"
 msgstr ""
 
-#: includes/widgets/class-geodir-cp-widget-cpt-listings.php:91
+#: includes/widgets/class-geodir-cp-widget-cpt-listings.php:94
 msgid "CPT image height. Ex: 90px, 25%, auto"
 msgstr ""
 
-#: includes/widgets/class-geodir-cp-widget-post-linked.php:24
+#: includes/widgets/class-geodir-cp-widget-cpt-listings.php:105
+msgid "Card Height:"
+msgstr ""
+
+#: includes/widgets/class-geodir-cp-widget-cpt-listings.php:106
+msgid "Card height. Ex: 150"
+msgstr ""
+
+#: includes/widgets/class-geodir-cp-widget-cpt-listings.php:112
+#: includes/widgets/class-geodir-cp-widget-cpt-listings.php:130
+#: includes/widgets/class-geodir-cp-widget-cpt-listings.php:148
+#: includes/widgets/class-geodir-cp-widget-cpt-listings.php:166
+#: includes/widgets/class-geodir-cp-widget-cpt-listings.php:180
+#: includes/widgets/class-geodir-cp-widget-cpt-listings.php:196
+#: includes/widgets/class-geodir-cp-widget-cpt-listings.php:207
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:144
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:162
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:176
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:192
+msgid "Card Design"
+msgstr ""
+
+#: includes/widgets/class-geodir-cp-widget-cpt-listings.php:116
+msgid "Card columns"
+msgstr ""
+
+#: includes/widgets/class-geodir-cp-widget-cpt-listings.php:117
+msgid "Wrap cards in columns and rows as needed."
+msgstr ""
+
+#: includes/widgets/class-geodir-cp-widget-cpt-listings.php:120
+#: includes/widgets/class-geodir-cp-widget-cpt-listings.php:138
+#: includes/widgets/class-geodir-cp-widget-cpt-listings.php:156
+#: includes/widgets/class-geodir-cp-widget-cpt-listings.php:174
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:134
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:152
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:170
+msgid "Default"
+msgstr ""
+
+#: includes/widgets/class-geodir-cp-widget-cpt-listings.php:134
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:130
+msgid "Card row gap"
+msgstr ""
+
+#: includes/widgets/class-geodir-cp-widget-cpt-listings.php:135
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:131
+msgid "This adjusts the spacing between the cards horizontally."
+msgstr ""
+
+#: includes/widgets/class-geodir-cp-widget-cpt-listings.php:152
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:148
+msgid "Card column gap"
+msgstr ""
+
+#: includes/widgets/class-geodir-cp-widget-cpt-listings.php:153
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:149
+msgid "This adjusts the spacing between the cards vertically."
+msgstr ""
+
+#: includes/widgets/class-geodir-cp-widget-cpt-listings.php:170
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:166
+msgid "Card border"
+msgstr ""
+
+#: includes/widgets/class-geodir-cp-widget-cpt-listings.php:171
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:167
+msgid "Set the border style for the card."
+msgstr ""
+
+#: includes/widgets/class-geodir-cp-widget-cpt-listings.php:175
+#: includes/widgets/class-geodir-cp-widget-cpt-listings.php:188
+#: includes/widgets/class-geodir-cp-widget-cpt-listings.php:203
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:171
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:184
+msgid "None"
+msgstr ""
+
+#: includes/widgets/class-geodir-cp-widget-cpt-listings.php:184
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:180
+msgid "Card shadow"
+msgstr ""
+
+#: includes/widgets/class-geodir-cp-widget-cpt-listings.php:185
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:181
+msgid "Set the card shadow style."
+msgstr ""
+
+#: includes/widgets/class-geodir-cp-widget-cpt-listings.php:189
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:185
+msgid "Small"
+msgstr ""
+
+#: includes/widgets/class-geodir-cp-widget-cpt-listings.php:190
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:186
+msgid "Medium"
+msgstr ""
+
+#: includes/widgets/class-geodir-cp-widget-cpt-listings.php:191
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:187
+msgid "Large"
+msgstr ""
+
+#: includes/widgets/class-geodir-cp-widget-cpt-listings.php:201
+msgid "Text color"
+msgstr ""
+
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:23
 msgid "GD > Linked Posts"
 msgstr ""
 
-#: includes/widgets/class-geodir-cp-widget-post-linked.php:27
-msgid "Displays the linked posts."
-msgstr ""
-
-#: includes/widgets/class-geodir-cp-widget-post-linked.php:51
-msgid "Post ID:"
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:26
+msgid ""
+"Displays the linked posts. Note: This widget will be removed in future, use "
+"GD > GD Listings widget to show linked posts."
 msgstr ""
 
 #: includes/widgets/class-geodir-cp-widget-post-linked.php:52
-msgid "Leave blank to use current post id."
-msgstr ""
-
-#: includes/widgets/class-geodir-cp-widget-post-linked.php:59
-msgid "Link Type:"
+msgid "Post ID:"
 msgstr ""
 
 #: includes/widgets/class-geodir-cp-widget-post-linked.php:60
+msgid "Link Type:"
+msgstr ""
+
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:61
 msgid "The type of link to show."
 msgstr ""
 
-#: includes/widgets/class-geodir-cp-widget-post-linked.php:63
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:64
 msgid "Linked to"
 msgstr ""
 
-#: includes/widgets/class-geodir-cp-widget-post-linked.php:64
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:65
 msgid "Linked from"
 msgstr ""
 
-#: includes/widgets/class-geodir-cp-widget-post-linked.php:71
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:72
 msgid "Post Type:"
 msgstr ""
 
-#: includes/widgets/class-geodir-cp-widget-post-linked.php:72
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:73
 msgid "The custom post type to show by default."
 msgstr ""
 
-#: includes/widgets/class-geodir-cp-widget-post-linked.php:74
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:75
 msgid "Auto (same as current post)"
 msgstr ""
 
-#: includes/widgets/class-geodir-cp-widget-post-linked.php:80
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:81
 msgid "Sort by:"
 msgstr ""
 
-#: includes/widgets/class-geodir-cp-widget-post-linked.php:81
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:82
 msgid "How the listings should be sorted."
 msgstr ""
 
-#: includes/widgets/class-geodir-cp-widget-post-linked.php:89
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:90
 msgid "Title tag:"
 msgstr ""
 
-#: includes/widgets/class-geodir-cp-widget-post-linked.php:90
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:91
 msgid "The title tag used for the listings."
 msgstr ""
 
-#: includes/widgets/class-geodir-cp-widget-post-linked.php:93
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:94
 msgid "h3 (default)"
 msgstr ""
 
-#: includes/widgets/class-geodir-cp-widget-post-linked.php:94
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:95
 msgid "h2 (if main content of page)"
 msgstr ""
 
-#: includes/widgets/class-geodir-cp-widget-post-linked.php:113
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:102
 msgid "Layout:"
 msgstr ""
 
-#: includes/widgets/class-geodir-cp-widget-post-linked.php:114
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:103
 msgid "How the listings should laid out by default."
 msgstr ""
 
-#: includes/widgets/class-geodir-cp-widget-post-linked.php:122
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:111
 msgid "Posts to show:"
 msgstr ""
 
-#: includes/widgets/class-geodir-cp-widget-post-linked.php:123
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:112
 msgid "The number of posts to show by default."
 msgstr ""
 
-#: includes/widgets/class-geodir-cp-widget-post-linked.php:130
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:119
 msgid "Show view all link?"
 msgstr ""
 
-#: includes/widgets/class-geodir-cp-widget-post-linked.php:144
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:224
 msgid "Elementor Skin"
 msgstr ""
 
-#: includes/widgets/class-geodir-cp-widget-post-linked.php:151
-#: includes/widgets/class-geodir-cp-widget-post-linked.php:161
-#: includes/widgets/class-geodir-cp-widget-post-linked.php:170
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:231
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:241
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:250
 msgid "Design"
 msgstr ""
 
-#: includes/widgets/class-geodir-cp-widget-post-linked.php:155
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:235
 msgid "Skin column gap"
 msgstr ""
 
-#: includes/widgets/class-geodir-cp-widget-post-linked.php:156
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:236
 msgid "The px value for the column gap."
 msgstr ""
 
-#: includes/widgets/class-geodir-cp-widget-post-linked.php:164
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:244
 msgid "Skin row gap"
 msgstr ""
 
-#: includes/widgets/class-geodir-cp-widget-post-linked.php:165
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:245
 msgid "The px value for the row gap."
 msgstr ""
 
-#: includes/widgets/class-geodir-cp-widget-post-linked.php:477
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:571
+msgid ""
+"This preview shows all content items to give an idea of layout. Dummy data "
+"is used in places."
+msgstr ""
+
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:622
 #, php-format
 msgid "View %s's all %s"
 msgstr ""
 
-#: includes/widgets/class-geodir-cp-widget-post-linked.php:479
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:624
 #, php-format
 msgid "View all %s in %s"
 msgstr ""
 
-#: includes/widgets/class-geodir-cp-widget-post-linked.php:529
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:679
 msgid "A-Z"
 msgstr ""
 
-#: includes/widgets/class-geodir-cp-widget-post-linked.php:530
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:680
 msgid "Latest"
 msgstr ""
 
-#: includes/widgets/class-geodir-cp-widget-post-linked.php:531
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:681
 msgid "Most reviews"
 msgstr ""
 
-#: includes/widgets/class-geodir-cp-widget-post-linked.php:532
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:682
 msgid "Highest rating"
 msgstr ""
 
-#: includes/widgets/class-geodir-cp-widget-post-linked.php:533
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:683
 msgid "Random"
 msgstr ""
 
-#: includes/widgets/class-geodir-cp-widget-post-linked.php:534
+#: includes/widgets/class-geodir-cp-widget-post-linked.php:684
 msgid "Distance to current post (details page only)"
 msgstr ""

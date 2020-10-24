@@ -380,7 +380,7 @@ function geodir_buddypress_listings_title() {
     $post_type_name = geodir_buddypress_post_type_name();
 
     echo apply_filters( 'geodir_buddypress_listings_before_title', '' );
-    echo apply_filters( 'geodir_buddypress_listings_title', '<div class="gdbp-content-title">' . $post_type_name . '</div>' );
+    echo apply_filters( 'geodir_buddypress_listings_title', '<div class="gdbp-content-title screen-heading">' . $post_type_name . '</div>' );
     echo apply_filters( 'geodir_buddypress_listings_after_title', '' );
 }
 
@@ -395,7 +395,7 @@ function geodir_buddypress_reviews_title() {
 
     $post_type_name = geodir_buddypress_post_type_name();
 
-    $reviews_title = '<div class="gdbp-content-title">' . wp_sprintf( __( 'Reviews on %s', 'geodir_buddypress' ), $post_type_name ) . '</div>';
+    $reviews_title = '<div class="gdbp-content-title screen-heading">' . wp_sprintf( __( 'Reviews on %s', 'geodir_buddypress' ), $post_type_name ) . '</div>';
     echo apply_filters( 'geodir_buddypress_reviews_title_' . $action, $reviews_title, $action, $post_type_name );
 }
 
@@ -533,6 +533,106 @@ function geodir_buddypress_pagination($before = '', $after = '', $prelabel = '',
                 echo '<li><a href="' . str_replace('&paged', '&amp;paged', $url) . '">&raquo;</a></li>';
             }
             echo "</ul></nav> $after";
+        }
+    }
+}
+
+/**
+ * BuddyPress listings tab pagination.
+ *
+ * @since 1.0.0
+ * @package GeoDirectory_BuddyPress_Integration
+ *
+ * @param string $before Pagination before HTML.
+ * @param string $after Pagination after HTML.
+ * @param string $prelabel Pagination previous label text.
+ * @param string $nxtlabel Pagination next label text.
+ * @param int $pages_to_show Number of pages to show.
+ * @param bool $always_show Always display the pagination? Default: false.
+ */
+function geodir_buddypress_pagination_aui( $before = '', $after = '', $prelabel = '', $nxtlabel = '', $pages_to_show = 5, $always_show = false ) {
+    global $bp, $posts_per_page, $found_posts, $paged;
+    if ( empty ( $prelabel ) ) {
+        $prelabel = '<span class="nav-prev-text sr-only">' . __( 'PRevious', 'geodir_buddypress' ) . '</span> <i class="fas fa-chevron-left"></i>';
+    }
+
+    $user_domain = geodir_buddypress_get_user_domain();
+
+    if (empty($nxtlabel)) {
+        $nxtlabel = '<span class="nav-next-text sr-only">' . __( 'Next', 'geodir_buddypress' ) . '</span> <i class="fas fa-chevron-right"></i>';
+    }
+
+    $half_pages_to_show = round($pages_to_show / 2);
+
+    if (!is_single() && $found_posts > 0 && $posts_per_page > 0) {
+        $numposts = $found_posts;
+        $max_page = ceil($numposts / $posts_per_page);
+
+        if (empty($paged)) {
+            $paged = 1;
+        }
+
+        $current_domain = '';
+        $component_domain = '';
+        if ($bp->current_component && $bp->current_action) {
+            $component_domain = trailingslashit($user_domain . $bp->current_component . '/');
+            $current_domain = trailingslashit($user_domain . $bp->current_component . '/' . $bp->current_action);
+        }
+
+        if ($max_page > 1 || $always_show) {
+            echo "$before <div class='mb-3'><section class='px-0 py-2 w-100'><nav class='geodir-pagination navigation aui-pagination border-0' role='navigation'><div class='aui-nav-links'><ul class='pagination m-0 p-0'>";
+            if ($paged >= ($pages_to_show - 1)) {
+                $url = get_pagenum_link();
+                if ($current_domain) {
+                    $url = strpos($url, $current_domain) !== false ? $url : str_replace($component_domain, $current_domain, $url);
+                }
+                echo '<li class="page-item"><a class="page-link" href="' . str_replace('&paged', '&amp;paged', $url) . '">&laquo;</a></li>';
+            }
+            ob_start();
+            previous_posts_link($prelabel);
+            $url = ob_get_clean();
+            if ($current_domain) {
+                $url = strpos($url, $current_domain) !== false ? $url : str_replace($component_domain, $current_domain, $url);
+            }
+			if ( strpos( $url, ' class="') !== false ) {
+				$url = str_replace( ' class="', ' class="prev page-link ', $url );
+			} else {
+				$url = str_replace( '<a ', '<a class="prev page-link" ', $url );
+			}
+            echo '<li class="page-item">' . $url . '</li>';
+            for ($i = $paged - $half_pages_to_show; $i <= $paged + $half_pages_to_show; $i++) {
+                if ($i >= 1 && $i <= $max_page) {
+                    if ($i == $paged) {
+                        echo '<li class="page-item active"><span aria-current="page" class="page-link current">'.$i.'</span></li>';
+                    } else {
+                        $url = get_pagenum_link($i);
+                        if ($current_domain) {
+                            $url = strpos($url, $current_domain) !== false ? $url : str_replace($component_domain, $current_domain, $url);
+                        }
+                        echo '<li class="page-item"><a class="page-link" href="' . str_replace('&paged', '&amp;paged', $url) . '">' . $i . '</a></li>';
+                    }
+                }
+            }
+            ob_start();
+            next_posts_link($nxtlabel, $max_page);
+            $url = ob_get_clean();
+            if ($current_domain) {
+                $url = strpos($url, $current_domain) !== false ? $url : str_replace($component_domain, $current_domain, $url);
+            }
+			if ( strpos( $url, ' class="') !== false ) {
+				$url = str_replace( ' class="', ' class="next page-link ', $url );
+			} else {
+				$url = str_replace( '<a ', '<a class="next page-link" ', $url );
+			}
+           echo '<li class="page-item">' . $url . '</li>';
+            if (($paged + $half_pages_to_show) < ($max_page)) {
+                $url = get_pagenum_link($max_page);
+                if ($current_domain) {
+                    $url = strpos($url, $current_domain) !== false ? $url : str_replace($component_domain, $current_domain, $url);
+                }
+                echo '<li class="page-item"><a class="page-link" href="' . str_replace('&paged', '&amp;paged', $url) . '">&raquo;</a></li>';
+            }
+            echo "</div></ul></nav></section></div> $after";
         }
     }
 }

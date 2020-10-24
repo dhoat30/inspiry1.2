@@ -185,7 +185,7 @@
         color: white; 
     }
     .dark-grey{ 
-        color:#444444;
+        color:#525659;
     }
     .light-grey{ 
         color: #666;
@@ -224,6 +224,11 @@
         color: #708393;
         
     }
+    .rm-txt-dec:link{ 
+        text-decoration: none;
+       
+        
+    }
     .rm-txt-dec:hover{ 
         text-decoration: none;
     }
@@ -254,6 +259,20 @@
 .invisible{ 
     opacity: 0;
     visibility: hidden;
+}
+
+/*overlay*/ 
+.overlay{ 
+    position: fixed;
+    top: 0; 
+    left: 0;
+    right: 0; 
+    bottom: 0;
+    width: 100vw;
+    height: 100vh; 
+    z-index: 1000; 
+    background: rgba(0,0,0,0.5);
+    display: none;
 }
 
 /*error and success messages*/ 

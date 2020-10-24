@@ -1,4 +1,6 @@
 jQuery(function($) {
+	geodir_claim_params.loader = null;
+	geodir_claim_params.addPopup = null;
 	$(document).on('submit', 'form.geodir-post-claim-form', function(event) {
 		event.preventDefault();
 		var $form = $(this), $button = $form.find('.geodir-post-claim-button'), $fields = $form.find('.geodir-claim-form-fields');
@@ -28,15 +30,19 @@ jQuery(function($) {
 				});
 				if (typeof res == 'object') {
 					if ( res.data.message ) {
-						if (res.success) {
-							type = 'success';
-							message = '<i class="fas fa-check-circle" aria-hidden="true"></i>';
+						if (geodir_claim_params.aui) {
+							$fields.html(res.data.message);
 						} else {
-							type = 'error';
-							message = '<i class="fas fa-exclamation-triangle" aria-hidden="true"></i>';
+							if (res.success) {
+								type = 'success';
+								message = '<i class="fas fa-check-circle" aria-hidden="true"></i>';
+							} else {
+								type = 'error';
+								message = '<i class="fas fa-exclamation-triangle" aria-hidden="true"></i>';
+							}
+							message += ' ' + res.data.message;
+							$fields.html('<div class="geodir-claim-message geodir-claim-msg-' + type + '">' + message + '</div>');
 						}
-						message += ' ' + res.data.message;
-						$fields.html('<div class="geodir-claim-message geodir-claim-msg-' + type + '">' + message + '</div>');
 					}
 				} else {
 					$fields.html(res);
@@ -57,6 +63,10 @@ jQuery(function($) {
 });
 
 function gd_claim_ajax_lightbox($action, $nonce, $post_id, $extra) {
+	if (geodir_claim_params.aui) {
+		gd_claim_ajax_lightbox_aui($action, $nonce, $post_id, $extra);
+		return;
+	}
     if ($action) {
         if (!$nonce || $nonce == '') {
             $nonce = geodir_params.basic_nonce;
@@ -78,6 +88,36 @@ function gd_claim_ajax_lightbox($action, $nonce, $post_id, $extra) {
             },
             success: function(content) {
                 jQuery('.geodir-claim-lity-content').addClass('lity-show').html(content);
+            }
+        });
+    }
+}
+
+function gd_claim_ajax_lightbox_aui($action, $nonce, $post_id, $extra) {
+    if ($action) {
+        if ( ! $nonce || $nonce == '') {
+            $nonce = geodir_params.basic_nonce;
+        }
+
+		/* Close any instance of the popup */
+		if ( geodir_claim_params.addPopup ) {
+			geodir_claim_params.addPopup.close();
+		}
+
+		/* Show loading screen */
+		geodir_claim_params.loader = aui_modal();
+
+        jQuery.ajax({
+            url: geodir_params.ajax_url,
+            type: 'POST',
+            data: {
+                action: $action,
+                security: $nonce,
+                p: $post_id,
+                extra: $extra
+            },
+            success: function(content) {
+                 geodir_claim_params.addPopup = aui_modal('',content,'','','','');
             }
         });
     }

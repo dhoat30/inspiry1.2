@@ -148,7 +148,28 @@ class GeoDir_Adv_Search_Fields {
 				$fa_class = 'fas';
 			}
 
-			echo '<button class="geodir-show-filters ' . $fa_class . '" aria-label="' . esc_attr( $btn_value ) . '" onclick="geodir_search_show_filters(this); return false;">' . $btn_value . '</button>';
+			$design_style = geodir_design_style();
+			if($design_style){
+				echo '<div class="gd-search-field-search gd-search-field-search-filters col-auto flex-grow-1">';
+					echo '<div class="form-group">';
+						echo aui()->button(
+							array(
+								'type'       => 'button',
+								'class'      => 'geodir-show-filters btn btn-primary w-100 ',
+								'content'    => $btn_value,
+								'aria-label' => __( 'Advanced Filters', 'geodiradvancesearch' ),
+								'extra_attributes'  => array(
+									'onclick'   => 'jQuery(this).closest(\'.geodir-listing-search\').find(\'.geodir-more-filters\').collapse(\'toggle\')',
+//									'data-toggle'   => 'collapse',
+//									'data-target'   => '.geodir-more-filters',
+								)
+							)
+						);
+					echo "</div>";
+				echo "</div>";
+			}else{
+				echo '<button class="geodir-show-filters ' . $fa_class . '" aria-label="' . esc_attr( $btn_value ) . '" onclick="geodir_search_show_filters(this); return false;">' . $btn_value . '</button>';
+			}
 		}
 	}
 
@@ -196,6 +217,9 @@ class GeoDir_Adv_Search_Fields {
 	}
 
 	public static function output_main_categories( $html, $cf, $post_type ) {
+
+		$design_style = geodir_design_style();
+
 		$cf->input_type = 'SELECT';
 
 		$args = array( 'orderby' => 'name', 'order' => 'ASC', 'hide_empty' => true );
@@ -206,13 +230,7 @@ class GeoDir_Adv_Search_Fields {
 
 		// let's order the child categories below the parent.
 		$terms_temp = array();
-		//print_r($terms);
 
-//		if(!empty($terms)){
-//			$terms_temp = self::order_terms_heretically($terms);
-//		}
-//		//print_r($terms_temp);
-//		echo '###';exit;
 		foreach ( $terms as $term ) {
 			if ( $term->parent == '0' ) {
 				$terms_temp[] = $term;
@@ -231,9 +249,35 @@ class GeoDir_Adv_Search_Fields {
 
 		$terms = $terms_temp;
 
-		$html .= "<div class='gd-search-input-wrapper gd-search-field-cpt gd-search-field-taxonomy gd-search-field-categories'>";
-		$html .= str_replace(array('<li>','</li>'),'',geodir_advance_search_options_output( $terms, $cf, $post_type, stripslashes( __( $cf->frontend_title, 'geodirectory' ) )));
-		$html .= "</div>";
+		if($design_style){
+			$html .= "<div class='gd-search-field-taxonomy gd-search-field-categories col-auto flex-fill'>";
+
+			$cats = array('' => esc_attr__( 'Category', 'geodirectory' ));
+
+			if(!empty($terms_temp)){
+				foreach($terms_temp as $term){
+					$cats[$term->term_id] = __($term->name, 'geodirectory' );
+				}
+			}
+
+			$value = !empty($_REQUEST['spost_category']) ? absint($_REQUEST['spost_category'][0]) : '';
+
+			$html .=  aui()->select( array(
+				'id'               => "geodir_search_post_category",
+				'name'             => "spost_category[]",
+				'class'             => 'mw-100',
+				'label'             => __($cf->frontend_title, 'geodirectory' ),
+				'placeholder'      => esc_attr__( 'Category', 'geodirectory' ),
+				'value'            => $value ,
+				'options'          => $cats,
+			) );
+			$html .= "</div>";
+		}else{
+			$html .= "<div class='gd-search-input-wrapper gd-search-field-cpt gd-search-field-taxonomy gd-search-field-categories'>";
+			$html .= str_replace(array('<li>','</li>'),'',geodir_advance_search_options_output( $terms, $cf, $post_type, stripslashes( __( $cf->frontend_title, 'geodirectory' ) )));
+			$html .= "</div>";
+		}
+
 
 		return $html;
 	}
@@ -248,9 +292,15 @@ class GeoDir_Adv_Search_Fields {
 			'optgroup' => ''
 		);
 
-		$html .= "<div class='gd-search-input-wrapper gd-search-field-cpt gd-search-" . $cf->htmlvar_name . "'>";
-		$html .= str_replace(array('<li>','</li>'),'',geodir_advance_search_options_output( $terms, $cf, $post_type, stripslashes( __( $cf->frontend_title, 'geodirectory' ) )));
+		$design_style = geodir_design_style();
+
+		$main_class = $design_style && !empty($cf->main_search) ? 'col-auto flex-fill' : '';
+
+		$html .= "<div class='gd-search-input-wrapper gd-search-field-cpt gd-search-" . $cf->htmlvar_name . " $main_class'>";
+		$output = $design_style ? geodir_advance_search_options_output_aui( $terms, $cf, $post_type, stripslashes( __( $cf->frontend_title, 'geodirectory' ) ) ) : geodir_advance_search_options_output( $terms, $cf, $post_type, stripslashes( __( $cf->frontend_title, 'geodirectory' ) ) );
+		$html .= str_replace(array('<li>','</li>'),'',$output );
 		$html .= "</div>";
+
 
 		return $html;
 	}
@@ -269,61 +319,156 @@ class GeoDir_Adv_Search_Fields {
 		// Convert to jQuery UI datepicker format.
 		$jqueryui_date_format  = geodir_date_format_php_to_jqueryui( $date_format  );
 
+		$design_style = geodir_design_style();
+
+
+
 		ob_start();
-		if ( $field->search_condition == 'FROM' ) {
-			$field_value_from = '';
-			$field_value_to = '';
-			$field_value_from_display = '';
-			$field_value_to_display = '';
+		if($design_style ){
+			if ( $field->search_condition == 'FROM' ) {
+				$field_value_from = '';
+				$field_value_to = '';
+				$field_value_from_display = '';
+				$field_value_to_display = '';
 
-			if ( is_array( $field_value ) && ! empty( $field_value ) ) {
-				if ( ! empty( $field_value['from'] ) ) {
-					$field_value_from = sanitize_text_field( $field_value['from'] );
-					$field_value_from_display = date_i18n( $date_format, strtotime( $field_value_from ) );
+				if ( is_array( $field_value ) && ! empty( $field_value ) ) {
+					if ( ! empty( $field_value['from'] ) ) {
+						$field_value_from = sanitize_text_field( $field_value['from'] );
+						$field_value_from_display = date_i18n( $date_format, strtotime( $field_value_from ) );
+					}
+
+					if ( ! empty( $field_value['to'] ) ) {
+						$field_value_to = sanitize_text_field( $field_value['to'] );
+						$field_value_to_display = date_i18n( $date_format, strtotime( $field_value_to ) );
+					}
 				}
 
-				if ( ! empty( $field_value['to'] ) ) {
-					$field_value_to = sanitize_text_field( $field_value['to'] );
-					$field_value_to_display = date_i18n( $date_format, strtotime( $field_value_to ) );
+				if ( empty( $field_label ) ) {
+					$field_label = wp_sprintf( __( '%s Dates', 'geodiradvancesearch' ), $pt_name );
 				}
-			}
+				$field_label_from = ! empty( $field_label ) ? wp_sprintf( __( 'From: %s', 'geodiradvancesearch' ), $field_label ) : wp_sprintf( __( '%s Start Date', 'geodiradvancesearch' ), $pt_name );
+				$field_label_to = ! empty( $field_label ) ? wp_sprintf( __( 'To: %s', 'geodiradvancesearch' ), $field_label ) : wp_sprintf( __( '%s End Date', 'geodiradvancesearch' ), $pt_name );
+				$aria_label_from = empty( $as_fieldset_start ) ? ' aria-label="' . esc_attr( $field_label_from ) . '"' : '';
+				$aria_label_to = empty( $as_fieldset_start ) ? ' aria-label="' . esc_attr( $field_label_to ) . '"' : '';
+				?>
+				<div class="gd-search-has-date gd-search-<?php echo $htmlvar_name; ?> from-to col-auto flex-fill">
+					<?php if ( ! empty( $field_label ) ) { ?>
+						<label for="<?php echo $htmlvar_name; ?>" class="sr-only"><?php echo $field_label; ?></label>
+					<?php }
 
-			$field_label_from = ! empty( $field_label ) ? wp_sprintf( __( 'From: %s', 'geodiradvancesearch' ), $field_label ) : wp_sprintf( __( '%s Start Date', 'geodiradvancesearch' ), $pt_name );
-			$field_label_to = ! empty( $field_label ) ? wp_sprintf( __( 'To: %s', 'geodiradvancesearch' ), $field_label ) : wp_sprintf( __( '%s End Date', 'geodiradvancesearch' ), $pt_name );
-			?>
-			<div class="gd-search-input-wrapper gd-search-field-cpt gd-search-has-date gd-search-<?php echo $htmlvar_name; ?>-from">
-				<input type="text" value="<?php echo esc_attr( $field_value_from_display ); ?>" placeholder="<?php echo esc_attr( $field_label_from ); ?>" class="cat_input gd-search-date-input" field_type="text" data-alt-field="<?php echo $htmlvar_name; ?>[from]" data-date-format="<?php echo esc_attr( $jqueryui_date_format ); ?>" data-field-key="<?php echo $htmlvar_name; ?>" aria-label="<?php echo esc_attr( $field_label_from ); ?>"/><input type="hidden" name="<?php echo $htmlvar_name; ?>[from]" value="<?php echo esc_attr( $field_value_from ); ?>">
-			</div>
-			<div class="gd-search-input-wrapper gd-search-field-cpt gd-search-has-date gd-search-<?php echo $htmlvar_name; ?>-to">
-				<input type="text" value="<?php echo esc_attr( $field_value_to_display ); ?>" placeholder="<?php echo esc_attr( $field_label_to ); ?>" class="cat_input gd-search-date-input" field_type="text" data-alt-field="<?php echo $htmlvar_name; ?>[to]" data-date-format="<?php echo esc_attr( $jqueryui_date_format ); ?>" data-field-key="<?php echo $htmlvar_name; ?>" aria-label="<?php echo esc_attr( $field_label_to ); ?>"/><input type="hidden" name="<?php echo $htmlvar_name; ?>[to]" value="<?php echo esc_attr( $field_value_to ); ?>">
-			</div>
-			<?php
-		} else {
-			if ( empty( $field_label ) ) {
-				$field_label = wp_sprintf( __( '%s Date', 'geodiradvancesearch' ), $pt_name );
+					// flatpickr attributes
+					$extra_attributes['data-alt-input'] = 'true';
+					$extra_attributes['data-alt-format'] = $date_format;
+					$extra_attributes['data-date-format'] = 'Y-m-d';
+
+					// range
+					$extra_attributes['data-mode'] = 'range';
+					echo aui()->input(
+						array(
+							'id'                => $htmlvar_name,
+							'name'              => $htmlvar_name,
+							'type'              => 'datepicker',
+							'placeholder'       => $field_label,
+							'class'             => '',
+							'value'             => esc_attr($field_value),
+							'extra_attributes'  => $extra_attributes
+						)
+					);
+					?>
+				</div>
+				<?php
+			} else {
+				if ( empty( $field_label ) ) {
+					$field_label = wp_sprintf( __( '%s Date', 'geodiradvancesearch' ), $pt_name );
+				}
+				$aria_label = empty( $as_fieldset_start ) ? ' aria-label="' . esc_attr( $field_label ) . '"' : '';
+				$field_value = ! empty( $field_value ) && ! is_array( $field_value ) ? sanitize_text_field( $field_value ) : '';
+				$field_value_display = ! empty( $field_value ) ? date_i18n( $date_format, strtotime( $field_value ) ) : '';
+
+
+				?>
+				<div class="gd-search-has-date gd-search-<?php echo $htmlvar_name; ?> col-auto flex-fill">
+					<?php if ( ! empty( $field_label ) ) { ?>
+						<label for="<?php echo $htmlvar_name; ?>" class="sr-only"><?php echo $field_label; ?></label>
+					<?php }
+
+					// flatpickr attributes
+					$extra_attributes['data-alt-input'] = 'true';
+					$extra_attributes['data-alt-format'] = $date_format;
+					$extra_attributes['data-date-format'] = 'Y-m-d';
+					echo aui()->input(
+						array(
+							'id'                => $htmlvar_name,
+							'name'              => $htmlvar_name,
+							'type'              => 'datepicker',
+							'placeholder'       => $field_label,
+							'class'             => '',
+							'value'             => esc_attr($field_value),
+							'extra_attributes'  => $extra_attributes
+						)
+					);
+
+					?>
+				</div>
+				<?php
 			}
-			$field_value = ! empty( $field_value ) && ! is_array( $field_value ) ? sanitize_text_field( $field_value ) : '';
-			$field_value_display = ! empty( $field_value ) ? date_i18n( $date_format, strtotime( $field_value ) ) : '';
-			?>
-			<div class="gd-search-input-wrapper gd-search-field-cpt gd-search-has-date gd-search-<?php echo $htmlvar_name; ?>">
-				<input type="text" value="<?php echo esc_attr( $field_value_display ); ?>" placeholder="<?php echo esc_attr( $field_label ); ?>" class="cat_input gd-search-date-input" field_type="text" data-alt-field="<?php echo $htmlvar_name; ?>" data-date-format="<?php echo esc_attr( $jqueryui_date_format ); ?>" data-field-key="<?php echo $htmlvar_name; ?>" aria-label="<?php echo esc_attr( $field_label ); ?>"><input type="hidden" name="<?php echo $htmlvar_name; ?>" value="<?php echo esc_attr( $field_value ); ?>">
-			</div>
-			<?php
+		}else{
+			if ( $field->search_condition == 'FROM' ) {
+				$field_value_from = '';
+				$field_value_to = '';
+				$field_value_from_display = '';
+				$field_value_to_display = '';
+
+				if ( is_array( $field_value ) && ! empty( $field_value ) ) {
+					if ( ! empty( $field_value['from'] ) ) {
+						$field_value_from = sanitize_text_field( $field_value['from'] );
+						$field_value_from_display = date_i18n( $date_format, strtotime( $field_value_from ) );
+					}
+
+					if ( ! empty( $field_value['to'] ) ) {
+						$field_value_to = sanitize_text_field( $field_value['to'] );
+						$field_value_to_display = date_i18n( $date_format, strtotime( $field_value_to ) );
+					}
+				}
+
+				$field_label_from = ! empty( $field_label ) ? wp_sprintf( __( 'From: %s', 'geodiradvancesearch' ), $field_label ) : wp_sprintf( __( '%s Start Date', 'geodiradvancesearch' ), $pt_name );
+				$field_label_to = ! empty( $field_label ) ? wp_sprintf( __( 'To: %s', 'geodiradvancesearch' ), $field_label ) : wp_sprintf( __( '%s End Date', 'geodiradvancesearch' ), $pt_name );
+				?>
+				<div class="gd-search-input-wrapper gd-search-field-cpt gd-search-has-date gd-search-<?php echo $htmlvar_name; ?>-from">
+					<input type="text" value="<?php echo esc_attr( $field_value_from_display ); ?>" placeholder="<?php echo esc_attr( $field_label_from ); ?>" class="cat_input gd-search-date-input" field_type="text" data-alt-field="<?php echo $htmlvar_name; ?>[from]" data-date-format="<?php echo esc_attr( $jqueryui_date_format ); ?>" data-field-key="<?php echo $htmlvar_name; ?>" aria-label="<?php echo esc_attr( $field_label_from ); ?>"/><input type="hidden" name="<?php echo $htmlvar_name; ?>[from]" value="<?php echo esc_attr( $field_value_from ); ?>">
+				</div>
+				<div class="gd-search-input-wrapper gd-search-field-cpt gd-search-has-date gd-search-<?php echo $htmlvar_name; ?>-to">
+					<input type="text" value="<?php echo esc_attr( $field_value_to_display ); ?>" placeholder="<?php echo esc_attr( $field_label_to ); ?>" class="cat_input gd-search-date-input" field_type="text" data-alt-field="<?php echo $htmlvar_name; ?>[to]" data-date-format="<?php echo esc_attr( $jqueryui_date_format ); ?>" data-field-key="<?php echo $htmlvar_name; ?>" aria-label="<?php echo esc_attr( $field_label_to ); ?>"/><input type="hidden" name="<?php echo $htmlvar_name; ?>[to]" value="<?php echo esc_attr( $field_value_to ); ?>">
+				</div>
+				<?php
+			} else {
+				if ( empty( $field_label ) ) {
+					$field_label = wp_sprintf( __( '%s Date', 'geodiradvancesearch' ), $pt_name );
+				}
+				$field_value = ! empty( $field_value ) && ! is_array( $field_value ) ? sanitize_text_field( $field_value ) : '';
+				$field_value_display = ! empty( $field_value ) ? date_i18n( $date_format, strtotime( $field_value ) ) : '';
+				?>
+				<div class="gd-search-input-wrapper gd-search-field-cpt gd-search-has-date gd-search-<?php echo $htmlvar_name; ?>">
+					<input type="text" value="<?php echo esc_attr( $field_value_display ); ?>" placeholder="<?php echo esc_attr( $field_label ); ?>" class="cat_input gd-search-date-input" field_type="text" data-alt-field="<?php echo $htmlvar_name; ?>" data-date-format="<?php echo esc_attr( $jqueryui_date_format ); ?>" data-field-key="<?php echo $htmlvar_name; ?>" aria-label="<?php echo esc_attr( $field_label ); ?>"><input type="hidden" name="<?php echo $htmlvar_name; ?>" value="<?php echo esc_attr( $field_value ); ?>">
+				</div>
+				<?php
+			}
 		}
+
 
 		$html .= ob_get_clean();
 
 		return $html;
 	}
 
-	public static function output_main_text($html,$cf,$post_type){
-
-		//$cf->input_type = 'SELECT';
-
+	public static function output_main_text( $html, $cf, $post_type ) {
+		$design_style = geodir_design_style();
 		$terms = array( 1 );
+		$main_class = $design_style && ! empty( $cf->main_search ) ? ' col-auto flex-fill' : '';
 
-		$html .= "<div class='gd-search-input-wrapper gd-search-field-cpt gd-search-" . $cf->htmlvar_name . "'>";
-		$html .= str_replace(array('<li>','</li>'),'',geodir_advance_search_options_output( $terms, $cf, $post_type, stripslashes( __( $cf->frontend_title, 'geodirectory' ) )));
+		$html .= "<div class='gd-search-input-wrapper gd-search-field-cpt gd-search-" . $cf->htmlvar_name . $main_class . "'>";
+		$output = $design_style ? geodir_advance_search_options_output_aui( $terms, $cf, $post_type, stripslashes( __( $cf->frontend_title, 'geodirectory' ) ) ) : geodir_advance_search_options_output( $terms, $cf, $post_type, stripslashes( __( $cf->frontend_title, 'geodirectory' ) ) );
+		$html .= str_replace( array( '<li>', '</li>' ), '', $output );
 		$html .= "</div>";
 
 		return $html;
@@ -343,47 +488,156 @@ class GeoDir_Adv_Search_Fields {
 		// Convert to jQuery UI timepicker format.
 		$jqueryui_time_format  = geodir_date_format_php_to_jqueryui( $time_format  );
 
+		$design_style = geodir_design_style();
+
 		ob_start();
-		if ( $field->search_condition == 'FROM' ) {
-			$field_value_from = '';
-			$field_value_to = '';
-			$field_value_from_display = '';
-			$field_value_to_display = '';
 
-			if ( is_array( $field_value ) && ! empty( $field_value ) ) {
-				if ( ! empty( $field_value['from'] ) ) {
-					$field_value_from = sanitize_text_field( $field_value['from'] );
-					$field_value_from_display = date_i18n( $time_format, strtotime( $field_value_from ) );
+		if($design_style){
+			if ( $field->search_condition == 'FROM' ) {
+				$field_value_from         = '';
+				$field_value_to           = '';
+				$field_value_from_display = '';
+				$field_value_to_display   = '';
+
+				if ( is_array( $field_value ) && ! empty( $field_value ) ) {
+					if ( ! empty( $field_value['from'] ) ) {
+						$field_value_from         = sanitize_text_field( $field_value['from'] );
+						$field_value_from_display = date_i18n( $time_format, strtotime( $field_value_from ) );
+					}
+
+					if ( ! empty( $field_value['to'] ) ) {
+						$field_value_to         = sanitize_text_field( $field_value['to'] );
+						$field_value_to_display = date_i18n( $time_format, strtotime( $field_value_to ) );
+					}
 				}
 
-				if ( ! empty( $field_value['to'] ) ) {
-					$field_value_to = sanitize_text_field( $field_value['to'] );
-					$field_value_to_display = date_i18n( $time_format, strtotime( $field_value_to ) );
+				if ( empty( $field_label ) ) {
+					$field_label = wp_sprintf( __( '%s Time', 'geodiradvancesearch' ), $pt_name );
 				}
-			}
+				$field_label_from = ! empty( $field_label ) ? wp_sprintf( __( 'From: %s', 'geodiradvancesearch' ), $field_label ) : wp_sprintf( __( '%s Start Time', 'geodiradvancesearch' ), $pt_name );
+				$field_label_to   = ! empty( $field_label ) ? wp_sprintf( __( 'To: %s', 'geodiradvancesearch' ), $field_label ) : wp_sprintf( __( '%s End Time', 'geodiradvancesearch' ), $pt_name );
 
-			$field_label_from = ! empty( $field_label ) ? wp_sprintf( __( 'From: %s', 'geodiradvancesearch' ), $field_label ) : wp_sprintf( __( '%s Start Time', 'geodiradvancesearch' ), $pt_name );
-			$field_label_to = ! empty( $field_label ) ? wp_sprintf( __( 'To: %s', 'geodiradvancesearch' ), $field_label ) : wp_sprintf( __( '%s End Time', 'geodiradvancesearch' ), $pt_name );
-			?>
-			<div class="gd-search-input-wrapper gd-search-field-cpt gd-search-has-time gd-search-<?php echo $htmlvar_name; ?>-from">
-				<input type="text" value="<?php echo esc_attr( $field_value_from_display ); ?>" placeholder="<?php echo esc_attr( $field_label_from ); ?>" class="cat_input gd-search-time-input" field_type="text" data-alt-field="<?php echo $htmlvar_name; ?>[from]" data-time-format="<?php echo esc_attr( $jqueryui_time_format ); ?>" data-field-key="<?php echo $htmlvar_name; ?>"/><input type="hidden" name="<?php echo $htmlvar_name; ?>[from]" value="<?php echo esc_attr( $field_value_from ); ?>">
-			</div>
-			<div class="gd-search-input-wrapper gd-search-field-cpt gd-search-has-time gd-search-<?php echo $htmlvar_name; ?>-to">
-				<input type="text" value="<?php echo esc_attr( $field_value_to_display ); ?>" placeholder="<?php echo esc_attr( $field_label_to ); ?>" class="cat_input gd-search-time-input" field_type="text" data-alt-field="<?php echo $htmlvar_name; ?>[to]" data-time-format="<?php echo esc_attr( $jqueryui_time_format ); ?>" data-field-key="<?php echo $htmlvar_name; ?>"/><input type="hidden" name="<?php echo $htmlvar_name; ?>[to]" value="<?php echo esc_attr( $field_value_to ); ?>">
-			</div>
-			<?php
-		} else {
-			if ( empty( $field_label ) ) {
-				$field_label = wp_sprintf( __( '%s Time', 'geodiradvancesearch' ), $pt_name );
+				// flatpickr attributes
+				$extra_attributes['data-enable-time'] = 'true';
+				$extra_attributes['data-no-calendar'] = 'true';
+				$extra_attributes['data-date-format'] = 'Hi';
+
+				$extra_attributes['data-alt-input'] = 'true';
+				$extra_attributes['data-alt-format'] = 'H:i K';
+				?>
+				<div class="gd-search-has-time gd-search-<?php echo $htmlvar_name; ?> from-to col-auto flex-fill">
+					<?php if ( ! empty( $field_label) ) { ?>
+						<label for="<?php echo $htmlvar_name; ?>" class="sr-only"><?php echo $field_label; ?></label>
+					<?php }
+					echo aui()->input(
+						array(
+							'id'                => $htmlvar_name . "_from",
+							'name'              => $htmlvar_name . "[from]",
+							'type'              => 'timepicker',
+							'placeholder'       => esc_attr( $field_label_from ),
+							'class'             => 'rounded-left',
+							'value'             => esc_attr( $field_value_from ),
+							'extra_attributes'  => $extra_attributes,
+							'input_group_right'        => '<div class="input-group-text px-2 bg-transparent border-0x" onclick="jQuery(this).parent().parent().find(\'input\').val(\'\');"><i class="fas fa-times geodir-search-input-label-clear text-muted c-pointer" title="' . __( 'Clear field', 'geodiradvancesearch' ) . '" ></i></div>',
+						)
+					);
+					?>
+				</div>
+				<div class="gd-search-has-time gd-search-<?php echo $htmlvar_name; ?> from-to col-auto flex-fill">
+					<?php
+					echo aui()->input(
+						array(
+							'id'                => $htmlvar_name . "_to",
+							'name'              => $htmlvar_name . "[to]",
+							'type'              => 'timepicker',
+							'placeholder'       => esc_attr( $field_label_to ),
+							'class'             => 'rounded-left',
+							'value'             => esc_attr( $field_value_to ),
+							'extra_attributes'  => $extra_attributes,
+							'input_group_right'        => '<div class="input-group-text px-2 bg-transparent border-0x" onclick="jQuery(this).parent().parent().find(\'input\').val(\'\');"><i class="fas fa-times geodir-search-input-label-clear text-muted c-pointer" title="' . __( 'Clear field', 'geodiradvancesearch' ) . '" ></i></div>',
+						)
+					);
+					?>
+				</div>
+				<?php
+			} else {
+				if ( empty( $field_label ) ) {
+					$field_label = wp_sprintf( __( '%s Time', 'geodiradvancesearch' ), $pt_name );
+				}
+				$field_value         = ! empty( $field_value ) && ! is_array( $field_value ) ? sanitize_text_field( $field_value ) : '';
+				?>
+				<div class="gd-search-has-time gd-search-<?php echo $htmlvar_name; ?> col-auto flex-fill">
+					<?php if ( ! empty( $field_label) ) { ?>
+						<label for="<?php echo $htmlvar_name; ?>" class="sr-only"><?php echo $field_label; ?></label>
+					<?php }
+
+					// flatpickr attributes
+					$extra_attributes['data-enable-time'] = 'true';
+					$extra_attributes['data-no-calendar'] = 'true';
+					$extra_attributes['data-date-format'] = 'Hi';
+
+					$extra_attributes['data-alt-input'] = 'true';
+					$extra_attributes['data-alt-format'] = 'H:i K';
+
+					echo aui()->input(
+						array(
+							'id'                => $htmlvar_name,
+							'name'              => $htmlvar_name,
+							'required'          => !empty($cf['is_required']) ? true : false,
+							'type'              => 'timepicker',
+							'placeholder'       => esc_attr( $field_label ),
+							'class'             => '',
+							'value'             => esc_attr( $field_value ),
+							'extra_attributes'  => $extra_attributes
+						)
+					);
+					?>
+				</div>
+				<?php
 			}
-			$field_value = ! empty( $field_value ) && ! is_array( $field_value ) ? sanitize_text_field( $field_value ) : '';
-			$field_value_display = ! empty( $field_value ) ? date_i18n( $time_format, strtotime( $field_value ) ) : '';
-			?>
-			<div class="gd-search-input-wrapper gd-search-field-cpt gd-search-has-time gd-search-<?php echo $htmlvar_name; ?>">
-				<input type="text" value="<?php echo esc_attr( $field_value_display ); ?>" placeholder="<?php echo esc_attr( $field_label ); ?>" class="cat_input gd-search-time-input" field_type="text" data-default-value="<?php echo esc_attr( $field_value_display ); ?>" data-alt-field="<?php echo $htmlvar_name; ?>" data-time-format="<?php echo esc_attr( $jqueryui_time_format ); ?>" data-field-key="<?php echo $htmlvar_name; ?>"><input type="hidden" name="<?php echo $htmlvar_name; ?>" value="<?php echo esc_attr( $field_value ); ?>">
-			</div>
-			<?php			
+		}else{
+			if ( $field->search_condition == 'FROM' ) {
+				$field_value_from = '';
+				$field_value_to = '';
+				$field_value_from_display = '';
+				$field_value_to_display = '';
+
+				if ( is_array( $field_value ) && ! empty( $field_value ) ) {
+					if ( ! empty( $field_value['from'] ) ) {
+						$field_value_from = sanitize_text_field( $field_value['from'] );
+						$field_value_from_display = date_i18n( $time_format, strtotime( $field_value_from ) );
+					}
+
+					if ( ! empty( $field_value['to'] ) ) {
+						$field_value_to = sanitize_text_field( $field_value['to'] );
+						$field_value_to_display = date_i18n( $time_format, strtotime( $field_value_to ) );
+					}
+				}
+
+				$field_label_from = ! empty( $field_label ) ? wp_sprintf( __( 'From: %s', 'geodiradvancesearch' ), $field_label ) : wp_sprintf( __( '%s Start Time', 'geodiradvancesearch' ), $pt_name );
+				$field_label_to = ! empty( $field_label ) ? wp_sprintf( __( 'To: %s', 'geodiradvancesearch' ), $field_label ) : wp_sprintf( __( '%s End Time', 'geodiradvancesearch' ), $pt_name );
+				?>
+				<div class="gd-search-input-wrapper gd-search-field-cpt gd-search-has-time gd-search-<?php echo $htmlvar_name; ?>-from">
+					<input type="text" value="<?php echo esc_attr( $field_value_from_display ); ?>" placeholder="<?php echo esc_attr( $field_label_from ); ?>" class="cat_input gd-search-time-input" field_type="text" data-alt-field="<?php echo $htmlvar_name; ?>[from]" data-time-format="<?php echo esc_attr( $jqueryui_time_format ); ?>" data-field-key="<?php echo $htmlvar_name; ?>"/><input type="hidden" name="<?php echo $htmlvar_name; ?>[from]" value="<?php echo esc_attr( $field_value_from ); ?>">
+				</div>
+				<div class="gd-search-input-wrapper gd-search-field-cpt gd-search-has-time gd-search-<?php echo $htmlvar_name; ?>-to">
+					<input type="text" value="<?php echo esc_attr( $field_value_to_display ); ?>" placeholder="<?php echo esc_attr( $field_label_to ); ?>" class="cat_input gd-search-time-input" field_type="text" data-alt-field="<?php echo $htmlvar_name; ?>[to]" data-time-format="<?php echo esc_attr( $jqueryui_time_format ); ?>" data-field-key="<?php echo $htmlvar_name; ?>"/><input type="hidden" name="<?php echo $htmlvar_name; ?>[to]" value="<?php echo esc_attr( $field_value_to ); ?>">
+				</div>
+				<?php
+			} else {
+				if ( empty( $field_label ) ) {
+					$field_label = wp_sprintf( __( '%s Time', 'geodiradvancesearch' ), $pt_name );
+				}
+				$field_value = ! empty( $field_value ) && ! is_array( $field_value ) ? sanitize_text_field( $field_value ) : '';
+				$field_value_display = ! empty( $field_value ) ? date_i18n( $time_format, strtotime( $field_value ) ) : '';
+				?>
+				<div class="gd-search-input-wrapper gd-search-field-cpt gd-search-has-time gd-search-<?php echo $htmlvar_name; ?>">
+					<input type="text" value="<?php echo esc_attr( $field_value_display ); ?>" placeholder="<?php echo esc_attr( $field_label ); ?>" class="cat_input gd-search-time-input" field_type="text" data-default-value="<?php echo esc_attr( $field_value_display ); ?>" data-alt-field="<?php echo $htmlvar_name; ?>" data-time-format="<?php echo esc_attr( $jqueryui_time_format ); ?>" data-field-key="<?php echo $htmlvar_name; ?>"><input type="hidden" name="<?php echo $htmlvar_name; ?>" value="<?php echo esc_attr( $field_value ); ?>">
+				</div>
+				<?php
+			}
 		}
+
 
 		$html .= ob_get_clean();
 
@@ -411,8 +665,13 @@ class GeoDir_Adv_Search_Fields {
 			$terms = explode( ',', $select_fields_result->option_values );
 		}
 
-		$html .= "<div class='gd-search-input-wrapper gd-search-field-cpt gd-search-" . $cf->htmlvar_name . "'>";
-		$html .= str_replace(array('<li>','</li>'),'',geodir_advance_search_options_output( $terms, $cf, $post_type, stripslashes( __( $cf->frontend_title, 'geodirectory' ) )));
+		$design_style = geodir_design_style();
+
+		$main_class = $design_style && !empty($cf->main_search) ? 'col-auto flex-fill' : '';
+
+		$html .= "<div class='gd-search-input-wrapper gd-search-field-cpt gd-search-" . $cf->htmlvar_name . " $main_class'>";
+		$output = $design_style ? geodir_advance_search_options_output_aui( $terms, $cf, $post_type, stripslashes( __( $cf->frontend_title, 'geodirectory' ) )) : geodir_advance_search_options_output( $terms, $cf, $post_type, stripslashes( __( $cf->frontend_title, 'geodirectory' ) ));
+		$html .= str_replace(array('<li>','</li>'),'',$output);
 		$html .= "</div>";
 
 		return $html;
@@ -427,9 +686,28 @@ class GeoDir_Adv_Search_Fields {
 			) 
 		);
 
-		$html .= "<div class='gd-search-input-wrapper gd-search-field-cpt gd-search-" . $cf->htmlvar_name . "'>";
-		$html .= str_replace( array( '<li>', '</li>' ), '', geodir_advance_search_options_output( $options, $cf, $post_type, __( stripslashes( $cf->frontend_title ), 'geodirectory' ) ) );
-		$html .= "</div>";
+		$design_style = geodir_design_style();
+
+		if($design_style){
+			$html .= "<div class='gd-search-input-wrapper gd-search-field-cpt gd-search-" . $cf->htmlvar_name . " col-auto flex-fill'>";
+//			$html .= str_replace( array( '<li>', '</li>' ), '', geodir_advance_search_options_output( $options, $cf, $post_type, __( stripslashes( $cf->frontend_title ), 'geodirectory' ) ) );
+
+			$html .=  aui()->select( array(
+				'id'               => "geodir_search_open_now",
+				'name'             => "sopen_now",
+				'class'             => 'mw-100',
+				'label'             => __(stripslashes( $cf->frontend_title ), 'geodirectory' ),
+				'placeholder'      => esc_attr__( stripslashes( $cf->frontend_title ), 'geodirectory' ),
+				'value'            => !empty($_REQUEST['sopen_now']) ? esc_attr($_REQUEST['sopen_now']) : '',
+				'options'          => GeoDir_Adv_Search_Business_Hours::business_hours_options( true ),
+			) );
+			$html .= "</div>";
+		}else{
+			$html .= "<div class='gd-search-input-wrapper gd-search-field-cpt gd-search-" . $cf->htmlvar_name . "'>";
+			$html .= str_replace( array( '<li>', '</li>' ), '', geodir_advance_search_options_output( $options, $cf, $post_type, __( stripslashes( $cf->frontend_title ), 'geodirectory' ) ) );
+			$html .= "</div>";
+		}
+
 
 		return $html;
 	}
@@ -439,14 +717,25 @@ class GeoDir_Adv_Search_Fields {
 	public static function field_wrapper_start( $field_info ) {
 		global $as_fieldset_start;
 
+		$design_style = geodir_design_style();
+
 		if ( $as_fieldset_start > 0 ) {
 			$html = '';
 		} else {
-			$field_label = $field_info->frontend_title ? $field_info->frontend_title : $field_info->admin_title;
-			$htmlvar     = $field_info->htmlvar_name;
-			$html        = '<div class="geodir-filter-cat gd-type-single gd-field-' . $htmlvar . '">';
-			$html .= '<span>' . stripslashes( __( $field_label, 'geodirectory' ) ) . '</span>';
-			$html .= '<ul>';
+
+			if($design_style){
+				$field_label = $field_info->frontend_title ? $field_info->frontend_title : $field_info->admin_title;
+				$htmlvar     = $field_info->htmlvar_name;
+				$html        = '<div class="geodir-filter-cat gd-type-single gd-field-' . $htmlvar . ' col mb-3" style="min-width:200px;">';
+				$html .= '<label for="geodir_search_' . $htmlvar . '" class="text-muted">' . stripslashes( __( $field_label, 'geodirectory' ) ) . '</label>';
+			}else{
+				$field_label = $field_info->frontend_title ? $field_info->frontend_title : $field_info->admin_title;
+				$htmlvar     = $field_info->htmlvar_name;
+				$html        = '<div class="geodir-filter-cat gd-type-single gd-field-' . $htmlvar . '">';
+				$html .= '<span>' . stripslashes( __( $field_label, 'geodirectory' ) ) . '</span>';
+				$html .= '<ul>';
+			}
+
 		}
 
 		return $html;
@@ -455,10 +744,17 @@ class GeoDir_Adv_Search_Fields {
 	public static function field_wrapper_end( $field_info ) {
 		global $as_fieldset_start;
 
+		$design_style = geodir_design_style();
+
 		if ( $as_fieldset_start > 0 ) {
 			$html = '';
 		} else {
-			$html = '</ul></div>';
+			if($design_style){
+				$html = '</div>';
+			}else{
+				$html = '</ul></div>';
+			}
+
 		}
 
 		return $html;
@@ -523,7 +819,7 @@ class GeoDir_Adv_Search_Fields {
 		$terms = $terms_temp;
 
 		$html .= self::field_wrapper_start( $field_info );
-		$html .= geodir_advance_search_options_output( $terms, $field_info, $post_type );
+		$html .= geodir_design_style() ? geodir_advance_search_options_output_aui( $terms, $field_info, $post_type ) : geodir_advance_search_options_output( $terms, $field_info, $post_type );
 		$html .= self::field_wrapper_end( $field_info );
 
 		return apply_filters( 'geodir_search_filter_field_html_output_categories', $html, $field_info, $post_type );
@@ -559,8 +855,14 @@ class GeoDir_Adv_Search_Fields {
 			$field_label_text = __( 'Yes', 'geodiradvancesearch' );
 		}
 
+		$design_style = geodir_design_style();
+
 		$html .= self::field_wrapper_start( $field_info );
-		$html .= '<li><input ' . $checked . ' type="' . $field_info->field_type . '" class="cat_input" name="s' . $field_info->htmlvar_name . '"  value="1" id="geodir_search_' . $field_info->htmlvar_name . '" /> <label for="geodir_search_' . $field_info->htmlvar_name . '">' . $field_label_text . '</label></li>';
+		if($design_style){
+			$html .= '<div class="form-check"><input ' . $checked . ' type="' . $field_info->field_type . '" class="form-check-input" name="s' . $field_info->htmlvar_name . '"  value="1" id="geodir_search_' . $field_info->htmlvar_name . '" /> <label for="geodir_search_' . $field_info->htmlvar_name . '" class="form-check-label text-muted">' . $field_label_text . '</label></div>';
+		}else{
+			$html .= '<li><input ' . $checked . ' type="' . $field_info->field_type . '" class="cat_input" name="s' . $field_info->htmlvar_name . '"  value="1" id="geodir_search_' . $field_info->htmlvar_name . '" /> <label for="geodir_search_' . $field_info->htmlvar_name . '">' . $field_label_text . '</label></li>';
+		}
 		$html .= self::field_wrapper_end( $field_info );
 
 		return apply_filters( 'geodir_search_filter_field_html_output_checkbox', $html, $field_info, $post_type );
@@ -591,63 +893,160 @@ class GeoDir_Adv_Search_Fields {
 
 		// Convert to jQuery UI datepicker format.
 		$jqueryui_date_format  = geodir_date_format_php_to_jqueryui( $date_format  );
+
+		$design_style = geodir_design_style();
 		
 		$html .= self::field_wrapper_start( $field );
 
 		ob_start();
-		?><li class="gd-search-row-<?php echo $htmlvar_name; ?>"><?php
-		if ( $field->search_condition == 'FROM' ) {
-			$field_value_from = '';
-			$field_value_to = '';
-			$field_value_from_display = '';
-			$field_value_to_display = '';
+		if($design_style){
 
-			if ( is_array( $field_value ) && ! empty( $field_value ) ) {
-				if ( ! empty( $field_value['from'] ) ) {
-					$field_value_from = sanitize_text_field( $field_value['from'] );
-					$field_value_from_display = date_i18n( $date_format, strtotime( $field_value_from ) );
+			if ( $field->search_condition == 'FROM' ) {
+				$field_value_from = '';
+				$field_value_to = '';
+				$field_value_from_display = '';
+				$field_value_to_display = '';
+
+				if ( is_array( $field_value ) && ! empty( $field_value ) ) {
+					if ( ! empty( $field_value['from'] ) ) {
+						$field_value_from = sanitize_text_field( $field_value['from'] );
+						$field_value_from_display = date_i18n( $date_format, strtotime( $field_value_from ) );
+					}
+
+					if ( ! empty( $field_value['to'] ) ) {
+						$field_value_to = sanitize_text_field( $field_value['to'] );
+						$field_value_to_display = date_i18n( $date_format, strtotime( $field_value_to ) );
+					}
 				}
 
-				if ( ! empty( $field_value['to'] ) ) {
-					$field_value_to = sanitize_text_field( $field_value['to'] );
-					$field_value_to_display = date_i18n( $date_format, strtotime( $field_value_to ) );
+				if ( empty( $field_label ) ) {
+					$field_label = wp_sprintf( __( '%s Dates', 'geodiradvancesearch' ), $pt_name );
 				}
+				$field_label_from = ! empty( $field_label ) ? wp_sprintf( __( 'From: %s', 'geodiradvancesearch' ), $field_label ) : wp_sprintf( __( '%s Start Date', 'geodiradvancesearch' ), $pt_name );
+				$field_label_to = ! empty( $field_label ) ? wp_sprintf( __( 'To: %s', 'geodiradvancesearch' ), $field_label ) : wp_sprintf( __( '%s End Date', 'geodiradvancesearch' ), $pt_name );
+				$aria_label_from = empty( $as_fieldset_start ) ? ' aria-label="' . esc_attr( $field_label_from ) . '"' : '';
+				$aria_label_to = empty( $as_fieldset_start ) ? ' aria-label="' . esc_attr( $field_label_to ) . '"' : '';
+				?>
+				<div class="gd-search-has-date gd-search-<?php echo $htmlvar_name; ?> from-to">
+					<?php if ( ! empty( $as_fieldset_start ) ) { ?>
+						<label for="<?php echo $htmlvar_name; ?>" class="text-muted"><?php echo $field_label; ?></label>
+					<?php }
+
+					// flatpickr attributes
+					$extra_attributes['data-alt-input'] = 'true';
+					$extra_attributes['data-alt-format'] = $date_format;
+					$extra_attributes['data-date-format'] = 'Y-m-d';
+
+					// range
+					$extra_attributes['data-mode'] = 'range';
+					echo aui()->input(
+						array(
+							'id'                => $htmlvar_name,
+							'name'              => $htmlvar_name,
+							'type'              => 'datepicker',
+							'placeholder'       => $field_label,
+							'class'             => '',
+							'value'             => esc_attr($field_value),
+							'extra_attributes'  => $extra_attributes
+						)
+					);
+					?>
+				</div>
+				<?php
+			} else {
+				if ( empty( $field_label ) ) {
+					$field_label = wp_sprintf( __( '%s Date', 'geodiradvancesearch' ), $pt_name );
+				}
+				$aria_label = empty( $as_fieldset_start ) ? ' aria-label="' . esc_attr( $field_label ) . '"' : '';
+				$field_value = ! empty( $field_value ) && ! is_array( $field_value ) ? sanitize_text_field( $field_value ) : '';
+				$field_value_display = ! empty( $field_value ) ? date_i18n( $date_format, strtotime( $field_value ) ) : '';
+
+
+				?>
+				<div class="gd-search-has-date gd-search-<?php echo $htmlvar_name; ?>">
+					<?php if ( ! empty( $as_fieldset_start ) ) { ?>
+						<label for="<?php echo $htmlvar_name; ?>"><?php echo $field_label; ?></label>
+					<?php }
+
+					// flatpickr attributes
+					$extra_attributes['data-alt-input'] = 'true';
+					$extra_attributes['data-alt-format'] = $date_format;
+					$extra_attributes['data-date-format'] = 'Y-m-d';
+					echo aui()->input(
+						array(
+							'id'                => $htmlvar_name,
+							'name'              => $htmlvar_name,
+							'type'              => 'datepicker',
+							'placeholder'       => $field_label,
+							'class'             => '',
+							'value'             => esc_attr($field_value),
+							'extra_attributes'  => $extra_attributes
+						)
+					);
+
+					?>
+				</div>
+				<?php
 			}
 
-			if ( empty( $field_label ) ) {
-				$field_label = wp_sprintf( __( '%s Dates', 'geodiradvancesearch' ), $pt_name );
+		}else{
+
+
+			?><li class="gd-search-row-<?php echo $htmlvar_name; ?>"><?php
+			if ( $field->search_condition == 'FROM' ) {
+				$field_value_from = '';
+				$field_value_to = '';
+				$field_value_from_display = '';
+				$field_value_to_display = '';
+
+				if ( is_array( $field_value ) && ! empty( $field_value ) ) {
+					if ( ! empty( $field_value['from'] ) ) {
+						$field_value_from = sanitize_text_field( $field_value['from'] );
+						$field_value_from_display = date_i18n( $date_format, strtotime( $field_value_from ) );
+					}
+
+					if ( ! empty( $field_value['to'] ) ) {
+						$field_value_to = sanitize_text_field( $field_value['to'] );
+						$field_value_to_display = date_i18n( $date_format, strtotime( $field_value_to ) );
+					}
+				}
+
+				if ( empty( $field_label ) ) {
+					$field_label = wp_sprintf( __( '%s Dates', 'geodiradvancesearch' ), $pt_name );
+				}
+				$field_label_from = ! empty( $field_label ) ? wp_sprintf( __( 'From: %s', 'geodiradvancesearch' ), $field_label ) : wp_sprintf( __( '%s Start Date', 'geodiradvancesearch' ), $pt_name );
+				$field_label_to = ! empty( $field_label ) ? wp_sprintf( __( 'To: %s', 'geodiradvancesearch' ), $field_label ) : wp_sprintf( __( '%s End Date', 'geodiradvancesearch' ), $pt_name );
+				$aria_label_from = empty( $as_fieldset_start ) ? ' aria-label="' . esc_attr( $field_label_from ) . '"' : '';
+				$aria_label_to = empty( $as_fieldset_start ) ? ' aria-label="' . esc_attr( $field_label_to ) . '"' : '';
+				?>
+				<div class="gd-search-has-date gd-search-<?php echo $htmlvar_name; ?> from-to">
+					<?php if ( ! empty( $as_fieldset_start ) ) { ?>
+						<label for="<?php echo $htmlvar_name; ?>_from"><?php echo $field_label; ?></label>
+					<?php } ?>
+					<input type="text" id="<?php echo $htmlvar_name; ?>_from" value="<?php echo esc_attr( $field_value_from_display ); ?>" placeholder="<?php echo esc_attr( $field_label_from ); ?>" class="cat_input gd-search-date-input" field_type="text" data-alt-field="<?php echo $htmlvar_name; ?>[from]" data-date-format="<?php echo esc_attr( $jqueryui_date_format ); ?>" data-field-key="<?php echo $htmlvar_name; ?>"<?php echo $aria_label_from; ?>/>
+					<input type="text" id="<?php echo $htmlvar_name; ?>_to" value="<?php echo esc_attr( $field_value_to_display ); ?>" placeholder="<?php echo esc_attr( $field_label_to ); ?>" class="cat_input gd-search-date-input" field_type="text" data-alt-field="<?php echo $htmlvar_name; ?>[to]" data-date-format="<?php echo esc_attr( $jqueryui_date_format ); ?>" data-field-key="<?php echo $htmlvar_name; ?>"<?php echo $aria_label_to; ?>/>
+					<input type="hidden" name="<?php echo $htmlvar_name; ?>[from]" value="<?php echo esc_attr( $field_value_from ); ?>"><input type="hidden" name="<?php echo $htmlvar_name; ?>[to]" value="<?php echo esc_attr( $field_value_to ); ?>">
+				</div>
+				<?php
+			} else {
+				if ( empty( $field_label ) ) {
+					$field_label = wp_sprintf( __( '%s Date', 'geodiradvancesearch' ), $pt_name );
+				}
+				$aria_label = empty( $as_fieldset_start ) ? ' aria-label="' . esc_attr( $field_label ) . '"' : '';
+				$field_value = ! empty( $field_value ) && ! is_array( $field_value ) ? sanitize_text_field( $field_value ) : '';
+				$field_value_display = ! empty( $field_value ) ? date_i18n( $date_format, strtotime( $field_value ) ) : '';
+				?>
+				<div class="gd-search-has-date gd-search-<?php echo $htmlvar_name; ?>">
+					<?php if ( ! empty( $as_fieldset_start ) ) { ?>
+						<label for="<?php echo $htmlvar_name; ?>"><?php echo $field_label; ?></label>
+					<?php } ?>
+					<input type="text" id="<?php echo $htmlvar_name; ?>" value="<?php echo esc_attr( $field_value_display ); ?>" placeholder="<?php echo esc_attr( $field_label ); ?>" class="cat_input gd-search-date-input" field_type="text" data-alt-field="<?php echo $htmlvar_name; ?>" data-date-format="<?php echo esc_attr( $jqueryui_date_format ); ?>" data-field-key="<?php echo $htmlvar_name; ?>"<?php echo $aria_label; ?>/><input type="hidden" name="<?php echo $htmlvar_name; ?>" value="<?php echo esc_attr( $field_value ); ?>">
+				</div>
+				<?php
 			}
-			$field_label_from = ! empty( $field_label ) ? wp_sprintf( __( 'From: %s', 'geodiradvancesearch' ), $field_label ) : wp_sprintf( __( '%s Start Date', 'geodiradvancesearch' ), $pt_name );
-			$field_label_to = ! empty( $field_label ) ? wp_sprintf( __( 'To: %s', 'geodiradvancesearch' ), $field_label ) : wp_sprintf( __( '%s End Date', 'geodiradvancesearch' ), $pt_name );
-			$aria_label_from = empty( $as_fieldset_start ) ? ' aria-label="' . esc_attr( $field_label_from ) . '"' : '';
-			$aria_label_to = empty( $as_fieldset_start ) ? ' aria-label="' . esc_attr( $field_label_to ) . '"' : '';
-			?>
-			<div class="gd-search-has-date gd-search-<?php echo $htmlvar_name; ?> from-to">
-				<?php if ( ! empty( $as_fieldset_start ) ) { ?>
-					<label for="<?php echo $htmlvar_name; ?>_from"><?php echo $field_label; ?></label>
-				<?php } ?>
-				<input type="text" id="<?php echo $htmlvar_name; ?>_from" value="<?php echo esc_attr( $field_value_from_display ); ?>" placeholder="<?php echo esc_attr( $field_label_from ); ?>" class="cat_input gd-search-date-input" field_type="text" data-alt-field="<?php echo $htmlvar_name; ?>[from]" data-date-format="<?php echo esc_attr( $jqueryui_date_format ); ?>" data-field-key="<?php echo $htmlvar_name; ?>"<?php echo $aria_label_from; ?>/>
-				<input type="text" id="<?php echo $htmlvar_name; ?>_to" value="<?php echo esc_attr( $field_value_to_display ); ?>" placeholder="<?php echo esc_attr( $field_label_to ); ?>" class="cat_input gd-search-date-input" field_type="text" data-alt-field="<?php echo $htmlvar_name; ?>[to]" data-date-format="<?php echo esc_attr( $jqueryui_date_format ); ?>" data-field-key="<?php echo $htmlvar_name; ?>"<?php echo $aria_label_to; ?>/>
-				<input type="hidden" name="<?php echo $htmlvar_name; ?>[from]" value="<?php echo esc_attr( $field_value_from ); ?>"><input type="hidden" name="<?php echo $htmlvar_name; ?>[to]" value="<?php echo esc_attr( $field_value_to ); ?>">
-			</div>
-			<?php
-		} else {
-			if ( empty( $field_label ) ) {
-				$field_label = wp_sprintf( __( '%s Date', 'geodiradvancesearch' ), $pt_name );
-			}
-			$aria_label = empty( $as_fieldset_start ) ? ' aria-label="' . esc_attr( $field_label ) . '"' : '';
-			$field_value = ! empty( $field_value ) && ! is_array( $field_value ) ? sanitize_text_field( $field_value ) : '';
-			$field_value_display = ! empty( $field_value ) ? date_i18n( $date_format, strtotime( $field_value ) ) : '';
-			?>
-			<div class="gd-search-has-date gd-search-<?php echo $htmlvar_name; ?>">
-				<?php if ( ! empty( $as_fieldset_start ) ) { ?>
-					<label for="<?php echo $htmlvar_name; ?>"><?php echo $field_label; ?></label>
-				<?php } ?>
-				<input type="text" id="<?php echo $htmlvar_name; ?>" value="<?php echo esc_attr( $field_value_display ); ?>" placeholder="<?php echo esc_attr( $field_label ); ?>" class="cat_input gd-search-date-input" field_type="text" data-alt-field="<?php echo $htmlvar_name; ?>" data-date-format="<?php echo esc_attr( $jqueryui_date_format ); ?>" data-field-key="<?php echo $htmlvar_name; ?>"<?php echo $aria_label; ?>/><input type="hidden" name="<?php echo $htmlvar_name; ?>" value="<?php echo esc_attr( $field_value ); ?>">
-			</div>
-			<?php			
+			?></li><?php
+
 		}
-		?></li><?php
 
 		$html .= ob_get_clean();
 		
@@ -722,7 +1121,7 @@ class GeoDir_Adv_Search_Fields {
 		}
 		$html .= ob_get_clean();
 
-		$html .= geodir_advance_search_options_output( $terms, $field_info, $post_type );
+		$html .= geodir_design_style() ? geodir_advance_search_options_output_aui( $terms, $field_info, $post_type ) : geodir_advance_search_options_output( $terms, $field_info, $post_type );
 		$html .= self::field_wrapper_end( $field_info );
 
 		return apply_filters( 'geodir_search_filter_field_html_output_distance', $html, $field_info, $post_type );
@@ -742,23 +1141,43 @@ class GeoDir_Adv_Search_Fields {
 
 		global $as_fieldset_start;
 
-		if ( $as_fieldset_start == 0 ) {
-			$as_fieldset_start ++;
-			$field_label = $field_info->frontend_title ? $field_info->frontend_title : $field_info->admin_title;
-			$htmlvar     = $field_info->htmlvar_name;
-			$html        = '<div class="geodir-filter-cat gd-type-single gd-field-' . $htmlvar . '">';
-			$html .= '<span>' . stripslashes( __( $field_label, 'geodirectory' ) ) . '</span>';
-			$html .= '<ul>';
-		} else {
-			$as_fieldset_start ++;
-			$field_label = $field_info->frontend_title ? $field_info->frontend_title : $field_info->admin_title;
-			$htmlvar     = $field_info->htmlvar_name;
-			$html        = '</ul></div>'; //end the prev
-			$html .= '<div class="geodir-filter-cat gd-type-single gd-field-' . $htmlvar . '-' . $as_fieldset_start . '">';
-			$html .= '<span>' . stripslashes( __( $field_label, 'geodirectory' ) ) . '</span>';
-			$html .= '<ul>';
+		$design_style = geodir_design_style();
 
+		if( $design_style ){
+			if ( $as_fieldset_start == 0 ) {
+				$as_fieldset_start ++;
+				$field_label = $field_info->frontend_title ? $field_info->frontend_title : $field_info->admin_title;
+				$htmlvar     = $field_info->htmlvar_name;
+				$html        = '<div class="geodir-filter-cat gd-type-single gd-field-' . $htmlvar . ' col mb-3">';
+				$html .= '<label class="text-muted">' . stripslashes( __( $field_label, 'geodirectory' ) ) . '</label>';
+			} else {
+				$as_fieldset_start ++;
+				$field_label = $field_info->frontend_title ? $field_info->frontend_title : $field_info->admin_title;
+				$htmlvar     = $field_info->htmlvar_name;
+				$html        = '</div>'; //end the prev
+				$html .= '<div class="geodir-filter-cat gd-type-single gd-field-' . $htmlvar . '-' . $as_fieldset_start . ' col mb-3">';
+				$html .= '<label class="text-muted">' . stripslashes( __( $field_label, 'geodirectory' ) ) . '</label>';
+			}
+		}else{
+			if ( $as_fieldset_start == 0 ) {
+				$as_fieldset_start ++;
+				$field_label = $field_info->frontend_title ? $field_info->frontend_title : $field_info->admin_title;
+				$htmlvar     = $field_info->htmlvar_name;
+				$html        = '<div class="geodir-filter-cat gd-type-single gd-field-' . $htmlvar . '">';
+				$html .= '<span>' . stripslashes( __( $field_label, 'geodirectory' ) ) . '</span>';
+				$html .= '<ul>';
+			} else {
+				$as_fieldset_start ++;
+				$field_label = $field_info->frontend_title ? $field_info->frontend_title : $field_info->admin_title;
+				$htmlvar     = $field_info->htmlvar_name;
+				$html        = '</ul></div>'; //end the prev
+				$html .= '<div class="geodir-filter-cat gd-type-single gd-field-' . $htmlvar . '-' . $as_fieldset_start . '">';
+				$html .= '<span>' . stripslashes( __( $field_label, 'geodirectory' ) ) . '</span>';
+				$html .= '<ul>';
+			}
 		}
+
+
 
 		return apply_filters( 'geodir_search_filter_field_html_output_fieldset', $html, $field_info, $post_type );
 	}
@@ -802,7 +1221,7 @@ class GeoDir_Adv_Search_Fields {
 		}
 
 		$html .= self::field_wrapper_start( $field_info );
-		$html .= geodir_advance_search_options_output( $terms, $field_info, $post_type,$title );
+		$html .= geodir_design_style() ? geodir_advance_search_options_output_aui( $terms, $field_info, $post_type,$title ) : geodir_advance_search_options_output( $terms, $field_info, $post_type,$title );
 		$html .= self::field_wrapper_end( $field_info );
 
 		return apply_filters( 'geodir_search_filter_field_html_output_multiselect', $html, $field_info, $post_type );
@@ -838,7 +1257,7 @@ class GeoDir_Adv_Search_Fields {
 		}
 
 		$html .= self::field_wrapper_start( $field_info );
-		$html .= geodir_advance_search_options_output( $terms, $field_info, $post_type );
+		$html .= geodir_design_style() ? geodir_advance_search_options_output_aui( $terms, $field_info, $post_type ) : geodir_advance_search_options_output( $terms, $field_info, $post_type );
 		$html .= self::field_wrapper_end( $field_info );
 
 		return apply_filters( 'geodir_search_filter_field_html_output_radio', $html, $field_info, $post_type );
@@ -882,8 +1301,10 @@ class GeoDir_Adv_Search_Fields {
 			$title = '';
 		}
 
+		$design_style = geodir_design_style();
+
 		$html .= self::field_wrapper_start( $field_info );
-		$html .= geodir_advance_search_options_output( $terms, $field_info, $post_type,$title );
+		$html .= $design_style ? geodir_advance_search_options_output_aui( $terms, $field_info, $post_type,$title ) : geodir_advance_search_options_output( $terms, $field_info, $post_type,$title );
 		$html .= self::field_wrapper_end( $field_info );
 
 		return apply_filters( 'geodir_search_filter_field_html_output_select', $html, $field_info, $post_type );
@@ -905,10 +1326,12 @@ class GeoDir_Adv_Search_Fields {
 			return '';
 		}
 
+		$design_style = geodir_design_style();
+
 		$terms = array( 1 );
 
 		$html .= self::field_wrapper_start( $field_info );
-		$html .= geodir_advance_search_options_output( $terms, $field_info, $post_type );
+		$html .= $design_style ? geodir_advance_search_options_output_aui( $terms, $field_info, $post_type ) : geodir_advance_search_options_output( $terms, $field_info, $post_type );
 		$html .= self::field_wrapper_end( $field_info );
 
 		return apply_filters( 'geodir_search_filter_field_html_output_text', $html, $field_info, $post_type );
@@ -967,57 +1390,187 @@ class GeoDir_Adv_Search_Fields {
 		
 		$html .= self::field_wrapper_start( $field );
 
+		$design_style = geodir_design_style();
+
 		ob_start();
-		?><li class="gd-search-row-<?php echo $htmlvar_name; ?>"><?php
-		if ( $field->search_condition == 'FROM' ) {
-			$field_value_from = '';
-			$field_value_to = '';
-			$field_value_from_display = '';
-			$field_value_to_display = '';
 
-			if ( is_array( $field_value ) && ! empty( $field_value ) ) {
-				if ( ! empty( $field_value['from'] ) ) {
-					$field_value_from = sanitize_text_field( $field_value['from'] );
-					$field_value_from_display = date_i18n( $time_format, strtotime( $field_value_from ) );
+		if ( $design_style ) {
+
+			if ( $field->search_condition == 'FROM' ) {
+				$field_value_from         = '';
+				$field_value_to           = '';
+				$field_value_from_display = '';
+				$field_value_to_display   = '';
+
+				if ( is_array( $field_value ) && ! empty( $field_value ) ) {
+					if ( ! empty( $field_value['from'] ) ) {
+						$field_value_from         = sanitize_text_field( $field_value['from'] );
+						$field_value_from_display = date_i18n( $time_format, strtotime( $field_value_from ) );
+					}
+
+					if ( ! empty( $field_value['to'] ) ) {
+						$field_value_to         = sanitize_text_field( $field_value['to'] );
+						$field_value_to_display = date_i18n( $time_format, strtotime( $field_value_to ) );
+					}
 				}
 
-				if ( ! empty( $field_value['to'] ) ) {
-					$field_value_to = sanitize_text_field( $field_value['to'] );
-					$field_value_to_display = date_i18n( $time_format, strtotime( $field_value_to ) );
+				if ( empty( $field_label ) ) {
+					$field_label = wp_sprintf( __( '%s Time', 'geodiradvancesearch' ), $pt_name );
 				}
+				$field_label_from = ! empty( $field_label ) ? wp_sprintf( __( 'From: %s', 'geodiradvancesearch' ), $field_label ) : wp_sprintf( __( '%s Start Time', 'geodiradvancesearch' ), $pt_name );
+				$field_label_to   = ! empty( $field_label ) ? wp_sprintf( __( 'To: %s', 'geodiradvancesearch' ), $field_label ) : wp_sprintf( __( '%s End Time', 'geodiradvancesearch' ), $pt_name );
+				?>
+				<div class="gd-search-has-time gd-search-<?php echo $htmlvar_name; ?> from-to">
+					<?php if ( ! empty( $as_fieldset_start ) ) { ?>
+						<label for="<?php echo $htmlvar_name; ?>_from"><?php echo $field_label; ?></label>
+					<?php }
+
+					// flatpickr attributes
+					$extra_attributes['data-enable-time'] = 'true';
+					$extra_attributes['data-no-calendar'] = 'true';
+					$extra_attributes['data-date-format'] = 'Hi';
+
+					$extra_attributes['data-alt-input'] = 'true';
+					$extra_attributes['data-alt-format'] = 'H:i K';
+
+					echo aui()->input(
+						array(
+							'id'                => $htmlvar_name . "_from",
+							'name'              => $htmlvar_name . "[from]",
+							'type'              => 'timepicker',
+							'placeholder'       => esc_attr( $field_label_from ),
+							'class'             => 'rounded-left',
+							'value'             => esc_attr( $field_value_from ),
+							'extra_attributes'  => $extra_attributes,
+							'input_group_right'        => '<div class="input-group-text px-2 bg-transparent border-0x" onclick="jQuery(this).parent().parent().find(\'input\').val(\'\');"><i class="fas fa-times geodir-search-input-label-clear text-muted c-pointer" title="' . __( 'Clear field', 'geodiradvancesearch' ) . '" ></i></div>',
+						)
+					);
+					echo aui()->input(
+						array(
+							'id'                => $htmlvar_name . "_to",
+							'name'              => $htmlvar_name . "[to]",
+							'type'              => 'timepicker',
+							'placeholder'       => esc_attr( $field_label_to ),
+							'class'             => 'rounded-left',
+							'value'             => esc_attr( $field_value_to ),
+							'extra_attributes'  => $extra_attributes,
+							'input_group_right'        => '<div class="input-group-text px-2 bg-transparent border-0x" onclick="jQuery(this).parent().parent().find(\'input\').val(\'\');"><i class="fas fa-times geodir-search-input-label-clear text-muted c-pointer" title="' . __( 'Clear field', 'geodiradvancesearch' ) . '" ></i></div>',
+						)
+					);
+					?>
+				</div>
+				<?php
+			} else {
+				if ( empty( $field_label ) ) {
+					$field_label = wp_sprintf( __( '%s Time', 'geodiradvancesearch' ), $pt_name );
+				}
+				$field_value         = ! empty( $field_value ) && ! is_array( $field_value ) ? sanitize_text_field( $field_value ) : '';
+				?>
+				<div class="gd-search-has-time gd-search-<?php echo $htmlvar_name; ?>">
+					<?php if ( ! empty( $as_fieldset_start ) ) { ?>
+						<label for="<?php echo $htmlvar_name; ?>"><?php echo $field_label; ?></label>
+					<?php }
+
+					// flatpickr attributes
+					$extra_attributes['data-enable-time'] = 'true';
+					$extra_attributes['data-no-calendar'] = 'true';
+					$extra_attributes['data-date-format'] = 'Hi';
+
+					$extra_attributes['data-alt-input'] = 'true';
+					$extra_attributes['data-alt-format'] = 'H:i K';
+
+					echo aui()->input(
+						array(
+							'id'                => $htmlvar_name,
+							'name'              => $htmlvar_name,
+							'required'          => !empty($cf['is_required']) ? true : false,
+							'type'              => 'timepicker',
+							'placeholder'       => esc_attr( $field_label ),
+							'class'             => '',
+							'value'             => esc_attr( $field_value ),
+							'extra_attributes'  => $extra_attributes
+						)
+					);
+					?>
+				</div>
+				<?php
 			}
 
-			if ( empty( $field_label ) ) {
-				$field_label = wp_sprintf( __( '%s Time', 'geodiradvancesearch' ), $pt_name );
-			}
-			$field_label_from = ! empty( $field_label ) ? wp_sprintf( __( 'From: %s', 'geodiradvancesearch' ), $field_label ) : wp_sprintf( __( '%s Start Time', 'geodiradvancesearch' ), $pt_name );
-			$field_label_to = ! empty( $field_label ) ? wp_sprintf( __( 'To: %s', 'geodiradvancesearch' ), $field_label ) : wp_sprintf( __( '%s End Time', 'geodiradvancesearch' ), $pt_name );
+		}else {
 			?>
-			<div class="gd-search-has-time gd-search-<?php echo $htmlvar_name; ?> from-to">
-				<?php if ( ! empty( $as_fieldset_start ) ) { ?>
-					<label for="<?php echo $htmlvar_name; ?>_from"><?php echo $field_label; ?></label>
-				<?php } ?>
-				<input type="text" id="<?php echo $htmlvar_name; ?>_from" value="<?php echo esc_attr( $field_value_from_display ); ?>" placeholder="<?php echo esc_attr( $field_label_from ); ?>" class="cat_input gd-search-time-input" field_type="text" data-alt-field="<?php echo $htmlvar_name; ?>[from]" data-time-format="<?php echo esc_attr( $jqueryui_time_format ); ?>" data-field-key="<?php echo $htmlvar_name; ?>"/>
-				<input type="text" id="<?php echo $htmlvar_name; ?>_to" value="<?php echo esc_attr( $field_value_to_display ); ?>" placeholder="<?php echo esc_attr( $field_label_to ); ?>" class="cat_input gd-search-time-input" field_type="text" data-alt-field="<?php echo $htmlvar_name; ?>[to]" data-time-format="<?php echo esc_attr( $jqueryui_time_format ); ?>" data-field-key="<?php echo $htmlvar_name; ?>"/>
-				<input type="hidden" name="<?php echo $htmlvar_name; ?>[from]" value="<?php echo esc_attr( $field_value_from ); ?>"><input type="hidden" name="<?php echo $htmlvar_name; ?>[to]" value="<?php echo esc_attr( $field_value_to ); ?>">
-			</div>
-			<?php
-		} else {
-			if ( empty( $field_label ) ) {
-				$field_label = wp_sprintf( __( '%s Time', 'geodiradvancesearch' ), $pt_name );
+			<li class="gd-search-row-<?php echo $htmlvar_name; ?>"><?php
+			if ( $field->search_condition == 'FROM' ) {
+				$field_value_from         = '';
+				$field_value_to           = '';
+				$field_value_from_display = '';
+				$field_value_to_display   = '';
+
+				if ( is_array( $field_value ) && ! empty( $field_value ) ) {
+					if ( ! empty( $field_value['from'] ) ) {
+						$field_value_from         = sanitize_text_field( $field_value['from'] );
+						$field_value_from_display = date_i18n( $time_format, strtotime( $field_value_from ) );
+					}
+
+					if ( ! empty( $field_value['to'] ) ) {
+						$field_value_to         = sanitize_text_field( $field_value['to'] );
+						$field_value_to_display = date_i18n( $time_format, strtotime( $field_value_to ) );
+					}
+				}
+
+				if ( empty( $field_label ) ) {
+					$field_label = wp_sprintf( __( '%s Time', 'geodiradvancesearch' ), $pt_name );
+				}
+				$field_label_from = ! empty( $field_label ) ? wp_sprintf( __( 'From: %s', 'geodiradvancesearch' ), $field_label ) : wp_sprintf( __( '%s Start Time', 'geodiradvancesearch' ), $pt_name );
+				$field_label_to   = ! empty( $field_label ) ? wp_sprintf( __( 'To: %s', 'geodiradvancesearch' ), $field_label ) : wp_sprintf( __( '%s End Time', 'geodiradvancesearch' ), $pt_name );
+				?>
+				<div class="gd-search-has-time gd-search-<?php echo $htmlvar_name; ?> from-to">
+					<?php if ( ! empty( $as_fieldset_start ) ) { ?>
+						<label for="<?php echo $htmlvar_name; ?>_from"><?php echo $field_label; ?></label>
+					<?php } ?>
+					<input type="text" id="<?php echo $htmlvar_name; ?>_from"
+					       value="<?php echo esc_attr( $field_value_from_display ); ?>"
+					       placeholder="<?php echo esc_attr( $field_label_from ); ?>"
+					       class="cat_input gd-search-time-input" field_type="text"
+					       data-alt-field="<?php echo $htmlvar_name; ?>[from]"
+					       data-time-format="<?php echo esc_attr( $jqueryui_time_format ); ?>"
+					       data-field-key="<?php echo $htmlvar_name; ?>"/>
+					<input type="text" id="<?php echo $htmlvar_name; ?>_to"
+					       value="<?php echo esc_attr( $field_value_to_display ); ?>"
+					       placeholder="<?php echo esc_attr( $field_label_to ); ?>"
+					       class="cat_input gd-search-time-input" field_type="text"
+					       data-alt-field="<?php echo $htmlvar_name; ?>[to]"
+					       data-time-format="<?php echo esc_attr( $jqueryui_time_format ); ?>"
+					       data-field-key="<?php echo $htmlvar_name; ?>"/>
+					<input type="hidden" name="<?php echo $htmlvar_name; ?>[from]"
+					       value="<?php echo esc_attr( $field_value_from ); ?>"><input type="hidden"
+					                                                                   name="<?php echo $htmlvar_name; ?>[to]"
+					                                                                   value="<?php echo esc_attr( $field_value_to ); ?>">
+				</div>
+				<?php
+			} else {
+				if ( empty( $field_label ) ) {
+					$field_label = wp_sprintf( __( '%s Time', 'geodiradvancesearch' ), $pt_name );
+				}
+				$field_value         = ! empty( $field_value ) && ! is_array( $field_value ) ? sanitize_text_field( $field_value ) : '';
+				$field_value_display = ! empty( $field_value ) ? date_i18n( $time_format, strtotime( $field_value ) ) : '';
+				?>
+				<div class="gd-search-has-time gd-search-<?php echo $htmlvar_name; ?>">
+					<?php if ( ! empty( $as_fieldset_start ) ) { ?>
+						<label for="<?php echo $htmlvar_name; ?>"><?php echo $field_label; ?></label>
+					<?php } ?>
+					<input type="text" id="<?php echo $htmlvar_name; ?>"
+					       value="<?php echo esc_attr( $field_value_display ); ?>"
+					       placeholder="<?php echo esc_attr( $field_label ); ?>" class="cat_input gd-search-time-input"
+					       field_type="text" data-alt-field="<?php echo $htmlvar_name; ?>"
+					       data-time-format="<?php echo esc_attr( $jqueryui_time_format ); ?>"
+					       data-field-key="<?php echo $htmlvar_name; ?>"/><input type="hidden"
+					                                                             name="<?php echo $htmlvar_name; ?>"
+					                                                             value="<?php echo esc_attr( $field_value ); ?>">
+				</div>
+				<?php
 			}
-			$field_value = ! empty( $field_value ) && ! is_array( $field_value ) ? sanitize_text_field( $field_value ) : '';
-			$field_value_display = ! empty( $field_value ) ? date_i18n( $time_format, strtotime( $field_value ) ) : '';
-			?>
-			<div class="gd-search-has-time gd-search-<?php echo $htmlvar_name; ?>">
-				<?php if ( ! empty( $as_fieldset_start ) ) { ?>
-					<label for="<?php echo $htmlvar_name; ?>"><?php echo $field_label; ?></label>
-				<?php } ?>
-				<input type="text" id="<?php echo $htmlvar_name; ?>" value="<?php echo esc_attr( $field_value_display ); ?>" placeholder="<?php echo esc_attr( $field_label ); ?>" class="cat_input gd-search-time-input" field_type="text" data-alt-field="<?php echo $htmlvar_name; ?>" data-time-format="<?php echo esc_attr( $jqueryui_time_format ); ?>" data-field-key="<?php echo $htmlvar_name; ?>"/><input type="hidden" name="<?php echo $htmlvar_name; ?>" value="<?php echo esc_attr( $field_value ); ?>">
-			</div>
-			<?php			
+			?></li><?php
 		}
-		?></li><?php
 
 		$html .= ob_get_clean();
 		
@@ -1047,9 +1600,12 @@ class GeoDir_Adv_Search_Fields {
 
 		global $as_fieldset_start;
 
+		$design_style = geodir_design_style();
+
 		$html .= self::field_wrapper_start( $field_info );
 
-		$html .= '<li><select data-minutes="' . $minutes . '" name="s' . $htmlvar_name . '" class="geodir-advs-open-now cat_select" id="geodir_search_' . $htmlvar_name . '">';
+		if($design_style){
+			$html .= '<select data-minutes="' . $minutes . '" name="s' . $htmlvar_name . '" class="geodir-advs-open-now cat_select custom-select form-control" id="geodir_search_' . $htmlvar_name . '">';
 			foreach ( $options as $option_value => $option_label ) {
 				$selected = selected( $search_value == $option_value, true, false );
 
@@ -1061,7 +1617,23 @@ class GeoDir_Adv_Search_Fields {
 
 				$html .= '<option value="' . esc_attr( $option_value ) . '" ' . $selected . '>' . $option_label . '</option>';
 			}
-		$html .= '</select></li>';
+			$html .= '</select>';
+		}else{
+			$html .= '<li><select data-minutes="' . $minutes . '" name="s' . $htmlvar_name . '" class="geodir-advs-open-now cat_select" id="geodir_search_' . $htmlvar_name . '">';
+			foreach ( $options as $option_value => $option_label ) {
+				$selected = selected( $search_value == $option_value, true, false );
+
+				if ( $option_value == 'now' ) {
+					if ( ! $selected && ( $search_value === 0 || $search_value === '0' || ( ! empty( $search_value ) && $search_value > 0 ) ) && ! in_array( $search_value, array_keys( $options ) ) ) {
+						$selected = selected( true, true, false );
+					}
+				}
+
+				$html .= '<option value="' . esc_attr( $option_value ) . '" ' . $selected . '>' . $option_label . '</option>';
+			}
+			$html .= '</select></li>';
+		}
+
 
 		$html .= self::field_wrapper_end( $field_info );
 

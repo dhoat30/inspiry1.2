@@ -284,10 +284,14 @@ final class GeoDir_CP {
 	 * Enqueue styles.
 	 */
 	public function add_styles() {
-		// Register stypes
-		wp_register_style( 'geodir-cp', GEODIR_CP_PLUGIN_URL . '/assets/css/style.css', array(), GEODIR_CP_VERSION );
+		$design_style = geodir_design_style();
 
-		wp_enqueue_style( 'geodir-cp' );
+		// Register stypes
+		if ( ! $design_style ) {
+			wp_register_style( 'geodir-cp', GEODIR_CP_PLUGIN_URL . '/assets/css/style.css', array(), GEODIR_CP_VERSION );
+
+			wp_enqueue_style( 'geodir-cp' );
+		}
 	}
 
 	/**

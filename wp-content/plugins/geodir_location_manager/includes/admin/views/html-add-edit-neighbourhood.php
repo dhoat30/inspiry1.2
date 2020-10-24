@@ -67,7 +67,7 @@ if ( ! empty( $neighbourhood->latitude ) && ! empty( $neighbourhood->longitude )
 				</th>
 				<td class="forminp">
 					<select id="<?php echo $prefix; ?>country" name="<?php echo $prefix; ?>country" data-placeholder="<?php esc_attr_e( 'Choose a country...', 'geodirlocation' ); ?>" class="regular-text geodir-select" required>
-						<?php geodir_get_country_dl( $neighbourhood->country ); ?>
+						<?php echo geodir_get_country_dl( $neighbourhood->country ); ?>
 					</select>
 				</td>
 			</tr>

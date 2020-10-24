@@ -1,3 +1,4 @@
+
 /*board-page styling*/ 
 .board-loop-page .board-flex{ 
     display: flex;
@@ -5,7 +6,7 @@
     flex-wrap: wrap;
 }
 .board-loop-page .board-flex>div{ 
-    margin: 0 30px 0 0;
+    margin: 0 30px 50px 0;
     transition: 500ms ease-in-out;
 }
 .board-loop-page .board-flex>div:hover{ 
@@ -19,9 +20,6 @@
 }
 .board-loop-page .board-card a{ 
     text-decoration: none !important;
-}
-.board-loop-page .board-card a:hover{ 
-    text-decoration: underline !important;
 }
 
 /*delete icon*/ 
@@ -48,3 +46,84 @@
     margin-left: 5px;
 }
 
+/*options*/ 
+ .board-card>i{ 
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(255,255,255,0.8);
+    padding: 10px;
+    border-radius: 50%;
+    color:#525659;
+    display: none;
+}
+ .pin-options-container{ 
+    width: 230px;   
+    display: none;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background: white;
+}
+.pin-options-container ul { 
+    list-style: none;
+    padding: 10px 0;
+}
+.pin-options-container ul li{ 
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: 300;
+    color: #708393; 
+}
+
+
+.pin-options-container ul li:hover{ 
+    background: #FFF1EB; 
+}
+
+/*share board*/ 
+  .share-icon-container{ 
+    max-width: 400px;
+    width: 100%;
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    z-index: 3000;
+}
+ .share-icon-container>span{ 
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 30px;
+    font-weight: 300;
+    color:#708393; 
+    cursor: pointer;
+}
+ .share-icon-container>span:hover{ 
+   color: #525659;
+}
+
+@media (max-width: 500px){ 
+     .share-icon-container{ 
+        height: 100vh;
+        width: 100vw;
+    }
+}
+ .share-icon-container ul.heateor_sss_sharing_ul li.heateorSssSharingRound {
+    background: 0 0!important;
+    margin: 0 35px 0 0 !important;
+}
+  .share-icon-container .underline{ 
+    border: 1px solid #525659;
+    opacity: 10%;
+}
+
+  .share-icon-container>div:nth-child(1){ 
+    padding: 30px 10px 10px 10px;
+}
+  .share-icon-container>div:nth-child(3){ 
+    padding: 10px 10px 30px 10px;
+}

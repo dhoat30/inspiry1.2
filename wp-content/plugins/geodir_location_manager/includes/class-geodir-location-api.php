@@ -312,20 +312,28 @@ class GeoDir_Location_API {
 	}
 
 	public static function get_locations( $params = array() ) {
-		global $wpdb;
+		global $wpdb, $geodirectory;
+
+		if ( ! empty( $params['what'] ) && $params['what'] == 'neighbourhood' ) {
+			return self::get_neighbourhoods( $params );
+		}
 
 		$defaults = array(
-			'fields'        => '*',
-			'what'          => 'city',
-			'number'        => '',
-			'offset'        => '',
-			'search'        => '',
-			'where'         => '',
-			'orderby'       => '',
-			'order'         => '',
-			'ordertype'     => '',
-			'ip'            => '',
-			'count'         => false,
+			'fields'           => '*',
+			'what'             => 'city',
+			'number'           => '',
+			'offset'           => '',
+			'search'           => '',
+			'where'            => '',
+			'orderby'          => '',
+			'order'            => '',
+			'ordertype'        => '',
+			'ip'               => '',
+			'count'            => false,
+			'filter_locations' => false,
+			'filter_country'   => '',
+			'filter_region'    => '',
+			'filter_city'      => ''
 		);
 
 		if ( ! in_array( $params['what'], array( 'country', 'region', 'city', 'neighbourhood' ) ) ) {
@@ -360,7 +368,7 @@ class GeoDir_Location_API {
 		$limits = '';
 		if ( ! empty( $number ) ) {
 			if ( $offset ) {
-				$limits = 'LIMIT ' . $offset . ',' . $number;
+				$limits = 'LIMIT ' . $offset . ', ' . $number;
 			} else {
 				$limits = 'LIMIT ' . $number;
 			}
@@ -370,6 +378,68 @@ class GeoDir_Location_API {
 		if ( !empty( $args['where'] ) ) {
 			$where[] = $args['where'];
 		}
+
+		if ( $args['filter_locations'] ) {
+			$location_default = $geodirectory->location->get_default_location();
+
+			// Filter countries
+			if ( $args['filter_country'] == '' ) {
+				if ( geodir_get_option( 'lm_default_country' ) == 'default' ) {
+					$args['filter_country'] = isset( $location_default->country ) ? $location_default->country : '';
+				} else if ( geodir_get_option( 'lm_default_country' ) == 'selected' ) {
+					$filter_country = geodir_get_option( 'lm_selected_countries' );
+
+					if ( ! empty( $filter_country ) && is_array( $filter_country ) ) {
+						$filter_country = implode( ',' , $filter_country );
+					}
+
+					$args['filter_country'] = $filter_country;
+				}
+			}
+
+			// Filter regions
+			if ( $args['filter_region'] == '' ) {
+				if ( geodir_get_option( 'lm_default_region' ) == 'default' ) {
+					$args['filter_region'] = isset( $location_default->region ) ? $location_default->region : '';
+				} else if ( geodir_get_option( 'lm_default_region' ) == 'selected' ) {
+					$filter_region = geodir_get_option( 'lm_selected_regions' );
+
+					if ( ! empty( $filter_region ) && is_array( $filter_region ) ) {
+						$filter_region = implode( ',' , $filter_region );
+					}
+
+					$args['filter_region'] = $filter_region;
+				}
+			}
+
+			// Filter cities
+			if ( $args['filter_city'] == '' ) {
+				if ( geodir_get_option( 'lm_default_city' ) == 'default' ) {
+					$args['filter_city'] = isset( $location_default->city ) ? $location_default->city : '';
+				} else if ( geodir_get_option( 'lm_default_city' ) == 'selected' ) {
+					$filter_city = geodir_get_option( 'lm_selected_cities' );
+
+					if ( ! empty( $filter_city ) && is_array( $filter_city ) ) {
+						$filter_city = implode( ',' , $filter_city );
+					}
+
+					$args['filter_city'] = $filter_city;
+				}
+			}
+		}
+
+		if ( $args['filter_country'] != '' && ( $filter_country = geodir_parse_location_list( $args['filter_country'] ) ) ) {
+			$where[] = "LOWER(country) IN( " . $filter_country . " )";
+		}
+
+		if ( $args['what'] != 'country' && $args['filter_region'] != '' && ( $filter_region = geodir_parse_location_list( $args['filter_region'] ) ) ) {
+			$where[] = "LOWER(region) IN( " . $filter_region . " )";
+		}
+
+		if ( $args['what'] != 'country' && $args['what'] != 'region' && $args['filter_city'] != '' && ( $filter_city = geodir_parse_location_list( $args['filter_city'] ) ) ) {
+			$where[] = "LOWER(city) IN( " . $filter_city . " )";
+		}
+
 		if ( !empty( $args['search'] ) ) {
 			$where[] = "{$params['what']} LIKE '%" . wp_slash( $args['search'] ) . "%'";
 		}
@@ -387,14 +457,17 @@ class GeoDir_Location_API {
 		$groupby = '';
 		switch ( $args['what'] ) {
 			case 'city':
-				$groupby = 'CONCAT(city_slug, "_", region_slug, "_", country_slug)';
+				$groupby = '';
+				$fields_count = 'COUNT( location_id )';
 			break;
 			case 'region':
-				$groupby = 'CONCAT(region_slug, "_", country_slug)';
+				$groupby = 'region_slug';
+				$fields_count = 'COUNT( DISTINCT region_slug )';
 			break;
 			default:
 			case 'country':
 				$groupby = 'country_slug';
+				$fields_count = 'COUNT( DISTINCT country_slug )';
 			break;
 		}
 		
@@ -413,7 +486,7 @@ class GeoDir_Location_API {
 		$orderby = trim( $orderby ) != '' ? 'ORDER BY ' . $orderby : '';
 		
 		if ( $args['count'] ) {
-			$fields = 'COUNT(*)';
+			$fields = $fields_count;
 			$groupby = '';
 			$limits = '';
 			$orderby = '';
@@ -432,6 +505,10 @@ class GeoDir_Location_API {
 	}
 
 	public static function get_location( $params = array() ) {
+		if ( ! empty( $params['what'] ) && $params['what'] == 'neighbourhood' ) {
+			return self::get_neighbourhood( $params );
+		}
+
 		$defaults = array(
 			'what'          => 'city',
 			'country'       => '',
@@ -480,17 +557,21 @@ class GeoDir_Location_API {
 	}
 
 	public static function get_neighbourhoods( $params = array() ) {
-		global $wpdb;
+		global $wpdb, $geodirectory;
 
 		$defaults = array(
-			'number'        => '',
-			'offset'        => '',
-			'search'        => '',
-			'where'         => '',
-			'order'         => '',
-			'ordertype'     => '',
-			'count'         => false,
-			'orderby'       => 'h.hood_id ASC',
+			'number'           => '',
+			'offset'           => '',
+			'search'           => '',
+			'where'            => '',
+			'order'            => '',
+			'ordertype'        => '',
+			'count'            => false,
+			'orderby'          => 'h.hood_id ASC',
+			'filter_locations' => false,
+			'filter_country'   => '',
+			'filter_region'    => '',
+			'filter_city'      => ''
 		);
 
 		$args = wp_parse_args( $params, $defaults );
@@ -511,6 +592,68 @@ class GeoDir_Location_API {
 		if ( !empty( $args['where'] ) ) {
 			$where[] = $args['where'];
 		}
+
+		if ( $args['filter_locations'] ) {
+			$location_default = $geodirectory->location->get_default_location();
+
+			// Filter countries
+			if ( $args['filter_country'] == '' ) {
+				if ( geodir_get_option( 'lm_default_country' ) == 'default' ) {
+					$args['filter_country'] = isset( $location_default->country ) ? $location_default->country : '';
+				} else if ( geodir_get_option( 'lm_default_country' ) == 'selected' ) {
+					$filter_country = geodir_get_option( 'lm_selected_countries' );
+
+					if ( ! empty( $filter_country ) && is_array( $filter_country ) ) {
+						$filter_country = implode( ',' , $filter_country );
+					}
+
+					$args['filter_country'] = $filter_country;
+				}
+			}
+
+			// Filter regions
+			if ( $args['filter_region'] == '' ) {
+				if ( geodir_get_option( 'lm_default_region' ) == 'default' ) {
+					$args['filter_region'] = isset( $location_default->region ) ? $location_default->region : '';
+				} else if ( geodir_get_option( 'lm_default_region' ) == 'selected' ) {
+					$filter_region = geodir_get_option( 'lm_selected_regions' );
+
+					if ( ! empty( $filter_region ) && is_array( $filter_region ) ) {
+						$filter_region = implode( ',' , $filter_region );
+					}
+
+					$args['filter_region'] = $filter_region;
+				}
+			}
+
+			// Filter cities
+			if ( $args['filter_city'] == '' ) {
+				if ( geodir_get_option( 'lm_default_city' ) == 'default' ) {
+					$args['filter_city'] = isset( $location_default->city ) ? $location_default->city : '';
+				} else if ( geodir_get_option( 'lm_default_city' ) == 'selected' ) {
+					$filter_city = geodir_get_option( 'lm_selected_cities' );
+
+					if ( ! empty( $filter_city ) && is_array( $filter_city ) ) {
+						$filter_city = implode( ',' , $filter_city );
+					}
+
+					$args['filter_city'] = $filter_city;
+				}
+			}
+		}
+
+		if ( $args['filter_country'] != '' && ( $filter_country = geodir_parse_location_list( $args['filter_country'] ) ) ) {
+			$where[] = "LOWER(l.country) IN( " . $filter_country . " )";
+		}
+
+		if ( $args['filter_region'] != '' && ( $filter_region = geodir_parse_location_list( $args['filter_region'] ) ) ) {
+			$where[] = "LOWER(l.region) IN( " . $filter_region . " )";
+		}
+
+		if ( $args['filter_city'] != '' && ( $filter_city = geodir_parse_location_list( $args['filter_city'] ) ) ) {
+			$where[] = "LOWER(l.city) IN( " . $filter_city . " )";
+		}
+
 		if ( !empty( $args['search'] ) ) {
 			$where[] = "h.hood_name LIKE '%" . wp_slash( $args['search'] ) . "%'";
 		}

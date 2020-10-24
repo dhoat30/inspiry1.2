@@ -138,6 +138,11 @@ class GeoDir_Compatibility {
 			add_action( 'admin_init', array( __CLASS__, 'buddypress_notices' ) );
 		}
 
+		/*######################################################
+		FORCE LEGACY STYLES
+		######################################################*/
+		add_action( 'init', array( __CLASS__, 'maybe_force_legacy_styles' ) );
+
 
 		/*######################################################
 		GENERAL
@@ -176,12 +181,68 @@ class GeoDir_Compatibility {
 				// GD Loop
 				add_filter( 'geodir_before_get_template_part',array( __CLASS__, 'avada_get_temp_globals' ), 10);
 				add_filter( 'geodir_after_get_template_part',array( __CLASS__, 'avada_set_temp_globals' ), 10);
+
+				// Avada header / footer actions
+				add_action( 'wp_head', array( __CLASS__, 'avada_wp_head_setup' ), 99 );
+				add_action( 'get_footer', array( __CLASS__, 'avada_get_footer_setup' ), 99 );
 			}
 		}
 
 		if ( wp_doing_ajax() ) {
 			add_action( 'admin_init', array( __CLASS__, 'ajax_admin_init' ), 5 );
 		}
+	}
+
+	/**
+	 * Maybe force legacy theme styles.
+	 */
+	public static function maybe_force_legacy_styles(){
+
+		// Kleo theme (runs Bootstrap v3 which makes new styles incompatible)
+		if ( function_exists( 'kleo_setup' ) ) {
+			global $aui_disabled_notice;
+			add_filter('ayecode-ui-settings',array( __CLASS__, 'disable_aui' ) );
+			add_filter('geodir_get_option_design_style','__return_empty_string');
+			add_action( 'admin_notices', array( __CLASS__, 'notice_aui_disabled' ) );
+			$aui_disabled_notice = __("AyeCode UI bootstrap styles have been disabled due to an incompatibility with Kleo theme using an older version of bootstrap.","geodirectory");
+		}elseif ( function_exists( 'listimia_setup' ) ) {
+			global $aui_disabled_notice;
+			add_filter('ayecode-ui-settings',array( __CLASS__, 'disable_aui' ) );
+			add_filter('geodir_get_option_design_style','__return_empty_string');
+			add_action( 'admin_notices', array( __CLASS__, 'notice_aui_disabled' ) );
+			$aui_disabled_notice = __("AyeCode UI bootstrap styles have been disabled for best compatibility with current Listimia theme version.","geodirectory");
+		}
+	}
+
+	/**
+	 * Show a notice if AUI is disabled.
+	 */
+	public static function notice_aui_disabled() {
+		global $aui_disabled_notice;
+
+		if($aui_disabled_notice && (
+				isset($_REQUEST['page']) && ( $_REQUEST['page'] == 'ayecode-ui-settings' || $_REQUEST['page'] == 'gd-settings'  )
+			)){
+			$class = 'notice notice-error';
+			printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $aui_disabled_notice ) );
+		}
+
+	}
+
+	/**
+	 * Disable AUI
+	 *
+	 * @param $settings
+	 *
+	 * @return mixed
+	 */
+	public static function disable_aui($settings){
+
+		$settings['css'] = '';
+		$settings['js'] = '';
+		$settings['html_font_size'] = '';
+
+		return $settings;
 	}
 
 	/**
@@ -292,6 +353,66 @@ class GeoDir_Compatibility {
 	}
 
 	/**
+	 * Setup Avada header actions.
+	 *
+	 * @since 2.0.0.102
+	 */
+	public static function avada_wp_head_setup() {
+		if ( geodir_is_geodir_page() && has_action( 'avada_render_header' ) ) {
+			add_action( 'avada_render_header', array( __CLASS__, 'avada_pause_the_content' ), 1 );
+			add_action( 'avada_render_header', array( __CLASS__, 'avada_resume_the_content' ), 101 );
+		}
+	}
+
+	/**
+	 * Setup Avada footer actions.
+	 *
+	 * @since 2.0.0.102
+	 */
+	public static function avada_get_footer_setup() {
+		if ( geodir_is_geodir_page() && has_action( 'avada_render_footer' ) ) {
+			add_action( 'avada_render_footer', array( __CLASS__, 'avada_pause_the_content' ), 1 );
+			add_action( 'avada_render_footer', array( __CLASS__, 'avada_resume_the_content' ), 101 );
+		}
+	}
+
+	/**
+	 * Remove GD archive page template the_content filter.
+	 *
+	 * @since 2.0.0.102
+	 *
+	 * @global bool|null $geodir_avada_the_content Flag to remove filter.
+	 */
+	public static function avada_pause_the_content() {
+		global $geodir_avada_the_content;
+
+		if ( has_filter( 'the_content', array( 'GeoDir_Template_Loader', 'setup_archive_page_content' ) ) ) {
+			$geodir_avada_the_content = true;
+
+			remove_filter( 'the_content', array( 'GeoDir_Template_Loader', 'setup_archive_page_content' ) );
+		}
+	}
+
+	/**
+	 * Add GD archive page template the_content filter.
+	 *
+	 * @since 2.0.0.102
+	 *
+	 * @global bool|null $geodir_avada_the_content Flag to add filter back.
+	 */
+	public static function avada_resume_the_content() {
+		global $geodir_avada_the_content;
+
+		if ( $geodir_avada_the_content ) {
+			$geodir_avada_the_content = false;
+
+			if ( ! has_filter( 'the_content', array( 'GeoDir_Template_Loader', 'setup_archive_page_content' ) ) ) {
+				add_filter( 'the_content', array( 'GeoDir_Template_Loader', 'setup_archive_page_content' ) );
+			}
+		}
+	}
+
+	/**
 	 * Make sure divi actions fire on some of our ajax calls so builder shortcodes are rendered.
 	 *
 	 * @param $actions
@@ -331,7 +452,7 @@ class GeoDir_Compatibility {
 				if($is_geodir_page_template ){
 					$warning_message = sprintf(
 						__('GeoDirectory template pages work much better with %sBeaver Themer%s :: %sLearn more%s', 'geodirectory'),
-						'<a href="https://www.wpbeaverbuilder.com/beaver-themer/" target="_blank">', //@todo add affiliate code to beaver themer link
+						'<a href="https://www.wpbeaverbuilder.com/beaver-themer/" target="_blank">',
 						' <i class="fas fa-external-link-alt"></i></a>',
 						'<a href="https://wpgeodirectory.com/docs-v2/integrations/builders/#bb-themer" target="_blank">',
 						' <i class="fas fa-external-link-alt"></i></a>'
@@ -542,6 +663,7 @@ class GeoDir_Compatibility {
 			$gen_keys[] = 'site-sidebar-layout';
 			$gen_keys[] = 'site-content-layout';
 			$gen_keys[] = 'ast-featured-img';
+			$gen_keys[] = 'theme-transparent-header-meta';
 		}
 
 		// Enfold theme
@@ -700,8 +822,13 @@ class GeoDir_Compatibility {
 			&& $object_id == get_queried_object_id()
 			&& ( geodir_is_page( 'single' ) || geodir_is_page( 'archive' ) )
 		) {
+			$post_type = get_post_type( $object_id );
 
-			$template_page_id = geodir_is_page( 'single' ) ? geodir_details_page_id() : geodir_archive_page_id();
+			if ( ! geodir_is_gd_post_type( $post_type ) ) {
+				$post_type = geodir_get_current_posttype();
+			}
+
+			$template_page_id = geodir_is_page( 'single' ) ? geodir_details_page_id( $post_type ) : geodir_archive_page_id( $post_type );
 
 			// if we got this far then we might as well load all the page post meta
 			global $gd_compat_post_meta;
@@ -786,9 +913,12 @@ class GeoDir_Compatibility {
 	 */
 	public static function astra_get_content_layout( $layout ) {
 		global $wp_query;
+
 		$page_id = isset( $wp_query->post->ID ) ? $wp_query->post->ID : '';
-		if ( $page_id && geodir_archive_page_id() == $page_id ) {
+
+		if ( $page_id && ( geodir_archive_page_id() == $page_id || geodir_archive_page_id( geodir_get_current_posttype() ) == $page_id ) ) {
 			$page_layout = get_post_meta( $page_id, 'site-content-layout', true );
+
 			if ( $page_layout != '' ) {
 				$layout = $page_layout;
 			}
@@ -806,9 +936,12 @@ class GeoDir_Compatibility {
 	 */
 	public static function astra_page_layout( $layout ) {
 		global $wp_query;
+
 		$page_id = isset( $wp_query->post->ID ) ? $wp_query->post->ID : '';
-		if ( $page_id && (geodir_archive_page_id() == $page_id || geodir_search_page_id() == $page_id )) {
+
+		if ( $page_id && ( geodir_archive_page_id() == $page_id || geodir_archive_page_id( geodir_get_current_posttype() ) == $page_id || geodir_search_page_id() == $page_id ) ) {
 			$page_layout = get_post_meta( $page_id, 'site-sidebar-layout', true );
+
 			if ( $page_layout != '' ) {
 				$layout = $page_layout;
 			}
@@ -1407,6 +1540,11 @@ class GeoDir_Compatibility {
 				if ( geodir_is_page( 'post_type' ) || geodir_is_page( 'archive' ) || geodir_is_page( 'search' ) ) {
 					add_filter( 'avia_layout_filter', array( __CLASS__, 'avia_layout_filter' ), 20, 2 );
 					add_filter( 'avf_custom_sidebar', array( __CLASS__, 'avf_custom_sidebar' ), 20, 1 );
+					add_filter( 'template_include', array( __CLASS__, 'avia_template_include' ), 11, 1 );
+				}
+
+				if ( geodir_is_page( 'single' ) ) {
+					add_filter( 'avf_shortcode_handler_prepare_current_post', array( __CLASS__, 'avf_shortcode_handler_prepare_current_post' ), 20, 1 );
 				}
 			}
 
@@ -1428,6 +1566,10 @@ class GeoDir_Compatibility {
 				// Genesis Simple Sidebars
 				if ( function_exists( 'genesis_simple_sidebars' ) ) {
 					add_filter( 'sidebars_widgets', array( __CLASS__, 'genesis_simple_sidebars_set_sidebars_widgets' ), 20, 1 );
+				}
+
+				if ( geodir_is_page( 'single' ) ) {
+					add_filter( 'genesis_before_comments', array( __CLASS__, 'genesis_before_comments' ), 1 );
 				}
 			}
 
@@ -2311,6 +2453,42 @@ class GeoDir_Compatibility {
 	}
 
 	/**
+	 * Filter Enfold template builder redirect.
+	 *
+	 * @since 2.1.0.0
+	 *
+	 * @global array $avia_config Enfold settings.
+	 *
+	 * @param string $template The template.
+	 * @return string The template.
+	 */
+	public static function avia_template_include( $template ) {
+		global $avia_config;
+
+		if ( $template_page_id = (int) self::gd_page_id() ) {
+			$avia_config['builder_redirect_id'] = $template_page_id;
+		}
+
+		return $template;
+	}
+
+	/**
+	 * Filter current post for shortcode.
+	 *
+	 * @since 2.1.0.0
+	 *
+	 * @param null|WP_Post $current_post Current post.
+	 * @return null|WP_Post Current post.
+	 */
+	public static function avf_shortcode_handler_prepare_current_post( $post ) {
+		if ( $template_page_id = (int) self::gd_page_id() ) {
+			$post = get_post( $template_page_id );
+		}
+
+		return $post;
+	}
+
+	/**
 	 * Add option to select Beaver Themer search page.
 	 *
 	 * @since 2.0.0.70
@@ -2878,6 +3056,22 @@ class GeoDir_Compatibility {
 	}
 
 	/**
+	 * Set post comments to show in Genesis separate comments.
+	 *
+	 * @since 2.1.0.0
+	 *
+	 * @global WP_Query $wp_query The WP Query object.
+	 */
+	public static function genesis_before_comments() {
+		global $wp_query;
+
+		// Genesis comments template shows comments separately for comment types.
+		if ( empty( $wp_query->comments_by_type['comment'] ) && ! empty( $wp_query->comments ) ) {
+			$wp_query->comments_by_type['comment'] = $wp_query->comments;
+		}
+	}
+
+	/**
 	 * Filter Page Builder Framework theme page layout.
 	 *
 	 * @since 2.0.0.80
@@ -2941,7 +3135,7 @@ class GeoDir_Compatibility {
 			if ( wpbf_is_premium() && ! $contained ) {
 				$wpbf_settings = get_option( 'wpbf_settings' );
 
-				// Get array of post types that are set to full width under Appearance > Theme Settings > Global Templat Settings.
+				// Get array of post types that are set to full width under Appearance > Theme Settings > Global Template Settings.
 				$fullwidth_global = isset( $wpbf_settings['wpbf_fullwidth_global'] ) ? $wpbf_settings['wpbf_fullwidth_global'] : array();
 
 				// If current post type has been set to full-width globally, set $inner_content to false.

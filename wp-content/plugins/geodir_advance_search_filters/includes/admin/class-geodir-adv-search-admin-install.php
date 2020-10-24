@@ -21,6 +21,7 @@ class GeoDir_Adv_Search_Admin_Install {
 	private static $db_updates = array(
 		'2.0.1.0' => array(
 			'geodir_search_upgrade_2010',
+			'geodir_search_update_2010_db_version'
 		)
 	);
 

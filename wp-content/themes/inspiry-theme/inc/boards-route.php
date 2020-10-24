@@ -16,8 +16,14 @@ function inspiry_board_route(){
 
     register_rest_route("inspiry/v1/", "manageBoard", array(
         "methods" => "DELETE",
-        "callback" => "deleteBoard"
+        "callback" => "deletePin"
     ));
+
+    register_rest_route("inspiry/v1/", "deleteBoard", array(
+        "methods" => "DELETE",
+        "callback" => "deleteBoardFunc"
+    ));
+    
 }
 
 function createBoard($data){ 
@@ -77,7 +83,7 @@ function addProjectToBoard($data){
    
 }
 
-function deleteBoard($data){ 
+function deletePin($data){ 
    $pinID = sanitize_text_field($data["pin-id"] ); 
 
    if(get_current_user_id() == get_post_field("post_author", $pinID) AND get_post_type($pinID)=="boards"){
@@ -89,3 +95,46 @@ function deleteBoard($data){
    }
 }
 
+function deleteBoardFunc($data){ 
+    $parentID = sanitize_text_field($data["board-id"] ); 
+
+    // Delete the Parent Page
+    if(get_current_user_id() == get_post_field("post_author", $parentID) AND get_post_type($parentID)=="boards"){
+
+        //Instead of calling and passing query parameter differently, we're doing it exclusively
+        $all_locations = get_pages( array(
+            'post_type'         => 'boards', //here's my CPT
+            'post_status'       => array( 'private', 'pending', 'publish') //my custom choice
+        ) );
+
+        //Using the function
+        $inherited_locations = get_page_children( $parentID, $all_locations );
+        // echo what we get back from WP to the browser (@bhlarsen's part :) )
+            // Delete all the Children of the Parent Page
+            foreach($inherited_locations as $post){
+        
+                wp_delete_post($post->ID, true);
+            }
+
+        // Delete the Parent Page
+        wp_delete_post($parentID, true);
+
+        return 'deletion worked. congrats'; 
+     }
+     else{ 
+        die("you do not have permission to delete a pin");
+     }
+}
+
+/*function deleteParentBoard(){ 
+    $boardID = sanitize_text_field($data["board-id"] ); 
+
+    // Delete the Parent Page
+    if(get_current_user_id() == get_post_field("post_author", $boardID) AND get_post_type($boardID)=="boards"){
+        wp_delete_post($boardID, true); 
+        return "congrats, board deleted"; 
+     }
+     else{ 
+        die("you do not have permission to delete a pin");
+     }
+}*/

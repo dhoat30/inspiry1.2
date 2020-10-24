@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: GeoDirectory BuddyPress 2.0.0.7\n"
+"Project-Id-Version: GeoDirectory BuddyPress 2.1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-13 11:09+0530\n"
-"PO-Revision-Date: 2020-07-13 11:10+0530\n"
+"POT-Creation-Date: 2020-10-07 16:23+0530\n"
+"PO-Revision-Date: 2020-10-07 16:23+0530\n"
 "Last-Translator: \n"
 "Language-Team: AyeCode Ltd <contact@ayecode.io>\n"
 "Language: en_US\n"
@@ -140,59 +140,73 @@ msgid ""
 "installed plugins, please install it now."
 msgstr ""
 
-#: geodir_buddypress.php:42
+#: geodir_buddypress.php:46
 #, php-format
 msgid ""
 "GeoDirectory BuddyPress Integration plugin requires %sBuddyPress%s to be "
 "installed and activated."
 msgstr ""
 
-#: geodir_buddypress.php:55
+#: geodir_buddypress.php:59
 #, php-format
 msgid ""
 "GeoDirectory BuddyPress Integration plugin requires %sGeoDirectory%s to be "
 "installed and activated."
 msgstr ""
 
-#: includes/class-geodir-buddypress-template.php:39
+#: includes/class-geodir-buddypress-template.php:42
+#: includes/class-geodir-buddypress-template.php:155
 msgid "listings"
 msgstr ""
 
-#: includes/class-geodir-buddypress-template.php:78
+#: includes/class-geodir-buddypress-template.php:81
+#: includes/class-geodir-buddypress-template.php:196
 #, php-format
 msgid "There were no %s found."
 msgstr ""
 
-#: includes/class-geodir-buddypress-template.php:269
+#: includes/class-geodir-buddypress-template.php:218
+msgid "Listing sort and view options"
+msgstr ""
+
+#: includes/class-geodir-buddypress-template.php:429
 msgid "Pingback:"
 msgstr ""
 
-#: includes/class-geodir-buddypress-template.php:269
+#: includes/class-geodir-buddypress-template.php:429
 msgid "(Edit)"
 msgstr ""
 
-#: includes/class-geodir-buddypress-template.php:288
+#: includes/class-geodir-buddypress-template.php:448
 #, php-format
 msgctxt "%s = human-readable time difference"
 msgid "%s ago"
 msgstr ""
 
-#: includes/class-geodir-buddypress-template.php:289
+#: includes/class-geodir-buddypress-template.php:449
 #, php-format
 msgid "%1$s at %2$s"
 msgstr ""
 
-#: includes/class-geodir-buddypress-template.php:297
+#: includes/class-geodir-buddypress-template.php:457
 msgid "Your comment is awaiting moderation."
 msgstr ""
 
-#: includes/class-geodir-buddypress-template.php:306
+#: includes/class-geodir-buddypress-template.php:466
 msgid "Edit"
 msgstr ""
 
 #: includes/general-functions.php:398
 #, php-format
 msgid "Reviews on %s"
+msgstr ""
+
+#: includes/general-functions.php:556
+msgid "PRevious"
+msgstr ""
+
+#: includes/general-functions.php:562
+msgid "Next"
 msgstr ""
 
 #: public/class-geodir-buddypress-public.php:193
@@ -236,34 +250,40 @@ msgstr ""
 msgid "%1$s listed a new %2$s, %3$s"
 msgstr ""
 
-#: public/class-geodir-buddypress-public.php:595
+#: public/class-geodir-buddypress-public.php:615
 #, php-format
 msgid "%1$s commented on the %2$s, %3$s, on the site %4$s"
 msgstr ""
 
-#: public/class-geodir-buddypress-public.php:597
+#: public/class-geodir-buddypress-public.php:617
 #, php-format
 msgid "%1$s commented on the %2$s, %3$s"
 msgstr ""
 
-#: public/class-geodir-buddypress-public.php:784
-#: public/class-geodir-buddypress-public.php:786
+#: public/class-geodir-buddypress-public.php:808
+#: public/class-geodir-buddypress-public.php:811
+#, php-format
+msgid " You have %1$d new reviews "
+msgstr ""
+
+#: public/class-geodir-buddypress-public.php:813
+#: public/class-geodir-buddypress-public.php:815
 #, php-format
 msgid " %s left a review on %s "
 msgstr ""
 
-#: templates/reviews.php:32
+#: templates/bootstrap/reviews.php:35 templates/reviews.php:34
 msgid "Review navigation"
 msgstr ""
 
-#: templates/reviews.php:34
+#: templates/bootstrap/reviews.php:37 templates/reviews.php:36
 msgid "&larr; Older Reviews"
 msgstr ""
 
-#: templates/reviews.php:35
+#: templates/bootstrap/reviews.php:38 templates/reviews.php:37
 msgid "Newer Reviews &rarr;"
 msgstr ""
 
-#: templates/reviews.php:44
+#: templates/bootstrap/reviews.php:47 templates/reviews.php:46
 msgid "Reviews are closed."
 msgstr ""

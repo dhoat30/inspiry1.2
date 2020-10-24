@@ -125,6 +125,24 @@ class GeoDir_Frontend_Scripts {
 			var dist = 0;
 			var Sgeocoder = (typeof google!=='undefined' && typeof google.maps!=='undefined') ? new google.maps.Geocoder() : {};
 
+			<?php if ( geodir_lazy_load_map() ) { ?>
+			jQuery(function($) {
+				if ($('.geodir-listing-search input[name="snear"]').length && !window.geodirMapAllScriptsLoaded) {
+					$('.geodir-listing-search input[name="snear"]').each(function() {
+						if (!window.geodirMapAllScriptsLoaded) {
+							$(this).on('focus', function(e){
+								/* Load lazy load scripts */
+								if (!window.geodirMapAllScriptsLoaded && !window.geodirApiScriptLoading) {
+									$(this).geodirLoadMap({loadJS: true});
+									jQuery(window).trigger('resize');
+								}
+							});
+						}
+					});
+				}
+			});
+			<?php } ?>
+
 			function geodir_setup_submit_search($form) {
 				jQuery('.geodir_submit_search').unbind('click');// unbind any other click events
 				jQuery('.geodir_submit_search').click(function(e) {
@@ -358,7 +376,7 @@ class GeoDir_Frontend_Scripts {
 	 */
 	private static function register_script( $handle, $path, $deps = array( 'jquery' ), $version = GEODIRECTORY_VERSION, $in_footer = true ) {
 		self::$scripts[] = $handle;
-		if ( $handle == 'select2' && wp_script_is( 'select2', 'registered' ) ) {
+		if ( $handle == 'select2' && wp_script_is( 'select2', 'registered' ) && !geodir_design_style() ) {
 			wp_deregister_script( 'select2' ); // Fix conflict with select2 basic version loaded via 3rd party plugins.
 		}
 		wp_register_script( $handle, $path, $deps, $version, $in_footer );
@@ -444,6 +462,7 @@ class GeoDir_Frontend_Scripts {
 		$map_extra = apply_filters('geodir_googlemap_script_extra', '');
 
 		$suffix           = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+		$aui = geodir_design_style() ? '/aui' : '';
 		$register_scripts = array(
 			'select2' => array(
 				'src'     => geodir_plugin_url() . '/assets/js/select2/select2.full' . $suffix . '.js',
@@ -458,6 +477,11 @@ class GeoDir_Frontend_Scripts {
 			'geodir-jquery-ui-timepicker' => array(
 				'src'     => geodir_plugin_url() . '/assets/js/jquery.ui.timepicker' . $suffix . '.js',
 				'deps'    => array('jquery-ui-datepicker', 'jquery-ui-slider'),
+				'version' => GEODIRECTORY_VERSION,
+			),
+			'geodir-map' => array(
+				'src'     => geodir_plugin_url() . '/assets/js/geodir-map' . $suffix . '.js',
+				'deps'    => array( 'jquery' ),
 				'version' => GEODIRECTORY_VERSION,
 			),
 			'geodir-google-maps' => array(
@@ -496,17 +520,17 @@ class GeoDir_Frontend_Scripts {
 				'version' => GEODIRECTORY_VERSION,
 			),
 			'geodir-map-widget' => array(
-				'src'     => geodir_plugin_url() . '/assets/js/map' . $suffix . '.js',
+				'src'     => geodir_plugin_url() . '/assets'.$aui.'/js/map' . $suffix . '.js',
 				'deps'    => array('jquery'),
 				'version' => GEODIRECTORY_VERSION,
 			),
 			'geodir-plupload' => array(
-				'src'     => geodir_plugin_url() . '/assets/js/geodirectory-plupload' . $suffix . '.js',
+				'src'     => geodir_plugin_url() . '/assets'.$aui.'/js/geodirectory-plupload' . $suffix . '.js',
 				'deps'    => array('plupload','jquery','jquery-ui-sortable'),
 				'version' => GEODIRECTORY_VERSION,
 			),
 			'geodir' => array(
-				'src'     =>  geodir_plugin_url() . '/assets/js/geodirectory' . $suffix . '.js',
+				'src'     =>  geodir_plugin_url() . '/assets'.$aui.'/js/geodirectory'. $suffix . '.js',
 				'deps'    => array('jquery'),
 				'version' => GEODIRECTORY_VERSION,
 			),
@@ -516,8 +540,8 @@ class GeoDir_Frontend_Scripts {
 				'version' => GEODIRECTORY_VERSION,
 			),
 			'geodir-add-listing' => array(
-				'src'     => geodir_plugin_url() . '/assets/js/add-listing' . $suffix . '.js',
-				'deps'    => array( 'geodir-jquery-ui-timepicker' ),
+				'src'     => geodir_plugin_url() . '/assets'.$aui.'/js/add-listing' . $suffix . '.js',
+				'deps'    => array( 'jquery' ),
 				'version' => GEODIRECTORY_VERSION,
 			),
 			'geodir_lity' => array(
@@ -582,24 +606,35 @@ class GeoDir_Frontend_Scripts {
 	public static function load_scripts() {
 		global $post;
 
+		$design_style = geodir_design_style();
+
 		// register scripts/styles
 		self::register_scripts();
 		self::register_styles();
 
-		// global enqueues
-		// css
-		self::enqueue_style( 'select2' );
-		self::enqueue_style( 'geodir-core' );
-		// js
-		self::enqueue_script( 'select2' );
-		self::enqueue_script( 'geodir-select2' );
-		self::enqueue_script( 'geodir' );
-		self::enqueue_script( 'geodir_lity' );
 
-		// rtl
-		if(is_rtl()){
-			self::enqueue_style( 'geodir-rtl' );
-		}
+
+//		self::enqueue_script( 'geodir' );
+
+		if(!$design_style){
+
+
+			// global enqueues
+			// css
+			self::enqueue_style( 'select2' );
+			self::enqueue_style( 'geodir-core' );
+			// js
+			self::enqueue_script( 'select2' );
+			self::enqueue_script( 'geodir-select2' );
+			self::enqueue_script( 'geodir' );
+			self::enqueue_script( 'geodir_lity' );
+
+
+			//rtl
+			if(is_rtl()){
+				self::enqueue_style( 'geodir-rtl' );
+			}
+
 
 		// add-listing
 		if(geodir_is_page('add-listing') && !isset($_REQUEST['ct_builder'])){
@@ -607,29 +642,63 @@ class GeoDir_Frontend_Scripts {
 			self::enqueue_script( 'geodir-add-listing' );
 			self::enqueue_script( 'geodir-jquery-ui-timepicker' );
 
-			wp_enqueue_script( 'jquery-ui-autocomplete' ); // add listing only?
+				wp_enqueue_script( 'jquery-ui-autocomplete' ); // add listing only?
+
+			}
+
+			// details page
+			if(geodir_is_page('single')){
+				//self::enqueue_script( 'jquery-flexslider' ); // moved to widget
+			}
+
+		}else{
+			// js
+			self::enqueue_script( 'geodir' ); // original
+
+			// add-listing @todo do we need all these?
+			if(geodir_is_page('add-listing') && !isset($_REQUEST['ct_builder'])){
+				self::enqueue_script( 'geodir-plupload' );
+				self::enqueue_script( 'geodir-add-listing' );
+//				self::enqueue_script( 'geodir-jquery-ui-timepicker' );
+				//self::enqueue_script( 'geodir-select2' );
+
+//				wp_enqueue_script( 'jquery-ui-autocomplete' ); // add listing only?
+
+			}
 		}
+
+		$map_api = GeoDir_Maps::active_map();
+		wp_add_inline_script( 'jquery', "window.gdSetMap = window.gdSetMap || '" . $map_api . "';window.gdLoadMap = window.gdLoadMap || '" . geodir_lazy_load_map() . "';");
 
 		// Maps
-		$geodir_map_name = GeoDir_Maps::active_map();
-		if (in_array($geodir_map_name, array('auto', 'google'))) {
-			self::enqueue_script('geodir-google-maps');
-			self::enqueue_script('geodir-g-overlappingmarker');
-		}elseif($geodir_map_name == 'osm'){
-			self::enqueue_style('leaflet');
-			self::enqueue_style('leaflet-routing-machine');
+		if ( geodir_lazy_load_map() ) {
+			// Lazy Load
+			if ( $map_api != 'none' && geodir_is_page( 'add-listing' ) ) {
+				self::enqueue_script( 'geodir-map' );
+			}
+		} else {
+			// Normal
+			if ( in_array( $map_api, array( 'auto', 'google' ) ) ) {
+				self::enqueue_script('geodir-google-maps');
+				self::enqueue_script('geodir-g-overlappingmarker');
+			} elseif ( $map_api == 'osm' ) {
+				self::enqueue_style('leaflet');
+				self::enqueue_style('leaflet-routing-machine');
 
-			self::enqueue_script('geodir-leaflet');
-			self::enqueue_script('geodir-leaflet-geo');
-			self::enqueue_script('leaflet-routing-machine');
-			self::enqueue_script('geodir-o-overlappingmarker');
-		}
-		if($geodir_map_name!='none'){
-			$osm_extra = GeoDir_Maps::footer_script();
-			wp_add_inline_script( 'geodir-goMap', "window.gdSetMap = window.gdSetMap || '".GeoDir_Maps::active_map()."';".$osm_extra, 'before' );
-			wp_enqueue_script( 'geodir-goMap' );
-		}
+				self::enqueue_script('geodir-leaflet');
+				self::enqueue_script('geodir-leaflet-geo');
+				self::enqueue_script('leaflet-routing-machine');
+				self::enqueue_script('geodir-o-overlappingmarker');
+			}
 
+			if ( $map_api != 'none' ) {
+				wp_enqueue_script( 'geodir-goMap' );
+
+				if ( $footer_script = GeoDir_Maps::footer_script() ) {
+					wp_add_inline_script( 'geodir-goMap', $footer_script, 'before' );
+				}
+			}
+		}
 	}
 
 	/**
@@ -752,7 +821,10 @@ class GeoDir_Frontend_Scripts {
 				             'image_limit' => $image_limit,
 				             'upload_img_size' => geodir_max_upload_size()
 				);
-			break;
+				break;
+			case 'geodir-map' :
+				return geodir_map_params();
+				break;
 
 		}
 		return false;

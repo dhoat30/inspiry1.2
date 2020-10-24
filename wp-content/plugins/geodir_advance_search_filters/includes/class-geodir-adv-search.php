@@ -188,8 +188,11 @@ final class GeoDir_Adv_Search {
 
 	    if ( $this->is_request( 'frontend' ) ) {
 			add_action( 'wp_enqueue_scripts', array( $this, 'add_styles' ), 10 );
-			add_action( 'wp_enqueue_scripts', array( $this, 'add_scripts' ), 10 );
-			
+		    add_action( 'wp_enqueue_scripts', array( $this, 'add_scripts' ), 10 );
+		    
+		    // aui
+		    add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_aui' ), 10 );
+		    
 			add_filter( 'wp_super_duper_div_classname_gd_search', 'geodir_search_widget_add_class', 10, 3 );
 			add_filter( 'wp_super_duper_div_attrs_gd_search', 'geodir_search_widget_add_attr', 10, 3 );
 			add_filter( 'wp_super_duper_before_widget_gd_search', 'geodir_search_before_widget_content', 10, 4 );
@@ -261,10 +264,14 @@ final class GeoDir_Adv_Search {
 	 * Enqueue styles.
 	 */
 	public function add_styles() {
-		// Register stypes
-		wp_register_style( 'geodir-adv-search', GEODIR_ADV_SEARCH_PLUGIN_URL . '/assets/css/style.css', array(), GEODIR_ADV_SEARCH_VERSION );
+		$design_style = geodir_design_style();
+		if(!$design_style){
+			// Register stypes
+			wp_register_style( 'geodir-adv-search', GEODIR_ADV_SEARCH_PLUGIN_URL . '/assets/css/style.css', array(), GEODIR_ADV_SEARCH_VERSION );
 
-		wp_enqueue_style( 'geodir-adv-search' );
+			wp_enqueue_style( 'geodir-adv-search' );
+		}
+
 	}
 
 	/**
@@ -272,11 +279,179 @@ final class GeoDir_Adv_Search {
 	 */
 	public function add_scripts() {
 		$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+		$design_style = geodir_design_style();
+		if(!$design_style) {
+			// Register scripts
+			wp_register_script( 'geodir-adv-search', GEODIR_ADV_SEARCH_PLUGIN_URL . '/assets/js/script' . $suffix . '.js', array(
+				'jquery',
+				'geodir',
+				'geodir-jquery-ui-timepicker'
+			), GEODIR_ADV_SEARCH_VERSION );
 
-		// Register scripts
-		wp_register_script( 'geodir-adv-search', GEODIR_ADV_SEARCH_PLUGIN_URL . '/assets/js/script' . $suffix . '.js', array( 'jquery', 'geodir', 'geodir-jquery-ui-timepicker' ), GEODIR_ADV_SEARCH_VERSION );
+			wp_enqueue_script( 'geodir-adv-search' );
+		}
+		$script = $design_style ? 'geodir' : 'geodir-adv-search';
+		wp_localize_script($script , 'geodir_search_params', geodir_adv_search_params() );
+	}
 
-		wp_enqueue_script( 'geodir-adv-search' );
-		wp_localize_script( 'geodir-adv-search', 'geodir_search_params', geodir_adv_search_params() );
+	public function enqueue_aui(){
+		// core
+		wp_add_inline_script( 'geodir', $this->add_scripts_aui() );
+	}
+
+
+	public function add_scripts_aui(){
+		ob_start();
+			if(0){ ?><script><?php }?>
+
+			document.addEventListener("DOMContentLoaded", function() {
+
+				//setup advanced search form on load
+				geodir_search_setup_advance_search();
+
+				//setup advanced search form on form ajax load
+				jQuery("body").on("geodir_setup_search_form", function() {
+					geodir_search_setup_advance_search();
+				});
+
+				if (jQuery('.geodir-search-container form').length) {
+					geodir_search_setup_searched_filters();
+				}
+
+				/* Refresh Open Now time */
+				if (jQuery('.geodir-search-container select[name="sopen_now"]').length) {
+					setInterval(function(e) {
+						geodir_search_refresh_open_now_times();
+					}, 60000);
+					geodir_search_refresh_open_now_times();
+				}
+			});
+
+			function geodir_search_setup_advance_search() {
+				jQuery('.geodir-search-container.geodir-advance-search-searched').each(function() {
+					var $this = this;
+
+					if (jQuery($this).attr('data-show-adv') == 'search') {
+						jQuery('.geodir-show-filters', $this).trigger('click');
+					}
+				});
+
+				jQuery('.geodir-more-filters', '.geodir-filter-container').each(function() {
+					var $cont = this;
+					var $form = jQuery($cont).closest('form');
+					var $adv_show = jQuery($form).closest('.geodir-search-container').attr('data-show-adv');
+					if ($adv_show == 'always' && typeof jQuery('.geodir-show-filters', $form).html() != 'undefined') {
+						jQuery('.geodir-show-filters', $form).remove();
+						if (!jQuery('.geodir-more-filters', $form).is(":visible")) {
+							jQuery('.geodir-more-filters', $form).slideToggle(500);
+						}
+					}
+				});
+			}
+
+
+			function geodir_search_setup_searched_filters() {
+				jQuery('.gd-adv-search-labels .gd-adv-search-label').on('click', function(e) {
+					var $this = jQuery(this), $form = jQuery('.geodir-search-container form'), name, to_name,
+						name = $this.data('name');
+					to_name = $this.data('names');
+
+					if ((typeof name != 'undefined' && name) || $this.hasClass('gd-adv-search-near')) {
+						if ($this.hasClass('gd-adv-search-near')) {
+							name = 'snear';
+							// if we are clearing the near then we need to clear up a few more things
+							jQuery('.sgeo_lat,.sgeo_lon,.geodir-location-search-type', $form).val('');
+						}
+
+						geodir_search_deselect(jQuery('[name="' + name + '"]', $form));
+
+						if (typeof to_name != 'undefined' && to_name) {
+							geodir_search_deselect(jQuery('[name="' + to_name + '"]', $form));
+						}
+
+						jQuery('.geodir_submit_search', $form).trigger('click');
+					}
+				});
+			}
+
+			function geodir_search_refresh_open_now_times() {
+				jQuery('.geodir-search-container select[name="sopen_now"]').each(function() {
+					geodir_search_refresh_open_now_time(jQuery(this));
+				});
+			}
+
+			function geodir_search_refresh_open_now_time($this) {
+				var $option = $this.find('option[value="now"]'), label, value, d, date_now, time, $label, open_now_format = geodir_search_params.open_now_format;
+				if ($option.length && open_now_format) {
+					if ($option.data('bkp-text')) {
+						label = $option.data('bkp-text');
+					} else {
+						label = $option.text();
+						$option.attr('data-bkp-text', label);
+					}
+					d = new Date();
+					date_now = d.getFullYear() + '-' + (("0" + (d.getMonth()+1)).slice(-2)) + '-' + (("0" + (d.getDate())).slice(-2)) + 'T' + (("0" + (d.getHours())).slice(-2)) + ':' + (("0" + (d.getMinutes())).slice(-2)) + ':' + (("0" + (d.getSeconds())).slice(-2));
+					time = geodir_search_format_time(d);
+					open_now = geodir_search_params.open_now_format;
+					open_now = open_now.replace("{label}", label);
+					open_now = open_now.replace("{time}", time);
+					$option.text(open_now);
+					$option.closest('select').data('date-now',date_now);
+					/* Searched label */
+					$label = jQuery('.gd-adv-search-open_now .gd-adv-search-label-t');
+					if (jQuery('.gd-adv-search-open_now').length && jQuery('.gd-adv-search-open_now').data('value') == 'now') {
+						if ($label.data('bkp-text')) {
+							label = $label.data('bkp-text');
+						} else {
+							label = $label.text();
+							$label.attr('data-bkp-text', label);
+						}
+						open_now = geodir_search_params.open_now_format;
+						open_now = open_now.replace("{label}", label);
+						open_now = open_now.replace("{time}", time);
+						$label.text(open_now);
+					}
+				}
+			}
+
+			function geodir_search_format_time(d) {
+				var format = geodir_search_params.time_format, am_pm = eval(geodir_search_params.am_pm), hours, aL, aU;
+
+				hours = d.getHours();
+				if (hours < 12) {
+					aL = 0;
+					aU = 1;
+				} else {
+					hours = hours > 12 ? hours - 12 : hours;
+					aL = 2;
+					aU = 3;
+				}
+
+				time = format.replace("g", hours);
+				time = time.replace("G", (d.getHours()));
+				time = time.replace("h", ("0" + hours).slice(-2));
+				time = time.replace("H", ("0" + (d.getHours())).slice(-2));
+				time = time.replace("i", ("0" + (d.getMinutes())).slice(-2));
+				time = time.replace("s", '');
+				time = time.replace("a", am_pm[aL]);
+				time = time.replace("A", am_pm[aU]);
+
+				return time;
+			}
+
+			function geodir_search_deselect(el) {
+				var fType = jQuery(el).prop('type');
+				switch (fType) {
+					case 'checkbox':
+					case 'radio':
+						jQuery(el).prop('checked', false);
+						break;
+				}
+				jQuery(el).val('');
+			}
+
+			<?php if(0){ ?></script><?php }
+
+		return ob_get_clean();
 	}
 }

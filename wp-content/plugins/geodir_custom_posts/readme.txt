@@ -3,9 +3,9 @@ Contributors: stiofansisland, paoltaia, ayecode
 Donate link: https://wpgeodirectory.com
 Tags: cpt, custom post type, custom post types, geodirectory, geodirectory custom post types, post type, post types
 Requires at least: 4.9
-Tested up to: 5.4
+Tested up to: 5.5
 Requires PHP: 5.6
-Stable tag: 2.0.1.0
+Stable tag: 2.1.0.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -27,6 +27,9 @@ Each CPT has its own form builder, so you can add in any custom fields, prices, 
 4. For detailed setup instructions, visit the official [Documentation](https://wpgeodirectory.com/docs/category/addons/custom-post-types/?utm_source=docs&utm_medium=installation_tab&utm_content=documentation&utm_campaign=readme) page.
 
 == Changelog ==
+
+= 2.1.0.0 =
+* Changes for AyeCode UI compatibility - CHANGED
 
 = 2.0.1.0 =
 * Linked posts feature not working with rest API - FIXED

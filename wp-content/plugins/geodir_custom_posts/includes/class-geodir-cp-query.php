@@ -95,10 +95,25 @@ class GeoDir_CP_Query {
 	}
 
 	public static function listings_widget_query_args( $query_args, $instance ) {
+		global $gd_post;
+
 		if ( ! empty( $query_args['post_type'] ) && ! GeoDir_Post_types::supports( $query_args['post_type'], 'location' ) ) {
 			$query_args['gd_location'] = false;
 			$query_args['distance_to_post'] = false;
 		}
+
+		// Linked posts query args.
+		if ( ! empty( $instance['linked_posts'] ) && in_array( $instance['linked_posts'], array( 'from', 'to' ) ) ) {
+			$link_type = 'linked_' . $instance['linked_posts'] . '_post';
+			$post_id =  ! empty( $instance['linked_post_id'] ) ? absint( $instance['linked_post_id'] ) : 0;
+
+			if ( empty( $post_id ) && ! empty( $gd_post ) ) {
+				$post_id = $gd_post->ID; // Current post ID.
+			}
+
+			$query_args[ $link_type ] = $post_id;
+		}
+
 		return $query_args;
 	}
 

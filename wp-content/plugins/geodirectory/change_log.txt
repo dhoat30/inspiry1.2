@@ -1,3 +1,41 @@
+= 2.1.0.3 =
+* Kleo & Listimia themes not compatible with new AUI styles, revert to legacy styles if active - FIXED
+* Hide latitude/longitude still shows field labels - FIXED
+* Business Hours field input mobile compatibility - FIXED
+
+= 2.1.0.2 =
+* Sort by options in GD > Listings widget not updating with post type change - FIXED
+* Hummingbird object cache does not clears feature image cache - FIXED
+* Post distance is not showing rounded value - FIXED
+* Post images slider do not covers full width when only one image to display - FIXED
+* GD ninja forms widget tries to open wrong lightbox for non AUI - FIXED
+* Issue in save multiselect values with bootstrap active - FIXED
+* Recent reviews widget image not rounded - FIXED
+* Lazyload map category images natively - CHANGED
+* Category widget CPT switcher not retaining all AUI styles on AJAX load - FIXED
+
+= 2.1.0.0 =
+* AyeCode UI Bootstrap design - ADDED
+* GD Archive template not rendered correctly for Enfold Builder - FIXED
+* Only main image rotated if needed, smaller sizes fail to rotate based on metadata - FIXED
+* Sometime zip field looses the value on select autocomplete address - FIXED
+* Replace jQuery deprecated load() function - CHANGED
+* Genesis don't show comments when rating stars disabled - FIXED
+* Elementor list icons fallback #hide not working with latest elementor - FIXED
+* Default page content will now use blocks if block editor is enabled - CHANGED
+* Tab nav changes for pagespeed FCP - CHANGED
+* Don't lazyload first image on slider on details page for better pagespeed scores - CHANGED
+* Lazy Load map feature added - ADDED
+* Events - upcoming filter not working on Best of widget - FIXED
+
+= 2.0.0.102 =
+* Avada page builder don't render header on GD Archive pages - FIXED
+* %%term_title%% is not working in Yoast SEO meta title for tags - FIXED
+* GD Categories current post type filter is not working on search page - FIXED
+* GD Details sidebar not working with Astra theme custom template - FIXED
+* Unable to translate GD Ninja Form action text - FIXED
+* ElementorPro single listing tab does not scroll to tab content on mobile - FIXED
+
 = 2.0.0.101 =
 * Elementor dynamic tag style is not working with Elementor v3 - FIXED
 

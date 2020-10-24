@@ -1,13 +1,46 @@
 === GeoDirectory List Manager ===
-Contributors: GeoDirectory Team
+Contributors: stiofansisland, paoltaia, ayecode
 Donate link: https://wpgeodirectory.com
-Requires at least: 3.1
-Tested up to: 5.2
-Stable tag: 2.1.0.5
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: geodirectory, geodirectory list, list manager, listing lists, post 2 post
+Requires at least: 4.9
+Tested up to: 5.5
+Requires PHP: 5.6
+Stable tag: 2.1.1.1
+License: GPLv3
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
+
+Allows users to create and save their own special lists of listings.
+
+== Description ==
+
+= Inspired by the collections section of Yelp =
+With List Manager, users can create and save their own special lists of places. For example, "Must try Italian Restaurants", "Places to visit in Scotland" or "Summer Events 2020".
+
+Create as many lists as you want, customize the list title, description, and set it to be public or private. Just like Yelp, users can browse lists set as public. Private lists remain hidden. However, they can still be shared with friends via a unique URL.
+
+= Bookmarks, Itineraries, Collections =
+GeoDirectory list manager allows users to create bookmarks, itineraries, collections, and so on. That is to say, there are so many different ways to utilize the add-on depending on your directory needs.
+
+One of our most underrated add-ons, list manager, expands on the "favorites" concept by allowing the creation of any type of favourites list. Moreover, the concept of lists spans across all areas of a directory. As such, with our Custom Post Types add-on, multiple CPTs can be added to the one list.
+
+The add to list button is available as a shortcode, widget, or Gutenberg block. Additionally, the output of the lists is a new page template created with either shortcodes or blocks.
+
+= Post 2 Post plugin is required to create the relationship between posts. =
+
+= Minimum Requirements =
+
+* WordPress 4.9 or later
+* GeoDirectory 2.0 or later
+* Posts 2 Post
 
 == Changelog ==
+
+= 2.1.1.1 =
+* List save button not working with bootstrap style - FIXED
+
+= 2.1.1.0 =
+* Changes for AyeCode UI compatibility - CHANGED
+* Removed profile list tab and added to the UsersWP core - CHANGED
 
 = 2.1.0.5 =
 * Post 2 Post can show activate instead of install action - FIXED
@@ -39,7 +72,7 @@ Solved deactivation hook. - CHANGED
 Compatible with GDV2 - CHANGED
 Convert to OOPs - CHANGED
 Compatible with Buddypress plugin - CHANGED
-Compatible with Userswp plugin - CHANGED
+Compatible with UsersWP plugin - CHANGED
 Lists add to author page. -ADDED
 
 = 1.0.3 =

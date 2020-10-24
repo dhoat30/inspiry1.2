@@ -137,7 +137,7 @@ if( ! class_exists( 'GeoDir_Lists_Data' ) ) {
 
             // if no image show a list icon
             if(!$image){
-                $image = '<span class=""><i class="fas fa-list"></i></span>';
+                $image = '<span class=""><i class="fas fa-list" aria-hidden="true"></i></span>';
             }
 
             return $image;

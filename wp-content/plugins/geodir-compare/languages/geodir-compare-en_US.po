@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: GeoDirectory Compare Listings 2.0.0.3\n"
+"Project-Id-Version: GeoDirectory Compare Listings 2.1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-29 13:10+0530\n"
-"PO-Revision-Date: 2020-01-29 13:10+0530\n"
+"POT-Creation-Date: 2020-10-07 17:00+0530\n"
+"PO-Revision-Date: 2020-10-07 17:00+0530\n"
 "Last-Translator: \n"
 "Language-Team: AyeCode Ltd <contact@ayecode.io>\n"
 "Language: en_US\n"
@@ -20,14 +20,14 @@ msgstr ""
 "X-Generator: Poedit 2.2.4\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: geodir-compare.php:81
+#: geodir-compare.php:91
 #, php-format
 msgid ""
 "%s requires the %sGeodirectory%s plugin to be installed and active. %sClick "
 "here to activate it.%s"
 msgstr ""
 
-#: geodir-compare.php:102
+#: geodir-compare.php:112
 #, php-format
 msgid ""
 "%s requires the %sGeodirectory%s plugin to be installed and active. %sClick "
@@ -50,35 +50,46 @@ msgstr ""
 msgid "Select the page to use as the listings comparison page."
 msgstr ""
 
-#: includes/class-geodir-compare-ajax.php:71
+#: includes/class-geodir-compare-ajax.php:75
+#: includes/class-geodir-compare-ajax.php:81
 msgid "View shareable link"
 msgstr ""
 
-#: includes/class-geodir-compare-ajax.php:78
-#: includes/class-geodir-compare-ajax.php:110
-#: includes/class-geodir-compare.php:284
-#: includes/widgets/class-geodir-widget-compare-button.php:54
-#: includes/widgets/class-geodir-widget-compare-button.php:159
-#: includes/widgets/class-geodir-widget-compare-button.php:161
-#: includes/widgets/class-geodir-widget-compare-button.php:184
+#: includes/class-geodir-compare-ajax.php:97
+#: includes/class-geodir-compare-ajax.php:104
+#: includes/class-geodir-compare-ajax.php:153
+#: includes/class-geodir-compare.php:287
+#: includes/widgets/class-geodir-widget-compare-button.php:57
+#: includes/widgets/class-geodir-widget-compare-button.php:277
+#: includes/widgets/class-geodir-widget-compare-button.php:279
+#: includes/widgets/class-geodir-widget-compare-button.php:321
 msgid "Compare"
 msgstr ""
 
-#: includes/class-geodir-compare-ajax.php:89
+#: includes/class-geodir-compare-ajax.php:121
+#: includes/class-geodir-compare-ajax.php:131
 msgid "was successfully removed from the comparison list"
 msgstr ""
 
-#: includes/class-geodir-compare-ajax.php:129
+#: includes/class-geodir-compare-ajax.php:177
 msgid ""
 "You have reached the maximum number of items to compare. Remove some first."
 msgstr ""
 
-#: includes/class-geodir-compare-ajax.php:164
+#: includes/class-geodir-compare-ajax.php:182
+msgid ""
+"You have reached the maximum number of items to compare. Please remove some "
+"first."
+msgstr ""
+
+#: includes/class-geodir-compare-ajax.php:219
 msgid "Your comparison list is empty."
 msgstr ""
 
-#: includes/class-geodir-compare-ajax.php:186
-#: includes/widgets/class-geodir-widget-compare-list.php:240
+#: includes/class-geodir-compare-ajax.php:248
+#: includes/class-geodir-compare-ajax.php:261
+#: includes/widgets/class-geodir-widget-compare-list.php:253
+#: templates/bootstrap/compare-list.php:56 templates/legacy/compare-list.php:56
 msgid "Remove"
 msgstr ""
 
@@ -92,27 +103,27 @@ msgctxt "Page title"
 msgid "Compare Listings"
 msgstr ""
 
-#: includes/class-geodir-compare.php:203
+#: includes/class-geodir-compare.php:206
 msgid "Comparison Page"
 msgstr ""
 
-#: includes/class-geodir-compare.php:216
+#: includes/class-geodir-compare.php:219
 msgid "GD Comparison Page"
 msgstr ""
 
-#: includes/class-geodir-compare.php:217
+#: includes/class-geodir-compare.php:220
 msgid "This is where users can compare several listings side by side."
 msgstr ""
 
-#: includes/class-geodir-compare.php:240
+#: includes/class-geodir-compare.php:243
 msgid "Compare Listings"
 msgstr ""
 
-#: includes/class-geodir-compare.php:283
+#: includes/class-geodir-compare.php:286
 msgid "Your comparision list is full. Please remove one item first."
 msgstr ""
 
-#: includes/class-geodir-compare.php:285
+#: includes/class-geodir-compare.php:288
 msgid "There was an error while processing the request."
 msgstr ""
 
@@ -124,113 +135,266 @@ msgstr ""
 msgid "Allows the user to compare two or more listings."
 msgstr ""
 
-#: includes/widgets/class-geodir-widget-compare-button.php:52
+#: includes/widgets/class-geodir-widget-compare-button.php:55
 msgid "Button Text"
 msgstr ""
 
-#: includes/widgets/class-geodir-widget-compare-button.php:53
+#: includes/widgets/class-geodir-widget-compare-button.php:56
 msgid "The text used by the compare listing button."
 msgstr ""
 
-#: includes/widgets/class-geodir-widget-compare-button.php:61
+#: includes/widgets/class-geodir-widget-compare-button.php:64
 msgid "Button Icon"
 msgstr ""
 
-#: includes/widgets/class-geodir-widget-compare-button.php:62
+#: includes/widgets/class-geodir-widget-compare-button.php:65
 msgid ""
 "Enter a FontAwesome icon class here and it will be displayed in the button."
 msgstr ""
 
-#: includes/widgets/class-geodir-widget-compare-button.php:70
+#: includes/widgets/class-geodir-widget-compare-button.php:73
 msgid "Added To Compare Button Text"
 msgstr ""
 
-#: includes/widgets/class-geodir-widget-compare-button.php:71
+#: includes/widgets/class-geodir-widget-compare-button.php:74
 msgid ""
 "The text used by the compare listing button when the listing has already "
 "been added to the comparison list."
 msgstr ""
 
-#: includes/widgets/class-geodir-widget-compare-button.php:72
+#: includes/widgets/class-geodir-widget-compare-button.php:75
 msgid "Added To Compare"
 msgstr ""
 
-#: includes/widgets/class-geodir-widget-compare-button.php:79
+#: includes/widgets/class-geodir-widget-compare-button.php:82
 msgid "Added To Compare Button Icon"
 msgstr ""
 
-#: includes/widgets/class-geodir-widget-compare-button.php:80
+#: includes/widgets/class-geodir-widget-compare-button.php:83
 msgid ""
 "Enter a FontAwesome icon class here and it will be displayed in the button "
 "after a user has added the listing to a comparison list."
 msgstr ""
 
-#: includes/widgets/class-geodir-widget-compare-button.php:88
+#: includes/widgets/class-geodir-widget-compare-button.php:91
 msgid "Button Background Color:"
 msgstr ""
 
-#: includes/widgets/class-geodir-widget-compare-button.php:89
+#: includes/widgets/class-geodir-widget-compare-button.php:92
 msgid "What color should be used as the button background?."
 msgstr ""
 
-#: includes/widgets/class-geodir-widget-compare-button.php:97
+#: includes/widgets/class-geodir-widget-compare-button.php:100
 msgid "Button Text Color:"
 msgstr ""
 
-#: includes/widgets/class-geodir-widget-compare-button.php:98
+#: includes/widgets/class-geodir-widget-compare-button.php:101
 msgid "Color for the button text."
 msgstr ""
 
-#: includes/widgets/class-geodir-widget-compare-button.php:106
+#: includes/widgets/class-geodir-widget-compare-button.php:109
 msgid "Button size:"
 msgstr ""
 
-#: includes/widgets/class-geodir-widget-compare-button.php:107
+#: includes/widgets/class-geodir-widget-compare-button.php:110
 msgid "Size of the button."
 msgstr ""
 
-#: includes/widgets/class-geodir-widget-compare-button.php:109
+#: includes/widgets/class-geodir-widget-compare-button.php:112
 msgid "Small"
 msgstr ""
 
-#: includes/widgets/class-geodir-widget-compare-button.php:110
+#: includes/widgets/class-geodir-widget-compare-button.php:113
 msgid "Normal"
 msgstr ""
 
-#: includes/widgets/class-geodir-widget-compare-button.php:111
+#: includes/widgets/class-geodir-widget-compare-button.php:114
 msgid "Medium"
 msgstr ""
 
-#: includes/widgets/class-geodir-widget-compare-button.php:112
+#: includes/widgets/class-geodir-widget-compare-button.php:115
 msgid "Large"
 msgstr ""
 
-#: includes/widgets/class-geodir-widget-compare-button.php:113
+#: includes/widgets/class-geodir-widget-compare-button.php:116
 msgid "Extra Large"
 msgstr ""
 
-#: includes/widgets/class-geodir-widget-compare-button.php:121
+#: includes/widgets/class-geodir-widget-compare-button.php:124
 msgid "Alignment:"
 msgstr ""
 
-#: includes/widgets/class-geodir-widget-compare-button.php:122
+#: includes/widgets/class-geodir-widget-compare-button.php:125
 msgid "How the item should be positioned on the page."
 msgstr ""
 
-#: includes/widgets/class-geodir-widget-compare-button.php:124
+#: includes/widgets/class-geodir-widget-compare-button.php:127
+#: includes/widgets/class-geodir-widget-compare-button.php:180
 msgid "None"
 msgstr ""
 
-#: includes/widgets/class-geodir-widget-compare-button.php:125
+#: includes/widgets/class-geodir-widget-compare-button.php:128
 msgid "Left"
 msgstr ""
 
-#: includes/widgets/class-geodir-widget-compare-button.php:126
+#: includes/widgets/class-geodir-widget-compare-button.php:129
 msgid "Center"
 msgstr ""
 
-#: includes/widgets/class-geodir-widget-compare-button.php:127
+#: includes/widgets/class-geodir-widget-compare-button.php:130
 msgid "Right"
+msgstr ""
+
+#: includes/widgets/class-geodir-widget-compare-button.php:135
+msgid "Positioning"
+msgstr ""
+
+#: includes/widgets/class-geodir-widget-compare-button.php:142
+#: includes/widgets/class-geodir-widget-compare-button.php:152
+msgid "Tooltip text"
+msgstr ""
+
+#: includes/widgets/class-geodir-widget-compare-button.php:143
+#: includes/widgets/class-geodir-widget-compare-button.php:153
+#, php-format
+msgid ""
+"Reveals some text on hover. Enter some text or use %%input%% to use the "
+"input value of the field or the field key for any other info %%email%%. "
+"(this can NOT be used with popover text)"
+msgstr ""
+
+#: includes/widgets/class-geodir-widget-compare-button.php:147
+#: includes/widgets/class-geodir-widget-compare-button.php:157
+msgid "Hover Action"
+msgstr ""
+
+#: includes/widgets/class-geodir-widget-compare-button.php:161
+msgid "Type"
+msgstr ""
+
+#: includes/widgets/class-geodir-widget-compare-button.php:162
+msgid "Select the badge type."
+msgstr ""
+
+#: includes/widgets/class-geodir-widget-compare-button.php:165
+msgid "Badge"
+msgstr ""
+
+#: includes/widgets/class-geodir-widget-compare-button.php:166
+msgid "Pill"
+msgstr ""
+
+#: includes/widgets/class-geodir-widget-compare-button.php:167
+msgid "Button"
+msgstr ""
+
+#: includes/widgets/class-geodir-widget-compare-button.php:172
+#: includes/widgets/class-geodir-widget-compare-button.php:188
+#: includes/widgets/class-geodir-widget-compare-button.php:201
+#: includes/widgets/class-geodir-widget-compare-button.php:212
+#: includes/widgets/class-geodir-widget-compare-button.php:223
+#: includes/widgets/class-geodir-widget-compare-button.php:243
+msgid "Design"
+msgstr ""
+
+#: includes/widgets/class-geodir-widget-compare-button.php:176
+msgid "Shadow"
+msgstr ""
+
+#: includes/widgets/class-geodir-widget-compare-button.php:177
+msgid "Select the shadow badge type."
+msgstr ""
+
+#: includes/widgets/class-geodir-widget-compare-button.php:181
+msgid "small"
+msgstr ""
+
+#: includes/widgets/class-geodir-widget-compare-button.php:182
+msgid "medium"
+msgstr ""
+
+#: includes/widgets/class-geodir-widget-compare-button.php:183
+msgid "large"
+msgstr ""
+
+#: includes/widgets/class-geodir-widget-compare-button.php:192
+msgid "Color"
+msgstr ""
+
+#: includes/widgets/class-geodir-widget-compare-button.php:193
+msgid "Select the the color."
+msgstr ""
+
+#: includes/widgets/class-geodir-widget-compare-button.php:196
+msgid "Custom colors"
+msgstr ""
+
+#: includes/widgets/class-geodir-widget-compare-button.php:207
+msgid "Background color:"
+msgstr ""
+
+#: includes/widgets/class-geodir-widget-compare-button.php:208
+msgid "Color for the background."
+msgstr ""
+
+#: includes/widgets/class-geodir-widget-compare-button.php:218
+msgid "Text color:"
+msgstr ""
+
+#: includes/widgets/class-geodir-widget-compare-button.php:219
+msgid "Color for the text."
+msgstr ""
+
+#: includes/widgets/class-geodir-widget-compare-button.php:228
+msgid "Badge size"
+msgstr ""
+
+#: includes/widgets/class-geodir-widget-compare-button.php:229
+msgid "Size of the badge."
+msgstr ""
+
+#: includes/widgets/class-geodir-widget-compare-button.php:231
+msgid "Default"
+msgstr ""
+
+#: includes/widgets/class-geodir-widget-compare-button.php:232
+msgid "XS (badge)"
+msgstr ""
+
+#: includes/widgets/class-geodir-widget-compare-button.php:233
+msgid "S (badge)"
+msgstr ""
+
+#: includes/widgets/class-geodir-widget-compare-button.php:234
+msgid "M (badge)"
+msgstr ""
+
+#: includes/widgets/class-geodir-widget-compare-button.php:235
+msgid "L (badge)"
+msgstr ""
+
+#: includes/widgets/class-geodir-widget-compare-button.php:236
+msgid "XL (badge)"
+msgstr ""
+
+#: includes/widgets/class-geodir-widget-compare-button.php:237
+msgid "XXL (badge)"
+msgstr ""
+
+#: includes/widgets/class-geodir-widget-compare-button.php:238
+msgid "L (button)"
+msgstr ""
+
+#: includes/widgets/class-geodir-widget-compare-button.php:239
+msgid "S (button)"
+msgstr ""
+
+#: includes/widgets/class-geodir-widget-compare-button.php:284
+msgid "Add to compare list"
+msgstr ""
+
+#: includes/widgets/class-geodir-widget-compare-button.php:285
+msgid "View comparison list"
 msgstr ""
 
 #: includes/widgets/class-geodir-widget-compare-list.php:29
@@ -257,28 +421,35 @@ msgstr ""
 msgid "Allow users to remove items from the table"
 msgstr ""
 
-#: includes/widgets/class-geodir-widget-compare-list.php:117
-msgid "There are no listings to compare"
-msgstr ""
-
-#: includes/widgets/class-geodir-widget-compare-list.php:209
+#: includes/widgets/class-geodir-widget-compare-list.php:222
+#: templates/bootstrap/compare-list.php:25 templates/legacy/compare-list.php:25
 msgid ""
 "Set what fields are compared in each CPT field settings under `Show in extra "
 "output location`"
 msgstr ""
 
-#: includes/widgets/class-geodir-widget-compare-list.php:210
+#: includes/widgets/class-geodir-widget-compare-list.php:223
+#: templates/bootstrap/compare-list.php:26 templates/legacy/compare-list.php:26
 msgid "You can share urls comparing listings"
 msgstr ""
 
-#: includes/widgets/class-geodir-widget-compare-list.php:211
+#: includes/widgets/class-geodir-widget-compare-list.php:224
+#: templates/bootstrap/compare-list.php:27 templates/legacy/compare-list.php:27
 msgid "You can embed a shortcode comparing specific listings on any page."
 msgstr ""
 
-#: includes/widgets/class-geodir-widget-compare-list.php:284
+#: includes/widgets/class-geodir-widget-compare-list.php:297
+#: templates/bootstrap/compare-list.php:96 templates/legacy/compare-list.php:96
 msgid "Images"
 msgstr ""
 
-#: includes/widgets/class-geodir-widget-compare-list.php:297
+#: includes/widgets/class-geodir-widget-compare-list.php:310
+#: templates/bootstrap/compare-list.php:109
+#: templates/legacy/compare-list.php:109
 msgid "Ratings"
+msgstr ""
+
+#: templates/bootstrap/loop/no-compare-found.php:10
+#: templates/loop/no-compare-found.php:10
+msgid "There are no listings to compare."
 msgstr ""

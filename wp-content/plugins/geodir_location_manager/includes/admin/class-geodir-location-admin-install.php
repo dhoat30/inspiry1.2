@@ -21,6 +21,7 @@ class GeoDir_Location_Admin_Install {
 	private static $db_updates = array(
 		'2.0.1.0' => array(
 			'geodir_location_upgrade_2010',
+			'geodir_location_update_2010_db_version'
 		)
 	);
 
@@ -72,8 +73,14 @@ class GeoDir_Location_Admin_Install {
 		if ( ! empty( $_GET['do_update_geodir_location'] ) ) {
 			self::update();
 		}
+
 		if ( ! empty( $_GET['force_update_geodir_location'] ) ) {
-			do_action( 'geodir_location_updater_cron' );
+			$blog_id = get_current_blog_id();
+
+			// Used to fire an action added in WP_Background_Process::_construct() that calls WP_Background_Process::handle_cron_healthcheck().
+			// This method will make sure the database updates are executed even if cron is disabled. Nothing will happen if the updates are already running.
+			do_action( 'wp_' . $blog_id . '_geodir_location_updater_cron' );
+
 			wp_safe_redirect( admin_url( 'admin.php?page=gd-settings' ) );
 			exit;
 		}

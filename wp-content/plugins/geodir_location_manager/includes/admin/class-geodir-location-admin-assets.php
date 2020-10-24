@@ -23,8 +23,12 @@ class GeoDir_Location_Admin_Assets {
 	 * Hook in tabs.
 	 */
 	public function __construct() {
+
+
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_styles' ), 10 );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_scripts' ), 10 );
+
+
 	}
 
 	/**
@@ -53,6 +57,8 @@ class GeoDir_Location_Admin_Assets {
 	public function admin_scripts() {
 		global $wp_query, $post, $pagenow;
 
+		$design_style = geodir_design_style();
+
 		$screen       	= get_current_screen();
 		$screen_id    	= $screen ? $screen->id : '';
 		$gd_screen_id 	= sanitize_title( __( 'GeoDirectory', 'geodirectory' ) );
@@ -65,9 +71,11 @@ class GeoDir_Location_Admin_Assets {
 
 		// Admin scripts for GD pages only
 		if ( in_array( $screen_id, geodir_get_screen_ids() ) ) {
-			wp_enqueue_script( 'geodir-location-script' );
+			if(!$design_style) {
+				wp_enqueue_script( 'geodir-location-script' );
+			}
 			wp_enqueue_script( 'geodir-location-admin-script' );
-			wp_localize_script( 'geodir-location-script', 'geodir_location_params', geodir_location_params() );
+			wp_localize_script( 'geodir-location-admin-script', 'geodir_location_params', geodir_location_params() );
 		}
 	}
 

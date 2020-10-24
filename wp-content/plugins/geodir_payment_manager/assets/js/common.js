@@ -2,7 +2,7 @@ jQuery(function($) {});
 
 function geodir_pricing_select_post_package(el, package_id, redirect_to) {
     if (redirect_to && (post_id = parseInt(jQuery('#geodirectory-add-post [name="ID"]').val()))) {
-        if (!jQuery('.geodir-add-listing-container .has-auto-draft').length) {
+        if (!jQuery('.geodir-page-add .has-auto-draft').length) {
             jQuery('form#geodirectory-add-post').append('<input type="hidden" name="geodir_switch_pkg" value="' + post_id + '">');
         }
     }

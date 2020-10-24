@@ -18,13 +18,13 @@ class GeoDir_Location_Widget_Location_Meta extends WP_Super_Duper {
 		$options = array(
 			'textdomain'    => 'geodirlocation',
 			'block-icon'    => 'location-alt',
-			'block-category'=> 'widgets',
+			'block-category'=> 'geodirectory',
 			'block-keywords'=> "['location meta','meta','description']",
 			'class_name'    => __CLASS__,
 			'base_id'       => 'gd_location_meta',
 			'name'          => __( 'GD > Location Meta', 'geodirevents' ),
 			'widget_ops'    => array(
-				'classname'   => 'geodir-location-meta-container',
+				'classname'   => 'geodir-location-meta-container bsui',
 				'description' => esc_html__( 'Displays the meta title, meta description, location description, image for location.', 'geodirevents' ),
 				'geodirectory' => true,
 				'gd_wgt_showhide' => 'show_on',
@@ -124,34 +124,6 @@ class GeoDir_Location_Widget_Location_Meta extends WP_Super_Duper {
 						"left" => __( 'Left', 'geodirectory' ),
 						"center" => __( 'Center', 'geodirectory' ),
 						"right" => __( 'Right', 'geodirectory' ),
-					),
-					'desc_tip' => true,
-					'advanced' => true
-				),
-				'list_hide' => array(
-					'type' => 'select',
-					'title' => __( 'Hide item on view:', 'geodirectory' ),
-					'desc' => __( 'You can set at what view the item will become hidden.', 'geodirectory' ),
-					'options' => array(
-						"" => __( 'None', 'geodirectory' ),
-						"2" => __( 'Grid view 2', 'geodirectory' ),
-						"3" => __( 'Grid view 3', 'geodirectory' ),
-						"4" => __( 'Grid view 4', 'geodirectory' ),
-						"5" => __( 'Grid view 5', 'geodirectory' ),
-					),
-					'desc_tip' => true,
-					'advanced' => true
-				),
-				'list_hide_secondary' => array(
-					'type' => 'select',
-					'title' => __( 'Hide secondary info on view', 'geodirectory' ),
-					'desc' => __( 'You can set at what view the secondary info such as label will become hidden.', 'geodirectory' ),
-					'options' =>  array(
-						"" => __( 'None', 'geodirectory' ),
-						"2" => __( 'Grid view 2', 'geodirectory' ),
-						"3" => __( 'Grid view 3', 'geodirectory' ),
-						"4" => __( 'Grid view 4', 'geodirectory' ),
-						"5" => __( 'Grid view 5', 'geodirectory' ),
 					),
 					'desc_tip' => true,
 					'advanced' => true
@@ -277,6 +249,8 @@ class GeoDir_Location_Widget_Location_Meta extends WP_Super_Duper {
 		}
 
 		// CSS class
+		$design_style = geodir_design_style();
+
 		$css_class = 'geodir-location-meta geodir-meta-' . $key;
 
 		if ( $instance['css_class'] != '' ) {
@@ -284,19 +258,19 @@ class GeoDir_Location_Widget_Location_Meta extends WP_Super_Duper {
 		}
 
 		if ( $instance['text_alignment'] != '' ) {
-			$css_class .= " geodir-text-align" . $instance['text_alignment'];
+			$css_class .=  $design_style ? " text-".sanitize_html_class( $instance['text_alignment'] ) : " geodir-text-align" . sanitize_html_class( $instance['text_alignment'] );
 		}
 
+		// set alignment class
 		if ( $instance['alignment'] != '' ) {
-			$css_class .= " geodir-align" . $instance['alignment'];
-		}
-
-		if ( $instance['list_hide'] != '2' ) {
-			$css_class .= " gd-lv-" . $instance['list_hide'];
-		}
-
-		if ( $instance['list_hide_secondary'] != '2' ) {
-			$css_class .= " gd-lv-s-" . $instance['list_hide_secondary'];
+			if($design_style){
+				if($instance['alignment']=='block'){$css_class .= " d-block ";}
+				elseif($instance['alignment']=='left'){$css_class .= " float-left mr-2 ";}
+				elseif($instance['alignment']=='right'){$css_class .= " float-right ml-2 ";}
+				elseif($instance['alignment']=='center'){$css_class .= " mw-100 d-block mx-auto ";}
+			}else{
+				$css_class .= $instance['alignment']=='block' ? " gd-d-block gd-clear-both " : " geodir-align" . sanitize_html_class( $instance['alignment'] );
+			}
 		}
 
 		$value = '';

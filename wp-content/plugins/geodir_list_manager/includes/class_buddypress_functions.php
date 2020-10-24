@@ -125,7 +125,7 @@ if( ! class_exists( 'GD_List_BuddyPress' ) ) {
                             foreach ( $get_list_results as $list_key => $list_value ) {
                                 $maybe_private = '';
                                 if($list_value->post_status=='private'){
-                                    $maybe_private = '<i class="fas fa-user-secret" title="'.sprintf( __( "Non-public %s (you can still share a direct link with your friends)", 'gd-lists' ), geodir_lists_name_singular() ).'"></i> ';
+                                    $maybe_private = '<i class="fas fa-user-secret" title="'.sprintf( __( "Non-public %s (you can still share a direct link with your friends)", 'gd-lists' ), geodir_lists_name_singular() ).'" aria-hidden="true"></i> ';
                                 }
                                 $list_content = wp_trim_excerpt($list_value->post_content);
                                 ?>

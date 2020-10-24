@@ -11,7 +11,7 @@
  * Plugin Name:       GeoDirectory Claim Listings
  * Plugin URI:        https://wpgeodirectory.com/downloads/claim-listings/
  * Description:       With Claim Listings addon, business owners can literally "claim" their listings, identify themselves as the business owner and get verified.
- * Version:           2.0.1.0
+ * Version:           2.1.0.0
  * Requires at least: 4.9
  * Requires PHP:      5.6
  * Author:            AyeCode Ltd
@@ -30,7 +30,11 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 if ( ! defined( 'GEODIR_CLAIM_VERSION' ) ) {
-	define( 'GEODIR_CLAIM_VERSION', '2.0.1.0' );
+	define( 'GEODIR_CLAIM_VERSION', '2.1.0.0' );
+}
+
+if ( ! defined( 'GEODIR_CLAIM_MIN_CORE' ) ) {
+	define( 'GEODIR_CLAIM_MIN_CORE', '2.1.0.0' );
 }
 
 /**
@@ -47,6 +51,11 @@ function geodir_load_claim_listing() {
 
 	if ( ! defined( 'GEODIR_CLAIM_PLUGIN_FILE' ) ) {
 		define( 'GEODIR_CLAIM_PLUGIN_FILE', __FILE__ );
+	}
+
+	// Min core version check
+	if ( ! function_exists( 'geodir_min_version_check' ) || ! geodir_min_version_check( 'Claim Listings', GEODIR_CLAIM_MIN_CORE ) ) {
+		return '';
 	}
 
 	/**

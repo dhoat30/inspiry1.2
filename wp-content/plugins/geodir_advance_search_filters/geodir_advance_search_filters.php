@@ -11,7 +11,7 @@
  * Plugin Name:       GeoDirectory Advanced Search Filters
  * Plugin URI:        https://wpgeodirectory.com/downloads/advanced-search-add-on/
  * Description:       Allows to expand the default GeoDirectory search functionality by adding a range of filters.
- * Version:           2.0.1.2
+ * Version:           2.1.0.1
  * Requires at least: 4.9
  * Requires PHP:      5.6
  * Author:            AyeCode Ltd
@@ -30,9 +30,11 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 if ( ! defined( 'GEODIR_ADV_SEARCH_VERSION' ) ) {
-	define( 'GEODIR_ADV_SEARCH_VERSION', '2.0.1.2' );
+	define( 'GEODIR_ADV_SEARCH_VERSION', '2.1.0.1' );
 }
-
+if ( ! defined( 'GEODIR_ADV_SEARCH_MIN_CORE' ) ) {
+	define( 'GEODIR_ADV_SEARCH_MIN_CORE', '2.1.0.0' );
+}
 /**
  * Begins execution of the plugin.
  *
@@ -47,6 +49,11 @@ function geodir_load_advance_search_filters() {
 
 	if ( ! defined( 'GEODIR_ADV_SEARCH_PLUGIN_FILE' ) ) {
 		define( 'GEODIR_ADV_SEARCH_PLUGIN_FILE', __FILE__ );
+	}
+
+	// min core version check
+	if( !function_exists("geodir_min_version_check") || !geodir_min_version_check("Advanced Search",GEODIR_ADV_SEARCH_MIN_CORE)){
+		return '';
 	}
 
 	/**

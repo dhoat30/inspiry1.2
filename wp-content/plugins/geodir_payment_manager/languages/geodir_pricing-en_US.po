@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: GeoDirectory Pricing Manager 2.5.1.2\n"
+"Project-Id-Version: GeoDirectory Pricing Manager 2.6.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-30 12:39+0530\n"
-"PO-Revision-Date: 2020-07-30 12:39+0530\n"
+"POT-Creation-Date: 2020-10-07 16:36+0530\n"
+"PO-Revision-Date: 2020-10-07 16:36+0530\n"
 "Last-Translator: \n"
 "Language-Team: AyeCode Ltd <contact@ayecode.io>\n"
 "Language: en_US\n"
@@ -71,7 +71,7 @@ msgstr ""
 
 #: includes/admin/admin-functions.php:147
 #: includes/admin/admin-functions.php:155
-#: includes/carts/class-geodir-pricing-cart-invoicing.php:264
+#: includes/carts/class-geodir-pricing-cart-invoicing.php:265
 msgid "Run"
 msgstr ""
 
@@ -112,7 +112,7 @@ msgstr ""
 #: includes/admin/class-geodir-pricing-admin-install.php:438
 #: includes/admin/class-geodir-pricing-admin-install.php:448
 #: includes/admin/class-geodir-pricing-admin.php:159
-#: includes/carts/class-geodir-pricing-cart-invoicing.php:155
+#: includes/carts/class-geodir-pricing-cart-invoicing.php:156
 msgid "Package"
 msgstr ""
 
@@ -151,12 +151,18 @@ msgid "Life Time"
 msgstr ""
 
 #: includes/admin/class-geodir-pricing-admin-packages-table-list.php:45
+#: includes/widgets/class-geodir-pricing-widget-pricing.php:117
+#: includes/widgets/class-geodir-pricing-widget-pricing.php:131
+#: includes/widgets/class-geodir-pricing-widget-pricing.php:145
+#: includes/widgets/class-geodir-pricing-widget-pricing.php:164
+#: includes/widgets/class-geodir-pricing-widget-pricing.php:183
+#: includes/widgets/class-geodir-pricing-widget-pricing.php:210
 msgid "Default"
 msgstr ""
 
 #: includes/admin/class-geodir-pricing-admin-packages-table-list.php:46
 #: includes/admin/settings/class-geodir-pricing-settings-cpt-package.php:459
-#: includes/carts/class-geodir-pricing-cart-invoicing.php:732
+#: includes/carts/class-geodir-pricing-cart-invoicing.php:765
 #: includes/carts/class-geodir-pricing-cart-woocommerce.php:1309
 msgid "Status"
 msgstr ""
@@ -223,8 +229,8 @@ msgstr ""
 #: includes/admin/class-geodir-pricing-admin.php:204
 #: includes/class-geodir-pricing-email.php:498
 #: includes/class-geodir-pricing-email.php:512
-#: includes/class-geodir-pricing-post.php:546
-#: includes/class-geodir-pricing-post.php:561
+#: includes/class-geodir-pricing-post.php:685
+#: includes/class-geodir-pricing-post.php:700
 msgid "Never"
 msgstr ""
 
@@ -235,6 +241,11 @@ msgstr ""
 
 #: includes/admin/settings/class-geodir-pricing-settings-cpt-package.php:112
 msgid "Package saved successfully."
+msgstr ""
+
+#: includes/admin/settings/class-geodir-pricing-settings-cpt-package.php:179
+#, php-format
+msgid "Edit Package #%d"
 msgstr ""
 
 #: includes/admin/settings/class-geodir-pricing-settings-cpt-package.php:189
@@ -479,7 +490,7 @@ msgstr ""
 msgid "Expire"
 msgstr ""
 
-#: includes/admin/settings/class-geodir-pricing-settings-cpt-package.php:700
+#: includes/admin/settings/class-geodir-pricing-settings-cpt-package.php:673
 msgid "Search package"
 msgstr ""
 
@@ -560,226 +571,226 @@ msgstr ""
 msgid "WooCommerce"
 msgstr ""
 
-#: includes/carts/class-geodir-pricing-cart-invoicing.php:131
+#: includes/carts/class-geodir-pricing-cart-invoicing.php:132
 msgid ""
 "GD package items should be deleted from GD pricing manager only, otherwise "
 "it will break invoices that created with this package!"
 msgstr ""
 
-#: includes/carts/class-geodir-pricing-cart-invoicing.php:132
+#: includes/carts/class-geodir-pricing-cart-invoicing.php:133
 msgid "GD package items should be deleted from GD pricing manager only"
 msgstr ""
 
-#: includes/carts/class-geodir-pricing-cart-invoicing.php:133
+#: includes/carts/class-geodir-pricing-cart-invoicing.php:134
 msgid ""
 "This item is in use! Before delete this package, you need to delete all the "
 "invoice(s) using this package."
 msgstr ""
 
-#: includes/carts/class-geodir-pricing-cart-invoicing.php:141
+#: includes/carts/class-geodir-pricing-cart-invoicing.php:142
 #, php-format
 msgid ""
 "GD price package can be edited from %sGeoDirectory > Settings > Pricing > "
 "Packages #%d%s"
 msgstr ""
 
-#: includes/carts/class-geodir-pricing-cart-invoicing.php:262
+#: includes/carts/class-geodir-pricing-cart-invoicing.php:263
 msgid "Merge Price Packages"
 msgstr ""
 
-#: includes/carts/class-geodir-pricing-cart-invoicing.php:263
+#: includes/carts/class-geodir-pricing-cart-invoicing.php:264
 msgid ""
 "Merge GeoDirectory Pricing Manager price packages to the Invoicing items."
 msgstr ""
 
-#: includes/carts/class-geodir-pricing-cart-invoicing.php:294
+#: includes/carts/class-geodir-pricing-cart-invoicing.php:295
 #, php-format
 msgid "Total <b>%d</b> price package is merged successfully."
 msgid_plural "Total <b>%d</b> price packages are merged successfully."
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/carts/class-geodir-pricing-cart-invoicing.php:296
+#: includes/carts/class-geodir-pricing-cart-invoicing.php:297
 msgid "No price packages merged."
 msgstr ""
 
-#: includes/carts/class-geodir-pricing-cart-invoicing.php:300
+#: includes/carts/class-geodir-pricing-cart-invoicing.php:301
 msgid "No price packages found to merge!"
 msgstr ""
 
-#: includes/carts/class-geodir-pricing-cart-invoicing.php:348
+#: includes/carts/class-geodir-pricing-cart-invoicing.php:349
 msgid "Package: GeoDirectory price packages items."
 msgstr ""
 
-#: includes/carts/class-geodir-pricing-cart-invoicing.php:460
-#: includes/carts/class-geodir-pricing-cart-invoicing.php:470
-#: includes/carts/class-geodir-pricing-cart-invoicing.php:479
-#: includes/carts/class-geodir-pricing-cart-invoicing.php:488
+#: includes/carts/class-geodir-pricing-cart-invoicing.php:493
+#: includes/carts/class-geodir-pricing-cart-invoicing.php:503
+#: includes/carts/class-geodir-pricing-cart-invoicing.php:512
+#: includes/carts/class-geodir-pricing-cart-invoicing.php:521
 #, php-format
 msgid "%s: %s"
 msgstr ""
 
-#: includes/carts/class-geodir-pricing-cart-invoicing.php:496
+#: includes/carts/class-geodir-pricing-cart-invoicing.php:529
 msgid "GD package item price can be edited only from GD pricing manager."
 msgstr ""
 
-#: includes/carts/class-geodir-pricing-cart-invoicing.php:560
+#: includes/carts/class-geodir-pricing-cart-invoicing.php:593
 msgid "Listing Invoice"
 msgstr ""
 
-#: includes/carts/class-geodir-pricing-cart-invoicing.php:564
+#: includes/carts/class-geodir-pricing-cart-invoicing.php:597
 msgid "Listing Invoices"
 msgstr ""
 
-#: includes/carts/class-geodir-pricing-cart-invoicing.php:617
+#: includes/carts/class-geodir-pricing-cart-invoicing.php:650
 #, php-format
 msgid ""
 "Create a new invoice for this listing with a package <b>%s</b>. Invoice will "
 "be created with Pending Payment status."
 msgstr ""
 
-#: includes/carts/class-geodir-pricing-cart-invoicing.php:620
+#: includes/carts/class-geodir-pricing-cart-invoicing.php:653
 msgid "Create Invoice for this Listing"
 msgstr ""
 
-#: includes/carts/class-geodir-pricing-cart-invoicing.php:649
+#: includes/carts/class-geodir-pricing-cart-invoicing.php:682
 #, php-format
 msgid "Payment For: %s"
 msgstr ""
 
-#: includes/carts/class-geodir-pricing-cart-invoicing.php:684
+#: includes/carts/class-geodir-pricing-cart-invoicing.php:717
 #, php-format
 msgid "Invoice For: %1$s (%2$s)"
 msgstr ""
 
-#: includes/carts/class-geodir-pricing-cart-invoicing.php:695
+#: includes/carts/class-geodir-pricing-cart-invoicing.php:728
 #, php-format
 msgid "View Invoice #%s"
 msgstr ""
 
-#: includes/carts/class-geodir-pricing-cart-invoicing.php:698
-#: includes/carts/class-geodir-pricing-cart-invoicing.php:704
+#: includes/carts/class-geodir-pricing-cart-invoicing.php:731
+#: includes/carts/class-geodir-pricing-cart-invoicing.php:737
 msgid ""
 "Fail to create invoice. No invoicing item found with the package selected."
 msgstr ""
 
-#: includes/carts/class-geodir-pricing-cart-invoicing.php:700
+#: includes/carts/class-geodir-pricing-cart-invoicing.php:733
 msgid "Fail to create invoice. Please refresh page and try again."
 msgstr ""
 
-#: includes/carts/class-geodir-pricing-cart-invoicing.php:707
+#: includes/carts/class-geodir-pricing-cart-invoicing.php:740
 msgid "Fail to create invoice. No package assigned to this listing."
 msgstr ""
 
-#: includes/carts/class-geodir-pricing-cart-invoicing.php:710
+#: includes/carts/class-geodir-pricing-cart-invoicing.php:743
 msgid "This listing is not allowed to create invoice."
 msgstr ""
 
-#: includes/carts/class-geodir-pricing-cart-invoicing.php:721
+#: includes/carts/class-geodir-pricing-cart-invoicing.php:754
 msgid "<p>No invoice(s) found for this listing.</p>"
 msgstr ""
 
-#: includes/carts/class-geodir-pricing-cart-invoicing.php:727
+#: includes/carts/class-geodir-pricing-cart-invoicing.php:760
 msgid "Number"
 msgstr ""
 
-#: includes/carts/class-geodir-pricing-cart-invoicing.php:728
-#: includes/carts/class-geodir-pricing-cart-invoicing.php:749
+#: includes/carts/class-geodir-pricing-cart-invoicing.php:761
+#: includes/carts/class-geodir-pricing-cart-invoicing.php:782
 msgid "Customer"
 msgstr ""
 
-#: includes/carts/class-geodir-pricing-cart-invoicing.php:729
+#: includes/carts/class-geodir-pricing-cart-invoicing.php:762
 msgid "Amount"
 msgstr ""
 
-#: includes/carts/class-geodir-pricing-cart-invoicing.php:730
+#: includes/carts/class-geodir-pricing-cart-invoicing.php:763
 msgid "Created Date"
 msgstr ""
 
-#: includes/carts/class-geodir-pricing-cart-invoicing.php:731
+#: includes/carts/class-geodir-pricing-cart-invoicing.php:764
 msgid "Payment Date"
 msgstr ""
 
-#: includes/carts/class-geodir-pricing-cart-invoicing.php:733
+#: includes/carts/class-geodir-pricing-cart-invoicing.php:766
 msgid "Actions"
 msgstr ""
 
-#: includes/carts/class-geodir-pricing-cart-invoicing.php:747
+#: includes/carts/class-geodir-pricing-cart-invoicing.php:780
 msgid "View Invoice Details"
 msgstr ""
 
-#: includes/carts/class-geodir-pricing-cart-invoicing.php:773
+#: includes/carts/class-geodir-pricing-cart-invoicing.php:806
 msgid "(r)"
 msgstr ""
 
-#: includes/carts/class-geodir-pricing-cart-invoicing.php:775
+#: includes/carts/class-geodir-pricing-cart-invoicing.php:808
 #: includes/carts/class-geodir-pricing-cart-woocommerce.php:1348
 #, php-format
 msgid "Via %s"
 msgstr ""
 
-#: includes/carts/class-geodir-pricing-cart-invoicing.php:779
+#: includes/carts/class-geodir-pricing-cart-invoicing.php:812
 msgid "Print invoice"
 msgstr ""
 
-#: includes/carts/class-geodir-pricing-cart-invoicing.php:782
+#: includes/carts/class-geodir-pricing-cart-invoicing.php:815
 msgid "Send invoice to customer"
 msgstr ""
 
-#: includes/carts/class-geodir-pricing-cart-invoicing.php:918
+#: includes/carts/class-geodir-pricing-cart-invoicing.php:951
 #, php-format
 msgid "Renew: %s"
 msgstr ""
 
-#: includes/carts/class-geodir-pricing-cart-invoicing.php:921
+#: includes/carts/class-geodir-pricing-cart-invoicing.php:954
 #, php-format
 msgid "Upgrade: %s"
 msgstr ""
 
-#: includes/carts/class-geodir-pricing-cart-invoicing.php:924
+#: includes/carts/class-geodir-pricing-cart-invoicing.php:957
 #, php-format
 msgid "Add: %s"
 msgstr ""
 
-#: includes/carts/class-geodir-pricing-cart-invoicing.php:963
+#: includes/carts/class-geodir-pricing-cart-invoicing.php:996
 #, php-format
 msgid "Invoice for the listing: %1$s (%2$s)"
 msgstr ""
 
-#: includes/carts/class-geodir-pricing-cart-invoicing.php:1123
+#: includes/carts/class-geodir-pricing-cart-invoicing.php:1156
 msgid "Invoicing Item"
-msgstr ""
-
-#: includes/carts/class-geodir-pricing-cart-invoicing.php:1183
-#, php-format
-msgid "Claim: %s"
 msgstr ""
 
 #: includes/carts/class-geodir-pricing-cart-invoicing.php:1216
 #, php-format
+msgid "Claim: %s"
+msgstr ""
+
+#: includes/carts/class-geodir-pricing-cart-invoicing.php:1249
+#, php-format
 msgid "Invoice for the claim on: %1$s (%2$s)"
 msgstr ""
 
-#: includes/carts/class-geodir-pricing-cart-invoicing.php:1287
+#: includes/carts/class-geodir-pricing-cart-invoicing.php:1320
 #: includes/carts/class-geodir-pricing-cart-woocommerce.php:1445
-#: includes/class-geodir-pricing-post.php:245
+#: includes/class-geodir-pricing-post.php:291
 #, php-format
 msgid ""
 "Your request to claim the listing has been approved. View the listing %shere"
 "%s."
 msgstr ""
 
-#: includes/carts/class-geodir-pricing-cart-invoicing.php:1292
+#: includes/carts/class-geodir-pricing-cart-invoicing.php:1325
 #: includes/carts/class-geodir-pricing-cart-woocommerce.php:1448
 #, php-format
 msgid "Your claim requires a payment to complete.  %sCheckout%s"
 msgstr ""
 
-#: includes/carts/class-geodir-pricing-cart-invoicing.php:1356
+#: includes/carts/class-geodir-pricing-cart-invoicing.php:1389
 msgid "Listing"
 msgstr ""
 
-#: includes/carts/class-geodir-pricing-cart-invoicing.php:1366
+#: includes/carts/class-geodir-pricing-cart-invoicing.php:1399
 #, php-format
 msgid "%s Listing"
 msgstr ""
@@ -1071,17 +1082,19 @@ msgstr ""
 
 #: includes/class-geodir-pricing-email.php:487
 #: includes/class-geodir-pricing-email.php:499
-#: includes/class-geodir-pricing-email.php:513 includes/core-functions.php:732
+#: includes/class-geodir-pricing-email.php:513 includes/core-functions.php:733
 msgid "Unlimited"
 msgstr ""
 
 #: includes/class-geodir-pricing-email.php:491
-#: includes/template-functions.php:262
+#: includes/class-geodir-pricing-post.php:1190
+#: includes/template-functions.php:279
 msgid "Renew"
 msgstr ""
 
 #: includes/class-geodir-pricing-email.php:492
-#: includes/template-functions.php:288
+#: includes/class-geodir-pricing-post.php:1199
+#: includes/template-functions.php:309
 msgid "Upgrade"
 msgstr ""
 
@@ -1236,97 +1249,100 @@ msgstr ""
 msgid "Could not save post package"
 msgstr ""
 
-#: includes/class-geodir-pricing-post.php:94
-#: includes/template-functions.php:163
+#: includes/class-geodir-pricing-post.php:96
+#: includes/template-functions.php:168
 msgid "business"
 msgstr ""
 
-#: includes/class-geodir-pricing-post.php:103
+#: includes/class-geodir-pricing-post.php:105
 #, php-format
 msgid "Your %s has expired and may be removed soon, please %srenew now.%s"
 msgstr ""
 
-#: includes/class-geodir-pricing-post.php:108
+#: includes/class-geodir-pricing-post.php:110
 #, php-format
 msgid "This %s appears to have expired and may be removed soon."
 msgstr ""
 
-#: includes/class-geodir-pricing-post.php:132
-#: includes/class-geodir-pricing-post.php:140
+#: includes/class-geodir-pricing-post.php:131
+#: includes/class-geodir-pricing-post.php:148
+#: includes/class-geodir-pricing-post.php:170
+#: includes/class-geodir-pricing-post.php:186
 msgid "Pending Payment"
 msgstr ""
 
-#: includes/class-geodir-pricing-post.php:142
+#: includes/class-geodir-pricing-post.php:152
+#: includes/class-geodir-pricing-post.php:188
 msgid "Expired"
 msgstr ""
 
-#: includes/class-geodir-pricing-post.php:248
+#: includes/class-geodir-pricing-post.php:294
 msgid ""
 "A verification link has been sent to your email address, please click the "
 "link in the email to verify your listing claim."
 msgstr ""
 
-#: includes/class-geodir-pricing-post.php:250
+#: includes/class-geodir-pricing-post.php:296
 msgid ""
 "Your request to claim this listing has been sent successfully. You will be "
 "notified by email once a decision has been made."
 msgstr ""
 
-#: includes/class-geodir-pricing-post.php:285
-#: includes/class-geodir-pricing-post.php:298
+#: includes/class-geodir-pricing-post.php:335
+#: includes/class-geodir-pricing-post.php:348
 msgctxt "Listing status"
 msgid "Expired"
 msgstr ""
 
-#: includes/class-geodir-pricing-post.php:291
+#: includes/class-geodir-pricing-post.php:341
 #, php-format
 msgid "Expired <span class=\"count\">(%s)</span>"
 msgid_plural "Expired <span class=\"count\">(%s)</span>"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/class-geodir-pricing-post.php:335
-#: includes/class-geodir-pricing-post.php:359
+#: includes/class-geodir-pricing-post.php:445
+#: includes/class-geodir-pricing-post.php:498
 msgid "You must select a package."
 msgstr ""
 
-#: includes/class-geodir-pricing-post.php:541
+#: includes/class-geodir-pricing-post.php:680
 msgid "days left"
 msgstr ""
 
-#: includes/class-geodir-pricing-post.php:549
+#: includes/class-geodir-pricing-post.php:688
 msgid "Today"
 msgstr ""
 
-#: includes/class-geodir-pricing-post.php:552
+#: includes/class-geodir-pricing-post.php:691
 msgid "days overdue"
 msgstr ""
 
-#: includes/class-geodir-pricing-post.php:935
-#: includes/class-geodir-pricing-post.php:956
+#: includes/class-geodir-pricing-post.php:1074
+#: includes/class-geodir-pricing-post.php:1095
 msgid ""
 "There is a problem with the listing package configuration, please contact "
 "the administrator."
 msgstr ""
 
-#: includes/class-geodir-pricing-post.php:1011
+#: includes/class-geodir-pricing-post.php:1150
 #, php-format
 msgid ""
 "Post renew received, your changes are now live and can be viewed %shere%s."
 msgstr ""
 
-#: includes/class-geodir-pricing-post.php:1013
+#: includes/class-geodir-pricing-post.php:1152
 #, php-format
 msgid ""
 "Post upgrade received, your changes are now live and can be viewed %shere%s."
 msgstr ""
 
-#: includes/class-geodir-pricing-post.php:1018
+#: includes/class-geodir-pricing-post.php:1157
 msgid ""
 "Post renew received, your changes may need to be reviewed before going live."
 msgstr ""
 
-#: includes/class-geodir-pricing-post.php:1020
+#: includes/class-geodir-pricing-post.php:1159
 msgid ""
 "Post upgrade received, your changes may need to be reviewed before going "
 "live."
@@ -1378,125 +1394,391 @@ msgstr ""
 msgid "%d days before Expire Date"
 msgstr ""
 
-#: includes/core-functions.php:464
+#: includes/core-functions.php:465
 #, php-format
 msgid "%s year left"
 msgid_plural "%s years left"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/core-functions.php:466
+#: includes/core-functions.php:467
 #, php-format
 msgid "%s year overdue"
 msgid_plural "%s years overdue"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/core-functions.php:476
+#: includes/core-functions.php:477
 msgid "today"
 msgstr ""
 
-#: includes/core-functions.php:478
+#: includes/core-functions.php:479
 #, php-format
 msgid "%s day left"
 msgid_plural "%s days left"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/core-functions.php:480
+#: includes/core-functions.php:481
 #, php-format
 msgid "%s day overdue"
 msgid_plural "%s days overdue"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/core-functions.php:676
+#: includes/core-functions.php:677
 msgid "Day(s)"
 msgstr ""
 
-#: includes/core-functions.php:677
+#: includes/core-functions.php:678
 msgid "Week(s)"
 msgstr ""
 
-#: includes/core-functions.php:678
+#: includes/core-functions.php:679
 msgid "Month(s)"
 msgstr ""
 
-#: includes/core-functions.php:679
+#: includes/core-functions.php:680
 msgid "Year(s)"
 msgstr ""
 
-#: includes/core-functions.php:689
+#: includes/core-functions.php:690
 msgid "days"
 msgstr ""
 
-#: includes/core-functions.php:689
+#: includes/core-functions.php:690 includes/core-functions.php:824
 msgid "day"
 msgstr ""
 
-#: includes/core-functions.php:692
+#: includes/core-functions.php:693
 msgid "weeks"
 msgstr ""
 
-#: includes/core-functions.php:692
+#: includes/core-functions.php:693 includes/core-functions.php:827
 msgid "week"
 msgstr ""
 
-#: includes/core-functions.php:695
+#: includes/core-functions.php:696
 msgid "months"
 msgstr ""
 
-#: includes/core-functions.php:695
+#: includes/core-functions.php:696 includes/core-functions.php:830
 msgid "month"
 msgstr ""
 
-#: includes/core-functions.php:698
+#: includes/core-functions.php:699
 msgid "years"
 msgstr ""
 
-#: includes/core-functions.php:698
+#: includes/core-functions.php:699 includes/core-functions.php:833
 msgid "year"
 msgstr ""
 
-#: includes/core-functions.php:737
+#: includes/core-functions.php:738 includes/core-functions.php:781
 #, php-format
 msgid "%d day"
 msgid_plural "%d days"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/core-functions.php:740
+#: includes/core-functions.php:741 includes/core-functions.php:784
 #, php-format
 msgid "%d week"
 msgid_plural "%d weeks"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/core-functions.php:743
+#: includes/core-functions.php:744 includes/core-functions.php:787
 #, php-format
 msgid "%d month"
 msgid_plural "%d months"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/core-functions.php:746
+#: includes/core-functions.php:747 includes/core-functions.php:790
 #, php-format
 msgid "%d year"
 msgid_plural "%d years"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/template-functions.php:262
+#: includes/core-functions.php:819
+msgid "lifetime"
+msgstr ""
+
+#: includes/core-functions.php:824
+#, php-format
+msgid "%d days"
+msgstr ""
+
+#: includes/core-functions.php:827
+#, php-format
+msgid "%d weeks"
+msgstr ""
+
+#: includes/core-functions.php:830
+#, php-format
+msgid "%d months"
+msgstr ""
+
+#: includes/core-functions.php:833
+#, php-format
+msgid "%d years"
+msgstr ""
+
+#: includes/template-functions.php:279
 msgid "Renew Listing"
 msgstr ""
 
-#: includes/template-functions.php:288
+#: includes/template-functions.php:309
 msgid "Upgrade Listing"
 msgstr ""
 
-#: includes/template-functions.php:332
+#: includes/template-functions.php:354
 #, php-format
 msgid "For description you can use up to %d characters only for this package."
+msgstr ""
+
+#: includes/template-functions.php:394
+msgid "Auto renewing"
+msgstr ""
+
+#: includes/template-functions.php:415
+#, php-format
+msgid "%s free trial"
+msgstr ""
+
+#: includes/template-functions.php:419
+msgid "Free trial"
+msgstr ""
+
+#: includes/template-functions.php:431
+#, php-format
+msgid "Featured %s"
+msgstr ""
+
+#: includes/template-functions.php:451
+#, php-format
+msgid "%d photo"
+msgid_plural "%d photos"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/template-functions.php:453
+msgid "Unlimited photos"
+msgstr ""
+
+#: includes/template-functions.php:458
+msgid "No photo"
+msgstr ""
+
+#: includes/template-functions.php:473
+#, php-format
+msgid "%d category"
+msgid_plural "%d categories"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/template-functions.php:475
+msgid "Unlimited categories"
+msgstr ""
+
+#: includes/template-functions.php:488
+#, php-format
+msgid "%d tag"
+msgid_plural "%d tags"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/template-functions.php:490
+msgid "Unlimited tags"
+msgstr ""
+
+#: includes/template-functions.php:497
+msgid "Unlimited description"
+msgstr ""
+
+#: includes/template-functions.php:511
+msgid "HTML editor for description"
+msgstr ""
+
+#: includes/template-functions.php:540
+msgid "All fields"
+msgstr ""
+
+#: includes/template-functions.php:544
+msgid "No"
+msgstr ""
+
+#: includes/widgets/class-geodir-pricing-widget-pricing.php:33
+msgid "GD > Pricing"
+msgstr ""
+
+#: includes/widgets/class-geodir-pricing-widget-pricing.php:36
+msgid "Displays pricing plans for the post type."
+msgstr ""
+
+#: includes/widgets/class-geodir-pricing-widget-pricing.php:53
+msgid "Title:"
+msgstr ""
+
+#: includes/widgets/class-geodir-pricing-widget-pricing.php:54
+msgid "The widget title."
+msgstr ""
+
+#: includes/widgets/class-geodir-pricing-widget-pricing.php:61
+msgid "Post Type:"
+msgstr ""
+
+#: includes/widgets/class-geodir-pricing-widget-pricing.php:62
+msgid ""
+"Post type to show package. Select \"Auto\" to show packages for current or "
+"default post type."
+msgstr ""
+
+#: includes/widgets/class-geodir-pricing-widget-pricing.php:63
+msgid "Auto"
+msgstr ""
+
+#: includes/widgets/class-geodir-pricing-widget-pricing.php:73
+msgid "Layout:"
+msgstr ""
+
+#: includes/widgets/class-geodir-pricing-widget-pricing.php:74
+msgid "Layout to display pricing."
+msgstr ""
+
+#: includes/widgets/class-geodir-pricing-widget-pricing.php:76
+msgid "Default (three columns)"
+msgstr ""
+
+#: includes/widgets/class-geodir-pricing-widget-pricing.php:77
+msgid "One column"
+msgstr ""
+
+#: includes/widgets/class-geodir-pricing-widget-pricing.php:78
+msgid "Two columns"
+msgstr ""
+
+#: includes/widgets/class-geodir-pricing-widget-pricing.php:79
+msgid "Three columns"
+msgstr ""
+
+#: includes/widgets/class-geodir-pricing-widget-pricing.php:80
+msgid "Four columns"
+msgstr ""
+
+#: includes/widgets/class-geodir-pricing-widget-pricing.php:81
+msgid "Five columns"
+msgstr ""
+
+#: includes/widgets/class-geodir-pricing-widget-pricing.php:82
+msgid "Six columns"
+msgstr ""
+
+#: includes/widgets/class-geodir-pricing-widget-pricing.php:87
+#: includes/widgets/class-geodir-pricing-widget-pricing.php:98
+#: includes/widgets/class-geodir-pricing-widget-pricing.php:109
+#: includes/widgets/class-geodir-pricing-widget-pricing.php:123
+#: includes/widgets/class-geodir-pricing-widget-pricing.php:137
+msgid "Design"
+msgstr ""
+
+#: includes/widgets/class-geodir-pricing-widget-pricing.php:92
+msgid "Tick Icon:"
+msgstr ""
+
+#: includes/widgets/class-geodir-pricing-widget-pricing.php:93
+msgid "FontAwesome icon for allowed feature. Ex: fas fa-check-circle"
+msgstr ""
+
+#: includes/widgets/class-geodir-pricing-widget-pricing.php:103
+msgid "Untick Icon:"
+msgstr ""
+
+#: includes/widgets/class-geodir-pricing-widget-pricing.php:104
+msgid "FontAwesome icon for not allowed feature. Ex: fas fa-times-circle"
+msgstr ""
+
+#: includes/widgets/class-geodir-pricing-widget-pricing.php:114
+msgid "Default Color:"
+msgstr ""
+
+#: includes/widgets/class-geodir-pricing-widget-pricing.php:115
+msgid "Color to highlight non-default packages."
+msgstr ""
+
+#: includes/widgets/class-geodir-pricing-widget-pricing.php:118
+#: includes/widgets/class-geodir-pricing-widget-pricing.php:132
+#: includes/widgets/class-geodir-pricing-widget-pricing.php:146
+#: includes/widgets/class-geodir-pricing-widget-pricing.php:165
+#: includes/widgets/class-geodir-pricing-widget-pricing.php:184
+#: includes/widgets/class-geodir-pricing-widget-pricing.php:198
+#: includes/widgets/class-geodir-pricing-widget-pricing.php:211
+msgid "None"
+msgstr ""
+
+#: includes/widgets/class-geodir-pricing-widget-pricing.php:128
+msgid "Highlight Color:"
+msgstr ""
+
+#: includes/widgets/class-geodir-pricing-widget-pricing.php:129
+msgid "Color to highlight a default package."
+msgstr ""
+
+#: includes/widgets/class-geodir-pricing-widget-pricing.php:141
+msgid "Card Row Gap:"
+msgstr ""
+
+#: includes/widgets/class-geodir-pricing-widget-pricing.php:142
+msgid "This adjusts the spacing between the cards horizontally."
+msgstr ""
+
+#: includes/widgets/class-geodir-pricing-widget-pricing.php:156
+#: includes/widgets/class-geodir-pricing-widget-pricing.php:175
+#: includes/widgets/class-geodir-pricing-widget-pricing.php:189
+#: includes/widgets/class-geodir-pricing-widget-pricing.php:206
+msgid "Card Design"
+msgstr ""
+
+#: includes/widgets/class-geodir-pricing-widget-pricing.php:160
+msgid "Card Column Gap:"
+msgstr ""
+
+#: includes/widgets/class-geodir-pricing-widget-pricing.php:161
+msgid "This adjusts the spacing between the cards vertically."
+msgstr ""
+
+#: includes/widgets/class-geodir-pricing-widget-pricing.php:179
+msgid "Card Border:"
+msgstr ""
+
+#: includes/widgets/class-geodir-pricing-widget-pricing.php:180
+msgid "Set the border style for the card."
+msgstr ""
+
+#: includes/widgets/class-geodir-pricing-widget-pricing.php:193
+msgid "Card Shadow:"
+msgstr ""
+
+#: includes/widgets/class-geodir-pricing-widget-pricing.php:194
+msgid "Set the card shadow style."
+msgstr ""
+
+#: includes/widgets/class-geodir-pricing-widget-pricing.php:197
+msgid "Default (medium)"
+msgstr ""
+
+#: includes/widgets/class-geodir-pricing-widget-pricing.php:199
+msgid "Small"
+msgstr ""
+
+#: includes/widgets/class-geodir-pricing-widget-pricing.php:200
+msgid "Medium"
+msgstr ""
+
+#: includes/widgets/class-geodir-pricing-widget-pricing.php:201
+msgid "Large"
 msgstr ""
 
 #: includes/widgets/class-geodir-pricing-widget-single-expired-text.php:22
@@ -1507,7 +1789,12 @@ msgstr ""
 msgid "Shows a expired warning text if a post has the expired status."
 msgstr ""
 
-#: templates/view/post-expired-text.php:8
+#: templates/bootstrap/loop/package.php:35 templates/legacy/loop/package.php:35
+msgid "Select Plan"
+msgstr ""
+
+#: templates/bootstrap/view/post-expired-text.php:21
+#: templates/view/post-expired-text.php:23
 #, php-format
 msgid "This %s appears to have expired."
 msgstr ""

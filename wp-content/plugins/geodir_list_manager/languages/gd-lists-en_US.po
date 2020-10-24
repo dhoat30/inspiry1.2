@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: GeoDirectory Lists Manager 2.1.0.5\n"
+"Project-Id-Version: GeoDirectory Lists Manager 2.1.1.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-17 15:15+0100\n"
-"PO-Revision-Date: 2019-09-17 15:15+0100\n"
+"POT-Creation-Date: 2020-10-13 15:14+0530\n"
+"PO-Revision-Date: 2020-10-13 15:14+0530\n"
 "Last-Translator: \n"
 "Language-Team: AyeCode Ltd <contact@ayecode.io>\n"
 "Language: en_US\n"
@@ -17,48 +17,48 @@ msgstr ""
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 2.2.4\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: geodir_list_manager.php:36
+#: geodir_list_manager.php:51
 #, php-format
 msgid "%s requires the %sGeoDirectory%s plugin to be installed and active."
 msgstr ""
 
-#: geodir_list_manager.php:67
+#: geodir_list_manager.php:82
 #, php-format
 msgid ""
 "%s requires to install the %sPosts 2 Posts%s plugin to be installed and "
 "active. %sClick here to activate it.%s"
 msgstr ""
 
-#: geodir_list_manager.php:70
+#: geodir_list_manager.php:85
 #, php-format
 msgid ""
 "%s requires to install the %sPosts 2 Posts%s plugin to be installed and "
 "active. %sClick here to install it.%s"
 msgstr ""
 
-#: geodir_list_manager.php:84
+#: geodir_list_manager.php:99
 #, php-format
 msgid ""
 "The plugin %sWP Easy Updates%s is required to check for and update some "
 "installed plugins, please install it now."
 msgstr ""
 
-#: includes/admin/class-geodir-lists-admin.php:126
+#: includes/admin/class-geodir-lists-admin.php:127
 msgid "Lists Page Settings"
 msgstr ""
 
-#: includes/admin/class-geodir-lists-admin.php:128
+#: includes/admin/class-geodir-lists-admin.php:129
 msgid "List page settings for set add list page."
 msgstr ""
 
-#: includes/admin/class-geodir-lists-admin.php:134
+#: includes/admin/class-geodir-lists-admin.php:135
 msgid "Add List Page"
 msgstr ""
 
-#: includes/admin/class-geodir-lists-admin.php:135
+#: includes/admin/class-geodir-lists-admin.php:136
 msgid "Select the page to use for add list"
 msgstr ""
 
@@ -67,21 +67,22 @@ msgstr ""
 #: includes/class-geodir-lists-ajax.php:95
 #: includes/class-geodir-lists-ajax.php:116
 #: includes/class-geodir-lists-ajax.php:146
-#: includes/class-geodir-lists-ajax.php:185
+#: includes/class-geodir-lists-ajax.php:189
 msgid "Something went wrong"
 msgstr ""
 
 #: includes/class-geodir-lists-compatibility.php:29
-#: includes/class-geodir-lists-compatibility.php:87
-#: includes/class-geodir-lists-compatibility.php:88
-#: includes/class-geodir-lists-compatibility.php:90
+#: includes/class-geodir-lists-compatibility.php:91
+#: includes/class-geodir-lists-compatibility.php:105
+#: includes/class-geodir-lists-compatibility.php:106
+#: includes/class-geodir-lists-compatibility.php:108
 #: includes/class_buddypress_functions.php:114
-#: includes/class_userswp_functions.php:111
 #, php-format
 msgid "My %s"
 msgstr ""
 
-#: includes/class-geodir-lists-compatibility.php:91
+#: includes/class-geodir-lists-compatibility.php:50
+#: includes/class-geodir-lists-compatibility.php:109
 #, php-format
 msgid "All My %s"
 msgstr ""
@@ -159,90 +160,126 @@ msgstr ""
 msgid "Description."
 msgstr ""
 
-#: includes/class-geodir-lists-forms.php:34
+#: includes/class-geodir-lists-forms.php:38
+#: includes/class-geodir-lists-forms.php:73
+#: includes/class-geodir-lists-list.php:119
 #, php-format
 msgid "Edit %s"
 msgstr ""
 
-#: includes/class-geodir-lists-forms.php:38
-#: includes/class-geodir-lists-forms.php:137
+#: includes/class-geodir-lists-forms.php:42
+#: includes/class-geodir-lists-forms.php:85
+#: includes/class-geodir-lists-forms.php:213
+#: includes/class-geodir-lists-forms.php:255
+#: includes/class-geodir-lists-forms.php:299
 msgid "Name"
 msgstr ""
 
-#: includes/class-geodir-lists-forms.php:42
+#: includes/class-geodir-lists-forms.php:46
+#: includes/class-geodir-lists-forms.php:98
 msgid "Description"
 msgstr ""
 
-#: includes/class-geodir-lists-forms.php:46
-#: includes/class-geodir-lists-forms.php:145
+#: includes/class-geodir-lists-forms.php:50
+#: includes/class-geodir-lists-forms.php:118
+#: includes/class-geodir-lists-forms.php:263
+#: includes/class-geodir-lists-forms.php:316
 msgid "Public"
 msgstr ""
 
-#: includes/class-geodir-lists-forms.php:47
-#: includes/class-geodir-lists-forms.php:146
+#: includes/class-geodir-lists-forms.php:51
+#: includes/class-geodir-lists-forms.php:119
+#: includes/class-geodir-lists-forms.php:264
+#: includes/class-geodir-lists-forms.php:317
 msgid "Non-Public"
 msgstr ""
 
-#: includes/class-geodir-lists-forms.php:50
-#: includes/class-geodir-lists-forms.php:149
+#: includes/class-geodir-lists-forms.php:54
+#: includes/class-geodir-lists-forms.php:77
+#: includes/class-geodir-lists-forms.php:267
+#: includes/class-geodir-lists-forms.php:291
 #, php-format
 msgid ""
 "A public %s is displayed on the site and can be viewed by anyone. A non-"
 "public %s can still be visible to others if you share a link to it."
 msgstr ""
 
-#: includes/class-geodir-lists-forms.php:70
+#: includes/class-geodir-lists-forms.php:144
+#: includes/class-geodir-lists-forms.php:207
 #, php-format
 msgid "Save to %s"
 msgstr ""
 
-#: includes/class-geodir-lists-forms.php:74
+#: includes/class-geodir-lists-forms.php:148
+#: includes/class-geodir-lists-forms.php:210
 #, php-format
 msgid "You don't have any %s yet."
 msgstr ""
 
-#: includes/class-geodir-lists-forms.php:85
-#: includes/class-geodir-lists-list.php:75
+#: includes/class-geodir-lists-forms.php:159
+#: includes/class-geodir-lists-forms.php:221
+#: includes/class-geodir-lists-list.php:80
+#: includes/class-geodir-lists-list.php:147
 #: includes/class_buddypress_functions.php:128
-#: includes/class_userswp_functions.php:128
 #, php-format
 msgid "Non-public %s (you can still share a direct link with your friends)"
 msgstr ""
 
-#: includes/class-geodir-lists-forms.php:133
+#: includes/class-geodir-lists-forms.php:213
+msgid "Image"
+msgstr ""
+
+#: includes/class-geodir-lists-forms.php:213
+msgid "Action"
+msgstr ""
+
+#: includes/class-geodir-lists-forms.php:251
+#: includes/class-geodir-lists-forms.php:287
 #, php-format
 msgid "New %s"
 msgstr ""
 
-#: includes/class-geodir-lists-forms.php:167
-#: includes/class-geodir-lists-forms.php:221
-#: includes/class-geodir-lists.php:141
+#: includes/class-geodir-lists-forms.php:338
+#: includes/class-geodir-lists-forms.php:357
+#: includes/class-geodir-lists-forms.php:444
+#: includes/class-geodir-lists.php:142
 #: includes/widgets/class-geodir-widget-list-save.php:50
-#: includes/widgets/class-geodir-widget-list-save.php:159
+#: includes/widgets/class-geodir-widget-list-save.php:218
 msgid "Save"
 msgstr ""
 
-#: includes/class-geodir-lists-forms.php:183
+#: includes/class-geodir-lists-forms.php:379
+#: includes/class-geodir-lists-forms.php:397
 #, php-format
 msgid "Save to a New %s"
 msgstr ""
 
-#: includes/class-geodir-lists-forms.php:207
+#: includes/class-geodir-lists-forms.php:426
 msgid "You must be logged in to use this feature"
 msgstr ""
 
-#: includes/class-geodir-lists-forms.php:220
+#: includes/class-geodir-lists-forms.php:443
+#: includes/class-geodir-lists-forms.php:457
 msgid "Remove"
 msgstr ""
 
-#: includes/class-geodir-lists-list.php:84
+#: includes/class-geodir-lists-forms.php:458
+msgid "Add"
+msgstr ""
+
+#: includes/class-geodir-lists-list.php:89
 #, php-format
 msgid "%s Edit %s"
 msgstr ""
 
-#: includes/class-geodir-lists-list.php:87
+#: includes/class-geodir-lists-list.php:92
 #, php-format
 msgid "%s Delete %s"
+msgstr ""
+
+#: includes/class-geodir-lists-list.php:131
+#, php-format
+msgid "Delete %s"
 msgstr ""
 
 #: includes/class-geodir-lists.php:117
@@ -255,36 +292,31 @@ msgid ""
 "List Manager is deleted."
 msgstr ""
 
-#: includes/class-geodir-lists.php:139
+#: includes/class-geodir-lists.php:140
 msgid "This field is required."
 msgstr ""
 
-#: includes/class-geodir-lists.php:140
+#: includes/class-geodir-lists.php:141
 msgid "Please select listed items."
 msgstr ""
 
-#: includes/class-geodir-lists.php:142
+#: includes/class-geodir-lists.php:143
 #: includes/widgets/class-geodir-widget-list-save.php:68
-#: includes/widgets/class-geodir-widget-list-save.php:161
+#: includes/widgets/class-geodir-widget-list-save.php:220
 msgid "Saved"
 msgstr ""
 
-#: includes/class-geodir-lists.php:143
+#: includes/class-geodir-lists.php:144
 msgid "Saving..."
 msgstr ""
 
 #: includes/class_buddypress_functions.php:116
-#: includes/class_userswp_functions.php:113
 #, php-format
 msgid "%s's %s"
 msgstr ""
 
 #: includes/class_buddypress_functions.php:140
 msgid "No list(s) Found!"
-msgstr ""
-
-#: includes/class_userswp_functions.php:143
-msgid "No list(s) founds"
 msgstr ""
 
 #: includes/helper-functions.php:11
@@ -295,53 +327,100 @@ msgstr ""
 msgid "List"
 msgstr ""
 
-#: includes/widgets/class-geodir-widget-list-loop-actions.php:27
+#: includes/widgets/class-geodir-widget-list-loop-actions.php:26
 msgid "GD > List Loop Actions"
 msgstr ""
 
-#: includes/widgets/class-geodir-widget-list-loop-actions.php:30
+#: includes/widgets/class-geodir-widget-list-loop-actions.php:29
 msgid ""
 "Shows the actions available to the user on a list page, like the author "
 "actions like edit and delete list."
 msgstr ""
 
-#: includes/widgets/class-geodir-widget-list-loop.php:27
+#: includes/widgets/class-geodir-widget-list-loop.php:26
 msgid "GD > List Loop"
 msgstr ""
 
-#: includes/widgets/class-geodir-widget-list-loop.php:30
+#: includes/widgets/class-geodir-widget-list-loop.php:29
 msgid "Shows the current posts saved to a list."
 msgstr ""
 
-#: includes/widgets/class-geodir-widget-list-loop.php:35
+#: includes/widgets/class-geodir-widget-list-loop.php:46
 msgid "Layout:"
 msgstr ""
 
-#: includes/widgets/class-geodir-widget-list-loop.php:36
+#: includes/widgets/class-geodir-widget-list-loop.php:47
 msgid "How the listings should laid out by default."
 msgstr ""
 
-#: includes/widgets/class-geodir-widget-list-loop.php:39
-msgid "Grid View (Two Columns)"
+#: includes/widgets/class-geodir-widget-list-loop.php:57
+msgid "Card row gap"
 msgstr ""
 
-#: includes/widgets/class-geodir-widget-list-loop.php:40
-msgid "Grid View (Three Columns)"
+#: includes/widgets/class-geodir-widget-list-loop.php:58
+msgid "This adjusts the spacing between the cards horizontally."
 msgstr ""
 
-#: includes/widgets/class-geodir-widget-list-loop.php:41
-msgid "Grid View (Four Columns)"
+#: includes/widgets/class-geodir-widget-list-loop.php:61
+#: includes/widgets/class-geodir-widget-list-loop.php:79
+#: includes/widgets/class-geodir-widget-list-loop.php:97
+msgid "Default"
 msgstr ""
 
-#: includes/widgets/class-geodir-widget-list-loop.php:42
-msgid "Grid View (Five Columns)"
+#: includes/widgets/class-geodir-widget-list-loop.php:71
+#: includes/widgets/class-geodir-widget-list-loop.php:89
+#: includes/widgets/class-geodir-widget-list-loop.php:103
+#: includes/widgets/class-geodir-widget-list-loop.php:119
+msgid "Card Design"
 msgstr ""
 
-#: includes/widgets/class-geodir-widget-list-loop.php:43
-msgid "List view"
+#: includes/widgets/class-geodir-widget-list-loop.php:75
+msgid "Card column gap"
 msgstr ""
 
-#: includes/widgets/class-geodir-widget-list-loop.php:123
+#: includes/widgets/class-geodir-widget-list-loop.php:76
+msgid "This adjusts the spacing between the cards vertically."
+msgstr ""
+
+#: includes/widgets/class-geodir-widget-list-loop.php:93
+msgid "Card border"
+msgstr ""
+
+#: includes/widgets/class-geodir-widget-list-loop.php:94
+msgid "Set the border style for the card."
+msgstr ""
+
+#: includes/widgets/class-geodir-widget-list-loop.php:98
+#: includes/widgets/class-geodir-widget-list-loop.php:111
+#: includes/widgets/class-geodir-widget-list-save.php:92
+#: includes/widgets/class-geodir-widget-list-save.php:163
+msgid "None"
+msgstr ""
+
+#: includes/widgets/class-geodir-widget-list-loop.php:107
+msgid "Card shadow"
+msgstr ""
+
+#: includes/widgets/class-geodir-widget-list-loop.php:108
+msgid "Set the card shadow style."
+msgstr ""
+
+#: includes/widgets/class-geodir-widget-list-loop.php:112
+#: includes/widgets/class-geodir-widget-list-save.php:146
+msgid "Small"
+msgstr ""
+
+#: includes/widgets/class-geodir-widget-list-loop.php:113
+#: includes/widgets/class-geodir-widget-list-save.php:148
+msgid "Medium"
+msgstr ""
+
+#: includes/widgets/class-geodir-widget-list-loop.php:114
+#: includes/widgets/class-geodir-widget-list-save.php:149
+msgid "Large"
+msgstr ""
+
+#: includes/widgets/class-geodir-widget-list-loop.php:254
 msgid "This list is empty at the moment, check back later."
 msgstr ""
 
@@ -350,7 +429,7 @@ msgid "GD > List Save"
 msgstr ""
 
 #: includes/widgets/class-geodir-widget-list-save.php:30
-msgid "Shows the save to list button."
+msgid "Shows button to add a listing to the list."
 msgstr ""
 
 #: includes/widgets/class-geodir-widget-list-save.php:48
@@ -387,70 +466,104 @@ msgid ""
 "when a post is saved by the user."
 msgstr ""
 
-#: includes/widgets/class-geodir-widget-list-save.php:85
-msgid "Badge background color:"
+#: includes/widgets/class-geodir-widget-list-save.php:88
+msgid "Shadow"
 msgstr ""
 
-#: includes/widgets/class-geodir-widget-list-save.php:86
-msgid "Color for the badge background."
+#: includes/widgets/class-geodir-widget-list-save.php:89
+msgid "Select the shadow badge type."
+msgstr ""
+
+#: includes/widgets/class-geodir-widget-list-save.php:93
+msgid "small"
 msgstr ""
 
 #: includes/widgets/class-geodir-widget-list-save.php:94
-msgid "Badge text color:"
+msgid "medium"
 msgstr ""
 
 #: includes/widgets/class-geodir-widget-list-save.php:95
-msgid "Color for the badge text."
+msgid "large"
 msgstr ""
 
-#: includes/widgets/class-geodir-widget-list-save.php:103
-msgid "Badge size:"
+#: includes/widgets/class-geodir-widget-list-save.php:100
+#: includes/widgets/class-geodir-widget-list-save.php:113
+#: includes/widgets/class-geodir-widget-list-save.php:125
+#: includes/widgets/class-geodir-widget-list-save.php:137
+#: includes/widgets/class-geodir-widget-list-save.php:155
+#: includes/widgets/class-geodir-widget-list-save.php:170
+#: includes/widgets/class-geodir-widget-list-save.php:181
+msgid "Design"
 msgstr ""
 
 #: includes/widgets/class-geodir-widget-list-save.php:104
-msgid "Size of the badge."
+msgid "Badge Color"
 msgstr ""
 
-#: includes/widgets/class-geodir-widget-list-save.php:106
-msgid "Small"
-msgstr ""
-
-#: includes/widgets/class-geodir-widget-list-save.php:107
-msgid "Normal"
+#: includes/widgets/class-geodir-widget-list-save.php:105
+msgid "Select the the badge color."
 msgstr ""
 
 #: includes/widgets/class-geodir-widget-list-save.php:108
-msgid "Medium"
-msgstr ""
-
-#: includes/widgets/class-geodir-widget-list-save.php:109
-msgid "Large"
-msgstr ""
-
-#: includes/widgets/class-geodir-widget-list-save.php:110
-msgid "Extra Large"
-msgstr ""
-
-#: includes/widgets/class-geodir-widget-list-save.php:118
-msgid "Alignment:"
+msgid "Custom colors"
 msgstr ""
 
 #: includes/widgets/class-geodir-widget-list-save.php:119
+msgid "Badge background color:"
+msgstr ""
+
+#: includes/widgets/class-geodir-widget-list-save.php:120
+msgid "Color for the badge background."
+msgstr ""
+
+#: includes/widgets/class-geodir-widget-list-save.php:131
+msgid "Badge text color:"
+msgstr ""
+
+#: includes/widgets/class-geodir-widget-list-save.php:132
+msgid "Color for the badge text."
+msgstr ""
+
+#: includes/widgets/class-geodir-widget-list-save.php:143
+msgid "Badge size:"
+msgstr ""
+
+#: includes/widgets/class-geodir-widget-list-save.php:144
+msgid "Size of the badge."
+msgstr ""
+
+#: includes/widgets/class-geodir-widget-list-save.php:147
+msgid "Normal"
+msgstr ""
+
+#: includes/widgets/class-geodir-widget-list-save.php:150
+msgid "Extra Large"
+msgstr ""
+
+#: includes/widgets/class-geodir-widget-list-save.php:160
+msgid "Alignment:"
+msgstr ""
+
+#: includes/widgets/class-geodir-widget-list-save.php:161
 msgid "How the item should be positioned on the page."
 msgstr ""
 
-#: includes/widgets/class-geodir-widget-list-save.php:121
-msgid "None"
-msgstr ""
-
-#: includes/widgets/class-geodir-widget-list-save.php:122
+#: includes/widgets/class-geodir-widget-list-save.php:164
 msgid "Left"
 msgstr ""
 
-#: includes/widgets/class-geodir-widget-list-save.php:123
+#: includes/widgets/class-geodir-widget-list-save.php:165
 msgid "Center"
 msgstr ""
 
-#: includes/widgets/class-geodir-widget-list-save.php:124
+#: includes/widgets/class-geodir-widget-list-save.php:166
 msgid "Right"
+msgstr ""
+
+#: includes/widgets/class-geodir-widget-list-save.php:175
+msgid "Extra class:"
+msgstr ""
+
+#: includes/widgets/class-geodir-widget-list-save.php:176
+msgid "Give the wrapper an extra class so you can style things as you want."
 msgstr ""
