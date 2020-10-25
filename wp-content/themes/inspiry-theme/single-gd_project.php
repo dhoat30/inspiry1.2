@@ -22,7 +22,7 @@ while($boardLoop->have_posts()){
   while(have_posts()){
     the_post(); 
     ?>
-    <div class="body-container project-detail-page">
+    <div class="project-detail-page">
         
         <div class="project-hero">
                     <?php  echo do_shortcode('[gd_post_images type="image" ajax_load="1" slideshow="1" show_title="1" animation="slide" controlnav="1" types="post_images" fallback_types="logo" image_size="1536x1536"]');  ?>              
@@ -77,7 +77,8 @@ while($boardLoop->have_posts()){
                             ?>
 
                             <div class="design-board-save-btn-container">
-                                <i data-exists='<?php echo $existStatus?>' class="far fa-heart open-board-container" ></i>
+                     
+                                <i data-exists='<?php echo $existStatus?>' class="fal fa-heart open-board-container" ></i>
                             </div>
                             
 

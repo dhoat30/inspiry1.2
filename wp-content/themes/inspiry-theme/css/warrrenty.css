@@ -1,0 +1,27 @@
+.bc-single-product__warranty { 
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+}
+.bc-single-product__warranty h1{ 
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    border-bottom: 1px solid white;
+    background: #708393;
+}
+.bc-single-product__warranty h1:hover{ 
+    background: #525659;
+} 
+
+
+.bc-single-product__warranty p{
+    display: none;
+    background: white;
+    padding: 10px 10px;    
+}

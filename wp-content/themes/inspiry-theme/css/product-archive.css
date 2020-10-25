@@ -1,0 +1,57 @@
+/*product archive container*/ 
+.bc-product-archive{ 
+    max-width: 2000px !important;
+}
+.product-archive-container{ 
+    display: flex;
+    flex-direction: row;
+    width: 95%;
+}
+.product-archive-container .sidebar{ 
+    width: 30%;
+}
+.product-archive-container .product-cards{ 
+    width: 70%;
+}
+/*styling text*/ 
+.bc-product-grid--archive .bc-product__title a{
+    font-size: 20px !important;
+    font-family: 'Playfair Display', serif !important;
+   
+}
+.bc-product-grid--archive .bc-product__title{ 
+    margin-bottom: 5px !important;
+   font-weight: 500;
+}
+
+.bc-product-grid--archive .bc-product__brand{ 
+    display: none;
+}
+.bc-product-grid--archive .bc-product__pricing p{ 
+    font-size: 15px !important;
+}
+.bc-product-grid--archive .bc-product__meta{ 
+    padding: 25px 0 0px;
+}
+.bc-product-grid--archive h4{ 
+    display: none;
+}
+.bc-product-grid--archive .bc-product__pricing--api.bc-product__pricing--visible{ 
+    margin-top: 0px;
+}
+
+/*quick view*/ 
+.bc-product-card--single .bc-product__brand, .bc-product-single .bc-product__brand {
+    font-weight: 400;
+}
+.pagination .screen-reader-text{ 
+    display: none;
+}
+.pagination .page-numbers{ 
+    color: #708393;
+    padding: 0 0 0  5px;
+}   
+.pagination .page-numbers:hover{ 
+    color: #525659;
+}   
+

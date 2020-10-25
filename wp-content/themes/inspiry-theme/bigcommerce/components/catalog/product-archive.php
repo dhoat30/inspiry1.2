@@ -15,24 +15,34 @@
 <div class="bc-product-archive">
 
 	<header class="bc-product-archive__header">
-		<h2 class="bc-product-archive__title"><?php echo esc_html( $title ); ?></h2>
+		<h2 class="bc-product-archive__title  section-ft-size margin-elements"><?php echo esc_html( $title ); ?></h2>
 		<div><?php echo wp_kses_post( $description ); ?></div>
 	</header>
 
-	<?php echo $refinery; ?>
-
-	<section class="bc-product-grid bc-product-grid--archive bc-product-grid--<?php echo esc_attr( $columns ); ?>col">
-		<?php
-		if ( ! empty( $posts ) ) {
-			foreach ( $posts as $post ) {
-				echo $post;
+	<section class="product-archive-container">
+		<div class="sidebar">
+			<?php echo $refinery; ?>
+		</div>
+		<div class="product-cards">
+			<section class="bc-product-grid bc-product-grid--archive bc-product-grid--<?php echo esc_attr( $columns ); ?>col">
+			<?php
+			if ( ! empty( $posts ) ) {
+				foreach ( $posts as $post ) {
+					echo $post;
+				}
+			} else {
+				echo $no_results;
 			}
-		} else {
-			echo $no_results;
-		}
-		?>
+			?>
+			</section>
+			<?php echo $pagination; ?>
+		</div>
 	</section>
 
-	<?php echo $pagination; ?>
+	
+
+	
+
+	
 
 </div>

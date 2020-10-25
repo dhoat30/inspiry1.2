@@ -13,7 +13,7 @@
 	<p class="bc-wish-list-dialog-description">
 		<?php esc_html_e( 'Give your Wish List a name and set its public visibility.', 'bigcommerce' ); ?>
 	</p>
-	<form action="<?php echo esc_url( $action_url ); ?>" method="post" class="bc-wish-list-dialog-form">
+	<form action="<?php echo esc_url( $action_url ); ?>" method="post" class="bc-wish-list-dialog-form" id="create-wl-form">
 		<?php echo $nonce_field; ?>
 		<input type="hidden" name="items" value="<?php echo implode(',', array_map( 'intval', $products ) ); ?>" />
 		<label for="wish-list-name-new"><?php esc_html_e( 'Wish List Name', 'bigcommerce' ); ?></label>
@@ -29,7 +29,7 @@
 		<input type="checkbox" name="public" value="1" id="wish-list-public-new" class="bc-wish-list-public-field" />
 		<label for="wish-list-public-new" class="bc-wish-list-public-label"><?php esc_html_e( 'Make this Wish List shareable with a public link?', 'bigcommerce' ); ?></label>
 
-		<button type="submit" class="bc-btn bc-btn--form-submit">
+		<button type="submit" class="bc-btn bc-btn--form-submit custom-wishlist-btn">
 			<?php esc_html_e( 'Create Wish List', 'bigcommerce' ); ?>
 		</button>
 	</form>

@@ -1,19 +1,23 @@
 
 /*product information*/ 
 /* product title */ 
-.product-title{ 
+.bc-product-card--single .bc-product__title, .bc-product-single__meta .bc-product__title{ 
     line-height: 1.2 !important;
-    font-size: 33px;
-    font-weight: 500;
+    font-size: 40px !important;
+    font-weight: 300 !important;
     
 }
 
 /*product-description*/
-.product-description{ 
+.bc-product__description p:last-child{ 
     color: #444444;
-    line-height: 1.3em;
+    line-height: 1.4em;
+    letter-spacing: 1px;
     font-size:15px;
     margin-bottom: 25px;
+    font-family: 'work sans', sans-serif;
+    font-weight: 300;
+
 }
 
 /*product-short-description*/ 
@@ -30,7 +34,12 @@
     line-height: 1.3em;
   
 }
-
+/*product specifications*/ 
+.specification-table td{ 
+    text-transform: uppercase !important;
+    letter-spacing: 1px;
+    color: rgba(0,0,0,0.7);
+}
 /*add to cart */ 
 .bc-product-form__quantity-label{
     margin-right: 40px;
@@ -98,8 +107,19 @@
 .bc-wish-list-btn--new{ 
     color: #708393 !important;
 }
-
-
+.bc-pdp-wish-lists li:hover{ 
+    background:  #E9ECEF !important;
+}
+.bc-pdp-wish-lists li:last-child:hover{ 
+    background:  none !important;
+}
+.bc-pdp-wish-lists a{ 
+    padding: 5px;
+}
+ .initialized a{ 
+   background: none !important;
+   color: #708393 !important; 
+}
 
 .order-sample-button, .sizing-calculator-button{ 
     display: flex;
@@ -163,7 +183,7 @@
     transform: translate(-50%,-50%);
     -moz-transform: translate(-50%,-50%);
     width:80%; 
-    height: 100vh;
+    height: 90vh;
     background-color: white;
     opacity: 0;
     z-index: -2;
@@ -215,7 +235,7 @@
     display: block;
 }
 .estimate-result{ 
-    background-color: #cc9999;
+    background-color: #FFF1EB;
     padding: 20px 20px; 
 }
 .estimate-result h3{ 
@@ -224,6 +244,15 @@
 }
 .estimate-result p{ 
     font-size: 30px;
+}
+
+.calculator-overlay button{ 
+    background: #708393 !important;
+    border-radius: 0% !important;
+}
+.calculator-overlay button:hover{ 
+    background: #525659 !important;
+    color: white !important;
 }
 
 
@@ -283,7 +312,7 @@
     display: none;
 }
 
-.popup-modal .close {
+.calculator-overlay .close {
     text-decoration-line:none;
     position: absolute;
     font-size: 2.5rem;
@@ -291,6 +320,11 @@
     right: 10px;
     cursor: pointer;
     color: inherit;
+    z-index: 2000;
+    color: #708393;
+}
+.calculator-overlay .close:hover{ 
+color: #525659; 
 }
 
 .popup-modal.is-open {

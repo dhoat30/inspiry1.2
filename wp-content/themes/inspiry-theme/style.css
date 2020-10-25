@@ -13,10 +13,13 @@
 @import "css/related-product.css";
 @import "css/specs.css";
 @import "css/laybuy.css";
+@import "css/warrrenty.css";
+@import "css/product-archive.css";
 
 @import "css/loader.css";
 @import "css/account.css";
 @import "css/cart.css";
+
 
 
 /*pages */ 
@@ -97,6 +100,9 @@
     }
     .center-align{
         text-align: center; 
+    }
+    .right-align{ 
+        text-align: right;
     }
 
 /*font size*/ 

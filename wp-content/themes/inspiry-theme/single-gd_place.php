@@ -6,7 +6,7 @@ get_header();
   while(have_posts()){
     the_post(); 
     ?>
-    <div class="body-container">
+    <div>
         
         <div class="trade-hero">
                     <?php  echo do_shortcode('[gd_post_images type="slider" ajax_load="1" slideshow="1" show_title="1" animation="slide" controlnav="1"]');  ?>              
@@ -42,9 +42,7 @@ get_header();
                     <div class="header-address regular">
                         <i class="fas fa-map-marker-alt"></i>
                         <?php echo do_shortcode('[gd_post_address show="value" address_template="%%city%%"]'); ?>
-                        <?php 
-                        $post_id = get_the_ID();
-                        echo do_shortcode('[wishlist_button id=$post_id]');?>
+                        
                     </div>
                 </div>  
 

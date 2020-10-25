@@ -1,6 +1,44 @@
-.trade-hero .geodir-viewport{ 
-    height: 90vh;
+/*project */ 
+.trade-project-nav-content .geodir-category-list-view{ 
+    display: flex; 
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
 }
+.trade-project-nav-content .geodir-category-list-view>li{ 
+    width: 250px !important;  
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.5s;
+    -moz-transition-duration: 0.5s;
+    -webkit-transition-duration: 0.5s;
+}
+.trade-project-nav-content .geodir-category-list-view>li:hover{ 
+    transform: translate(0px,-5px); 
+}
+.geodir-image-container ul.geodir-images li img {
+    border-radius: 0 !important;
+   
+}
+
+.trade-project-nav-content .gd-badge-meta-new, .geodir-post-rating, .geodir-post-fav{ 
+    display: none !important;
+}
+.trade-project-nav-content .geodir-post-content-container{ 
+    margin-top: -10px !important;
+}
+.trade-project-nav-content .geodir-field-post_content{ 
+    color: black; 
+    font-family: 'work sans', sans-serif;
+}
+.trade-project-nav-content .geodir-entry-title a{ 
+    text-decoration: none;
+}
+
+.trade-hero .geodir-viewport{ 
+    height: 70vh;
+  
+}
+
 
 .trade-hero-image{ 
     width: 100% !important;
@@ -33,6 +71,10 @@
     .trade-header-section{ 
         justify-content: center;
         height: auto;
+         
+    }
+    .trade-hero .geodir-viewport{ 
+        height: 40vh;
     }
     .trade-profile-img{ 
         width:100%;
@@ -55,6 +97,18 @@
         z-index:100;
     }
     
+  }
+
+  @media only screen and (max-width: 570px) {
+    .trade-hero .geodir-viewport{ 
+        height: 30vh;
+        background: white;
+    }
+  }
+  @media only screen and (max-width: 400px) {
+    .trade-hero { 
+       display: none;
+    }
   }
 
 .header-address{ 
@@ -81,12 +135,19 @@
     font-size: 16px;
     letter-spacing: 0.2em;
     line-height: 1.3em;
-    padding: 15px 30px 15px 30px !important;
     border: none;
     cursor: pointer;
     color: white;
     margin-bottom: 15px;
     float: right;
+    width: 170px;
+    height: 40px;
+    transition-duration: 0.5s;
+transition-timing-function: ease-in-out; 
+}
+.header-contact-btn button:hover{ 
+    background: #525659 !important;
+   
 }
 
 
@@ -98,6 +159,18 @@
     width:50%;
    
 }
+@media (max-width: 1260px){ 
+    .trade-middle-column{ 
+        margin: 50px auto 0 auto;
+    }
+  
+}
+@media (max-width: 833px){ 
+    .trade-middle-column{ 
+        margin: 0  auto 0 auto;
+    }
+  
+}
 
 .trade-nav-container .nav{ 
     display: flex;
@@ -108,8 +181,10 @@
 }
 .trade-nav-container .nav li{ 
     cursor: pointer;
+    text-align: center;
+    width: 140px;
     padding: 10px 20px;
-    margin: 0 10px 0 0;
+    margin: 5px 10px 0 0;
     text-transform: uppercase;
     letter-spacing: 1px;
     font-family: 'Playfair Display', serif !important;
@@ -180,40 +255,6 @@ transition-timing-function: ease-in-out;
     font-size: 30px;
 }
 
-/*project */ 
-.trade-project-nav-content .geodir-category-list-view{ 
-    display: flex; 
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-}
-.trade-project-nav-content .geodir-category-list-view>li{ 
-    width: 250px !important;  
-    transition-timing-function: ease-in-out;
-    transition-duration: 0.5s;
-    -moz-transition-duration: 0.5s;
-    -webkit-transition-duration: 0.5s;
-}
-.trade-project-nav-content .geodir-category-list-view>li:hover{ 
-    transform: translate(0px,-5px); 
-}
-.geodir-image-container ul.geodir-images li img {
-    border-radius: 0 !important;
-}
-
-.trade-project-nav-content .gd-badge-meta-new, .geodir-post-rating, .geodir-post-fav{ 
-    display: none !important;
-}
-.trade-project-nav-content .geodir-post-content-container{ 
-    margin-top: -10px !important;
-}
-.trade-project-nav-content .geodir-field-post_content{ 
-    color: black; 
-    font-family: 'work sans', sans-serif;
-}
-.trade-project-nav-content .geodir-entry-title a{ 
-    text-decoration: none;
-}
 
 /*hide save pin in project area */ 
 .trade-project-nav-content .geodir-list-save-container{ 

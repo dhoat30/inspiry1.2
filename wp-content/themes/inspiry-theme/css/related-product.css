@@ -1,8 +1,13 @@
-.related-product-container .product-title{ 
-    font-size: 20px;
+.bc-single-product__related { 
+    margin-top: 50px !important;
 }
-.related-product-container .price{ 
-    font-size: 20px;
+.bc-product-card--related .bc-product__title-link{ 
+    font-size: 20px !important;
+    font-family: 'playfair display', serif;
+}
+.bc-product-card--related .bc-product__brand{ 
+    font-size: 16px !important;
+    font-weight: 400;
 }
 .related-product-container .margin-elements{ 
     margin: 0;

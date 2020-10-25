@@ -21,7 +21,9 @@ use BigCommerce\Post_Types\Product\Product;
 
 <!-- data-js="bc-product-data-wrapper" is required. -->
 <section class="bc-product-single__top" data-js="bc-product-data-wrapper">
-	<?php echo $images; ?>
+  <?php echo $images; ?>
+
+  
 
 	<!-- data-js="bc-product-meta" is required. -->
 	<div class="bc-product-single__meta" data-js="bc-product-meta">
@@ -50,9 +52,8 @@ use BigCommerce\Post_Types\Product\Product;
 	</div>
 </section>
 
-<section class="bc-single-product__description">
-	<h4 class="bc-single-product__section-title"><?php echo esc_html__( 'Product Description', 'bigcommerce' ); ?></h4>
- 
+<section class="bc-single-product__warranty">
+
   <?php  echo $product->get_property('warranty') ;?>
 </section>
 
@@ -72,9 +73,10 @@ use BigCommerce\Post_Types\Product\Product;
     <!--sizing calculator-->
     <div class="overlay-background">
         <div class="calculator-overlay">
+        <i class="fal fa-times close"></i>
+
             <div id="calculator-container">
                 <div class="popup-modal wallpaper-calculator-modal is-open">
-                  <a href="#" class="close" aria-label="Close popup modal">×</a>
               
                   <h1>Wallpaper Calculator</h1>
               
