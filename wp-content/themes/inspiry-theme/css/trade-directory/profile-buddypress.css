@@ -129,3 +129,30 @@ button.bc-product-quick-view__close-button {
 .wpinv-checkout-class { 
     font-family: 'work-sans', sans-serif !important;
 }
+
+/*settings */ 
+.user-pass1-wrap .button { 
+    border: 2px solid #708393 !important;
+}
+.wp-generate-pw:hover{ 
+    border: 2px solid #525659 !important;
+background: white !important;    
+}
+#buddypress .submit .auto { 
+    background: #708393 !important;
+    display: inline-block !important;
+}
+#buddypress .submit .auto:hover { 
+    background: #525659 !important;
+    display: inline-block !important;
+}
+
+    /*email setting*/ 
+.item-body, .bp-help-text{ 
+    font-family: 'work-sans', sans-serif !important;
+}
+.notification-settings th, td{ 
+    font-family: 'work-sans', sans-serif !important;
+    font-size: 15px;
+    padding: 2px 0 !important;
+}

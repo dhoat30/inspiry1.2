@@ -24,7 +24,7 @@
 			<?php echo $refinery; ?>
 		</div>
 		<div class="product-cards">
-			<section class="bc-product-grid bc-product-grid--archive bc-product-grid--<?php echo esc_attr( $columns ); ?>col">
+			<section class="facetwp-template bc-product-grid bc-product-grid--archive bc-product-grid--<?php echo esc_attr( $columns ); ?>col">
 			<?php
 			if ( ! empty( $posts ) ) {
 				foreach ( $posts as $post ) {

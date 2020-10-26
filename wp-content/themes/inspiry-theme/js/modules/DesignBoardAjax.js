@@ -38,10 +38,13 @@ class DesignBoardAjax{
 
         //send get request 
         xhr.open('GET', url, true); 
-      
-       
+        
+        $(e.target).closest('a').append('<div class="loader-div" style="display:block"></div>'); 
+        e.target.closest('a').querySelector('.loader-div').classList.add('loader-icon');
+
         //get results and show theme 
         xhr.onload = function(){ 
+            e.target.closest('a').querySelector('.loader-div').classList.remove('loader-icon');
             $('.body-container').hide(300);
             $('.ajax-result').show(300);
             $('.ajax-result').append('<i class="fal fa-arrow-left"></i>');

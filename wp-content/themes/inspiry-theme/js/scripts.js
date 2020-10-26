@@ -8,6 +8,7 @@ import TradeNav from './modules/TradeNav';
 import DesignBoard from './modules/DesignBoard'; 
 import DesignBoardSaveBtn from './modules/DesignBoardSaveBtn';
 import DesignBoardAjax from './modules/DesignBoardAjax'; 
+import WishlistAjaxBp from './modules/WishlistAjaxBp';
  
 
 window.onload = function() {
@@ -62,7 +63,7 @@ const tradeNav = new TradeNav();
 
 
 
-
+//const wishlistAjaxBp = new WishlistAjaxBp();
 const wishlistAjax = new WishlistAjax();
 const warranty = new Warranty(); 
 const wallpaperCalc = new WallpaperCalc(); 
