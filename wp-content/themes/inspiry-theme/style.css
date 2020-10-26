@@ -20,10 +20,11 @@
 @import "css/account.css";
 @import "css/cart.css";
 
-
+/*design boards */ 
 
 /*pages */ 
 @import "css/page.css";
+
 /*geo directroy styling*/ 
 @import "css/trade-directory/add-listing.css";
 @import "css/trade-directory/save.css";
@@ -114,6 +115,9 @@
     .section-ft-size{ 
         font-size: 40px !important;
         text-transform: uppercase;
+        font-weight: 500;
+        letter-spacing: 1px;
+       
     }
     .font-s-regular{ 
         font-size: 15px;
@@ -121,7 +125,8 @@
     }
     .font-s-med{ 
         font-size: 18px;
-        line-height: 1.6em;
+        letter-spacing: 1px;
+        margin: 0 !important;
     }
     .column-s-font{ 
         font-size: 25px; 
@@ -175,11 +180,11 @@
     height: 40px;
     margin: 0 10px 0 0;
     outline: none;
-    border: 1px solid #708393;
+    border: 1px solid #E9ECEF;
     cursor: pointer;
     }
     .btn-dk-green{ 
-        background-color: #708393;
+        background-color: #E9ECEF;
         color: white;
     }
     .btn-dk-green:hover{ 
@@ -199,7 +204,7 @@
         color: #666;
     }
     .dark-green{ 
-        color: #708393; 
+        color: #E9ECEF; 
     }
 	.black-bc{ 
 		background-color: black;
@@ -229,7 +234,7 @@
     /* a link */ 
     .rm-txt-dec{ 
         text-decoration: none;
-        color: #708393;
+        color: #E9ECEF;
         
     }
     .rm-txt-dec:link{ 
@@ -299,22 +304,22 @@
 /*save button*/ 
 .geodir-list-save-container .gd-badge {
     background-color: #fff !important;
-    color: #708393 !important;
-    border: solid #708393 !important;
+    color: #E9ECEF !important;
+    border: solid #E9ECEF !important;
     transition: 0.3s ease-in-out;   
      font-size: 16px;
      border-radius: 0;
 
 }
 .geodir-list-save-container .gd-badge:hover {
-    background-color: #708393 !important;
+    background-color: #E9ECEF !important;
     color: #fff !important;
-    border: solid #708393 !important;
+    border: solid #E9ECEF !important;
 }
 .gd-badge-meta-saved .gd-badge {
-    background-color: #708393 !important;
+    background-color: #E9ECEF !important;
     color: #fff !important;
-    border: solid #708393 !important;
+    border: solid #E9ECEF !important;
 }
 
 

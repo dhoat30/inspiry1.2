@@ -17,7 +17,7 @@
 
 /*form*/ 
 .contact-us-page input[type="button"]{ 
-  background: #708393 !important;
+  background: #E9ECEF !important;
   width: 200px !important;
   font-family: 'Playfair Display', serif !important;
 }
@@ -51,7 +51,7 @@
 }
 .contact-us-page .social-media a{ 
     font-size: 40px;
-    color: #708393;
+    color: #E9ECEF;
     display: inline-block;
     margin: 10px 5px 0 0; 
 }

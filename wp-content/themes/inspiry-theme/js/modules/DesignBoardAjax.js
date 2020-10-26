@@ -1,99 +1,12 @@
+import DesignBoard from './DesignBoard';
+import DesignBoardSaveBtn from './DesignBoardSaveBtn'; 
 
 let $ = jQuery; 
 
-class DesignBoard{ 
-    constructor(){ 
-       this.events(); 
-    }
-
-    //events
-    events(){ 
-        //show and hide option icon
-        $('.board-card').mouseenter(this.showOptionIcon.bind(this)); 
-        $('.board-card').mouseleave(this.hideOptionIcon.bind(this)); 
-        
-        //show options on click
-        $('.board-card .option-icon').on('click', this.showOptions.bind(this));
-       $(document).mouseup(this.hideOptionContainer.bind(this));
-
-       $('.board-card-archive .option-icon').on('click', this.showOptionsArchive.bind(this));
-       $(document).mouseup(this.hideOptionContainerArchive.bind(this));
 
 
-       //show share icon container
-       $('.share-btn').on('click', this.showShareContainer);
-       $('.share-icon-container span').on('click', this.hideShareContaienr); 
-        
-        //board page
-        $('.board-card-archive').mouseenter(this.showOptionIconArchive.bind(this)); 
-        $('.board-card-archive').mouseleave(this.hideOptionIconArchive.bind(this)); 
 
-    }
-
-    //functions 
-    //share container
-    hideShareContaienr(){ 
-        $('.share-icon-container').hide(300);
-        $('.overlay').fadeOut(300);   
-
-    }
-    showShareContainer(e){ 
-        var shareContainer = $('.share-icon-container')
-        shareContainer.show(300);
-        $('.overlay').fadeIn(300);   
-    }
-
-    //show & hide options 
-    hideOptionContainer(e){ 
-        var pinOptionContainer = $('.pin-options-container');
-        if (!pinOptionContainer.is(e.target) && pinOptionContainer.has(e.target).length === 0) 
-        {
-            pinOptionContainer.hide(300); 
-        }
-    }
-    showOptions(e){ 
-        var pinOptionContainer = $(e.target).closest('.board-card').find('.pin-options-container');
-        pinOptionContainer.show(300);
-    }
-
-    hideOptionContainerArchive(e){ 
-        var pinOptionContainer = $('.pin-options-container');
-        if (!pinOptionContainer.is(e.target) && pinOptionContainer.has(e.target).length === 0) 
-        {
-            pinOptionContainer.hide(300); 
-        }
-    }
-    showOptionsArchive(e){ 
-        var pinOptionContainer = $(e.target).closest('.board-card-archive').find('.pin-options-container');
-        pinOptionContainer.show(300);
-    }
-
-
-    //show option icon
-    showOptionIcon(e){ 
-        e.preventDefault(); 
-       
-        var optionSelector = $(e.target).closest('.board-card').find('.option-icon');
-        optionSelector.show();
-    }
-
-    hideOptionIcon(e){ 
-        e.preventDefault(); 
-        var optionSelector = $(e.target).closest('.board-card').find('.option-icon');
-        optionSelector.hide();
-    }
-    //board archive
-   showOptionIconArchive(e){ 
-       console.log('hover');
-       var optionSelector = $(e.target).closest('.board-card-archive').find('.option-icon');
-       optionSelector.show();
-   }
-   hideOptionIconArchive(e){ 
-    e.preventDefault(); 
-    var optionSelector = $(e.target).closest('.board-card-archive').find('.option-icon');
-    optionSelector.hide();
-}
-}
+/* ajax call for design board */ 
 
 class DesignBoardAjax{ 
     constructor(){ 
@@ -103,31 +16,52 @@ class DesignBoardAjax{
     }
 
     events(){ 
+      
+       
         this.aTag.forEach(e=>{
-            e.addEventListener('click', this.getBoards.bind(this));
-
+         e.addEventListener('click', this.getBoards.bind(this));
         })
+       
+
+        
     }
 
     getBoards(e){ 
         e.preventDefault(); 
-      
-        
+        //get a url 
         let url = $(e.target).closest('a').attr('href');
-        console.log(url);
 
+
+        //creat an xhr object 
         var xhr = new XMLHttpRequest();
 
+
+        //send get request 
         xhr.open('GET', url, true); 
-        console.log('processing');
-        document.getElementsByClassName('ajax-result').innerHTML = " ";
-
+      
+       
+        //get results and show theme 
         xhr.onload = function(){ 
+            $('.body-container').hide(300);
+            $('.ajax-result').show(300);
+            $('.ajax-result').append('<i class="fal fa-arrow-left"></i>');
             $('.ajax-result').append(this.responseText);
-            const add = new DesignBoard();
-        }
+            const overlay = new DesignBoard();
+            const restApiCalls = new DesignBoardSaveBtn();
 
-        xhr.send();
+            $('.fa-arrow-left').on('click', ()=>{
+                console.log('clsoe icon');
+                $('.body-container').show(300);
+                $('.ajax-result').hide(300);
+                $('.ajax-result').html(' ');
+            })
+        }
+        //send request 
+            xhr.send();
+        
+            
+     
+       
         
     }
 }

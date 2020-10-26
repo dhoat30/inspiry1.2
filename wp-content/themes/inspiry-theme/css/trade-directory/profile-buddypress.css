@@ -1,4 +1,15 @@
 #buddypress a{ 
-    color: #708393;
+    color: #E9ECEF;
     font-weight: 500;
+}
+
+.user-subnav{ 
+    background: #E9ECEF !important;
+}
+.bp-single-vert-nav .bp-navs.vertical li.selected a{ 
+    background: #E9ECEF !important;
+}
+.vertical .users-nav a:hover{ 
+    background: #E9ECEF !important;
+
 }

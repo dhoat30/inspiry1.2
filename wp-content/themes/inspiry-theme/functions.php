@@ -7,7 +7,7 @@
  * @package inspiry
 
  */
-require get_theme_file_path('/inc/buddypress-navbar.php');
+require get_theme_file_path('/inc/buddypress-design-boards.php');
 require get_theme_file_path('/inc/buddypress-address.php');
 require get_theme_file_path('/inc/buddypress-wishlist.php');
 

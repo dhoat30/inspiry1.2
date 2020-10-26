@@ -1,6 +1,6 @@
 /*ged notification*/ 
 .gd-notification{ 
-    background: #708393; 
+    background: #E9ECEF; 
 }
 .add-listing-form{ 
     max-width: 900px;
@@ -19,12 +19,12 @@
 
 .add-listing-form .geodir_button{ 
     color: white;
-    background: #708393; 
+    background: #E9ECEF; 
     padding: 10px 10px;
 }
 .add-listing-form .geodir_preview_button{ 
     background: white; 
-    color: #708393;
-    border: 1px solid #708393;
+    color: #E9ECEF;
+    border: 1px solid #E9ECEF;
     text-decoration: none;
 }

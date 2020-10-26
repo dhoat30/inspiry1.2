@@ -35,9 +35,9 @@ function bp_custom_user_nav_item() {
  function bp_custom_screen_content() {  
              ?>
 <div class="body-container">
-    <h1 class="center-align section-ft-size"><?php the_title();?></h1>
+    <h1 class="section-ft-size ">Design Boards</h1>
 
-    <div class="row-container board-page">
+    <div class="board-page">
         <div>
         <?php 
             $boardLoop = new WP_Query(array(
@@ -59,7 +59,7 @@ function bp_custom_user_nav_item() {
                             </ul>
                         </div>
 
-                        <a class="rm-txt-dec" href="<?php the_permalink(); ?>">   
+                        <a class="design-board-card" class="rm-txt-dec" href="<?php the_permalink(); ?>">   
                         
                             <?php 
                             //GET THE CHILD ID
@@ -110,6 +110,9 @@ function bp_custom_user_nav_item() {
 
 </div> 
 
+<div class="ajax-result">
+
+</div>
              <?php
  }
  

@@ -6,7 +6,7 @@
 }
 
 #buddypress #submit{ 
-    background: #708393;
+    background: #E9ECEF;
     color: white;
     padding: 10px 20px;
 }
@@ -17,10 +17,10 @@
 }
 
 .buddypress-wrap .bp-feedback.info .bp-icon:before{ 
-    background-color: #708393;
+    background-color: #E9ECEF;
 }
 .buddypress-wrap .bp-feedback.info .bp-icon{ 
-    background-color: #708393;
+    background-color: #E9ECEF;
 
 }
 

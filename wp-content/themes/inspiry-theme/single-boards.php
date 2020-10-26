@@ -1,8 +1,10 @@
 
 <div class="body-container">
-    <div class="row-container board-loop-page">
+    <div class="row-container board-loop-page single-board">
+    
+    <h1 class="section-ft-size"> <?php echo get_the_title($parentID);?></h1>
         <div class="board-flex">
-      
+        
         <?php 
             $boardLoop = new WP_Query(array(
                 'post_type' => 'boards', 
@@ -12,11 +14,12 @@
 
             while($boardLoop->have_posts()){
                 $boardLoop->the_post(); 
+                $parentID =  wp_get_post_parent_id(get_the_id()); 
                 ?>  
                     
-
-                    <div class="board-card">
                     
+                    <div class="board-card">
+
                         <i class="fas fa-ellipsis-h option-icon"></i>
                         <div class="pin-options-container box-shadow">
                             <ul class="dark-grey">

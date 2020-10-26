@@ -76,7 +76,7 @@
     margin-top: 20px;
 }
 .bc-btn--add_to_cart{ 
-    background-color: #708393 !important;
+    background-color: #E9ECEF !important;
 }
 
 /*wishlist*/ 
@@ -91,21 +91,21 @@
     align-items: center;
     max-width: 100%;
     background-color: #f5f5f5;
-    border: 1px solid #708393;
-    color: #708393;
+    border: 1px solid #E9ECEF;
+    color: #E9ECEF;
     transition: opacity .3s ease;
     text-align: left;
     margin-top: 20px;
 }
 
 .bc-wish-list-item-anchor{ 
-    color:#708393!important;
+    color:#E9ECEF!important;
     font-size: 16px !important;
     display: inline-block;
     margin-bottom: 10px;
 }
 .bc-wish-list-btn--new{ 
-    color: #708393 !important;
+    color: #E9ECEF !important;
 }
 .bc-pdp-wish-lists li:hover{ 
     background:  #E9ECEF !important;
@@ -118,7 +118,7 @@
 }
  .initialized a{ 
    background: none !important;
-   color: #708393 !important; 
+   color: #E9ECEF !important; 
 }
 
 .order-sample-button, .sizing-calculator-button{ 
@@ -247,7 +247,7 @@
 }
 
 .calculator-overlay button{ 
-    background: #708393 !important;
+    background: #E9ECEF !important;
     border-radius: 0% !important;
 }
 .calculator-overlay button:hover{ 
@@ -321,7 +321,7 @@
     cursor: pointer;
     color: inherit;
     z-index: 2000;
-    color: #708393;
+    color: #E9ECEF;
 }
 .calculator-overlay .close:hover{ 
 color: #525659; 

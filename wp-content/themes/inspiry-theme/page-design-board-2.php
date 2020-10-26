@@ -2,7 +2,7 @@
 get_header(); 
 ?>
 <div class="body-container">
-    <h1 class="center-align section-ft-size"><?php the_title();?></h1>
+    <h1 class="center-align section-ft-size margin-elements"><?php the_title();?></h1>
 
     <div class="row-container board-page">
         <div>
@@ -78,7 +78,7 @@ get_header();
 </div> 
 
 <div class="ajax-result">
-    
+
 </div>
 
 <?php 

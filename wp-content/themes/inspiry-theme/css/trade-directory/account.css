@@ -1,11 +1,11 @@
 
 /*trade page*/ 
 .bsui .btn-primary{ 
-    background: #708393 !important; 
+    background: #E9ECEF !important; 
     border-color: 495a54;
 }
 .uwp-footer-links a{ 
-    color: #708393;
+    color: #E9ECEF;
 }
 .uwp-register-class, .uwp-login-class  h3{ 
     display: none;
@@ -18,7 +18,7 @@
 }
 
 .uwp_account_page_username a{ 
-    color: #708393 !important;
+    color: #E9ECEF !important;
     font-weight: 500;
    
 }

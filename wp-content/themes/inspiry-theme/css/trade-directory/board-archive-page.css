@@ -1,4 +1,10 @@
 /*board-page*/ 
+.single-board h1{ 
+  margin-top: 60px !important;
+}
+.board-archive-title{ 
+    margin-top: 0 !important;
+}
 .board-page .img-div img{ 
     width: 250px; 
     height: 300px;
@@ -27,9 +33,7 @@
 
 /*board card*/ 
 /*options*/ 
-.board-card-archive{ 
-border: solid red;
-}
+
 .board-card-archive>i{ 
     position: absolute;
     top: 10px;
@@ -56,10 +60,33 @@ border: solid red;
     padding: 10px 20px;
     cursor: pointer;
     font-weight: 300;
-    color: #708393; 
+    color: #E9ECEF; 
 }
 
 
 .pin-options-container ul li:hover{ 
     background: #FFF1EB; 
+}
+
+
+/*ajax overlay */ 
+.ajax-result{ 
+    position: relative;
+}
+.ajax-result>i{ 
+    cursor: pointer;
+    font-size: 20px;
+    color:#E9ECEF; 
+    position: absolute;
+    top: -60px; 
+    left: 20px;
+    background: #E9ECEF;
+    border-radius: 50%;
+    padding: 10px;
+}
+.ajax-result>i:hover{
+    color: #525659; 
+} 
+.board-loop-page h1{ 
+    color: #E9ECEF; 
 }
