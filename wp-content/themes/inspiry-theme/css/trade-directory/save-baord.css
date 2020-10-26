@@ -21,7 +21,7 @@
     box-shadow: 3px 3px 20px 1px rgba(0,0,0,0.2);
 }
 .choose-board-container .choose-board{ 
-    border-bottom: 1px solid #E9ECEF;
+    border-bottom: 1px solid #708393;
     padding: 10px 10px;
     font-weight: 600;
     letter-spacing: 1px;
@@ -54,7 +54,7 @@
     cursor: pointer;
 }
 .choose-board-container ul li:hover{ 
-    color: #E9ECEF;
+    color: #708393;
 }
 
 .choose-board-container .create-new-board{ 
@@ -113,7 +113,7 @@
     padding: 20px 20px;
 }
 .project-save-form-container .form-underline{ 
-    border-top: 1px solid #E9ECEF;
+    border-top: 1px solid #708393;
     opacity: 50%;
 }
 .project-save-form-container form{ 
@@ -135,7 +135,7 @@
     font-family: 'work-sans', sans-serif;
 }
 .project-save-form-container form textarea{ 
-    border: 1px solid #E9ECEF !important;
+    border: 1px solid #708393 !important;
     width: 300px;
     padding: 5px;
     font-family: 'work-sans', sans-serif;

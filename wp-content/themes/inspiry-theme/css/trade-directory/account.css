@@ -5,7 +5,7 @@
     border-color: 495a54;
 }
 .uwp-footer-links a{ 
-    color: #E9ECEF;
+    color: #708393;
 }
 .uwp-register-class, .uwp-login-class  h3{ 
     display: none;
@@ -18,7 +18,7 @@
 }
 
 .uwp_account_page_username a{ 
-    color: #E9ECEF !important;
+    color: #708393 !important;
     font-weight: 500;
    
 }

@@ -60,7 +60,7 @@
     padding: 10px 20px;
     cursor: pointer;
     font-weight: 300;
-    color: #E9ECEF; 
+    color: #708393; 
 }
 
 
@@ -76,7 +76,7 @@
 .ajax-result>i{ 
     cursor: pointer;
     font-size: 20px;
-    color:#E9ECEF; 
+    color:#708393; 
     position: absolute;
     top: -60px; 
     left: 20px;
@@ -88,5 +88,5 @@
     color: #525659; 
 } 
 .board-loop-page h1{ 
-    color: #E9ECEF; 
+    color: #708393; 
 }

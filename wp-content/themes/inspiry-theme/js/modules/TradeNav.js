@@ -1,25 +1,39 @@
+let $ = jQuery;
 class TradeNav{ 
     constructor(){ 
-        this.nav();
+        this.header = document.querySelector(".trade-nav-container .nav");
+        this.listItems = document.getElementsByClassName("trade-nav-link");
+        this.current = document.getElementsByClassName("active-nav");
+        this.tradeNavLink = document.querySelectorAll('.trade-nav-link'); 
+
+       
+        this.events(); 
     }
 
-    nav(){ 
-          //trade nav 
-    
-    var header = document.querySelector(".trade-nav-container .nav");
-    var listItems = header.getElementsByClassName("trade-nav-link");
-    for (var i = 0; i < listItems.length; i++) {
-      listItems[i].addEventListener("click", function() {
-      var current = document.getElementsByClassName("active-nav");
-      current[0].className = current[0].className.replace(" active-nav", "");
-        this.className += " active-nav";
+    events(){ 
+        
+
+        this.tradeNavLink.forEach(e=>{
+            e.addEventListener('click', this.nav.bind(this)); 
         });
-        }
+    }
 
-    let tradeNavLink = document.querySelectorAll('.trade-nav-link'); 
+    activeNav(){ 
+         this.current[0].className = current[0].className.replace(" active-nav", "");
+        this.className += " active-nav";
+       
+    }
 
-    tradeNavLink.forEach((val)=>{
-        val.addEventListener('click',(e)=>{
+    nav(e){ 
+          //trade nav 
+            console.log( this.tradeNavLink);
+
+            //remove class
+           $('.trade-nav-link').removeClass('active-nav');
+
+        //add class
+           $(e.target).addClass('active-nav');
+           
             if(e.target.innerHTML == "Profile"){ 
                 document.querySelector('.trade-about-nav-content').style.display = "block";
                 document.querySelector('.trade-contact-nav-content').style.display = "none";
@@ -27,7 +41,7 @@ class TradeNav{
                 document.querySelector('.trade-gallery-nav-content').style.display = "none"; 
             }
             else if(e.target.innerHTML == "Contact"){ 
-
+                
                 document.querySelector('.trade-about-nav-content').style.display = "none";
                 document.querySelector('.trade-project-nav-content').style.display = "none"; 
                 document.querySelector('.trade-contact-nav-content').style.display = "block"; 
@@ -48,8 +62,8 @@ class TradeNav{
                 document.querySelector('.trade-gallery-nav-content').style.display = "block"; 
 
             }
-        })
-    })
+            
+      
     }
 }
 

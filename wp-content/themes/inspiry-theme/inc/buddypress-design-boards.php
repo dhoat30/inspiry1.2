@@ -35,7 +35,7 @@ function bp_custom_user_nav_item() {
  function bp_custom_screen_content() {  
              ?>
 <div class="body-container">
-    <h1 class="section-ft-size ">Design Boards</h1>
+    <h1 class="section-ft-size board-archive-title">Design Boards</h1>
 
     <div class="board-page">
         <div>

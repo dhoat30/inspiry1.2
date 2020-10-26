@@ -188,7 +188,7 @@ transition-timing-function: ease-in-out;
     text-transform: uppercase;
     letter-spacing: 1px;
     font-family: 'Playfair Display', serif !important;
-    border: 2px solid #E9ECEF; 
+    border: 2px solid #708393; 
 }
 
 .trade-nav-container .nav li:hover{ 
@@ -214,7 +214,7 @@ transition-timing-function: ease-in-out;
     margin-left:20px;
 }
 .active-nav{ 
-background-color:#E9ECEF;
+background-color:#708393;
 color: white; 
 transition-duration: 0.5s;
 transition-timing-function: ease-in-out; 
@@ -236,19 +236,19 @@ transition-timing-function: ease-in-out;
     border-radius: 0 !important;
 }
 .trade-contact-nav-content table tr td>div{
-    color: #E9ECEF; 
+    color: #708393; 
     margin: 0 0 10px 10px ;
     font-family: 'work sans', sans-serif !important;
     font-weight: 500 !important;
 }
 .trade-contact-nav-content table tr td a{
-    color: #E9ECEF; 
+    color: #708393; 
     font-family: 'work sans', sans-serif;
     font-weight: 500;  
 }
 .trade-contact-nav-content table tr{ 
     font-size: 18px;
-    color: #E9ECEF; 
+    color: #708393; 
 }
 .trade-contact-nav-content .social-media-icons i{
     margin: 10px 5px 10px 0;

@@ -180,11 +180,11 @@
     height: 40px;
     margin: 0 10px 0 0;
     outline: none;
-    border: 1px solid #E9ECEF;
+    border: 1px solid #708393;
     cursor: pointer;
     }
     .btn-dk-green{ 
-        background-color: #E9ECEF;
+        background-color: #708393;
         color: white;
     }
     .btn-dk-green:hover{ 
@@ -204,7 +204,7 @@
         color: #666;
     }
     .dark-green{ 
-        color: #E9ECEF; 
+        color: #708393; 
     }
 	.black-bc{ 
 		background-color: black;
@@ -234,7 +234,7 @@
     /* a link */ 
     .rm-txt-dec{ 
         text-decoration: none;
-        color: #E9ECEF;
+        color: #708393;
         
     }
     .rm-txt-dec:link{ 
@@ -304,22 +304,22 @@
 /*save button*/ 
 .geodir-list-save-container .gd-badge {
     background-color: #fff !important;
-    color: #E9ECEF !important;
-    border: solid #E9ECEF !important;
+    color: #708393 !important;
+    border: solid #708393 !important;
     transition: 0.3s ease-in-out;   
      font-size: 16px;
      border-radius: 0;
 
 }
 .geodir-list-save-container .gd-badge:hover {
-    background-color: #E9ECEF !important;
+    background-color: #708393 !important;
     color: #fff !important;
-    border: solid #E9ECEF !important;
+    border: solid #708393 !important;
 }
 .gd-badge-meta-saved .gd-badge {
-    background-color: #E9ECEF !important;
+    background-color: #708393 !important;
     color: #fff !important;
-    border: solid #E9ECEF !important;
+    border: solid #708393 !important;
 }
 
 

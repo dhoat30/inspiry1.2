@@ -18,7 +18,8 @@ window.onload = function() {
    
 let designBoardAjax = new DesignBoardAjax(); 
    
-  
+const tradeNav = new TradeNav();
+
 //profile navbar
 
 
@@ -61,8 +62,6 @@ let designBoardAjax = new DesignBoardAjax();
 
 
 
-
-const tradeNav = new TradeNav();
 
 const wishlistAjax = new WishlistAjax();
 const warranty = new Warranty(); 

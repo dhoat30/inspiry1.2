@@ -152,6 +152,16 @@ get_header();
 <?php 
 
 ?>
+<script> 
+
+
+  window.onload = function() {
+   
+  
+
+  }
+</script>
 <?php
 get_footer();
 ?>
+
