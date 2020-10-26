@@ -63,6 +63,7 @@
 	}
 	.body-container{
         max-width: 1600px;
+        margin: 0 auto;
         
         padding-bottom: 50px;
     }
@@ -81,6 +82,7 @@
     .row-padding{ 
         padding: 10px 20px; 
     }
+    
     /*global margin*/ 
 	.margin-elements{ 
 		margin: 20px auto;

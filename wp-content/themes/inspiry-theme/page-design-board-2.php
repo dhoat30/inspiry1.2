@@ -26,7 +26,7 @@ get_header();
                             </ul>
                         </div>
 
-                        <a class="rm-txt-dec" href="<?php the_permalink(); ?>">   
+                        <a class="design-board-card" class="rm-txt-dec" href="<?php the_permalink(); ?>">   
                         
                             <?php 
                             //GET THE CHILD ID
@@ -76,6 +76,10 @@ get_header();
                             <span>X</span>
 
 </div> 
+
+<div class="ajax-result">
+    
+</div>
 
 <?php 
     get_footer();

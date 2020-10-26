@@ -7,14 +7,16 @@ import LayBuy from './modules/LayBuy';
 import TradeNav from './modules/TradeNav';
 import DesignBoard from './modules/DesignBoard'; 
 import DesignBoardSaveBtn from './modules/DesignBoardSaveBtn';
-
+import DesignBoardAjax from './modules/DesignBoardAjax'; 
+ 
 
 window.onload = function() {
 
-    
+    const designBoardSinglePage = new DesignBoard(); 
+   const designBoardSaveBtn = new DesignBoardSaveBtn();
    
    
-
+let designBoardAjax = new DesignBoardAjax(); 
    
   
 //profile navbar
@@ -45,8 +47,7 @@ window.onload = function() {
 
     
     
-   const designBoardSinglePage = new DesignBoard(); 
-   const designBoardSaveBtn = new DesignBoardSaveBtn();
+   
 
 }
 

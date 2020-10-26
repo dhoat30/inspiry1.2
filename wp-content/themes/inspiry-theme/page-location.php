@@ -22,7 +22,7 @@ get_header();
           <div class="cards">
             <?php echo do_shortcode('[gd_listings post_type="gd_place" post_limit="20" add_location_filter="1" sort_by="az" title_tag="h3" layout="2" with_pagination="1" bottom_pagination="1"]');?>
           </div>
-          
+            
         </div>
         
       </div>

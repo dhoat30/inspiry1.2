@@ -39,14 +39,14 @@ while($boardLoop->have_posts()){
                         }
                         ?>
                        
+                            
+                            
                         <div class="header-title" data-postid='<?php echo get_the_id()?>'>
                             <h2 class="section-ft-size"><?php echo do_shortcode( '[gd_post_meta key="post_title" show="value-raw" no_wrap="1"]');?></h2>
                         </div>
-
+                       
                         <div class="trade-info-section">
-                            <div class="place-title">
-                                <?php echo do_shortcode('[gd_linked_posts link_type="to" post_type="gd_place" sort_by="az" title_tag="h3" layout="1" post_limit="1" view_all_link="0"]'); ?>
-                            </div>
+                            
                             <div class="share-icon">
                                 Share: <?php echo do_shortcode('[Sassy_Social_Share]');?>
 

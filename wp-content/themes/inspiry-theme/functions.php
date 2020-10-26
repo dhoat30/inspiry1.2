@@ -8,7 +8,11 @@
 
  */
 require get_theme_file_path('/inc/buddypress-navbar.php');
+require get_theme_file_path('/inc/buddypress-address.php');
+require get_theme_file_path('/inc/buddypress-wishlist.php');
+
 require get_theme_file_path('/inc/boards-route.php');
+
 
  //enqueue scripts
 
@@ -21,8 +25,8 @@ require get_theme_file_path('/inc/boards-route.php');
       wp_enqueue_script('main', 'http://localhost:3000/bundled.js', NULL, '1.0', true);
     } else {
       wp_enqueue_script('our-vendors-js', get_theme_file_uri('/bundled-assets/undefined'), NULL, '1.0', true);
-      wp_enqueue_script('main', get_theme_file_uri('/bundled-assets/scripts.a18e72962c6ba094e2ac.js'), NULL, '1.0', true);
-      wp_enqueue_style('our-main-styles', get_theme_file_uri('/bundled-assets/styles.a18e72962c6ba094e2ac.css'));
+      wp_enqueue_script('main', get_theme_file_uri('/bundled-assets/scripts.37e68e4db8453f39bbe2.js'), NULL, '1.0', true);
+      wp_enqueue_style('our-main-styles', get_theme_file_uri('/bundled-assets/styles.37e68e4db8453f39bbe2.css'));
     }
     wp_localize_script("main", "inspiryData", array(
       "root_url" => get_site_url(),

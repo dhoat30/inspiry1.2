@@ -18,6 +18,7 @@
     min-width: 300px;
     text-decoration: none;
     width: 500px;
+    display: inline;
 }
 .project-header-section .header-middle-column{ 
     margin: 50px 0 !important;

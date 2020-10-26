@@ -1,7 +1,7 @@
 <?php 
 get_header(); 
   ?>
-  <div class="body-container add-listing-page">
+  <div class="add-listing-page">
     <div class="row-container">
       <?php
         while(have_posts()){

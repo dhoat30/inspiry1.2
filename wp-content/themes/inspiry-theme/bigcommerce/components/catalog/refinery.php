@@ -10,8 +10,10 @@
  */
 ?>
 <form action="<?php echo esc_url( $action ); ?>" method="get" class="bc-form">
-	
-	<?php echo do_shortcode('[facetwp facet="categories"]');?>
-	<?php echo do_shortcode('[facetwp facet="patter"]');?>
-
+	<?php echo $search; ?>
+	<?php echo $sort; ?>
+	<?php echo do_shortcode('[facetwp facet="categories"]'); ?>
+	<?php foreach ( $filters as $filter ) {
+		echo $filter;
+	} ?>
 </form>

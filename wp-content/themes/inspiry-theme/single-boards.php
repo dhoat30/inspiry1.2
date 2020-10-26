@@ -1,6 +1,4 @@
-<?php 
-get_header(); 
-?>
+
 <div class="body-container">
     <div class="row-container board-loop-page">
         <div class="board-flex">
@@ -55,8 +53,4 @@ get_header();
                             <span>X</span>
 
                         </div>
-
-<?php 
-    get_footer();
-?>
 
