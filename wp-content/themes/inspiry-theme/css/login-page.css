@@ -1,0 +1,101 @@
+.bc-btn--register{ 
+    color: white !important;
+    letter-spacing: 1px;
+}
+
+.trade-register-button, .trade-login-btn{ 
+    background: white !important;
+    color: #708393 !important; 
+    border: 1px solid #708393;
+}
+
+.trade-register-button:hover{ 
+    background-color: none !important;
+    color: #525659 !important; 
+    border: 1px solid #525659 !important;
+}
+.trade-login-btn:hover{ 
+    background-color: none !important;
+    color: #525659 !important; 
+    border: 1px solid #525659 !important;
+}
+
+/*title*/ 
+.general-page-template h1{ 
+    font-weight: 500;
+}
+.bc-account-login__register-title{ 
+    font-family: 'work-sans', sans-serif;
+    font-weight: 500;
+    font-size: 25px;
+    margin-top: 0px;
+}
+.form-content .bc-account-login__register-inner p, ul{ 
+    font-size: 15px;
+    font-weight: 300 !important;
+    margin: 5px 0;
+}
+.bc-account-login__register-list{ 
+    margin-bottom: 14px !important;
+}
+/*sign up form*/ 
+.login-overlay{ 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 600px;
+    height: 90vh; 
+    max-height: 600px;
+    background-color: #E9ECEF;
+    padding: 20px 20px;
+    z-index: 2000;
+    display: none;
+}
+.login-overlay i{ 
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    font-weight: 100;
+    color: #708393;
+
+}
+.login-overlay i:hover{ 
+    color: #525659;
+}
+.form-content { 
+    margin-top: 40px;
+}
+#loginform label{ 
+    font-family: 'work-sans', sans-serif;
+}
+#loginform #user_login, #user_pass{ 
+    display: block !important;
+    width: 100% !important;
+    height: 40px;
+}
+
+
+/*regsiter Page*/ 
+#register-page #submit{ 
+    background-color: #708393 !important;
+}
+#register-page #submit:hover{ 
+    background-color: #525659 !important;
+}
+#pass-strength-result{
+    font-family: 'work-sans', sans-serif;
+}
+
+.buddypress-wrap .register-page .layout-wrap>div{ 
+    width: 100% !important;
+}
+.register-section{ 
+    flex: 5 !important;
+}
+.register-page .signup-form .editfield {
+    margin: -7px 0 !important; 
+}

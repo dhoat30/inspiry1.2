@@ -4,7 +4,30 @@
 
 .bc-cart-actions button.bc-btn {
     background-color: #708393 !important;
+    margin-top: 20px;
 }
 .bc-cart-subtotal{
     color: #708393;
+}
+.bc-cart-item__remove-button{ 
+    cursor: pointer;
+}
+button{ 
+    font-family: 'playfair-display', serif !important;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+.bc-cart-item-meta{ 
+    margin-left: 10px !important;
+}
+.bc-cart-item__product-brand{ 
+    font-weight: 400 !important;
+}
+.bc-cart-item__product-title a{ 
+    font-family: 'playfair-display', serif !important;
+
+}
+.bc-cart-item-total-price, .bc-cart-subtotal__amount{ 
+    font-family: 'work-sans', sans-serif;
+    font-weight: 500;
 }

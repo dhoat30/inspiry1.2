@@ -10,15 +10,33 @@
 .bc-subnav__list-item--current a{ 
     box-shadow: inset 5px 5px 10px #333;
 }
+.bc-subnav__list-item{ 
+    margin: 0 !important;
+    display: flex; 
+    justify-content: center;
+}
+.bc-subnav__list-item a{ 
+    width: 230px;
+    display: inline-block;
+    text-align: center;
+    margin: 10px auto 0 auto;
+}
+.bc-subnav__list-item a:hover{ 
+    background: #525659;
+}
 /*remove space between list item*/
-.bc-subnav__list-item+.bc-subnav__list-item { 
-    margin-left:0; 
+@media(min-width:600px){ 
+    .bc-subnav__list-item+.bc-subnav__list-item { 
+        margin-left:0; 
+       
+    }
+    
 }
 
 .bc-subnav__list a{ 
     background-color: #708393; 
     padding: 10px 20px; 
-    color: #EFEAE5 !important;
+    color: #E9ECEF !important;
     font-family: 'Playfair Display', serif;
 }
 
@@ -30,7 +48,45 @@
     color: white !important; 
     background: #E9ECEF !important; 
 }
+.bc-wish-list-header-title{ 
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+.bc-wish-list-link{ 
+    font-weight: 400 !important;
+    letter-spacing: 1px !important;
+}
+.bc-wish-list-item, .bc-product__title-link, .bc-order-product-row__brand, .bc-wish-list-product-row__price{ 
+    font-family: 'work-sans', sans-serif;
+    font-weight: 500;
+}
+.bc-manage-wish-list-header{ 
+    margin-top: 50px !important;
+    margin-right: 0;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+}
+.bc-manage-wish-list-product{ 
+    margin-left: 0 !important;
+}
+.bc-manage-wish-list-header>div{ 
+    max-width: 280px !important;
+}
+.bc-manage-wish-list-header h1{ 
+    max-width: 280px !important;
+    font-weight: 500 !important;
+    text-align: left !important;
 
+}
+.bc-manage-wish-list-header .bc-manage-wish-list-actions{ 
+    margin: 0 !important;
+   text-align: right;
+}
+.bc-manage-wish-list-share{
+    display: none;
+}
 /*register area*/ 
 .bc-account-login__register-list li { 
     font-family: 'work sans', sans-serif !important;
@@ -43,10 +99,10 @@
 /*log in page*/ 
 .button-primary{ 
     background-color: #708393 !important;
-    color: #EFEAE5;
+    color: #E9ECEF;
 }
 .bc-btn--register{
-    color: #EFEAE5;
+    color: #E9ECEF;
     background-color:#708393 !important;
 }
 .bc-account-login__form-inner a{ 
@@ -62,6 +118,7 @@ color: #708393 !important;
 /*address area*/ 
 .bc-account-addresses button{ 
     color: #708393 !important;
+
 }
 
 /*trade button*/ 
@@ -70,5 +127,59 @@ color: #708393 !important;
 }
 .trade-login-btn{ 
     color: white !important;
+}
+
+
+/*order history section */ 
+.bc-order-card__title-link{ 
+    font-weight: 500 !important;
+}
+.bc-order-card__total{ 
+    font-family: 'work-sans', sans-serif !important;
+    font-weight: 400;
+}
+.bc-order-meta__label, .bc-order-meta__value, .bc-order-card__status, .bc-order__id{ 
+    font-family: 'work-sans',sans-serif !important;
+}
+.bc-order-card__status{ 
+    font-weight: 500 !important;
+}
+.bc-order__id, .bc-order__link{ 
+    margin: 0 !important;
+}
+
+@media (min-width: 763px){ 
+    .bc-order-card__meta{ 
+        margin-left: 20px !important;
+    }
+}
+/*order detail page*/ 
+.bc-order__product-list{ 
+    margin-top: 20px;
+}
+.bc-order-product-row__title, .bc-order-product-row__quantity>div, .bc-order-product-row__total, .bc-order-product-row__unit-price{ 
+    font-family: 'work-sans', sans-serif !important;
+}
+.bc-order-product-row__title{ 
+    font-weight: 500 !important;    
+}
+.bc-order-product-row__option{ 
+    margin: 20px 0 0 0 !important;
+}
+.bc-order-detail img{ 
+    display: block;
+    margin-bottom: 20px;
+    position: relative;
+    right: 20px;
+}
+.bc-order-detail-totals__list dt, dd{ 
+    font-family: 'work-sans', sans-serif !important;
+    font-weight: 500 !important;
+}
+@media (max-width: 764px){ 
+  .bc-order-meta__list-item, .bc-order-detail-totals__list{ 
+      margin-top: 20px !important;
+  }
+
 }
 

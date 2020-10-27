@@ -5,13 +5,39 @@
 .product-archive-container{ 
     display: flex;
     flex-direction: row;
-    width: 95%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
 }
 .product-archive-container .sidebar{ 
-    width: 30%;
+    width: 10%;
 }
 .product-archive-container .product-cards{ 
-    width: 70%;
+    width: 85%;
+}
+@media (max-width: 1480px){ 
+    .product-archive-container .product-cards{ 
+        width: 75%;
+    }  
+    .product-archive-container .sidebar{ 
+        width: 15%;
+    }
+}
+@media (max-width: 1200px){ 
+    .product-archive-container .product-cards{ 
+        width: 70%;
+    }  
+}
+@media (max-width: 950px){ 
+    .product-archive-container .product-cards{ 
+        width: 100%;
+    }  
+    .product-archive-container .sidebar{ 
+        width: 100%;
+    }
+}
+.bc-product-archive__title { 
+    text-align: center;
 }
 /*styling text*/ 
 .bc-product-grid--archive .bc-product__title a{
@@ -55,3 +81,65 @@
     color: #525659;
 }   
 
+/*facet wp*/ 
+.fs-label-wrap {
+    position: relative;
+    background-color: #fff;
+    border: 1px solid #708393 !important;
+    color: #708393;
+    cursor: pointer !important;
+    transition-timing-function: ease-in-out;
+    transition-duration: 100ms;
+
+    /* height: 30px; */
+}
+.fs-label-wrap:hover{
+    border: 1px solid #525659 !important;
+   color: #525659 !important;
+}
+.fs-arrow{ 
+    border-top: 5px solid #708393 !important;
+}
+
+
+.facetwp-facet {
+    margin-bottom: 15px !important;
+    width: 220px !important; 
+}
+.facetwp-type-slider{ 
+    margin-top: 20px;
+}
+.noUi-connect{ 
+    background: #708393 !important;
+}
+
+.facet-reset-btn{ 
+    border: 1px solid #708393;
+    padding: 10px 40px;
+    background: white;
+    color: #708393;
+    cursor: pointer;
+    font-size: 15px;
+    letter-spacing: 1px;
+    transition-timing-function: ease-in-out;
+    transition-duration: 300ms;
+}
+.facet-reset-btn:hover{ 
+    background: #708393;
+    color: white;
+}
+.facetwp-slider-reset{ 
+    display: none !important;
+}
+@media (max-width: 950px){ 
+    .facetwp-facet {
+        margin-bottom: 15px !important;
+        width: 100% !important; 
+    }
+    .fs-wrap { 
+        width: 100% !important;
+    }
+    .bc-product-archive__refinery{ 
+        margin-bottom: 40px !important;
+    }
+}

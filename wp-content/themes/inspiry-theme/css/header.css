@@ -17,7 +17,7 @@
     cursor: pointer;
 }
 .beige-color-bc{ 
-    background-color:#EFEAE5; 
+    background-color:#E9ECEF; 
 }
 
 .logo-container{ 
@@ -41,7 +41,7 @@
     transition: 0.5s ease-in-out;
 }
 .navbar a:hover{ 
-    background-color:#EFEAE5; 
+    background-color:#E9ECEF; 
 }
 
 /*login area*/ 
@@ -54,25 +54,46 @@
  position: relative; 
 }
 .my-account-nav{
-    background-color: #EFEAE5;
-    padding: 10px 0px 10px 0;
+    background-color: #E9ECEF;
     width: 150px;
     display: none;
     position: absolute;
+
 }
 .my-account-nav ul { 
     list-style: none;
 }
-.my-account-nav li{ 
-    padding: 10px 30px 10px 10px;
-   
+.profile-name-value:hover{ 
+    color: #525659;
 }
-.my-account-nav li:hover{ 
-   background-color: #6666662a;
+.my-account-nav li a{ 
+    padding: 10px 30px 10px 10px;
+    display: block;
+}
 
+.my-account-nav li a:hover{ 
+   color: #525659;
 }
 
 .my-account-nav a{ 
     text-decoration: none;
-    color: #666666;
+    color: #708393;
+}
+
+/*cart */ 
+.shopping-cart a:hover{ 
+    color: #525659;
+}
+
+/*wishlist */ 
+.wishlist a:hover{ 
+    color: #525659;
+}
+/*search bar*/ 
+.mCS-dark-thick.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+    background-color: #708393 !important;
+    background-color: rgba(0,0,0,.75);
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
 }

@@ -33,7 +33,7 @@
 						<li><?php esc_html_e( 'Access order history', 'bigcommerce' ); ?></li>
 						<li><?php esc_html_e( 'Track new orders', 'bigcommerce' ); ?></li>
 					</ul>
-					<a class="bc-btn bc-btn--register" href="<?php echo esc_url( $register_link ); ?>"
+					<a class="bc-btn bc-btn--register customer-register" href="<?php echo esc_url( $register_link ); ?>"
 						 title="<?php esc_attr( 'Register', 'bigcommerce' ); ?>"><?php esc_html_e( 'Register', 'bigcommerce' ); ?></a>
 						 <a class="bc-btn bc-btn--register trade-register-button" href='<?php echo get_home_url(). "/inspiry-trade" ?>'> Create A Trade Account</a>
 				</div>

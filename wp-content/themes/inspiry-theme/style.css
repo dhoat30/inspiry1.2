@@ -19,7 +19,7 @@
 @import "css/loader.css";
 @import "css/account.css";
 @import "css/cart.css";
-
+@import "css/login-page.css";
 /*design boards */ 
 
 /*pages */ 
@@ -32,7 +32,7 @@
 @import "css/trade-directory/archive-items.css";
 @import "css/trade-directory/detail-page.css";
 @import "css/trade-directory/gd-project-detail.css"; 
-@import "css/trade-directory/account.css";
+
 @import "css/trade-directory/inspiry-trade.css";
 @import "css/trade-directory/gd-list.css";
 /*buddypress */ 
@@ -198,10 +198,10 @@
         color: white; 
     }
     .dark-grey{ 
-        color:#525659;
+        color:#708393;
     }
     .light-grey{ 
-        color: #666;
+        color: #E9ECEF;
     }
     .dark-green{ 
         color: #708393; 
@@ -211,7 +211,7 @@
     }
 
     .beige-color-bc{ 
-        background-color:#EFEAE5; 
+        background-color:#E9ECEF; 
     }
     .off-white-bc{ 
         background-color: #efefef; 

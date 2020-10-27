@@ -108,7 +108,7 @@
     color: #708393 !important;
 }
 .bc-pdp-wish-lists li:hover{ 
-    background:  #708393 !important;
+    background:  #E9ECEF !important;
 }
 .bc-pdp-wish-lists li:last-child:hover{ 
     background:  none !important;
@@ -116,7 +116,7 @@
 .bc-pdp-wish-lists a{ 
     padding: 5px;
 }
- .initialized a{ 
+ .bc-product-single .initialized a{ 
    background: none !important;
    color: #708393 !important; 
 }
@@ -247,7 +247,7 @@
 }
 
 .calculator-overlay button{ 
-    background: #E9ECEF !important;
+    background: #708393 !important;
     border-radius: 0% !important;
 }
 .calculator-overlay button:hover{ 

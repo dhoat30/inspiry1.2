@@ -13,7 +13,7 @@
     font-weight: 600;
     font-size: 20px;
 }
-.general-page-template p, a, span, .paragraph{ 
+.general-page-template p, span, .paragraph{ 
     font-family: 'work sans', sans-serif;
     line-height: 1.5em;
 }

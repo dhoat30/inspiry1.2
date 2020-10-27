@@ -22,6 +22,12 @@
     background: #E9ECEF !important;
 }
 
+/*tabs */ 
+.bp-personal-tab a{ 
+    padding: 10px 5px !important;
+    font-size: 18px;
+}
+
 /*address */ 
 .bc-account-addresses__item{ 
     background: #E9ECEF !important;
@@ -31,13 +37,13 @@
 }
 
 /*wishlist */ 
-.bc-wish-list-header-title { 
+.bc-account-page .bc-wish-list-header-title { 
     font-size: 20px !important;
     font-weight: 400;
     letter-spacing: 1px;
     font-family: 'work-sans', sans-serif;
 }
-.bc-wish-list-btn--new{ 
+.bc-account-page .bc-wish-list-btn--new{ 
     background:#708393 !important;
    
     padding: 10px 20px !important;

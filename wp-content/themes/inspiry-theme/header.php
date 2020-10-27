@@ -12,18 +12,26 @@
     
     <section class="header">
         <div class="top-banner beige-color-bc">
-            <div class="wishlist">
+            <?php 
+            if(is_user_logged_in()){
+                global $current_user; wp_get_current_user();  
+                ?>
+                    <div class="wishlist">
                <a href="<?php echo get_home_url().'/bigcommerce-wishlist' ?>" class="text-decoration-none dark-grey">
                <span class="dashicons dashicons-heart"></span>
                </a> 
               
-            </div>
+            </div>`
+                <?php 
+            }
+            ?>
+            
             <div class="login-area playfair-fonts font-s-regular profile-trigger ">
-                <a href="http://localhost/inspiry/login/" class="profile-name-value text-decoration-none dark-grey">
+               
                     <?php 
                         if(is_user_logged_in()){
                             global $current_user; wp_get_current_user();  
-                            ?>
+                            ?> <a href="http://localhost/inspiry/login/" class="profile-name-value text-decoration-none dark-grey">
                                  <span class="dashicons dashicons-admin-users"></span> <?php echo  $current_user->display_name;?>
                                  <i class="fas fa-chevron-down regular arrow-icon"></i>
                                 <nav>
@@ -33,16 +41,18 @@
                                         'container_class' => "my-account-nav"
                                     )); 
                                 ?>
-                                </nav>         
+                                </nav>  
+                                </a>       
                             <?php
                         }
                         else{
-                            ?>
+                            ?><a href="http://localhost/inspiry/login/" class="login-tag text-decoration-none dark-grey">
                                 <span class="dashicons dashicons-admin-users"></span> LOGIN / REGISTER
+                        </a>
                             <?php
                         }
                     ?>
-                </a>
+                
             </div>
             <div class="shopping-cart playfair-fonts font-s-regular">
                 <a href="http://localhost/inspiry/cart/" class="text-decoration-none dark-grey">
@@ -64,7 +74,14 @@
                     ));
             ?>
         </nav>
-
-        
+                 
+        <div class="login-overlay"> 
+            <i class="fal fa-times"></i>   
+            <div class="form-content">
+                
+            </div>      
+        </div>
 
     </section>
+
+   
