@@ -23,12 +23,12 @@ if(strstr($_SERVER['SERVER_NAME'], 'localhost')){
 	define( 'DB_NAME', 'inspiry' );
 	define( 'DB_USER', 'root' );
 	define( 'DB_PASSWORD', 'root' );
-	define( 'DB_HOST', 'localhost' );
+	define( 'DB_HOST', '127.0.0.1' );
 }
 else{ 
-	define( 'DB_NAME', 'taurang8_inspiry' );
-	define( 'DB_USER', 'taurang8_inspiry' );
-	define( 'DB_PASSWORD', 'Observer13' );
+	define( 'DB_NAME', 'dbsm3qcfmb95zh' );
+	define( 'DB_USER', 'un83rcbfkbwjm' );
+	define( 'DB_PASSWORD', '84[wf642gn6j' );
 	define( 'DB_HOST', '127.0.0.1' );
 }
 
