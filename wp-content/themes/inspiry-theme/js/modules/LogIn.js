@@ -1,7 +1,7 @@
 let $ = jQuery; 
 class LogIn{ 
     constructor(){ 
-        this.events = this.events().bind(this); 
+        this.events(); 
     }
     events(){ 
         $('.login-tag').on('click', this.showLogInForm); 

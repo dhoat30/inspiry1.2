@@ -44,3 +44,553 @@
     letter-spacing: 1px;
     margin: 0px 0 10px 20px;
 }
+
+/*calculator css */ 
+h1.noCrumbs {
+    margin-top:20px;
+    padding-left:10px;
+}
+
+.paint-brushes {
+    background-image: url("https://69445235844b78bbd4c8-40765e7850b487e7db6d0b1ca2adcee0.ssl.cf3.rackcdn.com/_assets/images/paint-landing/style-library-paint-brushes.jpg");
+    background-position: 100% 81%;
+    background-size: 55%;
+    float: left;
+    background-repeat: no-repeat;
+    padding-bottom:20px;
+}
+
+.paper-rolls { 
+    background-image: url("https://69445235844b78bbd4c8-40765e7850b487e7db6d0b1ca2adcee0.ssl.cf3.rackcdn.com/_assets/images/paint-landing/style-library-rolls-2.jpg"); 
+    background-position: 90% 83%; 
+    background-size: 72%; 
+    float: left; 
+    background-repeat: no-repeat; 
+    padding-bottom: 20px; 
+}
+
+.fabric-rolls { background-image: url("https://www.stylelibrary.com/_assets/images/Morris-North-2018-Moodboard-v2.jpg"); 
+    background-position: 90% 85%; 
+    background-size: 75% 25%; 
+    float: left; 
+    background-repeat: no-repeat; 
+    padding-bottom: 20px; 
+}
+
+
+.paint-usage-chart p {
+    text-align:center;
+}
+
+p.small {
+    margin:-5px 0px 10px 22px;
+    font-size:14px;
+}
+
+.container-flex {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.contentContainer.container-flex {
+    width:50%;
+
+
+}
+p.result-text{
+    display:none;
+    text-align:left;
+}
+
+p.default-text {
+    text-align:left;
+}
+
+.wall {
+    /*flex-wrap: wrap;*/
+    float: left;
+    width: 100%;
+    display: block;
+}
+
+#wall-group {
+  float: left;
+  width: 100%;
+  display:block;
+}
+.button-holder {
+  /*float: left;
+  display:block;*/
+  /*width:50%;*/
+}
+
+#calculate-paint-btn, #calculate-rolls-btn, #calculate-fabric-btn {
+    width: 75%;
+    float: right;
+}
+#reset-btn {
+    width:24%;
+    float:left;
+}
+
+form {
+    width: 100%;
+}
+
+
+#FabricCalculatorModal section, #PaintCalculatorModal section, #WallpaperCalculatorModal section {
+    display: block;
+    float: left;
+}
+
+
+.form-group {
+    display: inline-block;
+    padding: 0;
+    background-color: #f4f4f4;
+    padding: 10px 14px 14px 10px;
+    /*width: 50%;*/
+    margin-bottom: 6px;
+}
+
+.form-group .row {
+    padding-left:20px;
+    width:100%;
+}
+
+    .form-group h3 {
+        font-size: 18px;
+        line-height:1.1em;
+        text-transform: uppercase;
+        font-weight: 700;
+        letter-spacing: 0.075em;
+        margin-left: 25px;
+        color: #6a6869;
+        font-family: ProximaNovaA-Light,"Montserrat","Open Sans",Verdana,Geneva,sans-serif;
+        width:98%;
+    }
+
+        .form-group h3 span {
+            position: relative;
+            top: 0px;
+            left: -50px;
+            background-color: #d4bc60;
+            color: white;
+            padding: 0px 12px 2px;
+            margin-right: -37px;
+            display: inline-block;
+        }
+
+        .form-group h3 em, label em {
+            font-style: normal;
+        }
+        
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin-right: 10px;
+    padding: 0;
+}
+.error-message {
+  display: inline;
+}
+.results {
+  /*background-color: #d4bc60;*/
+  /*color: @text-accent-color;*/
+  /*width: 100%;*/
+  padding: 10px;
+  margin: 10px 0;
+
+}
+fieldset,
+fieldset > p,
+fieldset > div {
+  width: 100%;
+  clear: both;
+  margin-bottom: 0px;
+}
+input[type="radio"] {
+  width: auto;
+  margin: 14px 5px 0px 0px;
+  padding-left: 10px;
+}
+input[type="radio"]:before {
+  content: none !important; 
+}
+#input-metres {
+  margin-left: 0;
+  padding-left: 0;
+}
+.radio-inline {
+  padding-left: 6px;
+}
+.radio,
+.checkbox {
+  padding-left: 0;
+}
+.unit-selection {
+  margin-bottom: 6px;
+  display: flex;
+  flex-flow: wrap;
+}
+
+.unit-selection .row div, .style-selector div {
+   float:left;
+   display:block;
+   margin-right:14px;
+}
+
+.radio-holder {
+    display: flex;
+    flex-flow: nowrap;
+    padding-left:24px;
+}
+
+.radio-holder > div {
+    margin-right:10px;
+}
+    /*.unit-selection > div {
+  min-width: 80px;
+  white-space: normal;
+}
+.unit-selection > div:nth-child(2) {
+  min-width: 150px;
+}*/
+.feet-label > label {
+    width: 100%;
+    display: block;
+    margin-left: 0px;
+}
+.wall-group {
+     float:left;
+  margin-left: 15px;
+  width:100%;
+  display:block;
+}
+
+/*.dropdown-holder .row {
+    margin-left:20px;
+}*/
+
+.button-group {
+  float:left;
+  width:100%;
+  display:block; 
+}
+.roll-measure-75 {
+  float: left;
+  position: relative;
+  padding-left: 0;
+  padding-right: 15px;
+}
+.roll-measure-50 {
+  float: left;
+  position: relative;
+  padding-left: 0;
+  padding-right: 10px;
+  width:50%;
+}
+#roll-result {
+    text-align: left;
+    /*padding: 10px 15px;
+    background-color: #58595b;*/
+    color: #6a6869;
+    width: 100%;
+    margin: 10px 0px 6px 0px;
+    float: left;
+    display: block;
+    /*border: 6px solid #d4bc60;*/
+}
+    #roll-result > p {
+        color: #6a6869;
+        font-size: 2em;
+        line-height: 1.35em;
+        font-weight: bold;
+        margin: 0px 0px 10px 0px;
+    }
+#roll-result > p > actual {
+  font-weight: bold;
+}
+#roll-result > p .total-price {
+  font-weight: bold;
+  color: #d4bc60;
+  font-size:1.1em;
+}
+#result {
+    /*display: block;
+    width: 100%;*/
+    float: right;
+    padding: 0px;
+    width: 49%;
+    background-color:#fff;
+}
+/*.row .wall >div>*/
+label,
+.roll {
+  display: block;
+  /*float: none;*/
+}
+.roll-dim {
+  width: 50%;
+  display: inline-block;
+}
+#table {
+  margin-top: 40px;
+}
+actual,
+approx {
+  font-size: 1.2em;
+  color: #d4bc60;
+}
+.has-error {
+  border-color: #f44336;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
+  color: #f44336;
+}
+@media (max-width: 768px) {
+  .roll-measure-75,
+  .roll-measure-50 {
+    width: 100%;
+  }
+  .roll-dim {
+    width: 100%;
+  }
+  .unit-selection > div > input[type="radio"] {
+    margin-left: 0;
+  }
+
+}
+
+p#add-row-btn {
+    cursor:pointer;
+    text-transform:uppercase;
+    font-weight:700;
+    float:right;
+    width:unset;
+    font-size:14px;
+    margin-bottom:0px;
+}
+
+#suface-selector select, #finish-selector select, #coats-selector select {
+    margin-bottom:0px;
+    /*width:98%;*/
+}
+/*--------------paint specific------------------*/
+.dropdown-holder {
+    /*width: 52%;
+    float: left;
+    clear: both;*/
+}
+table.paint-usage-table thead tr th {
+    color:white;
+    background-color: #d4bc60;
+    background-image: none;
+    text-align:center;
+}
+thead {
+  background-color: #f1f1f1;
+  color: black;
+}
+thead,
+.section-end {
+  border-bottom: 2px solid #f1f1f1;
+}
+th {
+  padding: 10px;
+}
+td {
+  padding: 10px;
+  border: 0.5px solid #f1f1f1;
+  text-align: center;
+  line-height:16px;
+}
+tr.section-start {
+    height: 34px;
+    text-transform: uppercase;
+    letter-spacing: 0.13em;
+    font-size: 12px;
+    background: #6a6869 !important;
+    color: #fff;
+}
+
+tr.section-start td {
+    background: #6a6869 !important;
+}
+    
+tr.section-start td b {
+    color: #fff;
+}
+
+tr.table-gap td  {
+   border:0px;
+   height:10px;
+   background:#fff !important;
+}
+    
+td:first-of-type {
+        /*background-color: #d4bc60;
+  color: #fff;*/
+    }
+tfoot {
+  padding-top: 20px;
+  text-align: center;
+}
+.foot {
+  background-color: #f1f1f1 !important;
+  color: black !important;
+  border-bottom: 1px solid #fff;
+}
+table.paint-usage-table {
+  margin-bottom:20px;
+}
+table.paint-usage-table tbody tr:nth-of-type(even) td:first-child{
+  color:#4f5151;
+}
+
+
+
+@media (max-width: 768px) {
+    .form-group {
+        width: 100%;
+    }
+
+    .dropdown-holder {
+        width: 100%;
+    }
+
+    .button-holder {
+        width: 100%;
+    }
+
+    table.paint-usage-table thead tr th, table.paint-usage-table thead tr, table.paint-usage-table thead tr td, table.paint-usage-table tfoot tr td, table.paint-usage-table tbody tr td {
+        padding: 4px 4px;
+        font-size: 0.9em;
+        width: 20%;
+    }
+
+    .contentContainer.container-flex {
+        width: 100%;
+    }
+
+    #result {
+        width: 100%;
+    }
+
+    #disclaimer {
+        padding-right: 10px;
+    }
+
+        #disclaimer p {
+            font-size: 11px;
+            line-height: 15px;
+        }
+
+    span.fa.fa-refresh {
+        display: none;
+    }
+
+    #reset-btn {
+        padding: 11px;
+    }
+
+    .form-group h3 span {
+        left: -45px;
+    }
+
+    .paint-brushes {
+        background-position: 100% 81%;
+        background-size: 45%;
+    }
+}
+
+@media (max-width: 412px) {
+    .contentContainer.container-flex {
+        width: 100%;
+    }
+
+    #result {
+        width: 100%;
+        padding:0px 10px;
+    }
+
+    #PaintCalculatorModal .unit-selection label {
+        margin-right: 16px;
+    }
+
+    .paint-brushes, .paper-rolls {
+        background-image: none;
+        padding-bottom: 0px;
+        margin-top: -10px;
+    }
+
+    #PaintCalculatorModal .form-group h3 {
+        font-size: 14px;
+    }
+
+    .form-group h3 {
+        font-size: 16px;
+        margin-bottom: 4px;
+        width:97%
+    }
+
+    .form-group h3 em, label em {
+        display:none;
+    }
+
+    .form-group h3 span {
+        left: -45px;
+    }
+
+    p.small {
+        margin: 5px 0px 10px 22px;
+        font-size: 14px;
+        line-height:16px;
+        width:90%;
+    }
+
+
+    #wall-group label {
+        display:none;
+    }
+
+    #calculate-paint-btn, #calculate-rolls-btn{
+        width: 75%;
+    }
+
+    #reset-btn {
+    width: 23%;
+    }
+
+    input {
+        margin:10px 0px 0px 0px;
+    }
+
+}
+
+@media (max-width: 321px) {
+    .form-group h3 {
+        font-size: 14px;
+    }
+
+    table.paint-usage-table thead tr th, table.paint-usage-table thead tr, table.paint-usage-table thead tr td, table.paint-usage-table tfoot tr td, table.paint-usage-table tbody tr td {
+        font-size: 0.8em;
+    }
+
+    #reset-btn {
+        padding: 18px 10px;
+    }
+
+    #result {
+        padding: 10px 18px;
+    }
+}
+
+    /* extras */
+    #CalculatorModal .button-group button {
+        margin-right: 5px !important;
+    }

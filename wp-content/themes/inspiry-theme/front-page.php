@@ -2,12 +2,29 @@
 /* Template Name: Places * Template Post Type: post*/ /*The template for displaying full width single posts. */
 get_header(); 
 echo "<h1>This is a places post</h1>";
-echo do_shortcode('[facetwp facet="categories"]');
 
 ?>
-<a href="http://localhost/inspiry/boards/dhoat50/" id="design-board-cards">Hello</a>
 
-<div class="ajax-results-2"></div>
 <?php 
+
+$query = new WP_Query( array(
+    'post_type' => 'gd_place',
+    'posts_per_page' => '5'
+ 
+    
+    
+));
+
+
+print_r($categories);
+var_dump($categories);
+while($query->have_posts()){ 
+    $query->the_post(); 
+    the_title();  ?> <br><br> <?php
+}
+?>
+
+<?php 
+
 get_footer(); 
 ?>

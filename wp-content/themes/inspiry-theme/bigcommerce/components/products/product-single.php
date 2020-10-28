@@ -40,8 +40,34 @@ use BigCommerce\Post_Types\Product\Product;
 				
 							
 				<a href="<?php echo rtrim(get_the_permalink(),'/').'-sample' ;?>" class="order-sample-button"><img src="http://localhost/inspiry/wp-content/uploads/2020/08/icon-cut.png" alt="order a sample"> Order a Sample</a>
-									<br>
-				<a href="#" class="sizing-calculator-button"><img src="http://localhost/inspiry/wp-content/uploads/2020/08/icon-calc.png" alt="order a sample"> Sizing Calculator</a>
+                  <br>
+            <?php 
+            $post_id = get_the_id(); 
+            $category_list = get_the_terms( $post_id, 'bigcommerce_category'); 
+
+            $category_list_name = wp_list_pluck($category_list, 'name'); 
+
+            //checking wallpaer in the list 
+            $wallpaper = in_array('Wallpaper', $category_list_name); 
+
+            //checking fabric in a list
+            $fabric = in_array('Fabric', $category_list_name); 
+
+            if($wallpaper ){ 
+              ?>
+              				<a href="#" class="sizing-calculator-button"><img src="http://localhost/inspiry/wp-content/uploads/2020/08/icon-calc.png" alt="order a sample"> Wallpaper Calculator</a>
+
+              <?php 
+            }
+            elseif($fabric){ 
+              ?>
+              				<a href="#" class="sizing-calculator-button"><img src="http://localhost/inspiry/wp-content/uploads/2020/08/icon-calc.png" alt="order a sample"> Fabric Calculator</a>
+
+              <?php 
+            }
+
+            ?>
+
 	
 		<?php echo $price; ?>
     <?php echo $form; ?>
@@ -61,6 +87,7 @@ use BigCommerce\Post_Types\Product\Product;
 
 
 <?php echo $related; ?>
+
 
 
 
