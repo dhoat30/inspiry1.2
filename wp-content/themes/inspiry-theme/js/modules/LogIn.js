@@ -14,9 +14,10 @@ class LogIn{
     showLogInForm(e){ 
 
         e.preventDefault(); 
-        //getting the url
-        let url = $(e.target).closest('a').attr('href');
 
+        //getting the url
+        let url = 'http://localhost/inspiry/ajax-log-in/'
+        console.log(url);
   
           //creat an xhr object 
           var xhr = new XMLHttpRequest();

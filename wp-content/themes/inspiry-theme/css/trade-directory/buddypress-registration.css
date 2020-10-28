@@ -28,3 +28,6 @@
     font-family: 'work-sans', sans-serif;
 }
 
+.buddypress-wrap .standard-form input[required]:invalid, .buddypress-wrap .standard-form select[required]:invalid, .buddypress-wrap .standard-form textarea[required]:invalid {
+    border-color: #708393;
+}

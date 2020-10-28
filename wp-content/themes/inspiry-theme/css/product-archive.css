@@ -90,9 +90,10 @@
     cursor: pointer !important;
     transition-timing-function: ease-in-out;
     transition-duration: 100ms;
-
     /* height: 30px; */
 }
+
+
 .fs-label-wrap:hover{
     border: 1px solid #525659 !important;
    color: #525659 !important;
@@ -141,5 +142,8 @@
     }
     .bc-product-archive__refinery{ 
         margin-bottom: 40px !important;
+    }
+    .fs-label-wrap{ 
+        width: 100% !important;
     }
 }

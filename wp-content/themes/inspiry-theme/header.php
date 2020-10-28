@@ -70,7 +70,9 @@
             <?php
                wp_nav_menu(
                     array(
-                        'theme_location' => 'inspiry_main_menu'
+                        'theme_location' => 'inspiry_main_menu', 
+                        'container_id' => 'cssmenu', 
+                        'walker' => new CSS_Menu_Walker()
                     ));
             ?>
         </nav>

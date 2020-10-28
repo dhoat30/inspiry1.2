@@ -111,6 +111,42 @@ button.bc-product-quick-view__close-button {
     font-weight: 500 !important;
 }
 
+.wpi-g .label-success {
+    background-color: #E9ECEF;
+    color: #708393;
+    font-weight: 400;
+}
+
+.wpinv-receipt-actions .print{ 
+    background-color: #708393;
+}
+.wpinv-receipt-actions .print:hover{ 
+    background-color: #525659;
+}
+
+.wpi-g .btn-warning {
+    background-color: white !important;
+    border: 1px solid #525659 !important;
+    color: black !important;
+    display: none;
+}
+.wpinv-receipt div{ 
+    font-family: 'work-sans', sans-serif !important;
+}
+.wpinv-receipt-details h3, th, strong{ 
+    font-family: 'work-sans', sans-serif !important;
+}
+.wpinv-receipt-details h3{ 
+    margin-top: 20px;
+}
+.wpinv-receipt-details table{ 
+    margin-top: 10px;
+}
+.wpinv-receipt-details th, strong{ 
+font-weight: 500;
+}
+
+
 /*subscriptions */ 
 .wpinv-sub-items .btn-primary{
     background: #708393 !important;
@@ -162,3 +198,9 @@ background: white !important;
     font-size: 15px;
     padding: 2px 0 !important;
 }
+
+/*lsiting section */ 
+.gd_user_action i{ 
+    color: #708393 !important;
+}
+

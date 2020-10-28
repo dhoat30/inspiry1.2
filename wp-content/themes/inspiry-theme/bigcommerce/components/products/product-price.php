@@ -44,7 +44,7 @@ $product = new \BigCommerce\Post_Types\Product\Product( $post_id );
 </p>
 
 <!-- data-pricing-api-product-id & data-js="bc-api-product-pricing" is required. -->
-<p class="bc-product__pricing--api" data-js="bc-api-product-pricing" data-pricing-api-product-id="<?php echo esc_attr( $product->bc_id() ); ?>">
+<p class="bc-product__pricing--api work-sans-fonts" data-js="bc-api-product-pricing" data-pricing-api-product-id="<?php echo esc_attr( $product->bc_id() ); ?>">
 	<!-- class="bc-product__retail-price" is required --><!-- class="bc-product__retail-price-value" is required -->
 	<span class="bc-product__retail-price"><?php esc_html_e( 'MSRP:', 'bigcommerce' ); ?> <span class="bc-product__retail-price-value"></span></span>
 	<!-- class="bc-product-price bc-product__price--base" is required -->
@@ -52,7 +52,7 @@ $product = new \BigCommerce\Post_Types\Product\Product( $post_id );
 	<!-- class="bc-product__original-price" is required -->
 	<span class="bc-product__original-price"></span>
 	<!-- class="bc-product-price bc-product__price--sale" is required -->
-	<span class="bc-product__price bc-product__price--sale"> </span> Inc GST
+	<span class="bc-product__price bc-product__price--sale"> </span>Inc GST
 
 
 	<h4> <?php 

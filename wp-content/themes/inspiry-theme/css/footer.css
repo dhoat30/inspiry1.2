@@ -39,6 +39,10 @@ footer{
     margin: 0 0 5px 0;
     display: inline-block;
 }
+.footer-menu-row a:hover{ 
+    color: #525659;
+}
+
 
 .social-media-footer{ 
     margin: 10px 0 0 0;
