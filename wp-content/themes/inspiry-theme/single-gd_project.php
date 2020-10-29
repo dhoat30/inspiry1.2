@@ -62,49 +62,12 @@ get_header();
                                
                             ?>
 
-                            <div class="design-board-save-btn-container">
+                             <div class="design-board-save-btn-container">
                                 <i data-exists='<?php echo $existStatus?>' class="fal fa-plus open-board-container" ></i>
                             </div>
                             
 
-                            <div class="choose-board-container">
-                                    <div class="choose-board">Choose Board</div>
-                                    <div class="close-icon">X</div>
-                                    <ul class="board-list">
-                                        <?php 
-                                        
-                                        //wp query to get parent title of boards 
-                                        
-                                        $boardLoop = new WP_Query(array(
-                                            'post_type' => 'boards', 
-                                            'post_parent' => 0
-                                        ));
-                                        
-                                        while($boardLoop->have_posts()){
-                                            $boardLoop->the_post(); 
-                                            
-                                          
-                                        }
-                                    
-                                            while($boardLoop->have_posts()){ 
-                                                $boardLoop->the_post(); 
-                                                ?>
-                                                        <li class="board-list-item" data-boardID='<?php echo get_the_id(); ?>'>
-                                                        
-                                                        <?php 
-                                                            
-                                                        the_title();?>
-                                                        <div class="loader"></div>
-
-                                                        </li>
-
-                                                <?php
-                                                wp_reset_postdata(  );
-                                            }
-                                        ?>
-                                    </ul>
-                                    <div class="create-new-board"><span>+</span> Create New Board</div>
-                                </div>
+                            
 
                         </div>
                         
@@ -141,7 +104,7 @@ get_header();
             
         
             <div class="row-container project-main-row">
-                <div class="project-content work-sans-fonts font-s-med grey">
+                <div class="project-content work-sans-fonts grey font-s-regular thin">
                     <?php 
                         echo do_shortcode( '[gd_post_meta key="post_content" show="value-raw" no_wrap="1"]');
                     ?>
@@ -151,7 +114,7 @@ get_header();
 
             <div class="row-container">
                 <div class="project-gallery">
-                    <h3 class="margin-row column-s-font small-margin-bottom">Gallery</h3>
+                    <h3 class="margin-row column-s-font small-margin-bottom .regular">Gallery</h3>
                     <?php echo do_shortcode('[gd_post_images type="gallery" ajax_load="1" slideshow="1" show_title="1" animation="slide" controlnav="1" link_to="lightbox"]'); ?>
                 </div>
                 
@@ -166,29 +129,8 @@ get_header();
     <?php
 }
 ?>
-<div class="project-save-form-section">
-   
-    <div class="project-save-form-container"> 
-        <div class="work-sans-fonts regular form-title font-s-med">Create Board</div>
-        <div class="form-underline"></div>
-        <div class="form">
-            <form id="new-board-form">
-                <label for="name">Give your board a title*</label>
-                <input type="text" name="board-name" id="board-name">
-                <label for="description">Description</label>
-                <textarea name="board-description" id="board-description" cols="30" rows="10"></textarea>
-                
-                <div class="btn-container">
-                    <button type="button" class="cancel-btn btn"> Cancel</button>
-                    <button type="submit" class="save-btn btn btn-dk-green"> Save</button>
-                  
-                    <div class="loader"></div>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-                                           
+
+                                    
 
 <?php
 get_footer();

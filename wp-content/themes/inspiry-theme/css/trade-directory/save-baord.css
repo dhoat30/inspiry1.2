@@ -53,9 +53,7 @@
     overflow: scroll;
 
 }
-.row-container{ 
-    filter: blur(4px);
-}
+
 .choose-board-container ul li{ 
     cursor: pointer;
     padding: 10px 10px;

@@ -54,8 +54,6 @@
 
     //show create boad form
     showForm(){ 
-        console.log('create new board');
-
         $('.project-save-form-section').show();
     }
 
@@ -89,8 +87,9 @@
                 $(e.target).closest('.board-list-item').find('.loader').removeClass('loader--visible');
             },
             success: (response)=>{
-                console.log('board added');
+                console.log('this is a success area')
                 if(response){ 
+                    console.log(response);
                     $('.project-detail-page .design-board-save-btn-container i').attr('data-exists', 'yes');
 
                     //fill heart
@@ -171,11 +170,12 @@
 
     //create board function 
     createBoardFunc(e){ 
-       
+        
         let boardName = $('#board-name').val(); 
        
         e.preventDefault();
         $('.project-save-form-section .loader').show();
+
        
         $.ajax({
             beforeSend: (xhr)=>{
@@ -199,8 +199,8 @@
                     $('.project-save-form-section').hide();   
                     function addToBoard2(){
                         
-                        let postID = $('.board-heading-post-id').data('postid'); 
-                        let postTitle = $('.board-heading-post-id').html(); 
+                        let postID = $('.project-detail-page .header-title').data('postid'); 
+                        let postTitle = $('.project-detail-page .header-title h2').html(); 
                         
                         $.ajax({
                             beforeSend: (xhr)=>{
