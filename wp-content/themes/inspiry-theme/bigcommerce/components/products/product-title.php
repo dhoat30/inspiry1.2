@@ -18,7 +18,7 @@
 use \BigCommerce\Post_Types\Product\Product;
 
 ?>
-<<?php echo $header_tag; ?> class="bc-product__title">
+<<?php echo $header_tag; ?> class="bc-product__title board-heading-post-id" data-postid='<?php echo get_the_id()?>'>
 	<?php if ( $use_permalink ) { ?>
 	<a href="<?php echo esc_url( $permalink ); ?>" class="bc-product__title-link" <?php echo $link_attributes; ?>>
 		<?php } ?>

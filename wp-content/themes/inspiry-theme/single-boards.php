@@ -32,7 +32,7 @@
                         
                         <a href="<?php echo get_the_permalink(get_field('saved_project_id')); ?>">    
                             <div class="thumbnail">
-                                <?php echo get_the_post_thumbnail( get_field('saved_project_id'));?>
+                                <?php echo get_the_post_thumbnail( get_field('saved_project_id'), 'post-thumbnail');?>
                             </div>
                             <div class="title font-s-regular rm-txt-dec"><?php echo get_the_title(get_field('saved_project_id')); ?></div>
                         </a> 

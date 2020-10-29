@@ -71,6 +71,40 @@ use BigCommerce\Post_Types\Product\Product;
 	
 		<?php echo $price; ?>
     <?php echo $form; ?>
+    <!--design baord button --> 
+             <!--custom board post ui-->
+             <?php 
+                                $existStatus = 'no'; 
+
+                                if(is_user_logged_in( )){ 
+                                    $existQuery = new WP_Query(array(
+                                        'author' => get_current_user_id(), 
+                                        'post_type' => 'boards', 
+                                        'meta_query' => array(
+                                            array(
+                                                'key' => 'saved_project_id', 
+                                                'compare' => '=', 
+                                                'value' => get_the_id()
+                                            )
+                                        )
+                                    )); 
+    
+                                    if($existQuery->found_posts){ 
+                                        $existStatus = 'yes'; 
+                                    }
+                                    wp_reset_postdata(  );
+                                }
+
+                               
+                            ?>
+
+                            <div class="design-board-save-btn-container">
+                                <i data-exists='<?php echo $existStatus?>' class="fal fa-plus open-board-container" ></i>
+                            </div>
+                            
+
+                           
+       
 		<p class="availability work-sans-fonts regular-text">Availability: <span class="days">7 - 10 Days</span></p>
     
     <p class="share-section work-sans-fonts regular-text">Share: <?php echo do_shortcode( '[Sassy_Social_Share]' );?></p>

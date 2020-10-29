@@ -1,12 +1,13 @@
 /*board save button area*/ 
 
 .design-board-save-btn-container i{ 
-    font-size: 40px;
-    
-    padding: 10px;
+    font-size: 30px;
+   padding: 10px 15px;
     border-radius: 50%;
     cursor: pointer;
     color: #C09F93;
+    font-weight: 300 !important;
+
 }
 .design-board-save-btn-container i:hover{ 
     background:#FFF1EB;
@@ -16,9 +17,15 @@
 .choose-board-container{ 
     margin: 20px 0;
     display: none;
-    position: relative;
-    width: 450px;
+    position: fixed;
+    top: 50%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 95%;
+    max-width: 450px;
     box-shadow: 3px 3px 20px 1px rgba(0,0,0,0.2);
+    z-index: 1000;
+    background-color: white;
 }
 .choose-board-container .choose-board{ 
     border-bottom: 1px solid #708393;
@@ -46,6 +53,9 @@
     overflow: scroll;
 
 }
+.row-container{ 
+    filter: blur(4px);
+}
 .choose-board-container ul li{ 
     cursor: pointer;
     padding: 10px 10px;
@@ -66,6 +76,7 @@
     cursor: pointer;
     background:#FFF1EB;
     letter-spacing: 1px;
+    color: #C09F93;
     
  
 }
@@ -80,7 +91,7 @@
     padding: 0px 10px;
     margin-right: 10px;
     font-weight: 400;
-    color: black;
+    color: white;
     letter-spacing: 1px;
 }
 
@@ -104,7 +115,7 @@
     max-width: 500px;
     transform: translate(-50%, -50%); 
     background: white;
-    z-index: 1500;
+    z-index: 10000;
 }
 
 

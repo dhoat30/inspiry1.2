@@ -1,22 +1,7 @@
 <?php 
 get_header(); 
 ?>
-<?php 
-//wp query to get parent title of boards 
 
-$boardLoop = new WP_Query(array(
-    'post_type' => 'boards', 
-    'post_parent' => 0
-));
-
-while($boardLoop->have_posts()){
-    $boardLoop->the_post(); 
-    
-    ?> 
-
-<?php 
-}
-?>
 
 <?php 
   while(have_posts()){
@@ -41,8 +26,8 @@ while($boardLoop->have_posts()){
                        
                             
                             
-                        <div class="header-title" data-postid='<?php echo get_the_id()?>'>
-                            <h2 class="section-ft-size"><?php echo do_shortcode( '[gd_post_meta key="post_title" show="value-raw" no_wrap="1"]');?></h2>
+                        <div class="header-title">
+                            <h2 class="section-ft-size board-heading-post-id" data-postid='<?php echo get_the_id()?>'><?php echo do_shortcode( '[gd_post_meta key="post_title" show="value-raw" no_wrap="1"]');?></h2>
                         </div>
                        
                         <div class="trade-info-section">
@@ -71,14 +56,14 @@ while($boardLoop->have_posts()){
                                     if($existQuery->found_posts){ 
                                         $existStatus = 'yes'; 
                                     }
+                                    wp_reset_postdata(  );
                                 }
 
                                
                             ?>
 
                             <div class="design-board-save-btn-container">
-                     
-                                <i data-exists='<?php echo $existStatus?>' class="fal fa-heart open-board-container" ></i>
+                                <i data-exists='<?php echo $existStatus?>' class="fal fa-plus open-board-container" ></i>
                             </div>
                             
 
@@ -87,6 +72,20 @@ while($boardLoop->have_posts()){
                                     <div class="close-icon">X</div>
                                     <ul class="board-list">
                                         <?php 
+                                        
+                                        //wp query to get parent title of boards 
+                                        
+                                        $boardLoop = new WP_Query(array(
+                                            'post_type' => 'boards', 
+                                            'post_parent' => 0
+                                        ));
+                                        
+                                        while($boardLoop->have_posts()){
+                                            $boardLoop->the_post(); 
+                                            
+                                          
+                                        }
+                                    
                                             while($boardLoop->have_posts()){ 
                                                 $boardLoop->the_post(); 
                                                 ?>
