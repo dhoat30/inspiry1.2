@@ -98,9 +98,7 @@ use BigCommerce\Post_Types\Product\Product;
                                
                             ?>
 
-                            <div class="design-board-save-btn-container">
-                                <i data-exists='<?php echo $existStatus?>' class="fal fa-plus open-board-container" ></i>
-                            </div>
+                            
                             
 
                            

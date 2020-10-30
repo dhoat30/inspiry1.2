@@ -2,19 +2,27 @@
  //Design board save button
  class DesignBoardSaveBtn{ 
     constructor(){ 
-        this.heartBtn = $('.design-board-save-btn-container .open-board-container');
+        this.plusBtn = document.querySelectorAll('.design-board-save-btn-container .open-board-container');
         this.closeIcon = $('.choose-board-container .close-icon'); 
         this.showCreateBoardForm = $('.choose-board-container .create-new-board'); 
         this.boardListItems = $('.choose-board-container .board-list li'); 
+        this.eventPostID; 
+        this.eventPostTitle; 
        this.events(); 
        this.fillHeartIcon(); 
+       console.log(`the post id ${this.eventPostID} and the post title ${this.eventPostTitle}`)
+
      
     }
     //events
     events(){ 
-        console.log('running events'); 
+ 
+
         //show choose board container
-        this.heartBtn.on('click', this.showChooseBoardContainer); 
+        //this.plusBtn.forEach((event)=>{ 
+           // event.addEventListener('click', this.showChooseBoardContainer.bind(this));
+       // });
+           $(document).on('click', '.design-board-save-btn-container .open-board-container', this.showChooseBoardContainer);
         //hide choose board container
         this.closeIcon.on('click', this.hideChooseBoardContainer); 
         //show a board form
@@ -35,14 +43,23 @@
     }
 
     //functions 
-    showChooseBoardContainer(){ 
-        $('.choose-board-container').slideDown();
+    showChooseBoardContainer(e){ 
+        console.log(window.location.href);
+        this.eventPostID = $(e.target).closest('.design-board-save-btn-container').siblings('a').attr('data-postid'); 
+        this.eventPostTitle = $(e.target).closest('.design-board-save-btn-container').siblings('a').html(); 
+
+
+        console.log('show board container');
+        $('.choose-board-container').show(300);
+        $('.overlay').show(300); 
+       
+
     }
 
     //hide container function 
     hideChooseBoardContainer(){ 
-        $('.choose-board-container').slideUp();
-
+        $('.choose-board-container').hide(300);
+        $('.overlay').hide(300); 
     }
 
     //fill heart icon
@@ -65,10 +82,17 @@
 
     //add project to board
     addToBoard(e){
+        console.log(e); 
         let boardID = e.delegateTarget.dataset.boardid; 
-        let postID = $('.board-heading-post-id').data('postid');
+        console.log(boardID);
+
+        let postID = this.eventPostID; 
+        let postTitle = this.eventPostTitle;
+
+        console.log(`the post id ${postID} and the post title ${postTitle}`)
+        //let postID = $('.board-heading-post-id').data('postid');
          
-        let postTitle = $('.board-heading-post-id').html(); 
+        //let postTitle = $('.board-heading-post-id').html(); 
 
         //show loader icon
         $(e.target).closest('.board-list-item').find('.loader').addClass('loader--visible');
@@ -141,7 +165,9 @@
        console.log('delete is working'); 
 
        let pinID = e.delegateTarget.dataset.pinid; 
+
         console.log(pinID);
+
        $.ajax({
         beforeSend: (xhr)=>{
             xhr.setRequestHeader('X-WP-NONCE', inspiryData.nonce)
@@ -199,8 +225,8 @@
                     $('.project-save-form-section').hide();   
                     function addToBoard2(){
                         
-                        let postID = $('.project-detail-page .header-title').data('postid'); 
-                        let postTitle = $('.project-detail-page .header-title h2').html(); 
+                        let postID = $('.board-heading-post-id').data('postid'); 
+                        let postTitle = $('.board-heading-post-id').html(); 
                         
                         $.ajax({
                             beforeSend: (xhr)=>{

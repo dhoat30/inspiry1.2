@@ -18,9 +18,9 @@
 use \BigCommerce\Post_Types\Product\Product;
 
 ?>
-<<?php echo $header_tag; ?> class="bc-product__title board-heading-post-id" data-postid='<?php echo get_the_id()?>'>
+<<?php echo $header_tag; ?> class="bc-product__title">
 	<?php if ( $use_permalink ) { ?>
-	<a href="<?php echo esc_url( $permalink ); ?>" class="bc-product__title-link" <?php echo $link_attributes; ?>>
+	<a href="<?php echo esc_url( $permalink ); ?>" class="bc-product__title-link board-heading-post-id"  data-postid='<?php echo get_the_id()?>' <?php echo $link_attributes; ?>>
 		<?php } ?>
 
 		<?php echo esc_html( $title ); ?>
@@ -29,5 +29,10 @@ use \BigCommerce\Post_Types\Product\Product;
 
 		<?php if ( $use_permalink ) { ?>
 	</a>
+	<div class="design-board-save-btn-container">
+<i data-exists='<?php echo $existStatus?>' class="fal fa-plus open-board-container" ></i>
+</div>
 <?php } ?>
 </<?php echo $header_tag; ?>>
+
+

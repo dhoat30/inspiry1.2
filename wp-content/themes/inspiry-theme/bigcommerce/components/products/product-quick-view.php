@@ -38,4 +38,5 @@ use BigCommerce\Post_Types\Product\Product;
 	<?php echo $form; ?>
 </div>
 
+
 <?php echo $description; ?>

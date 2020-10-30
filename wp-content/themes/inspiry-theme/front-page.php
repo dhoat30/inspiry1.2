@@ -4,22 +4,17 @@ get_header();
 
 ?>
 
-<?php 
-    $product = new WP_Query(array (
-        'post_type'=> 'gd_place'
-    )); 
 
-    while($product->have_posts()){ 
-        $product->the_post(); 
-        the_title();  ?>
-        <br>
-        
-            <?php 
-            the_post_thumbnail( );
-    }
-?>
 
 <h1>home page</h1>
+<div class="save-icons-container">
+    <div class="wish-list-icon-container">
+        <i class="fal fa-heart"></i>
+    </div>
+    <div class="design-board-save-btn-container">
+    <i data-exists='<?php echo $existStatus?>' class="fal fa-plus open-board-container" ></i>
+    </div>
+</div>
 <?php 
 
 get_footer(); 

@@ -79,8 +79,8 @@
 
     
 <!--design board container--> 
-
-<div class="choose-board-container">
+<div class="overlay">
+                                  <div class="choose-board-container">
                                     <div class="choose-board">Choose Board</div>
                                     <div class="close-icon">X</div>
                                     <ul class="board-list">
@@ -141,6 +141,8 @@
                                     </div>
                                 </div>
                             </div>
+</div>
+
 <?php wp_footer();?>
 <!--
 <script>

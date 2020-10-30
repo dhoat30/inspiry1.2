@@ -32,7 +32,7 @@ use BigCommerce\Post_Types\Product\Product;
 	<div class="bc-wish-list-product-row__header">
 		<h3 class="bc-wish-list-product-row__title">
 			<?php if ( $permalink ) { ?>
-			<a href="<?php echo esc_url( $permalink ); ?>" class="bc-product__title-link">
+			<a href="<?php echo esc_url( $permalink ); ?>" class="bc-product__title-link board-heading-post-id" data-postid='<?php echo the_id()?>'>
 				<?php } ?>
 
 				<?php echo esc_html( $title ); ?>
