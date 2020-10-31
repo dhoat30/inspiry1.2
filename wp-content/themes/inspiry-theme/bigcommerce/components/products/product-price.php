@@ -66,7 +66,7 @@ $product = new \BigCommerce\Post_Types\Product\Product( $post_id );
 						 echo  number_format ( $price/6, 2 ); 
 						 
 						 ?></span> 
-                        <span class="lay-buy lay-buy-open information-overlay"> <img src="http://localhost/inspiry/wp-content/uploads/2020/08/ico-laybuy.png"> What's this?</span>
+                        <span class="lay-buy lay-buy-open information-overlay"> <img src="<?php echo get_site_url(); ?>/wp-content/uploads/2020/08/ico-laybuy.png"> What's this?</span>
 		</h4>	
 		
 </p>
@@ -105,25 +105,25 @@ $product = new \BigCommerce\Post_Types\Product\Product( $post_id );
 	<h2 class="g-heading2 playfair-fonts">Receive your purchase now, spread the total cost over 6 weekly automatic payments. Interest free!</h2>
 	<ul class="laybuySteps work-sans-fonts">
 		<li>
-			<img src="http://localhost/inspiry/wp-content/uploads/2020/09/laybuy-cart.png" alt="">
+			<img src="<?php echo get_site_url(); ?>/wp-content/uploads/2020/09/laybuy-cart.png" alt="">
 			<div class="desc">
 				Simply select <strong>Laybuy</strong> as your payment method at checkout
 			</div>
 		</li>
 		<li>
-			<img src="http://localhost/inspiry/wp-content/uploads/2020/09/laybuy-login.png" alt="">
+			<img src="<?php echo get_site_url(); ?>/wp-content/uploads/2020/09/laybuy-login.png" alt="">
 			<div class="desc">
 				Login or Register for Laybuy and complete your order in seconds
 			</div>
 		</li>
 		<li>
-			<img src="http://localhost/inspiry/wp-content/uploads/2020/09/laybuy-mobile.png" alt="">
+			<img src="<?php echo get_site_url(); ?>/wp-content/uploads/2020/09/laybuy-mobile.png" alt="">
 			<div class="desc">
 				Complete your purchase using an existing debit or credit card
 			</div>
 		</li>
 		<li>
-			<img src="http://localhost/inspiry/wp-content/uploads/2020/09/download.png" alt="">
+			<img src="<?php echo get_site_url(); ?>/wp-content/uploads/2020/09/download.png" alt="">
 			<div class="desc">
 				Pay over 6 weeks and receive your purchase now
 			</div>

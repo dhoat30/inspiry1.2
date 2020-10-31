@@ -39,7 +39,7 @@ use BigCommerce\Post_Types\Product\Product;
 					<!--  and calculator -->
 				
 							
-				<a href="<?php echo rtrim(get_the_permalink(),'/').'-sample' ;?>" class="order-sample-button"><img src="http://localhost/inspiry/wp-content/uploads/2020/08/icon-cut.png" alt="order a sample"> Order a Sample</a>
+				<a href="<?php echo rtrim(get_the_permalink(),'/').'-sample' ;?>" class="order-sample-button"><img src="<?php echo get_site_url(); ?>/wp-content/uploads/2020/08/icon-cut.png" alt="order a sample"> Order a Sample</a>
                   <br>
             <?php 
             $post_id = get_the_id(); 
@@ -55,13 +55,13 @@ use BigCommerce\Post_Types\Product\Product;
 
             if($wallpaper ){ 
               ?>
-              				<a href="#" class="sizing-calculator-button"><img src="http://localhost/inspiry/wp-content/uploads/2020/08/icon-calc.png" alt="order a sample"> Wallpaper Calculator</a>
+              				<a href="#" class="sizing-calculator-button"><img src="<?php echo get_site_url(); ?>/wp-content/uploads/2020/08/icon-calc.png" alt="order a sample"> Wallpaper Calculator</a>
 
               <?php 
             }
             elseif($fabric){ 
               ?>
-              				<a href="#" class="sizing-calculator-button"><img src="http://localhost/inspiry/wp-content/uploads/2020/08/icon-calc.png" alt="order a sample"> Fabric Calculator</a>
+              				<a href="#" class="sizing-calculator-button"><img src="<?php echo get_site_url(); ?>/wp-content/uploads/2020/08/icon-calc.png" alt="order a sample"> Fabric Calculator</a>
 
               <?php 
             }

@@ -16,7 +16,7 @@ class LogIn{
         e.preventDefault(); 
 
         //getting the url
-        let url = 'http://localhost/inspiry/ajax-log-in/'
+        let url = '<?php echo get_site_url(); ?>/ajax-log-in/'
         console.log(url);
   
           //creat an xhr object 

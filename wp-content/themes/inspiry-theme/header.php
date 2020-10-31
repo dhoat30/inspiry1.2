@@ -39,7 +39,7 @@
                     <?php 
                         if(is_user_logged_in()){
                             global $current_user; wp_get_current_user();  
-                            ?> <a href="http://localhost/inspiry/login/" class="profile-name-value text-decoration-none dark-grey">
+                            ?> <a href="<?php echo get_site_url(); ?>/login/" class="profile-name-value text-decoration-none dark-grey">
                                  <span class="dashicons dashicons-admin-users"></span> <?php echo  $current_user->display_name;?>
                                  <i class="fas fa-chevron-down regular arrow-icon"></i>
                                 <nav>
@@ -54,7 +54,7 @@
                             <?php
                         }
                         else{
-                            ?><a href="http://localhost/inspiry/login/" class="login-tag text-decoration-none dark-grey">
+                            ?><a href="<?php echo get_site_url(); ?>/login/" class="login-tag text-decoration-none dark-grey">
                                 <span class="dashicons dashicons-admin-users"></span> LOGIN / REGISTER
                         </a>
                             <?php
@@ -63,7 +63,7 @@
                 
             </div>
             <div class="shopping-cart playfair-fonts font-s-regular">
-                <a href="http://localhost/inspiry/cart/" class="text-decoration-none dark-grey">
+                <a href="<?php echo get_site_url(); ?>/cart/" class="text-decoration-none dark-grey">
                      <span class="dashicons-before dashicons-cart"></span> SHOPPING CART
                 </a>
             </div>
@@ -72,7 +72,7 @@
             </div>
         </div>
         <div class="logo-container">
-            <img src="http://localhost/inspiry/wp-content/uploads/2020/08/inspiry_logo_transparent.png" alt="Inspiry Logo">
+            <img src="<?php echo get_site_url(); ?>/wp-content/uploads/2020/08/inspiry_logo_transparent.png" alt="Inspiry Logo">
         </div>
         <nav class="navbar margin-elements">
             <?php
