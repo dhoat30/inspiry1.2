@@ -6,13 +6,12 @@
         this.closeIcon = $('.choose-board-container .close-icon'); 
         this.showCreateBoardForm = $('.choose-board-container .create-new-board'); 
         this.boardListItems = $('.choose-board-container .board-list li'); 
-        this.eventPostID; 
-        this.eventPostTitle; 
+       
        this.events(); 
-       this.fillHeartIcon(); 
-       console.log(`the post id ${this.eventPostID} and the post title ${this.eventPostTitle}`)
 
-     
+       this.fillHeartIcon(); 
+
+         
     }
     //events
     events(){ 
@@ -44,16 +43,30 @@
 
     //functions 
     showChooseBoardContainer(e){ 
-        console.log(window.location.href);
-        this.eventPostID = $(e.target).closest('.design-board-save-btn-container').siblings('a').attr('data-postid'); 
-        this.eventPostTitle = $(e.target).closest('.design-board-save-btn-container').siblings('a').html(); 
+        let eventPostID; 
+        let eventPostTitle;
 
+        let templateNameCheck = $('.bc-product__title').attr('data-archive');
+        //check the page and assign the id and title value
+       
+        
+            let eventPostData = $(e.target).closest('.design-board-save-btn-container').attr('data-tracking-data'); 
 
-        console.log('show board container');
+            //parsing json to javascript object
+            eventPostData = JSON.parse(eventPostData);
+            eventPostID = eventPostData.post_id
+            eventPostTitle = eventPostData.name; 
+            
+
+        
+      
+        console.log(eventPostID + "and" + eventPostTitle);
         $('.choose-board-container').show(300);
         $('.overlay').show(300); 
-       
 
+        let postID = $('.choose-board-container').attr('data-post-id', eventPostID); 
+       let postTitle = $('.choose-board-container').attr('data-post-title', eventPostTitle); 
+ 
     }
 
     //hide container function 
@@ -82,17 +95,11 @@
 
     //add project to board
     addToBoard(e){
-        console.log(e); 
         let boardID = e.delegateTarget.dataset.boardid; 
-        console.log(boardID);
 
-        let postID = this.eventPostID; 
-        let postTitle = this.eventPostTitle;
-
-        console.log(`the post id ${postID} and the post title ${postTitle}`)
-        //let postID = $('.board-heading-post-id').data('postid');
-         
-        //let postTitle = $('.board-heading-post-id').html(); 
+        let postID = $('.choose-board-container').attr('data-post-id');
+        let postTitle = $('.choose-board-container').attr('data-post-title'); 
+    
 
         //show loader icon
         $(e.target).closest('.board-list-item').find('.loader').addClass('loader--visible');
@@ -225,8 +232,9 @@
                     $('.project-save-form-section').hide();   
                     function addToBoard2(){
                         
-                        let postID = $('.board-heading-post-id').data('postid'); 
-                        let postTitle = $('.board-heading-post-id').html(); 
+                    //add a post into baord
+                        let postID = $('.choose-board-container').attr('data-post-id');
+                        let postTitle = $('.choose-board-container').attr('data-post-title'); 
                         
                         $.ajax({
                             beforeSend: (xhr)=>{
@@ -242,8 +250,17 @@
                             success: (response)=>{
                                 console.log('this is a success area')
                                 if(response){ 
-                                    console.log(response);
-                                    $('.design-board-save-btn-container i').addClass('fas fa-heart');
+                                    
+                                   if($('body').attr('data-archive') == 'product-archive'){ 
+                                        $('.choose-board-container').hide(300);
+                                        $('.overlay').hide(300); 
+                                        location.reload();
+                                   }
+                                   
+                                       
+                                 
+                                   
+                                    
 
                                 }
                             }, 

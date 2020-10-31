@@ -8,7 +8,15 @@
      <link rel="profile" href="https://gmpg.org/xfn/11"/>
     <?php wp_head(); ?>
 </head>
-<body <?php body_class( );?>>
+<?php 
+    global $template;
+    //check the template 
+    if(is_post_type_archive()) {
+        $archive = 'product-archive'; 
+    }
+
+?>
+<body <?php body_class( );?> data-archive='<?php echo $archive ?>'>
     
     <section class="header">
         <div class="top-banner beige-color-bc">

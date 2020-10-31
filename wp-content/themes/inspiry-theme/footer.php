@@ -80,7 +80,7 @@
     
 <!--design board container--> 
 <div class="overlay">
-                                  <div class="choose-board-container">
+                                  <div class="choose-board-container" data-post-id="value" data-post-title="value">
                                     <div class="choose-board">Choose Board</div>
                                     <div class="close-icon">X</div>
                                     <ul class="board-list">
