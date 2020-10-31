@@ -3,42 +3,34 @@
  class DesignBoardSaveBtn{ 
     constructor(){ 
         this.plusBtn = document.querySelectorAll('.design-board-save-btn-container .open-board-container');
-        this.closeIcon = $('.choose-board-container .close-icon'); 
-        this.showCreateBoardForm = $('.choose-board-container .create-new-board'); 
         this.boardListItems = $('.choose-board-container .board-list li'); 
        
        this.events(); 
-
-       this.fillHeartIcon(); 
-
-         
+       this.fillHeartIcon();  
     }
     //events
     events(){ 
- 
 
-        //show choose board container
-        //this.plusBtn.forEach((event)=>{ 
-           // event.addEventListener('click', this.showChooseBoardContainer.bind(this));
-       // });
-           $(document).on('click', '.design-board-save-btn-container .open-board-container', this.showChooseBoardContainer);
+        $(document).on('click', '.design-board-save-btn-container .open-board-container', this.showChooseBoardContainer);
         //hide choose board container
-        this.closeIcon.on('click', this.hideChooseBoardContainer); 
+        $(document).on('click', '.choose-board-container .close-icon', this.hideChooseBoardContainer);
+
         //show a board form
-        this.showCreateBoardForm.on('click', this.showForm); 
+        $(document).on('click', '.choose-board-container .create-new-board', this.showForm); 
         //hide a board form
-        $('.project-save-form-section .cancel-btn').on('click', this.hideForm);
+        $(document).on('click', '.project-save-form-section .cancel-btn', this.hideForm);
 
         //create a new board 
-        $('.project-save-form-section .save-btn').on('click', this.createBoardFunc);
+        $(document).on('click', '.project-save-form-section .save-btn', this.createBoardFunc); 
 
         //add to a board
-        this.boardListItems.on('click', this.addToBoard.bind(this)); 
+        $(document).on('click', ('.choose-board-container .board-list li'), this.addToBoard); 
+
         //delete a pin 
-        $('.board-card .delete-btn').on('click', this.deletePin);
+        $(document).on('click', '.board-card .delete-btn', this.deletePin);
 
         //delete Board
-        $('.board-card-archive .delete-board-btn').on('click', this.deleteBoard);
+        $(document).on('click', '.board-card-archive .delete-board-btn', this.deleteBoard);
     }
 
     //functions 
@@ -84,6 +76,7 @@
 
     //show create boad form
     showForm(){ 
+        console.log('create form');
         $('.project-save-form-section').show();
     }
 
@@ -95,7 +88,8 @@
 
     //add project to board
     addToBoard(e){
-        let boardID = e.delegateTarget.dataset.boardid; 
+   
+        let boardID = $(e.target).attr('data-boardid'); 
 
         let postID = $('.choose-board-container').attr('data-post-id');
         let postTitle = $('.choose-board-container').attr('data-post-title'); 
@@ -203,8 +197,18 @@
 
     //create board function 
     createBoardFunc(e){ 
-        
-        let boardName = $('#board-name').val(); 
+        console.log('checking the values of input')
+    
+
+        let boardName = $(e.target).closest('.btn-container').siblings('#board-name').val();
+   
+        let boardDescription; 
+        if($(e.target).closest('.btn-container').siblings('#board-description').val()){ 
+            boardDescription = $(e.target).closest('.btn-container').siblings('#board-description').val();
+        }
+        else{ 
+            boardDescription = 'No Description Available'
+        }
        
         e.preventDefault();
         $('.project-save-form-section .loader').show();
@@ -217,13 +221,14 @@
             url: inspiryData.root_url + '/wp-json/inspiry/v1/manageBoard',
             type: 'POST', 
             data: {
-                'board-name': boardName
+                'board-name': boardName, 
+                'board-description': boardDescription
             },
             complete:()=>{
                 $('.project-save-form-section .loader').hide();
             },
             success: (response)=>{
-                
+                console.log(response)
                 if(response){ 
                     console.log(response);
                     //show the list board name in the list 
@@ -265,7 +270,7 @@
                                 }
                             }, 
                             error: (response)=>{
-                                console.log('this is an error');
+                                
                                 console.log(response)
                             }
                         });
@@ -282,7 +287,9 @@
                 }
             }, 
             error: (response)=>{
-                console.log('this is an error');
+            
+                console.log('this is a board error');
+                console.log(response)
                 console.log(response.responseText)
                 $('#new-board-form').before(` <div class="error-bg">${response.responseText}</div>`);
             }

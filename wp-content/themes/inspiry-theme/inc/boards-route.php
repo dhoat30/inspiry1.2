@@ -30,6 +30,8 @@ function createBoard($data){
 
    if(is_user_logged_in()){
       $boardName = sanitize_text_field($data["board-name"]);
+      $boardDescription = sanitize_text_field($data['board-description']); 
+
       $existQuery = new WP_Query(array(
         'author' => get_current_user_id(), 
         'post_type' => 'boards', 
@@ -39,21 +41,17 @@ function createBoard($data){
         return wp_insert_post(array(
             "post_type" => "boards", 
             "post_status" => "private", 
-            "post_title" => $boardName
+            "post_title" => $boardName,
+            'post_content' => $boardDescription
      )); 
      }
      else{ 
          die('Board already exists');
      }
-      
-
-
    }
    else{
       die("Only logged in users can create a board");
    }
-   
-  
 }
 
 function addProjectToBoard($data){ 
