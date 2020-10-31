@@ -90,3 +90,11 @@
 .board-loop-page h1{ 
     color: #708393; 
 }
+
+/*board card*/
+.design-board-card{
+    color:#708393 !important;
+}
+.design-board-card:hover{
+    color: #525659 !important; 
+}
