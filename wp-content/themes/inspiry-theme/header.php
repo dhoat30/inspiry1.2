@@ -54,7 +54,7 @@
                             <?php
                         }
                         else{
-                            ?><a href="<?php echo get_site_url(); ?>/login/" class="login-tag text-decoration-none dark-grey">
+                            ?><a href="<?php echo get_site_url(); ?>/login/" class="login-tag text-decoration-none dark-grey" data-root-url='<?php echo get_home_url()?>'>
                                 <span class="dashicons dashicons-admin-users"></span> LOGIN / REGISTER
                         </a>
                             <?php

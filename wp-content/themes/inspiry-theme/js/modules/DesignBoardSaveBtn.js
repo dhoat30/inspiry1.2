@@ -223,7 +223,7 @@
                 $('.project-save-form-section .loader').hide();
             },
             success: (response)=>{
-                console.log('this is a success area')
+                
                 if(response){ 
                     console.log(response);
                     //show the list board name in the list 
@@ -283,8 +283,8 @@
             }, 
             error: (response)=>{
                 console.log('this is an error');
-                console.log(response)
-                $('#new-board-form').before(` <div class="error-bg">Board Already Exists</div>`);
+                console.log(response.responseText)
+                $('#new-board-form').before(` <div class="error-bg">${response.responseText}</div>`);
             }
         });
         
