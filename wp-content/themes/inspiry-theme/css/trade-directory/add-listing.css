@@ -1,6 +1,6 @@
 /*ged notification*/ 
 .gd-notification{ 
-    background: #E9ECEF; 
+    background: #525659;
 }
 .add-listing-form{ 
     max-width: 900px;
@@ -19,12 +19,46 @@
 
 .add-listing-form .geodir_button{ 
     color: white;
-    background: #E9ECEF; 
+    background: #708393; 
     padding: 10px 10px;
+    cursor: pointer;
+}
+.add-listing-form .geodir_button:hover{ 
+    color: white;
+    background: #525659; 
+    padding: 10px 10px;
+    cursor: pointer;
 }
 .add-listing-form .geodir_preview_button{ 
     background: white; 
     color: #708393;
     border: 1px solid #708393;
     text-decoration: none;
+}
+
+/*sidebar */ 
+.geodir-categories-container ul {
+    width: 100% !important;
+}
+.gd-cptcat-cat-left{ 
+    background-color: #708393 !important;
+
+}
+.gd-cptcat-cat-right{ 
+    background-color: #E9ECEF;
+}
+.gd-cptcat-cat-right a{ 
+    font-weight: 300 !important;
+    letter-spacing: 1px;
+    text-decoration: none;
+    color: #708393 !important;
+}
+.gd-cptcat-cat-left:hover{ 
+    background-color: #525659 !important;
+}
+.gd-badge{ 
+    background-color: #708393 !important;
+}
+.gd-badge:hover{ 
+    background-color: #525659 !important;
 }

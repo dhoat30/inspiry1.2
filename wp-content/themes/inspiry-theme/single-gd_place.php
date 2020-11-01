@@ -23,7 +23,7 @@ get_header();
                     ?>
                     <img src="<?php echo $profile_img.'.jpg'?>" alt="">
                 </div>
-
+                
                 <div class="header-middle-column">
 
                     <?php
@@ -32,7 +32,7 @@ get_header();
                     }
                     ?>
                     <div class="header-title">
-                        <h2 class="section-ft-size"><?php echo do_shortcode( '[gd_post_meta key="post_title" show="value-raw" no_wrap="1"]');?></h2>
+                        <h2 class="section-ft-size board-heading-post-id" data-postid='<?php echo get_the_id()?>'><?php echo do_shortcode( '[gd_post_meta key="post_title" show="value-raw" no_wrap="1"]');?></h2>
                     </div>
                     <!--
                     <div class="header-reviews">
@@ -42,10 +42,41 @@ get_header();
                     <div class="header-address regular">
                         <i class="fas fa-map-marker-alt"></i>
                         <?php echo do_shortcode('[gd_post_address show="value" address_template="%%city%%"]'); ?>
-                        
+
+                        <?php 
+                                $existStatus = 'no'; 
+
+                                if(is_user_logged_in( )){ 
+                                    $existQuery = new WP_Query(array(
+                                        'author' => get_current_user_id(), 
+                                        'post_type' => 'boards', 
+                                        'meta_query' => array(
+                                            array(
+                                                'key' => 'saved_project_id', 
+                                                'compare' => '=', 
+                                                'value' => get_the_id()
+                                            )
+                                        )
+                                    )); 
+    
+                                    if($existQuery->found_posts){ 
+                                        $existStatus = 'yes'; 
+                                    }
+                                    wp_reset_postdata(  );
+                                }
+
+                               
+                            ?>
+
+                        <div class="design-board-save-btn-container" data-tracking-data='{"post_id":"<?php the_id();?>","name":"<?php echo get_the_title(get_the_id()); ?>"}' <?php echo $link_attributes; ?>>
+                            <i data-exists='<?php echo $existStatus?>' class="fal fa-plus open-board-container" ></i>
+                        </div>
+                            
+
+                            
                     </div>
                 </div>  
-
+                
                 <div class="header-contact">
                     <div class="header-contact-btn">
                             <?php echo do_shortcode('[gd_ninja_forms form_id="2" text="Contact Form" post_contact="1" output="button"]'); ?>
@@ -152,15 +183,7 @@ get_header();
 <?php 
 
 ?>
-<script> 
 
-
-  window.onload = function() {
-   
-  
-
-  }
-</script>
 <?php
 get_footer();
 ?>

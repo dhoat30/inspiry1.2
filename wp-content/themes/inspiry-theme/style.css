@@ -20,6 +20,7 @@
 @import "css/account.css";
 @import "css/cart.css";
 @import "css/login-page.css";
+@import "css/wishlist.css";
 /*design boards */ 
 
 /*pages */ 
@@ -201,7 +202,7 @@
         color:#708393;
     }
     .light-grey{ 
-        color: #E9ECEF;
+        color: #666666;
     }
     .dark-green{ 
         color: #708393; 
@@ -300,6 +301,24 @@
 .success-bg{ 
     background: #D7FAD0; 
     color: #00D331; 
+}
+
+/*close icons */ 
+.fa-times{ 
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    color: #708393;
+}
+.fa-times:hover{ 
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    color: #525659;
 }
 /*save button*/ 
 .geodir-list-save-container .gd-badge {

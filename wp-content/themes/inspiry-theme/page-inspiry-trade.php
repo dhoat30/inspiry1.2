@@ -7,15 +7,15 @@ get_header();
             /* Backgorund Images */
    
                 .slide:first-child {
-                    background: url('http://localhost/inspiry/wp-content/uploads/2020/09/trade-image-3.jpg') no-repeat
+                    background: url('<?php echo get_site_url(); ?>/wp-content/uploads/2020/09/trade-image-3.jpg') no-repeat
                     center top/cover;
                 }
                 .slide:nth-child(2) {
-                    background: url('http://localhost/inspiry/wp-content/uploads/2020/09/trade-image-2.jpg') no-repeat
+                    background: url('<?php echo get_site_url(); ?>/wp-content/uploads/2020/09/trade-image-2.jpg') no-repeat
                     center top/cover;
                 }
                 .slide:nth-child(3) {
-                    background: url('http://localhost/inspiry/wp-content/uploads/2020/09/trade-img-1.jpg') no-repeat
+                    background: url('<?php echo get_site_url(); ?>/wp-content/uploads/2020/09/trade-img-1.jpg') no-repeat
                     center top/cover;
                 }
                

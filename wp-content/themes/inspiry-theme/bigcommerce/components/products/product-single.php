@@ -39,12 +39,70 @@ use BigCommerce\Post_Types\Product\Product;
 					<!--  and calculator -->
 				
 							
-				<a href="<?php echo rtrim(get_the_permalink(),'/').'-sample' ;?>" class="order-sample-button"><img src="http://localhost/inspiry/wp-content/uploads/2020/08/icon-cut.png" alt="order a sample"> Order a Sample</a>
-									<br>
-				<a href="#" class="sizing-calculator-button"><img src="http://localhost/inspiry/wp-content/uploads/2020/08/icon-calc.png" alt="order a sample"> Sizing Calculator</a>
+				<a href="<?php echo rtrim(get_the_permalink(),'/').'-sample' ;?>" class="order-sample-button"><img src="<?php echo get_site_url(); ?>/wp-content/uploads/2020/08/icon-cut.png" alt="order a sample"> Order a Sample</a>
+                  <br>
+            <?php 
+            $post_id = get_the_id(); 
+            $category_list = get_the_terms( $post_id, 'bigcommerce_category'); 
+
+            $category_list_name = wp_list_pluck($category_list, 'name'); 
+
+            //checking wallpaer in the list 
+            $wallpaper = in_array('Wallpaper', $category_list_name); 
+
+            //checking fabric in a list
+            $fabric = in_array('Fabric', $category_list_name); 
+
+            if($wallpaper ){ 
+              ?>
+              				<a href="#" class="sizing-calculator-button"><img src="<?php echo get_site_url(); ?>/wp-content/uploads/2020/08/icon-calc.png" alt="order a sample"> Wallpaper Calculator</a>
+
+              <?php 
+            }
+            elseif($fabric){ 
+              ?>
+              				<a href="#" class="sizing-calculator-button"><img src="<?php echo get_site_url(); ?>/wp-content/uploads/2020/08/icon-calc.png" alt="order a sample"> Fabric Calculator</a>
+
+              <?php 
+            }
+
+            ?>
+
 	
 		<?php echo $price; ?>
     <?php echo $form; ?>
+    <!--design baord button --> 
+             <!--custom board post ui-->
+             <?php 
+                                $existStatus = 'no'; 
+
+                                if(is_user_logged_in( )){ 
+                                    $existQuery = new WP_Query(array(
+                                        'author' => get_current_user_id(), 
+                                        'post_type' => 'boards', 
+                                        'meta_query' => array(
+                                            array(
+                                                'key' => 'saved_project_id', 
+                                                'compare' => '=', 
+                                                'value' => get_the_id()
+                                            )
+                                        )
+                                    )); 
+    
+                                    if($existQuery->found_posts){ 
+                                        $existStatus = 'yes'; 
+                                    }
+                                    wp_reset_postdata(  );
+                                }
+
+                               
+                            ?>
+
+                            
+                            
+
+                           
+       
 		<p class="availability work-sans-fonts regular-text">Availability: <span class="days">7 - 10 Days</span></p>
     
     <p class="share-section work-sans-fonts regular-text">Share: <?php echo do_shortcode( '[Sassy_Social_Share]' );?></p>
@@ -61,6 +119,7 @@ use BigCommerce\Post_Types\Product\Product;
 
 
 <?php echo $related; ?>
+
 
 
 

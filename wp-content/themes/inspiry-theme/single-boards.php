@@ -9,7 +9,8 @@
             $boardLoop = new WP_Query(array(
                 'post_type' => 'boards', 
                 'post_parent' => get_the_id(),
-                'posts_per_page' => -1
+                'posts_per_page' => -1, 
+                'author' => get_current_user_id()
             ));
 
             while($boardLoop->have_posts()){
@@ -32,7 +33,7 @@
                         
                         <a href="<?php echo get_the_permalink(get_field('saved_project_id')); ?>">    
                             <div class="thumbnail">
-                                <?php echo get_the_post_thumbnail( get_field('saved_project_id'));?>
+                                <?php echo get_the_post_thumbnail( get_field('saved_project_id'), 'post-thumbnail');?>
                             </div>
                             <div class="title font-s-regular rm-txt-dec"><?php echo get_the_title(get_field('saved_project_id')); ?></div>
                         </a> 

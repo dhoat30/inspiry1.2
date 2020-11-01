@@ -2,47 +2,69 @@
  //Design board save button
  class DesignBoardSaveBtn{ 
     constructor(){ 
-        this.heartBtn = $('.design-board-save-btn-container .open-board-container');
-        this.closeIcon = $('.choose-board-container .close-icon'); 
-        this.showCreateBoardForm = $('.choose-board-container .create-new-board'); 
+        this.plusBtn = document.querySelectorAll('.design-board-save-btn-container .open-board-container');
         this.boardListItems = $('.choose-board-container .board-list li'); 
+       
        this.events(); 
-       this.fillHeartIcon(); 
-     
+       this.fillHeartIcon();  
     }
     //events
     events(){ 
-        console.log('running events'); 
-        //show choose board container
-        this.heartBtn.on('click', this.showChooseBoardContainer); 
+
+        $(document).on('click', '.design-board-save-btn-container .open-board-container', this.showChooseBoardContainer);
         //hide choose board container
-        this.closeIcon.on('click', this.hideChooseBoardContainer); 
+        $(document).on('click', '.choose-board-container .close-icon', this.hideChooseBoardContainer);
+
         //show a board form
-        this.showCreateBoardForm.on('click', this.showForm); 
+        $(document).on('click', '.choose-board-container .create-new-board', this.showForm); 
         //hide a board form
-        $('.project-save-form-section .cancel-btn').on('click', this.hideForm);
+        $(document).on('click', '.project-save-form-section .cancel-btn', this.hideForm);
 
         //create a new board 
-        $('.project-save-form-section .save-btn').on('click', this.createBoardFunc);
+        $(document).on('click', '.project-save-form-section .save-btn', this.createBoardFunc); 
 
         //add to a board
-        this.boardListItems.on('click', this.addToBoard.bind(this)); 
+        $(document).on('click', ('.choose-board-container .board-list li'), this.addToBoard); 
+
         //delete a pin 
-        $('.board-card .delete-btn').on('click', this.deletePin);
+        $(document).on('click', '.board-card .delete-btn', this.deletePin);
 
         //delete Board
-        $('.board-card-archive .delete-board-btn').on('click', this.deleteBoard);
+        $(document).on('click', '.board-card-archive .delete-board-btn', this.deleteBoard);
     }
 
     //functions 
-    showChooseBoardContainer(){ 
-        $('.choose-board-container').slideDown();
+    showChooseBoardContainer(e){ 
+        let eventPostID; 
+        let eventPostTitle;
+
+        let templateNameCheck = $('.bc-product__title').attr('data-archive');
+        //check the page and assign the id and title value
+       
+        
+            let eventPostData = $(e.target).closest('.design-board-save-btn-container').attr('data-tracking-data'); 
+
+            //parsing json to javascript object
+            eventPostData = JSON.parse(eventPostData);
+            eventPostID = eventPostData.post_id
+            eventPostTitle = eventPostData.name; 
+            
+
+        
+      
+        console.log(eventPostID + "and" + eventPostTitle);
+        $('.choose-board-container').show(300);
+        $('.overlay').show(300); 
+
+        let postID = $('.choose-board-container').attr('data-post-id', eventPostID); 
+       let postTitle = $('.choose-board-container').attr('data-post-title', eventPostTitle); 
+ 
     }
 
     //hide container function 
     hideChooseBoardContainer(){ 
-        $('.choose-board-container').slideUp();
-
+        $('.choose-board-container').hide(300);
+        $('.overlay').hide(300); 
     }
 
     //fill heart icon
@@ -54,6 +76,7 @@
 
     //show create boad form
     showForm(){ 
+        console.log('create form');
         $('.project-save-form-section').show();
     }
 
@@ -65,9 +88,12 @@
 
     //add project to board
     addToBoard(e){
-        let boardID = e.delegateTarget.dataset.boardid; 
-        let postID = $('.project-detail-page .header-title').data('postid'); 
-        let postTitle = $('.project-detail-page .header-title h2').html(); 
+   
+        let boardID = $(e.target).attr('data-boardid'); 
+
+        let postID = $('.choose-board-container').attr('data-post-id');
+        let postTitle = $('.choose-board-container').attr('data-post-title'); 
+    
 
         //show loader icon
         $(e.target).closest('.board-list-item').find('.loader').addClass('loader--visible');
@@ -140,7 +166,9 @@
        console.log('delete is working'); 
 
        let pinID = e.delegateTarget.dataset.pinid; 
+
         console.log(pinID);
+
        $.ajax({
         beforeSend: (xhr)=>{
             xhr.setRequestHeader('X-WP-NONCE', inspiryData.nonce)
@@ -169,8 +197,18 @@
 
     //create board function 
     createBoardFunc(e){ 
+        console.log('checking the values of input')
+    
 
-        let boardName = $('#board-name').val(); 
+        let boardName = $(e.target).closest('.btn-container').siblings('#board-name').val();
+   
+        let boardDescription; 
+        if($(e.target).closest('.btn-container').siblings('#board-description').val()){ 
+            boardDescription = $(e.target).closest('.btn-container').siblings('#board-description').val();
+        }
+        else{ 
+            boardDescription = 'No Description Available'
+        }
        
         e.preventDefault();
         $('.project-save-form-section .loader').show();
@@ -183,13 +221,14 @@
             url: inspiryData.root_url + '/wp-json/inspiry/v1/manageBoard',
             type: 'POST', 
             data: {
-                'board-name': boardName
+                'board-name': boardName, 
+                'board-description': boardDescription
             },
             complete:()=>{
                 $('.project-save-form-section .loader').hide();
             },
             success: (response)=>{
-                console.log('this is a success area')
+                console.log(response)
                 if(response){ 
                     console.log(response);
                     //show the list board name in the list 
@@ -198,8 +237,9 @@
                     $('.project-save-form-section').hide();   
                     function addToBoard2(){
                         
-                        let postID = $('.project-detail-page .header-title').data('postid'); 
-                        let postTitle = $('.project-detail-page .header-title h2').html(); 
+                    //add a post into baord
+                        let postID = $('.choose-board-container').attr('data-post-id');
+                        let postTitle = $('.choose-board-container').attr('data-post-title'); 
                         
                         $.ajax({
                             beforeSend: (xhr)=>{
@@ -215,13 +255,22 @@
                             success: (response)=>{
                                 console.log('this is a success area')
                                 if(response){ 
-                                    console.log(response);
-                                    $('.design-board-save-btn-container i').addClass('fas fa-heart');
+                                    
+                                   if($('body').attr('data-archive') == 'product-archive'){ 
+                                        $('.choose-board-container').hide(300);
+                                        $('.overlay').hide(300); 
+                                        location.reload();
+                                   }
+                                   
+                                       
+                                 
+                                   
+                                    
 
                                 }
                             }, 
                             error: (response)=>{
-                                console.log('this is an error');
+                                
                                 console.log(response)
                             }
                         });
@@ -238,9 +287,11 @@
                 }
             }, 
             error: (response)=>{
-                console.log('this is an error');
+            
+                console.log('this is a board error');
                 console.log(response)
-                $('#new-board-form').before(` <div class="error-bg">Board Already Exists</div>`);
+                console.log(response.responseText)
+                $('#new-board-form').before(` <div class="error-bg">${response.responseText}</div>`);
             }
         });
         

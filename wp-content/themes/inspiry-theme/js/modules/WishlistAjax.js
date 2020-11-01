@@ -4,22 +4,40 @@ class WishlistAjax{
     constructor(){ 
        
         this.aClick = document.querySelectorAll('.bc-wish-list-item-anchor');
-        
         this.createBtn = document.querySelector('.bc-wish-list-btn--new'); 
+        this.wishListIcon = document.querySelectorAll('.wish-list-icon-container .fa-heart'); 
+        this.closeIcon = $('.bc-pdp-wish-lists .fa-times');
         this.events();
     }
 
     //events 
     events(){
         
-        //this.createBtn.addEventListener('click',this.createWishlist.bind(this) ); 
-
         this.aClick.forEach(event=>{
             event.addEventListener('click', this.runAjax.bind(this)); 
         });
+
+        this.wishListIcon.forEach(event=>{
+            event.addEventListener('click', this.showListContainer.bind(this));  
+        });
+        this.closeIcon.on('click', this.hideContainer); 
     }
 
+    
+
     //functions
+    //hide container
+    hideContainer(e){ 
+        $(e.target).closest('.overlay').hide(300);
+    }
+    //show list container
+    showListContainer(e){ 
+        console.log('working wishlist');
+        console.log(e);
+        let event = $(e.target.childNodes[1])
+        event.show(300);
+        $(e.target.childNodes[1].childNodes[1]).show(300);
+    }
 /*
     
     createWishlist(e){ 

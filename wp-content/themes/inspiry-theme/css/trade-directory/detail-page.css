@@ -130,7 +130,7 @@
 }
 
 .header-contact-btn button{ 
-    background: #E9ECEF !important;
+    background: #708393 !important;
     border-bottom: none !important;
     font-size: 16px;
     letter-spacing: 0.2em;
@@ -203,15 +203,15 @@ transition-timing-function: ease-in-out;
 }
 .trade-contact-nav-content{ 
     display: none; 
-    margin-left:20px;
+  
 }
 .trade-project-nav-content{ 
     display: none; 
-    margin-left:20px;
+   
 }
 .trade-gallery-nav-content{
     display: none;
-    margin-left:20px;
+
 }
 .active-nav{ 
 background-color:#708393;
@@ -259,4 +259,12 @@ transition-timing-function: ease-in-out;
 /*hide save pin in project area */ 
 .trade-project-nav-content .geodir-list-save-container{ 
     display: none;
+}
+
+/*contact from*/ 
+.nf-form-content button, .nf-form-content input[type=button], .nf-form-content input[type=submit] {
+    background: #333;
+    border: 0;
+    color: black !important;
+    transition: all .5s;
 }

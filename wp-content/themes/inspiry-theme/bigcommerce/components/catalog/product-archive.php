@@ -15,7 +15,7 @@
 <div class="bc-product-archive">
 
 	<header class="bc-product-archive__header">
-		<h2 class="bc-product-archive__title  section-ft-size margin-elements"><?php echo esc_html( $title ); ?></h2>
+		<h2 class="bc-product-archive__title  section-ft-size margin-elements" ><?php echo esc_html( $title ); ?></h2>
 		<div><?php echo wp_kses_post( $description ); ?></div>
 	</header>
 
@@ -29,6 +29,11 @@
 			if ( ! empty( $posts ) ) {
 				foreach ( $posts as $post ) {
 					echo $post;
+
+					?>
+					
+
+					<?php 
 				}
 			} else {
 				echo $no_results;

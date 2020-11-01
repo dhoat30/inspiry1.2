@@ -1,7 +1,7 @@
 let $ = jQuery; 
 class LogIn{ 
     constructor(){ 
-        this.events = this.events().bind(this); 
+        this.events(); 
     }
     events(){ 
         $('.login-tag').on('click', this.showLogInForm); 
@@ -14,9 +14,11 @@ class LogIn{
     showLogInForm(e){ 
 
         e.preventDefault(); 
-        //getting the url
-        let url = $(e.target).closest('a').attr('href');
 
+        //getting the url
+        let url = $(e.target).attr('data-root-url')+'/ajax-log-in/';
+
+        console.log(url);
   
           //creat an xhr object 
           var xhr = new XMLHttpRequest();

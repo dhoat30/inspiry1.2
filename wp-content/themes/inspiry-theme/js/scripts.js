@@ -12,14 +12,15 @@ import WishlistAjaxBp from './modules/WishlistAjaxBp';
 import FacetWp from './modules/FacetWp';  
 import LogIn from './modules/LogIn'; 
 
+
 window.onload = function() {
 
     const designBoardSinglePage = new DesignBoard(); 
    const designBoardSaveBtn = new DesignBoardSaveBtn();
-   
-   
+
+
 let designBoardAjax = new DesignBoardAjax(); 
-   
+
 const tradeNav = new TradeNav();
 
 //profile navbar
@@ -40,23 +41,19 @@ const tradeNav = new TradeNav();
                     $('.arrow-icon').toggleClass('fa-chevron-up');
                 }); 
             }
-            
+
     })
        }
    }
 
    profileNavbar.eventListener();
-    
 
-    
-    
-   
+
+
+
+
 
 }
-
-
-
-    
 
 
 
@@ -69,8 +66,8 @@ const facetWp = new FacetWp();
 //const wishlistAjaxBp = new WishlistAjaxBp();
 const wishlistAjax = new WishlistAjax();
 const warranty = new Warranty(); 
-//const wallpaperCalc = new WallpaperCalc(); 
-//const laybuy = new LayBuy();
+const wallpaperCalc = new WallpaperCalc(); 
+const laybuy = new LayBuy();
 
 
 
