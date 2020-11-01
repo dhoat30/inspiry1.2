@@ -30,12 +30,13 @@ use BigCommerce\Post_Types\Product\Product;
 		</span>
 	</div>
 </button>
+
 <!-- data-quick-view-script="" is required -->
 <script data-quick-view-script="" type="text/template">
 	<!-- data-js="bc-product-quick-view-content" is required -->
 	<section class="bc-product-quick-view__content-inner" data-js="bc-product-quick-view-content">
 		<?php echo $quick_view; ?>
-
+		
 		<!--design board container--> 
 		<div class="overlay">
 		

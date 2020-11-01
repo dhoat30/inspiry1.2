@@ -24,8 +24,8 @@ require get_theme_file_path('/inc/boards-route.php');
     } else {
       wp_enqueue_script('our-vendors-js', get_theme_file_uri('/bundled-assets/undefined'),  NULL, '1.0', true);
 
-      wp_enqueue_script('main', get_theme_file_uri('/bundled-assets/scripts.cec1a39ab7411be73d54.js'), NULL, '1.0', true);
-      wp_enqueue_style('our-main-styles', get_theme_file_uri('/bundled-assets/styles.cec1a39ab7411be73d54.css'));
+      wp_enqueue_script('main', get_theme_file_uri('/bundled-assets/scripts.b6d946317c49d0e24515.js'), NULL, '1.0', true);
+      wp_enqueue_style('our-main-styles', get_theme_file_uri('/bundled-assets/styles.b6d946317c49d0e24515.css'));
     }
     wp_localize_script("main", "inspiryData", array(
       "root_url" => get_site_url(),

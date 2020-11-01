@@ -31,9 +31,19 @@
 
         //delete Board
         $(document).on('click', '.board-card-archive .delete-board-btn', this.deleteBoard);
+
+        //show icon only in quick view 
+        $(document).on('click', '.bc-quickview-trigger--hover-label', this.showIconQuickView); 
     }
 
     //functions 
+    showIconQuickView(e){ 
+        console.log('working'); 
+        console.log($(e.target).closest('.bc-quickview-trigger').siblings('.bc-product__meta').find('.open-board-container'));
+        let plusButton = $(e.target).closest('.bc-quickview-trigger').siblings('.bc-product__meta').find('.design-board-save-btn-container');
+       //add code here to show pin button on quick view 
+        //console.log($('.bc-product-quick-view__content-inner .bc-product__title').append(``));
+    }
     showChooseBoardContainer(e){ 
         let eventPostID; 
         let eventPostTitle;
