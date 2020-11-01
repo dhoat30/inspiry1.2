@@ -197,6 +197,7 @@
 
     //create board function 
     createBoardFunc(e){ 
+
         console.log('checking the values of input')
     
 
