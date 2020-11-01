@@ -197,11 +197,19 @@
 
     //create board function 
     createBoardFunc(e){ 
-        console.log($(e.target).closest('.btn-container').siblings('#board-name').val());
-        console.log($(e.target).closest('.btn-container').siblings('#board-description').val());
-        
-        let boardName = $('#board-name').val(); 
-        console.log(boardName); 
+
+        console.log('checking the values of input')
+    
+
+        let boardName = $(e.target).closest('.btn-container').siblings('#board-name').val();
+   
+        let boardDescription; 
+        if($(e.target).closest('.btn-container').siblings('#board-description').val()){ 
+            boardDescription = $(e.target).closest('.btn-container').siblings('#board-description').val();
+        }
+        else{ 
+            boardDescription = 'No Description Available'
+        }
        
         e.preventDefault();
         $('.project-save-form-section .loader').show();
@@ -214,13 +222,14 @@
             url: inspiryData.root_url + '/wp-json/inspiry/v1/manageBoard',
             type: 'POST', 
             data: {
-                'board-name': boardName
+                'board-name': boardName, 
+                'board-description': boardDescription
             },
             complete:()=>{
                 $('.project-save-form-section .loader').hide();
             },
             success: (response)=>{
-                
+                console.log(response)
                 if(response){ 
                     console.log(response);
                     //show the list board name in the list 
@@ -262,7 +271,7 @@
                                 }
                             }, 
                             error: (response)=>{
-                                console.log('this is an error');
+                                
                                 console.log(response)
                             }
                         });
@@ -279,7 +288,9 @@
                 }
             }, 
             error: (response)=>{
-                console.log('this is an error');
+            
+                console.log('this is a board error');
+                console.log(response)
                 console.log(response.responseText)
                 $('#new-board-form').before(` <div class="error-bg">${response.responseText}</div>`);
             }

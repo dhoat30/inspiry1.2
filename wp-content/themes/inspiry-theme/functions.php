@@ -23,8 +23,9 @@ require get_theme_file_path('/inc/boards-route.php');
       wp_enqueue_script('main', 'http://localhost:3000/bundled.js',  NULL, '1.0', true);
     } else {
       wp_enqueue_script('our-vendors-js', get_theme_file_uri('/bundled-assets/undefined'),  NULL, '1.0', true);
-      wp_enqueue_script('main', get_theme_file_uri('/bundled-assets/scripts.456c9648112744440d14.js'), NULL, '1.0', true);
-      wp_enqueue_style('our-main-styles', get_theme_file_uri('/bundled-assets/styles.456c9648112744440d14.css'));
+
+      wp_enqueue_script('main', get_theme_file_uri('/bundled-assets/scripts.cec1a39ab7411be73d54.js'), NULL, '1.0', true);
+      wp_enqueue_style('our-main-styles', get_theme_file_uri('/bundled-assets/styles.cec1a39ab7411be73d54.css'));
     }
     wp_localize_script("main", "inspiryData", array(
       "root_url" => get_site_url(),
@@ -86,7 +87,7 @@ add_theme_support("post-thumbnails");
 add_post_type_support( "boards", "thumbnail" ); 
 function register_custom_type(){ 
    register_post_type("boards", array(
-      "supports" => array("title", "page-attributes"), 
+      "supports" => array("title", "page-attributes", 'editor'), 
       "public" => true, 
       "show_ui" => true, 
       "hierarchical" => true,
