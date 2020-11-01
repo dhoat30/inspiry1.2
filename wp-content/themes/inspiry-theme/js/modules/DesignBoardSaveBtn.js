@@ -41,7 +41,7 @@
         console.log('working'); 
         console.log($(e.target).closest('.bc-quickview-trigger').siblings('.bc-product__meta').find('.open-board-container'));
         let plusButton = $(e.target).closest('.bc-quickview-trigger').siblings('.bc-product__meta').find('.design-board-save-btn-container');
-       //add code here to show pin button on quick view testing
+       //add code here to show pin button on quick view testing 2
         //console.log($('.bc-product-quick-view__content-inner .bc-product__title').append(``));
     }
     showChooseBoardContainer(e){ 
