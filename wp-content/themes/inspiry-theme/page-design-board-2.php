@@ -10,7 +10,8 @@ get_header();
             $boardLoop = new WP_Query(array(
                 'post_type' => 'boards', 
                 'post_parent' => 0, 
-                'posts_per_page' => -1
+                'posts_per_page' => -1, 
+                'author' => get_current_user_id()
             ));
 
             while($boardLoop->have_posts()){
@@ -40,6 +41,7 @@ get_header();
                                 $parent_id =get_the_id();
                                 $inherited_locations = get_page_children( $parent_id, $all_locations );
                                 $pinCount = count($inherited_locations);
+
                                 // echo what we get back from WP to the browser (@bhlarsen's part :) )
                                 $child_id = $inherited_locations[0]->ID;
                                 $childThumbnail = get_field('saved_project_id', $child_id); 
