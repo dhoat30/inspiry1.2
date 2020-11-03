@@ -1,0 +1,143 @@
+/*usp */ 
+.home-page .usp{
+    display: flex; 
+    flex-direction: row;
+    justify-content:center;
+    margin: 50px 0;
+}
+
+.home-page .usp>div{ 
+    padding: 20px 20px;
+    margin: 10px 20px;
+}
+.home-page .usp i{ 
+    padding: 0px 10px 0 0;
+}
+
+
+
+
+/*box-section-------*/ 
+.box-section .flex{ 
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}   
+.box-section .flex .photo{ 
+    width: 35%;
+   
+}
+.box-section .flex .boxes{ 
+    width: 30%;
+    height: 70vh;
+}
+
+.box-section .flex img{ 
+    width: 100%;
+    object-fit: cover;
+    height: 70vh;
+}
+
+.box-section .boxes{ 
+    display: flex;
+    flex-direction: column;
+}
+.box-section .boxes>div{ 
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+}
+.box-section .boxes>div:nth-child(1){ 
+    background: #585851;
+}
+.box-section .boxes>div:nth-child(2){ 
+    background: #4C7384;
+}
+.box-section .boxes a{ 
+    color: white;
+    padding-top: 10px;
+}
+.box-section .boxes a:hover{ 
+    color: white;
+    padding-top: 10px;
+    text-decoration: underline;
+}
+.box-section i{ 
+    color: white;
+}
+.box-section .fa-arrow-up{ 
+    display: none;
+}
+.fa-arrow-down{ 
+    display: none;
+}
+@media (max-width:800px){ 
+    .box-section .flex .photo{ 
+        width: 100%;
+       
+    }
+    .box-section .flex img{ 
+        width: 100%;
+        object-fit: cover;
+        height: 50vh;
+    }
+    .box-section .flex .boxes{ 
+        width: 100%;
+        height: 70vh;
+    }
+ 
+    .box-section .fa-arrow-left{ 
+        display: none;
+    }
+    .fa-arrow-right{ 
+        display: none;
+    }
+    .box-section .fa-arrow-up, .fa-arrow-down{ 
+        display: inline;
+    }
+}
+
+/*loving section */ 
+.loving-section{ 
+    position: relative;
+    top: 100px;
+}
+.loving-section .lg-font-sz{ 
+ background-color: white;
+padding: 20px 20px;
+    position: absolute;
+    left: 50%;
+    top: -65px;
+    transform: translateX(-50%);
+    text-transform: uppercase;
+}
+.loving-section .flex{ 
+    margin: 100px;
+    display: flex; 
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+.loving-section .flex .cards{ 
+    width: 30%;
+   margin: 20px 20px;
+}
+.loving-section .flex .cards>div{ 
+    display: flex; 
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.loving-section .flex img{ 
+    width: 100%;
+    height: 100%;
+    padding-bottom: 10px;
+}
+

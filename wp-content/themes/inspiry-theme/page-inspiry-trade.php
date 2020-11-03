@@ -22,7 +22,7 @@ get_header();
         </style>
                 <div class="slider">
                     <div class="slide current">
-                        <div class="content">
+                        <div class="content invisible">
                             <!--
                         <h1>Slide One</h1>
                         <p>
@@ -34,7 +34,7 @@ get_header();
                     </div>
                     <div class="slide">
                         
-                        <div class="content">
+                        <div class="content invisible">
                         <!--  
                         <h1>Slide Two</h1>
                         <p>
@@ -45,7 +45,7 @@ get_header();
                         </div>
                     </div>
                     <div class="slide">
-                        <div class="content">
+                        <div class="content invisible">
                             <!--
                         <h1>Slide Three</h1>
                         <p>

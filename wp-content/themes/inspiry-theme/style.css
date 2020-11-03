@@ -7,6 +7,7 @@
 */
 @import "css/header.css"; 
 @import "css/footer.css";
+@import "css/front-page.css";
 
 @import "css/product-page.css";
 @import "css/product-page-custom-styling.css"; 
@@ -53,7 +54,7 @@
     box-sizing: border-box;
     padding: 0; 
     margin: 0;
-    
+    color:#3F3F3F;
     font-family: 'Playfair Display', serif;
   }
 
@@ -61,7 +62,7 @@
 		border-bottom: solid 1px #e1e1e1;
 	}
     .underline-dg{ 
-        border-bottom: solid 1px #444444;
+        border-bottom: solid 1px #474747;
 	}
 	.body-container{
         max-width: 1600px;
@@ -111,10 +112,10 @@
 
 /*font size*/ 
     .lg-font-sz{ 
-        font-size: 70px;
+        font-size: 60px;
     }
     .section-ft-size{ 
-        font-size: 40px !important;
+        font-size: 35px !important;
         text-transform: uppercase;
         font-weight: 500;
         letter-spacing: 1px;
@@ -141,7 +142,7 @@
         font-weight: 700;
     }
     .regular{ 
-        font-weight: 500;
+        font-weight: 400;
     }
     .ft-wt-med{ 
         font-weight: 600;
@@ -210,9 +211,12 @@
 	.black-bc{ 
 		background-color: black;
     }
-
+    
+    .beige-color-bc-lt{ 
+        background-color: #F8F7F3;
+    }
     .beige-color-bc{ 
-        background-color:#E9ECEF; 
+        background-color:#EFEAE5; 
     }
     .off-white-bc{ 
         background-color: #efefef; 
@@ -303,6 +307,9 @@
     color: #00D331; 
 }
 
+.invisible{ 
+    display: none;
+  }
 /*close icons */ 
 .fa-times{ 
     position: absolute;
