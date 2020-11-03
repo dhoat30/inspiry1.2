@@ -56,7 +56,7 @@ body ul.geodir-category-list-view>li:nth-child(2n+0) {
 }
 /*main Styles*/ 
 .geodir-entry-title a{ 
-    color: #708393 !important; 
+    color: #303030 !important; 
     font-size: 20px;
     padding-bottom: 5px;
     display: inline-block;
@@ -67,14 +67,14 @@ body ul.geodir-category-list-view>li:nth-child(2n+0) {
     text-decoration: underline;
 }
 .geodir-field-business_hours>span {
-    color: #708393;
+    color: #303030;
     font-size: 15px; 
     font-family: 'Work Sans', sans-serif !important;
 
 }
 
 .gd-list-rating-link{ 
-    color: #708393;
+    color: #303030;
 }
 
 .geodir-field-address>span{ 
@@ -83,7 +83,7 @@ body ul.geodir-category-list-view>li:nth-child(2n+0) {
     letter-spacing: 1px;
 }
 .gd-read-more{ 
-    color: #708393;
+    color: #303030;
 }
 
 /*post content*/ 
@@ -107,7 +107,7 @@ body ul.geodir-category-list-view.geodir-gridview.gridview_onethird>li {
 
 /*pagination*/ 
 .geodir-pagination .page-numbers{ 
-    color: #708393; 
+    color: #303030; 
 }
 .geodir-pagination .current{ 
     color: #525659;

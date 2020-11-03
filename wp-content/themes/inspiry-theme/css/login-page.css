@@ -5,8 +5,8 @@
 
 .trade-register-button, .trade-login-btn{ 
     background: white !important;
-    color: #708393 !important; 
-    border: 1px solid #708393;
+    color: #303030 !important; 
+    border: 1px solid #303030;
 }
 
 .trade-register-button:hover{ 
@@ -60,7 +60,7 @@
     font-size: 30px;
     cursor: pointer;
     font-weight: 100;
-    color: #708393;
+    color: #303030;
 
 }
 .login-overlay i:hover{ 
@@ -81,7 +81,7 @@
 
 /*regsiter Page*/ 
 #register-page #submit{ 
-    background-color: #708393 !important;
+    background-color: #303030 !important;
 }
 #register-page #submit:hover{ 
     background-color: #525659 !important;

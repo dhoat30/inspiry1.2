@@ -133,6 +133,11 @@
     .column-s-font{ 
         font-size: 25px; 
     }
+    @media (max-width: 830px){ 
+        .lg-font-sz{ 
+            font-size: 40px;
+        }
+    }
 /*font weight*/ 
 
     .black-bold{ 
@@ -182,11 +187,11 @@
     height: 40px;
     margin: 0 10px 0 0;
     outline: none;
-    border: 1px solid #708393;
+    border: 1px solid #303030;
     cursor: pointer;
     }
     .btn-dk-green{ 
-        background-color: #708393;
+        background-color: #303030;
         color: white;
     }
     .btn-dk-green:hover{ 
@@ -200,13 +205,13 @@
         color: white; 
     }
     .dark-grey{ 
-        color:#708393;
+        color:#303030;
     }
     .light-grey{ 
         color: #666666;
     }
     .dark-green{ 
-        color: #708393; 
+        color: #303030; 
     }
 	.black-bc{ 
 		background-color: black;
@@ -239,7 +244,7 @@
     /* a link */ 
     .rm-txt-dec{ 
         text-decoration: none;
-        color: #708393;
+        color: #303030;
         
     }
     .rm-txt-dec:link{ 
@@ -317,7 +322,7 @@
     right: 20px;
     font-size: 30px;
     cursor: pointer;
-    color: #708393;
+    color: #303030;
 }
 .fa-times:hover{ 
     position: absolute;
@@ -330,22 +335,22 @@
 /*save button*/ 
 .geodir-list-save-container .gd-badge {
     background-color: #fff !important;
-    color: #708393 !important;
-    border: solid #708393 !important;
+    color: #303030 !important;
+    border: solid #303030 !important;
     transition: 0.3s ease-in-out;   
      font-size: 16px;
      border-radius: 0;
 
 }
 .geodir-list-save-container .gd-badge:hover {
-    background-color: #708393 !important;
+    background-color: #303030 !important;
     color: #fff !important;
-    border: solid #708393 !important;
+    border: solid #303030 !important;
 }
 .gd-badge-meta-saved .gd-badge {
-    background-color: #708393 !important;
+    background-color: #303030 !important;
     color: #fff !important;
-    border: solid #708393 !important;
+    border: solid #303030 !important;
 }
 
 

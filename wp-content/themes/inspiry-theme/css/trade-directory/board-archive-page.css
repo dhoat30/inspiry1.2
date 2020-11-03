@@ -60,7 +60,7 @@
     padding: 10px 20px;
     cursor: pointer;
     font-weight: 300;
-    color: #708393; 
+    color: #303030; 
 }
 
 
@@ -76,7 +76,7 @@
 .ajax-result>i{ 
     cursor: pointer;
     font-size: 20px;
-    color:#708393; 
+    color:#303030; 
     position: absolute;
     top: -60px; 
     left: 20px;
@@ -88,12 +88,12 @@
     color: #525659; 
 } 
 .board-loop-page h1{ 
-    color: #708393; 
+    color: #303030; 
 }
 
 /*board card*/
 .design-board-card{
-    color:#708393 !important;
+    color:#303030 !important;
 }
 .design-board-card:hover{
     color: #525659 !important; 

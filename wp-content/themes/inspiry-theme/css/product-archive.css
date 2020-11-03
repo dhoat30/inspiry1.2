@@ -74,7 +74,7 @@
     display: none;
 }
 .pagination .page-numbers{ 
-    color: #708393;
+    color: #303030;
     padding: 0 0 0  5px;
 }   
 .pagination .page-numbers:hover{ 
@@ -85,8 +85,8 @@
 .fs-label-wrap {
     position: relative;
     background-color: #fff;
-    border: 1px solid #708393 !important;
-    color: #708393;
+    border: 1px solid #303030 !important;
+    color: #303030;
     cursor: pointer !important;
     transition-timing-function: ease-in-out;
     transition-duration: 100ms;
@@ -99,7 +99,7 @@
    color: #525659 !important;
 }
 .fs-arrow{ 
-    border-top: 5px solid #708393 !important;
+    border-top: 5px solid #303030 !important;
 }
 
 
@@ -111,14 +111,14 @@
     margin-top: 20px;
 }
 .noUi-connect{ 
-    background: #708393 !important;
+    background: #303030 !important;
 }
 
 .facet-reset-btn{ 
-    border: 1px solid #708393;
+    border: 1px solid #303030;
     padding: 10px 40px;
     background: white;
-    color: #708393;
+    color: #303030;
     cursor: pointer;
     font-size: 15px;
     letter-spacing: 1px;
@@ -126,7 +126,7 @@
     transition-duration: 300ms;
 }
 .facet-reset-btn:hover{ 
-    background: #708393;
+    background: #303030;
     color: white;
 }
 .facetwp-slider-reset{ 

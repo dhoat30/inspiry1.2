@@ -77,7 +77,7 @@
 
 .my-account-nav a{ 
     text-decoration: none;
-    color: #708393;
+    color: #303030;
 }
 
 /*cart */ 
@@ -91,7 +91,7 @@
 }
 /*search bar*/ 
 .mCS-dark-thick.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
-    background-color: #708393 !important;
+    background-color: #303030 !important;
     background-color: rgba(0,0,0,.75);
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;

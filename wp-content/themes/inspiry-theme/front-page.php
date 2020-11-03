@@ -31,6 +31,7 @@ get_header();
                                             $query->the_post(); 
 
                                             ?>
+                                           
                                             <div class="slide"  style='background: url("<?php echo get_the_post_thumbnail_url(null,"full"); ?>") no-repeat
                                         center top/cover;'>
                                                 <div class="content">
@@ -38,14 +39,16 @@ get_header();
                                                     <h3 class="work-sans-fonts center-align white section-ft-size regular">
                                                         <?php echo get_field('add_subtitle_');?>
                                                     </h3>
+                                                    <a class="rm-txt-dec" href="<?php echo get_field('add_link');?>"><?php echo get_field('add_link_title');?>  <i class="fal fa-arrow-right"></i></a>
                                                 </div>
-                                        </div>
+                                         </div>
+                                        
 
                                             <?php
 
-                                        
+                                       
                                         }
-
+                                        wp_reset_postdata();
 
                                         ?>
                             
@@ -101,31 +104,50 @@ get_header();
 
     </div>
 
+
+<!--Loving Section -----> 
+
     <div class="loving-section row-section margin-row">
         <div class="underline-dg"></div>
 
         <div class="lg-font-sz center-align">What We’re Loving</div>
         <div class="flex">
-            <div class="cards">
-                <div>
-                    <img src="<?php echo get_site_url();?>/wp-content/uploads/2020/11/PICTCAB803-1.jpg" alt="Khroma">                      
-                    <a class="rm-txt-dec center-align" href="<?php echo get_site_url();?>">Shop Now <i class="fal fa-arrow-right"></i> </a>                       
-                </div>
-            </div>
 
-            <div class="cards">
-                <div>
-                    <img src="<?php echo get_site_url();?>/wp-content/uploads/2020/11/PICTCAB803-1.jpg" alt="Khroma">                      
-                    <a class="rm-txt-dec" href="<?php echo get_site_url();?>">Shop Now <i class="fal fa-arrow-right"></i> </a>                       
-                </div>
-            </div>
+        <?php 
 
-            <div class="cards">
-                <div>
-                    <img src="<?php echo get_site_url();?>/wp-content/uploads/2020/11/PICTCAB803-1.jpg" alt="Khroma">                      
-                    <a class="rm-txt-dec" href="<?php echo get_site_url();?>">Shop Now <i class="fal fa-arrow-right"></i> </a>                       
-                </div>
-            </div>
+            $argsLoving = array(
+                'post_type' => 'loving',
+                'tax_query' => array(
+                    array(
+                        'taxonomy' => 'category',
+                        'field'    => 'slug',
+                        'terms'    => array( 'home-page-loving-section'),
+                    )
+                    ), 
+                    'orderby' => 'date', 
+                    'order' => 'ASC'
+            );
+            $loving = new WP_Query( $argsLoving );
+
+            while($loving->have_posts()){ 
+                $loving->the_post(); 
+
+                ?>      
+                    <a class="rm-txt-dec" href="<?php echo get_field('add_link');?>">
+                        <div class="cards">
+                            <div>
+                                <img src="<?php echo get_the_post_thumbnail_url(null,"full"); ?>" alt="Khroma">                      
+                                <a class="rm-txt-dec center-align" href="<?php echo get_field('add_link');?>">Shop Now <i class="fal fa-arrow-right"></i> </a>                       
+                            </div>
+                        </div>
+                     </a>
+                <?php 
+
+            }
+            ?>
+            
+
+          
                                 
         </div>                                
         

@@ -4,11 +4,12 @@
     flex-direction: row;
     justify-content:center;
     margin: 50px 0;
+    flex-wrap: wrap;
 }
 
 .home-page .usp>div{ 
     padding: 20px 20px;
-    margin: 10px 20px;
+    margin: 20px 20px;
 }
 .home-page .usp i{ 
     padding: 0px 10px 0 0;
@@ -74,7 +75,7 @@
 .box-section .fa-arrow-up{ 
     display: none;
 }
-.fa-arrow-down{ 
+.box-section .fa-arrow-down{ 
     display: none;
 }
 @media (max-width:800px){ 
@@ -95,7 +96,7 @@
     .box-section .fa-arrow-left{ 
         display: none;
     }
-    .fa-arrow-right{ 
+    .box-section .fa-arrow-right{ 
         display: none;
     }
     .box-section .fa-arrow-up, .fa-arrow-down{ 
@@ -107,6 +108,7 @@
 .loving-section{ 
     position: relative;
     top: 100px;
+    margin-bottom: 150px;
 }
 .loving-section .lg-font-sz{ 
  background-color: white;
@@ -118,16 +120,16 @@ padding: 20px 20px;
     text-transform: uppercase;
 }
 .loving-section .flex{ 
-    margin: 100px;
+    margin-top: 100px;
     display: flex; 
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-
 }
 .loving-section .flex .cards{ 
     width: 30%;
    margin: 20px 20px;
+   min-width: 500px;
 }
 .loving-section .flex .cards>div{ 
     display: flex; 
@@ -140,4 +142,29 @@ padding: 20px 20px;
     height: 100%;
     padding-bottom: 10px;
 }
+.loving-section .flex a:hover{ 
+   text-decoration: underline;
+}
 
+@media (max-width:1300px){ 
+    .loving-section{ 
+        top: 150px;
+    }
+    .loving-section .lg-font-sz{ 
+           left: 50%;
+           top: -85px;
+       }
+       .loving-section .flex{ 
+        margin-top: 150px;
+    }
+}
+@media (max-width:900px){ 
+    .loving-section .flex .cards{ 
+        width: 100%;
+    }
+    .loving-section .flex img{ 
+        width: 100%;
+        height: auto;
+        padding-bottom: 10px;
+    }
+}

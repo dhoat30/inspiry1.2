@@ -34,7 +34,7 @@
 }
 
 .bc-subnav__list a{ 
-    background-color: #708393; 
+    background-color: #303030; 
     padding: 10px 20px; 
     color: #E9ECEF !important;
     font-family: 'Playfair Display', serif;
@@ -42,7 +42,7 @@
 
 /*wishlist page*/
 .bc-link {
-    color: #708393 !important;
+    color: #303030 !important;
 }
  .bc-wish-list-btn--new{ 
     color: white !important; 
@@ -93,31 +93,31 @@
 }
 /*order history*/ 
 .bc-order__link a{ 
-    color: #708393;
+    color: #303030;
 }
 
 /*log in page*/ 
 .button-primary{ 
-    background-color: #708393 !important;
+    background-color: #303030 !important;
     color: #E9ECEF;
 }
 .bc-btn--register{
     color: #E9ECEF;
-    background-color:#708393 !important;
+    background-color:#303030 !important;
 }
 .bc-account-login__form-inner a{ 
-color: #708393 !important;
+color: #303030 !important;
 }
 
 /*account profile area*/ 
 .bc-btn--account{ 
-    background-color: #708393 !important ;
+    background-color: #303030 !important ;
     font-family: 'Playfair Display', serif !important;
 }
 
 /*address area*/ 
 .bc-account-addresses button{ 
-    color: #708393 !important;
+    color: #303030 !important;
 
 }
 

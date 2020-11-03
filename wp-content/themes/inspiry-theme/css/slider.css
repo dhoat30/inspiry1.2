@@ -21,7 +21,6 @@
   height: 80vh;
   opacity: 0;
   transition: opacity 0.4s ease-in-out;
-
 }
 
 .slide.current {
@@ -46,31 +45,41 @@
   color: white;
   padding: 10px 0;
   max-width: 900px;
-  margin: 0 auto 10px auto;
+  margin: 0 auto 0px auto;
   
 }
+.slide .content a {
 
+  color: white;
+  margin: 0 auto 10px auto;
+  text-align: center;
+  display: block;
+  
+}
+.slide .content a:hover {
+text-decoration: underline;
+  
+}
 .slide.current .content {
   opacity: 1;
-  
   transition: all 0.7s ease-in-out 0.3s;
 }
 
-.buttons button#next {
+.slider-container .buttons button#next {
   position: absolute;
   top: 70%;
   right: 15px;
   z-index: 4;
 }
 
-.buttons button#prev {
+.slider-container .buttons button#prev {
   position: absolute;
   top: 70%;
   left: 15px;
   z-index: 4;
 }
 
-.buttons button {
+.slider-container .buttons button {
   border: 2px solid #fff;
   background-color: transparent;
   color: #fff;
@@ -79,8 +88,13 @@
   border-radius: 50%;
   outline: none;
 }
-
-.buttons button:hover {
+.slider-container i{ 
+  color: white;
+}
+.slider-container i:hover{ 
+  color: #333;
+}
+.slider-container .buttons button:hover {
   background-color: #fff;
   color: #333;
 }

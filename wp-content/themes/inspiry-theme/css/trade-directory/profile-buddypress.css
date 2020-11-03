@@ -8,7 +8,7 @@
     font-family: 'work-sans', sans-serif !important;
 }
 #buddypress a{ 
-    color: #708393;
+    color: #303030;
     font-weight: 500;
 }
 
@@ -44,7 +44,7 @@
     font-family: 'work-sans', sans-serif;
 }
 .bc-account-page .bc-wish-list-btn--new{ 
-    background:#708393 !important;
+    background:#303030 !important;
    
     padding: 10px 20px !important;
 }
@@ -69,7 +69,7 @@ button.bc-product-quick-view__close-button {
     letter-spacing: 1px;
 }
 .custom-wishlist-btn{ 
-    background:#708393 !important;
+    background:#303030 !important;
 }
 .custom-wishlist-btn:hover{ 
     background:#525659 !important;
@@ -85,12 +85,12 @@ button.bc-product-quick-view__close-button {
     padding: 13px 0 0 0;
 }
 .wpinv-item .print:hover{ 
-    background: #708393!important;
+    background: #303030!important;
     padding: 13px 0 0 0;
 }
 
 .wpinv-item-wpi-pending .pay{ 
-    background: #708393!important;
+    background: #303030!important;
     padding: 13px 0 0 0;
 }
 .wpinv-item-wpi-pending .pay:hover{ 
@@ -113,12 +113,12 @@ button.bc-product-quick-view__close-button {
 
 .wpi-g .label-success {
     background-color: #E9ECEF;
-    color: #708393;
+    color: #303030;
     font-weight: 400;
 }
 
 .wpinv-receipt-actions .print{ 
-    background-color: #708393;
+    background-color: #303030;
 }
 .wpinv-receipt-actions .print:hover{ 
     background-color: #525659;
@@ -149,7 +149,7 @@ font-weight: 500;
 
 /*subscriptions */ 
 .wpinv-sub-items .btn-primary{
-    background: #708393 !important;
+    background: #303030 !important;
     color: white !important;
     padding: 10px 0 0 0;
 }
@@ -174,14 +174,14 @@ font-weight: 500;
 
 /*settings */ 
 .user-pass1-wrap .button { 
-    border: 2px solid #708393 !important;
+    border: 2px solid #303030 !important;
 }
 .wp-generate-pw:hover{ 
     border: 2px solid #525659 !important;
 background: white !important;    
 }
 #buddypress .submit .auto { 
-    background: #708393 !important;
+    background: #303030 !important;
     display: inline-block !important;
 }
 #buddypress .submit .auto:hover { 
@@ -201,6 +201,6 @@ background: white !important;
 
 /*lsiting section */ 
 .gd_user_action i{ 
-    color: #708393 !important;
+    color: #303030 !important;
 }
 

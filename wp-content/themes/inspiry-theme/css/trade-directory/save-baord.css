@@ -28,7 +28,7 @@
     background-color: white;
 }
 .choose-board-container .choose-board{ 
-    border-bottom: 1px solid #708393;
+    border-bottom: 1px solid #303030;
     padding: 10px 10px;
     font-weight: 600;
     letter-spacing: 1px;
@@ -62,7 +62,7 @@
     cursor: pointer;
 }
 .choose-board-container ul li:hover{ 
-    color: #708393;
+    color: #303030;
 }
 
 .choose-board-container .create-new-board{ 
@@ -122,7 +122,7 @@
     padding: 20px 20px;
 }
 .project-save-form-container .form-underline{ 
-    border-top: 1px solid #708393;
+    border-top: 1px solid #303030;
     opacity: 50%;
 }
 .project-save-form-container form{ 
@@ -144,7 +144,7 @@
     font-family: 'work-sans', sans-serif;
 }
 .project-save-form-container form textarea{ 
-    border: 1px solid #708393 !important;
+    border: 1px solid #303030 !important;
     width: 300px;
     padding: 5px;
     font-family: 'work-sans', sans-serif;

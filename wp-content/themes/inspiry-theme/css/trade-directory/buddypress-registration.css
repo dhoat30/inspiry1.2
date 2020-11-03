@@ -17,10 +17,10 @@
 }
 
 .buddypress-wrap .bp-feedback.info .bp-icon:before{ 
-    background-color: #708393;
+    background-color: #303030;
 }
 .buddypress-wrap .bp-feedback.info .bp-icon{ 
-    background-color: #708393;
+    background-color: #303030;
 
 }
 
@@ -29,5 +29,5 @@
 }
 
 .buddypress-wrap .standard-form input[required]:invalid, .buddypress-wrap .standard-form select[required]:invalid, .buddypress-wrap .standard-form textarea[required]:invalid {
-    border-color: #708393;
+    border-color: #303030;
 }
