@@ -152,7 +152,30 @@ get_header();
                                 
         </div>                                
     </div>
+    <section class="brand-stripe">
+            <div class="flex">
+            <img src="<?php echo get_site_url();?>/wp-content/uploads/2020/11/CHRISTIANLACROIX-745.png" alt="Chirstian">
+            <img src="<?php echo get_site_url();?>/wp-content/uploads/2020/11/Logo-Variation-04-04-446.png" alt="logo">
+            <img src="<?php echo get_site_url();?>/wp-content/uploads/2020/11/cole_and_son_logo-500.png" alt="Cole and son">
+            <img src="<?php echo get_site_url();?>/wp-content/uploads/2020/11/BT_ny_logo_png-95.png" alt="Cole and son">
 
+            <img src="<?php echo get_site_url();?>/wp-content/uploads/2020/11/ANDREWMARTINLOGO-690.png" alt="Andrew Marting">
+            <img src="<?php echo get_site_url();?>/wp-content/uploads/2020/11/JohnDerian_Logo-534.png" alt="John Derian">
+            <img src="<?php echo get_site_url();?>/wp-content/uploads/2020/11/MrP_logo_Pos-252.png" alt="MRP Logo">
+            <img src="<?php echo get_site_url();?>/wp-content/uploads/2020/11/ENGBLADANDCOPNG-64.png" alt="Engblad">
+            <img src="<?php echo get_site_url();?>/wp-content/uploads/2020/11/BILLBEAUMONTLOGO-565.png" alt="Bill Beau">
+            <img src="<?php echo get_site_url();?>/wp-content/uploads/2020/11/HOOKEDONWALLS-287.png" alt="Hooked on Walls">
+            <img src="<?php echo get_site_url();?>/wp-content/uploads/2020/11/ARTE-539.png" alt="Arte">
+            <img src="<?php echo get_site_url();?>/wp-content/uploads/2020/11/png-663.png" alt="Furniture by Design">
+            <img src="<?php echo get_site_url();?>/wp-content/uploads/2020/11/loloi-rugs-logo-102.png" alt="Loloi">
+            <img src="<?php echo get_site_url();?>/wp-content/uploads/2020/11/t5a94ab2a9556b-mtg-logo-3v-778.png" alt="Furniture by Design">
+
+                <img src="<?php echo get_site_url();?>/wp-content/uploads/2020/11/Furniture-by-Design.png" alt="Furniture by Design">
+
+
+
+            </div>
+    </section>
     <div class="row-container featured-project-section">
         <div class="underline-dg"></div>
 
@@ -188,9 +211,6 @@ get_header();
     </div>
 
     <div class="row-container featured-trade-section">
-        
-       
-
         <div class="flex">
             <div class="card">
                 <div class="column-s-font center-align ft-wt-med">TRADE PROFESSIONALS</div>
