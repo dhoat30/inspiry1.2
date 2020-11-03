@@ -144,14 +144,19 @@ get_header();
                 <?php 
 
             }
+            wp_reset_postdata();
             ?>
             
 
           
                                 
         </div>                                
-        
+    </div>
 
+    <div class="row-container featured-project-section">
+        <div class="underline-dg"></div>
+
+        <div class="lg-font-sz center-align">Featured Project</div>
     </div>
 
 
