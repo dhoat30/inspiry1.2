@@ -11,10 +11,11 @@ import DesignBoardAjax from './modules/DesignBoardAjax';
 import WishlistAjaxBp from './modules/WishlistAjaxBp';
 import FacetWp from './modules/FacetWp';  
 import LogIn from './modules/LogIn'; 
+import Overlay from './modules/overlay'; 
 
 
 window.onload = function() {
-
+    const overlay = new Overlay();
     const designBoardSinglePage = new DesignBoard(); 
    const designBoardSaveBtn = new DesignBoardSaveBtn();
 

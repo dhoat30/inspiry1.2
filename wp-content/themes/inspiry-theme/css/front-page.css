@@ -174,7 +174,7 @@ padding: 20px 20px;
 .featured-project-section{ 
     position: relative;
     top: 100px;
-    margin-bottom: 150px;
+    padding-bottom: 150px;
 }
 .featured-project-section .lg-font-sz{ 
  background-color: white;
@@ -185,10 +185,136 @@ padding: 20px 20px;
     transform: translateX(-50%);
     text-transform: uppercase;
 }
-.flex{ 
+.featured-project-section .flex{ 
     margin-top: 100px;
     display: flex; 
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
 }
+.featured-project-section .flex .card{ 
+    width: 100%;
+    margin: 20px;
+    position: relative;
+    cursor: pointer;
+    max-width: 700px;
+}
+.featured-project-section .flex img{ 
+    width: 100%;
+    height: 50vh ;
+    object-fit: cover;
+    transition: 100ms;
+    transition-timing-function: ease-in-out;
+}
+.featured-project-section .flex img:hover{ 
+    width: 100%;
+    height: 50vh ;
+    object-fit: cover;
+    border: 8px solid #EFEAE5;
+}
+
+.hover-overlay{ 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: 300ms;
+    transition-timing-function: ease-in-out;
+  background-color: #EFEAE5;
+  opacity: 0;
+}
+
+.featured-project-section .flex .column-s-font{ 
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+}
+@media(max-width: 500px){ 
+    .featured-project-section .flex img{ 
+        width: 100%;
+        height: 50vh ;
+        object-fit: cover;
+        transition: 100ms;
+        transition-timing-function: ease-in-out;
+    }
+}
+
+/*trade proffesionials */ 
+.featured-trade-section .flex{ 
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.featured-trade-section .flex .underline-dg{ 
+    width: 60px;
+    margin: 20px auto 50px auto;
+}
+.featured-trade-section .flex .card{ 
+   margin: 20px;
+   width: 400px;
+}
+.featured-trade-section .flex .card .gallery{ 
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+ }
+ .featured-trade-section .logo{
+     width: 350px;
+     margin: -50px auto 0 auto;
+     padding: 20px 20px;
+     background-color: white !important;
+     position: relative;
+ }
+ .featured-trade-section .logo  img{
+    margin: 0 auto;
+    display: block;
+    width: 150px !important;
+    height: 120px !important;
+    object-fit: cover;
+}
+.featured-trade-section .flex .card .paragraph{ 
+    line-height: 1.7em;
+ }
+.featured-trade-section .flex .card:nth-child(1){ 
+    background: #EFEAE5;
+    padding: 50px 20px 20px 20px;
+ }
+.featured-trade-section .flex .card .button{ 
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 30px;
+ }
+ .featured-trade-section .flex table{ 
+     margin-top: 20px;
+ }
+ .featured-trade-section .flex table, th, td {
+   
+    border-collapse: collapse;
+  }
+  .featured-trade-section .flex th, td {
+    padding: 0px 5px 0 5px;
+    text-align: left;    
+    font-family: 'work sans', sans-serif !important;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 1px;
+  }
+  .featured-trade-section .flex th{ 
+      color:#999999; 
+  }
+  .featured-trade-section .flex td{ 
+    font-family: 'work sans', sans-serif;
+}
+  .featured-trade-section .flex td a{ 
+    font-family: 'work sans', sans-serif;
+}
+.featured-trade-section .flex td a:hover{ 
+text-decoration: underline;
+}
+ 
+ 

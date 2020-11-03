@@ -192,11 +192,12 @@
     }
     .btn-dk-green{ 
         background-color: #303030;
-        color: white;
+        color: white !important;
     }
     .btn-dk-green:hover{ 
-        background-color: #525659;
-        color: white;
+        background-color: white;
+        color: #303030 !important;
+        border: 2px solid #303030 !important; 
     }
 
 
@@ -249,8 +250,7 @@
     }
     .rm-txt-dec:link{ 
         text-decoration: none;
-       
-        
+
     }
     .rm-txt-dec:hover{ 
         text-decoration: none;

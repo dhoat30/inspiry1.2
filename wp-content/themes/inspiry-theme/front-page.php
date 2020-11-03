@@ -157,7 +157,122 @@ get_header();
         <div class="underline-dg"></div>
 
         <div class="lg-font-sz center-align">Featured Project</div>
+
+        <div class="flex">
+            <?php 
+                $argsPorject = array(
+                    'post_type' => 'gd_project', 
+                    'posts_per_page' => 4
+                );
+                $project = new WP_Query( $argsPorject );
+    
+                while($project->have_posts()){ 
+                    $project->the_post(); 
+                    ?> 
+                            
+                       
+                    <div class="card">
+                         <a href="<?php the_permalink();?>">
+                            <div>
+                                <img src="<?php echo get_the_post_thumbnail_url();?>" alt="">
+                                <div class="hover-overlay"></div>
+                                <div class="column-s-font"><?php the_title();?></div>
+                            </div>
+                        </a>
+                    </div>
+                    <?php
+                    } 
+                    wp_reset_postdata();
+            ?>
+        </div>
     </div>
+
+    <div class="row-container featured-trade-section">
+        
+       
+
+        <div class="flex">
+            <div class="card">
+                <div class="column-s-font center-align ft-wt-med">TRADE PROFESSIONALS</div>
+                <div class="underline-dg center-align"></div>
+                <div class="paragraph center-align">Inspiry Trade <br>
+                    List your services with and be apart of our 'Be Inspired' page with your featured projects.
+                    <br>Request an information pack<br>
+                    trade@inspiry.co.nz
+                </div>         
+                <a href="<?php echo get_site_url();?>/location" class="rm-txt-dec button btn-dk-green">View our full list of Trade Professionals</a>
+            </div>            
+          
+            <?php 
+                $argsTrade = array(
+                    'post_type' => 'gd_place', 
+                    'posts_per_page' => 2
+                );
+                $trade = new WP_Query( $argsTrade );
+    
+                while($trade->have_posts()){ 
+                    $trade->the_post(); 
+                    ?> 
+                            
+                       
+                    <div class="card">
+                         <img class="gallery" src="<?php echo get_the_post_thumbnail_url(null, 'full');?>" alt="Trade Proffesionals">
+                         <div class="logo">
+                             
+                                <?php
+                                $variable =  do_shortcode('[gd_post_meta key="logo" show="value-raw" no_wrap="1" alignment="left"]');
+                                $variable = substr($variable, 0, strpos($variable, "|"));
+                                ?>
+                                <img src="<?php echo  $variable?>" alt="">
+                         </div>
+                         <div class="font-s-med center-align regular light-grey"><?php the_title();  ?></div>
+                        
+                         <table>
+                             <tr>
+                                 <th>LOCATION:</th>
+                                 
+                                 <td><?php echo do_shortcode('[gd_post_meta key="city" show="value-raw" no_wrap="1" alignment="left"]');?></td>
+                             </tr>
+                             <tr>
+                              <th>PHONE:</th>
+                              
+                              <td>
+                              <a class="rm-txt-dec" href='tel:<?php echo do_shortcode('[gd_post_meta key="phone" show="value-raw"  no_wrap="1" alignment="left"]');?>'>
+    
+                              <?php echo do_shortcode('[gd_post_meta key="phone" show="value-raw" no_wrap="1" alignment="left"]');?>    </td>
+                              </a> 
+                            </tr>
+
+                             <tr>
+                                 <th>EMAIL:</th>
+
+                                 <td>
+                                 <a class="rm-txt-dec" href='mailto:<?php echo do_shortcode('[gd_post_meta key="email" show="value-raw"  no_wrap="1" alignment="left"]');?>'>
+    
+                                 <?php echo do_shortcode('[gd_post_meta key="email" show="value-raw" no_wrap="1" alignment="left"]');?>
+                                 </a> 
+                                </td>
+                                 
+                             </tr>
+
+                             <tr>
+                                 <th>WEBSITE:</th>
+                                 <td>
+                                 <a class="rm-txt-dec" href='mailto:<?php echo do_shortcode('[gd_post_meta key="email" show="value-raw"  no_wrap="1" alignment="left"]');?>'>
+
+                                 <?php echo do_shortcode('[gd_post_meta key="website" show="value-strip" no_wrap="1" alignment="left"]');?>
+                                 </a> 
+                                </td>
+                             </tr>
+                         </table>
+
+                    </div>
+                    <?php
+                    } 
+            ?>
+        </div>
+    </div>
+
 
 
 
