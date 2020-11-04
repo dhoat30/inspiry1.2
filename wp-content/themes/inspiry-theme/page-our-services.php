@@ -61,6 +61,18 @@ get_header();
                                 
         </div>                                
     </div>
+
+    <section class="service-page">
+        <div class="hero-section"  style='background: url("<?php echo get_site_url(); ?>/wp-content/uploads/2020/11/HELP.jpg") no-repeat center top/cover;'>
+            <div class="hero-overlay"></div>
+        </div>    
+        <div class="stamp content">
+            <i class="fal fa-home-alt"></i>
+            <div class="section-ft-size">INSPIRY</div>
+            <div class="font-s-med">Interior Design Services</div>
+            <a class="rm-txt-dec button btn-dk-green" href="<?php echo get_site_url();?>">MAKE AN APPOINTMENT</a>
+        </div>
+    </section>
   
 
 <?php
