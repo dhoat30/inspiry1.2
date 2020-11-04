@@ -7,6 +7,7 @@
     cursor: pointer;
     color: #C09F93;
     font-weight: 300 !important;
+    background:#F8F7F3;
 }
 
 .design-board-save-btn-container i:hover{ 

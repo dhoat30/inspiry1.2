@@ -1,7 +1,76 @@
-ul.geodir-category-list-view>li{ 
-    border-bottom: none; 
+.trade-directory{ 
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
-ul.geodir-category-list-view li>div{ 
-    padding: 20px 0 0 0;
+.trade-directory>div:nth-child(1){ 
+    width: 20%;
+}
+.trade-directory>div:nth-child(2){ 
+    width: 80%;
+}
+.trade-directory>div { 
+    margin: 20px;
 }
 
+.trade-directory .main-cards .flex{ 
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 10px;
+}
+.trade-directory .main-cards .flex .card{ 
+    width: 300px;
+    margin: 20px 30px 20px 0;
+    transition: 800ms;
+    transition-timing-function: ease-in-out;
+    position: relative;
+}
+.trade-directory .main-cards .flex .card:hover{ 
+    transform: translateY(-10px);
+}
+.trade-directory .main-cards .flex .logo{ 
+    background: #EFEAE5;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+   
+}
+.trade-directory .main-cards .flex .card .link .website-link{ 
+    text-decoration: none;
+    padding: 5px 10px;
+    background-color: white;
+    border-radius: 20px;
+   position: relative;
+    top: -40px;
+    left: 10px;
+    opacity:0;
+    transition: 800ms;
+    transition-timing-function: ease-in-out;
+    cursor: pointer;
+}
+.trade-directory .main-cards .flex .card .link .website-link:hover{ 
+    text-decoration: underline;
+}
+
+.trade-directory .main-cards .flex .design-board-save-btn-container{ 
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    opacity: 0;
+    transition: 800ms;
+    transition-timing-function: ease-in-out;
+}
+
+
+
+.trade-directory .main-cards .flex .title{ 
+   
+    cursor: pointer;
+}
+.trade-directory .main-cards .flex .title:hover{ 
+text-decoration: underline;
+}

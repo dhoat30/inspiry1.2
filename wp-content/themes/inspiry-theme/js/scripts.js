@@ -12,9 +12,11 @@ import WishlistAjaxBp from './modules/WishlistAjaxBp';
 import FacetWp from './modules/FacetWp';  
 import LogIn from './modules/LogIn'; 
 import Overlay from './modules/overlay'; 
+import LocationPage from './modules/LocationPage'; 
 
 
 window.onload = function() {
+    const locationPage = new LocationPage(); 
     const overlay = new Overlay();
     const designBoardSinglePage = new DesignBoard(); 
    const designBoardSaveBtn = new DesignBoardSaveBtn();
