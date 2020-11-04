@@ -73,6 +73,30 @@ get_header();
             <a class="rm-txt-dec button btn-dk-green" href="<?php echo get_site_url();?>/consultation">Book Now</a>
         </div>
     </section>
+
+    <section class="testimonials">
+        <div class="flex">
+            <div>
+                <div class="hero-section"  style='background: url("<?php echo get_site_url(); ?>/wp-content/uploads/2020/11/IMG_8586_large.jpg") no-repeat center top/cover;'>
+                    <div class="hero-overlay"></div>
+                </div>
+
+                <div class="content">
+                    <div class="white center-align lg-font-sz">Testimonials</div>
+                </div>
+            </div>
+            <div class="quote">
+                <i class="fas fa-quote-left"></i>
+                <div class='background beige-color-bc'>
+                    <div class="column-s-font regular">Corrine has a great sense of style, taste & knew what i wanted. She helped me so much and inspired me with lights, drapes, furniture and painting. She took all the pressure away and i love everything.</div>
+                    <span class="work-sans-fonts ft-wt-med font-s-med">Mary Jaques</span>
+                </div>
+                
+            </div>
+
+            
+        </div>
+    </section>
   
 
 <?php
