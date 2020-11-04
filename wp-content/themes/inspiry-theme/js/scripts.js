@@ -13,9 +13,10 @@ import FacetWp from './modules/FacetWp';
 import LogIn from './modules/LogIn'; 
 import Overlay from './modules/overlay'; 
 import LocationPage from './modules/LocationPage'; 
-
+import TopNav from './modules/TopNav';
 
 window.onload = function() {
+    const topnav = new TopNav(); 
     const locationPage = new LocationPage(); 
     const overlay = new Overlay();
     const designBoardSinglePage = new DesignBoard(); 

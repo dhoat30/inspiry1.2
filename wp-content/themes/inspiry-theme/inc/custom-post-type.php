@@ -45,6 +45,7 @@ function register_custom_type2(){
    )
    );
    
+   
 
 }
 

@@ -5,6 +5,8 @@
        array(
            "top-navbar" => "Top Navbar (under logo)",
            "design-services" => "Design Service (under logo)",
+           "Design-resources" => "Design Resoruces (under Logo)",
+           "b2b-services" => "B2B Services (under logo)",
           "inspiry_main_menu" => "Inspiry Main Menu",
           "inspiry_footer_menu" => "Inspiry Footer Menu", 
           "footer-trade-menu" => "Footer Trade Menu", 
