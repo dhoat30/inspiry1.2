@@ -5,11 +5,11 @@ get_header();
         <div class="hero-section"  style='background: url("<?php echo get_site_url(); ?>/wp-content/uploads/2020/11/AdobeStock_171006496.jpg") no-repeat center top/cover;'>
             <div class="hero-overlay"></div>
         </div>    
-        <div class="stamp content">
+        <div class="stamp hero-content">
             <i class="fal fa-home-alt"></i>
             <div class="section-ft-size">INSPIRY</div>
             <div class="font-s-med">Interior Design Services</div>
-            <a class="rm-txt-dec button btn-dk-green" href="<?php echo get_site_url();?>">MAKE AN APPOINTMENT</a>
+            <a class="rm-txt-dec button btn-dk-green" href="<?php echo get_site_url();?>/consultation">MAKE AN APPOINTMENT</a>
         </div>
     </section>
 
@@ -66,11 +66,11 @@ get_header();
         <div class="hero-section"  style='background: url("<?php echo get_site_url(); ?>/wp-content/uploads/2020/11/HELP.jpg") no-repeat center top/cover;'>
             <div class="hero-overlay"></div>
         </div>    
-        <div class="stamp content">
-            <i class="fal fa-home-alt"></i>
-            <div class="section-ft-size">INSPIRY</div>
-            <div class="font-s-med">Interior Design Services</div>
-            <a class="rm-txt-dec button btn-dk-green" href="<?php echo get_site_url();?>">MAKE AN APPOINTMENT</a>
+        <div class="content">
+            
+            <div class="section-ft-size white center-align">Free half an hour consultation </div>
+         
+            <a class="rm-txt-dec button btn-dk-green" href="<?php echo get_site_url();?>/consultation">Book Now</a>
         </div>
     </section>
   
