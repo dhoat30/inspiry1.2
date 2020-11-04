@@ -52,3 +52,10 @@
 }
 
 
+#mega-menu-inspiry_main_menu{ 
+    border-bottom: 1px solid black !important;
+    border-top: 1px solid black !important;
+}
+.top-navbar{
+    margin: 0 !important;
+}

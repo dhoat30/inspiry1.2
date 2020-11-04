@@ -4,28 +4,22 @@ class TopNav{
         this.events(); 
     }
     events(){ 
-        $('#top-navbar a').hover(this.showSubNav, this.hideSubnav); 
-        $('.design-services').hover(this.showSubNav); 
+        $('#top-navbar a').mouseover(this.showSubNav); 
+       
     }
     showSubNav(e){ 
-        let designBoardHover = $(e.target).closest('#design-services'); 
-        console.log(designBoardHover)
+      
         let linkHTML = $(e.target).html();
         if(linkHTML == 'Design Services'){
             $('.design-services').show(300);
+            $("body > *").not(e.target).closest('.top-navbar').mouseout(()=>{
+                $('.design-services').hide(1000);
+            }); 
         }
         
     }
     hideSubnav(e){ 
-        console.log(e)
-        
-
-        let designBoardHover = $(e.target).closest('#design-services'); 
-        console.log(designBoardHover)
-        let linkHTML = $(e.target).html();
-        if(linkHTML == 'Design Services'){
             $('.design-services').hide(1000);
-        }
         
     }
 }
