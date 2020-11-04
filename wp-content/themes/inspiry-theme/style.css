@@ -6,8 +6,10 @@
     version: 1.1
 */
 @import "css/header.css"; 
+@import 'css/navbar/top-nav.css';
 @import "css/footer.css";
 @import "css/front-page.css";
+@import "css/our-services.css";
 
 @import "css/product-page.css";
 @import "css/product-page-custom-styling.css"; 
@@ -34,6 +36,7 @@
 @import "css/trade-directory/archive-items.css";
 @import "css/trade-directory/detail-page.css";
 @import "css/trade-directory/gd-project-detail.css"; 
+@import "css/trade-directory/project-archive-gd.css";
 
 @import "css/trade-directory/inspiry-trade.css";
 @import "css/trade-directory/gd-list.css";
@@ -63,7 +66,21 @@
 	}
     .underline-dg{ 
         border-bottom: solid 1px #474747;
-	}
+    }
+    .heading-line-through{ 
+        position: relative;
+        top: 100px;
+        margin-bottom: 150px;
+    }
+    .heading-line-through .lg-font-sz{ 
+        background-color: white;
+       padding: 20px 20px;
+           position: absolute;
+           left: 50%;
+           top: -65px;
+           transform: translateX(-50%);
+           text-transform: uppercase;
+       }
 	.body-container{
         max-width: 1600px;
         margin: 0 auto;
@@ -174,7 +191,7 @@
    
 	.button{ 
 		border-bottom: none !important;
-		font-size: 16px;
+		font-size: 14px;
 		letter-spacing: 0.2em;
 		line-height: 1.3em;
 		padding: 18px 30px 18px 30px !important;

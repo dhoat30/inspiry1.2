@@ -12,6 +12,7 @@ require get_theme_file_path('/inc/buddypress-design-boards.php');
 require get_theme_file_path('/inc/boards-route.php');
 require get_theme_file_path('/inc/custom-post-type.php');
 
+require get_theme_file_path('/inc/nav-registeration.php');
 
 
  //enqueue scripts
@@ -40,26 +41,7 @@ require get_theme_file_path('/inc/custom-post-type.php');
 add_action( "wp_enqueue_scripts", "inspiry_scripts" ); 
 
 
- //add nav menu
- function inspiry_config(){ 
-    register_nav_menus( 
-       array(
-          "inspiry_main_menu" => "Inspiry Main Menu",
-          "inspiry_footer_menu" => "Inspiry Footer Menu", 
-          "footer-trade-menu" => "Footer Trade Menu", 
-          "footer-help-info" => "Footer Help & info", 
-          "footer-ideas-inspiration" => "Footer Ideas & Inspiration", 
-          "footer-store" => "Footer Store", 
-          "footer-ways-to-shop" => "Footer Ways To Shop"
-       )
-       );  
 
-       add_theme_support( "title-tag");
-
-         add_post_type_support( "gd_list", "thumbnail" );      
-  }
- 
-  add_action("after_setup_theme", "inspiry_config", 0);
 
   //admin bar
   if ( ! current_user_can( "manage_options" ) ) {
@@ -126,6 +108,25 @@ function remove_private_prefix($title) {
 }
 add_filter("the_title", "remove_private_prefix");
 
+//facet wp
+function fwp_archive_per_page( $query ) {
+   if ( is_tax( 'category' ) ) {
+       $query->set( 'posts_per_page', 20 );
+   }
+}
+add_filter( 'pre_get_posts', 'fwp_archive_per_page' );
+
+
+function fwp_home_custom_query( $query ) {
+    if ( $query->is_home() && $query->is_main_query() ) {
+        $query->set( 'post_type', [ 'post', 'product' ] );
+        $query->set( 'orderby', 'title' );
+        $query->set( 'order', 'ASC' );
+    }
+}
+add_filter( 'pre_get_posts', 'fwp_home_custom_query' );
+
+//navbar
 class CSS_Menu_Walker extends Walker {
 
 	var $db_fields = array('parent' => 'menu_item_parent', 'id' => 'db_id');

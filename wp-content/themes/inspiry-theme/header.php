@@ -71,16 +71,30 @@
                <?php  echo  do_shortcode('[ivory-search id="7686" title="Default Search Form"]');?>
             </div>
         </div>
+
+        <!--logo -->
         <div class="logo-container">
             <img src="<?php echo get_site_url(); ?>/wp-content/uploads/2020/08/inspiry_logo_transparent.png" alt="Inspiry Logo">
         </div>
+
+        <!--top navbar --> 
+        <nav class="navbar margin-elements">
+            <?php
+               wp_nav_menu(
+                    array(
+                        'theme_location' => 'top-navbar', 
+                        'container_id' => 'top-navbar'
+                    ));
+            ?>
+        </nav>
+
+        <!--Shop  navbar--> 
         <nav class="navbar margin-elements">
             <?php
                wp_nav_menu(
                     array(
                         'theme_location' => 'inspiry_main_menu', 
-                        'container_id' => 'cssmenu', 
-                        'walker' => new CSS_Menu_Walker()
+                        'container_id' => 'cssmenu'
                     ));
             ?>
         </nav>

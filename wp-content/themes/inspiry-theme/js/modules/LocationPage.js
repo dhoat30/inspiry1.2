@@ -1,14 +1,16 @@
 let $ = jQuery;
 class LocationPage{ 
     constructor(){ 
-        this.events(); 
+        this.events(); //window.location.hostname
     }
     events(){ 
+        let url = [];
         $('.trade-directory .main-cards .flex .card').hover(this.showElements, this.hideElements);
+         url = $(document).find('.trade-directory .main-cards .flex .card .logo img').attr('data-src');
+         console.log(url);
     }
 
     showElements(e){ 
-        console.log($(e.target).closest('.card').find('.website-link').html());
         $(e.target).closest('.card').find('.website-link').css('opacity','1'); 
         $(e.target).closest('.card').find('.design-board-save-btn-container').css('opacity','1'); 
 
