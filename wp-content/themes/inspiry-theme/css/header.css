@@ -17,7 +17,7 @@
     cursor: pointer;
 }
 .beige-color-bc{ 
-    background-color:#E9ECEF; 
+    background-color:#F8F7F3; 
 }
 
 .logo-container{ 
@@ -26,6 +26,9 @@
 .logo-container img{ 
     display: block; 
     margin: 0 auto;
+    width: 100%; 
+    max-width: 350px;
+    min-width: 250px;
 }
 .navbar ul{ 
     display: flex; 
@@ -54,7 +57,7 @@
  position: relative; 
 }
 .my-account-nav{
-    background-color: #E9ECEF;
+    background-color: #F8F7F3;
     width: 150px;
     display: none;
     position: absolute;

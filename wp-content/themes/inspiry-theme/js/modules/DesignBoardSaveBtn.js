@@ -144,9 +144,12 @@
     }
     //delete board
     deleteBoard(e){
+       //
        
-        let boardID = e.delegateTarget.dataset.pinid; 
+        let boardID = $(e.target).attr('data-pinid');
        console.log(boardID);
+       $(e.target).html('<div class="loader" style="display:block;"></div> ');
+
       $.ajax({
        beforeSend: (xhr)=>{
            xhr.setRequestHeader('X-WP-NONCE', inspiryData.nonce)
@@ -175,10 +178,14 @@
     deletePin(e){
        console.log('delete is working'); 
 
-       let pinID = e.delegateTarget.dataset.pinid; 
+       //find a pin id 
+   
+       let pinID = $(e.target).attr('data-pinid')
 
-        console.log(pinID);
+       $(e.target).html('<div class="loader" style="display:block;"></div> ');
 
+
+     
        $.ajax({
         beforeSend: (xhr)=>{
             xhr.setRequestHeader('X-WP-NONCE', inspiryData.nonce)

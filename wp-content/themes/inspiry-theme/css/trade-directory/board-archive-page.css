@@ -5,6 +5,10 @@
 .board-archive-title{ 
     margin-top: 0 !important;
 }
+.board-page .img-div{ 
+    width: 250px; 
+    height: 300px;
+}
 .board-page .img-div img{ 
     width: 250px; 
     height: 300px;
@@ -80,7 +84,7 @@
     position: absolute;
     top: -60px; 
     left: 20px;
-    background: #E9ECEF;
+    background: #F8F7F3;
     border-radius: 50%;
     padding: 10px;
 }
@@ -97,4 +101,8 @@
 }
 .design-board-card:hover{
     color: #525659 !important; 
+}
+
+.gd-badge i{ 
+    color: white !important;
 }

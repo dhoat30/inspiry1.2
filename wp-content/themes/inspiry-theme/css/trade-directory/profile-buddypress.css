@@ -13,13 +13,13 @@
 }
 
 .user-subnav{ 
-    background: #E9ECEF !important;
+    background: #F8F7F3 !important;
 }
 .bp-single-vert-nav .bp-navs.vertical li.selected a{ 
-    background: #E9ECEF !important;
+    background: #F8F7F3 !important;
 }
 .vertical .users-nav a:hover{ 
-    background: #E9ECEF !important;
+    background: #F8F7F3 !important;
 }
 
 /*tabs */ 
@@ -30,7 +30,7 @@
 
 /*address */ 
 .bc-account-addresses__item{ 
-    background: #E9ECEF !important;
+    background: #F8F7F3 !important;
 }
 .bc-account-addresses__add-new{ 
     background: white !important;
@@ -81,7 +81,7 @@ button.bc-product-quick-view__close-button {
 }
 /*trade invoices*/ 
 .wpinv-item .print{ 
-    background:#E9ECEF !important;
+    background:#F8F7F3 !important;
     padding: 13px 0 0 0;
 }
 .wpinv-item .print:hover{ 
@@ -112,7 +112,7 @@ button.bc-product-quick-view__close-button {
 }
 
 .wpi-g .label-success {
-    background-color: #E9ECEF;
+    background-color: #F8F7F3;
     color: #303030;
     font-weight: 400;
 }

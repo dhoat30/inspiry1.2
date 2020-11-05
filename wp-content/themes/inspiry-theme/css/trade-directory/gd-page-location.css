@@ -95,3 +95,19 @@
 .trade-directory .main-cards .flex .title:hover{ 
 text-decoration: underline;
 }
+
+
+
+/*styling for index.php */ 
+.index-page .gd-badge-meta{ 
+    display: none;
+}
+.index-page .geodir-post-content-container { 
+    display: none;
+}
+.index-page .geodir-loop-actions-container { 
+    display: none;
+}
+.index-page .geodir-notifications { 
+    display:  none;
+}

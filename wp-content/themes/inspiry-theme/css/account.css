@@ -36,7 +36,7 @@
 .bc-subnav__list a{ 
     background-color: #303030; 
     padding: 10px 20px; 
-    color: #E9ECEF !important;
+    color: #F8F7F3 !important;
     font-family: 'Playfair Display', serif;
 }
 
@@ -46,7 +46,7 @@
 }
  .bc-wish-list-btn--new{ 
     color: white !important; 
-    background: #E9ECEF !important; 
+    background: #F8F7F3 !important; 
 }
 .bc-wish-list-header-title{ 
     margin-left: 0 !important;
@@ -99,10 +99,10 @@
 /*log in page*/ 
 .button-primary{ 
     background-color: #303030 !important;
-    color: #E9ECEF;
+    color: #F8F7F3;
 }
 .bc-btn--register{
-    color: #E9ECEF;
+    color: #F8F7F3;
     background-color:#303030 !important;
 }
 .bc-account-login__form-inner a{ 

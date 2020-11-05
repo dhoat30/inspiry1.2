@@ -14,8 +14,10 @@ import LogIn from './modules/LogIn';
 import Overlay from './modules/overlay'; 
 import LocationPage from './modules/LocationPage'; 
 import TopNav from './modules/TopNav';
+import GeoTradeSearch from './modules/GeoTradeSearch';
 
 window.onload = function() {
+    const geoTradeSearch = new GeoTradeSearch(); 
     const topnav = new TopNav(); 
     const locationPage = new LocationPage(); 
     const overlay = new Overlay();

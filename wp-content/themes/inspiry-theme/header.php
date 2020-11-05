@@ -74,7 +74,9 @@
 
         <!--logo -->
         <div class="logo-container">
-            <img src="<?php echo get_site_url(); ?>/wp-content/uploads/2020/08/inspiry_logo_transparent.png" alt="Inspiry Logo">
+            <a href="<?php echo get_site_url(); ?>">
+                <img src="<?php echo get_site_url(); ?>/wp-content/uploads/2020/11/Inspiry_Logo-transparent-1.png" alt="Inspiry Logo">
+            </a>
         </div>
 
         <!--top navbar --> 

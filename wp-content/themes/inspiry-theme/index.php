@@ -1,13 +1,13 @@
 <?php 
 get_header(); 
 ?>
-<div class="body-container general-page-template">
+<div class="body-container index-page">
     <div class="row-container">
         <?php 
             while(have_posts()){
                 the_post(); 
                 ?>
-                    <h1><?php the_title();?></h1>
+                    <h1 class="lg-font-sz regular center-align"><?php the_title();?></h1>
                     <div>
                         <?php the_content();?>
                     </div>
