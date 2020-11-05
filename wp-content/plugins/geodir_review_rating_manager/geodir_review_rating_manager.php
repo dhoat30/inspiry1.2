@@ -11,7 +11,7 @@
  * Plugin Name:       GeoDirectory Review Rating Manager
  * Plugin URI:        https://wpgeodirectory.com/downloads/multiratings-and-reviews/
  * Description:       With our slick multi-ratings and reviews manager, you can turn your site into a professional reviews directory.
- * Version:           2.1.0.0
+ * Version:           2.1.0.1
  * Requires at least: 4.9
  * Requires PHP:      5.6
  * Author:            AyeCode Ltd
@@ -29,7 +29,7 @@ if ( !defined( 'WPINC' ) )
     exit( 'Do NOT access this file directly: ' . basename( __FILE__ ) );
 
 // Define Constants
-define( 'GEODIR_REVIEWRATING_VERSION', '2.1.0.0' );
+define( 'GEODIR_REVIEWRATING_VERSION', '2.1.0.1' );
 if ( ! defined( 'GEODIR_REVIEWRATING_MIN_CORE' ) ) {
     define( 'GEODIR_REVIEWRATING_MIN_CORE', '2.1.0.0' );
 }

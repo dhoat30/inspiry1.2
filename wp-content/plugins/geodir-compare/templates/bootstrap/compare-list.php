@@ -1,4 +1,19 @@
 <?php
+/**
+ * Compare listings list
+ *
+ * This template can be overridden by copying it to yourtheme/geodirectory/bootstrap/compare-list.php.
+ *
+ * HOWEVER, on occasion GeoDirectory will need to update template files and you
+ * (the theme developer) will need to copy the new files to your theme to
+ * maintain compatibility. We try to do this as little as possible, but it does
+ * happen. When this occurs the version of the template file will be bumped and
+ * the readme will list any important changes.
+ *
+ * @see        https://docs.wpgeodirectory.com/article/346-customizing-templates/
+ * @package    GeoDir_Compare
+ * @version    2.1.0.0
+ */
 
 defined( 'ABSPATH' ) || exit;
 
@@ -49,11 +64,11 @@ defined( 'ABSPATH' ) || exit;
 
 
             //Css class
-            $class = 'text-center geodir-compare-listing-header geodir-compare-' . $listing->post_id;
+            $class = 'text-center geodir-compare-listing-header geodir-compare-post geodir-compare-' . $listing->post_id;
 
             //Remove button
             $remove_button = $allow_remove ? sprintf(
-                '<span onclick="geodir_compare_remove_from_table(\'%s\', \'%s\')" class="geodir-compare-table-remove-listing c-pointer py-3 px-5" data-toggle="tooltip" title="'.__('Remove', 'geodir-compare').'"><i  class="fa fa-close"></i></span>',
+                '<span onclick="geodir_compare_remove_from_table(\'%s\', \'%s\')" class="geodir-compare-table-remove-listing c-pointer py-3 px-5" data-toggle="tooltip" title="'.__('Remove', 'geodir-compare').'"><i title="' . esc_attr__( 'Remove', 'geodir-compare' ) . '" class="fas fa-times-circle" aria-hidden="true"></i></span>',
                 $listing->post_id,
                 $post_type
             ) : '';

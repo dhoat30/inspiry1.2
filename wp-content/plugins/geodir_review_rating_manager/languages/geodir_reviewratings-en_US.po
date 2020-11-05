@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: GeoDirectory Review Rating Manager 2.1.0.0\n"
+"Project-Id-Version: GeoDirectory Review Rating Manager 2.1.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-07 16:45+0530\n"
-"PO-Revision-Date: 2020-10-07 16:45+0530\n"
+"POT-Creation-Date: 2020-10-27 21:52+0530\n"
+"PO-Revision-Date: 2020-10-27 21:52+0530\n"
 "Last-Translator: Stiofan <info@geotheme.com>\n"
 "Language-Team: AyeCode Ltd <contact@ayecode.io>\n"
 "Language: en_US\n"
@@ -374,7 +374,7 @@ msgid "Newest"
 msgstr ""
 
 #: admin/settings/class-geodir-reviews-fields-settings.php:247
-#: public/class-geodir-review-rating-manager-public.php:728
+#: public/class-geodir-review-rating-manager-public.php:740
 msgid "Oldest"
 msgstr ""
 
@@ -733,47 +733,47 @@ msgstr ""
 msgid "Remove"
 msgstr ""
 
-#: public/class-geodir-review-rating-manager-public.php:727
+#: public/class-geodir-review-rating-manager-public.php:739
 msgid "Latest"
 msgstr ""
 
-#: public/class-geodir-review-rating-manager-public.php:729
+#: public/class-geodir-review-rating-manager-public.php:741
 msgid "Lowest Rating"
 msgstr ""
 
-#: public/class-geodir-review-rating-manager-public.php:730
+#: public/class-geodir-review-rating-manager-public.php:742
 msgid "Highest Rating"
 msgstr ""
 
-#: public/class-geodir-review-rating-manager-public.php:776
+#: public/class-geodir-review-rating-manager-public.php:788
 msgid "Least Images"
 msgstr ""
 
-#: public/class-geodir-review-rating-manager-public.php:777
+#: public/class-geodir-review-rating-manager-public.php:789
 msgid "Highest Images"
 msgstr ""
 
-#: public/class-geodir-review-rating-manager-public.php:781
+#: public/class-geodir-review-rating-manager-public.php:793
 msgid "Lowest Reviews"
 msgstr ""
 
-#: public/class-geodir-review-rating-manager-public.php:782
+#: public/class-geodir-review-rating-manager-public.php:794
 msgid "Highest Reviews"
 msgstr ""
 
-#: public/class-geodir-review-rating-manager-public.php:1121
+#: public/class-geodir-review-rating-manager-public.php:1133
 msgid "Rating style"
 msgstr ""
 
-#: public/class-geodir-review-rating-manager-public.php:1122
+#: public/class-geodir-review-rating-manager-public.php:1134
 msgid "Rating category"
 msgstr ""
 
-#: public/class-geodir-review-rating-manager-public.php:1123
+#: public/class-geodir-review-rating-manager-public.php:1135
 msgid "Comment image"
 msgstr ""
 
-#: public/class-geodir-review-rating-manager-public.php:1124
+#: public/class-geodir-review-rating-manager-public.php:1136
 msgid "Comment reviews"
 msgstr ""
 

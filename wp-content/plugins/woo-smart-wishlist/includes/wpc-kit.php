@@ -4,26 +4,6 @@ defined( 'ABSPATH' ) || exit;
 if ( ! class_exists( 'WPCleverKit' ) ) {
 	class WPCleverKit {
 		protected static $_plugins = array(
-			'woo-smart-compare'              => array(
-				'name' => 'WPC Smart Compare for WooCommerce',
-				'slug' => 'woo-smart-compare',
-				'file' => 'wpc-smart-compare.php'
-			),
-			'woo-smart-quick-view'           => array(
-				'name' => 'WPC Smart Quick View for WooCommerce',
-				'slug' => 'woo-smart-quick-view',
-				'file' => 'wpc-smart-quick-view.php'
-			),
-			'woo-smart-wishlist'             => array(
-				'name' => 'WPC Smart Wishlist for WooCommerce',
-				'slug' => 'woo-smart-wishlist',
-				'file' => 'wpc-smart-wishlist.php'
-			),
-			'woo-fly-cart'                   => array(
-				'name' => 'WPC Fly Cart for WooCommerce',
-				'slug' => 'woo-fly-cart',
-				'file' => 'wpc-fly-cart.php'
-			),
 			'woo-product-bundle'             => array(
 				'name' => 'WPC Product Bundles for WooCommerce',
 				'slug' => 'woo-product-bundle',
@@ -43,6 +23,26 @@ if ( ! class_exists( 'WPCleverKit' ) ) {
 				'name' => 'WPC Frequently Bought Together for WooCommerce',
 				'slug' => 'woo-bought-together',
 				'file' => 'wpc-frequently-bought-together.php'
+			),
+			'woo-smart-compare'              => array(
+				'name' => 'WPC Smart Compare for WooCommerce',
+				'slug' => 'woo-smart-compare',
+				'file' => 'wpc-smart-compare.php'
+			),
+			'woo-smart-quick-view'           => array(
+				'name' => 'WPC Smart Quick View for WooCommerce',
+				'slug' => 'woo-smart-quick-view',
+				'file' => 'wpc-smart-quick-view.php'
+			),
+			'woo-smart-wishlist'             => array(
+				'name' => 'WPC Smart Wishlist for WooCommerce',
+				'slug' => 'woo-smart-wishlist',
+				'file' => 'wpc-smart-wishlist.php'
+			),
+			'woo-fly-cart'                   => array(
+				'name' => 'WPC Fly Cart for WooCommerce',
+				'slug' => 'woo-fly-cart',
+				'file' => 'wpc-fly-cart.php'
 			),
 			'wpc-force-sells'                => array(
 				'name' => 'WPC Force Sells for WooCommerce',
@@ -84,6 +84,16 @@ if ( ! class_exists( 'WPCleverKit' ) ) {
 				'slug' => 'wpc-countdown-timer',
 				'file' => 'wpc-countdown-timer.php'
 			),
+			'wpc-product-table'              => array(
+				'name' => 'WPC Product Table for WooCommerce',
+				'slug' => 'wpc-product-table',
+				'file' => 'wpc-product-table.php'
+			),
+			'wpc-name-your-price'            => array(
+				'name' => 'WPC Name Your Price for WooCommerce',
+				'slug' => 'wpc-name-your-price',
+				'file' => 'wpc-name-your-price.php'
+			)
 		);
 
 		function __construct() {

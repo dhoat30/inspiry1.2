@@ -147,30 +147,42 @@ class GeoDir_Review_Rating_Manager_Public {
     
     public static function single_page_script(){
         ob_start();
-			if(0){ ?><script><?php }?>
-            jQuery(document).delegate(".comments_review_likeunlike", "click", function() {
-                var $this = this;
-                var cont = jQuery($this).closest('.comments_review_likeunlike');
-                var comment_id = jQuery($this).data('comment-id');
-                var task = jQuery($this).data('like-action');
-                var wpnonce = jQuery(cont).data('wpnonce');
-                if (!comment_id || !wpnonce || !(task == 'like' || task == 'unlike'))
-                    return false;
+            if(0){ ?><script><?php }?>
+document.addEventListener("DOMContentLoaded", function(event) {
+    var els = document.getElementsByClassName('comments_review_likeunlike');
+    for (var i = 0; i < els.length; i++) {
+        var el = els[i].parentElement;
+        el.addEventListener("click", function(e) {
+            if (jQuery(e.target).closest('.comments_review_likeunlike').length) {
+                var $this = jQuery(e.target).closest('.comments_review_likeunlike');
+            } else if (jQuery(e.target).hasClass('.comments_review_likeunlike')) {
+                var $this = jQuery(this);
+            } else {
+                return;
+            }
+            var cont = jQuery($this).closest('.comments_review_likeunlike');
+            var comment_id = jQuery($this).data('comment-id');
+            var task = jQuery($this).data('like-action');
+            var wpnonce = jQuery(cont).data('wpnonce');
+            if (!comment_id || !wpnonce || !(task == 'like' || task == 'unlike'))
+                return false;
 
-                var btnlike = jQuery($this).find('.gdrr-btn-like').context.outerHTML;
-                jQuery($this).find('.gdrr-btn-like').replaceWith('<i class="fa fa-refresh fa-spin"></i>');
-                jQuery.post(geodir_reviewrating_all_js_msg.geodir_reviewrating_admin_ajax_url + "&ajax_action=review_update_frontend", {
-                    task: task,
-                    comment_id: comment_id,
-                    _wpnonce: wpnonce
-                }).done(function(data) {
-                    if (data && data !== '0') {
-                        cont.replaceWith(data);
-                    } else {
-                        jQuery('.fa-refresh', cont).replaceWith(btnlike);
-                    }
-                });
+            var btnlike = jQuery($this).find('.gdrr-btn-like').context.outerHTML;
+            jQuery($this).find('.gdrr-btn-like').replaceWith('<i class="fa fa-refresh fa-spin"></i>');
+            jQuery.post(geodir_reviewrating_all_js_msg.geodir_reviewrating_admin_ajax_url + "&ajax_action=review_update_frontend", {
+                task: task,
+                comment_id: comment_id,
+                _wpnonce: wpnonce
+            }).done(function(data) {
+                if (data && data !== '0') {
+                    cont.replaceWith(data);
+                } else {
+                    jQuery('.fa-refresh', cont).replaceWith(btnlike);
+                }
             });
+        }, false);
+    }
+});
 
             if (geodir_params.multirating && jQuery('.gd-rating-input-wrap').closest('#commentform').length) {
                 var $frm_obj = jQuery('.gd-rating-input-wrap').closest('#commentform'),commentField,commentTxt,errors;

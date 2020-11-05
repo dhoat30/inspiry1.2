@@ -28,7 +28,7 @@ class GeoDir_Widget_Compare_Button extends WP_Super_Duper {
             'base_id'               => 'gd_compare_button',
             'name'                  => __('GD > Compare Button','geodir-compare'),
             'widget_ops'            => array(
-                'classname'         => 'geodir-listing-compare-container bsui',
+                'classname'         => 'geodir-listing-compare-container' . ( geodir_design_style() ? ' bsui' : '' ),
                 'description'       => esc_html__('Allows the user to compare two or more listings.','geodir-compare'),
                 'geodirectory'      => true,
                 'gd_wgt_showhide'   => 'show_on',
@@ -308,12 +308,14 @@ class GeoDir_Widget_Compare_Button extends WP_Super_Duper {
 
         //If this is a listings page, display the button
         if( $post_id || $this->is_preview() ){
-
-	        // add required script
-	        add_action( 'wp_footer', array($this,'script'), 200 );
-
-            //Add custom css class
+			//Add custom css class
             $design_style = geodir_design_style();
+
+			// Add required script
+			if ( $design_style ) {
+				add_action( 'wp_footer', array($this,'script'), 200 );
+			}
+
             $args['css_class'] = $design_style ? 'geodir-compare-button c-pointer' : 'geodir-compare-button';
             
             //Ensure label is provided
@@ -550,7 +552,12 @@ class GeoDir_Widget_Compare_Button extends WP_Super_Duper {
 					}
 
 					//Remove it from the table
-					jQuery('.geodir-compare-' + $post_id).hide()
+					jQuery('.geodir-compare-' + $post_id).remove()
+					
+					var count = jQuery('.geodir-compare-listing-header.geodir-compare-post').length;
+					if (count> 0) {
+						jQuery('.geodir-compare-listing-header.geodir-compare-post').css('width', (90/count)+'%');
+					}
 
 					//Trigger resize to recalculate image widths
 					jQuery(window).trigger('resize')

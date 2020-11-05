@@ -966,7 +966,7 @@ class GeoDir_Pricing_Cart_WooCommerce extends GeoDir_Pricing_Cart {
 		}
 	}
 
-	public static function ajax_post_saved( $post_data ) {
+	public function ajax_post_saved( $post_data ) {
 
 		// first save the submitted data
 		$result = GeoDir_Post_Data::auto_save_post( $post_data );

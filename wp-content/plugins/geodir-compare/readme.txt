@@ -5,7 +5,7 @@ Tags: compare, compare listing, compare listings, geodirectory
 Requires at least: 4.9
 Tested up to: 5.5
 Requires PHP: 5.6
-Stable tag: 2.1.0.0
+Stable tag: 2.1.0.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -31,6 +31,10 @@ Will this be the feature your users can't live without? Many large directories a
 4. (Optional) Go to the widgets page and add the Geodir Compare widget.
 
 == Changelog ==
+
+= 2.1.0.1 =
+* Update Font Awesome icons - CHANGED
+* FlexSlider is not loading in compare lists popup - FIXED
 
 = 2.1.0.0 =
 * Changes for AyeCode UI compatibility - CHANGED

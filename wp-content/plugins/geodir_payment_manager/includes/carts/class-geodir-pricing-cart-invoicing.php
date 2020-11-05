@@ -898,7 +898,7 @@ class GeoDir_Pricing_Cart_Invoicing extends GeoDir_Pricing_Cart {
 		return self::merge_package_to_item( $package_id, true );
 	}
 
-	public static function ajax_post_saved( $post_data ) {
+	public function ajax_post_saved( $post_data ) {
 
 		// first save the submitted data
 		$result = GeoDir_Post_Data::auto_save_post( $post_data );

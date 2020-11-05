@@ -3,7 +3,7 @@ Contributors: wpclever
 Donate link: https://wpclever.net
 Tags: woocommerce, woo, wpc, smart, wishlist, wish list
 Requires at least: 4.0
-Tested up to: 5.5.1
+Tested up to: 5.5.3
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -59,7 +59,7 @@ If you think that the purchase flow ends with the checkout of your customers, th
 
 = Translators =
 
-Available languages: English (Default), Russian, Italian
+Available languages: English (Default), Russian, Italian, Persian
 
 If you have created your own language pack, or have an update for an existing one, you can send [gettext PO and MO file](http://codex.wordpress.org/Translating_WordPress "Translating WordPress") to [us](https://wpclever.net/contact?utm_source=pot&utm_medium=woosw&utm_campaign=wporg "WPClever.net") so we can bundle it into WPC Smart Wishlist.
 
@@ -100,6 +100,13 @@ After that, use the shortcode to display the button where you want.
 `echo do_shortcode('[woosw id="{product_id}"]');`
 
 == Changelog ==
+
+= 2.2.5 =
+* Fixed: Some minor CSS & JS issues
+
+= 2.2.4 =
+* Added: Persian (Thanks to Amini Ali)
+* Updated: Compatible with WooCommerce 4.6.1
 
 = 2.2.3 =
 * Fixed: data-pid or data-product_id for element on Elementor

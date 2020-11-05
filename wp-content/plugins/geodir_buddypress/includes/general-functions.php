@@ -553,7 +553,7 @@ function geodir_buddypress_pagination($before = '', $after = '', $prelabel = '',
 function geodir_buddypress_pagination_aui( $before = '', $after = '', $prelabel = '', $nxtlabel = '', $pages_to_show = 5, $always_show = false ) {
     global $bp, $posts_per_page, $found_posts, $paged;
     if ( empty ( $prelabel ) ) {
-        $prelabel = '<span class="nav-prev-text sr-only">' . __( 'PRevious', 'geodir_buddypress' ) . '</span> <i class="fas fa-chevron-left"></i>';
+        $prelabel = '<span class="nav-prev-text sr-only">' . __( 'Previous', 'geodir_buddypress' ) . '</span> <i class="fas fa-chevron-left"></i>';
     }
 
     $user_domain = geodir_buddypress_get_user_domain();
@@ -594,11 +594,6 @@ function geodir_buddypress_pagination_aui( $before = '', $after = '', $prelabel 
             if ($current_domain) {
                 $url = strpos($url, $current_domain) !== false ? $url : str_replace($component_domain, $current_domain, $url);
             }
-			if ( strpos( $url, ' class="') !== false ) {
-				$url = str_replace( ' class="', ' class="prev page-link ', $url );
-			} else {
-				$url = str_replace( '<a ', '<a class="prev page-link" ', $url );
-			}
             echo '<li class="page-item">' . $url . '</li>';
             for ($i = $paged - $half_pages_to_show; $i <= $paged + $half_pages_to_show; $i++) {
                 if ($i >= 1 && $i <= $max_page) {
@@ -619,11 +614,6 @@ function geodir_buddypress_pagination_aui( $before = '', $after = '', $prelabel 
             if ($current_domain) {
                 $url = strpos($url, $current_domain) !== false ? $url : str_replace($component_domain, $current_domain, $url);
             }
-			if ( strpos( $url, ' class="') !== false ) {
-				$url = str_replace( ' class="', ' class="next page-link ', $url );
-			} else {
-				$url = str_replace( '<a ', '<a class="next page-link" ', $url );
-			}
            echo '<li class="page-item">' . $url . '</li>';
             if (($paged + $half_pages_to_show) < ($max_page)) {
                 $url = get_pagenum_link($max_page);
@@ -635,4 +625,38 @@ function geodir_buddypress_pagination_aui( $before = '', $after = '', $prelabel 
             echo "</div></ul></nav></section></div> $after";
         }
     }
+}
+
+/**
+ * Filters the anchor tag attributes for the previous posts page link.
+ *
+ * @since 2.1.0.1
+ *
+ * @param string $attributes Attributes for the anchor tag.
+ * @return string Filtered attributes.
+ */
+function geodir_buddypress_previous_posts_link_attributes_aui( $attributes = '' ) {
+	if ( strpos( $attributes, 'class="') !== false ) {
+		$attributes = str_replace( 'class="', 'class="prev page-link ', $attributes );
+	} else {
+		$attributes .= ' class="prev page-link"';
+	}
+	return $attributes;
+}
+
+/**
+ * Filters the anchor tag attributes for the next posts page link.
+ *
+ * @since 2.1.0.1
+ *
+ * @param string $attributes Attributes for the anchor tag.
+ * @return string Filtered attributes.
+ */
+function geodir_buddypress_next_posts_link_attributes_aui( $attributes = '' ) {
+	if ( strpos( $attributes, 'class="') !== false ) {
+		$attributes = str_replace( 'class="', 'class="next page-link ', $attributes );
+	} else {
+		$attributes .= ' class="next page-link"';
+	}
+	return $attributes;
 }

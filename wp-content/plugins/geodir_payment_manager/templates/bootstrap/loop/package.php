@@ -10,9 +10,9 @@
  * happen. When this occurs the version of the template file will be bumped and
  * the readme will list any important changes.
  *
- * @see        https://wpgeodirectory.com/docs-v2/faq/customizing/#templates
+ * @see        https://docs.wpgeodirectory.com/article/346-customizing-templates/
  * @package    GeoDir_Pricing_Manager
- * @version    2.1.0.0
+ * @version    2.6.0.0
  */
 
 defined( 'ABSPATH' ) || exit;

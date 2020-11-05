@@ -11,7 +11,7 @@
  * Plugin Name:       GeoDirectory BuddyPress Integration
  * Plugin URI:        https://wpgeodirectory.com/downloads/buddypress-integration/
  * Description:       Integrates GeoDirectory listing activity with the BuddyPress activity.
- * Version:           2.1.0.0
+ * Version:           2.1.0.1
  * Requires at least: 4.9
  * Requires PHP:      5.6
  * Author:            AyeCode Ltd
@@ -29,7 +29,7 @@ if ( !defined( 'WPINC' ) )
 	exit( 'Do NOT access this file directly: ' . basename( __FILE__ ) );
 	
 // Define Constants
-define( 'GEODIR_BUDDYPRESS_VERSION', '2.1.0.0' );
+define( 'GEODIR_BUDDYPRESS_VERSION', '2.1.0.1' );
 define( 'GEODIR_BUDDYPRESS_PLUGIN_PATH', WP_PLUGIN_DIR . '/' . plugin_basename( dirname( __FILE__ ) ) );
 define( 'GEODIR_BUDDYPRESS_PLUGIN_URL', plugins_url('',__FILE__) );
 define( 'GEODIR_BUDDYPRESS_PLUGIN_FILE', __FILE__ );

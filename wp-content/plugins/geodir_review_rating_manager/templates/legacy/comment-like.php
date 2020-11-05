@@ -33,7 +33,7 @@ if ($has_liked) {
 	}
 }
 
-$like_button = '<i class="fa fa-thumbs-o-up gdrr-btn-like"></i>';
+$like_button = '<i class="fas fa-thumbs-up gdrr-btn-like"></i>';
 /**
  * Filter the like/useful button html.
  *

@@ -2,7 +2,7 @@
 /**
  * Packages widget.
  *
- * @since 2.1.0.0
+ * @since 2.6.0.0
  * @package GeoDir_Pricing_Manager
  * @author AyeCode Ltd
  */

@@ -296,7 +296,7 @@ class GeoDir_Pricing_Post_Package {
 
 		$current_post_status = get_post_status( $post_id );
 		$current_package_id = (int) geodir_get_post_meta( $post_id, 'package_id', true );
-		if ( $current_package_id == $package_id || $current_post_status == 'draft' ) {
+		if ( $current_package_id != $package_id || $current_post_status == 'draft' ) {
 			return false;
 		}
 

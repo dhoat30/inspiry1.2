@@ -24,9 +24,9 @@ $like_action = $has_liked ? 'unlike' : 'like';
 $like_class = '';
 $get_total_likes = GeoDir_Review_Rating_Like_Unlike::format_like_count($get_total_likes);
 $like_text = $has_liked ? __('Liked', 'geodir_reviewratings') : __('Like', 'geodir_reviewratings');
-$like_text .= $get_total_likes ? ' <span class="badge badge-light">' .$get_total_likes.'</span>' : '';
+$like_text .= $get_total_likes ? ' <span class="badge ' . ( $has_liked ? 'badge-light' : 'badge-dark' ) . '">' .$get_total_likes.'</span>' : '';
 
-$like_button = $has_liked ? '<i class="fas fa-check gdrr-btn-like"></i>' : '<i class="fa fa-thumbs-o-up gdrr-btn-like"></i>';
+$like_button = $has_liked ? '<i class="fas fa-check gdrr-btn-like"></i>' : '<i class="fas fa-thumbs-up gdrr-btn-like"></i>';
 
 $like_class = $has_liked ? ' btn btn-primary' : ' btn btn-outline-primary';
 

@@ -28,7 +28,7 @@ class GeoDir_Widget_Compare_List extends WP_Super_Duper {
             'class_name'            => __CLASS__,
             'name'                  => __('GD > Compare List','geodir-compare'),
             'widget_ops'            => array(
-                'classname'         => 'geodir-compare-list bsui',
+                'classname'         => 'geodir-compare-list' . ( geodir_design_style() ? ' bsui' : '' ),
                 'description'       => esc_html__('Displays a listings comparison table.','geodir-compare'),
             ),
             'arguments'     => array(
@@ -246,11 +246,11 @@ class GeoDir_Widget_Compare_List extends WP_Super_Duper {
 
 
             //Css class
-            $class = 'geodir-compare-listing-header geodir-compare-' . $listing->post_id;
+            $class = 'geodir-compare-listing-header geodir-compare-post geodir-compare-' . $listing->post_id;
 
             //Remove button
             $remove_button = $allow_remove ? sprintf(
-                '<span onclick="geodir_compare_remove_from_table(\'%s\', \'%s\')" class="geodir-compare-table-remove-listing"><i title="'.__('Remove', 'geodir-compare').'" class="fa fa-close"></i></span>',
+                '<span onclick="geodir_compare_remove_from_table(\'%s\', \'%s\')" class="geodir-compare-table-remove-listing"><i title="' . esc_attr__( 'Remove', 'geodir-compare' ) . '" class="fas fa-times-circle" aria-hidden="true"></i></span>',
                 $listing->post_id,
                 $post_type
             ) : '';

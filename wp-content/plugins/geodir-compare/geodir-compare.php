@@ -11,7 +11,7 @@
  * Plugin Name:       GeoDirectory Compare Listings
  * Plugin URI:        https://wpgeodirectory.com/downloads/compare-listings/
  * Description:       Compare listings side by side and compare vital information.
- * Version:           2.1.0.0
+ * Version:           2.1.0.1
  * Requires at least: 4.9
  * Requires PHP:      5.6
  * Author:            AyeCode Ltd
@@ -29,7 +29,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 if ( ! defined( 'GEODIR_COMPARE_VERSION' ) ) {
-	define( 'GEODIR_COMPARE_VERSION', '2.1.0.0' );
+	define( 'GEODIR_COMPARE_VERSION', '2.1.0.1' );
 }
 
 if ( ! defined( 'GEODIR_COMPARE_MIN_CORE' ) ) {

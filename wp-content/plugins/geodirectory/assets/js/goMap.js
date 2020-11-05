@@ -98,6 +98,7 @@ function geodirGoMapInit() {
             directions: false,
             directionsResult: null,
             disableDoubleClickZoom: false,
+            touchZoom: '*', // Boolean|String. Default: *. Whether the map can be zoomed by touch-dragging with two fingers.
             streetViewControl: true,
             streetViewControlOptions: {
                 position: 'bottomleft'
@@ -180,15 +181,17 @@ function geodirGoMapInit() {
                 minZoom: opts.minZoom ? opts.minZoom : 1,
                 maxZoom: opts.maxZoom > 18 ? 18 : opts.maxZoom,
                 zoomControl: opts.zoomControl === "0" || !opts.zoomControl ? false : true,
+                touchZoom: opts.touchZoom,
                 doubleClickZoom: opts.disableDoubleClickZoom === "0" || !opts.disableDoubleClickZoom ? true : false,
-                dragging: true,
+                dragging: typeof opts.dragging !== 'undefined' ? opts.dragging : !L.Browser.mobile,
+                tap: typeof opts.dragging !== 'undefined' ? opts.dragging : !L.Browser.mobile,
                 worldCopyJump: true,
                 scrollWheelZoom: opts.scrollwheel === "0" || !opts.scrollwheel ? false : opts.scrollwheel,
                 attributionControl: typeof opts.attributionControl !== 'undefined' ? opts.attributionControl : true,
                 defaultBaseLayer: typeof opts.osmBaseLayer !== 'undefined' && opts.osmBaseLayer ? opts.osmBaseLayer : null,
                 defaultOverlays: typeof opts.osmOverlays !== 'undefined' && opts.osmOverlays ? opts.osmOverlays : [],
-            };
-            
+            }
+
             if (myOptions.defaultBaseLayer) {
                 try {
                     baseLayer = L.tileLayer.provider(myOptions.defaultBaseLayer);

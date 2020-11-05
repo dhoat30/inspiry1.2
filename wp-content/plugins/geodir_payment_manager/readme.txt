@@ -5,7 +5,7 @@ Tags: geodir pricing, package, price package, pricing, pricing manager
 Requires at least: 4.9
 Tested up to: 5.5
 Requires PHP: 5.6
-Stable tag: 2.6.0.0
+Stable tag: 2.6.0.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -18,6 +18,10 @@ Pricing Manager is a powerful price manager that allows you to monetize your dir
 The interface allows efficient management of package features, such as images, website links and telephone numbers. You can set an expiry date for listings and edit the fields that are shown next to each price package.
 
 == Changelog =
+
+= 2.6.0.1 =
+* Show package name via [gd_post_meta] & [gd_post_badge] - CHANGED
+* Claim listing not redirects to checkout page - FIXED
 
 = 2.6.0.0 =
 * Change page title on edit package - CHANGED

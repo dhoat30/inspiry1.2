@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: GeoDirectory Compare Listings 2.1.0.0\n"
+"Project-Id-Version: GeoDirectory Compare Listings 2.1.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-07 17:00+0530\n"
-"PO-Revision-Date: 2020-10-07 17:00+0530\n"
+"POT-Creation-Date: 2020-10-27 21:51+0530\n"
+"PO-Revision-Date: 2020-10-27 21:51+0530\n"
 "Last-Translator: \n"
 "Language-Team: AyeCode Ltd <contact@ayecode.io>\n"
 "Language: en_US\n"
@@ -62,7 +62,7 @@ msgstr ""
 #: includes/widgets/class-geodir-widget-compare-button.php:57
 #: includes/widgets/class-geodir-widget-compare-button.php:277
 #: includes/widgets/class-geodir-widget-compare-button.php:279
-#: includes/widgets/class-geodir-widget-compare-button.php:321
+#: includes/widgets/class-geodir-widget-compare-button.php:323
 msgid "Compare"
 msgstr ""
 
@@ -89,7 +89,7 @@ msgstr ""
 #: includes/class-geodir-compare-ajax.php:248
 #: includes/class-geodir-compare-ajax.php:261
 #: includes/widgets/class-geodir-widget-compare-list.php:253
-#: templates/bootstrap/compare-list.php:56 templates/legacy/compare-list.php:56
+#: templates/bootstrap/compare-list.php:71 templates/legacy/compare-list.php:70
 msgid "Remove"
 msgstr ""
 
@@ -422,34 +422,35 @@ msgid "Allow users to remove items from the table"
 msgstr ""
 
 #: includes/widgets/class-geodir-widget-compare-list.php:222
-#: templates/bootstrap/compare-list.php:25 templates/legacy/compare-list.php:25
+#: templates/bootstrap/compare-list.php:40 templates/legacy/compare-list.php:39
 msgid ""
 "Set what fields are compared in each CPT field settings under `Show in extra "
 "output location`"
 msgstr ""
 
 #: includes/widgets/class-geodir-widget-compare-list.php:223
-#: templates/bootstrap/compare-list.php:26 templates/legacy/compare-list.php:26
+#: templates/bootstrap/compare-list.php:41 templates/legacy/compare-list.php:40
 msgid "You can share urls comparing listings"
 msgstr ""
 
 #: includes/widgets/class-geodir-widget-compare-list.php:224
-#: templates/bootstrap/compare-list.php:27 templates/legacy/compare-list.php:27
+#: templates/bootstrap/compare-list.php:42 templates/legacy/compare-list.php:41
 msgid "You can embed a shortcode comparing specific listings on any page."
 msgstr ""
 
 #: includes/widgets/class-geodir-widget-compare-list.php:297
-#: templates/bootstrap/compare-list.php:96 templates/legacy/compare-list.php:96
+#: templates/bootstrap/compare-list.php:111
+#: templates/legacy/compare-list.php:110
 msgid "Images"
 msgstr ""
 
 #: includes/widgets/class-geodir-widget-compare-list.php:310
-#: templates/bootstrap/compare-list.php:109
-#: templates/legacy/compare-list.php:109
+#: templates/bootstrap/compare-list.php:124
+#: templates/legacy/compare-list.php:123
 msgid "Ratings"
 msgstr ""
 
-#: templates/bootstrap/loop/no-compare-found.php:10
-#: templates/loop/no-compare-found.php:10
+#: templates/bootstrap/loop/no-compare-found.php:20
+#: templates/loop/no-compare-found.php:20
 msgid "There are no listings to compare."
 msgstr ""

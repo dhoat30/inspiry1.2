@@ -158,6 +158,8 @@ class GeoDir_BuddyPress_Template{
 
         add_filter( 'geodir_bp_listings_orderby', 'geodir_buddypress_posts_orderby', 99, 5 );
         // pagination
+        add_filter( 'previous_posts_link_attributes', 'geodir_buddypress_previous_posts_link_attributes_aui', 99, 1 );
+        add_filter( 'next_posts_link_attributes', 'geodir_buddypress_next_posts_link_attributes_aui', 99, 1 );
         add_action( 'geodir_after_listing', 'geodir_buddypress_pagination_aui', 20 );
 
         $query_args = array(

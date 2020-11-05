@@ -3,20 +3,20 @@
 Plugin Name: WPC Smart Wishlist for WooCommerce
 Plugin URI: https://wpclever.net/
 Description: WPC Smart Wishlist is a simple but powerful tool that can help your customer save products for buy later.
-Version: 2.2.3
+Version: 2.2.5
 Author: WPClever.net
 Author URI: https://wpclever.net
 Text Domain: woosw
 Domain Path: /languages/
 Requires at least: 4.0
-Tested up to: 5.5.1
+Tested up to: 5.5.3
 WC requires at least: 3.0
-WC tested up to: 4.5.2
+WC tested up to: 4.6.1
 */
 
 defined( 'ABSPATH' ) || exit;
 
-! defined( 'WOOSW_VERSION' ) && define( 'WOOSW_VERSION', '2.2.3' );
+! defined( 'WOOSW_VERSION' ) && define( 'WOOSW_VERSION', '2.2.5' );
 ! defined( 'WOOSW_URI' ) && define( 'WOOSW_URI', plugin_dir_url( __FILE__ ) );
 ! defined( 'WOOSW_SUPPORT' ) && define( 'WOOSW_SUPPORT', 'https://wpclever.net/support?utm_source=support&utm_medium=woosw&utm_campaign=wporg' );
 ! defined( 'WOOSW_REVIEWS' ) && define( 'WOOSW_REVIEWS', 'https://wordpress.org/support/plugin/woo-smart-wishlist/reviews/?filter=5' );
@@ -455,8 +455,13 @@ if ( ! function_exists( 'woosw_init' ) ) {
 									<?php esc_html_e( 'Settings', 'woosw' ); ?>
                                 </a>
                                 <a href="<?php echo admin_url( 'admin.php?page=wpclever-woosw&tab=premium' ); ?>"
-                                   class="<?php echo $active_tab === 'premium' ? 'nav-tab nav-tab-active' : 'nav-tab'; ?>">
+                                   class="<?php echo $active_tab === 'premium' ? 'nav-tab nav-tab-active' : 'nav-tab'; ?>"
+                                   style="color: #c9356e">
 									<?php esc_html_e( 'Premium Version', 'woosw' ); ?>
+                                </a>
+                                <a href="<?php echo esc_url( admin_url( 'admin.php?page=wpclever-kit' ) ); ?>"
+                                   class="nav-tab">
+									<?php esc_html_e( 'Essential Kit', 'woosw' ); ?>
                                 </a>
                             </h2>
                         </div>
@@ -519,7 +524,7 @@ if ( ! function_exists( 'woosw_init' ) ) {
                                                 <span class="description">
 											<?php esc_html_e( 'Show your note on each product for all visitors. Only you can add/edit these notes.', 'woosw' ); ?>
 										</span>
-                                                <p style="color: red">
+                                                <p style="color: #c9356e">
                                                     This feature is only available on the Premium Version. Click <a
                                                             href="https://wpclever.net/downloads/woocommerce-smart-wishlist?utm_source=pro&utm_medium=woosw&utm_campaign=wporg"
                                                             target="_blank">here</a> to buy, just $29.
@@ -819,7 +824,7 @@ if ( ! function_exists( 'woosw_init' ) ) {
 												<?php esc_html_e( 'Menu', 'woosw' ); ?>
                                             </th>
                                             <td>
-												<span style="color: red">
+												<span style="color: #c9356e">
 											This feature is only available on the Premium Version. Click <a
                                                             href="https://wpclever.net/downloads/woocommerce-smart-wishlist?utm_source=pro&utm_medium=woosw&utm_campaign=wporg"
                                                             target="_blank">here</a> to buy, just $29.
@@ -964,7 +969,7 @@ if ( ! function_exists( 'woosw_init' ) ) {
 
 					if ( $plugin === $file ) {
 						$settings_link    = '<a href="' . admin_url( 'admin.php?page=wpclever-woosw&tab=settings' ) . '">' . esc_html__( 'Settings', 'woosw' ) . '</a>';
-						$links['premium'] = '<a href="' . admin_url( 'admin.php?page=wpclever-woosw&tab=premium' ) . '">' . esc_html__( 'Premium Version', 'woosw' ) . '</a>';
+						$links['premium'] = '<a href="' . admin_url( 'admin.php?page=wpclever-woosw&tab=premium' ) . '" style="color: #c9356e">' . esc_html__( 'Premium Version', 'woosw' ) . '</a>';
 						array_unshift( $links, $settings_link );
 					}
 
@@ -1021,7 +1026,6 @@ if ( ! function_exists( 'woosw_init' ) ) {
 							$items_html .= '<div class="woosw-content-item--title"><a href="' . $product->get_permalink() . '">' . $product->get_name() . '</a></div>';
 							$items_html .= '<div class="woosw-content-item--price">' . $product->get_price_html() . '</div>';
 							$items_html .= '<div class="woosw-content-item--time">' . $product_time . '</div>';
-
 							$items_html .= '</td>';
 							$items_html .= '<td>';
 							$items_html .= '<div class="woosw-content-item--stock">' . ( $product->is_in_stock() ? esc_html__( 'In stock', 'woosw' ) : esc_html__( 'Out of stock', 'woosw' ) ) . '</div>';

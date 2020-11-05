@@ -34,9 +34,29 @@
 
         //show icon only in quick view 
         $(document).on('click', '.bc-quickview-trigger--hover-label', this.showIconQuickView); 
+        //show icon in the top of product card on archive page on hover
+        $('.bc-quickview-trigger--hover').mouseenter( this.showPinIconOnHover); 
+        $('.bc-quickview-trigger--hover').mouseleave( this.hidePinIconOnMouseOut); 
+        $('.post-type-archive-bigcommerce_product .design-board-save-btn-container').mouseenter( this.showPinIconOnHover); 
+        $('.post-type-archive-bigcommerce_product .design-board-save-btn-container').mouseleave( this.hidePinIconOnMouseOut); 
+
+
     }
 
     //functions 
+    //show icon on hover on product archive
+    showPinIconOnHover(e){ 
+        let designBoard = $(e.target).closest('.bc-product-card').find('.design-board-save-btn-container'); 
+        designBoard.show();
+       
+    
+    }
+    hidePinIconOnMouseOut(e){ 
+        let designBoard = $(e.target).closest('.bc-product-card').find('.design-board-save-btn-container');
+        designBoard.hide();
+      
+    }
+
     showIconQuickView(e){ 
         console.log('working'); 
         console.log($(e.target).closest('.bc-quickview-trigger').siblings('.bc-product__meta').find('.open-board-container'));

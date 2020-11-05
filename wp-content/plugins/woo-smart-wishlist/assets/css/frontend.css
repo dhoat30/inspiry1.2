@@ -16,7 +16,8 @@
 }
 
 .woosw-btn.woosw-adding:after {
-    content: '...';
+    content: '...' !important;
+    display: inline-block !important;
 }
 
 .woosw-area {

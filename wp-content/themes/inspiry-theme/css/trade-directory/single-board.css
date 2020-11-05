@@ -8,6 +8,7 @@
 .board-loop-page .board-flex>div{ 
     margin: 0 30px 50px 0;
     transition: 500ms ease-in-out;
+    width: 250px;
 }
 .board-loop-page .board-flex>div:hover{ 
    transform: scale(1.04,1.04);

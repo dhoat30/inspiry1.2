@@ -57,6 +57,8 @@ class GeoDir_Pricing_Post {
 		add_filter( 'geodir_custom_field_file_limit', array( __CLASS__, 'set_file_limit' ), 10, 3 );
 		add_filter( 'geodir_rest_markers_query_where', array( __CLASS__, 'rest_markers_query_where' ), 10, 2 );
 		add_filter( 'geodir_custom_field_allow_html_editor', array( __CLASS__, 'cfi_allow_html_editor' ), 20, 2 );
+		add_filter( 'geodir_custom_field_output_text_var_package_id', array( __CLASS__, 'output_package_id' ), 10, 4 );
+		add_filter( 'geodir_post_badge_match_value', array( __CLASS__, 'post_badge_match_value' ), 20, 5 );
 
 		add_filter( 'geodir_cfa_can_delete_field', array( __CLASS__, 'prevent_field_delete' ), 10, 2 );
 		
@@ -266,7 +268,7 @@ class GeoDir_Pricing_Post {
 		);
 
 		if ( $geodir_pricing_manager->cart->skip_invoice( $data ) ) {
-			// Save claimpost without invoice when no cart is active of package is free package.
+			// Save claim post without invoice when no cart is active of package is free package.
 			$result = $geodir_pricing_manager->cart->claim_without_invoice( $post_id, $package_id, $user_id );
 		} else {
 			// Send the info to the cart that is set WPI/WC and if it has a return then set the result to that.
@@ -296,7 +298,7 @@ class GeoDir_Pricing_Post {
 						$message = self::alert( __( 'Your request to claim this listing has been sent successfully. You will be notified by email once a decision has been made.', 'geodir_pricing' ), 'success' );
 					}
 				}
-			} elseif ( empty( $payment->status ) ) {
+			} elseif ( empty( $claim->status ) ) {
 				$message = $geodir_pricing_manager->cart->claim_submit_success_message( $message, $claim, $post_id );
 
 				if ( $message ) {
@@ -1148,14 +1150,14 @@ class GeoDir_Pricing_Post {
 			// Published
 			if ( $task == 'renew' ) { // Renew
 				$message = wp_sprintf( __( 'Post renew received, your changes are now live and can be viewed %shere%s.', 'geodirectory' ), "<a href='" . $link . "'>", "</a>" );
-			} elseif ( $task == 'upgrade' ) { // Upgarde
+			} elseif ( $task == 'upgrade' ) { // Upgrade
 				$message = wp_sprintf( __( 'Post upgrade received, your changes are now live and can be viewed %shere%s.', 'geodirectory' ), "<a href='" . $link . "'>", "</a>" );
 			}
 		} else {
 			// Pending
 			if ( $task == 'renew' ) { // Renew
 				$message = __( 'Post renew received, your changes may need to be reviewed before going live.', 'geodirectory' );
-			} elseif ( $task == 'upgrade' ) { // Upgarde
+			} elseif ( $task == 'upgrade' ) { // Upgrade
 				$message = __( 'Post upgrade received, your changes may need to be reviewed before going live.', 'geodirectory' );
 			}
 		}
@@ -1218,5 +1220,93 @@ class GeoDir_Pricing_Post {
 				'class' => 'mb-0'
 			)
 		);
+	}
+
+	/**
+	 * Output for package id.
+	 *
+	 * @since 2.6.0.1
+	 *
+	 * @param string $html HTML output.
+	 * @param string $location Field location.
+	 * @param array $cf Custom field.
+	 * @param array $output Output type.
+	 * @return string Output for package id.
+	 */
+	public static function output_package_id( $html, $location, $cf, $output ) {
+		global $gd_post;
+
+		if ( ! geodir_is_block_demo() && ! empty( $cf['htmlvar_name'] ) && ! empty( $gd_post ) && ! empty( $gd_post->{$cf['htmlvar_name']} ) ) {
+			$design_style = geodir_design_style();
+			$class = "geodir-i-text";
+
+			$field_icon = geodir_field_icon_proccess( $cf );
+			$output = geodir_field_output_process( $output );
+			if ( strpos( $field_icon, 'http' ) !== false ) {
+				$field_icon_af = '';
+			} elseif ( $field_icon == '' ) {
+				$field_icon_af = '';
+			} else {
+				$field_icon_af = $field_icon;
+				$field_icon = '';
+			}
+
+			$value = absint( $gd_post->{$cf['htmlvar_name']} );
+
+			// Database value.
+			if ( ! empty( $output ) && isset( $output['raw'] ) ) {
+				return $value;
+			}
+
+			$value = geodir_pricing_package_name( (int) $value );
+
+			// Return stripped value.
+			if ( ! empty( $output ) && isset( $output['strip'] ) ) {
+				return $value;
+			}
+
+			$html = '<div class="geodir_post_meta ' . $cf['css_class'] . ' geodir-field-' . $cf['htmlvar_name'] . '">';
+
+			$maybe_secondary_class = isset( $output['icon'] ) ? 'gv-secondary' : '';
+
+			if ( $output == '' || isset( $output['icon'] ) ) {
+				$html .= '<span class="geodir_post_meta_icon '.$class.'" style="' . $field_icon . '">' . $field_icon_af;
+			}
+			if ( $output == '' || isset( $output['label'] ) ) {
+				$html .= trim( $cf['frontend_title'] ) != '' ? '<span class="geodir_post_meta_title ' . $maybe_secondary_class . '" >' . __( $cf['frontend_title'], 'geodirectory' ) . ': ' . '</span>' : '';
+			}
+			if ( $output == '' || isset( $output['icon'] ) ) {
+				$html .= '</span>';
+			}
+			if ( $output == '' || isset( $output['value'] ) ) {
+				$html .= $value;
+			}
+
+			$html .= '</div>';
+		}
+
+		return $html;
+	}
+
+	/**
+	 * Filter post badge match value.
+	 *
+	 * @since 2.6.0.1
+	 *
+	 * @param string $match_value Match value.
+	 * @param string $match_field Match field.
+	 * @param array $args The badge parameters.
+	 * @param array $find_post Post object.
+	 * @param array $field The custom field array.
+	 * @return string Filtered value.
+	 */
+	public static function post_badge_match_value( $match_value, $match_field, $args, $find_post, $field ) {
+		if ( $match_field == 'package_id' && (int) $match_value > 0 && ! empty( $args['badge'] ) && strpos( $args['badge'], '%%input%%' ) !== false ) {
+			if ( $name = geodir_pricing_package_name( (int) $match_value ) ) {
+				$match_value = str_replace( '%%input%%', $name, $args['badge'] );
+			}
+		}
+
+		return $match_value;
 	}
 }

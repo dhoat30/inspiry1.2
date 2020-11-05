@@ -176,7 +176,7 @@ class GeoDir_Pricing_Cart {
 	 *
 	 * @param $post_id
 	 *
-	 * @return int
+	 * @return false|stdClass
 	 */
 	public static function has_invoice( $post_id, $task = '', $cart = '' ) {
 		global $wpdb;
@@ -272,7 +272,7 @@ class GeoDir_Pricing_Cart {
 	 *
 	 * @return WP_Error
 	 */
-	public static function ajax_post_saved( $post_data ){
+	public function ajax_post_saved( $post_data ){
 		return new WP_Error( 'no_cart_set', __( "Error: No Cart has been setup to accept payments.", "geodir_pricing" ) );
 	}
 
