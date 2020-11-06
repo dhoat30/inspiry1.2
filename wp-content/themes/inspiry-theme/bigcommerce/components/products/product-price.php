@@ -52,7 +52,7 @@ $product = new \BigCommerce\Post_Types\Product\Product( $post_id );
 	<!-- class="bc-product__original-price" is required -->
 	<span class="bc-product__original-price"></span>
 	<!-- class="bc-product-price bc-product__price--sale" is required -->
-	<span class="bc-product__price bc-product__price--sale"> </span>Inc GST
+	<span class="bc-product__price bc-product__price--sale"> </span>
 
 
 	<h4> <?php 
