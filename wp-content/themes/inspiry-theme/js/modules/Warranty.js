@@ -1,35 +1,24 @@
 let $ = jQuery; 
 class Warranty{ 
-    constructor(){ 
-        this.btn = $('.bc-single-product__warranty h1'); 
-        
+    constructor(){
         this.events(); 
     }
 
     events(){ 
-        //add plus sign
-        this.btn.append('<i class="fal fa-plus"></i> ');
-        //show p
-       // this.btn.on('click', this.showPara.bind(this)); 
+        $('.bc-single-product__warranty h1').append('<i class="fal fa-plus"></i>');
+        $(document).on('click', '.bc-single-product__warranty i', this.showContentIcon  ); 
+        $(document).on('click', '.bc-single-product__warranty h1', this.showContent); 
     }
-    /*
 
-    showPara(e){ 
-        let value = e.target.innerHTML; 
-        
-        if(value.includes('Care Code<i class="fal fa-plus" aria-hidden="true"></i> ')){ 
-            console.log(e);
-            $('.bc-single-product__warranty p').slideDown(500);
-           
-            console.log( 'care code');
-        }
-        else if( value.includes('Care Code Guide')){ 
-            console.log($('.bc-single-product__warranty p:nth-child(3)').innerHTML); 
-        }
-        else if(value.includes('Colour')){ 
-            console.log('colour');
-        }
-    }*/
+    showContent(e){ 
+        $(e.target).closest('h1').next('p').slideToggle(300); 
+        $(e.target).find('i').toggleClass('fa-plus');
+        $(e.target).find('i').toggleClass('fa-minus');
+    }
+    showContentIcon(e){ 
+        $(e.target).next('p').slideToggle(300)
+    }
+
 }
 
 export default Warranty; 

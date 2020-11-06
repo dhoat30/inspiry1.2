@@ -53,6 +53,15 @@ width: 100%;
     object-fit: cover;
   
 }
+@media (max-width:550px){ 
+    .bc-product-gallery__image-slide img {
+        display: block;
+        width: 100%;
+        height: auto;
+        -o-object-fit: cover;
+        object-fit: cover;
+    }
+}
 /*gallery-sizing*/
 .bc-product-gallery__thumb-slide {
     width:150px;

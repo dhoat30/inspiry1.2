@@ -39,6 +39,7 @@
     text-transform: uppercase !important;
     letter-spacing: 1px;
     color: rgba(0,0,0,0.7);
+    font-size: 12px !important;
 }
 /*add to cart */ 
 .bc-product-form__quantity-label{
@@ -120,28 +121,36 @@
    background: none !important;
    color: #303030 !important; 
 }
+/*sample and wallpaper buttin */ 
 
-.order-sample-button, .sizing-calculator-button{ 
+.product-page-btn-container{ 
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    color: #999999;
-    font-size: 25px;
-    line-height: 1.3em;
-    font-weight: 500;
-    cursor: pointer;
-    width:280px;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 20px;
+    flex-wrap: wrap;
 }
-.order-sample-button img{ 
-    margin-right: 20px;
+.product-page-btn-container a{ 
+    text-decoration: none;
+    width: 49%;
+    display: block;
+    text-align: center;
+    border: 1px solid #303030;
+    padding: 10px 0;
+    font-weight: 400;
+    letter-spacing: 1px;
 }
-.sizing-calculator-button img{ 
-    margin-right: 20px;
-   
+.product-page-btn-container a:hover, .product-page-btn-container a:hover i{ 
+    background: #303030; 
+    color: white;
 }
 
-
-
+@media (max-width: 1050px){ 
+    .product-page-btn-container a{ 
+        width: 100%;
+        margin-top: 10px;
+    }
+}
 
 /*availability section */ 
 .availability{ 

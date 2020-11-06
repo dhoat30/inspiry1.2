@@ -2,9 +2,14 @@
     display: flex;
     flex-direction: column;
     margin-top: 50px;
+    width: 90%;
+}
+.mobile-warranty{ 
+    display: none;
+    width: 100%;
 }
 .bc-single-product__warranty h1{ 
-    color: white;
+    color: #303030;
     font-size: 18px;
     font-weight: 500;
     letter-spacing: 1px;
@@ -12,16 +17,23 @@
     display: flex;
     justify-content: space-between;
     cursor: pointer;
-    border-bottom: 1px solid white;
-    background: #303030;
+    border-top: 1px solid #bababa;
 }
-.bc-single-product__warranty h1:hover{ 
-    background: #525659;
-} 
-
+.bc-single-product__warranty h1:last-of-type{ 
+    border-bottom: 1px solid #bababa;
+}
 
 .bc-single-product__warranty p{
     display: none;
     background: white;
     padding: 10px 10px;    
+}
+
+@media (max-width:767px){ 
+    .desktop-warranty{ 
+        display: none;
+    }
+    .mobile-warranty{ 
+        display: block;
+    }
 }

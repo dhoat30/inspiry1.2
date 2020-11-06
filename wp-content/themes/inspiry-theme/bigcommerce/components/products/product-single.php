@@ -21,8 +21,14 @@ use BigCommerce\Post_Types\Product\Product;
 
 <!-- data-js="bc-product-data-wrapper" is required. -->
 <section class="bc-product-single__top" data-js="bc-product-data-wrapper">
-  <?php echo $images; ?>
+  
+<div class="bc-product__gallery bc-medium-img">
+<?php echo $images; ?>
+  <section class="bc-single-product__warranty desktop-warranty">
 
+  <?php  echo $product->get_property('warranty') ;?>
+  </section>
+</div>
   
 
 	<!-- data-js="bc-product-meta" is required. -->
@@ -35,38 +41,8 @@ use BigCommerce\Post_Types\Product\Product;
                     
 					<div class="underline grey margin-elements"></div>
 					
-					<!--calculator and sample-->
-					<!--  and calculator -->
-				
-							
-				<a href="<?php echo rtrim(get_the_permalink(),'/').'-sample' ;?>" class="order-sample-button"><img src="<?php echo get_site_url(); ?>/wp-content/uploads/2020/08/icon-cut.png" alt="order a sample"> Order a Sample</a>
-                  <br>
-            <?php 
-            $post_id = get_the_id(); 
-            $category_list = get_the_terms( $post_id, 'bigcommerce_category'); 
-
-            $category_list_name = wp_list_pluck($category_list, 'name'); 
-
-            //checking wallpaer in the list 
-            $wallpaper = in_array('Wallpaper', $category_list_name); 
-
-            //checking fabric in a list
-            $fabric = in_array('Fabric', $category_list_name); 
-
-            if($wallpaper ){ 
-              ?>
-              				<a href="#" class="sizing-calculator-button"><img src="<?php echo get_site_url(); ?>/wp-content/uploads/2020/08/icon-calc.png" alt="order a sample"> Wallpaper Calculator</a>
-
-              <?php 
-            }
-            elseif($fabric){ 
-              ?>
-              				<a href="#" class="sizing-calculator-button"><img src="<?php echo get_site_url(); ?>/wp-content/uploads/2020/08/icon-calc.png" alt="order a sample"> Fabric Calculator</a>
-
-              <?php 
-            }
-
-            ?>
+					
+           
 
 	
 		<?php echo $price; ?>
@@ -96,7 +72,46 @@ use BigCommerce\Post_Types\Product\Product;
                                 }
 
                                
-                            ?>
+      ?>
+
+<?php 
+    $post_id = get_the_id(); 
+    $category_list = get_the_terms( $post_id, 'bigcommerce_category'); 
+
+    $category_list_name = wp_list_pluck($category_list, 'name'); 
+
+    //checking wallpaer in the list 
+    $wallpaper = in_array('Wallpaper', $category_list_name); 
+
+    //checking fabric in a list
+    $fabric = in_array('Fabric', $category_list_name); 
+
+    if($wallpaper ){ 
+      ?>
+              <!--calculator and sample-->
+                <!--  and calculator -->
+				
+							<div class="product-page-btn-container">
+                <a href="<?php echo rtrim(get_the_permalink(),'/').'-sample' ;?>" class="order-sample-button"><img src="<?php echo get_site_url(); ?>/wp-content/uploads/2020/08/icon-cut.png" alt="order a sample"> Order a Sample</a>
+                        
+                <a href="#" class="sizing-calculator-button"><i class="far fa-calculator"></i> Wallpaper Calculator</a>       
+              </div>
+              
+      <?php 
+    }
+    elseif($fabric){ 
+      ?>      <!--calculator and sample-->
+      <!--  and calculator -->
+
+            <div class="product-page-btn-container">
+                <a href="<?php echo rtrim(get_the_permalink(),'/').'-sample' ;?>" class="order-sample-button"><i class="fal fa-cut"></i>  Order a Sample</a>
+                <a href="#" class="sizing-calculator-button"><i class="far fa-calculator"></i> Fabric Calculator</a>
+            </div>
+      <?php 
+    }
+
+    ?>
+
 
                             
                             
@@ -110,12 +125,12 @@ use BigCommerce\Post_Types\Product\Product;
 	</div>
 </section>
 
-<section class="bc-single-product__warranty">
 
-  <?php  echo $product->get_property('warranty') ;?>
+
+<section class="bc-single-product__warranty mobile-warranty">
+
+<?php  echo $product->get_property('warranty') ;?>
 </section>
-
-
 
 
 <?php echo $related; ?>
