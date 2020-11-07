@@ -129,7 +129,7 @@ use BigCommerce\Post_Types\Product\Product;
 
 <section class="bc-single-product__warranty mobile-warranty">
 
-<?php  echo $product->get_property('warranty') ;?>
+  <?php  echo $product->get_property('warranty') ;?>
 </section>
 
 

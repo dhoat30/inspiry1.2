@@ -7,11 +7,12 @@
 
 /*wishlist icons */ 
 .wish-list-icon-container i{ 
-    color: #C09F93;
+    color: white;
     cursor: pointer;
     font-size: 30px;
-    padding: 10px;
+    padding: 8px 10px 10px 10px ;
     border-radius: 50%;
+    background: #303030; 
 }
 .wish-list-icon-container i:hover{ 
     background-color: #FFF1EB;
