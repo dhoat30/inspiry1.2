@@ -18,7 +18,7 @@ class DesignBoard{
        $('.board-card-archive .option-icon').on('click', this.showOptionsArchive.bind(this));
        $(document).mouseup(this.hideOptionContainerArchive.bind(this));
 
-
+        //show board on 
        //show share icon container
        $('.share-btn').on('click', this.showShareContainer);
        $('.share-icon-container span').on('click', this.hideShareContaienr); 
