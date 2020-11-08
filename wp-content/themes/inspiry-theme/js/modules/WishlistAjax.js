@@ -16,10 +16,9 @@ class WishlistAjax{
         this.aClick.forEach(event=>{
             event.addEventListener('click', this.runAjax.bind(this)); 
         });
+        
+        $(document).on('click', '.wish-list-icon-container .fa-heart', this.showListContainer );
 
-        this.wishListIcon.forEach(event=>{
-            event.addEventListener('click', this.showListContainer.bind(this));  
-        });
         this.closeIcon.on('click', this.hideContainer); 
     }
 
@@ -32,11 +31,11 @@ class WishlistAjax{
     }
     //show list container
     showListContainer(e){ 
-        console.log('working wishlist');
-        console.log(e);
-        let event = $(e.target.childNodes[1])
-        event.show(300);
-        $(e.target.childNodes[1].childNodes[1]).show(300);
+        console.log('whish list');
+        $(e.target).find('.overlay').show(300);
+        $(e.target).find('.bc-pdp-wish-lists').show(300);
+      
+       
     }
 /*
     

@@ -258,10 +258,12 @@
 .calculator-overlay button{ 
     background: #303030 !important;
     border-radius: 0% !important;
+    color:white;
 }
 .calculator-overlay button:hover{ 
-    background: #525659 !important;
-    color: white !important;
+    background: white !important;
+    color: #303030 !important;
+    outline: #303030 solid 1px;
 }
 
 

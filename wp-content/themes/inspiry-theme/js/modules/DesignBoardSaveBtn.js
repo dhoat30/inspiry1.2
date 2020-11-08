@@ -64,6 +64,7 @@
        //add code here to show pin button on quick view testing 2
         //console.log($('.bc-product-quick-view__content-inner .bc-product__title').append(``));
     }
+
     showChooseBoardContainer(e){ 
         let eventPostID; 
         let eventPostTitle;
@@ -81,10 +82,8 @@
             
 
         
-      
-        console.log(eventPostID + "and" + eventPostTitle);
         $('.choose-board-container').show(300);
-        $('.overlay').show(300); 
+        $('.board-overlay').show(300); 
 
         let postID = $('.choose-board-container').attr('data-post-id', eventPostID); 
        let postTitle = $('.choose-board-container').attr('data-post-title', eventPostTitle); 
