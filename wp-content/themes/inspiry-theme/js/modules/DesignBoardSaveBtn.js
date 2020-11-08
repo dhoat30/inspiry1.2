@@ -34,6 +34,7 @@
 
         //show icon only in quick view 
         $(document).on('click', '.bc-quickview-trigger--hover-label', this.showIconQuickView); 
+
         //show icon in the top of product card on archive page on hover
         $('.bc-quickview-trigger--hover').mouseenter( this.showPinIconOnHover); 
         $('.bc-quickview-trigger--hover').mouseleave( this.hidePinIconOnMouseOut); 
@@ -65,6 +66,8 @@
         //console.log($('.bc-product-quick-view__content-inner .bc-product__title').append(``));
     }
 
+
+    //show board
     showChooseBoardContainer(e){ 
         let eventPostID; 
         let eventPostTitle;

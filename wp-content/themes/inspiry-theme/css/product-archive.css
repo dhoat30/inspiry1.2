@@ -165,9 +165,9 @@
     position: relative;
 }
 .post-type-archive-bigcommerce_product .design-board-save-btn-container{ 
-    position: absolute;
-    top: 10px;
-    right: 10px;
+    position: absolute !important;
+    top: 10px !important;
+    right: 10px !important;
     display: none;
 }
 /*.bc-quickview-trigger--hover-label{ 
