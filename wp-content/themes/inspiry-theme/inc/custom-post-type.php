@@ -105,7 +105,5 @@ function wpdocs_register_private_taxonomy() {
 add_action( 'init', 'wpdocs_register_private_taxonomy', 0 );
 
 
-//duplication 
 
-?>
 

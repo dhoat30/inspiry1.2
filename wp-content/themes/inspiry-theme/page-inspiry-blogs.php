@@ -24,6 +24,7 @@
                         $argsBlog = array(
                             'post_type' => 'blogs',
                             'posts_per_page' => 2,
+                            'post_status' => 'publish',
                             'tax_query' => array(
                                 array(
                                     'taxonomy' => 'category',
@@ -68,6 +69,7 @@
                         $argsBlog = array(
                             'post_type' => 'blogs',
                             'posts_per_page' => 4,
+                            'post_status' => 'publish',
                                 'orderby' => 'date', 
                                 'order' => 'ASC'
                         );
@@ -112,6 +114,7 @@
                             $argsBlog = array(
                                 'post_type' => 'shop-my-fav',
                                 'posts_per_page' => 6,
+                                'post_status' => 'publish',
                                 'tax_query' => array(
                                     array(
                                         'taxonomy' => 'favorite',
@@ -154,6 +157,7 @@
                             $argsBlog = array(
                                 'post_type' => 'shop-my-fav',
                                 'posts_per_page' => 6,
+                                'post_status' => 'publish',
                                 'tax_query' => array(
                                     array(
                                         'taxonomy' => 'favorite',
@@ -196,6 +200,7 @@
                             $argsBlog = array(
                                 'post_type' => 'shop-my-fav',
                                 'posts_per_page' => 6,
+                                'post_status' => 'publish',
                                 'tax_query' => array(
                                     array(
                                         'taxonomy' => 'favorite',
@@ -254,6 +259,7 @@
                         $argsBlog = array(
                             'post_type' => 'blogs',
                             'posts_per_page' => 3,
+                            'post_status' => 'publish',
                             'tax_query' => array(
                                 array(
                                     'taxonomy' => 'category',

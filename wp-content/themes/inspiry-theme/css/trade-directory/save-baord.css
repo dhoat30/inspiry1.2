@@ -2,17 +2,17 @@
 
 .design-board-save-btn-container i{ 
     font-size: 30px;
-   padding: 10px 15px;
+   padding: 8px 10px 6px 10px;
     border-radius: 50%;
     cursor: pointer;
-    color: #C09F93;
     font-weight: 300 !important;
-    background:#F8F7F3;
+    background:#303030;
+    color: white;
 }
 
 .design-board-save-btn-container i:hover{ 
-    background:#FFF1EB;
-   
+    color:#303030;
+    background: white;
 }
 
 .choose-board-container{ 
@@ -73,20 +73,21 @@
     font-weight: 600;
     line-height: 0;
     cursor: pointer;
-    background:#FFF1EB;
+    background:#F8F7F3;
     letter-spacing: 1px;
-    color: #C09F93;
+    color: #474747;
+    font-weight: 400;
     
  
 }
 .choose-board-container .create-new-board span{ 
-    font-size: 40px;
+    font-size: 30px;
     position: relative;
     font-weight: 200;
     top: 4px;
     left: 1;
     border-radius: 50%;
-    background: #C09F93;
+    background: #474747;
     padding: 0px 10px;
     margin-right: 10px;
     font-weight: 400;
