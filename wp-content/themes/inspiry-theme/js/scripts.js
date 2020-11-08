@@ -24,7 +24,7 @@ window.onload = function() {
     const locationPage = new LocationPage(); 
     const overlay = new Overlay();
     const designBoardSinglePage = new DesignBoard(); 
-   //const designBoardSaveBtn = new DesignBoardSaveBtn();
+    const designBoardSaveBtn = new DesignBoardSaveBtn();
 
 
 let designBoardAjax = new DesignBoardAjax(); 

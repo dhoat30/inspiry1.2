@@ -164,12 +164,15 @@
 .bc-product-card{ 
     position: relative;
 }
-.post-type-archive-bigcommerce_product .design-board-save-btn-container{ 
+.bc-product-card .design-board-save-btn-container{ 
     position: absolute !important;
     top: 10px !important;
     right: 10px !important;
-    display: block;
+    display: none;
     z-index: 1000 !important;
+}
+.bc-product-card .design-board-save-btn-container i{ 
+    font-size: 20px;
 }
 /*.bc-quickview-trigger--hover-label{ 
     position: absolute;
