@@ -31,6 +31,11 @@ let designBoardAjax = new DesignBoardAjax();
 
 const tradeNav = new TradeNav();
 
+//slogan 
+
+$('.logo-container .slogan').css('opacity', '1');
+
+
 //profile navbar
 
 

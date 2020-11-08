@@ -23,7 +23,17 @@
 .logo-container{ 
     padding: 20px 0 0 0;
 }
-.logo-container img{ 
+
+.logo-container .slogan{ 
+    width: 250px;
+    margin: 10px auto 0 auto;
+    display: block;
+    opacity: 0;
+  
+    transition: opacity 1s;
+  -webkit-transition: opacity 1s;
+}
+.logo-container .logo{ 
     display: block; 
     margin: 0 auto;
     width: 100%; 

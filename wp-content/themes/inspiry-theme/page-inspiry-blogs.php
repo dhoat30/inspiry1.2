@@ -4,50 +4,14 @@
     <!--first section --> 
     <section class="row-container first-section">
         <div class="sidebar">
-   
+                <div class="work-sans-fonts font-s-medium">Category</div>
                 <?php echo do_shortcode('[facetwp facet="blogs"]');?>
-                <?php echo do_shortcode('[facetwp template="blogs"]');?>
+                <button onclick="FWP.reset()" class="facet-reset-btn">Reset</button>
         </div>
         <div class="flex">
-            <?php 
+        <?php echo do_shortcode('[facetwp template="blogs"]');?>
 
-                            $argsBlog = array(
-                            'post_type' => 'blogs',
-                            'posts_per_page' => 6,
-                            'facetwp' => true,
-                            'tax_query' => array(
-                                array(
-                                    'taxonomy' => 'category',
-                                    'field'    => 'slug',
-                                    'terms'    => array('interior-inspiration', 'interior-advice'),
-                                )
-                                ), 
-                                'orderby' => 'date', 
-                                'order' => 'ASC'
-                        );
-                        $Blog = new WP_Query( $argsBlog );
-
-                        while($Blog->have_posts()){ 
-                            $Blog->the_post(); 
-
-            ?>      
-                <div class="cards">
-                    <div>
-                        <a class="rm-txt-dec" href="<?php the_permalink();?>">
-                            <div class="overlay"></div>
-                            <img src="<?php echo get_the_post_thumbnail_url(null,"full"); ?>" alt="Khroma">                      
-                            <div class="font-s-med center-align"><?php the_title(); ?></div>
-                        </a>
-                       
-                    </div>
-                </div>
-            
-                <?php 
-
-                }
-                wp_reset_postdata();
-                ?>
-        
+        <?php echo do_shortcode('[facetwp facet="pager_"]'); ?>
         </div>
     </section>
 

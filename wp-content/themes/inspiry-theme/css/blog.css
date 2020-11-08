@@ -1,20 +1,24 @@
 .inspiry-blogs .first-section{ 
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap-reverse;
+    flex-wrap: wrap;
     justify-content: center;
 }
 .inspiry-blogs .first-section>div:nth-child(1){ 
-    width: 30%;
+    width: 20%;
+    margin-top: 20px;
 }
 .inspiry-blogs .first-section>div:nth-child(2){ 
     width: 70%;
-}
-.inspiry-blogs .first-section .flex{ 
+}   
+.inspiry-blogs .first-section .sidebar .font-s-medium{ 
+    margin-bottom: 10px;
+}   
+.inspiry-blogs .first-section .flex .facetwp-template{ 
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap-reverse;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: flex-start;
 }
 
 
@@ -51,6 +55,24 @@
 .inspiry-blogs .first-section .flex .cards:hover .font-s-med { 
     display: block;
    
+}
+.facetwp-facet{ 
+    margin: 0 !important;
+    width: 100% !important;
+}
+.facetwp-load-more{ 
+    display: block;
+    margin: 0 auto;
+    border: 1px solid #303030;
+    padding: 10px 40px;
+    background: white;
+    color: #303030;
+    cursor: pointer;
+    font-size: 15px;
+    letter-spacing: 1px;
+    transition-timing-function: ease-in-out;
+    transition-duration: 300ms;
+    outline: none !important;
 }
 @media(max-width:500px){ 
     .inspiry-blogs .first-section .flex{ 

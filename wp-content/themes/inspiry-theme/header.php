@@ -75,8 +75,18 @@
         <!--logo -->
         <div class="logo-container">
             <a href="<?php echo get_site_url(); ?>">
-                <img src="<?php echo get_site_url(); ?>/wp-content/uploads/2020/11/Inspiry_Logo-transparent-1.png" alt="Inspiry Logo">
+                <img class="logo" src="<?php echo get_site_url(); ?>/wp-content/uploads/2020/11/Inspiry_Logo-transparent-1.png" alt="Inspiry Logo">
             </a>
+            <?php 
+             global $post;
+             $post_slug = $post->post_name;
+                if($post_slug == 'inspiry-blogs'){ 
+                    ?>
+                    <img class="slogan" src="<?php echo  get_site_url();?>/wp-content/uploads/2020/11/Inspiry_Slogan.jpg" alt="Slogan">
+                    <?php
+                }
+                
+            ?>
         </div>
 
         <!--top navbar --> 
