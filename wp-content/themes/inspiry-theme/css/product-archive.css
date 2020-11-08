@@ -169,6 +169,7 @@
     top: 10px !important;
     right: 10px !important;
     display: none;
+    z-index: 1000 !important;
 }
 /*.bc-quickview-trigger--hover-label{ 
     position: absolute;
