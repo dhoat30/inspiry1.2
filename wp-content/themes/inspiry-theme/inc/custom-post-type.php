@@ -8,6 +8,8 @@ add_post_type_support( "sliders", "thumbnail" );
 
 add_post_type_support( "loving", "thumbnail" ); 
 add_post_type_support( "blogs", "thumbnail" );
+add_post_type_support( "shop-my-fav", "thumbnail" );
+
 function register_custom_type2(){ 
 
    //sliders psot type
@@ -46,7 +48,7 @@ function register_custom_type2(){
    )
    );
 
-   //loving post type
+   //blogs post type
    register_post_type("blogs", array(
       "supports" => array("title", "page-attributes", 'editor'), 
       "public" => true, 
@@ -63,10 +65,47 @@ function register_custom_type2(){
       'taxonomies'          => array('category')
    )
    );
+
+   //loving post type
+   register_post_type("shop-my-fav", array(
+      "supports" => array("title", "page-attributes"), 
+      "public" => true, 
+      "show_ui" => true, 
+      "hierarchical" => true,
+      "labels" => array(
+         "name" => "Shop My Favs", 
+         "add_new_item" => "Add New Shop My Fav", 
+         "edit_item" => "Edit Shop My Fav", 
+         "all_items" => "All Shop My Favs", 
+         "singular_name" => "Shop My Fav"
+      ), 
+      "menu_icon" => "dashicons-welcome-write-blog"
+   )
+   );
    
    
 
 }
 
 add_action("init", "register_custom_type2"); 
+
+
+
+//custom taxonomy
+function wpdocs_register_private_taxonomy() {
+   $args = array(
+       'label'        => __( 'favorite', 'textdomain' ),
+       'public'       => true,
+       'rewrite'      => true,
+       'hierarchical' => true
+   );
+    
+   register_taxonomy( 'favorite', 'shop-my-fav', $args );
+}
+add_action( 'init', 'wpdocs_register_private_taxonomy', 0 );
+
+
+//duplication 
+
 ?>
+

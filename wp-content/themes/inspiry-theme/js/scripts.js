@@ -15,8 +15,10 @@ import Overlay from './modules/overlay';
 import LocationPage from './modules/LocationPage'; 
 import TopNav from './modules/TopNav';
 import GeoTradeSearch from './modules/GeoTradeSearch';
-
+import ShopFav from './modules/ShopFav'; 
 window.onload = function() {
+
+    const shopFav = new ShopFav(); 
     const geoTradeSearch = new GeoTradeSearch(); 
     const topnav = new TopNav(); 
     const locationPage = new LocationPage(); 
