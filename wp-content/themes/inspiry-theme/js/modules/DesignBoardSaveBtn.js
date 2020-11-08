@@ -36,9 +36,9 @@
         $(document).on('click', '.bc-quickview-trigger--hover-label', this.showIconQuickView); 
 
         //show icon in the top of product card on archive page on hover
-        $('.bc-quickview-trigger--hover').hover( this.showPinIconOnHover, this.hidePinIconOnMouseOut); 
+        $('.bc-product-card').hover( this.showPinIconOnHover, this.hidePinIconOnMouseOut); 
        // $('.bc-quickview-trigger--hover').mouseleave( this.hidePinIconOnMouseOut); 
-       $('.post-type-archive-bigcommerce_product .design-board-save-btn-container').hover( this.showPinIconOnHover, this.hidePinIconOnMouseOut); 
+       //$('.post-type-archive-bigcommerce_product .design-board-save-btn-container').hover( this.showPinIconOnHover, this.hidePinIconOnMouseOut); 
        //$('.post-type-archive-bigcommerce_product .design-board-save-btn-container').mouseleave( this.hidePinIconOnMouseOut); 
 
 
@@ -48,13 +48,11 @@
     //show icon on hover on product archive
     showPinIconOnHover(e){ 
         let designBoard = $(e.target).closest('.bc-product-card').find('.design-board-save-btn-container'); 
-        designBoard.show();
-       
-    
+        designBoard.css('opacity', 1);
     }
     hidePinIconOnMouseOut(e){ 
         let designBoard = $(e.target).closest('.bc-product-card').find('.design-board-save-btn-container');
-        designBoard.hide();
+        designBoard.css('opacity', 0);
       
     }
 
