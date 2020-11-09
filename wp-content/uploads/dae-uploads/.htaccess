@@ -1,0 +1,15 @@
+
+# BEGIN DAE deny access download files
+# The directives (lines) between "BEGIN DAE deny access download files" and "END DAE deny access download files" are
+# dynamically generated, and should only be modified via WordPress filters.
+# Any changes to the directives between these markers will be overwritten.
+
+						<IfModule mod_authz_core.c>
+						Require all denied
+						</IfModule>
+						<IfModule ! mod_authz_core.c>
+						Order Allow,Deny
+						Deny from all
+						</IfModule>
+					
+# END DAE deny access download files

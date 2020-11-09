@@ -9,6 +9,7 @@ add_post_type_support( "sliders", "thumbnail" );
 add_post_type_support( "loving", "thumbnail" ); 
 add_post_type_support( "blogs", "thumbnail" );
 add_post_type_support( "shop-my-fav", "thumbnail" );
+add_post_type_support( "shop_by_brand", "thumbnail" );
 
 function register_custom_type2(){ 
 
@@ -83,6 +84,22 @@ function register_custom_type2(){
    )
    );
    
+   //shop by brand page post type
+   register_post_type("shop_by_brand", array(
+      "supports" => array("title", "page-attributes"), 
+      "public" => true, 
+      "show_ui" => true, 
+      "hierarchical" => true,
+      "labels" => array(
+         "name" => "Brands", 
+         "add_new_item" => "Add New Brand", 
+         "edit_item" => "Edit Brand", 
+         "all_items" => "All Brands", 
+         "singular_name" => "Brand"
+      ), 
+      "menu_icon" => "dashicons-shield"
+   )
+   );
    
 
 }
