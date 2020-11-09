@@ -59,3 +59,25 @@
 .top-navbar{
     margin: 0 !important;
 }
+
+/*mega menu styling*/ 
+#mega-menu-wrap-inspiry_main_menu #mega-menu-inspiry_main_menu li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row {
+    width: 100%;
+    /* float: left; */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+#mega-menu-inspiry_main_menu li.mega-menu-item.mega-menu-megamenu ul.mega-sub-menu ul.mega-sub-menu {
+    visibility: inherit;
+    opacity: 1;
+    width: 1000px;
+    /* display: flex; */
+    /* flex-direction: row; */
+    /* justify-content: center; */
+    display: block;
+    flex-wrap: wrap;
+}
+#mega-menu-wrap-inspiry_main_menu #mega-menu-inspiry_main_menu li.mega-menu-megamenu > ul.mega-sub-menu > li.mega-menu-row > ul.mega-sub-menu > li.mega-menu-columns-3-of-12 {
+    width: 300px;
+}

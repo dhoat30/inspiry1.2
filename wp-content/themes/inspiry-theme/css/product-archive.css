@@ -180,3 +180,10 @@
     top: 100%;
    
 }*/
+
+.bc-product-card button {
+    border-width: 0 !important;
+    border-style: none !important;
+    border-color: -internal-light-dark(rgb(255, 255, 255), rgb(255, 255, 255)) !important;
+    border-image: initial;
+}

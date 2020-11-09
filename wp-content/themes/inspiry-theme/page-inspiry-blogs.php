@@ -3,7 +3,10 @@
 <section class="inspiry-blogs">
     <!--first section --> 
     <section class="row-container first-section">
-        <div class="sidebar">
+        <div class="sidebar row-container">
+                 <div class="work-sans-fonts font-s-medium">Search</div>
+                 <?php echo do_shortcode('[ivory-search id="7686" title="Default Search Form"]');?>
+
                 <div class="work-sans-fonts font-s-medium">Category</div>
                 <?php echo do_shortcode('[facetwp facet="blogs"]');?>
                 <button onclick="FWP.reset()" class="facet-reset-btn">Reset</button>
@@ -252,7 +255,7 @@
 
      <!--fifth section --> 
      <section class="fifth-section">
-        <div class="font-s-regular center-align">More Inspiry Blogs </div>
+        <div class="font-s-regular center-align">More Inspiry </div>
         <div class="flex">
             <?php 
 

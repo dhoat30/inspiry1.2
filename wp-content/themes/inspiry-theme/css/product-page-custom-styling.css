@@ -423,3 +423,9 @@ div .input-group-addon {
 */
 }
  
+
+/*alerts */ 
+.bc-alert--success {
+    background-color: #3ec889;
+    filter: saturate(0.6) !important;
+}
