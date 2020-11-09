@@ -3,64 +3,40 @@ get_header();
     while(have_posts()){ 
         the_post(); 
         ?>
-        <style>
-            /* Backgorund Images */
-   
-                .slide:first-child {
-                    background: url('<?php echo get_site_url(); ?>/wp-content/uploads/2020/09/trade-image-3.jpg') no-repeat
-                    center top/cover;
-                }
-                .slide:nth-child(2) {
-                    background: url('<?php echo get_site_url(); ?>/wp-content/uploads/2020/09/trade-image-2.jpg') no-repeat
-                    center top/cover;
-                }
-                .slide:nth-child(3) {
-                    background: url('<?php echo get_site_url(); ?>/wp-content/uploads/2020/09/trade-img-1.jpg') no-repeat
-                    center top/cover;
-                }
-               
-        </style>
-                <div class="slider">
-                    <div class="slide current">
-                        <div class="content invisible">
-                            <!--
-                        <h1>Slide One</h1>
-                        <p>
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit hic
-                            maxime, voluptatibus labore doloremque vero!
-                        </p>
-                        -->
-                        </div>
-                    </div>
-                    <div class="slide">
-                        
-                        <div class="content invisible">
-                        <!--  
-                        <h1>Slide Two</h1>
-                        <p>
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit hic
-                            maxime, voluptatibus labore doloremque vero!
-                        </p>
-                        -->
-                        </div>
-                    </div>
-                    <div class="slide">
-                        <div class="content invisible">
-                            <!--
-                        <h1>Slide Three</h1>
-                        <p>
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit hic
-                            maxime, voluptatibus labore doloremque vero!
-                        </p>
-                        -->
-                        </div>
-                    </div>
+        
+           <section class="about-us">
+    <section class="hero-section">
+        <div class="slider-container">
+            <div class="slider">
+                            <div class="hero-overlay"></div>
+                            
+                                
+                             
+                                            
+                                            <div class="slide"  style='background: url("<?php echo get_site_url();?>/wp-content/uploads/2020/09/trade-image-3.jpg") no-repeat
+                                                    center top/cover;'>
+                                                    
+                                            </div>
+                                            <div class="slide"  style='background: url("<?php echo get_site_url();?>/wp-content/uploads/2020/09/trade-image-2.jpg") no-repeat
+                                                    center top/cover;'>
+                                                   
+                                            </div>        
+                                            <div class="slide"  style='background: url("<?php echo get_site_url();?>/wp-content/uploads/2020/09/trade-img-1.jpg") no-repeat
+                                                    center top/cover;'>
+                                                   
+                                            </div>            
+            </div>
+                
                     
-                    </div>
-                    <div class="buttons">
-                    <button id="prev"><i class="fas fa-arrow-left"></i></button>
-                    <button id="next"><i class="fas fa-arrow-right"></i></button>
-                </div>
+            <div class="buttons">
+                            <button id="prev"><i class="fas fa-arrow-left"></i></button>
+                            <button id="next"><i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+
+               
 
         <div class="body-contaienr inspiry-trade">
             <div class="row-container">
@@ -71,9 +47,52 @@ get_header();
                     We provide a space for you and your business to create innovate and grow. 
                     Reach more people and get networking with like minded individuals all through Inspiry Trade
                 </h2>
-                <a class="bc-btn bc-btn--register trade-register-button" href='<?php echo get_home_url(). "/trade-registration" ?>'> Create A Trade Account</a>
+
+                <?php if(is_user_logged_in()){ 
+                        ?>
+                                        <a class="bc-btn bc-btn--register trade-register-button" href='<?php echo get_home_url(). "/add-listing/?listing_type=gd_place" ?>'> Add a Listing</a>
+
+                        <?php
+                }
+                        else{
+                            ?>
+                                <a class="bc-btn bc-btn--register trade-register-button" href='<?php echo get_home_url(). "/trade-registration" ?>'> Create A Trade Account</a>
+
+                            <?php
+                        }
+                    ?>
 
             </div>
+            
+            <section class="contact-page">
+                <!-- USP --> 
+    <section class="trade-usp">
+        <div>
+            <i class="fas fa-user-hard-hat"></i>
+            <div class="work-sans-fonts font-s-med center-align">
+                Inspiry Trade connects you with your target audience
+            </div>
+        </div>
+        <div>
+        <i class="fas fa-clipboard-list-check"></i>
+                    <div class="work-sans-fonts font-s-med center-align">
+                Be listed on our Trade directory promoting your business and service
+            </div>
+        </div>
+        <div>
+            <i class="fab fa-google"></i>
+                    <div class="work-sans-fonts font-s-med center-align">
+                Quality traffic from Google to your projects and listing
+            </div>
+        </div>
+        <div>
+            <i class="fas fa-chart-network"></i>            
+            <div class="work-sans-fonts font-s-med center-align">
+                Become part of our collaborative gub connecting you with our viewers
+            </div>
+        </div>
+    </section>
+            </section>
 
             <div class="row-container card-row">
                 <div class="card-title">
@@ -180,6 +199,7 @@ const prev = document.querySelector('#prev');
 const auto = true; // Auto scroll
 const intervalTime = 5000;
 let slideInterval;
+slides[0].classList.add('current');
 
 const nextSlide = () => {
   // Get current class

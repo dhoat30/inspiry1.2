@@ -2,10 +2,15 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items:center;
 }
-
+.contact-page .hero-section-img{ 
+    max-width: 800px;
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+}
 .contact-us-page>div{ 
     width:40%;
 }
@@ -31,6 +36,10 @@
   }
 
 /*contact info*/ 
+.contact-us-page .contact { 
+    max-width: 340px;
+ 
+}
 .contact-us-page .contact-info a{
     font-size: 18px;
     margin: 5px 0;
@@ -43,7 +52,12 @@
     font-size: 22px;
     padding-right: 10px;
 }
-
+.fab{ 
+    border-radius: 50% !important;
+}
+.fa-instagram-square{ 
+    border-radius: 50% !important;
+}
 /*social media*/ 
 .contact-us-page .social-media{ 
     margin: 20px 0;
@@ -54,4 +68,60 @@
     color: #303030;
     display: inline-block;
     margin: 10px 5px 0 0; 
+}
+
+.nf-field-element input[type="button"]{ 
+    background: #303030 !important;
+    color: white !important;
+}
+.nf-field-element input[type="button"]{ 
+    background: #303030 !important;
+    color: white !important;
+}
+.nf-field-element input[type="button"]:hover{ 
+    border: 1px solid #303030 !important;
+    color: #303030 !important;
+    background-color: white;
+}
+
+/*inspiry trade*/ 
+.contact-page .trade-usp{ 
+    background:#EFEAE5;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 30px;
+    margin: 50px 0;
+}
+.contact-page .trade-usp>div{ 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    max-width: 300px;
+    margin: 20px 10px;
+}
+.contact-page .trade-usp>div i{ 
+    font-size: 50px;
+    padding-bottom: 10px;
+}
+
+
+/*quotes*/ 
+.contact-page .testimonials{ 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 30px;
+    margin: 10px 0;
+}
+.contact-page .testimonials>div{ 
+    max-width: 300px;
+    margin: 0px 10px 50px 10px;
+}
+.contact-page .testimonials>div i{ 
+    font-size: 30px;
+    padding-bottom: 10px;
 }

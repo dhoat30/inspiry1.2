@@ -1,0 +1,81 @@
+.about-us .second-section{ 
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap-reverse;
+    justify-content: space-around;
+    max-width: 1000px;
+}
+
+.about-us .second-section>div{
+    width: 45%;
+    margin: 20px;
+}
+
+.about-us .second-section img{
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+   
+}
+
+.about-us .second-flex .content .second{
+        margin-top: 100px;
+}
+
+.about-us .second-flex{ 
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    max-width: 1000px;
+    margin-top: 50px;
+}
+
+.about-us .second-flex>div{
+    width: 45%;
+    margin: 20px;
+}
+
+.about-us .second-flex img{
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+   
+}
+
+.about-us .second-flex .content .second{
+        margin-top: 100px;
+}
+
+
+
+
+
+@media (max-width: 900px){
+    .about-us .second-section>div{
+        width: 100%;
+        margin: 0 0 10px 0;
+    }
+    .about-us .second-section img{
+        width: 100%;
+        height: 60vh;
+        object-fit: cover;
+    }
+    .about-us .second-section .content .second{
+        margin-top: 20px;
+}
+.about-us .second-flex>div{
+    width: 100%;
+    margin: 0 0 10px 0;
+}
+.about-us .second-flex img{
+    width: 100%;
+    height: 60vh;
+    object-fit: cover;
+}
+.about-us .second-flex .content .second{
+    margin-top: 20px;
+}
+
+
+}
