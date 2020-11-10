@@ -249,9 +249,10 @@
         <div class="font-s-regular center-align">Inspiry On Instagram</div>
             <script src="https://assets.juicer.io/embed.js" type="text/javascript"></script>
         <link href="https://assets.juicer.io/embed.css" media="all" rel="stylesheet" type="text/css" />
-        <ul data-per="4" class="juicer-feed" data-feed-id="gdhoat"><h1 class="referral"><a href="https://www.juicer.io"></a></h1></ul>
-        
+        <ul data-per="6" class="juicer-feed" data-feed-id="inspirynz"><h1 class="referral"><a href="https://www.juicer.io"></a></h1></ul>
     </section>
+
+
 
      <!--fifth section --> 
      <section class="fifth-section">

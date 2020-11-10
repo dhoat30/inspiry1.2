@@ -424,7 +424,6 @@
 /*instagram */ 
 .juicer-feed h1.referral {
     margin: 0 !important;
-    
 }
 .juicer-feed h1.referral a:after{ 
     display: none !important;
@@ -440,15 +439,31 @@
     text-transform: uppercase;
     letter-spacing: 1px;
     background: white;
-    max-width: 900px;
+    max-width: 1300px;
     position: relative;
 }
 .inspiry-blogs .social-section .overlay{ 
     display: block;
     position: absolute;
 }
-.j-image img{
+
+.feed-item {
     transition:all 0.3s ease;
+    width: 250px !important; 
+    margin: 0 !important;
+}
+.social-section .j-stacker {
+    display: flex !important;
+    justify-content: center !important;
+    flex-direction: row !important;
+}
+.j-stack { 
+    width: 250px !important;
+    margin: 5px;
+}
+.j-stack li{ 
+   
+    margin: 10px !important;
 }
 .j-image img:hover
 {

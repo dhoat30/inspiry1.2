@@ -1,4 +1,17 @@
+<section class="subscribe-section">
+  <div class="content">
+    <div class="section-ft-size">
+        Sign up For Inspiry Emails. 
+    </div>
+    <div class="work-sans-fonts font-s-regular">
+      Plus hear about the latest and greatest from our family of brands!   
+    </div>
+  </div>
 
+  <div class="form">
+    <?php echo do_shortcode('[mc4wp_form id="13731"]');?>
+  </div>
+</section>
     <footer class="off-white-bc footer">
 
         <div class="footer-menu-row row-container light-grey">

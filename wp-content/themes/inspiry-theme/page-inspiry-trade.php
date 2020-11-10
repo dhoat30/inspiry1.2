@@ -88,7 +88,7 @@ get_header();
         <div>
             <i class="fas fa-chart-network"></i>            
             <div class="work-sans-fonts font-s-med center-align">
-                Become part of our collaborative gub connecting you with our viewers
+                Become part of our collaborative hub connecting you with our viewers
             </div>
         </div>
     </section>
