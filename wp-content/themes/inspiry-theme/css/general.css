@@ -1,0 +1,25 @@
+.privacy-policy pre{ 
+    font-family: 'work sans', sans-serif;
+}
+.privacy-policy strong{ 
+margin-top: 20px !important;
+display: block;
+}
+
+/*index*/ 
+.index-page p{ 
+    font-family: 'work sans', sans-serif;
+    line-height: 1.7em;
+}
+.index-page strong{ 
+    font-weight: 600 !important;
+}
+
+.index-page h2{ 
+    margin-top: 30px;
+    margin-bottom: 10px;
+    font-weight: 400;
+}
+.index-page .bold{ 
+    margin-top: 10px;
+}
