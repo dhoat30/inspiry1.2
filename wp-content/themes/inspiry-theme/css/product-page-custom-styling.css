@@ -429,3 +429,7 @@ div .input-group-addon {
     background-color: #3ec889;
     filter: saturate(0.6) !important;
 }
+
+.bc-single-product__specifications table tbody tr[data-dimensionsExists="has-value"] { 
+    display: none;
+}

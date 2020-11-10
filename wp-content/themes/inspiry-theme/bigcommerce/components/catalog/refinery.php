@@ -6,5 +6,5 @@
 <?php echo do_shortcode('[facetwp facet="pattern"]'); ?>
 <?php echo do_shortcode('[facetwp facet="composition"]'); ?>
 <?php echo do_shortcode('[facetwp facet="sho"]'); ?>
-<button class="facet-reset-btn" onclick="FWP.reset()">Reset</button>
+<button class="facet-reset-btn" onclick="FWP.reset()">Return To Blog</button>
 

@@ -88,8 +88,9 @@ get_header();
             <div class="quote">
                 <i class="fas fa-quote-left"></i>
                 <div class='background beige-color-bc'>
-                    <div class="column-s-font regular">Corrine has a great sense of style, taste & knew what i wanted. She helped me so much and inspired me with lights, drapes, furniture and painting. She took all the pressure away and I love everything.</div>
+                    <div class="column-s-font regular">Corrine has a great sense of style, taste & knew what I wanted. She helped me so much and inspired me with lights, drapes, furniture and painting. She took all the pressure away and I love everything.</div>
                     <span class="work-sans-fonts ft-wt-med font-s-med">Mary Jaques</span>
+                    <div class="work-sans-fonts font-s-med regular">Bay Of Plenty</div>
                 </div>
                 
             </div>

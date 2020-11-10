@@ -4,7 +4,7 @@
     <!--first section --> 
     <section class="row-container first-section">
         <div class="sidebar row-container">
-                 <div class="work-sans-fonts font-s-medium">Search</div>
+                 
                  <?php echo do_shortcode('[ivory-search id="7686" title="Default Search Form"]');?>
 
                 <div class="work-sans-fonts font-s-medium">Category</div>

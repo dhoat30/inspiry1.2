@@ -85,6 +85,10 @@
           </div>
 
         </div>
+
+        <div class="footer-img">
+          <img src="<?php echo get_site_url();?>/wp-content/uploads/2020/11/Inspiry_Slogan-transparent.png" alt="Slogan">
+        </div>
         <div class="copyright-container row-container light-grey">
               <div>© Copyright 2019 Inspiry NZ. All rights reserved. <a href="https://webduel.co.nz" rel="nofollow" target="_blank" class="dark-green rm-txt-dec"> Build By WebDuel</a></div>
         </div>
@@ -129,7 +133,7 @@
                                             }
                                         ?>
                                     </ul>
-                                    <div class="create-new-board"><span>+</span> Create New Board</div>
+                                    <div class="create-new-board"><i class="fal fa-plus"></i> Create New Board</div>
                                 </div>
 
                                 <div class="project-save-form-section">

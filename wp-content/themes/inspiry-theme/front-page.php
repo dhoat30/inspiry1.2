@@ -63,19 +63,28 @@ get_header();
         </div>
     </div>
 
-    <div class="row-container usp margin-elements">
-         <div class="beige-color-bc box-shadow">
-            <i class="fal fa-arrow-up"></i>
-            Lorem ipsum dolor sit amet
+    <div class="beige-color-bc usp">
+         <div>
+            <i class="fal fa-truck"></i>
+            <div>
+                <span class="work-sans-fonts font-s-med ft-wt-med">Free Shipping NZ Wide</span> <br>
+                <span>on all wallpaper and fabric</span>
+            </div>
+            
          </div>  
-         <div class="beige-color-bc box-shadow">
-            <i class="fal fa-arrow-up"></i>
-            Lorem ipsum dolor sit amet
+         <div>
+         <i class="fal fa-tag"></i>
+                <div>
+                <span class="work-sans-fonts font-s-med ft-wt-med">Beautiful Designer Brands</span> <br>
+                <span class="work-sans-fonts font-s-regular">furniture, homeware & rugs</span>
+            </div>
          </div>  
-         <div class="beige-color-bc box-shadow">
-            <i class="fal fa-arrow-up"></i>
-            Lorem ipsum dolor sit amet
-         </div>                               
+         <div>
+         <i class="fal fa-shipping-timed"></i>
+                     <div>
+                <span class="work-sans-fonts font-s-med ft-wt-med">shipped daily</span> <br>
+                <span>to your door</span>
+            </div>         </div>                               
     </div>
 
     <div class="box-section">
@@ -220,7 +229,7 @@ get_header();
                     <br>Request an information pack<br>
                     trade@inspiry.co.nz
                 </div>         
-                <a href="<?php echo get_site_url();?>/location" class="rm-txt-dec button btn-dk-green">View our full list of Trade Professionals</a>
+                <a href="<?php echo get_site_url();?>/location" class="rm-txt-dec button btn-dk-green">View Trade Professionals</a>
             </div>            
           
             <?php 

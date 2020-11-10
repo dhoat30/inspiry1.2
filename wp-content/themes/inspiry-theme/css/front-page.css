@@ -3,19 +3,35 @@
     display: flex; 
     flex-direction: row;
     justify-content:center;
+    flex-wrap: wrap;
+}
+.home-page .usp>div{
+    display: flex; 
+    flex-direction: row;
+    justify-content:center;
     margin: 50px 0;
     flex-wrap: wrap;
 }
-
+.home-page .usp .ft-wt-med{ 
+    text-transform: uppercase;
+}
 .home-page .usp>div{ 
     padding: 20px 20px;
     margin: 20px 20px;
 }
 .home-page .usp i{ 
     padding: 0px 10px 0 0;
+    font-size: 40px;
 }
 
-
+@media (max-width: 740px){ 
+    .home-page .usp{
+        display: flex; 
+        flex-direction: row;
+        justify-content:flex-start;
+        flex-wrap: wrap;
+    }
+}
 
 
 /*box-section-------*/ 
@@ -251,7 +267,7 @@ padding: 20px 20px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 } 
 .brand-stripe .flex img{ 
@@ -299,7 +315,7 @@ padding: 20px 20px;
     padding: 50px 20px 20px 20px;
  }
 .featured-trade-section .flex .card .button{ 
-    display: inline-block;
+    display: block;
     text-align: center;
     cursor: pointer;
     margin-top: 30px;

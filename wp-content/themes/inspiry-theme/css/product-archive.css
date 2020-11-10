@@ -92,6 +92,14 @@
 .pagination .page-numbers:hover{ 
     color: #525659;
 }   
+.pagination .nav-links{ 
+   display: flex;
+   flex-direction: row;
+   justify-content: flex-end;
+   letter-spacing: 1px;
+   margin-bottom: 50px;
+}
+
 
 /*facet wp*/ 
 .fs-label-wrap {
@@ -182,8 +190,6 @@
 }*/
 
 .bc-product-card button {
-    border-width: 0 !important;
-    border-style: none !important;
-    border-color: -internal-light-dark(rgb(255, 255, 255), rgb(255, 255, 255)) !important;
-    border-image: initial;
+    
+    border: none;
 }

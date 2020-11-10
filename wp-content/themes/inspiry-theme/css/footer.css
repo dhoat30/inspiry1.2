@@ -70,5 +70,50 @@ footer{
 /*subscription are*/ 
 .subscribe-section{ 
     background-color: #EFEAE5;
+    display: flex; 
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0px 10px 10px 10px;
+    margin-top: 50px;
+}
+.subscribe-section>div{ 
+   margin-top: 10px;
+}
+.subscribe-section .form .mc4wp-form-fields{ 
+     display: flex;
+     flex-direction: row;
+     flex-wrap: wrap;
+     justify-content: center;
+}
+
+.subscribe-section .form .mc4wp-form-fields input[type='submit']{ 
+    width: 100px !important;
+    background: #303030;
+    color:white;
+    cursor: pointer;
+}
+.subscribe-section .form .mc4wp-form-fields input[type='submit']:hover{ 
+    background: white;
+    color:#303030;
+    outline: 1px solid #303030;
+}
+.subscribe-section .form .mc4wp-form-fields input{ 
+    padding: 15px;
+    width: 250px;
+    border: none;
+}
+@media (max-width: 900px){ 
+    .subscribe-section{ 
+        justify-content: flex-start;
+       
+    }
+}
+/*footer img */ 
+.footer-img img{ 
+    display: block;
+    width: 300px;
+    margin: 0 auto;
 }
 

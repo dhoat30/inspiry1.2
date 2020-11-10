@@ -19,7 +19,10 @@
 				</a>
 			</div>
 			<a class="bc-btn bc-btn--register trade-login-btn" href='<?php echo get_home_url(). "/login-2" ?>'> Trade Sign in</a>
-
+			<a href="<?php echo esc_url( wp_lostpassword_url( get_permalink() ) ); ?>"
+					 title="<?php echo esc_attr( 'Forgot Password', 'bigcommerce' ); ?>">
+					<?php esc_html_e( 'Forgot your password?', 'bigcommerce' ); ?>
+			</a>
 		</div>
 
 		<?php if ( $register_link ) { ?>
