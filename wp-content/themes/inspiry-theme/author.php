@@ -15,3 +15,4 @@ echo('this is an index page');
 
 get_footer();
 ?>
+

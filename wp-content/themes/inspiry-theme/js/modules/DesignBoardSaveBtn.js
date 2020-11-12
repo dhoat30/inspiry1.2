@@ -244,7 +244,7 @@
             boardDescription = $(e.target).closest('.btn-container').siblings('#board-description').val();
         }
         else{ 
-            boardDescription = 'No Description Available'
+            console.log('no description');
         }
        
         e.preventDefault();

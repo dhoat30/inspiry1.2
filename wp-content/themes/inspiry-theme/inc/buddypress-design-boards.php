@@ -35,15 +35,16 @@ function bp_custom_user_nav_item() {
  function bp_custom_screen_content() {  
              ?>
 <div class="body-container">
-    <h1 class="section-ft-size board-archive-title">Design Boards</h1>
+    <h1 class="center-align section-ft-size margin-elements"><?php the_title();?></h1>
 
-    <div class="board-page">
+    <div class="row-container board-page">
         <div>
         <?php 
             $boardLoop = new WP_Query(array(
                 'post_type' => 'boards', 
                 'post_parent' => 0, 
-                'posts_per_page' => -1
+                'posts_per_page' => -1, 
+                'author' => get_current_user_id()
             ));
 
             while($boardLoop->have_posts()){
@@ -59,7 +60,7 @@ function bp_custom_user_nav_item() {
                             </ul>
                         </div>
 
-                        <a class="design-board-card" class="rm-txt-dec" href="<?php the_permalink(); ?>">   
+                        <a class="design-board-card rm-txt-dec" class="rm-txt-dec" href="<?php the_permalink(); ?>">   
                         
                             <?php 
                             //GET THE CHILD ID
@@ -73,13 +74,15 @@ function bp_custom_user_nav_item() {
                                 $parent_id =get_the_id();
                                 $inherited_locations = get_page_children( $parent_id, $all_locations );
                                 $pinCount = count($inherited_locations);
+
                                 // echo what we get back from WP to the browser (@bhlarsen's part :) )
                                 $child_id = $inherited_locations[0]->ID;
                                 $childThumbnail = get_field('saved_project_id', $child_id); 
                                 ?>
                             <div class="img-div"><?php echo get_the_post_thumbnail($childThumbnail);?></div>
                             <h5 class="font-s-med"><?php the_title();?></h5>
-                            <div class="pin-count"><?php echo $pinCount;
+            
+                            <div class="pin-count gray"><?php echo $pinCount;
                                 if($pinCount <= 1){ 
                                     echo ' Pin';
                                 }
@@ -87,7 +90,15 @@ function bp_custom_user_nav_item() {
                                     echo ' Pins';
                                 }
                             ?></div>
+
+                             <div class="work-sans-fonts font-s-regular"><?php if( '' !== get_post()->post_content ) { 
+                                   
+                                    echo get_the_content();
+                                     }
+                                ?></div>
+
                         </a>
+
 
                     </div>
                 <?php
@@ -111,6 +122,9 @@ function bp_custom_user_nav_item() {
 </div> 
 
 <div class="ajax-result">
+
+</div>
+
 
 </div>
              <?php

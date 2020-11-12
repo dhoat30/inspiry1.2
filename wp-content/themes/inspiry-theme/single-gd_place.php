@@ -71,9 +71,13 @@ get_header();
                         <div class="design-board-save-btn-container" data-tracking-data='{"post_id":"<?php the_id();?>","name":"<?php echo get_the_title(get_the_id()); ?>"}' <?php echo $link_attributes; ?>>
                             <i data-exists='<?php echo $existStatus?>' class="fal fa-plus open-board-container" ></i>
                         </div>
-                            
+                         
+
 
                             
+                    </div>
+
+                    <div>  <p class="share-section work-sans-fonts regular-text">Share: <?php echo do_shortcode( '[Sassy_Social_Share]' );?></p>
                     </div>
                 </div>  
                 

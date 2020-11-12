@@ -1,13 +1,13 @@
 .project-hero{ 
     width: 100% !important;
-    height: 80vh !important;
+    height: 60vh !important;
 }
 .project-hero img{ 
     width: 100% !important;
-    height: 80vh !important;
+    height: 60vh !important;
 }
 .project-hero li{ 
-    height: 80vh;
+    height: 60vh;
 }
 
 /*title */ 

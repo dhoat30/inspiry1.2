@@ -27,7 +27,7 @@ get_header();
                             </ul>
                         </div>
 
-                        <a class="design-board-card" class="rm-txt-dec" href="<?php the_permalink(); ?>">   
+                        <a class="design-board-card rm-txt-dec" class="rm-txt-dec" href="<?php the_permalink(); ?>">   
                         
                             <?php 
                             //GET THE CHILD ID
@@ -48,7 +48,8 @@ get_header();
                                 ?>
                             <div class="img-div"><?php echo get_the_post_thumbnail($childThumbnail);?></div>
                             <h5 class="font-s-med"><?php the_title();?></h5>
-                            <div class="pin-count"><?php echo $pinCount;
+            
+                            <div class="pin-count gray"><?php echo $pinCount;
                                 if($pinCount <= 1){ 
                                     echo ' Pin';
                                 }
@@ -56,7 +57,16 @@ get_header();
                                     echo ' Pins';
                                 }
                             ?></div>
+
+                             <div class="work-sans-fonts font-s-regular"><?php if( '' !== get_post()->post_content ) { 
+                                   
+                                    echo get_the_content();
+                                     }
+                                ?></div>
+
                         </a>
+
+                        <?php echo do_shortcode( '[Sassy_Social_Share]' );?>
 
                     </div>
                 <?php

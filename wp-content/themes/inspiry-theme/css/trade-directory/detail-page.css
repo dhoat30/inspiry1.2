@@ -98,6 +98,7 @@
     }
     
   }
+  
 
   @media only screen and (max-width: 570px) {
     .trade-hero .geodir-viewport{ 
@@ -109,6 +110,12 @@
     .trade-hero { 
        display: none;
     }
+    .trade-profile-img{ 
+        bottom: 0;
+        width: 100%;
+        margin-top: 30px;
+    }
+    
   }
 
 .header-address{ 
@@ -152,10 +159,8 @@ transition-timing-function: ease-in-out;
 
 
 /*trade  main row*/ 
-
-
 .trade-middle-column{ 
-    margin: 0 auto;
+    margin: 50px auto 0 auto;
     width:50%;
    
 }
@@ -170,6 +175,13 @@ transition-timing-function: ease-in-out;
         margin: 0  auto 0 auto;
     }
   
+}
+@media (max-width:400px){ 
+    .header-middle-column{ 
+        margin: 50px auto 0 auto;
+        width:100%;
+       
+    }
 }
 
 .trade-nav-container .nav{ 
