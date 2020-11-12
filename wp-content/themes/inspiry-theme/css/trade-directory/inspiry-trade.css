@@ -1,3 +1,7 @@
+.trade-page .slider h3{ 
+    margin-bottom: 20px;
+    text-transform: none !important;
+}
 .inspiry-trade h1{ 
     margin: 40px 0 10px 0;
 }
@@ -10,6 +14,51 @@ max-width: 800px;
 .inspiry-trade .trade-register-button{ 
     margin: -10px auto;
     display: block;
+}
+/*steps */ 
+.inspiry-trade .steps-container{ 
+    background: #EFEAE5;
+    padding: 100px 10px;
+}
+.inspiry-trade .steps-container .section-ft-size{ 
+    text-transform: none !important;
+}
+.inspiry-trade .steps-container .steps{ 
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 50px;
+}
+.inspiry-trade .steps-container .steps>div{ 
+    width: 300px;
+    margin: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+.inspiry-trade .steps-container .steps .font-s-med{ 
+    width: 200px;
+}
+.inspiry-trade .steps-container .number{ 
+    background: #3F3F3F;
+    border-radius: 50%;
+   padding: 0;
+    color:white;
+    display: block;
+    width: 80px;
+    height: 80px;
+    text-align: center;
+    font-size: 70px;
+    font-family: 'work sans', sans-serif;
+}
+/*slogan*/ 
+.inspiry-trade .slogan{ 
+    padding: 100px 10px 50px 10px !important;
+    max-width: 900px;
+    margin: 0 auto;
 }
 /*cards */ 
 .inspiry-trade .card-row{ 

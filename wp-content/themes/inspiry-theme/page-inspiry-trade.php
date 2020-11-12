@@ -4,94 +4,127 @@ get_header();
         the_post(); 
         ?>
         
-           <section class="about-us">
-    <section class="hero-section">
-        <div class="slider-container">
+    <section class="about-us">
+        <div class="slider-container trade-page">
+
+
             <div class="slider">
                             <div class="hero-overlay"></div>
                             
-                                
-                             
                                             
-                                            <div class="slide"  style='background: url("<?php echo get_site_url();?>/wp-content/uploads/2020/09/trade-image-3.jpg") no-repeat
-                                                    center top/cover;'>
-                                                    
-                                            </div>
-                                            <div class="slide"  style='background: url("<?php echo get_site_url();?>/wp-content/uploads/2020/09/trade-image-2.jpg") no-repeat
-                                                    center top/cover;'>
-                                                   
-                                            </div>        
-                                            <div class="slide"  style='background: url("<?php echo get_site_url();?>/wp-content/uploads/2020/09/trade-img-1.jpg") no-repeat
-                                                    center top/cover;'>
-                                                   
-                                            </div>            
-            </div>
-                
-                    
-            <div class="buttons">
-                            <button id="prev"><i class="fas fa-arrow-left"></i></button>
-                            <button id="next"><i class="fas fa-arrow-right"></i></button>
-            </div>
+                                                <div class="slide"  style='background: url("<?php echo get_site_url();?>/wp-content/uploads/2020/11/porters-paints-stone-coarse-rust-1.jpg") no-repeat
+                                                        center top/cover;'>
+                                                    <div class="content">
+                                                        <h1 class="lg-font-sz center-align regular">INSPIRY TRADE</h1>
+                                                        <h3 class="work-sans-fonts center-align white section-ft-size regular">
+                                                            Show case your work & be listed in our Trade Directory.
+                                                        </h3>
+                                                            <?php if(is_user_logged_in()){ 
+                                                                ?>
+                                                                                <a class="bc-btn bc-btn--register trade-register-button" href='<?php echo get_home_url(). "/add-listing/?listing_type=gd_place" ?>'> Add a Listing</a>
+
+                                                                <?php
+                                                                    }
+                                                                else{
+                                                                    ?>
+                                                                        <a class="bc-btn bc-btn--register trade-register-button" href='<?php echo get_home_url(). "/trade-registration" ?>'> Create A Trade Account</a>
+
+                                                                    <?php
+                                                                }
+                                                            ?>
+                                                    </div>
+                                                </div>
+
+                                                <div class="slide"  style='background: url("<?php echo get_site_url();?>/wp-content/uploads/2020/11/08052017_LWB_STC.jpg") no-repeat
+                                                        center top/cover;'>
+                                                    <div class="content">
+                                                        <h3 class="work-sans-fonts center-align white section-ft-size regular">
+                                                            Build project boards and show case your workmanship. 
+                                                        </h3>
+                                                           
+                                                    </div>
+                                                </div>
+
+                                                <div class="slide"  style='background: url("<?php echo get_site_url(); ?>/wp-content/uploads/2020/11/JH.Kinloch.294.jpg") no-repeat
+                                                        center top/cover;'>
+                                                    <div class="content">
+                                                        <h3 class="work-sans-fonts center-align white section-ft-size regular"> Be part of Inspiry trade &  connect your services to home owners.                                                           </h3>
+                                                           
+                                                    </div>
+                                                </div>
+                                            
+
+                                        
+                                
+                                    
+                                
+                                    </div>
+                                        
+                                                
+                                    <div class="buttons">
+                                                    <button id="prev"><i class="fas fa-arrow-left"></i></button>
+                                                    <button id="next"><i class="fas fa-arrow-right"></i></button>
+                                    </div>
         </div>
-    </section>
 
 
                
 
         <div class="body-contaienr inspiry-trade">
-            <div class="row-container">
-                <h1 class="center-align section-ft-size playfair-fonts"><?php the_title();?></h1>
-                <h2 class="work-sans-fonts center-align regular dark-grey column-s-font">
-                    Inspiry Trade is your online hub for all interior design and building projects.
-
-                    We provide a space for you and your business to create innovate and grow. 
-                    Reach more people and get networking with like minded individuals all through Inspiry Trade
-                </h2>
-
-                <?php if(is_user_logged_in()){ 
-                        ?>
-                                        <a class="bc-btn bc-btn--register trade-register-button" href='<?php echo get_home_url(). "/add-listing/?listing_type=gd_place" ?>'> Add a Listing</a>
-
-                        <?php
-                }
-                        else{
-                            ?>
-                                <a class="bc-btn bc-btn--register trade-register-button" href='<?php echo get_home_url(). "/trade-registration" ?>'> Create A Trade Account</a>
-
-                            <?php
-                        }
-                    ?>
-
+                <!--steps --> 
+            <div class="steps-container">
+                <div class="section-ft-size work-sans-fonts center-align medium">Sign up & be part of Inspiry & Trade Directory </div>
+                <div class="steps">
+                    <div>
+                        <div class="number">1</div>
+                        <div class="font-s-med work-sans-fonts regular">Register & choose your plan</div>
+                    </div>     
+                    <div>
+                        <div class="number">2</div>
+                        <div class="font-s-med work-sans-fonts regular">List your business with Inspiry Trade</div>
+                    </div>    
+                    <div>
+                        <div class="number">3</div>
+                        <div class="font-s-med work-sans-fonts regular">Build your projects and be seen </div>
+                    </div>                                                   
+                </div>
             </div>
             
-            <section class="contact-page">
+            <!-- slogan--> 
+            <div class="slogan">
+                <h3 class="work-sans-fonts center-align section-ft-size regular gray"> Be part of Inspiry Project gallery & connecting you to potential customers.</h3>
+            </div>
+        
+
+            
+         <section class="contact-page">
                 <!-- USP --> 
-    <section class="trade-usp">
-        <div>
-            <i class="fas fa-user-hard-hat"></i>
-            <div class="work-sans-fonts font-s-med center-align">
-                Inspiry Trade connects you with your target audience
-            </div>
-        </div>
-        <div>
-        <i class="fas fa-clipboard-list-check"></i>
-                    <div class="work-sans-fonts font-s-med center-align">
-                Be listed on our Trade directory promoting your business and service
-            </div>
-        </div>
-        <div>
-            <i class="fab fa-google"></i>
-                    <div class="work-sans-fonts font-s-med center-align">
-                Quality traffic from Google to your projects and listing
-            </div>
-        </div>
-        <div>
-            <i class="fas fa-chart-network"></i>            
-            <div class="work-sans-fonts font-s-med center-align">
-                Become part of our collaborative hub connecting you with our viewers
-            </div>
-        </div>
-    </section>
+                <section class="trade-usp">
+                    <div>
+                        <i class="fas fa-user-hard-hat"></i>
+                        <div class="work-sans-fonts font-s-med center-align">
+                            Inspiry Trade connects you with your target audience
+                        </div>
+                    </div>
+                    <div>
+                    <i class="fas fa-clipboard-list-check"></i>
+                                <div class="work-sans-fonts font-s-med center-align">
+                            Be listed on our Trade directory promoting your business and service
+                        </div>
+                    </div>
+                    <div>
+                        <i class="fab fa-google"></i>
+                                <div class="work-sans-fonts font-s-med center-align">
+                            Quality traffic from Google to your projects and listing
+                        </div>
+                    </div>
+                    <div>
+                        <i class="fas fa-chart-network"></i>            
+                        <div class="work-sans-fonts font-s-med center-align">
+                            Become part of our collaborative hub connecting you with our viewers
+                        </div>
+                    </div>
+                </section>
             </section>
 
             <div class="row-container card-row">
