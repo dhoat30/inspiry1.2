@@ -90,10 +90,11 @@ use BigCommerce\Post_Types\Product\Product;
       ?>
               <!--calculator and sample-->
                 <!--  and calculator -->
-				
+              
 							<div class="product-page-btn-container">
-                <a href="<?php echo rtrim(get_the_permalink(),'/').'-sample' ;?>" class="order-sample-button"><img src="<?php echo get_site_url(); ?>/wp-content/uploads/2020/08/icon-cut.png" alt="order a sample"> Order a Sample</a>
-                        
+                <!--
+                <a href="<?php //echo rtrim(get_the_permalink(),'/').'-sample' ;?>" class="order-sample-button"><img src="<?php echo get_site_url(); ?>/wp-content/uploads/2020/08/icon-cut.png" alt="order a sample"> Order a Sample</a>
+    -->     
                 <a href="#" class="sizing-calculator-button"><i class="far fa-calculator"></i> Wallpaper Calculator</a>       
               </div>
               
@@ -104,9 +105,12 @@ use BigCommerce\Post_Types\Product\Product;
       <!--  and calculator -->
 
             <div class="product-page-btn-container">
-                <a href="<?php echo rtrim(get_the_permalink(),'/').'-sample' ;?>" class="order-sample-button"><i class="fal fa-cut"></i>  Order a Sample</a>
+              <!--
+                <a href="<?php //echo rtrim(get_the_permalink(),'/').'-sample' ;?>" class="order-sample-button"><i class="fal fa-cut"></i>  Order a Sample</a>
+    
                 <a href="#" class="sizing-calculator-button"><i class="far fa-calculator"></i> Fabric Calculator</a>
-            </div>
+            -->
+              </div>
       <?php 
     }
 
