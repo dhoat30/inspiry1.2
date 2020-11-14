@@ -29,7 +29,7 @@
                <span class="dashicons dashicons-heart"></span>
                </a> 
               
-            </div>`
+                </div>
                 <?php 
             }
             ?>
@@ -62,12 +62,17 @@
                     ?>
                 
             </div>
-            <div class="shopping-cart playfair-fonts font-s-regular">
+            <div class="shopping-cart playfair-fonts font-s-regular desktop-visible">
                 <a href="<?php echo get_site_url(); ?>/cart/" class="text-decoration-none dark-grey">
                      <span class="dashicons-before dashicons-cart"></span> SHOPPING CART
                 </a>
             </div>
-            <div class="shopping-cart playfair-fonts font-s-regular dark-grey">
+            <div class="shopping-cart playfair-fonts font-s-regular mobile-visible">
+                <a href="<?php echo get_site_url(); ?>/cart/" class="text-decoration-none dark-grey">
+                     <span class="dashicons-before dashicons-cart"></span> 
+                </a>
+            </div>
+            <div class="playfair-fonts font-s-regular dark-grey">
                <?php  echo  do_shortcode('[ivory-search id="7686" title="Default Search Form"]');?>
             </div>
         </div>

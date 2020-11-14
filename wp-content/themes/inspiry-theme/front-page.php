@@ -3,8 +3,8 @@
 get_header(); 
 
 ?>
-
-    <div class="slider-container">
+<section class="home-page">
+<div class="slider-container">
 
 
         <div class="slider">
@@ -112,6 +112,8 @@ get_header();
         
 
     </div>
+</section>
+    
 
                                        
 <!--Loving Section -----> 

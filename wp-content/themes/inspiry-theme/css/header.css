@@ -6,11 +6,16 @@
     width: 100%; 
     padding: 10px 0; 
     display: flex;
+    flex-direction: row !important;
     justify-content: flex-end;
     align-items: center;
+    flex-wrap: wrap;
 }
 .top-banner>div{ 
     margin: 0 20px;
+}
+.top-banner .mobile-visible{ 
+    display: none;
 }
 .top-banner>div:hover{ 
     color: grey;
@@ -71,7 +76,7 @@
     width: 150px;
     display: none;
     position: absolute;
-    z-index: 1000;
+    z-index: 1005;
 }
 .my-account-nav ul { 
     list-style: none;
@@ -110,3 +115,81 @@
     -moz-border-radius: 2px;
     border-radius: 2px;
 }
+
+@media (max-width:767px){
+    .top-banner{ 
+        width: 100%; 
+        padding: 10px 0; 
+        display: flex;
+        flex-direction: row !important;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        width: 100% !important;
+    }
+    .top-banner>div{ 
+        margin: 0 10px;
+    }
+    .top-banner>div:nth-child(1){ 
+        width: 160px !important;
+    }
+    .top-banner>div:nth-child(5){ 
+        width: 100% !important;
+        margin-top: 10px;
+    }
+  
+    .top-banner .shopping-cart{ 
+        position: absolute;
+        top: 150px;
+        z-index: 1003;
+    }
+    .top-banner .desktop-visible{ 
+        display: none;
+    }
+    .top-banner .mobile-visible{ 
+        display: block;
+    }
+    .header .logo-container{ 
+        position: relative;
+        height: 50px;
+        border: 2px solid black;
+        border-left: none;
+        border-right: none;
+    }
+    .header .logo-container img{ 
+        position: absolute;
+        width: 150px !important;
+        min-width: 20px !important;
+        left: 50%;
+        top: 10px;
+        transform: translateX(-50%);
+        z-index: 1002;
+    }
+    .header .logo-container .slogan{ 
+        display: none;
+    }
+    .navbar{ 
+        position: relative;
+    }
+    #mega-menu-wrap-top-navbar{ 
+        display: none;
+    }
+    #mega-menu-wrap-inspiry_main_menu{ 
+        position: absolute;
+       right: 0;
+        height: auto;
+        top: -45px;
+        left: 10px;
+        z-index: 1000;
+    }
+    #mega-menu-wrap-inspiry_main_menu .mega-menu-toggle .mega-toggle-block {
+        justify-content: flex-start !important;
+        align-items: flex-start;
+    }
+    #mega-menu-inspiry_main_menu{ 
+        width: 100% !important;
+    }
+    .sidebar .is-search-form{ 
+        display: none;
+    }
+    }
