@@ -25,7 +25,7 @@ get_header();
             <div class="work-sans-fonts font-s-regular center-align"> Inspiry will send you a download link for the Ebook.</div>
         </div>
         <div class="form-box">
-            <?php echo do_shortcode('[mc4wp_form id="13731"]'); ?>
+            <?php echo do_shortcode('[mc4wp_form id="47317"]'); ?>
         </div>
     </section>
 

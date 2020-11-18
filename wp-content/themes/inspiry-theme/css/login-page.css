@@ -99,3 +99,10 @@
 .register-page .signup-form .editfield {
     margin: -7px 0 !important; 
 }
+
+.bc-account-login__form a{ 
+    display: block !important;
+}
+.bc-btn--lost-password{ 
+background-color: #303030 !important;
+}

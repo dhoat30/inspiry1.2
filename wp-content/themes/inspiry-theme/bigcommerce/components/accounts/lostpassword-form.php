@@ -24,7 +24,7 @@
 				<input type="email" name="user_login" id="bc-account-user-email" value="">
 			</label>
 			<?php do_action( 'lostpassword_form' ); ?>
-			<input type="hidden" name="redirect_to" value="<?php echo esc_attr( $redirect_to ); ?>"/>
+			<input type="hidden" name="redirect_to" value="<?php echo esc_attr(get_site_url()); ?>"/>
 			<div class="bc-form__actions bc-account-lost-password__actions">
 				<button class="bc-btn bc-btn--lost-password" aria-label="<?php __( 'Reset Password', 'bigcommerce' ); ?>"
 								type="submit" name="wp-submit"><?php echo esc_html( __( 'Reset Password', 'bigcommerce' ) ); ?></button>

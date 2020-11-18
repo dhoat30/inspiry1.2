@@ -380,6 +380,17 @@
 }
 
 
+/*404 */ 
+.not-found{
+    padding: 20vh 0;
+}
+.not-found form{ 
+    width: 100% !important;
+    max-width: 500px;
+    display: block !important;
+    margin: 20px auto;
+}
+
 
 
 

@@ -17,7 +17,7 @@ get_header();
         <?php 
               $argsTrade = array(
                 'post_type' => 'gd_project', 
-                'posts_per_page' => 10,
+                'posts_per_page' => -1,
                 'facetwp' => true
             );
             $trade = new WP_Query( $argsTrade );

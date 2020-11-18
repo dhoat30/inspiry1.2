@@ -20,6 +20,11 @@ use BigCommerce\Post_Types\Product\Product;
 ?>
 
 <!-- data-js="bc-product-data-wrapper" is required. -->
+<?php
+                    if ( function_exists('yoast_breadcrumb') ) {
+                    yoast_breadcrumb( '<p id="breadcrumbs">','</p>' );
+                    }
+                    ?>
 <section class="bc-product-single__top" data-js="bc-product-data-wrapper">
   
 <div class="bc-product__gallery bc-medium-img">

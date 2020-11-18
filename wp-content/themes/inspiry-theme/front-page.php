@@ -4,7 +4,7 @@ get_header();
 
 ?>
 <section class="home-page">
-<div class="slider-container">
+    <div class="slider-container">
 
 
         <div class="slider">
@@ -237,7 +237,9 @@ get_header();
             <?php 
                 $argsTrade = array(
                     'post_type' => 'gd_place', 
-                    'posts_per_page' => 2
+                    'posts_per_page' => 2, 
+                    'order'=>'DESC', 
+                    'orderby'=> 'title'
                 );
                 $trade = new WP_Query( $argsTrade );
     
@@ -313,8 +315,6 @@ get_header();
 
 
                
-
-
 
 
 
