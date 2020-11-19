@@ -3,6 +3,7 @@
 get_header(); 
 
 ?>
+
 <section class="home-page">
     <div class="slider-container">
 

@@ -26,7 +26,7 @@ use BigCommerce\Post_Types\Product\Product;
                     }
                     ?>
 <section class="bc-product-single__top" data-js="bc-product-data-wrapper">
-  
+ 
 <div class="bc-product__gallery bc-medium-img">
 <?php echo $images; ?>
   <section class="bc-single-product__warranty desktop-warranty">
@@ -133,8 +133,16 @@ use BigCommerce\Post_Types\Product\Product;
     
 	</div>
 </section>
-
-
+<?php 
+//add code here to have a calculator 
+global $wp;
+$urlVal = home_url( $wp->request ); 
+$urlVal = $urlVal . "-sample";
+echo $urlVal;
+$urlID = url_to_postid($urlVal);
+echo $urlID;
+?>
+<a href='<?php echo get_site_url();?>/bigcommerce/cart/9807'>Purchase Our New Product Now!</a>
 
 <section class="bc-single-product__warranty mobile-warranty">
 

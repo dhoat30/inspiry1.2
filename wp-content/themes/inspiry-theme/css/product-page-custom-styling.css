@@ -41,6 +41,16 @@
     color: rgba(0,0,0,0.7);
     font-size: 12px !important;
 }
+
+/* pricing section */ 
+.bc-product__pricing{ 
+    display: flex;
+    flex-direction: column;
+}
+.bc-product__pricing>p{ 
+    margin-top: 0 !important;
+ 
+}
 /*add to cart */ 
 .bc-product-form__quantity-label{
     margin-right: 40px;

@@ -14,6 +14,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <meta name="viewport" content="width=device-width, initial-scale=1">
      <link rel="profile" href="https://gmpg.org/xfn/11"/>
     <?php wp_head(); ?>
+    
     <!-- Start of inspiry Zendesk Widget script -->
         <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=976538b8-22ee-4f8b-ad47-cb919ef8094b"> </script>
         <!-- End of inspiry Zendesk Widget script -->
