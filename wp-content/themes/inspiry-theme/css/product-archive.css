@@ -136,7 +136,7 @@
 
 .facet-reset-btn{ 
     border: 1px solid #303030;
-    padding: 10px 40px;
+    padding: 5px 10px;
     background: white;
     color: #303030;
     cursor: pointer;
@@ -144,6 +144,7 @@
     letter-spacing: 1px;
     transition-timing-function: ease-in-out;
     transition-duration: 300ms;
+  
 }
 .facet-reset-btn:hover{ 
     background: #303030;
