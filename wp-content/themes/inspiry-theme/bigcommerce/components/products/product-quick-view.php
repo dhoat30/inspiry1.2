@@ -29,7 +29,6 @@ use BigCommerce\Post_Types\Product\Product;
 	echo $brand;
 	echo $price;
 	echo $rating;
-	echo $sku;
 	?>
 
 </div>
