@@ -51,6 +51,7 @@ function register_custom_type2(){
 
    //blogs post type
    register_post_type("blogs", array(
+      'show_in_rest' => true,
       "supports" => array("title", "page-attributes", 'editor'), 
       "public" => true, 
       "show_ui" => true, 
