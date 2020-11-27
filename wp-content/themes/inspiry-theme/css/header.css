@@ -131,14 +131,14 @@
     .top-banner>div:nth-child(1){ 
         width: 160px !important;
     }
-    .top-banner>div:nth-child(5){ 
+    .top-banner .search-code{ 
         width: 100% !important;
         margin-top: 10px;
     }
   
     .top-banner .shopping-cart{ 
         position: absolute;
-        top: 150px;
+        top: 102px;
         z-index: 1003;
     }
     .top-banner .desktop-visible{ 

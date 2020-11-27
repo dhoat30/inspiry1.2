@@ -86,7 +86,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                      <span class="dashicons-before dashicons-cart"></span> 
                 </a>
             </div>
-            <div class="playfair-fonts font-s-regular dark-grey">
+            <div class="search-code playfair-fonts font-s-regular dark-grey">
                <?php  echo  do_shortcode('[ivory-search id="7686" title="Default Search Form"]');?>
             </div>
         </div>
