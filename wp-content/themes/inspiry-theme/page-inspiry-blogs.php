@@ -32,7 +32,7 @@
                                 array(
                                     'taxonomy' => 'category',
                                     'field'    => 'slug',
-                                    'terms'    => array('wallpaper', 'fabric', 'design-inspiration', 'interior-advice', 'interior-inspiration'),
+                                    'terms'    => array('interior-inspiration'),
                                 )
                                 ), 
                                 'orderby' => 'date', 
