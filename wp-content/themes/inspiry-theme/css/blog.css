@@ -476,3 +476,13 @@
         -ms-transform: scale(0.9);
         transform: scale(0.9);
 }
+
+/*single blog*/ 
+.single-blog{ 
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.single-blog p {
+    font-family: 'Work Sans', sans-serif;
+    line-height: 1.5em;
+}
