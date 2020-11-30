@@ -140,6 +140,7 @@
 /*font size*/ 
     .lg-font-sz{ 
         font-size: 60px;
+        margin-top: 40px;
     }
     .section-ft-size{ 
         font-size: 35px !important;
