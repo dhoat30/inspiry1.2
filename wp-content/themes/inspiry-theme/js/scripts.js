@@ -79,7 +79,7 @@ const facetWp = new FacetWp();
 //const wishlistAjaxBp = new WishlistAjaxBp();
 const wishlistAjax = new WishlistAjax();
 const warranty = new Warranty(); 
-//const wallpaperCalc = new WallpaperCalc(); 
+const wallpaperCalc = new WallpaperCalc(); 
 const laybuy = new LayBuy();
 
 
