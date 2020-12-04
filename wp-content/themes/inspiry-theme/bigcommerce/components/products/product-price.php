@@ -53,23 +53,22 @@ $product = new \BigCommerce\Post_Types\Product\Product( $post_id );
 	<span class="bc-product__original-price"></span>
 	<!-- class="bc-product-price bc-product__price--sale" is required -->
 	<span class="bc-product__price bc-product__price--sale"> </span>
-
-
-	<h4> <?php 
-	/*coverting $calculated_price_range into integer*/
-		$value = str_replace('$', '', $calculated_price_range);;
-		
-		$price = intval($value);
-		
-	?> 
-						<span class="lay-buy work-sans-fonts">or 6 weekly interest-free payments from <?php 
-						 echo  number_format ( $price/6, 2 ); 
-						 
-						 ?></span> 
-                        <span class="lay-buy lay-buy-open information-overlay"> <img src="<?php echo get_site_url(); ?>/wp-content/uploads/2020/08/ico-laybuy.png"> What's this?</span>
-		</h4>	
 		
 </p>
+<h4> <?php 
+/*coverting $calculated_price_range into integer*/
+	$value = str_replace('$', '', $calculated_price_range);;
+		
+	$price = intval($value);
+		
+?> 
+					<span class="lay-buy work-sans-fonts">or 6 weekly interest-free payments from <?php 
+					 echo  number_format ( $price/6, 2 ); 
+						 
+					 ?></span> 
+					<span class="lay-buy lay-buy-open information-overlay"> <img src="<?php echo get_site_url(); ?>/wp-content/uploads/2020/08/ico-laybuy.png"> What's this?</span>
+	</h4>	
+
 
 
 
