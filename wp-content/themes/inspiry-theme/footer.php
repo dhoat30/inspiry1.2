@@ -174,6 +174,8 @@ $(document).ready(function() {
 });
 </script>
 
-
+  <!-- Start of inspiry Zendesk Widget script -->
+  <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=976538b8-22ee-4f8b-ad47-cb919ef8094b" defer> </script>
+        <!-- End of inspiry Zendesk Widget script -->
 </body>
 </html>
