@@ -209,7 +209,7 @@ get_header();
                     <div class="card">
                          <a href="<?php the_permalink();?>">
                             <div>
-                                <img src="<?php echo get_the_post_thumbnail_url(null, 'medium');?>" alt="">
+                                <img src="<?php echo get_the_post_thumbnail_url(null, 'large');?>" alt="">
                                 <div class="hover-overlay"></div>
                                 <div class="column-s-font"><?php the_title();?></div>
                             </div>
@@ -250,7 +250,7 @@ get_header();
                             
                        
                     <div class="card">
-                         <img class="gallery" src="<?php echo get_the_post_thumbnail_url(null, 'small');?>" alt="Trade Proffesionals">
+                         <img class="gallery" src="<?php echo get_the_post_thumbnail_url(null, 'medium');?>" alt="Trade Proffesionals">
                          <div class="logo">
                              
                                 <?php
