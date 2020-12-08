@@ -394,6 +394,10 @@
 
 
 
-
+/* Shrink the lens to half size */
+.magnify > .magnify-lens {
+    width: 200px;
+    height: 200px;
+  }
 
 

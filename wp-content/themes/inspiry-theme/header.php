@@ -17,6 +17,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <!-- Start of inspiry Zendesk Widget script -->
         <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=976538b8-22ee-4f8b-ad47-cb919ef8094b"> </script>
         <!-- End of inspiry Zendesk Widget script -->
+    <!-- magnifying --> 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnify/2.3.3/css/magnify.css" integrity="sha512-JxBFHHd+xyHl++SdVJYCCgxGPJKCTTaqndOl/n12qI73hgj7PuGuYDUcCgtdSHTeXSHCtW4us4Qmv+xwPqKVjQ==" crossorigin="anonymous" />
 </head>
 <?php 
     global $template;
@@ -144,3 +146,4 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </section>
 
    
+

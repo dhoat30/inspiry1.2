@@ -168,8 +168,8 @@
 <script>
   let $ = jQuery; 
 $(document).ready(function() {
-  $('.zoom').magnify({magnifiedWidth: 800, 
-    magnifiedHeight: 800
+  $('.zoom').magnify({magnifiedWidth: 1000, 
+    magnifiedHeight: 1000
   });
 });
 </script>

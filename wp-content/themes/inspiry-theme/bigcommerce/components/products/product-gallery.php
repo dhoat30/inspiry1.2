@@ -45,7 +45,12 @@ $has_zoom = $zoom ? 'bc-product-image-zoom' : '';
 						?>
 						<!-- class="swiper-slide" is required -->
 						<div class="swiper-slide bc-product-gallery__image-slide" data-index="<?php echo $index++; ?>">
-							<img
+							<img	class='zoom'
+							<?php 
+								$zoomImg = esc_url( $image_src );
+								$zoomImg = substr($zoomImg, 0, strpos($zoomImg, "-370x370.jpg"));
+							?> 
+									data-magnify-src="<?php echo $zoomImg; ?>.jpg" <?php echo $image_full; ?>
 									src="<?php echo esc_url( $image_src ); ?>" <?php echo $image_full; ?>
 									alt="<?php echo esc_attr( trim( strip_tags( get_post_meta( $image_id, '_wp_attachment_image_alt', true ) ) ) ); ?>"
 									srcset="<?php echo esc_attr( $image_srcset ); ?>"
