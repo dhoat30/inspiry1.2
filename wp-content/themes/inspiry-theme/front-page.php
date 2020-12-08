@@ -33,7 +33,7 @@ get_header();
 
                                             ?>
                                            
-                                            <div class="slide"  style='background: url("<?php echo get_the_post_thumbnail_url(null,"full"); ?>") no-repeat
+                                            <div class="slide"  style='background: url("<?php echo get_the_post_thumbnail_url(null,"large"); ?>") no-repeat
                                         center top/cover;'>
                                                 <div class="content">
                                                     <h1 class="lg-font-sz center-align regular"><?php the_title();?></h1>
@@ -148,7 +148,7 @@ get_header();
                     <a class="rm-txt-dec" href="<?php echo get_field('add_link');?>">
                         <div class="cards">
                             <div>
-                                <img src="<?php echo get_the_post_thumbnail_url(null,"full"); ?>" alt="Khroma">                      
+                                <img src="<?php echo get_the_post_thumbnail_url(null,"large"); ?>" alt="Khroma">                      
                                 <a class="rm-txt-dec center-align" href="<?php echo get_field('add_link');?>">Shop Now <i class="fal fa-arrow-right"></i> </a>                       
                             </div>
                         </div>
@@ -209,7 +209,7 @@ get_header();
                     <div class="card">
                          <a href="<?php the_permalink();?>">
                             <div>
-                                <img src="<?php echo get_the_post_thumbnail_url();?>" alt="">
+                                <img src="<?php echo get_the_post_thumbnail_url(null, 'medium');?>" alt="">
                                 <div class="hover-overlay"></div>
                                 <div class="column-s-font"><?php the_title();?></div>
                             </div>
@@ -250,7 +250,7 @@ get_header();
                             
                        
                     <div class="card">
-                         <img class="gallery" src="<?php echo get_the_post_thumbnail_url(null, 'full');?>" alt="Trade Proffesionals">
+                         <img class="gallery" src="<?php echo get_the_post_thumbnail_url(null, 'small');?>" alt="Trade Proffesionals">
                          <div class="logo">
                              
                                 <?php
