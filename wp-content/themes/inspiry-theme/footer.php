@@ -161,15 +161,19 @@
 </div>
 
 <?php wp_footer();?>
-<!--
+<script src="https://cdnjs.cloudflare.com/ajax/libs/magnify/2.3.3/js/jquery.magnify.min.js" integrity="sha512-YKxHqn7D0M5knQJO2xKHZpCfZ+/Ta7qpEHgADN+AkY2U2Y4JJtlCEHzKWV5ZE87vZR3ipdzNJ4U/sfjIaoHMfw==" crossorigin="anonymous"></script>
+
+<!-- Optional mobile plugin (uncomment the line below to enable): -->
+<!-- <script src="/js/jquery.magnify-mobile.js"></script> -->
 <script>
-  document.write(
-    '<script src="http://' +
-      (location.host || '${1:localhost}').split(':')[0] +
-      ':${2:35729}/livereload.js?snipver=1"></' +
-      'script>'
-  );
+  let $ = jQuery; 
+$(document).ready(function() {
+  $('.zoom').magnify({magnifiedWidth: 800, 
+    magnifiedHeight: 800
+  });
+});
 </script>
---> 
+
+
 </body>
 </html>
