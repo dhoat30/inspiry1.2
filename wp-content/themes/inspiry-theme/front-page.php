@@ -88,7 +88,7 @@ get_header();
             </div>         </div>                               
     </div>
 
-    <div class="box-section">
+    <div  class="box-section">
         <div class="flex">
             <div class="photo photo-1">
                 <img src="<?php echo get_site_url();?>/wp-content/uploads/2020/11/frida_image_roomshot_kitchen_item_7675.jpg" alt="khroma">                      
