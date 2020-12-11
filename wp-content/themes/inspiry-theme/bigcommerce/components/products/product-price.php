@@ -24,19 +24,6 @@ use BigCommerce\Post_Types\Product\Product;
 	<span class="bc-product__retail-price"><?php esc_html_e( 'MSRP:', 'bigcommerce' ); ?> <span class="bc-product__retail-price-value"><?php echo esc_html( $retail_price ); 
 		$priceValue = $retail_price; 
 	?></span>
-	<h4> <?php 
-		/*coverting $calculated_price_range into integer*/
-			$priceStringValue = array('$', ',');
-			$value = str_replace($priceStringValue, '', $priceValue);
-			$price = intval($value);
-				
-		?> 
-							<span class="lay-buy work-sans-fonts">or 6 weekly interest-free payments from <?php 
-							echo  number_format ( $price/6, 2 ); 
-								
-							?></span> 
-							<span class="lay-buy lay-buy-open information-overlay"> <img src="<?php echo get_site_url(); ?>/wp-content/uploads/2020/08/ico-laybuy.png"> What's this?</span>
-			</h4>	
 	</span>
 <?php } ?>
 <?php if ( $product->on_sale() ) { ?>

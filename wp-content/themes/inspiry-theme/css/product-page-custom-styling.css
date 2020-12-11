@@ -51,7 +51,7 @@
  
 }
 .bc-product__price--sale {
-    color: #303030;
+    color: #303030 !important;
     font-weight: 500;
 }
 /*add to cart */ 
