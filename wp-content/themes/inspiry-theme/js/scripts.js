@@ -1,4 +1,4 @@
-//import '../style.css';
+import '../style.css';
 let $ = jQuery; 
 import WishlistAjax from './modules/WishlistAjax'; 
 import Warranty from './modules/Warranty'; 
