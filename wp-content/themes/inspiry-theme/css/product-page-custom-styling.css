@@ -43,8 +43,8 @@
 
 /* pricing section */ 
 .bc-product__pricing{ 
-    display: flex;
-    flex-direction: column;
+    display: flex !important;
+    flex-direction: column-reverse !important;
 }
 .bc-product__pricing>p{ 
     margin-top: 0 !important;
