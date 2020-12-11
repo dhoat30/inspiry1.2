@@ -21,19 +21,26 @@ use BigCommerce\Post_Types\Product\Product;
 <p class="bc-product__pricing--cached <?php echo sanitize_html_class( $visible ); ?>" data-js="bc-cached-product-pricing">
 <?php if ( $retail_price ) { ?>
 	<!-- class="bc-product__retail-price" is required --><!-- class="bc-product__retail-price-value" is required -->
-	<span class="bc-product__retail-price"><?php esc_html_e( 'MSRP:', 'bigcommerce' ); ?> <span class="bc-product__retail-price-value"><?php echo esc_html( $retail_price ); ?></span></span>
+	<span class="bc-product__retail-price"><?php esc_html_e( 'MSRP:', 'bigcommerce' ); ?> <span class="bc-product__retail-price-value"><?php echo esc_html( $retail_price ); 
+		$priceValue = $retail_price; 
+	?></span></span>
 <?php } ?>
 <?php if ( $product->on_sale() ) { ?>
 	<!-- class="bc-product__original-price" is required. -->
 	<span class="bc-product__original-price"><?php echo esc_html( $price_range ) ?></span>
 	<!-- class="bc-product__price" is required. -->
 	<span class="bc-product__price bc-product__price--sale">
-		<?php echo esc_html( $calculated_price_range ); ?>
+		<?php echo esc_html( $calculated_price_range ); 
+			$priceValue = $calculated_price_range; 
+		?>
 	</span>
 <?php } else { ?>
 	<!-- class="bc-product__price" is required. -->
 	<span class="bc-product__price">
-	<?php echo esc_html( $calculated_price_range ); ?>
+	<?php echo esc_html( $calculated_price_range ); 
+				$priceValue = $calculated_price_range; 
+
+	?>
 		
 		
 	</span>
@@ -54,8 +61,8 @@ use BigCommerce\Post_Types\Product\Product;
 </p>
 <h4> <?php 
 /*coverting $calculated_price_range into integer*/
-	$value = str_replace('$', '', $calculated_price_range);;
-		
+	$priceStringValue = array('$', ',');
+	$value = str_replace($priceStringValue, '', $priceValue);
 	$price = intval($value);
 		
 ?> 
