@@ -27,7 +27,7 @@ require get_theme_file_path('/inc/nav-registeration.php');
     } else {
       wp_enqueue_script('our-vendors-js', get_theme_file_uri('/bundled-assets/undefined'),  NULL, '1.0', true);
 
-      wp_enqueue_script('main', get_theme_file_uri('/bundled-assets/scripts.bc6f5588169be273d5f2.js'), NULL, '1.0', true);
+      wp_enqueue_script('main', get_theme_file_uri('/bundled-assets/scripts.3e0b0586232c8cc6f3d9.js'), NULL, '1.0', true);
       wp_enqueue_style('our-main-styles', get_theme_file_uri('/bundled-assets/undefined'));
     }
     wp_localize_script("main", "inspiryData", array(

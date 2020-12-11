@@ -31,6 +31,9 @@ let designBoardAjax = new DesignBoardAjax();
 
 const tradeNav = new TradeNav();
 
+//price 
+let pricevalue = document.getElementsByClassName('bc-show-current-price'); 
+console.log($('.bc-show-current-price').text);
 //slogan 
 
 $('.logo-container .slogan').css('opacity', '1');
