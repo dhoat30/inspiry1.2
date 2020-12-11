@@ -14,9 +14,6 @@
 
 use BigCommerce\Post_Types\Product\Product;
 
-/*for lay buy calculation*/ 
-$post_id = get_the_ID();
-$product = new \BigCommerce\Post_Types\Product\Product( $post_id );
 
 
 ?>
