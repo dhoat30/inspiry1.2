@@ -41,13 +41,15 @@ use BigCommerce\Post_Types\Product\Product;
 	$price = intval($value);
 		
 ?> 
-					<span class="lay-buy work-sans-fonts">or 6 weekly interest-free payments from <?php 
+					<span class="lay-buy work-sans-fonts">or 6 weekly interest-free payments from sale<?php 
 					 echo  number_format ( $price/6, 2 ); 
 						 
 					 ?></span> 
 					<span class="lay-buy lay-buy-open information-overlay"> <img src="<?php echo get_site_url(); ?>/wp-content/uploads/2020/08/ico-laybuy.png"> What's this?</span>
 	</h4>	
+		
 	</span>
+	
 <?php } else { ?>
 	<!-- class="bc-product__price" is required. -->
 	<span class="bc-product__price">
@@ -57,7 +59,19 @@ use BigCommerce\Post_Types\Product\Product;
 
 	?>
 		
+		<h4> <?php 
+/*coverting $calculated_price_range into integer*/
+	$priceStringValue = array('$', ',');
+	$value = str_replace($priceStringValue, '', $priceValue);
+	$price = intval($value);
 		
+?> 
+					<span class="lay-buy work-sans-fonts">or 6 weekly interest-free payments from <?php 
+					 echo  number_format ( $price/6, 2 ); 
+						 
+					 ?></span> 
+					<span class="lay-buy lay-buy-open information-overlay"> <img src="<?php echo get_site_url(); ?>/wp-content/uploads/2020/08/ico-laybuy.png"> What's this?</span>
+	</h4>	
 	</span>
 	
 <?php } ?>
