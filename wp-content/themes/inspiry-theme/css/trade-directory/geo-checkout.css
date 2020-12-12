@@ -1,0 +1,67 @@
+.wpinv-checkout-class{
+    max-width: 900px;
+    margin: 0 auto;
+    font-family: 'Work Sans', sans-serif ;
+}
+.wpinv-checkout-class h3, label{
+   
+    font-family: 'Work Sans', sans-serif !important;
+}
+
+#wpi-vat-details, .wpi-ip-info{ 
+    display: none !important;
+}
+
+ /*borders */ 
+ .wpi-g .table-bordered {
+     border: 1px solid #dddddd; 
+}
+.wpi-g .table-bordered > tbody > tr > td, .wpi-g .table-bordered > tfoot > tr > td {
+    border-top: 1px solid #dddddd;
+    border-bottom: none !important;
+    border-top-color: rgb(221, 221, 221);
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-right-color:  rgb(255, 255, 255);
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-bottom-color: rgb(221, 221, 221);
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-left-color: rgb(255, 255, 255);
+    border-left-style: solid;
+    border-left-width: 1px;
+  
+}
+.wpi-g .table-bordered > thead > tr > th, .wpi-g .table-bordered > tbody > tr > th, .wpi-g .table-bordered > tfoot > tr > th, .wpi-g .table-bordered > thead > tr > td, .wpi-g .table-bordered > tbody > tr > td, .wpi-g .table-bordered > tfoot > tr > td {
+    border: 1px solid #dddddd;
+    border-top-color: rgb(221, 221, 221);
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-right-color: rgb(255, 255, 255);;
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-bottom-color: rgb(255, 255, 255);;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-left-color:rgb(255, 255, 255);;
+    border-left-style: solid
+}
+
+.label-recurring {
+    background: black !important;
+    padding: 5px !important;
+    margin: 0px !important;
+    font-weight: 500 !important;
+}
+
+.wpinv-submit{ 
+    background: #3F3F3F !important;
+    border: none  !important;
+}
+.wpi-g .panel{ 
+    border: 1px solid rgba(0,0,0,0.3) !important;
+}
+.wpi-g .btn-sm, .wpi-g .btn-group-sm > .btn {
+    padding: 10px !important;
+}

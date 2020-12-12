@@ -142,6 +142,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
 
     </section>
+<?php 
 
+//hide join trade in navbar if the user is logged in 
+    if ( is_user_logged_in() ) {
+            ?>
+                <style>
+                     .mega-menu-item-13607{
+                         display: none !important;
+                     }
+                </style>
+            <?php 
+
+    }
+?>
    
 
