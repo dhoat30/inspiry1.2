@@ -11,7 +11,7 @@ get_header();
 
       </div>
       <div class="main-cards">
-        <div class="section-ft-size">Project Gallery </div>
+        <!-- <div class="section-ft-size">Project Gallery </div>-->
         <div class="flex">
 
         <?php 

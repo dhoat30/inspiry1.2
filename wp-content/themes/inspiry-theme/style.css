@@ -403,4 +403,12 @@
     height: 200px;
   }
 
+  @media (max-width: 400px){
+    .magnify > .magnify-lens {
+        width: 100px;
+        height: 100px;
+      }
+    
+  }
+
 

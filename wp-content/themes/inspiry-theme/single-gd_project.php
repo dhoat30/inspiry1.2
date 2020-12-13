@@ -29,7 +29,17 @@ get_header();
                         <div class="header-title">
                             <h2 class="section-ft-size board-heading-post-id" data-postid='<?php echo get_the_id()?>'><?php echo do_shortcode( '[gd_post_meta key="post_title" show="value-raw" no_wrap="1"]');?></h2>
                         </div>
-                       
+                       <h2> 
+                           <?php 
+                            $postID = get_the_ID();
+                            $value = geodir_get_post_meta($postID,'gd_place',true);
+                            ?> 
+                            <a href='<?php echo get_the_permalink($value);?>'> <?php 
+                            
+                            echo get_the_title($value);
+                            ?>
+                            </a>
+                       </h2>
                         <div class="trade-info-section">
                             
                             <div class="share-icon">

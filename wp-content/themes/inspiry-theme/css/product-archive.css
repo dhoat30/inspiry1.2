@@ -153,6 +153,9 @@
 .facetwp-slider-reset{ 
     display: none !important;
 }
+.facetwp-type-slider{
+    width: 220px;
+}
 @media (max-width: 1084px){ 
     .facetwp-facet {
         margin-bottom: 15px !important;
@@ -193,4 +196,8 @@
 .bc-product-card button {
     
     border: none;
+}
+/*sale*/
+.bc-product-flag--sale{
+    background-color: #303030 !important;
 }
