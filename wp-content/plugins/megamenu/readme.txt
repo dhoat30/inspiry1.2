@@ -1,9 +1,9 @@
 === Max Mega Menu ===
 Contributors: megamenu
-Tags: menu, megamenu, mega menu, navigation, widget, dropdown menu, drag and drop, mobile, responsive, retina, theme editor, widget, shortcode, sidebar, icons, dashicons
+Tags: menu, megamenu, mega menu, navigation, mobile
 Requires at least: 4.9
-Tested up to: 5.5
-Stable tag: 2.9.0.2
+Tested up to: 5.6
+Stable tag: 2.9.1
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -133,6 +133,14 @@ See https://www.megamenu.com for more screenshots
 5. Back end: Use the theme editor to change the appearance of your menus
 
 == Changelog ==
+
+= 2.9.2 =
+
+* New: Add Mobile Sub Menu Default State option to menu location settings
+* New: Add support for 'expand-on-mobile' custom class to expand sub menu by default on mobile
+* Fix: Theme export always exported the 'Default' theme
+* Fix: Check depth property exists for compatibility with plugins that dynamically add items to the menu
+* Improvement: Localise widget title string
 
 = 2.9.1 =
 

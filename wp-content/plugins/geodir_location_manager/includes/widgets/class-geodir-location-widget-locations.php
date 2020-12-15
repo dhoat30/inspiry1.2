@@ -38,18 +38,17 @@ class GeoDir_Location_Widget_Locations extends WP_Super_Duper {
 	 *
 	 */
 	public function set_arguments() {
-
 		$design_style = geodir_design_style();
 
 		$arguments = array(
 			'title'  => array(
-                'title' => __('Title:', 'geodirlocation'),
-                'desc' => __('The widget title.', 'geodirlocation'),
-                'type' => 'text',
-                'default'  => '',
-                'desc_tip' => true,
-                'advanced' => false
-            ),
+				'title' => __('Title:', 'geodirlocation'),
+				'desc' => __('The widget title.', 'geodirlocation'),
+				'type' => 'text',
+				'default'  => '',
+				'desc_tip' => true,
+				'advanced' => false
+			),
 			'what' => array(
 				'type' => 'select',
 				'title' => __( 'Show Locations:', 'geodirlocation' ),
@@ -65,6 +64,15 @@ class GeoDir_Location_Widget_Locations extends WP_Super_Duper {
 				'desc_tip' => true,
 				'advanced' => false,
 			),
+			'slugs'  => array(
+				'type' => 'text',
+				'title' => __( 'Location slugs:', 'geodirlocation' ),
+				'desc' => __( 'To show specific locations, enter comma separated location slugs for the option selected in "Show Locations". Ex: new-york,london', 'geodirlocation' ),
+				'placeholder' => '',
+				'default' => '',
+				'desc_tip' => true,
+				'advanced' => false
+			),
 			'output_type'  => array(
 				'type' => 'select',
 				'title' => __('Output type', 'geodirlocation'),
@@ -78,16 +86,16 @@ class GeoDir_Location_Widget_Locations extends WP_Super_Duper {
 				'desc_tip' => true,
 				'advanced' => true,
 			),
-            'fallback_image' => array(
+			'fallback_image' => array(
 				'type' => 'checkbox',
-                'title' => __( "Show post image as a fallback?", 'geodirlocation' ),
+				'title' => __( "Show post image as a fallback?", 'geodirlocation' ),
 				'desc' => __( "If location image not available then show last post image added under this location.", 'geodirlocation' ),
-                'desc_tip' => true,
-                'value'  => '1',
-                'default'  => '0',
-                'advanced' => true,
-				'element_require' => '[%output_type%]=="grid"',
-            ),
+				'desc_tip' => true,
+				'value'  => '1',
+				'default'  => '0',
+				'advanced' => true,
+				'element_require' => '[%slugs%]=="grid"',
+			),
 			'per_page'  => array(
 				'type' => 'number',
 				'title' => __('Number of locations:', 'geodirlocation'),
@@ -95,47 +103,52 @@ class GeoDir_Location_Widget_Locations extends WP_Super_Duper {
 				'placeholder' => '',
 				'default' => '',
 				'desc_tip' => true,
-				'advanced' => false
+				'advanced' => false,
+				'element_require' => '![%slugs%]'
 			),
-            'pagi_t'  => array(
-                'title' => __("Show pagination on top?", 'geodirlocation'),
-                'type' => 'checkbox',
-                'desc_tip' => false,
-                'value'  => '1',
-                'default'  => '0',
-                'advanced' => true
-            ),
-            'pagi_b'  => array(
-                'title' => __("Show pagination at bottom?", 'geodirlocation'),
-                'type' => 'checkbox',
-                'desc_tip' => false,
-                'value'  => '1',
-                'default'  => '0',
-                'advanced' => true
-            ),
+			'pagi_t'  => array(
+				'title' => __("Show pagination on top?", 'geodirlocation'),
+				'type' => 'checkbox',
+				'desc_tip' => false,
+				'value'  => '1',
+				'default'  => '0',
+				'advanced' => true,
+				'element_require' => '![%slugs%]'
+			),
+			'pagi_b'  => array(
+				'title' => __("Show pagination at bottom?", 'geodirlocation'),
+				'type' => 'checkbox',
+				'desc_tip' => false,
+				'value'  => '1',
+				'default'  => '0',
+				'advanced' => true,
+				'element_require' => '![%slugs%]'
+			),
 			'pagi_info'  => array(
 				'type' => 'select',
 				'title' => __('Show advanced pagination details:', 'geodirlocation'),
 				'desc' => __('This will add extra pagination info like "Showing locations x-y of z" after/before pagination.', 'geodirlocation'),
 				'placeholder' => '',
 				'default' => '',
-                'options' =>  array(
-                    "" => __('Never Display', 'geodirlocation'),
-                    "after" => __('After pagination', 'geodirlocation'),
-                    "before" => __('Before pagination', 'geodirlocation')
-                ),
+				'options' =>  array(
+					"" => __('Never Display', 'geodirlocation'),
+					"after" => __('After pagination', 'geodirlocation'),
+					"before" => __('Before pagination', 'geodirlocation')
+				),
 				'desc_tip' => true,
 				'advanced' => true,
+				'element_require' => '![%slugs%]'
 			),
-            'no_loc'  => array(
-                'title' => __("Disable location filter?", 'geodirlocation'),
+			'no_loc'  => array(
+				'title' => __("Disable location filter?", 'geodirlocation'),
 				'desc' => __("Don't filter results for current location.", 'geodirlocation'),
-                'type' => 'checkbox',
-                'desc_tip' => true,
-                'value'  => '1',
-                'default'  => '0',
-                'advanced' => false
-            ),
+				'type' => 'checkbox',
+				'desc_tip' => true,
+				'value'  => '1',
+				'default'  => '0',
+				'advanced' => false,
+				'element_require' => '![%slugs%]'
+			),
 			'show_current' => array(
 				'title' => __( 'Show current location only', 'geodirlocation' ),
 				'desc' => __( 'Tick to show only current country / region / city / neighbourhood when location filter is active & country / region / city / neighbourhood is set.', 'geodirlocation' ),
@@ -144,41 +157,41 @@ class GeoDir_Location_Widget_Locations extends WP_Super_Duper {
 				'value' => '1',
 				'default' => '0',
 				'advanced' => false,
-				'element_require' => '( ! ( ( typeof form != "undefined" && jQuery( form ).find( "[data-argument=no_loc]" ).find( "input[type=checkbox]" ).is( ":checked" ) ) || ( typeof props == "object" && props.attributes && props.attributes.no_loc ) ) )',
+				'element_require' => '( ! ( ( typeof form != "undefined" && jQuery( form ).find( "[data-argument=no_loc]" ).find( "input[type=checkbox]" ).is( ":checked" ) ) || ( typeof props == "object" && props.attributes && props.attributes.no_loc ) ) ) && ![%slugs%]',
 			),
-            'country' => array(
-                'type' => 'text',
-                'title' => __( 'Country slug', 'geodirlocation' ),
-                'desc' => __( 'Filter the locations by country slug when location filter enabled. Default: current country.', 'geodirlocation' ),
-                'placeholder' => '',
-                'desc_tip' => true,
-                'value' => '',
-                'default' => '',
-                'advanced' => true,
-				'element_require' => '[%what%]!="country"',
-            ),
-            'region' => array(
-                'type' => 'text',
-                'title' => __( 'Region slug', 'geodirlocation' ),
-                'desc' => __( 'Filter the locations by region slug when location filter enabled. Default: current region.', 'geodirlocation' ),
-                'placeholder' => '',
-                'desc_tip' => true,
-                'value' => '',
-                'default' => '',
-                'advanced' => true,
-				'element_require' => '[%what%]=="city" || [%what%]=="neighbourhood"',
-            ),
-            'city' => array(
-                'type' => 'text',
-                'title' => __( 'City slug', 'geodirlocation' ),
-                'desc' => __( 'Filter the locations by city slug when location filter enabled. Default: current city.', 'geodirlocation' ),
-                'placeholder' => '',
-                'desc_tip' => true,
-                'value' => '',
-                'default' => '',
-                'advanced' => true,
-				'element_require' => '[%what%]=="neighbourhood"',
-            )
+			'country' => array(
+				'type' => 'text',
+				'title' => __( 'Country slug', 'geodirlocation' ),
+				'desc' => __( 'Filter the locations by country slug when location filter enabled. Default: current country.', 'geodirlocation' ),
+				'placeholder' => '',
+				'desc_tip' => true,
+				'value' => '',
+				'default' => '',
+				'advanced' => true,
+				'element_require' => '[%what%]!="country" && ![%slugs%]',
+			),
+			'region' => array(
+				'type' => 'text',
+				'title' => __( 'Region slug', 'geodirlocation' ),
+				'desc' => __( 'Filter the locations by region slug when location filter enabled. Default: current region.', 'geodirlocation' ),
+				'placeholder' => '',
+				'desc_tip' => true,
+				'value' => '',
+				'default' => '',
+				'advanced' => true,
+				'element_require' => '( [%what%]=="city" || [%what%]=="neighbourhood" ) && ![%slugs%]',
+			),
+			'city' => array(
+				'type' => 'text',
+				'title' => __( 'City slug', 'geodirlocation' ),
+				'desc' => __( 'Filter the locations by city slug when location filter enabled. Default: current city.', 'geodirlocation' ),
+				'placeholder' => '',
+				'desc_tip' => true,
+				'value' => '',
+				'default' => '',
+				'advanced' => true,
+				'element_require' => '[%what%]=="neighbourhood" && ![%slugs%]',
+			)
 		);
 
 		if ( $design_style ) {
@@ -404,7 +417,18 @@ class GeoDir_Location_Widget_Locations extends WP_Super_Duper {
 		 * @param mixed $id_base The widget ID.
 		 */
 		$params['what'] = apply_filters( 'geodir_popular_location_widget_what_filter', $what, $args, $this->id_base );
-		
+
+		/**
+		 * Filter location slugs.
+		 *
+		 * @since 2.1.0.4
+		 *
+		 * @param string $slugs Comma separated location slugs.
+		 * @param array $args An array of the widget's settings.
+		 * @param mixed $id_base The widget ID.
+		 */
+		$params['slugs'] = apply_filters( 'geodir_popular_location_widget_slugs_filter', ( isset( $args['slugs'] ) ? trim( $args['slugs'] ) : '' ), $args, $this->id_base );
+
 		/**
 		 * Filter the locations by country.
 		 *
@@ -461,13 +485,9 @@ class GeoDir_Location_Widget_Locations extends WP_Super_Duper {
 					case 'btn-sm':$params['size'] = '';  $params['css_class'] = 'btn-sm';break;
 					default:
 						$params['size'] = '';
-
 				}
-
 			}
 		}
-
-
 
 		$params['widget_atts'] = $params;
 

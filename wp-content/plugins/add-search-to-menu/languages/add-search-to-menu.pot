@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Ivory Search\n"
-"POT-Creation-Date: 2020-10-01 13:19+0530\n"
+"POT-Creation-Date: 2020-11-05 20:12+0530\n"
 "PO-Revision-Date: 2020-03-17 21:05+0530\n"
 "Last-Translator: \n"
 "Language-Team: Ivory Search <admin@ivorysearch.com>\n"
@@ -203,7 +203,7 @@ msgstr ""
 #: ../admin/class-is-editor.php:97 ../admin/partials/search-form.php:114
 #: ../includes/class-is-admin-public.php:186
 #: ../includes/class-is-search-form.php:469
-#: ../includes/class-is-search-form.php:537 ../public/class-is-public.php:207
+#: ../includes/class-is-search-form.php:538 ../public/class-is-public.php:207
 #: ../public/class-is-public.php:256
 msgid "Search"
 msgstr ""
@@ -511,7 +511,7 @@ msgstr ""
 msgid "Enable Search Form Customization"
 msgstr ""
 
-#: ../admin/class-is-editor.php:674 ../includes/class-is-search-form.php:563
+#: ../admin/class-is-editor.php:674 ../includes/class-is-search-form.php:564
 msgid "Customizer"
 msgstr ""
 
@@ -993,7 +993,7 @@ msgstr ""
 #: ../admin/class-is-help.php:79 ../admin/class-is-list-table.php:154
 #: ../admin/class-is-settings-fields.php:446
 #: ../admin/class-is-settings-fields.php:476
-#: ../includes/class-is-search-form.php:559 ../includes/class-is-widget.php:83
+#: ../includes/class-is-search-form.php:560 ../includes/class-is-widget.php:83
 msgid "Edit"
 msgstr ""
 
@@ -1590,7 +1590,7 @@ msgstr ""
 msgid "Invalid search form."
 msgstr ""
 
-#: ../includes/class-is-search-form.php:527
+#: ../includes/class-is-search-form.php:528
 msgid "Search for:"
 msgstr ""
 

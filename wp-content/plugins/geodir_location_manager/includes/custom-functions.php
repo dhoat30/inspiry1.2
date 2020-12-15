@@ -3088,7 +3088,7 @@ function geodir_custom_field_output_show_address_neighbourhood( $address_fields,
         $neighbourhood = GeoDir_Location_Neighbourhood::get_nicename( $gd_post->neighbourhood );
 
         if ( $neighbourhood ) {
-            $address_fields['neighbourhood'] = '<span itemprop="addressNeighbourhood">' . $neighbourhood . '</span>';
+            $address_fields['neighbourhood'] = '<span data-itemprop="addressNeighbourhood">' . $neighbourhood . '</span>'; // The property addressNeighbourhood is not recognised by Google
         }
     }
 

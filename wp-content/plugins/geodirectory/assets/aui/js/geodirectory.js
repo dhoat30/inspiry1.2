@@ -116,7 +116,8 @@ function geodir_lightbox_embed($link,ele){
 
 
             // image
-            var img = jQuery(a).find('img').clone().removeClass().addClass('mx-auto d-block w-auto mw-100 rounded').css('height','90vh').get(0).outerHTML;
+            var css_height = window.innerWidth > window.innerHeight ? '90vh' : 'auto';
+            var img = jQuery(a).find('img').clone().removeClass().addClass('mx-auto d-block w-auto mw-100 rounded').css('height',css_height).get(0).outerHTML;
             $carousel  += img;
             // captions
             if(jQuery(a).parent().find('.carousel-caption').length ){
@@ -237,14 +238,17 @@ jQuery.fn.gdunveil = function(threshold, callback,extra1) {
 
 };
 
+function geodir_init_lazy_load(gdQuery){
+    if (!gdQuery) {
+        gdQuery = jQuery;
+    }
 
-function geodir_init_lazy_load(){
     // load for GD images
     var _opacity = 1;
     if ('objectFit' in document.documentElement.style === false) {
         _opacity = 0;
     }
-    jQuery(".geodir-lazy-load").gdunveil(100,function() {this.style.opacity = _opacity;},'#geodir_content');
+    gdQuery(".geodir-lazy-load").gdunveil(100,function() {this.style.opacity = _opacity;},'#geodir_content');
 
     // fire when the image tab is clicked on details page
     jQuery('#gd-tabs').click(function() {
@@ -296,7 +300,7 @@ function geodir_load_badge_class(){
 
 jQuery(function($) {
     // start lazy load if it's turned on
-    geodir_init_lazy_load();
+    geodir_init_lazy_load($);
 
     if ('objectFit' in document.documentElement.style === false) {
         //Fix after document loads
@@ -755,17 +759,22 @@ function geodir_resize_rating_stars(re) {
 }
 
 function geodir_load_search_form(stype, el) {
-    var $adv_show = jQuery(el).closest('.geodir-search-container').attr('data-show-adv');
+    var $container = jQuery(el).closest('.geodir-search-container');
+    var $adv_show = $container.attr('data-show-adv');
+    var data = {
+        action: 'geodir_search_form',
+        stype: stype,
+        adv: $adv_show
+    };
+    if (jQuery('.geodir-keep-args', $container).length && jQuery('.geodir-keep-args', $container).text()) {
+        data.keepArgs = jQuery('.geodir-keep-args', $container).text();
+    }
 
     jQuery.ajax({
         url: geodir_params.ajax_url,
         type: 'POST',
         dataType: 'html',
-        data: {
-            action: 'geodir_search_form',
-            stype: stype,
-            adv: $adv_show
-        },
+        data: data,
         beforeSend: function() {
             geodir_search_wait(1);
         },
@@ -828,7 +837,6 @@ function geodir_setup_search_form(){
         gd_s_post_type = "gd_place";
     }
 
-
     setTimeout(function(){
         jQuery('.search_by_post').change(function() {
             gd_s_post_type = jQuery(this).val();
@@ -838,7 +846,9 @@ function geodir_setup_search_form(){
         });
     }, 100);
 
-    aui_init();
+    if (typeof aui_init === "function") {
+        aui_init();
+    }
 }
 
 gdSearchDoing = 0;
@@ -1431,7 +1441,7 @@ function gd_init_rating_input(){
  */
 function geodir_animate_markers(){
     if (typeof(animate_marker) == 'function') {
-        var groupTab = jQuery("ul.geodir-category-list-view").children("li");
+        var groupTab = jQuery(".geodir-category-list-view").children(".geodir-post");
         groupTab.hover(function () {
             animate_marker('listing_map_canvas', String(jQuery(this).data("post-id")));
         }, function () {
@@ -1572,7 +1582,7 @@ function gd_manually_set_user_position($msg){
             // map center is off due to lightbox zoom effect so we resize to fix
             setTimeout(function(){
                 jQuery('.aui-modal .geodir_map_container').css('width','90%').css('width','99.99999%');
-                window.dispatchEvent(new Event('resize')); // OSM does not work with the jQuery trigger so we do it old skool.
+                window.dispatchEvent(new Event('resize')); // OSM does not work with the jQuery trigger so we do it old kool.
             }, 500);
 
             jQuery( window ).off($prefix+'_trigger');
@@ -1620,7 +1630,20 @@ function geodir_widget_listings_pagination(id, params) {
                 jQuery('.pagination a.page-link', $paging).each(function() {
                     href = jQuery(this).attr('href');
                     hrefs = href.split("#");
-                    page = (hrefs.length > 1 && parseInt(hrefs[1]) > 0 ? parseInt(hrefs[1]) : (parseInt(jQuery(this).text()) > 0 ? parseInt(jQuery(this).text()) : 1));
+                    page = (hrefs.length > 1 && parseInt(hrefs[1]) > 0 ? parseInt(hrefs[1]) : (parseInt(jQuery(this).text()) > 0 ? parseInt(jQuery(this).text()) : 0));
+                    if (!page > 0) {
+                        var cpage = parseInt(jQuery(this).closest('.pagination').find('[aria-current="page"]').text());
+                        if (cpage > 0) {
+                            if (jQuery(this).hasClass('next')) {
+                                page = cpage + 1;
+                            } else if (jQuery(this).hasClass('prev')) {
+                                page = cpage - 1;
+                            }
+                        }
+                    }
+                    if (!page > 0) {
+                        page = 1;
+                    }
                     jQuery(this).attr('data-geodir-pagenum', page);
                     jQuery(this).attr('href', 'javascript:void(0)');
                 });

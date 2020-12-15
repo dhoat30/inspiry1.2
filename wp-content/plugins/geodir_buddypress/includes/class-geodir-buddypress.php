@@ -93,6 +93,10 @@ class GeoDir_BuddyPress {
         add_filter( 'bp_notifications_get_registered_components', array( $plugin_public, 'register_component' ) );
         add_filter( 'bp_notifications_get_notifications_for_user', array( $plugin_public, 'format_notifications' ), 10, 8 );
 
+        // Filter GD Listings by author on BP Profile page.
+        add_filter( 'widget_post_author', array( $plugin_public, 'gd_listings_post_author' ), 20, 3 );
+        add_filter( 'widget_favorites_by_user', array( $plugin_public, 'gd_listings_favorites_by_user' ), 20, 3 );
+
         do_action( 'gd_buddypress_setup_actions' );
     }
 

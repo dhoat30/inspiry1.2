@@ -56,7 +56,7 @@ class GeoDir_CP_API {
 			$linked_to_post_types = GeoDir_CP_Link_Posts::linked_to_post_types( $post_type_obj->name );
 			if ( ! empty( $linked_to_post_types ) ) {
 				$params['linked_from_post'] = array(
-					'description' => __( 'Limit the posts to those a post linked form.', 'geodirevents' ),
+					'description' => __( 'Limit the posts to those a post linked form.', 'geodir_custom_posts' ),
 					'type' => 'string',
 				);
 			}
@@ -64,7 +64,7 @@ class GeoDir_CP_API {
 			$link_from_post_types = GeoDir_CP_Link_Posts::linked_from_post_types( $post_type_obj->name );
 			if ( ! empty( $link_from_post_types ) ) {
 				$params['linked_to_post'] = array(
-					'description' => __( 'Limit the posts to those a post linked to.', 'geodirevents' ),
+					'description' => __( 'Limit the posts to those a post linked to.', 'geodir_custom_posts' ),
 					'type' => 'string',
 				);
 			}

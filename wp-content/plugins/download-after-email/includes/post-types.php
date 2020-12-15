@@ -477,27 +477,14 @@ function dae_content_meta_box_preview() {
 function dae_content_meta_box_duplicate( $post ) {
 
 	$duplicate_id = get_post_meta( $post->ID, 'dae_duplicate_id', true );
-	if ( empty( $duplicate_id ) ) {
-		$duplicate_id = 'select';
-	}
-
-	$download_ids = get_posts( array(
-		'post_type'		=> 'dae_download',
-		'fields'		=> 'ids',
-		'post__not_in'	=> array( $post->ID )
-	) );
 	
 	?>
-	<p>
-		<select name="duplicate_id">
-			<option value="select" <?php selected( 'select', $duplicate_id ); ?>><?php esc_html_e( 'Select Download ID', 'download-after-email' ); ?></option>
-			<?php foreach ( $download_ids as $download_id ) : ?>
-				<option value="<?php echo esc_attr( $download_id ); ?>" <?php selected( $download_id, $duplicate_id ); ?>><?php echo esc_html( $download_id ); ?></option>
-			<?php endforeach; ?>
-		</select>
-	</p>
+	<h4><?php esc_html_e( 'Use settings of another download', 'download-after-email' ); ?></h4>
+	<p><input type="text" name="duplicate_id" value="<?php if ( ! empty( $duplicate_id ) ) { echo esc_attr( $duplicate_id ); } ?>" placeholder="<?php esc_attr_e( 'Download ID (e.g. 215)', 'download-after-email' ); ?>" /></p>
 	<p class="dae-message-info"><?php esc_html_e( 'Duplicate the settings of another download during saving, excluding the section Download file.', 'download-after-email' ); ?></p>
 	<?php
+
+	do_action( 'dae_meta_box_duplicate', $post );
 
 }
 
@@ -530,21 +517,21 @@ function dae_save_meta_boxes_download( $post_id ) {
 		
 		$shortcode = '[download_after_email id="' . $post_id . '"]';
 		
-		$_POST = stripslashes_deep( $_POST );
-		
-		$dae_settings['file_id'] = sanitize_text_field( $_POST['file_id'] );
-		$dae_settings['file_image_id'] = sanitize_text_field( $_POST['file_image_id'] );
+		$dae_settings['file_id'] = (int) $_POST['file_id'];
+		$dae_settings['file_image_id'] = (int) $_POST['file_image_id'];
 		$dae_settings['file_image_size'] = sanitize_text_field( $_POST['file_image_size'] );
 		$dae_settings['file_image_width_wide'] = sanitize_text_field( $_POST['file_image_width_wide'] );
 		$dae_settings['file_image_width_small'] = sanitize_text_field( $_POST['file_image_width_small'] );
 
-		$duplicate_id = sanitize_text_field( $_POST['duplicate_id'] );
+		$duplicate_id = (int) $_POST['duplicate_id'];
 
-		if ( 'select' != $duplicate_id ) {
+		if ( ! empty( $duplicate_id ) && 'dae_download' == get_post_type( $duplicate_id ) ) {
 			$duplicate_settings = get_post_meta( $duplicate_id, 'dae_settings', true );
+		} else {
+			$duplicate_id = '';
 		}
 
-		if ( ! empty( $duplicate_settings ) ) {
+		if ( ! empty( $duplicate_settings ) && is_array( $duplicate_settings ) ) {
 
 			$dae_settings = array_merge( $duplicate_settings, $dae_settings );
 
@@ -605,9 +592,9 @@ function dae_save_meta_boxes_download( $post_id ) {
 		update_post_meta( $post_id, 'dae_duplicate_id', $duplicate_id );
 		update_post_meta( $post_id, 'dae_settings', $dae_settings );
 		
-		$filepath = get_attached_file( $dae_settings['file_id'] );
+		$filepath = get_attached_file( $dae_settings['file_id'], true );
 		
-		if ( ! strchr( $filepath, 'dae-uploads' ) ) {
+		if ( ! empty( $filepath ) && ! strchr( $filepath, 'dae-uploads' ) ) {
 			
 			$upload_dir = wp_upload_dir();
 			
@@ -624,9 +611,11 @@ function dae_save_meta_boxes_download( $post_id ) {
 			}
 			
 		}
-		
+
+		do_action( 'dae_save_meta_boxes_download', $post_id, $dae_settings );
+
 	}
-	
+
 }
 
 add_action( 'wp_ajax_dae_open_preview', 'dae_open_preview' );
@@ -690,7 +679,7 @@ function dae_custom_download_column( $column, $post_id ) {
 
 	$settings = get_post_meta( $post_id, 'dae_settings', true );
 	if ( ! empty( $settings['file_id'] ) ) {
-		$file_name = basename( wp_get_attachment_url( $settings['file_id'] ) );
+		$file_name = basename( get_attached_file( $settings['file_id'], true ) );
 	}
 
 	switch ( $column ) {

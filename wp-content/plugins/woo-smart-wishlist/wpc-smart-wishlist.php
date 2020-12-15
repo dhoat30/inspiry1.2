@@ -3,7 +3,7 @@
 Plugin Name: WPC Smart Wishlist for WooCommerce
 Plugin URI: https://wpclever.net/
 Description: WPC Smart Wishlist is a simple but powerful tool that can help your customer save products for buy later.
-Version: 2.2.5
+Version: 2.2.6
 Author: WPClever.net
 Author URI: https://wpclever.net
 Text Domain: woosw
@@ -11,12 +11,12 @@ Domain Path: /languages/
 Requires at least: 4.0
 Tested up to: 5.5.3
 WC requires at least: 3.0
-WC tested up to: 4.6.1
+WC tested up to: 4.7.0
 */
 
 defined( 'ABSPATH' ) || exit;
 
-! defined( 'WOOSW_VERSION' ) && define( 'WOOSW_VERSION', '2.2.5' );
+! defined( 'WOOSW_VERSION' ) && define( 'WOOSW_VERSION', '2.2.6' );
 ! defined( 'WOOSW_URI' ) && define( 'WOOSW_URI', plugin_dir_url( __FILE__ ) );
 ! defined( 'WOOSW_SUPPORT' ) && define( 'WOOSW_SUPPORT', 'https://wpclever.net/support?utm_source=support&utm_medium=woosw&utm_campaign=wporg' );
 ! defined( 'WOOSW_REVIEWS' ) && define( 'WOOSW_REVIEWS', 'https://wordpress.org/support/plugin/woo-smart-wishlist/reviews/?filter=5' );
@@ -941,6 +941,7 @@ if ( ! function_exists( 'woosw_init' ) ) {
 							'ajax_url'            => admin_url( 'admin-ajax.php' ),
 							'menu_action'         => get_option( 'woosw_menu_action', 'open_page' ),
 							'copied_text'         => esc_html__( 'Copied the wishlist link:', 'woosw' ),
+							'menu_text'           => esc_html__( 'Wishlist', 'woosw' ),
 							'wishlist_url'        => self::get_url(),
 							'button_text'         => esc_html( $text ),
 							'button_action'       => get_option( 'woosw_button_action', 'list' ),
@@ -968,9 +969,9 @@ if ( ! function_exists( 'woosw_init' ) ) {
 					}
 
 					if ( $plugin === $file ) {
-						$settings_link    = '<a href="' . admin_url( 'admin.php?page=wpclever-woosw&tab=settings' ) . '">' . esc_html__( 'Settings', 'woosw' ) . '</a>';
+						$settings         = '<a href="' . admin_url( 'admin.php?page=wpclever-woosw&tab=settings' ) . '">' . esc_html__( 'Settings', 'woosw' ) . '</a>';
 						$links['premium'] = '<a href="' . admin_url( 'admin.php?page=wpclever-woosw&tab=premium' ) . '" style="color: #c9356e">' . esc_html__( 'Premium Version', 'woosw' ) . '</a>';
-						array_unshift( $links, $settings_link );
+						array_unshift( $links, $settings );
 					}
 
 					return (array) $links;

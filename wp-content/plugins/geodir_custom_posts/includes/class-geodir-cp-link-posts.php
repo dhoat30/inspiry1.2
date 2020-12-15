@@ -42,15 +42,20 @@ class GeoDir_CP_Link_Posts {
 		add_filter( 'geodir_get_cf_value', array( __CLASS__, 'link_posts_value' ), 10, 2 );
 
 		add_filter( 'geodir_custom_field_output_link_posts', array( __CLASS__, 'cf_link_posts' ), 10, 5 );
-
 		add_action( 'deleted_post', array( __CLASS__, 'delete_post_links' ), 10, 1 );
-
 
 		// filter the meta value
 		add_filter( 'geodir_pre_get_post_meta', array( __CLASS__, 'get_meta_value' ), 10, 5 );
 
 		// copy the linked DB values
 		add_action('_wp_put_post_revision',array( __CLASS__,'make_revision_db_entry'));
+
+		// Filter GD post info object.
+		add_filter( 'geodir_get_post_info', array( __CLASS__, 'filter_post_info' ), 20, 2 );
+		add_filter( 'geodir_post_badge_match_value', array( __CLASS__, 'post_badge_match_value' ), 20, 5 );
+
+		// Elementor render link posts value.
+		add_filter( 'geodir_elementor_tag_text_render_value', array( __CLASS__, 'elementor_tag_text_render_value' ), 10, 3 );
 	}
 
 	/**
@@ -247,12 +252,12 @@ WHERE
 				$field_name = $htmlvar_name . '[]';
 				$select_type = 'multiselect';
 				$attrs .= ' multiple="multiple"';
-				$cpt_name = geodir_post_type_name( $htmlvar_name );
+				$cpt_name = geodir_post_type_name( $htmlvar_name, true );
 			} else {
 				$multiple = false;
 				$field_name = $htmlvar_name;
 				$select_type = 'select';
-				$cpt_name = geodir_post_type_singular_name( $htmlvar_name );
+				$cpt_name = geodir_post_type_singular_name( $htmlvar_name, true );
 			}
 
 			$placeholder = ! empty( $cf['placeholder_value'] ) ? __( $cf['placeholder_value'], 'geodirectory' ) : wp_sprintf( __( 'Choose %s &hellip;', 'geodir_custom_posts' ), $cpt_name );
@@ -1056,5 +1061,76 @@ WHERE
 		}
 
 		return apply_filters( 'geodir_cp_fill_data_field_options', $options, $post_type );
+	}
+
+	public static function filter_post_info( $gd_post, $post_id ) {
+		if ( ! empty( $gd_post ) && ! empty( $post_id ) && is_object( $gd_post ) && ! empty( $gd_post->post_type ) ) {
+			$_post_types = self::linked_to_post_types( $gd_post->post_type );
+
+			if ( ! empty( $_post_types ) ) {
+				foreach ( $_post_types as $_post_type ) {
+					if ( ! isset( $gd_post->{$_post_type} ) ) {
+						$value = '';
+
+						if ( $items = self::get_items( $post_id, $_post_type ) ) {
+							$_value = array();
+							foreach ( $items as $item ) {
+								$_value[] = $item->linked_id;
+							}
+							$value = implode( ',', $_value );
+						}
+
+						$gd_post->{$_post_type} = $value;
+					}
+				}
+			}
+		}
+
+		return $gd_post;
+	}
+
+	/**
+	 * Filter post badge match value.
+	 *
+	 * @since 2.1.0.1
+	 *
+	 * @param string $match_value Match value.
+	 * @param string $match_field Match field.
+	 * @param array $args The badge parameters.
+	 * @param array $find_post Post object.
+	 * @param array $field The custom field array.
+	 * @return string Filtered value.
+	 */
+	public static function post_badge_match_value( $match_value, $match_field, $args, $find_post, $field ) {
+		if ( $match_field && $match_value && ! empty( $args['badge'] ) && strpos( $args['badge'], '%%input%%' ) !== false && geodir_is_gd_post_type( $match_field ) ) {
+			$_match_value = ! is_array( $match_value ) ? explode( ',', $match_value ) : $match_value;
+
+			if ( ! empty( $_match_value ) ) {
+				$value = array();
+
+				foreach ( $_match_value as $_value ) {
+					$_value = trim( $_value );
+					if ( (int) $_value > 0 ) {
+						$value[] = '<a class="text-reset text-decoration-none" href="' . get_permalink( (int) $_value ) . '">' . get_the_title( (int) $_value ) . '</a>';
+					} else {
+						$value[] = $_value;
+					}
+				}
+
+				$match_value = str_replace( '%%input%%', implode( '<span class="geodir-link-sep">, </span>', $value ), $args['badge'] );
+			}
+		}
+
+		return $match_value;
+	}
+
+	public static function elementor_tag_text_render_value( $value, $key, $dynamic_tag ) {
+		if ( $key && geodir_is_gd_post_type( $key ) ) {
+			$show = $dynamic_tag->get_settings( 'show' );
+
+			$value = do_shortcode( "[gd_post_meta key='" . $key . "' show='" . $show . "' no_wrap='1']" );
+		}
+
+		return $value;
 	}
 }

@@ -361,15 +361,15 @@ function geodir_posttype_link($link, $post_type) {
 /**
  * Print or Get post type singular label.
  *
- * @since 1.0.0
- * @since 1.6.16 New $translate parameter added.
+ * @since 2.1.0.5
+ *
  * @package GeoDirectory
  * @param string $post_type The post type.
  * @param bool $echo Prints the label when set to true.
  * @param bool $translate Returns translated label if True. Default false.
  * @return void|string Label.
  */
-function get_post_type_singular_label($post_type, $echo = false, $translate = false) {
+function geodir_get_post_type_singular_label( $post_type, $echo = false, $translate = false ) {
     $obj_post_type = get_post_type_object($post_type);
     if (!is_object($obj_post_type)) {
         return;
@@ -386,15 +386,15 @@ function get_post_type_singular_label($post_type, $echo = false, $translate = fa
 /**
  * Print or Get post type plural label.
  *
- * @since 1.0.0
- * @since 1.6.16 New $translate parameter added.
+ * @since 2.1.0.5
+ *
  * @package GeoDirectory
  * @param string $post_type The post type.
  * @param bool $echo Prints the label when set to true.
  * @param bool $translate Returns translated label if True. Default false.
  * @return void|string Label.
  */
-function get_post_type_plural_label($post_type, $echo = false, $translate = false) {
+function geodir_get_post_type_plural_label( $post_type, $echo = false, $translate = false ) {
     $all_postypes = geodir_get_posttypes();
 
     if (!in_array($post_type, $all_postypes))
@@ -677,18 +677,12 @@ function geodir_display_sort_options($post_type) {
     if ( is_search() ) {
         return;
     }
-    
-    
-
-
 
     $gd_post_type = $post_type;
 
     $sort_options = array();
     $sort_options_raw = geodir_get_sort_options( $gd_post_type );
-
-//    print_r($sort_options_raw);exit;
-
+    
 
     $sort_field_options = '';
 
@@ -704,24 +698,6 @@ function geodir_display_sort_options($post_type) {
 
             $sort_options[] = $sort;
 
-//            if ( $sort->field_type == 'random' ) {
-//                $key = $sort->field_type;
-//                ( $sort_by == $key || ( $sort->is_default == '1' && ! isset( $_REQUEST['sort_by'] ) ) ) ? $selected = 'selected="selected"' : $selected = '';
-//                $sort_field_options .= '<option ' . $selected . ' value="' . esc_url( add_query_arg( 'sort_by', $key ) ) . '">' . __( $label, 'geodirectory' ) . '</option>';
-//            }else{
-//                if ( $sort->sort == 'asc' ) {
-//                    $key   = $sort->htmlvar_name . '_asc';
-//                    ( $sort_by == $key || ( $sort->is_default == '1' && ! isset( $_REQUEST['sort_by'] ) ) ) ? $selected = 'selected="selected"' : $selected = '';
-//                    $sort_field_options .= '<option ' . $selected . ' value="' . esc_url( add_query_arg( 'sort_by', $key ) ) . '">' . __( $label, 'geodirectory' ) . '</option>';
-//                }
-//
-//                if ( $sort->sort == 'desc' ) {
-//                    $key   = $sort->htmlvar_name . '_desc';
-//                    ( $sort_by == $key || ( $sort->is_default == '1' && ! isset( $_REQUEST['sort_by'] ) ) ) ? $selected = 'selected="selected"' : $selected = '';
-//                    $sort_field_options .= '<option ' . $selected . ' value="' . esc_url( add_query_arg( 'sort_by', $key ) ) . '">' . __( $label, 'geodirectory' ) . '</option>';
-//                }
-//            }
-
         }
     }
 
@@ -729,7 +705,6 @@ function geodir_display_sort_options($post_type) {
 
         $design_style = geodir_design_style();
         $template = $design_style ? $design_style."/loop/select-sort.php" : "loop/select-sort.php";
-//        $template = "loop/select-sort.php";
         echo geodir_get_template_html( $template, array(
             'sort_options' => $sort_options
         ) );

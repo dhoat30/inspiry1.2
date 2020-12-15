@@ -724,12 +724,24 @@ if ( ! class_exists( 'Mega_Menu_Locations' ) ) :
 									),
 									'mobile_behaviour' => array(
 										'priority'    => 20,
-										'title'       => __( 'Mobile Menu Behaviour', 'megamenu' ),
+										'title'       => __( 'Mobile Sub Menu Behaviour', 'megamenu' ),
 										'description' => __( 'Define the sub menu toggle behaviour for the mobile menu.', 'megamenu' ),
 										'settings'    => array(
 											array(
 												'type'  => 'mobile_behaviour',
 												'key'   => 'mobile_behaviour',
+												'value' => $plugin_settings,
+											),
+										),
+									),
+									'mobile_state' => array(
+										'priority'    => 20,
+										'title'       => __( 'Mobile Sub Menu Default State', 'megamenu' ),
+										'description' => __( 'Define the default state of the sub menus when the mobile menu is visible.', 'megamenu' ),
+										'settings'    => array(
+											array(
+												'type'  => 'mobile_state',
+												'key'   => 'mobile_state',
 												'value' => $plugin_settings,
 											),
 										),
@@ -985,6 +997,9 @@ if ( ! class_exists( 'Mega_Menu_Locations' ) ) :
 										break;
 									case 'mobile_behaviour':
 										$this->print_mobile_behaviour_option( $location, $setting['value'] );
+										break;
+									case 'mobile_state':
+										$this->print_mobile_state_option( $location, $setting['value'] );
 										break;
 									case 'container':
 										$this->print_container_option( $location, $setting['value'] );
@@ -1253,6 +1268,29 @@ if ( ! class_exists( 'Mega_Menu_Locations' ) ) :
 				<select name='megamenu_meta[<?php echo esc_attr( $location ); ?>][mobile_behaviour]'>
 					<option value='standard' <?php echo selected( $mobile_behaviour == 'standard' ); ?>><?php _e( 'Standard - Open sub menus will remain open until closed by the user.', 'megamenu' ); ?></option>
 					<option value='accordion' <?php echo selected( $mobile_behaviour == 'accordion' ); ?>><?php _e( 'Accordion - Open sub menus will automatically close when another one is opened.', 'megamenu' ); ?></option>
+				<select>
+			<?php
+		}
+
+		/**
+		 * Print the mobile menu behaviour option
+		 *
+		 * @since 2.8
+		 * @param string $key
+		 * @param string $value
+		 */
+		public function print_mobile_state_option( $location, $plugin_settings ) {
+			$mobile_state = 'collapse_all';
+
+			if ( isset( $plugin_settings[ $location ]['mobile_state'] ) ) {
+				$mobile_state = $plugin_settings[ $location ]['mobile_state'];
+			}
+
+			?>
+				<select name='megamenu_meta[<?php echo esc_attr( $location ); ?>][mobile_state]'>
+					<option value='collapse_all' <?php echo selected( $mobile_state == 'collapse_all' ); ?>><?php _e( 'Collapse all', 'megamenu' ); ?></option>
+					<option value='expand_all' <?php echo selected( $mobile_state == 'expand_all' ); ?>><?php _e( 'Expand all', 'megamenu' ); ?></option>
+					<option value='expand_active' <?php echo selected( $mobile_state == 'expand_active' ); ?>><?php _e( 'Expand active parents', 'megamenu' ); ?></option>
 				<select>
 			<?php
 		}

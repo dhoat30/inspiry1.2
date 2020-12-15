@@ -480,7 +480,7 @@ class IS_Search_Form {
 					$form_style = ( '' == $form_style ) ? 'is-form-style-3' : $form_style;
                     // Enqueue scripts.
                     wp_enqueue_script( 'ivory-ajax-search-scripts' );
-                    if ( isset( $_settings['highlight_terms'] ) ) {
+                    if ( ! ivory_search_is_json_request() && isset( $_settings['highlight_terms'] ) ) {
                     	wp_enqueue_script( 'is-highlight' );
 						if ( isset( $_settings['highlight_color'] ) && ! empty( $_settings['highlight_color'] ) && ! is_search() ) {
 							echo '<style type="text/css" media="screen">';
@@ -524,7 +524,8 @@ class IS_Search_Form {
 
                 $result = '<form '.$data_attrs.' class="is-search-form '. $classes .'" action="' . $search_url . '" method="get" role="search" >';
                 $autocomplete = apply_filters( 'is_search_form_autocomplete', 'autocomplete="off"' );
-                $result .= '<label for="is-search-input-' . $args['id'] . '"><span class="is-screen-reader-text">'.__( 'Search for:', 'add-search-to-menu').'</span><input  type="search" id="is-search-input-' . $args['id'] . '" name="s" value="' . get_search_query() . '" class="is-search-input" placeholder="' . esc_attr( $placeholder_text ) . '" '.$autocomplete.' />';
+                $search_val = ( isset( $_GET['id'] ) && $_GET['id'] === $args['id'] ) ? get_search_query() : '';
+                $result .= '<label for="is-search-input-' . $args['id'] . '"><span class="is-screen-reader-text">'.__( 'Search for:', 'add-search-to-menu').'</span><input  type="search" id="is-search-input-' . $args['id'] . '" name="s" value="' . $search_val.'" class="is-search-input" placeholder="' . esc_attr( $placeholder_text ) . '" '.$autocomplete.' />';
                 // AJAX Loader.
                 if ( isset( $_ajax['enable_ajax'] ) ) {
                     $loader_image = isset( $settings['loader-image'] ) ? $settings['loader-image'] : IS_PLUGIN_URI . 'public/images/spinner.gif';

@@ -726,9 +726,9 @@ if ( ! class_exists( 'Mega_Menu_Themes' ) ) :
 			$export_url = esc_url(
 				add_query_arg(
 					array(
-						'page'     => 'maxmegamenu_theme_editor',
-						'theme_id' => $this->id,
-						'export'   => 'true',
+						'page'   => 'maxmegamenu_theme_editor',
+						'theme'  => $this->id,
+						'export' => 'true',
 					),
 					admin_url( 'admin.php' )
 				)

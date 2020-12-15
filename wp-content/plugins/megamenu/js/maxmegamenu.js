@@ -21,6 +21,7 @@
             panel_inner_width: $menu.attr("data-panel-inner-width"),
             mobile_force_width: $menu.attr("data-mobile-force-width"),
             mobile_overlay: $menu.attr("data-mobile-overlay"),
+            mobile_state: $menu.attr("data-mobile-state"),
             second_click: $menu.attr("data-second-click"),
             vertical_behaviour: $menu.attr("data-vertical-behaviour"),
             document_click: $menu.attr("data-document-click"),
@@ -60,6 +61,28 @@
                 plugin.hidePanel($(this), false);
             });
         };
+
+        plugin.expandMobileSubMenus = function() {
+            $(".mega-menu-item-has-children.mega-expand-on-mobile > a.mega-menu-link", $menu).each(function() {
+                plugin.showPanel($(this));
+            });
+
+            if ( plugin.settings.mobile_state == 'expand_all' ) {
+                $(".mega-menu-item-has-children > a.mega-menu-link", $menu).each(function() {
+                    plugin.showPanel($(this));
+                });
+            }
+
+            if ( plugin.settings.mobile_state == 'expand_active' ) {
+                $("li.mega-current-menu-ancestor.mega-menu-item-has-children > a.mega-menu-link," + 
+                  "li.mega-current-menu-item.mega-menu-item-has-children > a.mega-menu-link" + 
+                  "li.mega-current-menu-parent.mega-menu-item-has-children > a.mega-menu-link" + 
+                  "li.mega-current_page_ancestor.mega-menu-item-has-children > a.mega-menu-link" + 
+                  "li.mega-current_page_item.mega-menu-item-has-children > a.mega-menu-link", $menu).each(function() {
+                    plugin.showPanel($(this));
+                });
+            }
+        }
 
         plugin.hideSiblingPanels = function(anchor, immediate) {
             anchor.parent().parent().find(".mega-toggle-on").children("a.mega-menu-link").each(function() { // all open children of open siblings
@@ -509,6 +532,7 @@
             plugin.reverseRightAlignedItems();
             plugin.addClearClassesToMobileItems();
             plugin.hideAllPanels();
+            plugin.expandMobileSubMenus();
         };
 
         plugin.initToggleBar = function() {

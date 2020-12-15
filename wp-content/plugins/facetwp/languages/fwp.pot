@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FacetWP\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-04 12:24+0000\n"
+"POT-Creation-Date: 2020-11-04 01:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Matt Gibbs <hello@facetwp.com>\n"
 "Language-Team: \n"
@@ -22,7 +22,7 @@ msgid ""
 "upgrade."
 msgstr ""
 
-#: includes/class-init.php:138 templates/page-settings.php:95
+#: includes/class-init.php:138 templates/page-settings.php:100
 msgid "Settings"
 msgstr ""
 
@@ -51,7 +51,7 @@ msgid "Debug mode"
 msgstr ""
 
 #: includes/class-settings-admin.php:44
-#: includes/integrations/woocommerce/woocommerce.php:60
+#: includes/integrations/woocommerce/woocommerce.php:59
 msgid "WooCommerce"
 msgstr ""
 
@@ -147,7 +147,7 @@ msgstr ""
 msgid "Border style"
 msgstr ""
 
-#: includes/class-settings-admin.php:236 includes/facets/proximity.php:221
+#: includes/class-settings-admin.php:236 includes/facets/proximity.php:219
 msgid "None"
 msgstr ""
 
@@ -271,11 +271,11 @@ msgstr ""
 msgid "Open in new tab?"
 msgstr ""
 
-#: includes/class-settings-admin.php:267 includes/facets/slider.php:156
+#: includes/class-settings-admin.php:267 includes/facets/slider.php:154
 msgid "Prefix"
 msgstr ""
 
-#: includes/class-settings-admin.php:268 includes/facets/slider.php:165
+#: includes/class-settings-admin.php:268 includes/facets/slider.php:163
 msgid "Suffix"
 msgstr ""
 
@@ -479,7 +479,7 @@ msgstr ""
 msgid "Activating"
 msgstr ""
 
-#: includes/class-settings-admin.php:320 templates/page-settings.php:101
+#: includes/class-settings-admin.php:320 templates/page-settings.php:106
 msgid "Re-index"
 msgstr ""
 
@@ -535,15 +535,15 @@ msgstr ""
 msgid "Skipped"
 msgstr ""
 
-#: includes/class-builder.php:215
+#: includes/class-builder.php:221
 msgid "In Stock"
 msgstr ""
 
-#: includes/class-builder.php:215
+#: includes/class-builder.php:221
 msgid "Out of Stock"
 msgstr ""
 
-#: includes/class-builder.php:220
+#: includes/class-builder.php:226
 msgid "On Sale"
 msgstr ""
 
@@ -555,92 +555,88 @@ msgstr ""
 msgid "Taxonomies"
 msgstr ""
 
-#: includes/class-display.php:146
-msgid "No results found"
-msgstr ""
-
-#: includes/class-request.php:322
+#: includes/class-request.php:353
 msgid "FacetWP was unable to auto-detect the post listing"
 msgstr ""
 
-#: includes/class-updater.php:163
+#: includes/class-updater.php:165
 #, php-format
 msgid ""
 "Please <a href=\"%s\" target=\"_blank\">renew your license</a> for automatic "
 "updates."
 msgstr ""
 
-#: includes/class-updater.php:168
+#: includes/class-updater.php:170
 msgid "Please activate your FacetWP license for automatic updates."
 msgstr ""
 
-#: templates/page-settings.php:26
+#: templates/page-settings.php:32
 msgid "This facet type has no additional settings."
 msgstr ""
 
-#: templates/page-settings.php:93 templates/page-settings.php:126
-#: templates/page-settings.php:130
+#: templates/page-settings.php:98 templates/page-settings.php:131
+#: templates/page-settings.php:135
 msgid "Facets"
 msgstr ""
 
-#: templates/page-settings.php:94 templates/page-settings.php:153
-#: templates/page-settings.php:157
+#: templates/page-settings.php:99 templates/page-settings.php:158
+#: templates/page-settings.php:162
 msgid "Templates"
 msgstr ""
 
-#: templates/page-settings.php:96
+#: templates/page-settings.php:101
 msgid "Support"
 msgstr ""
 
-#: templates/page-settings.php:105
+#: templates/page-settings.php:110
 msgid "Show indexer stats"
 msgstr ""
 
-#: templates/page-settings.php:106
+#: templates/page-settings.php:111
 msgid "Show indexable post types"
 msgstr ""
 
-#: templates/page-settings.php:107
+#: templates/page-settings.php:112
 msgid "Purge the index table"
 msgstr ""
 
-#: templates/page-settings.php:112
+#: templates/page-settings.php:117
 msgid "Save changes"
 msgstr ""
 
-#: templates/page-settings.php:131 templates/page-settings.php:158
+#: templates/page-settings.php:136 templates/page-settings.php:163
 msgid "Add new"
 msgstr ""
 
-#: templates/page-settings.php:137
+#: templates/page-settings.php:142
 msgid "Facet"
 msgstr ""
 
-#: templates/page-settings.php:139
+#: templates/page-settings.php:144
 msgid "Type"
 msgstr ""
 
-#: templates/page-settings.php:140
+#: templates/page-settings.php:145
 msgid "Source"
 msgstr ""
 
-#: templates/page-settings.php:141
+#: templates/page-settings.php:146
 msgid "Rows"
 msgstr ""
 
-#: templates/page-settings.php:164
+#: templates/page-settings.php:169
 msgid "Template"
 msgstr ""
 
-#: templates/page-settings.php:166
+#: templates/page-settings.php:171
 msgid "Display mode"
 msgstr ""
 
-#: templates/page-settings.php:167
+#: templates/page-settings.php:172
 msgid "Post types"
 msgstr ""
 
-#: includes/facets/slider.php:7 includes/facets/proximity.php:220
+#: includes/facets/slider.php:7 includes/facets/proximity.php:218
 msgid "Slider"
 msgstr ""
 
@@ -654,42 +650,42 @@ msgstr ""
 msgid "Use a separate value for the upper limit?"
 msgstr ""
 
-#: includes/facets/slider.php:145 includes/facets/number_range.php:137
-#: includes/facets/date_range.php:147
+#: includes/facets/slider.php:143 includes/facets/number_range.php:135
+#: includes/facets/date_range.php:145
 msgid "Compare type"
 msgstr ""
 
-#: includes/facets/slider.php:148 includes/facets/number_range.php:140
-#: includes/facets/date_range.php:150
+#: includes/facets/slider.php:146 includes/facets/number_range.php:138
+#: includes/facets/date_range.php:148
 msgid "Basic"
 msgstr ""
 
-#: includes/facets/slider.php:149 includes/facets/number_range.php:142
-#: includes/facets/date_range.php:152
+#: includes/facets/slider.php:147 includes/facets/number_range.php:140
+#: includes/facets/date_range.php:150
 msgid "Intersect"
 msgstr ""
 
-#: includes/facets/slider.php:157
+#: includes/facets/slider.php:155
 msgid "Text that appears before each slider value"
 msgstr ""
 
-#: includes/facets/slider.php:166
+#: includes/facets/slider.php:164
 msgid "Text that appears after each slider value"
 msgstr ""
 
-#: includes/facets/slider.php:174
+#: includes/facets/slider.php:172
 msgid "Format"
 msgstr ""
 
-#: includes/facets/slider.php:175
+#: includes/facets/slider.php:173
 msgid "The number format"
 msgstr ""
 
-#: includes/facets/slider.php:197
+#: includes/facets/slider.php:195
 msgid "Step"
 msgstr ""
 
-#: includes/facets/slider.php:198
+#: includes/facets/slider.php:196
 msgid "The amount of increase between intervals"
 msgstr ""
 
@@ -709,27 +705,27 @@ msgstr ""
 msgid "Number Range"
 msgstr ""
 
-#: includes/facets/number_range.php:126 includes/facets/date_range.php:157
+#: includes/facets/number_range.php:124 includes/facets/date_range.php:155
 msgid "Fields to show"
 msgstr ""
 
-#: includes/facets/number_range.php:129
+#: includes/facets/number_range.php:127
 msgid "Min + Max"
 msgstr ""
 
-#: includes/facets/number_range.php:130
+#: includes/facets/number_range.php:128
 msgid "Exact"
 msgstr ""
 
-#: includes/facets/number_range.php:131
+#: includes/facets/number_range.php:129
 msgid "Min"
 msgstr ""
 
-#: includes/facets/number_range.php:132
+#: includes/facets/number_range.php:130
 msgid "Max"
 msgstr ""
 
-#: includes/facets/number_range.php:141 includes/facets/date_range.php:151
+#: includes/facets/number_range.php:139 includes/facets/date_range.php:149
 msgid "Enclose"
 msgstr ""
 
@@ -761,23 +757,23 @@ msgstr ""
 msgid "Date Range"
 msgstr ""
 
-#: includes/facets/date_range.php:160
+#: includes/facets/date_range.php:158
 msgid "Start + End Dates"
 msgstr ""
 
-#: includes/facets/date_range.php:161
+#: includes/facets/date_range.php:159
 msgid "Exact Date"
 msgstr ""
 
-#: includes/facets/date_range.php:162
+#: includes/facets/date_range.php:160
 msgid "Start Date"
 msgstr ""
 
-#: includes/facets/date_range.php:163
+#: includes/facets/date_range.php:161
 msgid "End Date"
 msgstr ""
 
-#: includes/facets/date_range.php:170
+#: includes/facets/date_range.php:168
 msgid "Display format"
 msgstr ""
 
@@ -793,35 +789,35 @@ msgstr ""
 msgid "(Optional) use a separate longitude field"
 msgstr ""
 
-#: includes/facets/proximity.php:204
+#: includes/facets/proximity.php:202
 msgid "Unit of measurement"
 msgstr ""
 
-#: includes/facets/proximity.php:208
+#: includes/facets/proximity.php:206
 msgid "Miles"
 msgstr ""
 
-#: includes/facets/proximity.php:209
+#: includes/facets/proximity.php:207
 msgid "Kilometers"
 msgstr ""
 
-#: includes/facets/proximity.php:215
+#: includes/facets/proximity.php:213
 msgid "Radius UI"
 msgstr ""
 
-#: includes/facets/proximity.php:219 includes/facets/dropdown.php:7
+#: includes/facets/proximity.php:217 includes/facets/dropdown.php:7
 msgid "Dropdown"
 msgstr ""
 
-#: includes/facets/proximity.php:228
+#: includes/facets/proximity.php:226
 msgid "Radius options"
 msgstr ""
 
-#: includes/facets/proximity.php:239
+#: includes/facets/proximity.php:237
 msgid "Slider range"
 msgstr ""
 
-#: includes/facets/proximity.php:250
+#: includes/facets/proximity.php:248
 msgid "Default radius"
 msgstr ""
 
@@ -1041,7 +1037,7 @@ msgstr ""
 msgid "A comma-separated list of choices"
 msgstr ""
 
-#: includes/integrations/searchwp/searchwp.php:119
+#: includes/integrations/searchwp/searchwp.php:124
 msgid "Default"
 msgstr ""
 

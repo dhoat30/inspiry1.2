@@ -9,6 +9,22 @@
         return val === $(this).attr('placeholder') ? '' : val;
     }
 
+    /* ======== Support duplicate facets ======== */
+
+    $('.facetwp-facet').each(function() {
+
+        // jQuery doesn't support useCapture, so add the event listeners manually
+        // useCapture handles outer elements first (unlike event bubbling)
+        this.addEventListener('click', function() {
+            var $items = $('.facetwp-facet-' + $(this).data('name'));
+            if (1 < $items.length) {
+                $items.addClass('facetwp-ignore');
+                $(this).removeClass('facetwp-ignore');
+            }
+            FWP.last_active_facet = $(this);
+        }, true);
+    });
+
     /* ======== Autocomplete ======== */
 
     FWP.hooks.addAction('facetwp/refresh/autocomplete', function($this, facet_name) {
@@ -302,6 +318,18 @@
         return choices;
     });
 
+    FWP.hooks.addAction('facetwp/loaded', function() {
+        if ('undefined' !== typeof FWP.last_active_facet) {
+            var $facet = FWP.last_active_facet;
+            if ('fselect' == $facet.attr('data-type')) {
+                var $fs = $facet.find('.fs-wrap');
+                if ($fs.hasClass('multiple')) {
+                    window.fSelect.openDropdown($fs);
+                }
+            }
+        }
+    });
+
     $(document).on('facetwp-loaded', function() {
         $('.facetwp-type-fselect select:not(.ready)').each(function() {
             var facet_name = $(this).closest('.facetwp-facet').attr('data-name');
@@ -326,30 +354,7 @@
     });
 
     $(document).on('fs:changed', function(e, wrap) {
-        var is_facet = $(wrap).closest('.facetwp-facet').length > 0;
-
-        if (is_facet && wrap.classList.contains('multiple')) {
-            var facet_name = $(wrap).closest('.facetwp-facet').attr('data-name');
-
-            if ('or' === FWP.settings[facet_name]['operator']) {
-                FWP.frozen_facets[facet_name] = 'soft';
-
-                // freeze choices
-                if (FWP.auto_refresh) {
-                    $(wrap).addClass('fs-disabled');
-                }
-            }
-
-            FWP.autoload();
-        }
-    });
-
-    $(document).on('fs:closed', function(e, wrap) {
-        var is_facet = $(wrap).closest('.facetwp-facet').length > 0;
-
-        if (is_facet && ! wrap.classList.contains('multiple')) {
-            FWP.autoload();
-        }
+        FWP.autoload();
     });
 
     /* ======== Hierarchy ======== */

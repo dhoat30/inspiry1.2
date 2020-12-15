@@ -125,12 +125,6 @@ class DAE_Subscriber {
         
         foreach ( $subscribermeta as $key => $value ) {
             
-            if ( is_numeric( $value ) ) {
-                $value_format = '%d';
-            } else {
-                $value_format = '%s';
-            }
-            
             $wpdb->insert(
                 $table_subscribermeta,
                 array(
@@ -138,7 +132,7 @@ class DAE_Subscriber {
                     'meta_key'		=> $key,
                     'meta_value'	=> $value
                 ),
-                array( '%d', '%s', $value_format )
+                array( '%d', '%s', '%s' )
             );
             
         }
@@ -196,12 +190,6 @@ class DAE_Subscriber {
 
         foreach ( $values as $key => $value ) {
 
-            if ( is_numeric( $value ) ) {
-                $value_format = '%d';
-            } else {
-                $value_format = '%s';
-            }
-
             if ( isset( $meta_array[ $key ] ) ) {
 
                 $number_rows = $wpdb->update(
@@ -213,7 +201,7 @@ class DAE_Subscriber {
                         'subscriber_id'	=> $subscriber_id,
                         'meta_key'		=> $key
                     ),
-                    array( $value_format ),
+                    array( '%s' ),
                     array( '%d', '%s' )
                 );
 
@@ -226,7 +214,7 @@ class DAE_Subscriber {
                         'meta_key'      => $key,
                         'meta_value'    => $value
                     ),
-                    array( '%d', '%s', $value_format )
+                    array( '%d', '%s', '%s' )
                 );
 
             }

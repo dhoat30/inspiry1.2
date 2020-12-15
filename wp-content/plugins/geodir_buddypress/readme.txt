@@ -3,9 +3,9 @@ Contributors: stiofansisland, paoltaia, ayecode
 Donate link: https://wpgeodirectory.com
 Tags: buddypress, buddypress integration, geodir buddypress, geodirectory, geodirectory buddypress
 Requires at least: 4.9
-Tested up to: 5.5
+Tested up to: 5.6
 Requires PHP: 5.6
-Stable tag: 2.1.0.1
+Stable tag: 2.1.0.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -21,6 +21,9 @@ The GeoDirectory BuddyPress Integration plugin allows you to integrate GeoDirect
 * BuddyPress plugin
 
 == Changelog ==
+
+= 2.1.0.2 =
+* Allow to filter GD Listings by current profile on BP profile page - ADDED
 
 = 2.1.0.1 =
 * Next/previous links shows some extra padding with bootstrap style - FIXED

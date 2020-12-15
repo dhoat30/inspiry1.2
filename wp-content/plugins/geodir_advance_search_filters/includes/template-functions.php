@@ -399,7 +399,7 @@ function geodir_advance_search_options_output( $terms, $taxonomy_obj, $post_type
                             echo '<li ' . $classname . '> ' . __( $term->name, 'geodirectory' )  . '</li>';
                         }
                     } else {
-                        echo '<li ' . $classname . '><a href="' . trailingslashit( get_site_url() ) . '?geodir_search=1&stype=' . $post_type . '&s=+&s' . $taxonomy_obj->htmlvar_name . '%5B%5D=' . urlencode( $term->term_id ) . '">' . __( $term->name, 'geodirectory' ) . '</a></li>';
+                        echo '<li ' . $classname . '><a href="' . geodir_search_field_page_url( $post_type, array( 's' . $taxonomy_obj->htmlvar_name . '[]' => urlencode( $term->term_id ) ) ) . '">' . __( $term->name, 'geodirectory' ) . '</a></li>';
                         $increment ++;
                     }
                     break;
@@ -498,7 +498,7 @@ function geodir_advance_search_options_output( $terms, $taxonomy_obj, $post_type
                                     } ?><?php if ( $increment > $moreoption && ! empty( $moreoption ) ) {
                                         echo 'more';
                                     } ?>"><a
-                                            href="<?php echo trailingslashit( get_site_url() ); ?>?geodir_search=1&stype=<?php echo $post_type; ?>&s=+&s<?php echo $taxonomy_obj->htmlvar_name; ?>=<?php echo $value; ?>"><?php echo $range_from_title . ' ' . $search_starting_value; ?></a>
+                                            href="<?php echo geodir_search_field_page_url( $post_type, array( 's' . $taxonomy_obj->htmlvar_name => urlencode( $value ) ) ); ?>"><?php echo $range_from_title . ' ' . $search_starting_value; ?></a>
                                     </li>
                                     <?php
                                     $k ++;
@@ -517,7 +517,7 @@ function geodir_advance_search_options_output( $terms, $taxonomy_obj, $post_type
                                         } ?><?php if ( $increment > $moreoption && ! empty( $moreoption ) ) {
                                             echo 'more';
                                         } ?>"><a
-                                                href="<?php echo trailingslashit( get_site_url() ); ?>?geodir_search=1&stype=<?php echo $post_type; ?>&s=+&s<?php echo $taxonomy_obj->htmlvar_name; ?>=<?php echo $value; ?>"><?php if ( $display_value ) {
+                                                href="<?php echo geodir_search_field_page_url( $post_type, array( 's' . $taxonomy_obj->htmlvar_name => urlencode( $value ) ) ); ?>"><?php if ( $display_value ) {
                                                     echo $display_value;
                                                 } else {
                                                     echo $value;
@@ -540,7 +540,7 @@ function geodir_advance_search_options_output( $terms, $taxonomy_obj, $post_type
                                         } ?><?php if ( $increment > $moreoption && ! empty( $moreoption ) ) {
                                             echo 'more';
                                         } ?>"><a
-                                                href="<?php echo trailingslashit( get_site_url() ); ?>?geodir_search=1&stype=<?php echo $post_type; ?>&s=+&s<?php echo $taxonomy_obj->htmlvar_name; ?>=<?php echo $value; ?>"><?php if ( $display_value ) {
+                                                href="<?php echo geodir_search_field_page_url( $post_type, array( 's' . $taxonomy_obj->htmlvar_name => urlencode( $value ) ) ); ?>"><?php if ( $display_value ) {
                                                     echo $display_value;
                                                 } else {
                                                     echo $value;
@@ -562,7 +562,7 @@ function geodir_advance_search_options_output( $terms, $taxonomy_obj, $post_type
                                     } ?><?php if ( $increment > $moreoption && ! empty( $moreoption ) ) {
                                         echo 'more';
                                     } ?>"><a
-                                            href="<?php echo trailingslashit( get_site_url() ); ?>?geodir_search=1&stype=<?php echo $post_type; ?>&s=+&s<?php echo $taxonomy_obj->htmlvar_name; ?>=<?php echo $value; ?>"><?php echo $value; ?></a>
+                                            href="<?php echo geodir_search_field_page_url( $post_type, array( 's' . $taxonomy_obj->htmlvar_name => urlencode( $value ) ) ); ?>"><?php echo $value; ?></a>
                                         </li><?php }
                                     if ( $search_diffrence == 1 && $taxonomy_obj->range_mode == 1 && $j == $search_maximum_value ) {
                                         $display_value = $j;
@@ -573,7 +573,7 @@ function geodir_advance_search_options_output( $terms, $taxonomy_obj, $post_type
                                         } ?><?php if ( $increment > $moreoption && ! empty( $moreoption ) ) {
                                             echo 'more';
                                         } ?>"><a
-                                                href="<?php echo trailingslashit( get_site_url() ); ?>?geodir_search=1&stype=<?php echo $post_type; ?>&s=+&s<?php echo $taxonomy_obj->htmlvar_name; ?>=<?php echo $value; ?>"><?php if ( $display_value ) {
+                                                href="<?php echo geodir_search_field_page_url( $post_type, array( 's' . $taxonomy_obj->htmlvar_name => urlencode( $value ) ) ); ?>"><?php if ( $display_value ) {
                                                     echo $display_value;
                                                 } else {
                                                     echo $value;
@@ -590,7 +590,7 @@ function geodir_advance_search_options_output( $terms, $taxonomy_obj, $post_type
                                     } ?><?php if ( $increment > $moreoption && ! empty( $moreoption ) ) {
                                         echo 'more';
                                     } ?>"><a
-                                            href="<?php echo trailingslashit( get_site_url() ); ?>?geodir_search=1&stype=<?php echo $post_type; ?>&s=+&s<?php echo $taxonomy_obj->htmlvar_name; ?>=<?php echo $value; ?>"><?php echo $range_to_title . ' ' . $search_maximum_value; ?></a>
+                                            href="<?php echo geodir_search_field_page_url( $post_type, array( 's' . $taxonomy_obj->htmlvar_name => urlencode( $value ) ) ); ?>"><?php echo $range_to_title . ' ' . $search_maximum_value; ?></a>
 
                                     </li>
 
@@ -848,8 +848,8 @@ function geodir_advance_search_more_filters() {
         ?>
         <div class="geodir-filter-container">
             <div
-                class="geodir-more-filters customize_filter-in clearfix <?php echo 'gd-filter-' . $stype; if($style){echo " hide";} ?> collapse" <?php //echo $style; ?>>
-                <div class="customize_filter_inner row bg-light mx-0 my-3 rounded">
+                class="geodir-more-filters customize_filter-in clearfix <?php echo 'gd-filter-' . $stype;?> collapse" <?php //echo $style; ?>>
+                <div class="customize_filter_inner text-left px-1 pt-3 row bg-light mx-0 my-3 rounded">
                     <?php do_action( 'geodir_search_fields_before', $stype ); ?>
                     <?php do_action( 'geodir_search_fields', $stype ); ?>
                     <?php do_action( 'geodir_search_fields_after', $stype ); ?>
@@ -1098,7 +1098,7 @@ function geodir_search_show_searched_params( $post_type ) {
     $label_class = 'gd-adv-search-label';
     $sublabel_class = 'gd-adv-search-label-t';
     if ( $design_style ) {
-        $label_class .= ' badge badge-info mr-2';
+        $label_class .= ' badge badge-info mr-2 c-pointer';
         $sublabel_class .= ' mb-0 mr-1';
     }
 
@@ -1505,7 +1505,7 @@ function geodir_advance_search_options_output_aui( $terms, $taxonomy_obj, $post_
                             echo '<li ' . $classname . '> ' . __( $term->name, 'geodirectory' )  . '</li>';
                         }
                     } else {
-                        echo '<div ' . $classname . '><a href="' . trailingslashit( get_site_url() ) . '?geodir_search=1&stype=' . $post_type . '&s=+&s' . $taxonomy_obj->htmlvar_name . '%5B%5D=' . urlencode( $term->term_id ) . '">' . __( $term->name, 'geodirectory' ) . '</a></div>';
+                        echo '<div ' . $classname . '><a href="' . geodir_search_field_page_url( $post_type, array( 's' . $taxonomy_obj->htmlvar_name . '[]' => urlencode( $term->term_id ) ) ) . '">' . __( $term->name, 'geodirectory' ) . '</a></div>';
                         $increment ++;
                     }
                     break;
@@ -1602,7 +1602,7 @@ function geodir_advance_search_options_output_aui( $terms, $taxonomy_obj, $post_
                                     } ?><?php if ( $increment > $moreoption && ! empty( $moreoption ) ) {
                                         echo 'more';
                                     } ?>"><a
-                                            href="<?php echo trailingslashit( get_site_url() ); ?>?geodir_search=1&stype=<?php echo $post_type; ?>&s=+&s<?php echo $taxonomy_obj->htmlvar_name; ?>=<?php echo $value; ?>"><?php echo $range_from_title . ' ' . $search_starting_value; ?></a>
+                                            href="<?php echo geodir_search_field_page_url( $post_type, array( 's' . $taxonomy_obj->htmlvar_name => urlencode( $value ) ) ); ?>"><?php echo $range_from_title . ' ' . $search_starting_value; ?></a>
                                     </li>
                                     <?php
                                     $k ++;
@@ -1621,7 +1621,7 @@ function geodir_advance_search_options_output_aui( $terms, $taxonomy_obj, $post_
                                         } ?><?php if ( $increment > $moreoption && ! empty( $moreoption ) ) {
                                             echo 'more';
                                         } ?>"><a
-                                                href="<?php echo trailingslashit( get_site_url() ); ?>?geodir_search=1&stype=<?php echo $post_type; ?>&s=+&s<?php echo $taxonomy_obj->htmlvar_name; ?>=<?php echo $value; ?>"><?php if ( $display_value ) {
+                                                href="<?php echo geodir_search_field_page_url( $post_type, array( 's' . $taxonomy_obj->htmlvar_name => urlencode( $value ) ) ); ?>"><?php if ( $display_value ) {
                                                     echo $display_value;
                                                 } else {
                                                     echo $value;
@@ -1644,7 +1644,7 @@ function geodir_advance_search_options_output_aui( $terms, $taxonomy_obj, $post_
                                         } ?><?php if ( $increment > $moreoption && ! empty( $moreoption ) ) {
                                             echo 'more';
                                         } ?>"><a
-                                                href="<?php echo trailingslashit( get_site_url() ); ?>?geodir_search=1&stype=<?php echo $post_type; ?>&s=+&s<?php echo $taxonomy_obj->htmlvar_name; ?>=<?php echo $value; ?>"><?php if ( $display_value ) {
+                                                href="<?php echo geodir_search_field_page_url( $post_type, array( 's' . $taxonomy_obj->htmlvar_name => urlencode( $value ) ) ); ?>"><?php if ( $display_value ) {
                                                     echo $display_value;
                                                 } else {
                                                     echo $value;
@@ -1666,7 +1666,7 @@ function geodir_advance_search_options_output_aui( $terms, $taxonomy_obj, $post_
                                     } ?><?php if ( $increment > $moreoption && ! empty( $moreoption ) ) {
                                         echo 'more';
                                     } ?>"><a
-                                            href="<?php echo trailingslashit( get_site_url() ); ?>?geodir_search=1&stype=<?php echo $post_type; ?>&s=+&s<?php echo $taxonomy_obj->htmlvar_name; ?>=<?php echo $value; ?>"><?php echo $value; ?></a>
+                                            href="<?php echo geodir_search_field_page_url( $post_type, array( 's' . $taxonomy_obj->htmlvar_name => urlencode( $value ) ) ); ?>"><?php echo $value; ?></a>
                                         </li><?php }
                                     if ( $search_diffrence == 1 && $taxonomy_obj->range_mode == 1 && $j == $search_maximum_value ) {
                                         $display_value = $j;
@@ -1677,7 +1677,7 @@ function geodir_advance_search_options_output_aui( $terms, $taxonomy_obj, $post_
                                         } ?><?php if ( $increment > $moreoption && ! empty( $moreoption ) ) {
                                             echo 'more';
                                         } ?>"><a
-                                                href="<?php echo trailingslashit( get_site_url() ); ?>?geodir_search=1&stype=<?php echo $post_type; ?>&s=+&s<?php echo $taxonomy_obj->htmlvar_name; ?>=<?php echo $value; ?>"><?php if ( $display_value ) {
+                                                href="<?php echo geodir_search_field_page_url( $post_type, array( 's' . $taxonomy_obj->htmlvar_name => urlencode( $value ) ) ); ?>"><?php if ( $display_value ) {
                                                     echo $display_value;
                                                 } else {
                                                     echo $value;
@@ -1694,7 +1694,7 @@ function geodir_advance_search_options_output_aui( $terms, $taxonomy_obj, $post_
                                     } ?><?php if ( $increment > $moreoption && ! empty( $moreoption ) ) {
                                         echo 'more';
                                     } ?>"><a
-                                            href="<?php echo trailingslashit( get_site_url() ); ?>?geodir_search=1&stype=<?php echo $post_type; ?>&s=+&s<?php echo $taxonomy_obj->htmlvar_name; ?>=<?php echo $value; ?>"><?php echo $range_to_title . ' ' . $search_maximum_value; ?></a>
+                                            href="<?php echo geodir_search_field_page_url( $post_type, array( 's' . $taxonomy_obj->htmlvar_name => urlencode( $value ) ) ); ?>"><?php echo $range_to_title . ' ' . $search_maximum_value; ?></a>
 
                                     </li>
 
@@ -1928,4 +1928,21 @@ function geodir_advance_search_options_output_aui( $terms, $taxonomy_obj, $post_
     }
 
     return ob_get_clean();
+}
+
+function geodir_search_field_page_url( $post_type, $args = array() ) {
+	$_args = array( 'geodir_search' => 1 );
+	if ( empty( $args['stype'] ) ) {
+		$_args['stype'] = $post_type;
+	}
+	if ( ! isset( $args['s'] ) ) {
+		$_args['s'] = '+';
+	}
+	$args = array_merge( $_args, $args );
+
+	$search_args = apply_filters( 'geodir_search_field_page_url_args', $args, $post_type );
+
+	$search_url = add_query_arg( $search_args , geodir_search_page_base_url() );
+
+	return apply_filters( 'geodir_search_field_page_url', $search_url, $search_args, $args, $post_type );
 }

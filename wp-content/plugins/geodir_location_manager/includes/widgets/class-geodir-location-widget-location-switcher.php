@@ -78,6 +78,17 @@ class GeoDir_Location_Widget_Location_Switcher extends WP_Super_Duper {
 	}
 }
 
+function geodir_location_enable_dropdown($args){
+
+	if(geodir_get_option('lm_enable_search_autocompleter') && geodir_design_style()){
+		$args['extra_attributes']['data-toggle'] = 'dropdown';
+		$args['extra_attributes']['data-flip'] = 'false';
+	}
+
+	return $args;
+}
+add_filter('geodir_search_near_input_args','geodir_location_enable_dropdown');
+
 // non class stuff
 add_action( 'wp_footer', 'geodir_location_autocomplete_script' );
 function geodir_location_autocomplete_script() {
@@ -108,7 +119,8 @@ function geodir_location_autocomplete_script() {
 									'type'              => 'text',
 									'placeholder'       => esc_html__( "city, region, country" , 'geodirlocation'),
 									'extra_attributes'  => array(
-										'data-toggle'   =>  "dropdown"
+										'data-toggle'   =>  "dropdown",
+										'aria-label'    => esc_html__( 'city, region, country' , 'geodirlocation' ),
 									)
 								)
 							);
@@ -127,7 +139,7 @@ function geodir_location_autocomplete_script() {
 
 		<div class="geodir-location-search-input-wrap">
 			<input type="text" class="geodir-location-search"
-			       placeholder="<?php esc_attr_e( 'city, region, country', 'geodirlocation' ); ?>">
+			       placeholder="<?php esc_attr_e( 'city, region, country', 'geodirlocation' ); ?>" aria-label="<?php esc_attr_e( 'city, region, country', 'geodirlocation' ); ?>">
 		</div>
 	</div>
 	<?php
@@ -152,6 +164,7 @@ function geodir_location_autocomplete_script() {
 		var gdlmls_google_service = '';// google service
 		var gdlmls_do_not_close = false;
 		var gdlmls_doing_search = 0;
+		var gdlmls_doing_nearest = false;
 		var gdlmls_is_search = false;
 		var gdlmls_keyup_timeout = null;
 
@@ -211,11 +224,11 @@ function geodir_location_autocomplete_script() {
 
 		function gdlm_ls_focus_in($input){
 			if(jQuery($input).parent().find(".gdlm-location-suggestions").length){
-				jQuery($input).parent().find(".gdlm-location-suggestions").show();
+				<?php if(!$design_style){ ?>jQuery($input).parent().find(".gdlm-location-suggestions").show();<?php } ?>
 				gdlm_ls_current_location_suggestion($input);
 
 			}else{
-				jQuery($input).after("<div class='<?php if($design_style){ echo "dropdown-menu dropdown-caret-0 w-100 show scrollbars-ios overflow-auto p-0 m-0";}?> gd-suggestions-dropdown gdlm-location-suggestions gd-ios-scrollbars'>" +
+				jQuery($input).after("<div class='<?php if($design_style){ echo "dropdown-menu dropdown-caret-0 w-100 scrollbars-ios overflow-auto p-0 m-0";}?> gd-suggestions-dropdown gdlm-location-suggestions gd-ios-scrollbars'>" +
 					"<ul class='gdlmls-near list-unstyled p-0 m-0 '></ul>" +
 					"<ul class='gdlmls-neighbourhood list-unstyled p-0 m-0'></ul>" +
 					"<ul class='gdlmls-city list-unstyled p-0 m-0'></ul>" +
@@ -231,7 +244,7 @@ function geodir_location_autocomplete_script() {
 			gdls_ls_resize_suggestions();
 
 			// set if is search near
-			if(jQuery('.gdlm-location-suggestions:visible').prev().hasClass('snear')){
+			if(jQuery('.gdlm-location-suggestions:visible').prev().hasClass('snear') || jQuery($input).hasClass('snear')){
 				gdlmls_is_search = true;
 			}else{
 				gdlmls_is_search = false;
@@ -243,11 +256,8 @@ function geodir_location_autocomplete_script() {
 				_ua = navigator.userAgent.toLowerCase();
 				isChrome = /chrome/.test(_ua);
 				isWin10 = /windows nt 10.0/.test(_ua);
-				if (isChrome && isWin10) {
-					return;
-				}
 				if (!gdlmls_do_not_close) {
-					jQuery($input).parent().find(".gdlm-location-suggestions").hide();
+					<?php if(!$design_style){ ?>jQuery($input).parent().find(".gdlm-location-suggestions").hide();<?php } ?>
 				}
 			}, 200);
 		}
@@ -478,20 +488,27 @@ function geodir_location_autocomplete_script() {
 		}
 
 		function gdlm_ls_nearest_cities() {
-			jQuery.ajax({
-				type: "GET",
-				url: geodir_params.api_url + "locations/cities/?orderby=ip",
-				success: function(data) {
-					if (data) {
-						jQuery.each(data, function(index, value) {
-							jQuery(gdlmls_selected).parent().find("ul.gdlmls-near").append(gdlm_ls_create_li('city', value));
-						});
+
+			if(!gdlmls_doing_nearest){
+				gdlmls_doing_nearest = true;
+				jQuery.ajax({
+					type: "GET",
+					url: geodir_params.api_url + "locations/cities/?orderby=ip",
+					success: function(data) {
+						if (data) {
+							jQuery.each(data, function(index, value) {
+								jQuery(gdlmls_selected).parent().find("ul.gdlmls-near").append(gdlm_ls_create_li('city', value));
+							});
+						}
+						gdlmls_doing_nearest = false;
+					},
+					error: function(xhr, textStatus, errorThrown) {
+						console.log(errorThrown);
+						gdlmls_doing_nearest = false;
 					}
-				},
-				error: function(xhr, textStatus, errorThrown) {
-					console.log(errorThrown);
-				}
-			});
+				});
+			}
+
 		}
 
 		function gdlm_ls_create_li($type,$data){
@@ -501,7 +518,7 @@ function geodir_location_autocomplete_script() {
 			var $common_class = '<?php if($design_style){ echo 'list-group-item-action c-pointer px-1 py-1 m-0 d-flex justify-content-between'; }?>';
 			if($data.history){
 				history = '<i class="fas fa-history" title="<?php _e('Search history','geodirlocation');?>"></i> ';
-				$delete = '<span><i onclick="var event = arguments[0] || window.event; geodir_cancelBubble(event);gdlm_ls_del_location_history(\''+$data.slug+'\');jQuery(this).parent().remove();" class="fas fa-times" title="<?php esc_attr_e('Remove from history','geodirlocation');?>"></i></span> ';
+				$delete = '<span><i onclick="var event = arguments[0] || window.event; geodir_cancelBubble(event);gdlm_ls_del_location_history(\''+$data.slug+'\');jQuery(this)<?php if($design_style){ echo ".parent()"; }?>.parent().remove();" class="fas fa-times" title="<?php esc_attr_e('Remove from history','geodirlocation');?>"></i></span> ';
 			}else if($type == 'neighbourhood' || $type == 'city' || $type == 'region' || $type == 'country'){
 				history = '<i class="fas fa-map-marker-alt"></i> ';
 			}
@@ -854,6 +871,12 @@ function geodir_location_autocomplete_script() {
 					<?php if($design_style){ ?>
 					jQuery('#gdlm-switcher').modal('show').on('shown.bs.modal', function (e) {
 						jQuery('.modal .geodir-location-search').focus().click();
+						// second open might not trigger dropdown so we check.
+						setTimeout(function(){
+							if( jQuery('.modal .geodir-location-search').attr('aria-expanded')=='false' ){
+								jQuery('.modal .geodir-location-search').dropdown('show');
+							}
+						}, 200);
 					});
 					<?php }else{ ?>
 					// init the lightbox

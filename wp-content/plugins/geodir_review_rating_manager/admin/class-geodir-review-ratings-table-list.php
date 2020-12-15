@@ -112,12 +112,12 @@ class Geodir_Review_Ratings_Table_List extends WP_List_Table {
 	}
 
 	public function column_action( $item ) {
-		$actions = '<a href="' . esc_url( admin_url( 'admin.php?page=gd-settings&tab=review_rating&section=create&id=' . $item['id'] ) ) . '" title="' . esc_attr__( 'Edit rating', 'geodir_reviewratings' ) . '" class="geodir-edit-rating"><i class="fa fa-pencil-square-o"></i></a>';
+		$actions = '<a href="' . esc_url( admin_url( 'admin.php?page=gd-settings&tab=review_rating&section=create&id=' . $item['id'] ) ) . '" title="' . esc_attr__( 'Edit rating', 'geodir_reviewratings' ) . '" class="geodir-edit-rating"><i class="fas fa-edit"></i></a>';
 		if ( empty( $item['is_default'] ) ) {
             $nonce = wp_create_nonce( 'geodir_delete_rating_'.$item['id'] );
             $ajax_url = geodir_reviewrating_ajax_url();
             $delete_action = add_query_arg(array('ajax_action' => 'delete_rating_category', 'rating_cat_id' => $item['id'], '_wpnonce' => $nonce), esc_url($ajax_url));
-			$actions .= '&nbsp;&nbsp;&nbsp;<a href="'.$delete_action.'" class="geodir-delete-rating geodir-act-delete" title="' . esc_attr__( 'Delete rating', 'geodir_reviewratings' ) . '" onclick="return delete_rating();"><i class="fa fa-times"></i></a>';
+			$actions .= '&nbsp;&nbsp;&nbsp;<a href="'.$delete_action.'" class="geodir-delete-rating geodir-act-delete" title="' . esc_attr__( 'Delete rating', 'geodir_reviewratings' ) . '" onclick="return delete_rating();"><i class="far fa-trash-alt"></i></a>';
 		}
 
 		return $actions;

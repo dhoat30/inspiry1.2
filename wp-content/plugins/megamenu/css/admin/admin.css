@@ -700,7 +700,8 @@ body.toplevel_page_maxmegamenu .mega-tooltip[data-tooltip-disabled],
         font-size: 11px; }
       .nav-menus-php #cboxContent .mm_content.mega_menu #megamenu-grid .mega-row-settings button {
         display: block; }
-    .nav-menus-php #cboxContent .mm_content.mega_menu #megamenu-grid .dashicons {
+    .nav-menus-php #cboxContent .mm_content.mega_menu #megamenu-grid .mega-row-header .dashicons,
+    .nav-menus-php #cboxContent .mm_content.mega_menu #megamenu-grid .mega-col-header .dashicons {
       font-size: 13px;
       width: 15px;
       cursor: pointer; }

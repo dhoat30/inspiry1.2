@@ -3,9 +3,9 @@ Contributors: stiofansisland, paoltaia, ayecode
 Donate link: https://wpgeodirectory.com
 Tags: geodirectory, location, location manager, locations, multi locations
 Requires at least: 4.9
-Tested up to: 5.5
+Tested up to: 5.6
 Requires PHP: 5.6
-Stable tag: 2.1.0.3
+Stable tag: 2.1.0.5
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -30,6 +30,18 @@ Obviously there is no need to create all the locations in advance. Users can add
 3. Go to WordPress Admin -> GeoDirectory -> Settings -> Multilocations and customize behaviour as needed
 
 == Changelog ==
+
+= 2.1.0.5 =
+* Add fix for Focus Out of location switcher - ADDED
+* Search form autocomplete location selection redirects to location page - FIXED
+* Change location suggestions not always showing when closing and opening again - FIXED
+* Change location suggestions can show multiples on subsequent openings - FIXED
+* Google shows error for addressNeighbourhood property in schema - FIXED
+
+= 2.1.0.4 =
+* Show specific locations by using [gd_locations] - ADDED
+* Near suggestions for AUI styles changed to bootstrap dropdown for better overflow ability - CHANGED
+* Near suggestions for AUI not removing history items - FIXED
 
 = 2.1.0.3 =
 * Add listing under default country/region/city not working with bootstrap style - FIXED

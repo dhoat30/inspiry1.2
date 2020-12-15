@@ -296,7 +296,7 @@ function dae_content_shortcode_return( $download_id, $download_title, $download_
 
 	}
 	
-	$file_name = strtok( basename( wp_get_attachment_url( $dae_settings['file_id'] ) ), '?' );
+	$file_name = basename( get_attached_file( $dae_settings['file_id'], true ) );
 	
 	$html_icon = '<div class="dae-shortcode-register-icon"><i class="fas fa-envelope"></i></div>';
 	$html_field = '<div class="dae-shortcode-register-input-wrap"><input class="dae-shortcode-register-field" type="email" name="email" placeholder="' . esc_attr( $dae_settings['placeholder_text'] ) . '" autocomplete="off" /></div>';
@@ -435,8 +435,17 @@ function dae_send_downloadlink() {
 		}
 		
 	}
-	
-	if ( empty( $file ) || empty( $required_checkbox ) || $empty_values ) {
+
+	if ( empty( $file ) ) {
+
+		$form_message = apply_filters( 'dae_form_missing_file_message', __( 'There is currently no download file available.', 'download-after-email' ) );
+
+		echo json_encode( array(
+			'type'		=> 'missing',
+			'message'	=> '<span class="dae-shortcode-register-error">' . $form_message . '</span>'
+		) );
+
+	} elseif ( empty( $required_checkbox ) || $empty_values ) {
 
 		$form_message = ! empty( $messages['unvalid_input'] ) ? $messages['unvalid_input'] : __( 'Please make sure all fields are filled in correctly.', 'download-after-email' );
 
@@ -553,7 +562,7 @@ function dae_send_downloadlink() {
 			$subject = ! empty( $messages['email_subject'] ) ? $messages['email_subject'] : __( 'Your Free Download', 'download-after-email' );
 			
 			if ( empty( $messages['email_content'] ) ) {
-				$message = __( '<p>Hi,</p><p>Thank you for subscribing.</p><p>You can find your Free Download here: {download_link}</p>' );
+				$message = __( '<p>Hi,</p><p>Thank you for subscribing.</p><p>You can find your Free Download here: {download_link}</p>', 'download-after-email' );
 				$messages['email_content'] = '';
 			} else {
 				$message = nl2br( wp_kses_post( $messages['email_content'] ) );

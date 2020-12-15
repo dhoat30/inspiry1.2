@@ -2,9 +2,9 @@
 # This file is distributed under the GNU General Public License v3 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Download After Email v2.0.6\n"
+"Project-Id-Version: Download After Email v2.0.7\n"
 "Report-Msgid-Bugs-To: MK-Scripts <support@download-after-email.com>\n"
-"POT-Creation-Date: 2020-09-21 02:53+0100\n"
+"POT-Creation-Date: 2020-11-23 04:55+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -23,26 +23,26 @@ msgid ""
 "function as expected. "
 msgstr ""
 
-#: dae.php:266
-#: includes/functions.php:130
+#: dae.php:303
+#: includes/functions.php:140
 msgid "Select File"
 msgstr ""
 
-#: dae.php:267
+#: dae.php:304
 msgid "Select"
 msgstr ""
 
-#: dae.php:268
-#: includes/functions.php:100
+#: dae.php:305
+#: includes/functions.php:110
 msgid "No image selected"
 msgstr ""
 
-#: dae.php:269
-#: includes/functions.php:121
+#: dae.php:306
+#: includes/functions.php:131
 msgid "No file selected"
 msgstr ""
 
-#: dae.php:270
+#: dae.php:307
 msgid ""
 "Are you sure you want to "
 "remove this subscriber, "
@@ -51,7 +51,7 @@ msgid ""
 "downloadlinks?"
 msgstr ""
 
-#: dae.php:291
+#: dae.php:328
 msgid ""
 "The dae-uploads folder "
 "could not be created "
@@ -65,7 +65,7 @@ msgid ""
 "activate the plugin."
 msgstr ""
 
-#: dae.php:292
+#: dae.php:329
 msgid ""
 "More information about "
 "changing file "
@@ -73,7 +73,7 @@ msgid ""
 "Wordpress."
 msgstr ""
 
-#: dae.php:308
+#: dae.php:345
 msgid ""
 "The php_fileinfo "
 "extension is currently "
@@ -95,7 +95,7 @@ msgid "Customize Messages"
 msgstr ""
 
 #: includes/admin-menu.php:63
-#: includes/admin-menu.php:536
+#: includes/admin-menu.php:537
 msgid "Messages"
 msgstr ""
 
@@ -199,8 +199,8 @@ msgid "Unvalid Input"
 msgstr ""
 
 #: includes/admin-menu.php:145
-#: includes/shortcodes.php:441
 #: includes/shortcodes.php:450
+#: includes/shortcodes.php:459
 msgid ""
 "Please make sure all "
 "fields are filled in "
@@ -212,7 +212,7 @@ msgid "Email Exists"
 msgstr ""
 
 #: includes/admin-menu.php:152
-#: includes/shortcodes.php:504
+#: includes/shortcodes.php:513
 msgid ""
 "An email with the "
 "download link has "
@@ -225,7 +225,7 @@ msgid "Email Success"
 msgstr ""
 
 #: includes/admin-menu.php:159
-#: includes/shortcodes.php:650
+#: includes/shortcodes.php:659
 msgid ""
 "An email has been sent "
 "with the download link."
@@ -309,71 +309,71 @@ msgid "Search results for:"
 msgstr ""
 
 #: includes/admin-menu.php:270
-#: includes/admin-menu.php:300
-#: includes/admin-menu.php:319
+#: includes/admin-menu.php:301
+#: includes/admin-menu.php:320
 msgid "ID"
 msgstr ""
 
 #: includes/admin-menu.php:271
-#: includes/admin-menu.php:301
-#: includes/post-types.php:682
+#: includes/admin-menu.php:302
+#: includes/post-types.php:671
 msgid "Date"
 msgstr ""
 
 #: includes/admin-menu.php:281
-#: includes/admin-menu.php:311
+#: includes/admin-menu.php:312
 msgid "Optin Time"
 msgstr ""
 
 #: includes/admin-menu.php:283
-#: includes/admin-menu.php:313
+#: includes/admin-menu.php:314
 msgid "Downloadlinks"
 msgstr ""
 
-#: includes/admin-menu.php:323
-#: includes/post-types.php:679
+#: includes/admin-menu.php:324
+#: includes/post-types.php:668
 msgid "File"
 msgstr ""
 
-#: includes/admin-menu.php:327
+#: includes/admin-menu.php:328
 msgid "Created"
 msgstr ""
 
-#: includes/admin-menu.php:331
+#: includes/admin-menu.php:332
 msgid "IP (created)"
 msgstr ""
 
-#: includes/admin-menu.php:335
+#: includes/admin-menu.php:336
 msgid "Used"
 msgstr ""
 
-#: includes/admin-menu.php:336
-#: includes/admin-menu.php:340
+#: includes/admin-menu.php:337
+#: includes/admin-menu.php:341
 msgid "not used"
 msgstr ""
 
-#: includes/admin-menu.php:339
+#: includes/admin-menu.php:340
 msgid "IP (used)"
 msgstr ""
 
-#: includes/admin-menu.php:356
+#: includes/admin-menu.php:357
 msgid "of"
 msgstr ""
 
-#: includes/admin-menu.php:372
+#: includes/admin-menu.php:373
 msgid "Subscribers Log"
 msgstr ""
 
-#: includes/admin-menu.php:375
+#: includes/admin-menu.php:376
 msgid "Search"
 msgstr ""
 
-#: includes/admin-menu.php:468
+#: includes/admin-menu.php:469
 msgid ""
 "Add Premium Features"
 msgstr ""
 
-#: includes/admin-menu.php:469
+#: includes/admin-menu.php:470
 msgid ""
 "Download After Email "
 "Plus is an extension/add-"
@@ -382,21 +382,22 @@ msgid ""
 "features:"
 msgstr ""
 
-#: includes/admin-menu.php:473
+#: includes/admin-menu.php:474
 msgid "Form Fields"
 msgstr ""
 
-#: includes/admin-menu.php:474
+#: includes/admin-menu.php:475
 msgid ""
 "Create and manage your "
-"own form fields."
-msgstr ""
-
-#: includes/admin-menu.php:477
-msgid "Export CSV"
+"own form fields with the "
+"Drag & Drop Form Builder."
 msgstr ""
 
 #: includes/admin-menu.php:478
+msgid "Export CSV"
+msgstr ""
+
+#: includes/admin-menu.php:479
 msgid ""
 "Export subscriber data "
 "to a CSV-file and use it "
@@ -404,38 +405,38 @@ msgid ""
 "newsletters etc."
 msgstr ""
 
-#: includes/admin-menu.php:481
+#: includes/admin-menu.php:482
 msgid ""
 "Integration Mailchimp"
 msgstr ""
 
-#: includes/admin-menu.php:482
+#: includes/admin-menu.php:483
 msgid ""
 "Automatically add new "
 "subscribers to your "
 "Mailchimp audience."
 msgstr ""
 
-#: includes/admin-menu.php:487
+#: includes/admin-menu.php:488
 msgid ""
 "Get Download After Email "
 "Plus"
 msgstr ""
 
-#: includes/admin-menu.php:488
+#: includes/admin-menu.php:489
 msgid "More information"
 msgstr ""
 
-#: includes/admin-menu.php:512
+#: includes/admin-menu.php:513
 msgid ""
 "Download Restrictions"
 msgstr ""
 
-#: includes/admin-menu.php:516
+#: includes/admin-menu.php:517
 msgid "Unlimited Links"
 msgstr ""
 
-#: includes/admin-menu.php:519
+#: includes/admin-menu.php:520
 msgid ""
 "Enable the use of "
 "unlimited download links "
@@ -444,11 +445,11 @@ msgid ""
 "received by subscribers."
 msgstr ""
 
-#: includes/admin-menu.php:523
+#: includes/admin-menu.php:524
 msgid "Unlimited Emails"
 msgstr ""
 
-#: includes/admin-menu.php:526
+#: includes/admin-menu.php:527
 msgid ""
 "Enable the use of "
 "unlimited emails (split "
@@ -460,24 +461,24 @@ msgid ""
 "download file (name)."
 msgstr ""
 
-#: includes/admin-menu.php:531
+#: includes/admin-menu.php:532
 msgid "Deactivation"
 msgstr ""
 
-#: includes/admin-menu.php:532
+#: includes/admin-menu.php:533
 msgid ""
 "The following data will "
 "be deleted on "
 "deactivation:"
 msgstr ""
 
-#: includes/admin-menu.php:540
+#: includes/admin-menu.php:541
 msgid ""
 "Subscribers + "
 "Downloadlinks"
 msgstr ""
 
-#: includes/admin-menu.php:570
+#: includes/admin-menu.php:571
 #, php-format
 msgid ""
 "If you like Download "
@@ -649,7 +650,7 @@ msgid "Settings"
 msgstr ""
 
 #: includes/post-types.php:86
-#: includes/post-types.php:681
+#: includes/post-types.php:670
 msgid "Shortcode"
 msgstr ""
 
@@ -1009,11 +1010,18 @@ msgid ""
 "No CSS styling options"
 msgstr ""
 
-#: includes/post-types.php:493
-msgid "Select Download ID"
+#: includes/post-types.php:482
+msgid ""
+"Use settings of another "
+"download"
 msgstr ""
 
-#: includes/post-types.php:499
+#: includes/post-types.php:483
+msgid ""
+"Download ID (e.g. 215)"
+msgstr ""
+
+#: includes/post-types.php:484
 msgid ""
 "Duplicate the settings "
 "of another download "
@@ -1022,7 +1030,7 @@ msgid ""
 "file."
 msgstr ""
 
-#: includes/post-types.php:680
+#: includes/post-types.php:669
 msgid "Links"
 msgstr ""
 
@@ -1049,11 +1057,17 @@ msgid ""
 "testing the form."
 msgstr ""
 
-#: includes/shortcodes.php:553
+#: includes/shortcodes.php:441
+msgid ""
+"There is currently no "
+"download file available."
+msgstr ""
+
+#: includes/shortcodes.php:562
 msgid "Your Free Download"
 msgstr ""
 
-#: includes/shortcodes.php:556
+#: includes/shortcodes.php:565
 msgid ""
 "<p>Hi,</p><p>Thank you "
 "for subscribing.</"
@@ -1062,11 +1076,11 @@ msgid ""
 "{download_link}</p>"
 msgstr ""
 
-#: includes/shortcodes.php:614
+#: includes/shortcodes.php:623
 msgid "Download File"
 msgstr ""
 
-#: includes/shortcodes.php:629
+#: includes/shortcodes.php:638
 msgid ""
 "A download form has been "
 "submitted successfully "

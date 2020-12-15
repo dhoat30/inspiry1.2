@@ -832,4 +832,20 @@ class GeoDir_BuddyPress_Public {
 
         return $deprecated;
     }
+
+    public function gd_listings_post_author( $post_author, $instance = array(), $id_base = '' ) {
+        if ( $id_base == 'gd_listings' && ! empty( $instance['post_author'] ) && $instance['post_author'] == 'current_author' && function_exists( 'bp_displayed_user_id' ) && ( $user_id = bp_displayed_user_id() ) ) {
+            $post_author = $user_id;
+        }
+
+        return $post_author;
+    }
+
+    public function gd_listings_favorites_by_user( $favorites_by_user, $instance = array(), $id_base = '' ) {
+        if ( $id_base == 'gd_listings' && ! empty( $instance['favorites_by_user'] ) && $instance['favorites_by_user'] == 'current_author' && function_exists( 'bp_displayed_user_id' ) && ( $user_id = bp_displayed_user_id() ) ) {
+            $favorites_by_user = $user_id;
+        }
+
+        return $favorites_by_user;
+    }
 }

@@ -364,8 +364,10 @@ function get_uwp_users_list() {
 		$exclude_query = 'AND '. $wpdb->users.'.ID NOT IN ('.$exclude_users_list.')';
 	}
 
-	$order_by = 'display_name';
-	$order = 'ASC';
+	if(empty($sort_by)){
+        $sort_by = uwp_get_option('users_default_order_by', 'alpha_asc');
+    }
+
 	if ($sort_by) {
 		switch ($sort_by) {
 			case "newer":
@@ -384,7 +386,6 @@ function get_uwp_users_list() {
 				$order_by = 'display_name';
 				$order = 'DESC';
 				break;
-
 		}
 	}
 
@@ -575,6 +576,8 @@ function uwp_account_privacy_page_title($title, $type) {
 	    $title = __( 'E-Mail Notifications', 'userswp' );
     } elseif ($type == 'delete-account') {
 	    $title = __( 'Delete Account', 'userswp' );
+    } elseif ($type == 'change-password') {
+	    $title = __( 'Change Password', 'userswp' );
     }
 
     return $title;
@@ -833,52 +836,6 @@ function uwp_can_make_profile_private() {
     $make_profile_private = apply_filters('uwp_user_can_make_profile_private', false);
     return $make_profile_private;
 }
-
-/**
- * Adds notification menu in admin toolbar.
- *
- * @since       1.0.0
- * @package     userswp
- *
- * @return      void
- */
-function uwp_notifications_toolbar_menu() {
-    global $wp_admin_bar;
-
-    if ( ! is_user_logged_in() ) {
-        return;
-    }
-
-    $available_counts = apply_filters('uwp_notifications_available_counts', array());
-
-    if (count($available_counts) == 0) {
-        return;
-    }
-
-    $total_count = 0;
-    foreach ($available_counts as $key => $value) {
-        $total_count = $total_count + $value;
-    }
-
-
-    $alert_class   = (int) $total_count > 0 ? 'pending-count' : 'count';
-    $menu_title    = '<span id="uwp-notification-count" class="' . $alert_class . '">'
-        . number_format_i18n( $total_count ) . '</span>';
-    $menu_link     = '';
-
-    // Add the top-level Notifications button.
-    $wp_admin_bar->add_menu( array(
-        'parent'    => 'top-secondary',
-        'id'        => 'uwp-notifications',
-        'title'     => $menu_title,
-        'href'      => $menu_link,
-    ) );
-
-    do_action('uwp_notifications_items', $wp_admin_bar);
-
-    return;
-}
-add_action( 'admin_bar_menu', 'uwp_notifications_toolbar_menu', 90 );
 
 /**
  * Returns the installation type.
@@ -1797,7 +1754,7 @@ function uwp_get_activation_link($user_id){
 			'key' => $key,
 			'login' => $user_data->user_login
 		),
-		site_url()
+		site_url('/login/')
 	);
 
 	return $activation_link;

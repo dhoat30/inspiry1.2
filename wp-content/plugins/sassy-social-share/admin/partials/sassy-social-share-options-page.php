@@ -833,7 +833,7 @@ defined( 'ABSPATH' ) or die( "Cheating........Uh!!" );
 						</tbody>
 						<?php
 						$like_buttons = array( 'facebook_share', 'facebook_like', 'facebook_recommend', 'twitter_tweet', 'linkedin_share', 'pinterest_pin', 'buffer_share', 'xing_share', 'yummly_share', 'reddit_badge' );
-						$sharing_networks = array( 'facebook', 'twitter', 'linkedin', 'print', 'email', 'reddit', 'digg', 'float_it', 'tumblr', 'vkontakte', 'pinterest', 'xing', 'whatsapp', 'instagram', 'yummly', 'buffer', 'AIM', 'Amazon_Wish_List', 'AOL_Mail', 'App.net', 'Balatarin', 'BibSonomy', 'Bitty_Browser', 'Blinklist', 'Blogger_Post', 'BlogMarks', 'Bookmarks.fr', 'Box.net', 'BuddyMarks', 'Care2_News', 'Comment', 'Copy_Link', 'Diary.Ru', 'Diaspora', 'Diigo', 'Douban', 'Draugiem', 'Evernote', 'Facebook_Messenger', 'Fark', 'Fintel', 'Flipboard', 'Folkd', 'GentleReader', 'Goodreads', 'Google_Bookmarks', 'Google_Classroom', 'Google_Gmail', 'Hacker_News', 'Hatena', 'Instapaper', 'Jamespot', 'Kakao', 'Kik', 'Kindle_It', 'Known', 'Line', 'LiveJournal', 'Mail.Ru', 'Mendeley', 'Meneame', 'MeWe', 'mix', 'Mixi', 'MySpace', 'Netvouz', 'Odnoklassniki', 'Outlook.com', 'Papaly', 'Pinboard', 'Plurk', 'Pocket', 'PrintFriendly', 'Protopage_Bookmarks', 'Pusha', 'Qzone', 'Rediff MyPage', 'Refind', 'Renren', 'Sina Weibo', 'SiteJot', 'Skype', 'Slashdot', 'SMS', 'StockTwits', 'Svejo', 'Symbaloo_Feeds', 'Telegram', 'Threema', 'Trello', 'Tuenti', 'Twiddla', 'TypePad_Post', 'Viadeo', 'Viber', 'Webnews', 'WordPress', 'Wykop', 'Yahoo_Mail', 'Yoolink', 'youtube' );
+						$sharing_networks = array( 'facebook', 'twitter', 'linkedin', 'print', 'email', 'reddit', 'digg', 'float_it', 'tumblr', 'vkontakte', 'pinterest', 'xing', 'whatsapp', 'instagram', 'yummly', 'buffer', 'parler', 'AIM', 'Amazon_Wish_List', 'AOL_Mail', 'App.net', 'Balatarin', 'BibSonomy', 'Bitty_Browser', 'Blinklist', 'Blogger_Post', 'BlogMarks', 'Bookmarks.fr', 'Box.net', 'BuddyMarks', 'Care2_News', 'Comment', 'Copy_Link', 'Diary.Ru', 'Diaspora', 'Diigo', 'Douban', 'Draugiem', 'Evernote', 'Facebook_Messenger', 'Fark', 'Fintel', 'Flipboard', 'Folkd', 'GentleReader', 'Goodreads', 'Google_Bookmarks', 'Google_Classroom', 'Google_Gmail', 'Hacker_News', 'Hatena', 'Instapaper', 'Jamespot', 'Kakao', 'Kik', 'Kindle_It', 'Known', 'Line', 'LiveJournal', 'Mail.Ru', 'Mendeley', 'Meneame', 'MeWe', 'mix', 'Mixi', 'MySpace', 'Netvouz', 'Odnoklassniki', 'Outlook.com', 'Papaly', 'Pinboard', 'Plurk', 'Pocket', 'PrintFriendly', 'Protopage_Bookmarks', 'Pusha', 'Qzone', 'Rediff MyPage', 'Refind', 'Renren', 'Sina Weibo', 'SiteJot', 'Skype', 'Slashdot', 'SMS', 'StockTwits', 'Svejo', 'Symbaloo_Feeds', 'Telegram', 'Threema', 'Trello', 'Tuenti', 'Twiddla', 'TypePad_Post', 'Viadeo', 'Viber', 'Webnews', 'WordPress', 'Wykop', 'Yahoo_Mail', 'Yoolink', 'youtube' );
 						?>
 
 						<tr>
@@ -1922,6 +1922,7 @@ defined( 'ABSPATH' ) or die( "Cheating........Uh!!" );
 							<input id="heateor_sss_bitly_enable" name="heateor_sss[bitly_enable]" type="checkbox" <?php echo isset( $options['bitly_enable'] ) ? 'checked = "checked"' : '';?> value="1" />
 							</td>
 						</tr>
+						
 						
 						<tr class="heateor_sss_help_content" id="heateor_sss_bitly_enable_help_cont">
 							<td colspan="2">

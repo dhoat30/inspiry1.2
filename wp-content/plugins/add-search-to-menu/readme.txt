@@ -3,9 +3,9 @@ Contributors: ivorysearch, vinod dalvi
 Donate link: https://ivorysearch.com/pricing/
 Tags: search, woocommerce search, image search, ajax search, search shortcode, live search,  exclude from search, search widget, search menu, search plugin, custom search, search by post type, search by category, relevant search, search forms
 Requires at least: 3.9
-Tested up to: 5.5
+Tested up to: 5.6
 Requires PHP: 5.2.4
-Stable tag: 4.5.9
+Stable tag: 4.5.10
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -192,6 +192,14 @@ Yes we do. We try our best to help free users with customisation requests and we
 8. Plugin Settings
 
 == Changelog ==
+
+= 4.5.10 =
+* Fixed - Gutenberg editor issue "Update failed. The response is not a valid JSON response."
+* Fixed - Full width mobile header menu was not working.
+* Fixed - Was displaying search query value in all search form input fields.
+* Fixed - Search input field was dispalying rounded corners on iPhone.
+* Fixed - Keyword stemming was not working with Search All Terms option.
+* Improved - Escaped highlighted words in javascript.
 
 = 4.5.9 =
 * Fixed - Menu search options was not saving in older WP version than 5.5

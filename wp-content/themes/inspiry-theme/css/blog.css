@@ -64,7 +64,8 @@
     display: block;
    
 }
-.facetwp-facet{ 
+.facetwp-facet { 
+    width: 100% !important;
 }
 .facetwp-load-more{ 
     display: block;

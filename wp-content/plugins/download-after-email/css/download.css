@@ -74,7 +74,7 @@
 	padding: 20px !important;
 }
 .dae-shortcode-download-wrapper .dae-shortcode-download-content-wrapper {
-	min-width: 400px !important;
+	min-width: 100% !important;
 }
 .dae-shortcode-download-wrapper .dae-shortcode-download-title {
 	padding: 20px !important;
@@ -124,11 +124,11 @@
 }
 .dae-shortcode-download-wrapper .dae-shortcode-download-button-text {
 	display: inline-block !important;
-	padding-right: 0.1em !important;
 }
 .dae-shortcode-download-wrapper .dae-shortcode-download-button-icon {
 	font-size: inherit !important;
-	padding-left: 0.2em !important;
+	padding: 0.2em !important;
+	display: inline-block !important;
 }
 .dae-shortcode-download-wrapper .dae-shortcode-register-wrapper {
 	display: none;
@@ -162,9 +162,15 @@
 	line-height: 1 !important;
 	font-style: normal !important;
 }
+.dae-shortcode-download-wrapper .dae-shortcode-register-input-wrap {
+	width: 100% !important;
+	max-width: 280px !important;
+}
 .dae-shortcode-download-wrapper .dae-shortcode-register-select-wrap {
 	position: relative !important;
 	display: none;
+	width: 100% !important;
+	max-width: 280px !important;
 }
 .dae-shortcode-download-wrapper .dae-shortcode-register-form input,
 .dae-shortcode-download-wrapper .dae-shortcode-register-form select {
@@ -172,9 +178,8 @@
 	text-align: left !important;
 }
 .dae-shortcode-download-wrapper .dae-shortcode-register-field {
-	width: 20% !important;
-	min-width: 250px !important;
 	opacity: 1 !important;
+	width: 100% !important;
 }
 .dae-shortcode-download-wrapper .dae-shortcode-register-form input:focus,
 .dae-shortcode-download-wrapper .dae-shortcode-register-form select:focus {
@@ -235,7 +240,8 @@
 .dae-shortcode-download-wrapper .dae-shortcode-register-checkbox-text {
 	display: inline-block !important;
 	vertical-align: top !important;
-	width: 300px !important;
+	max-width: 300px !important;
+	width: calc(100% - 30px) !important;
 	text-align: left !important;
 }
 .dae-shortcode-download-wrapper .dae-shortcode-register-checkbox-text a {
@@ -259,4 +265,7 @@
 	flex-direction: row !important;
 	-webkit-flex-direction: row !important;
 	-moz-flex-direction: row !important;
+}
+.dae-shortcode-download-wrapper-wide .dae-shortcode-download-content-wrapper {
+	min-width: 400px !important;
 }

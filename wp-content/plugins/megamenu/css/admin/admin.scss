@@ -718,8 +718,8 @@ body.toplevel_page_maxmegamenu,
 						display: block;
 					}
 				}
-
-				.dashicons {
+				.mega-row-header .dashicons,
+				.mega-col-header .dashicons {
 					font-size: 13px;
 					width: 15px;
 					cursor: pointer;

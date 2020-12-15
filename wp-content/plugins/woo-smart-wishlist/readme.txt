@@ -101,6 +101,9 @@ After that, use the shortcode to display the button where you want.
 
 == Changelog ==
 
+= 2.2.6 =
+* Updated: Compatible with WooCommerce 4.7.0
+
 = 2.2.5 =
 * Fixed: Some minor CSS & JS issues
 

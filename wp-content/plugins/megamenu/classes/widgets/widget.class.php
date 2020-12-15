@@ -17,7 +17,7 @@ if ( ! class_exists( 'Mega_Menu_Widget' ) ) :
 		public function __construct() {
 			parent::__construct(
 				'maxmegamenu', // Base ID
-				'Max Mega Menu', // Name
+				__( 'Max Mega Menu', 'megamenu' ), // Name
 				array( 'description' => __( 'Outputs a menu for a selected theme location.', 'megamenu' ) ) // Args
 			);
 		}

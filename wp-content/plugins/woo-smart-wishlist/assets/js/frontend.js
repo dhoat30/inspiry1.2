@@ -310,7 +310,8 @@
     } else {
       $('.woosw-menu-item a').
           html('<span class="woosw-menu-item-inner" data-count="' + count +
-              '"><i class="woosw-icon"></i><span>Wishlist</span></span>');
+              '"><i class="woosw-icon"></i><span>' + woosw_vars.menu_text +
+              '</span></span>');
     }
 
     $(document.body).trigger('woosw_change_count', [count]);

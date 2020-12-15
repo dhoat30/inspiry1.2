@@ -129,7 +129,7 @@ function geodir_cp_search_post_init_aui($) {
 		// select2 autocomplete search
 		$(':input.geodir-select-search-post').filter(':not(.geodir-enhanced)').each(function() {
 			if ($(this).hasClass('select2-hidden-accessible')) {
-				$(this).trigger('destroy');
+				$(this).select2('destroy');
 			}
 
 			var source_cpt = $(this).data('source-cpt');
@@ -187,7 +187,7 @@ function geodir_cp_search_post_init_aui($) {
 			};
 			select2_args = $.extend(select2_args, geodirCPSelect2FormatString());
 			var $select2 = $(this).select2(select2_args);
-			$select2.addClass('enhanced geodir-enhanced');
+			$select2.addClass('enhanced geodir-enhanced').removeClass('aui-select2');
 
 			if ($(this).data('sortable')) {
 				var $select = $(this);

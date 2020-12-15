@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the WPC Smart Wishlist for WooCommerce plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPC Smart Wishlist for WooCommerce 2.2.5\n"
+"Project-Id-Version: WPC Smart Wishlist for WooCommerce 2.2.6\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woo-smart-wishlist\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-11-03T09:05:18+00:00\n"
+"POT-Creation-Date: 2020-11-24T03:19:31+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.2.0\n"
 "X-Domain: woosw\n"
@@ -35,8 +35,9 @@ msgid "https://wpclever.net"
 msgstr ""
 
 #: wpc-smart-wishlist.php:119
-#: wpc-smart-wishlist.php:1051
-#: wpc-smart-wishlist.php:1231
+#: wpc-smart-wishlist.php:944
+#: wpc-smart-wishlist.php:1052
+#: wpc-smart-wishlist.php:1232
 msgid "Wishlist"
 msgstr ""
 
@@ -63,7 +64,7 @@ msgid "Removed from wishlist!"
 msgstr ""
 
 #: wpc-smart-wishlist.php:278
-#: wpc-smart-wishlist.php:1039
+#: wpc-smart-wishlist.php:1040
 msgid "There are no products on the wishlist!"
 msgstr ""
 
@@ -134,12 +135,12 @@ msgid "Discussion"
 msgstr ""
 
 #: wpc-smart-wishlist.php:455
-#: wpc-smart-wishlist.php:971
+#: wpc-smart-wishlist.php:972
 msgid "Settings"
 msgstr ""
 
 #: wpc-smart-wishlist.php:460
-#: wpc-smart-wishlist.php:972
+#: wpc-smart-wishlist.php:973
 msgid "Premium Version"
 msgstr ""
 
@@ -290,7 +291,7 @@ msgid "Open wishlist popup"
 msgstr ""
 
 #: wpc-smart-wishlist.php:670
-#: wpc-smart-wishlist.php:1059
+#: wpc-smart-wishlist.php:1060
 msgid "Open wishlist page"
 msgstr ""
 
@@ -434,18 +435,18 @@ msgstr ""
 msgid "Copied the wishlist link:"
 msgstr ""
 
-#: wpc-smart-wishlist.php:988
+#: wpc-smart-wishlist.php:989
 msgid "Support"
 msgstr ""
 
-#: wpc-smart-wishlist.php:1031
+#: wpc-smart-wishlist.php:1032
 msgid "In stock"
 msgstr ""
 
-#: wpc-smart-wishlist.php:1031
+#: wpc-smart-wishlist.php:1032
 msgid "Out of stock"
 msgstr ""
 
-#: wpc-smart-wishlist.php:1063
+#: wpc-smart-wishlist.php:1064
 msgid "Continue shopping"
 msgstr ""

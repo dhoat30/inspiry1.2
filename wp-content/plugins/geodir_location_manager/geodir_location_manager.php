@@ -11,7 +11,7 @@
  * Plugin Name:       GeoDirectory Location Manager
  * Plugin URI:        https://wpgeodirectory.com/downloads/location-manager/
  * Description:       Location Manager allows you to expand your directory and go global by creating unlimited locations for your listings.
- * Version:           2.1.0.3
+ * Version:           2.1.0.5
  * Requires at least: 4.9
  * Requires PHP:      5.6
  * Author:            AyeCode Ltd
@@ -30,7 +30,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 if ( ! defined( 'GEODIRLOCATION_VERSION' ) ) {
-	define( 'GEODIRLOCATION_VERSION', '2.1.0.3' );
+	define( 'GEODIRLOCATION_VERSION', '2.1.0.5' );
 }
 if ( ! defined( 'GEODIRLOCATION_MIN_CORE' ) ) {
 	define( 'GEODIRLOCATION_MIN_CORE', '2.1.0.0' );

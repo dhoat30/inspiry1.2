@@ -955,7 +955,7 @@ function geodir_search_form_post_type_input() {
 				echo "<div class='gd-search-input-wrapper gd-search-field-cpt $wrap_class'>";
 			}
 
-			$select_class = $design_style ? " form-control" : '';
+			$select_class = $design_style ? " form-control custom-select" : '';
 
 			echo $design_style ? '<div class="form-group">' : '';
 			echo $design_style ? '<label class="sr-only sr-only ">'.__("Select search type","geodirectory").'</label>' : '';
@@ -1046,8 +1046,6 @@ function geodir_search_form_search_input() {
  * @since 2.0.0
  */
 function geodir_search_form_near_input() {
-
-
 	$default_near_text = geodir_get_option('search_default_near_text');
 	if(!$default_near_text){$default_near_text = geodir_get_search_default_near_text();}
 
@@ -1056,7 +1054,6 @@ function geodir_search_form_near_input() {
 	} else {
 		$near = '';
 	}
-
 
 	global $geodir_search_post_type;
 	$curr_post_type = $geodir_search_post_type;
@@ -1067,7 +1064,6 @@ function geodir_search_form_near_input() {
 	 * @param string $curr_post_type The current post type.
 	 */
 	$near_input_extra = apply_filters('geodir_near_input_extra','',$curr_post_type); // @todo we will need to fix this
-
 
 	/**
 	 * Filter the "Near" text value for the search form.
@@ -1099,7 +1095,9 @@ function geodir_search_form_near_input() {
 	 * @param string $class The class for the HTML near input, default is blank.
 	 */
 	$near_class = apply_filters( 'geodir_search_near_class', '' );
-	
+
+	add_action( 'wp_print_footer_scripts', array( 'GeoDir_Maps', 'check_map_script' ), 99999 );
+
 	$args = array(
 		'near_class' => $near_class,
 		'default_near_text' => $default_near_text,
@@ -1162,7 +1160,6 @@ function geodir_get_search_post_type($pt=''){
 		$geodir_search_post_type = geodir_get_default_posttype();
 	}
 
-
 	return $geodir_search_post_type;
 }
 
@@ -1171,15 +1168,28 @@ function geodir_get_search_post_type($pt=''){
  *
  * @since 2.0.0
  */
-function geodir_search_form(){
-
+function geodir_search_form() {
 	geodir_get_search_post_type();
 
 	$design_style = geodir_design_style();
-	$template = $design_style ? $design_style."/search-bar/form.php" : "listing-filter-form.php";
+	$template = $design_style ? $design_style . "/search-bar/form.php" : "listing-filter-form.php";
 
-	echo geodir_get_template_html( $template );
-	
+	$args = array();
+	if ( wp_doing_ajax() && ! empty( $_POST['keepArgs'] ) ) {
+		$_args = json_decode( stripslashes( sanitize_text_field( $_POST['keepArgs'] ) ), true );
+
+		if ( ! empty( $_args ) && is_array( $_args ) ) {
+			$args = $_args;
+		}
+	}
+
+	$args = array(
+		'wrap_class' => geodir_build_aui_class( $args ),
+		'keep_args' => $args
+	);
+
+	echo geodir_get_template_html( $template, $args );
+
 	// Always die in functions echoing ajax content
 	die();
 }

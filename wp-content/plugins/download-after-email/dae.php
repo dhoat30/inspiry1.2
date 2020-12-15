@@ -3,7 +3,7 @@
 Plugin Name: Download After Email
 Plugin URI: https://www.download-after-email.com/
 Description: Subscribe & Download plugin for gaining subscribers by offering free downloads.
-Version: 2.0.6
+Version: 2.0.7
 Author: MK-Scripts
 Text Domain: download-after-email
 Domain Path: /languages
@@ -13,7 +13,7 @@ if( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'DAE_VERSION', '2.0.6' );
+define( 'DAE_VERSION', '2.0.7' );
 
 if( ! function_exists( 'mckp_function_exists' ) ) {
 	
@@ -75,94 +75,112 @@ if( ! mckp_function_exists( 'dae_activation' ) && is_admin() ) {
 	
 	register_activation_hook( __FILE__, 'dae_activation' );
 	function dae_activation() {
-		
+
 		global $wpdb;
 
-		$table_subscribers = $wpdb->prefix . 'dae_subscribers';
-		$table_subscribermeta = $wpdb->prefix . 'dae_subscribermeta';
-		$table_links = $wpdb->prefix . 'dae_links';
-		
-		$charset_collate = $wpdb->get_charset_collate();
-		
-		$sql[] = "CREATE TABLE $table_subscribers (
-			id bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-			time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
-			KEY time (time),
-			PRIMARY KEY  (id)
-		) $charset_collate;";
-		
-		$sql[] = "CREATE TABLE $table_subscribermeta (
-			id bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-			subscriber_id bigint(20) UNSIGNED NOT NULL,
-			meta_key varchar(190) NOT NULL,
-			meta_value varchar(190) NOT NULL,
-			KEY subscriber_id (subscriber_id),
-			KEY meta_key (meta_key),
-			KEY meta_value (meta_value),
-			PRIMARY KEY  (id)
-		) $charset_collate;";
-		
-		$sql[] = "CREATE TABLE $table_links (
-			id bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-			subscriber_id bigint(20) UNSIGNED NOT NULL,
-			time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
-			time_used datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
-			ip varchar(100) NOT NULL,
-			ip_used varchar(100) NOT NULL,
-			form_content text NOT NULL,
-			file varchar(190) NOT NULL,
-			link_used varchar(20) NOT NULL,
-			KEY subscriber_id (subscriber_id),
-			KEY time (time),
-			KEY time_used (time_used),
-			KEY file (file),
-			KEY link_used (link_used),
-			PRIMARY KEY  (id)
-		) $charset_collate;";
-		
-		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
-		dbDelta( $sql );
-		
-		add_option( 'dae_field_labels', array( 'Email' ), '', false );
-		add_option( 'dae_fields', array(
-			'email_visible'	=> 'visible',
-			'email_type'	=> 'email'
-		), '', false );
-		add_option( 'dae_messages', array(), '', false );
-		add_option( 'dae_subscribers_per_page', 25, '', false );
-		add_option( 'dae_options', array(), '', false );
-		add_option( 'dae_db_version', '1.0', '', false );
-		
-		$upload_dir = wp_upload_dir();
-		
-		if ( ! empty( $upload_dir['basedir'] ) ) {
+		if ( is_multisite() ) {
+			$sites = get_sites( array( 'fields' => 'ids' ) );
+		} else {
+			$sites = array( 1 );
+		}
+
+		foreach ( $sites as $site ) {
+
+			if ( is_multisite() ) {
+				switch_to_blog( $site );
+			}
+
+			$table_subscribers = $wpdb->prefix . 'dae_subscribers';
+			$table_subscribermeta = $wpdb->prefix . 'dae_subscribermeta';
+			$table_links = $wpdb->prefix . 'dae_links';
 			
-			$dirname = $upload_dir['basedir'] . '/dae-uploads';
+			$charset_collate = $wpdb->get_charset_collate();
 			
-			if ( ! file_exists( $dirname ) ) {
+			$sql[] = "CREATE TABLE $table_subscribers (
+				id bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+				time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+				KEY time (time),
+				PRIMARY KEY  (id)
+			) $charset_collate;";
+			
+			$sql[] = "CREATE TABLE $table_subscribermeta (
+				id bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+				subscriber_id bigint(20) UNSIGNED NOT NULL,
+				meta_key varchar(190) NOT NULL,
+				meta_value varchar(190) NOT NULL,
+				KEY subscriber_id (subscriber_id),
+				KEY meta_key (meta_key),
+				KEY meta_value (meta_value),
+				PRIMARY KEY  (id)
+			) $charset_collate;";
+			
+			$sql[] = "CREATE TABLE $table_links (
+				id bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+				subscriber_id bigint(20) UNSIGNED NOT NULL,
+				time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+				time_used datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+				ip varchar(100) NOT NULL,
+				ip_used varchar(100) NOT NULL,
+				form_content text NOT NULL,
+				file varchar(190) NOT NULL,
+				link_used varchar(20) NOT NULL,
+				KEY subscriber_id (subscriber_id),
+				KEY time (time),
+				KEY time_used (time_used),
+				KEY file (file),
+				KEY link_used (link_used),
+				PRIMARY KEY  (id)
+			) $charset_collate;";
+			
+			require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+			dbDelta( $sql );
+			
+			add_option( 'dae_field_labels', array( 'Email' ), '', false );
+			add_option( 'dae_fields', array(
+				'email_visible'	=> 'visible',
+				'email_type'	=> 'email'
+			), '', false );
+			add_option( 'dae_messages', array(), '', false );
+			add_option( 'dae_subscribers_per_page', 25, '', false );
+			add_option( 'dae_options', array(), '', false );
+			add_option( 'dae_db_version', '1.0', '', false );
+			
+			$upload_dir = wp_upload_dir();
+			
+			if ( ! empty( $upload_dir['basedir'] ) ) {
 				
-				if ( wp_mkdir_p( $dirname ) ) {
+				$dirname = $upload_dir['basedir'] . '/dae-uploads';
+				
+				if ( ! file_exists( $dirname ) ) {
 					
-					$file_path = $dirname . '/.htaccess';
-					
-					$marker = 'DAE deny access download files';
-					
-					$insertion = '
-						<IfModule mod_authz_core.c>
-						Require all denied
-						</IfModule>
-						<IfModule ! mod_authz_core.c>
-						Order Allow,Deny
-						Deny from all
-						</IfModule>
-					';
-					
-					insert_with_markers( $file_path, $marker, $insertion );
+					if ( wp_mkdir_p( $dirname ) ) {
+						
+						$file_path = $dirname . '/.htaccess';
+						
+						$marker = 'DAE deny access download files';
+						
+						$insertion = '
+							<IfModule mod_authz_core.c>
+							Require all denied
+							</IfModule>
+							<IfModule ! mod_authz_core.c>
+							Order Allow,Deny
+							Deny from all
+							</IfModule>
+						';
+						
+						insert_with_markers( $file_path, $marker, $insertion );
+						
+					}
 					
 				}
 				
 			}
-			
+
+			if ( is_multisite() ) {
+				restore_current_blog();
+			}
+
 		}
 		
 	}
@@ -173,41 +191,60 @@ if( ! mckp_function_exists( 'dae_deactivation' ) && is_admin() ) {
 	
 	register_deactivation_hook( __FILE__, 'dae_deactivation' );
 	function dae_deactivation() {
-		
-		$dae_options = get_option( 'dae_options' );
-		
-		if( ! empty( $dae_options['delete_messages'] ) ) {
-			delete_option( 'dae_messages' );
+
+		global $wpdb;
+
+		if ( is_multisite() ) {
+			$sites = get_sites( array( 'fields' => 'ids' ) );
+		} else {
+			$sites = array( 1 );
 		}
+
+		foreach ( $sites as $site ) {
+
+			if ( is_multisite() ) {
+				switch_to_blog( $site );
+			}
 		
-		if( ! empty( $dae_options['delete_subscribers'] ) ) {
+			$dae_options = get_option( 'dae_options' );
 			
-			global $wpdb;
-			$table_names = array(
-				$wpdb->prefix . 'dae_subscribers',
-				$wpdb->prefix . 'dae_subscribermeta',
-				$wpdb->prefix . 'dae_links'
-			);
-			
-			foreach( $table_names as $table_name ) {
-				$wpdb->query( "DROP TABLE IF EXISTS $table_name" );
+			if( ! empty( $dae_options['delete_messages'] ) ) {
+				delete_option( 'dae_messages' );
 			}
 			
-		}
-		
-		if( ! file_exists( plugin_dir_path( __DIR__ ) . 'dae-plus/dae-plus.php' ) ) {
+			if( ! empty( $dae_options['delete_subscribers'] ) ) {
+				
+				$table_names = array(
+					$wpdb->prefix . 'dae_subscribers',
+					$wpdb->prefix . 'dae_subscribermeta',
+					$wpdb->prefix . 'dae_links'
+				);
+				
+				foreach( $table_names as $table_name ) {
+					$wpdb->query( "DROP TABLE IF EXISTS $table_name" );
+				}
+				
+			}
 			
-			delete_option( 'dae_field_labels' );
-			delete_option( 'dae_fields' );
+			if( ! file_exists( plugin_dir_path( __DIR__ ) . 'dae-plus/dae-plus.php' ) ) {
+				
+				delete_option( 'dae_field_labels' );
+				delete_option( 'dae_fields' );
+				
+			}
 			
+			delete_option( 'dae_subscribers_per_page' );
+			delete_option( 'dae_options' );
+			delete_option( 'dae_db_version' );
+			delete_option( 'dae_update_version' );
+			
+			do_action( 'dae_deactivation' );
+
+			if ( is_multisite() ) {
+				restore_current_blog();
+			}
+
 		}
-		
-		delete_option( 'dae_subscribers_per_page' );
-		delete_option( 'dae_options' );
-		delete_option( 'dae_db_version' );
-		delete_option( 'dae_update_version' );
-		
-		do_action( 'dae_deactivation' );
 		
 	}
 	
@@ -261,7 +298,7 @@ if( ! mckp_function_exists( 'dae_admin_enqueue_scripts' ) && is_admin() ) {
 			$dae_admin_nonce = wp_create_nonce( 'dae_admin' );
 			wp_localize_script( 'dae-admin', 'objDaeAdmin', array(
 				'ajaxUrl'			=> admin_url( 'admin-ajax.php' ),
-				'previewUrl'		=> site_url() . '/download?dae_preview=true',
+				'previewUrl'		=> home_url() . '/?dae_preview=true',
 				'nonce'				=> $dae_admin_nonce,
 				'selectFile'		=> __( 'Select File', 'download-after-email' ),
 				'select'			=> __( 'Select', 'download-after-email' ),

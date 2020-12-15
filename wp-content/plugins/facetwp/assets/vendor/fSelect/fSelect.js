@@ -434,6 +434,8 @@
         window.fSelect.active_el = null;
         window.fSelect.active_id = null;
         window.fSelect.last_choice = null;
+        window.fSelect.openDropdown = openDropdown;
+        window.fSelect.closeDropdown = closeDropdown;
     }
 
 })(jQuery);

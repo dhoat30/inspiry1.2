@@ -185,7 +185,6 @@ class GeoDir_Adv_Search_Fields {
 		$terms_temp = array();
 		$level++;
 
-		//echo $parent.'###'.$level." \n";
 		foreach ( $terms as $term ) {
 			if ( $term->parent == $parent && $term->term_id != $parent) {
 				$terms_temp[] = $term;
@@ -193,12 +192,8 @@ class GeoDir_Adv_Search_Fields {
 
 				$child_terms = self::order_terms_heretically($terms,$term->term_id,$level);
 
-//				echo $term->term_id.'xxx';
-//				print_r($child_terms);
-//				echo $parent.'yyy';
 				if(!empty($child_terms)){
 					foreach($child_terms as $child_term){
-						echo $parent.$child_term->name.'###'.$level." \n";
 						$child_term->name  = str_repeat("- ", $level)  . $child_term->name;
 						$terms_temp[] = $child_term;
 					}
@@ -206,11 +201,8 @@ class GeoDir_Adv_Search_Fields {
 
 			}
 
-			//$level = 0;
 		}
 
-		//echo '###'.$parent ;
-		//print_r( $terms_temp );
 
 		return $terms_temp;
 
@@ -229,33 +221,20 @@ class GeoDir_Adv_Search_Fields {
 		$terms = apply_filters( 'geodir_filter_terms', get_terms( $post_type . 'category', $args ) );
 
 		// let's order the child categories below the parent.
-		$terms_temp = array();
-
-		foreach ( $terms as $term ) {
-			if ( $term->parent == '0' ) {
-				$terms_temp[] = $term;
-
-				foreach ( $terms as $temps ) {
-					if ( $temps->parent != '0' && $temps->parent == $term->term_id ) {
-						$temps->name  = '- ' . $temps->name;
-						$terms_temp[] = $temps;
-					}
-				}
-			}
-		}
 
 
 
+		$terms = self::order_terms_heretically($terms);
 
-		$terms = $terms_temp;
+
 
 		if($design_style){
 			$html .= "<div class='gd-search-field-taxonomy gd-search-field-categories col-auto flex-fill'>";
 
 			$cats = array('' => esc_attr__( 'Category', 'geodirectory' ));
 
-			if(!empty($terms_temp)){
-				foreach($terms_temp as $term){
+			if(!empty($terms)){
+				foreach($terms as $term){
 					$cats[$term->term_id] = __($term->name, 'geodirectory' );
 				}
 			}

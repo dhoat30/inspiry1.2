@@ -143,7 +143,7 @@ class IS_Public
                 'body',
             );
             $script = 'var is_terms = ';
-            $script .= ( isset( $wp_query->query_vars['search_terms'] ) ? wp_json_encode( (array) $wp_query->query_vars['search_terms'] ) : '[]' );
+            $script .= ( isset( $wp_query->query_vars['search_terms'] ) ? wp_json_encode( (array) array_map( 'esc_html', $wp_query->query_vars['search_terms'] ) ) : '[]' );
             $script .= '; var is_areas = ' . wp_json_encode( (array) $areas ) . ';';
             wp_add_inline_script( 'is-highlight', $script, 'before' );
         }

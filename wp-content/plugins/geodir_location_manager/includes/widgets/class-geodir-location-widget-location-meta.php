@@ -22,10 +22,10 @@ class GeoDir_Location_Widget_Location_Meta extends WP_Super_Duper {
 			'block-keywords'=> "['location meta','meta','description']",
 			'class_name'    => __CLASS__,
 			'base_id'       => 'gd_location_meta',
-			'name'          => __( 'GD > Location Meta', 'geodirevents' ),
+			'name'          => __( 'GD > Location Meta', 'geodirlocation' ),
 			'widget_ops'    => array(
 				'classname'   => 'geodir-location-meta-container bsui',
-				'description' => esc_html__( 'Displays the meta title, meta description, location description, image for location.', 'geodirevents' ),
+				'description' => esc_html__( 'Displays the meta title, meta description, location description, image for location.', 'geodirlocation' ),
 				'geodirectory' => true,
 				'gd_wgt_showhide' => 'show_on',
 				'gd_wgt_restrict' => array(),

@@ -61,7 +61,7 @@ jQuery( document ).ready( function( $ ) {
 			
 			var attachment = frame.state().get( 'selection' ).first().toJSON();
 			
-			if ( 'image' === attachment.type ) {
+			if ( 'image' === attachment.type && 'image/vnd.dwg' !== attachment.mime ) {
 				
 				mkMedia.prev().val( attachment.id );
 				

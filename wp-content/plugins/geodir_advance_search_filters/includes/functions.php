@@ -158,10 +158,9 @@ function geodir_advanced_search_autocomplete_script(){
 
 		function gdas_ac_focus_in($input){
 			if(jQuery($input).parent().find(".gdas-search-suggestions").length){
-				jQuery($input).parent().find(".gdas-search-suggestions").show();
-
+				<?php if(!$design_style){ ?>jQuery($input).parent().find(".gdas-search-suggestions").show();<?php } ?>
 			}else{
-				jQuery($input).after("<div class='<?php if($design_style){ echo "dropdown-menu dropdown-caret-0 w-100 show scrollbars-ios overflow-auto p-0 m-0"; } ?> gd-suggestions-dropdown gdas-search-suggestions gd-ios-scrollbars' >" +
+				jQuery($input).after("<div class='<?php if($design_style){ echo "dropdown-menu dropdown-caret-0 w-100  scrollbars-ios overflow-auto p-0 m-0"; } ?> gd-suggestions-dropdown gdas-search-suggestions gd-ios-scrollbars' >" +
 					"<ul class='gdasac-listing list-unstyled p-0 m-0 '></ul>" +
 					"<ul class='gdasac-category list-unstyled p-0 m-0 '></ul>" +
 					"</div>");
@@ -185,7 +184,7 @@ function geodir_advanced_search_autocomplete_script(){
 		function gdas_ac_focus_out($input){
 			setTimeout(function() {
 				if (!gdasac_do_not_close) {
-					jQuery($input).parent().find(".gdas-search-suggestions").hide();
+				<?php if(!$design_style){ ?>jQuery($input).parent().find(".gdas-search-suggestions").hide();<?php } ?>
 				}
 			},200);
 		}
@@ -344,7 +343,7 @@ function geodir_advanced_search_autocomplete_script(){
 
 			if(gdasac_li_type != ''){
 				if($type=='category'){
-					output += '<li class="gdas-section-title '+$common_class_title+'" ontouchstart="this.click()" onclick="var event = arguments[0] || window.event; geodir_cancelBubble(event);"><?php esc_attr_e( 'Categories', 'geodirectory' ); ?></li>';
+					output += '<li class="gdas-section-title '+$common_class_title+'" onclick="var event = arguments[0] || window.event; geodir_cancelBubble(event);"><?php esc_attr_e( 'Categories', 'geodirectory' ); ?></li>';
 				}else if($type=='listing'){
 					output += '<li class="gdas-section-title '+$common_class_title+'"><?php esc_attr_e( 'Listings', 'geodirectory' ); ?></li>';
 				}else{
@@ -357,7 +356,7 @@ function geodir_advanced_search_autocomplete_script(){
 
 			if($data.history){
 				history = '<i class="far fa-clock" title="<?php _e('Search history','geodirlocation');?>"></i> ';
-				$delete = '<i ontouchstart="this.click()" onclick="var event = arguments[0] || window.event; geodir_cancelBubble(event);gdas_ac_del_location_history(\''+$data.slug+'\');jQuery(this).parent().remove();" class="fas fa-times " title="<?php esc_attr_e('Remove from history','geodirlocation');?>"></i> ';
+				$delete = '<i onclick="var event = arguments[0] || window.event; geodir_cancelBubble(event);gdas_ac_del_location_history(\''+$data.slug+'\');jQuery(this).parent().remove();" class="fas fa-times " title="<?php esc_attr_e('Remove from history','geodirlocation');?>"></i> ';
 			}else if($type == 'category' && $data.fa_icon){
 				var icon_color = $data.fa_icon_color ? '#fff' : '';
 				history = '<span class="gdasac-icon '+$common_class_icon+'" style="background-color:'+$data.fa_icon_color+';color:'+icon_color+';'+$icon_size+'"><i class="'+$data.fa_icon+' fa-fw"></i></span> ';
@@ -370,10 +369,10 @@ function geodir_advanced_search_autocomplete_script(){
 			}
 			if($type=='category'){
 				if($data.area){$data.city = $data.area;}
-				output += '<li class="'+$common_class+'" data-type="'+$type+'" ontouchstart="this.click()" onclick="gdasac_click_action(\''+$type+'\',\''+$data.link+'\');">'+history+'<b>'+ $data.name + '</b>'+$delete+'</li>';
+				output += '<li class="'+$common_class+'" data-type="'+$type+'" onclick="gdasac_click_action(\''+$type+'\',\''+$data.link+'\');">'+history+'<b>'+ $data.name + '</b>'+$delete+'</li>';
 			}else if($type=='listing'){
 				if($data.area){$data.region = $data.area;}
-				output += '<li class="'+$common_class+'" data-type="'+$type+'" ontouchstart="this.click()" onclick="gdasac_click_action(\''+$type+'\',\''+$data.link+'\');">'+history+'<b>'+ $data.title.rendered + '</b>'+$delete+'</li>';
+				output += '<li class="'+$common_class+'" data-type="'+$type+'" onclick="gdasac_click_action(\''+$type+'\',\''+$data.link+'\');">'+history+'<b>'+ $data.title.rendered + '</b>'+$delete+'</li>';
 			}
 
 			return output;
@@ -398,6 +397,24 @@ function geodir_advanced_search_autocomplete_script(){
 	</script>
 	<?php
 }
+
+/**
+ * Add the required data attributes to the search input if autocomplete is enabled.
+ *
+ * @param $args
+ *
+ * @return mixed
+ */
+function geodir_search_enable_dropdown($args){
+
+	if(geodir_get_option('advs_enable_autocompleter') && geodir_design_style()){
+		$args['extra_attributes']['data-toggle'] = 'dropdown';
+		$args['extra_attributes']['data-flip'] = 'false';
+	}
+
+	return $args;
+}
+add_filter('geodir_search_for_input_args','geodir_search_enable_dropdown');
 
 /**
  * Schedule events.

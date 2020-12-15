@@ -3,7 +3,7 @@ Contributors: mkscripts
 Tags: subscribe, download, form, email, email download, subscribe download, download link, download form, subscribe form, opt-in form, subscribe mailchimp, mailchimp
 Requires at least: 4.7
 Tested up to: 5.5
-Stable tag: 2.0.6
+Stable tag: 2.0.7
 Requires PHP: 5.2.4
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -52,6 +52,19 @@ Visit our website for more information: [https://www.download-after-email.com](h
 1. Start making your first download and test it with the preview option before placing the generated shortcode on a page, post or widget.
 
 == Changelog ==
+
+= 2.0.7 =
+* Fixed missing leading zero(s) subscriber meta.
+* Fixed deviation in the total number of links on the page: Admin Menu > Downloads.
+* Fixed email content not translatable.
+* CSS improvement for mobile devices.
+* Improved nonce functionality for download links (backwards compatible).
+* New hooks added in meta box "Duplicate" + improvement.
+* Prevent rename() warning during saving of downloads.
+* Added new error message for form submission without a download file present.
+* Fixed not able to select dwg files as download file.
+* Fixed issues related to multisite (subsite) usage.
+* Cleanup update actions in update.php.
 
 = 2.0.6 =
 * Fixed bug column Optin Time in subscribers table, sometimes the value of a previous subscriber was displayed.

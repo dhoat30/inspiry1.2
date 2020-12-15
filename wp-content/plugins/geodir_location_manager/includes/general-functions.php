@@ -95,12 +95,14 @@ function geodir_get_location_array( $args = null, $switcher = false ) {
 	$neighbourhood_active = geodir_get_option( 'lm_enable_neighbourhoods' );
 	$defaults = array(
 		'what' => 'city',
+		'slugs' => '',
 		'city_val' => '',
 		'region_val' => '',
 		'country_val' => '',
 		'country_non_restricted' => '',
 		'region_non_restricted' => '',
 		'city_non_restricted' => '',
+		'neighbourhood_non_restricted' => '',
 		'filter_by_non_restricted' => true,
 		'compare_operator' => 'like',
 		'country_column_name' => 'country',
@@ -361,6 +363,19 @@ function geodir_get_location_array( $args = null, $switcher = false ) {
 		}
 	}
 
+	if ( $location_args['what'] == 'neighbourhood' && $location_args['neighbourhood_non_restricted'] != '' ) {
+		$search_query .= " AND LOWER( hood_name ) IN( $location_args[neighbourhood_non_restricted] ) ";
+	}
+
+	$slugs = trim( $location_args['slugs'] ) != '' ? geodir_parse_location_list( $location_args['slugs'] ) : '';
+	if ( ! empty( $slugs ) ) {
+		if ( $location_args['what'] == 'neighbourhood' ) {
+			$search_query .= " AND hood_slug IN( $slugs ) ";
+		} else {
+			$search_query .= " AND " . $location_args['what'] . "_slug IN( $slugs ) ";
+		}
+	}
+
 	// page
 	if ( $location_args['no_of_records'] ) {
 		$spage = (int)$location_args['no_of_records'] * (int)$location_args['spage'];
@@ -406,18 +421,25 @@ function geodir_get_location_array( $args = null, $switcher = false ) {
 	} else {
 		$counts_only = ! empty( $location_args['counts_only'] ) ? true : false;
 
+		$order_by = '';
 		if ( $counts_only ) {
 			$limit = '';
 		}
 
 		if ( $search_field == 'neighbourhood' ) {
 			$fields = $counts_only ? "COUNT(*)" : "h.*, l.*, hood_name AS neighbourhood, hood_slug AS neighbourhood_slug " . $location_link_column;
+			if ( empty( $counts_only ) ) {
+				$order_by = "ORDER BY hood_name " . $location_args['order_by'];
+			}
 
-			$main_location_query = "SELECT " . $fields . " FROM " . GEODIR_NEIGHBOURHOODS_TABLE . " AS h LEFT JOIN " . GEODIR_LOCATIONS_TABLE . " AS l ON l.location_id = h.hood_location_id WHERE 1=1 " .  $search_query . " GROUP BY hood_name ORDER BY hood_name " . $location_args['order_by'] . " " . $limit;
+			$main_location_query = "SELECT " . $fields . " FROM " . GEODIR_NEIGHBOURHOODS_TABLE . " AS h LEFT JOIN " . GEODIR_LOCATIONS_TABLE . " AS l ON l.location_id = h.hood_location_id WHERE 1=1 " .  $search_query . " GROUP BY hood_name {$order_by} " . $limit;
 		} else {
 			$fields = $counts_only ? "COUNT(*)" : "*" . " " . $location_link_column;
+			if ( empty( $counts_only ) ) {
+				$order_by = "ORDER BY $location_args[what] $location_args[order_by]";
+			}
 
-			$main_location_query = "SELECT " . $fields . " FROM "  . GEODIR_LOCATIONS_TABLE . " WHERE 1=1 " . $search_query . " GROUP BY $location_args[what] ORDER BY $location_args[what] $location_args[order_by] $limit";
+			$main_location_query = "SELECT " . $fields . " FROM "  . GEODIR_LOCATIONS_TABLE . " WHERE 1=1 " . $search_query . " GROUP BY $location_args[what] {$order_by} $limit";
 		}
 
 		if ( $counts_only ) {

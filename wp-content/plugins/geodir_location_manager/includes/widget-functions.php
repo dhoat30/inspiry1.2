@@ -66,9 +66,11 @@ function geodir_popular_location_widget_output( $args = array(), $echo = true ) 
 		'city_val' => '', 
 		'region_val' => '',
 		'country_val' =>'',
+		'slugs' => '',
 		'country_non_restricted' => '',
 		'region_non_restricted' => '',
 		'city_non_restricted' => '',
+		'neighbourhood_non_restricted' => '',
 		'filter_by_non_restricted' => true, 
 		'compare_operator' => '=',
 		'country_column_name' => 'country_slug',
@@ -86,9 +88,19 @@ function geodir_popular_location_widget_output( $args = array(), $echo = true ) 
 			'item_wrapper_attr' => ''
 		)
 	);
-            
+
     $args = wp_parse_args( $args, $location_args );
-    
+
+	if ( trim( $args['slugs'] ) != '' ) {
+		$args['filter_by_non_restricted'] = false;
+		$args['per_page'] = '';
+		$args['pagi_t'] = false;
+		$args['pagi_b'] = false;
+		$args['pagi_info'] = '';
+		$args['no_loc'] = false;
+		$args['no_location_filter'] = false;
+	}
+
     $per_page = ! empty( $args['per_page'] ) ? absint( $args['per_page'] ) : '';
     $top_pagination = ! empty( $args['pagi_t'] ) ? true : false;
     $bottom_pagination = ! empty( $args['pagi_b'] ) ? true : false;

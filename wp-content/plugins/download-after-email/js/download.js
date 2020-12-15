@@ -50,8 +50,9 @@ jQuery( document ).ready( function( $ ) {
 		var nextField = $( this ).parent().next();
 		
 		if ( nextField[0] ) {
+			$( this ).parent().remove();
 			$( this ).remove();
-			nextField.attr( 'style', 'display: table-cell;' );
+			nextField.attr( 'style', 'display: block;' );
 		} else {
 			$( this ).attr( 'type', 'date' );
 		}

@@ -282,7 +282,7 @@ class GeoDir_Claim_Widget_Post_Claim extends WP_Super_Duper {
 
 		// Fire on load
 		if ( is_user_logged_in() && isset( $_REQUEST['gd_do'] ) && $_REQUEST['gd_do'] == 'claim' ) {
-			$output .= "<script>jQuery(function() {jQuery('.geodir-claim-post-form-link').trigger( \"click\" );});</script>";
+			$output .= "<script>jQuery(function() {if(!window.gdTriggerClaim){jQuery('.geodir-claim-post-form-link:first').trigger( \"click\" );window.gdTriggerClaim=true;}});</script>";
 		}
 
 		$output .= '</div>';

@@ -445,7 +445,7 @@ if (!(window.google && typeof google.maps !== 'undefined')) {
 					$term_check .= '  title="' . esc_attr(geodir_utf8_ucfirst($cat_term->name)) . '" value="' . $cat_term->term_id . '" onclick="javascript:build_map_ajax_search_param(\'' . $map_canvas . '\',false, this)">';
 
 					if($design_style){
-						$term_img = '<img class="w-auto mr-1 ml-n1 rounded-circle" style="height:22px;" alt="' . $cat_term->taxonomy . '" src="' . $icon . '" title="' . geodir_utf8_ucfirst($cat_term->name) . '" loading=lazy />';
+						$term_img = '<img class="w-auto mr-1 ml-n1 rounded-circle" style="height:22px;" alt="' . esc_attr( geodir_strtolower( $cat_term->name ) ) . '." src="' . $icon . '" title="' . geodir_utf8_ucfirst($cat_term->name) . '" loading=lazy />';
 						$term_html = '<li class="'.$li_class.'">' .aui()->input(
 							array(
 								'id'                => "{$map_canvas}_tick_cat_{$cat_term->term_id}",
@@ -453,7 +453,7 @@ if (!(window.google && typeof google.maps !== 'undefined')) {
 								'type'              => "checkbox",
 								'value'             => absint( $cat_term->term_id),
 								'label'             => $term_img . esc_attr(geodir_utf8_ucfirst($cat_term->name)),
-								'class'             => 'group_selector ' . $main_list_class,
+								'class'             => 'group_selector h-100 ' . $main_list_class,
 								'label_class'       => 'text-light',
 								'checked'           => $checked,
 								'no_wrap'            => true,
@@ -658,6 +658,26 @@ if (!(window.google && typeof google.maps !== 'undefined')) {
 		 * @param array Map params array.
 		 */
 		return apply_filters( 'geodir_map_params', $map_params );
+	}
+
+	/**
+	 * Check and add map script when no map on the page.
+	 *
+	 * @since 2.1.0.5
+	 */
+	public static function check_map_script() {
+		global $geodir_map_script;
+
+		if ( ! $geodir_map_script && geodir_lazy_load_map() && GeoDir_Maps::active_map() !='none' && ! wp_script_is( 'geodir-map', 'enqueued' ) ) {
+			$geodir_map_script = true;
+			$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+
+?><script type="text/javascript">
+/* <![CDATA[ */
+<?php echo "var geodir_map_params=" . wp_json_encode( geodir_map_params() ) . ';'; ?>var el=document.createElement("script");el.setAttribute("type","text/javascript");el.setAttribute("id",'geodir-map-js');el.setAttribute("src",'<?php echo geodir_plugin_url(); ?>/assets/js/geodir-map<?php echo $suffix; ?>.js');el.setAttribute("async",true);document.getElementsByTagName("head")[0].appendChild(el);
+/* ]]> */
+</script><?php
+		}
 	}
 }
 

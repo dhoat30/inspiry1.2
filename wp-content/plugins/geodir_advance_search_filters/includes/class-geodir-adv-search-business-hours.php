@@ -364,7 +364,7 @@ class GeoDir_Adv_Search_Business_Hours {
 			$label_class = 'gd-adv-search-label';
 			$sublabel_class = 'gd-adv-search-label-t';
 			if ( $design_style ) {
-				$label_class .= ' badge badge-info mr-2';
+				$label_class .= ' badge badge-info mr-2 c-pointer';
 				$sublabel_class .= ' mb-0 mr-1';
 			}
 

@@ -8,7 +8,7 @@ function mckp_create_nonce( $file, $email ) {
 	
 	$data = $file . '|' . time() . '|' . wp_get_session_token();
 	
-	$option_name = 'mckp_download_nonce-' . $file . '-' . $email;
+	$option_name = 'mckp_download_nonce-' . substr( wp_hash( $file . '-' . $email, 'nonce' ), -12, 10 );
 	
 	$nonce = wp_hash( $data, 'nonce' );
 	
@@ -20,22 +20,29 @@ function mckp_create_nonce( $file, $email ) {
 
 function mckp_verify_nonce( $file, $email ) {
 	
-	$option_name = 'mckp_download_nonce-' . $file . '-' . $email;
+	$option_name = 'mckp_download_nonce-' . substr( wp_hash( $file . '-' . $email, 'nonce' ), -12, 10 );
 	$option_value = get_option( $option_name );
+
+	$option_name_old = 'mckp_download_nonce-' . $file . '-' . $email;
+	$option_value_old = get_option( $option_name_old );
 	
-	if ( $option_value ) {
+	if ( ! empty( $option_value ) || ! empty( $option_value_old ) ) {
 		
 		if ( 'POST' == $_SERVER['REQUEST_METHOD'] ) {
 			$nonce = sanitize_text_field( $_POST['nonce'] );
 		} elseif ( 'GET' == $_SERVER['REQUEST_METHOD'] ) {
 			$nonce = sanitize_text_field( $_GET['nonce'] );
 		}
-		
-		if ( hash_equals( $option_value, $nonce ) ) {
+
+		if ( ! empty( $option_value ) && hash_equals( $option_value, $nonce ) ) {
 			return true;
-		} else {
-			return false;
 		}
+
+		if ( ! empty( $option_value_old ) && hash_equals( $option_value_old, $nonce ) ) {
+			return true;
+		}
+
+		return false;
 		
 	} else {
 		
@@ -47,7 +54,10 @@ function mckp_verify_nonce( $file, $email ) {
 
 function mckp_delete_nonce( $file, $email ) {
 	
-	$option_name = 'mckp_download_nonce-' . $file . '-' . $email;
+	$option_name_old = 'mckp_download_nonce-' . $file . '-' . $email;
+	delete_option( $option_name_old );
+
+	$option_name = 'mckp_download_nonce-' . substr( wp_hash( $file . '-' . $email, 'nonce' ), -12, 10 );
 	delete_option( $option_name );
 	
 }
@@ -113,7 +123,7 @@ function mckp_content_media( $media_id, $media_input_name, $image ) {
 		
 		if ( ! empty( $media_id ) ) {
 			
-			$file_name = basename( wp_get_attachment_url( $media_id ) );
+			$file_name = basename( get_attached_file( $media_id, true ) );
 			$media_class_remove = 'mk-media-remove dashicons dashicons-no';
 			
 		} else {
@@ -180,7 +190,7 @@ function mckp_get_links_count( $file_name ) {
 	return array(
 		'used'		=> count( $used_links ),
 		'unused'	=> count( $unused_links ),
-		'total'		=> count( $used_links + $unused_links )
+		'total'		=> count( $used_links ) + count( $unused_links )
 	);
 
 }

@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: GeoDirectory Custom Post Types 2.1.0.0\n"
+"Project-Id-Version: GeoDirectory Custom Post Types 2.1.0.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-07 16:25+0530\n"
-"PO-Revision-Date: 2020-10-07 16:25+0530\n"
+"POT-Creation-Date: 2020-12-10 19:56+0530\n"
+"PO-Revision-Date: 2020-12-10 19:56+0530\n"
 "Last-Translator: Stiofan <info@geotheme.com>\n"
 "Language-Team: AyeCode Ltd <contact@ayecode.io>\n"
 "Language: en_US\n"
@@ -89,13 +89,13 @@ msgid "No post types founds."
 msgstr ""
 
 #: includes/admin/class-geodir-cp-admin.php:66
-#: includes/class-geodir-cp-link-posts.php:960
+#: includes/class-geodir-cp-link-posts.php:965
 #, php-format
 msgid "Linked from: %s"
 msgstr ""
 
 #: includes/admin/class-geodir-cp-admin.php:87
-#: includes/class-geodir-cp-link-posts.php:957
+#: includes/class-geodir-cp-link-posts.php:962
 #, php-format
 msgid "Linked to: %s"
 msgstr ""
@@ -140,65 +140,65 @@ msgstr ""
 msgid "Limit the posts to those a post linked to."
 msgstr ""
 
-#: includes/class-geodir-cp-link-posts.php:134
+#: includes/class-geodir-cp-link-posts.php:139
 msgid "Link Posts:"
 msgstr ""
 
-#: includes/class-geodir-cp-link-posts.php:141
+#: includes/class-geodir-cp-link-posts.php:146
 #, php-format
 msgid "Add a select input to link %s to the %s."
 msgstr ""
 
-#: includes/class-geodir-cp-link-posts.php:147
+#: includes/class-geodir-cp-link-posts.php:152
 #, php-format
 msgid "Select your %s to link with this %s."
 msgstr ""
 
-#: includes/class-geodir-cp-link-posts.php:185
+#: includes/class-geodir-cp-link-posts.php:190
 msgid ""
 "Set max no. of posts allowed to linked to the post. Set 0 or blank to allow "
 "unlimited posts."
 msgstr ""
 
-#: includes/class-geodir-cp-link-posts.php:186
+#: includes/class-geodir-cp-link-posts.php:191
 msgid "Max posts"
 msgstr ""
 
-#: includes/class-geodir-cp-link-posts.php:193
+#: includes/class-geodir-cp-link-posts.php:198
 msgid ""
 "Tick to allow link to all posts. Un-tick to link to authors own posts only."
 msgstr ""
 
-#: includes/class-geodir-cp-link-posts.php:194
+#: includes/class-geodir-cp-link-posts.php:199
 msgid "Link to all user's posts?"
 msgstr ""
 
-#: includes/class-geodir-cp-link-posts.php:258
+#: includes/class-geodir-cp-link-posts.php:263
 #, php-format
 msgid "Choose %s &hellip;"
 msgstr ""
 
-#: includes/class-geodir-cp-link-posts.php:280
+#: includes/class-geodir-cp-link-posts.php:285
 #, php-format
 msgid ""
 "Are you sure you want to fill %s listing data from selected linked %s data?"
 msgstr ""
 
-#: includes/class-geodir-cp-link-posts.php:281
+#: includes/class-geodir-cp-link-posts.php:286
 #, php-format
 msgid "Fill %s listing data from linked %s data."
 msgstr ""
 
-#: includes/class-geodir-cp-link-posts.php:991
+#: includes/class-geodir-cp-link-posts.php:996
 msgid "You are now allowed to link this listing to the selected listing."
 msgstr ""
 
-#: includes/class-geodir-cp-link-posts.php:994
+#: includes/class-geodir-cp-link-posts.php:999
 #, php-format
 msgid "%s listing is not allowed to linked from %s listing."
 msgstr ""
 
-#: includes/class-geodir-cp-link-posts.php:997
+#: includes/class-geodir-cp-link-posts.php:1002
 msgid "Invalid post type found to link posts."
 msgstr ""
 

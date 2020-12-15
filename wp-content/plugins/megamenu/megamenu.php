@@ -3,7 +3,7 @@
  * Plugin Name: Max Mega Menu
  * Plugin URI:  https://www.megamenu.com
  * Description: An easy to use mega menu plugin. Written the WordPress way.
- * Version:     2.9.1
+ * Version:     2.9.2
  * Author:      megamenu.com
  * Author URI:  https://www.megamenu.com
  * License:     GPL-2.0+
@@ -35,7 +35,7 @@ if ( ! class_exists( 'Mega_Menu' ) ) :
 		 *
 		 * @var string
 		 */
-		public $version = '2.9.1';
+		public $version = '2.9.2';
 
 
 		/**
@@ -554,7 +554,7 @@ if ( ! class_exists( 'Mega_Menu' ) ) :
 			foreach ( $items as $item ) {
 
 				// populate standard (non-grid) sub menus.
-				if ( 0 === $item->depth && 'megamenu' === $item->megamenu_settings['type'] || ( 1 === $item->depth && 'tabbed' === $item->parent_submenu_type && 'grid' !== $item->megamenu_settings['type'] ) ) {
+				if ( property_exists( $item, 'depth' ) && 0 === $item->depth && 'megamenu' === $item->megamenu_settings['type'] || ( property_exists( $item, 'depth' ) && 1 === $item->depth && 'tabbed' === $item->parent_submenu_type && 'grid' !== $item->megamenu_settings['type'] ) ) {
 
 					$panel_widgets = $widget_manager->get_widgets_for_menu_id( $item->ID, $args->menu );
 
@@ -607,7 +607,7 @@ if ( ! class_exists( 'Mega_Menu' ) ) :
 				}
 
 				// populate grid sub menus.
-				if ( 0 === $item->depth && 'grid' === $item->megamenu_settings['type'] || ( 1 === $item->depth && 'tabbed' === $item->parent_submenu_type && 'grid' === $item->megamenu_settings['type'] ) ) {
+				if ( property_exists( $item, 'depth' ) && 0 === $item->depth && 'grid' === $item->megamenu_settings['type'] || ( property_exists( $item, 'depth' ) && 1 === $item->depth && 'tabbed' === $item->parent_submenu_type && 'grid' === $item->megamenu_settings['type'] ) ) {
 
 					$saved_grid = $widget_manager->get_grid_widgets_and_menu_items_for_menu_id( $item->ID, $args->menu->term_id, $items );
 
@@ -863,7 +863,7 @@ if ( ! class_exists( 'Mega_Menu' ) ) :
 				}
 
 				// add parent mega menu type.
-				if ( absint( $item->depth ) === 1 ) {
+				if ( property_exists( $item, 'depth' ) && absint( $item->depth ) === 1 ) {
 					$parent_settings = array_filter( (array) get_post_meta( $item->menu_item_parent, '_megamenu', true ) );
 
 					if ( isset( $parent_settings['type'] ) ) {
@@ -959,7 +959,7 @@ if ( ! class_exists( 'Mega_Menu' ) ) :
 			foreach ( $items as $item ) {
 
 				if ( ! in_array( 'menu-row', $item->classes, true ) && ! in_array( 'menu-column', $item->classes, true ) ) {
-					if ( 0 === $item->depth ) {
+					if ( property_exists( $item, 'depth' ) && 0 === $item->depth ) {
 						$item->classes[] = 'align-' . $item->megamenu_settings['align'];
 						$item->classes[] = 'menu-' . $item->megamenu_settings['type'];
 					}
@@ -1170,6 +1170,12 @@ if ( ! class_exists( 'Mega_Menu' ) ) :
 					$effect_speed_mobile = 0;
 				}
 
+				$mobile_state = 'collapse_all';
+
+				if ( isset( $menu_settings['mobile_state'] ) ) {
+					$mobile_state = $menu_settings['mobile_state'];
+				}
+
 				$hover_intent_params = apply_filters(
 					'megamenu_javascript_localisation', // backwards compatiblity.
 					array(
@@ -1196,6 +1202,7 @@ if ( ! class_exists( 'Mega_Menu' ) ) :
 						'data-vertical-behaviour'    => $vertical_behaviour,
 						'data-breakpoint'            => absint( $menu_theme['responsive_breakpoint'] ),
 						'data-unbind'                => 'disabled' === $unbind ? 'false' : 'true',
+						'data-mobile-state'          => $mobile_state,
 						'data-hover-intent-timeout'  => absint( $hover_intent_params['timeout'] ),
 						'data-hover-intent-interval' => absint( $hover_intent_params['interval'] ),
 					),

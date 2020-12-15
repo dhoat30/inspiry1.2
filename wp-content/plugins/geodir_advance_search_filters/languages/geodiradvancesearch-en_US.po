@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: GeoDirectory Advance Search Filters 2.1.0.1\n"
+"Project-Id-Version: GeoDirectory Advance Search Filters 2.1.0.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-16 11:08+0530\n"
-"PO-Revision-Date: 2020-10-16 11:08+0530\n"
+"POT-Creation-Date: 2020-12-10 19:53+0530\n"
+"PO-Revision-Date: 2020-12-10 19:54+0530\n"
 "Last-Translator: \n"
 "Language-Team: AyeCode Ltd <contact@ayecode.io>\n"
 "Language: en_US\n"
@@ -541,116 +541,116 @@ msgstr ""
 msgid "Advanced Filters"
 msgstr ""
 
-#: includes/class-geodir-adv-search-fields.php:255
-#: includes/class-geodir-adv-search-fields.php:270
+#: includes/class-geodir-adv-search-fields.php:234
+#: includes/class-geodir-adv-search-fields.php:249
 msgid "Category"
 msgstr ""
 
-#: includes/class-geodir-adv-search-fields.php:290
-#: includes/class-geodir-adv-search-fields.php:683
-#: includes/class-geodir-adv-search-fields.php:855
+#: includes/class-geodir-adv-search-fields.php:269
+#: includes/class-geodir-adv-search-fields.php:662
+#: includes/class-geodir-adv-search-fields.php:834
 #: includes/template-functions.php:785 includes/template-functions.php:1887
 msgid "Yes"
 msgstr ""
 
-#: includes/class-geodir-adv-search-fields.php:347
-#: includes/class-geodir-adv-search-fields.php:923
-#: includes/class-geodir-adv-search-fields.php:1015
+#: includes/class-geodir-adv-search-fields.php:326
+#: includes/class-geodir-adv-search-fields.php:902
+#: includes/class-geodir-adv-search-fields.php:994
 #, php-format
 msgid "%s Dates"
 msgstr ""
 
-#: includes/class-geodir-adv-search-fields.php:349
-#: includes/class-geodir-adv-search-fields.php:434
-#: includes/class-geodir-adv-search-fields.php:517
-#: includes/class-geodir-adv-search-fields.php:617
-#: includes/class-geodir-adv-search-fields.php:925
-#: includes/class-geodir-adv-search-fields.php:1017
-#: includes/class-geodir-adv-search-fields.php:1420
-#: includes/class-geodir-adv-search-fields.php:1523
+#: includes/class-geodir-adv-search-fields.php:328
+#: includes/class-geodir-adv-search-fields.php:413
+#: includes/class-geodir-adv-search-fields.php:496
+#: includes/class-geodir-adv-search-fields.php:596
+#: includes/class-geodir-adv-search-fields.php:904
+#: includes/class-geodir-adv-search-fields.php:996
+#: includes/class-geodir-adv-search-fields.php:1399
+#: includes/class-geodir-adv-search-fields.php:1502
 #, php-format
 msgid "From: %s"
 msgstr ""
 
-#: includes/class-geodir-adv-search-fields.php:349
-#: includes/class-geodir-adv-search-fields.php:434
-#: includes/class-geodir-adv-search-fields.php:925
-#: includes/class-geodir-adv-search-fields.php:1017
+#: includes/class-geodir-adv-search-fields.php:328
+#: includes/class-geodir-adv-search-fields.php:413
+#: includes/class-geodir-adv-search-fields.php:904
+#: includes/class-geodir-adv-search-fields.php:996
 #, php-format
 msgid "%s Start Date"
 msgstr ""
 
-#: includes/class-geodir-adv-search-fields.php:350
-#: includes/class-geodir-adv-search-fields.php:435
-#: includes/class-geodir-adv-search-fields.php:518
-#: includes/class-geodir-adv-search-fields.php:618
-#: includes/class-geodir-adv-search-fields.php:926
-#: includes/class-geodir-adv-search-fields.php:1018
-#: includes/class-geodir-adv-search-fields.php:1421
-#: includes/class-geodir-adv-search-fields.php:1524
+#: includes/class-geodir-adv-search-fields.php:329
+#: includes/class-geodir-adv-search-fields.php:414
+#: includes/class-geodir-adv-search-fields.php:497
+#: includes/class-geodir-adv-search-fields.php:597
+#: includes/class-geodir-adv-search-fields.php:905
+#: includes/class-geodir-adv-search-fields.php:997
+#: includes/class-geodir-adv-search-fields.php:1400
+#: includes/class-geodir-adv-search-fields.php:1503
 #, php-format
 msgid "To: %s"
 msgstr ""
 
-#: includes/class-geodir-adv-search-fields.php:350
-#: includes/class-geodir-adv-search-fields.php:435
-#: includes/class-geodir-adv-search-fields.php:926
-#: includes/class-geodir-adv-search-fields.php:1018
+#: includes/class-geodir-adv-search-fields.php:329
+#: includes/class-geodir-adv-search-fields.php:414
+#: includes/class-geodir-adv-search-fields.php:905
+#: includes/class-geodir-adv-search-fields.php:997
 #, php-format
 msgid "%s End Date"
 msgstr ""
 
-#: includes/class-geodir-adv-search-fields.php:382
-#: includes/class-geodir-adv-search-fields.php:446
-#: includes/class-geodir-adv-search-fields.php:958
-#: includes/class-geodir-adv-search-fields.php:1033
+#: includes/class-geodir-adv-search-fields.php:361
+#: includes/class-geodir-adv-search-fields.php:425
+#: includes/class-geodir-adv-search-fields.php:937
+#: includes/class-geodir-adv-search-fields.php:1012
 #, php-format
 msgid "%s Date"
 msgstr ""
 
-#: includes/class-geodir-adv-search-fields.php:515
-#: includes/class-geodir-adv-search-fields.php:565
-#: includes/class-geodir-adv-search-fields.php:629
-#: includes/class-geodir-adv-search-fields.php:1418
-#: includes/class-geodir-adv-search-fields.php:1465
-#: includes/class-geodir-adv-search-fields.php:1521
-#: includes/class-geodir-adv-search-fields.php:1552
+#: includes/class-geodir-adv-search-fields.php:494
+#: includes/class-geodir-adv-search-fields.php:544
+#: includes/class-geodir-adv-search-fields.php:608
+#: includes/class-geodir-adv-search-fields.php:1397
+#: includes/class-geodir-adv-search-fields.php:1444
+#: includes/class-geodir-adv-search-fields.php:1500
+#: includes/class-geodir-adv-search-fields.php:1531
 #, php-format
 msgid "%s Time"
 msgstr ""
 
-#: includes/class-geodir-adv-search-fields.php:517
-#: includes/class-geodir-adv-search-fields.php:617
-#: includes/class-geodir-adv-search-fields.php:1420
-#: includes/class-geodir-adv-search-fields.php:1523
+#: includes/class-geodir-adv-search-fields.php:496
+#: includes/class-geodir-adv-search-fields.php:596
+#: includes/class-geodir-adv-search-fields.php:1399
+#: includes/class-geodir-adv-search-fields.php:1502
 #, php-format
 msgid "%s Start Time"
 msgstr ""
 
-#: includes/class-geodir-adv-search-fields.php:518
-#: includes/class-geodir-adv-search-fields.php:618
-#: includes/class-geodir-adv-search-fields.php:1421
-#: includes/class-geodir-adv-search-fields.php:1524
+#: includes/class-geodir-adv-search-fields.php:497
+#: includes/class-geodir-adv-search-fields.php:597
+#: includes/class-geodir-adv-search-fields.php:1400
+#: includes/class-geodir-adv-search-fields.php:1503
 #, php-format
 msgid "%s End Time"
 msgstr ""
 
-#: includes/class-geodir-adv-search-fields.php:541
-#: includes/class-geodir-adv-search-fields.php:557
-#: includes/class-geodir-adv-search-fields.php:1445
-#: includes/class-geodir-adv-search-fields.php:1457
+#: includes/class-geodir-adv-search-fields.php:520
+#: includes/class-geodir-adv-search-fields.php:536
+#: includes/class-geodir-adv-search-fields.php:1424
+#: includes/class-geodir-adv-search-fields.php:1436
 msgid "Clear field"
 msgstr ""
 
-#: includes/class-geodir-adv-search-fields.php:1093
+#: includes/class-geodir-adv-search-fields.php:1072
 msgid "Nearest"
 msgstr ""
 
-#: includes/class-geodir-adv-search-fields.php:1103
+#: includes/class-geodir-adv-search-fields.php:1082
 msgid "Farthest"
 msgstr ""
 
-#: includes/class-geodir-adv-search-fields.php:1116
+#: includes/class-geodir-adv-search-fields.php:1095
 msgid "Select Option"
 msgstr ""
 
@@ -667,41 +667,41 @@ msgid ""
 "that your version be upgraded to 5.3 or later."
 msgstr ""
 
-#: includes/functions.php:347
+#: includes/functions.php:346
 msgid "Categories"
 msgstr ""
 
-#: includes/functions.php:349
+#: includes/functions.php:348
 msgid "Listings"
 msgstr ""
 
-#: includes/functions.php:359
+#: includes/functions.php:358
 msgid "Search history"
 msgstr ""
 
-#: includes/functions.php:360
+#: includes/functions.php:359
 msgid "Remove from history"
 msgstr ""
 
-#: includes/functions.php:438
+#: includes/functions.php:455
 #, php-format
 msgid "Business hours merged for %d post."
 msgid_plural "Business hours merged for %d posts."
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/functions.php:440
+#: includes/functions.php:457
 msgid "No post to merge business hours."
 msgstr ""
 
-#: includes/functions.php:450
+#: includes/functions.php:467
 #, php-format
 msgid "Business hours adjusted for %d item with daylight saving time."
 msgid_plural "Business hours adjusted for %d items with daylight saving time."
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/functions.php:452
+#: includes/functions.php:469
 msgid "No item to adjust business hours with daylight saving time."
 msgstr ""
 

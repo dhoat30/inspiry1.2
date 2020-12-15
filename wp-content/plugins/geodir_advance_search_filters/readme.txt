@@ -3,9 +3,9 @@ Contributors: stiofansisland, paoltaia, ayecode
 Donate link: https://wpgeodirectory.com
 Tags: advance search, geodirectory, geodirectory search, search
 Requires at least: 4.9
-Tested up to: 5.5
+Tested up to: 5.6
 Requires PHP: 5.6
-Stable tag: 2.1.0.1
+Stable tag: 2.1.0.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -34,6 +34,16 @@ While the "Near" field will query locations and return results sorted by distanc
 2. Activate the plugin "GeoDirectory Advance Search Filters" through the 'Plugins' menu in WordPress
 
 == Changelog ==
+
+= 2.1.0.3 =
+* Mobile scroll over advance search category trigger click event - FIXED
+* Search field LINK list shows incorrect url - FIXED
+
+= 2.1.0.2 =
+* .hide class in advance search more option create conflict - FIXED
+* Search suggestions for AUI styles changed to bootstrap dropdown for better overflow ability - CHANGED
+* Checkboxes are not left aligned in Supreme with bootstrap style - FIXED
+* Advanced search categories should show multiple levels of sub cats - FIXED
 
 = 2.1.0.1 =
 * Change Jquery doc ready to pure JS doc ready so jQuery can be loaded without render blocking  - CHANGED
