@@ -68,6 +68,7 @@
     margin: 0;
     color:#3F3F3F;
     font-family: 'Playfair Display', serif;
+    
   }
 
 	.underline-bg{ 
@@ -144,13 +145,14 @@
     .lg-font-sz{ 
         font-size: 60px;
         margin-top: 40px;
+        text-transform: capitalize !important;
     }
     .section-ft-size{ 
         font-size: 35px !important;
         text-transform: uppercase;
         font-weight: 500;
-        letter-spacing: 1px;
-       
+        letter-spacing: 0.02em;
+        text-transform: capitalize !important;
     }
     .font-s-regular{ 
         font-size: 15px;
@@ -158,7 +160,7 @@
     }
     .font-s-med{ 
         font-size: 18px;
-        letter-spacing: 1px;
+        letter-spacing: 0 !important;
         margin: 0 !important;
     }
     .column-s-font{ 
@@ -276,7 +278,7 @@
     .rm-txt-dec{ 
         text-decoration: none;
         color: #303030;
-        
+        text-transform: capitalize !important;
     }
     .rm-txt-dec:link{ 
         text-decoration: none;
@@ -300,7 +302,7 @@
         text-decoration: none;
         font-family: 'Playfair Display', serif !important;
         font-size: 14px;
-        letter-spacing: 1px;
+        letter-spacing: 0.02em;
         padding-bottom: 10px;
     }
     
@@ -335,7 +337,7 @@
     margin: 10px 0;
     padding: 10px;
     font-size: 16px;
-    letter-spacing: 1px;
+    letter-spacing: 0.02em;
 }
 .success-bg{ 
     background: #D7FAD0; 
@@ -412,3 +414,5 @@
   }
 
 
+/*tool tip */ 
+  

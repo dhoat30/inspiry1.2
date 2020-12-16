@@ -34,10 +34,15 @@ get_header();
                             $postID = get_the_ID();
                             $value = geodir_get_post_meta($postID,'gd_place',true);
                             ?> 
-                            <a href='<?php echo get_the_permalink($value);?>'> <?php 
+                            <a class="prof-title rm-txt-dec work-sans-fonts regular font-s-med" href='<?php echo get_the_permalink($value);?>'> <?php 
                             
-                            echo get_the_title($value);
+                                 echo get_the_title($value);
                             ?>
+                                <div class="tooltip-container">
+                                    <p class='tooltip'>
+                                        Please click this
+                                    </p>
+                                </div>
                             </a>
                        </h2>
                         <div class="trade-info-section">

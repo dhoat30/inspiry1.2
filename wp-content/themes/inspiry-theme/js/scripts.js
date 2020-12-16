@@ -16,6 +16,8 @@ import LocationPage from './modules/LocationPage';
 import TopNav from './modules/TopNav';
 import GeoTradeSearch from './modules/GeoTradeSearch';
 import ShopFav from './modules/ShopFav'; 
+import ToolTip from './modules/ToolTip'; 
+
 window.onload = function() {
 
     const shopFav = new ShopFav(); 
@@ -30,6 +32,9 @@ window.onload = function() {
 let designBoardAjax = new DesignBoardAjax(); 
 
 const tradeNav = new TradeNav();
+
+//Tool tip 
+const toolTip = new ToolTip(); 
 
 //price 
 let pricevalue = document.getElementsByClassName('bc-show-current-price'); 
