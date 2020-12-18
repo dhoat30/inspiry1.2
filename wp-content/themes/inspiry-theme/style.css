@@ -160,11 +160,14 @@
     }
     .font-s-med{ 
         font-size: 18px;
-        letter-spacing: 0 !important;
+        letter-spacing: 0.03em !important;
         margin: 0 !important;
+        line-height: 1.5em;
+        font-weight: 300;
     }
     .column-s-font{ 
         font-size: 25px; 
+       
     }
     @media (max-width: 830px){ 
         .lg-font-sz{ 
@@ -195,8 +198,8 @@
 	.playfair-fonts {
 		font-family: 'Playfair Display', serif;
 	}
-	.work-sans-fonts{ 
-		font-family: 'Work Sans', sans-serif !important;
+	.roboto-font{ 
+		 font-family: 'Roboto', sans-serif !important;
     }
     
     .text-decoration-none{ 
@@ -278,7 +281,6 @@
     .rm-txt-dec{ 
         text-decoration: none;
         color: #303030;
-        text-transform: capitalize !important;
     }
     .rm-txt-dec:link{ 
         text-decoration: none;
@@ -293,7 +295,7 @@
     #breadcrumbs{ 
         color: #666666;
         text-decoration: none;
-        font-family: 'Work Sans', sans-serif !important;
+         font-family: 'Roboto', sans-serif !important;
         font-size: 14px;
         padding-bottom: 10px;
     }

@@ -24,7 +24,7 @@
     margin: 20px 0;
 }
 .trade-profile-img{ 
-    width:20%;
+    width:25%;
     position: relative;
     bottom: 100px;
 }
@@ -32,7 +32,7 @@
     width: 50%; 
 }
 .header-contact{ 
-    width: 20%;
+    width: 25%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -56,50 +56,6 @@
     margin-right: 5px;
 }
 
-
-@media only screen and (max-width: 900px) {
-    .trade-header-section{ 
-        justify-content: center;
-        height: auto;
-         
-    }
-  
-  
-  
-    .header-middle-column{ 
-        width: 100%; 
-        margin-top: -50px; 
-    }
-    .header-contact{ 
-        width: 100%;
-    }
-    .header-contact-btn button{ 
-        position: fixed;
-        bottom: 0;
-        right: 20px;
-        z-index:100;
-    }
-    
-  }
-  
-
-  @media only screen and (max-width: 570px) {
-   
-  }
-  @media only screen and (max-width: 400px) {
-   
-    .trade-profile-img{ 
-        bottom: 0;
-        width: 100%;
-        margin-top: 30px;
-    }
-    
-  }
-
-
-
-
-
 .header-contact-btn button{ 
     background: #303030 !important;
     border-bottom: none !important;
@@ -121,31 +77,40 @@ transition-timing-function: ease-in-out;
    
 }
 
+@media(max-width:1135px){
+    .trade-header-section{ 
+        bottom: 100px;
+        position: relative;
+    }
+    
+    .header-contact-btn button{ 
+       position: fixed !important;
+       bottom: 60px;
+       right: 20px;
+    }
+    .trade-profile-img{ 
+        width:100%;
+        bottom: 0px;
+    }
+    .trade-profile-img img{ 
+        display: block;
+        margin: 0 auto;
+    }
+    .header-middle-column{ 
+        width: 80%; 
+        margin-top: 20px;
+    }
+    .header-contact{ 
+        width: 20%;
+        margin-top: 20px;
+    }
+}
+
 
 /*trade  main row*/ 
 .trade-middle-column{ 
-    margin: 50px auto 0 auto;
+    margin: 30px auto 0 auto;
     width:50%;
-   
-}
-@media (max-width: 1260px){ 
-    .trade-middle-column{ 
-        margin: 50px auto 0 auto;
-    }
-  
-}
-@media (max-width: 833px){ 
-    .trade-middle-column{ 
-        margin: 0  auto 0 auto;
-    }
-  
-}
-@media (max-width:400px){ 
-    .header-middle-column{ 
-        margin: 50px auto 0 auto;
-        width:100%;
-       
-    }
 }
 
 .trade-nav-container .nav{ 
@@ -195,48 +160,80 @@ color: white;
 transition-duration: 0.5s;
 transition-timing-function: ease-in-out; 
 }
-@media only screen and (max-width: 910px) {
-    .trade-main-row{ 
-        padding-top: 30px;
-    }
+
+@media(max-width:1135px){
     .trade-middle-column{ 
-        width: 100%;
+        margin: 30px auto 0 auto;
+        width:100%;
     }
-    .trade-nav-container .nav{ 
-        margin: 20px 0 20px 0;
-    }
+ 
 }
 
 /*contact tab*/ 
-.geodir_post_meta i{ 
-    border-radius: 0 !important;
-}
-.trade-contact-nav-content table tr td>div{
+
+.trade-contact-nav-content table tr td{
     color: #303030; 
-    margin: 0 0 10px 10px ;
-    font-family: 'work sans', sans-serif !important;
-    font-weight: 500 !important;
-}
-.trade-contact-nav-content table tr td a{
-    color: #303030; 
-    font-family: 'work sans', sans-serif;
-    font-weight: 500;  
-}
-.trade-contact-nav-content table tr{ 
-    font-size: 18px;
-    color: #303030; 
-}
-.trade-contact-nav-content .social-media-icons i{
-    margin: 10px 5px 10px 0;
-    font-size: 30px;
+    padding: 0 10px 10px 0 !important;
+    font-family: 'Roboto', sans-serif !important; 
 }
 
+.trade-contact-nav-content i{
+    font-size: 25px;
+}
+.trade-contact-nav-content i:hover{
+    color: black;
+}
 
 /*hide save pin in project area */ 
 .trade-project-nav-content .geodir-list-save-container{ 
     display: none;
+   
+}
+.trade-project-nav-content .trade-directory{
+    width: 100% !important;
+    justify-content: flex-start;
+    padding: 0 0 100px 0;
+}
+.trade-project-nav-content .main-cards{
+    width: 250px !important;
+    height: 300px !important;
+    margin: 20px 20px 20px 0;
+}
+.trade-project-nav-content .main-cards img{
+    width: 250px !important;
+    height: 300px !important;
+}
+.trade-project-nav-content .main-cards .flex  {
+    margin: 0;
+  
+}
+.trade-project-nav-content .main-cards .flex .card {
+    width: 250px !important;
+    margin: 0;
+    transition: 800ms;
+    transition-timing-function: ease-in-out;
+    position: relative;
+}
+.trade-project-nav-content .main-cards .flex .logo {
+    background: white !important;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: static;
+}
+.trade-project-nav-content .main-cards .flex .title {
+    padding-top: 10px;
 }
 
+
+@media (max-width: 570px){
+    .trade-project-nav-content .main-cards{
+        width: 250px !important;
+        height: 300px !important;
+        margin: 20px 20px 70px 0;
+    }
+}
 /*contact from*/ 
 .nf-form-content button, .nf-form-content input[type=button], .nf-form-content input[type=submit] {
     background: #333;

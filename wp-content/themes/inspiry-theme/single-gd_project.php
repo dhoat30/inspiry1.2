@@ -36,7 +36,7 @@ get_header();
                             $postID = get_the_ID();
                             $value = geodir_get_post_meta($postID,'gd_place',true);
                             ?> 
-                            <a class="prof-title rm-txt-dec work-sans-fonts regular font-s-med" href='<?php echo get_the_permalink($value);?>'> <?php 
+                            <a class="prof-title rm-txt-dec roboto-font regular font-s-med" href='<?php echo get_the_permalink($value);?>'> <?php 
                             
                                  echo get_the_title($value);
                             ?>
@@ -102,11 +102,11 @@ get_header();
                         </div>
                         <!--
                         <div class="header-contact-details">
-                                <a class="work-sans-fonts font-s-med rm-txt-dec " href="tel:<? //php echo do_shortcode( '[gd_post_meta key="phone" show="value-raw" no_wrap="1"]');?>">
+                                <a class="roboto-font font-s-med rm-txt-dec " href="tel:<? //php echo do_shortcode( '[gd_post_meta key="phone" show="value-raw" no_wrap="1"]');?>">
                                     <i class="fas fa-phone-alt"></i>
                                     <?php //echo do_shortcode( '[gd_post_meta key="phone" show="value-raw" no_wrap="1"]');?>
                                 </a>
-                                <a class="work-sans-fonts font-s-med rm-txt-dec " href=" <? //php echo do_shortcode( '[gd_post_meta key="website" show="value-raw" no_wrap="1"]');?>" target="_blank">
+                                <a class="roboto-font font-s-med rm-txt-dec " href=" <? //php echo do_shortcode( '[gd_post_meta key="website" show="value-raw" no_wrap="1"]');?>" target="_blank">
                                     <i class="fas fa-globe"></i>
                                     Website
                                 </a>
@@ -121,7 +121,7 @@ get_header();
             
         
             <div class="row-container project-main-row">
-                <div class="project-content work-sans-fonts grey font-s-regular thin">
+                <div class="project-content roboto-font grey font-s-regular thin">
                     <?php 
                         echo do_shortcode( '[gd_post_meta key="post_content" show="value-raw" no_wrap="1"]');
                     ?>

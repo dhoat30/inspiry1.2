@@ -1,17 +1,6 @@
-.trade-directory .main-cards .flex .card .logo .geodir-image-container ul.geodir-images li {
-        box-sizing: border-box;
-        position: static !important; 
-        width: 100%;
-        display: inline-block;
-        text-align: center;
-        overflow: hidden;
-        padding: 0 !important;
-        margin: 0;
-        border-radius: 4px;
-        min-width: 110px;
-    
-}
+
 .trade-directory .main-cards .flex .project .logo img{ 
-    width: 100%;
-    height: 100%;
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
 }

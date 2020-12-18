@@ -7,7 +7,7 @@
                  
                  <?php echo do_shortcode('[ivory-search id="7686" title="Default Search Form"]');?>
 
-                <div class="work-sans-fonts font-s-medium">Category</div>
+                <div class="roboto-font font-s-medium">Category</div>
                 <?php echo do_shortcode('[facetwp facet="blogs"]');?>
                 <button onclick="FWP.reset()" class="facet-reset-btn">Reset</button>
         </div>
@@ -48,7 +48,7 @@
                     <div>
                             <img src="<?php echo get_the_post_thumbnail_url(null,"full"); ?>" alt="Khroma">                      
                             <div class="font-s-med center-align text-padding"><?php the_title(); ?></div>
-                            <div class="font-s-regular work-sans-fonts center-align text-padding"><?php 
+                            <div class="font-s-regular roboto-font center-align text-padding"><?php 
                              echo wp_trim_words(get_the_content(), 15) ;?> </div>
                              <a class="button btn-dk-green rm-txt-dec" href="<?php the_permalink();?>">READ THE POST</a>
                     </div>

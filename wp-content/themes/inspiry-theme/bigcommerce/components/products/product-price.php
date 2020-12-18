@@ -41,7 +41,7 @@ use BigCommerce\Post_Types\Product\Product;
 	$price = intval($value);
 		
 ?> 
-					<span class="lay-buy work-sans-fonts">or 6 weekly interest-free payments from sale<?php 
+					<span class="lay-buy roboto-font">or 6 weekly interest-free payments from sale<?php 
 					 echo  number_format ( $price/6, 2 ); 
 						 
 					 ?></span> 
@@ -66,7 +66,7 @@ use BigCommerce\Post_Types\Product\Product;
 	$price = intval($value);
 		
 ?> 
-					<span class="lay-buy work-sans-fonts">or 6 weekly interest-free payments from <?php 
+					<span class="lay-buy roboto-font">or 6 weekly interest-free payments from <?php 
 					 echo  number_format ( $price/6, 2 ); 
 						 
 					 ?></span> 
@@ -78,7 +78,7 @@ use BigCommerce\Post_Types\Product\Product;
 </p>
 
 <!-- data-pricing-api-product-id & data-js="bc-api-product-pricing" is required. -->
-<p class="bc-product__pricing--api work-sans-fonts" data-js="bc-api-product-pricing" data-pricing-api-product-id="<?php echo esc_attr( $product->bc_id() ); ?>">
+<p class="bc-product__pricing--api roboto-font" data-js="bc-api-product-pricing" data-pricing-api-product-id="<?php echo esc_attr( $product->bc_id() ); ?>">
 	<!-- class="bc-product__retail-price" is required --><!-- class="bc-product__retail-price-value" is required -->
 	<span class="bc-product__retail-price"><?php esc_html_e( 'MSRP:', 'bigcommerce' ); ?> <span class="bc-product__retail-price-value"></span></span>
 	<!-- class="bc-product-price bc-product__price--base" is required -->
@@ -124,7 +124,7 @@ use BigCommerce\Post_Types\Product\Product;
 
    
 	<h2 class="g-heading2 playfair-fonts">Receive your purchase now, spread the total cost over 6 weekly automatic payments. Interest free!</h2>
-	<ul class="laybuySteps work-sans-fonts">
+	<ul class="laybuySteps roboto-font">
 		<li>
 			<img src="<?php echo get_site_url(); ?>/wp-content/uploads/2020/09/laybuy-cart.png" alt="">
 			<div class="desc">

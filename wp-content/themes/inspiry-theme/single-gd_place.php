@@ -36,17 +36,11 @@ get_header();
                 </div>
             
                 <div class="header-address regular">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <?php echo do_shortcode('[gd_post_address show="value" address_template="%%city%%"]'); ?>
-
-                    
-                         
-
-
-                            
+                    <i class="fal fa-map-marker-alt"></i>
+                    <?php echo do_shortcode('[gd_post_address show="value" address_template="%%city%%"]'); ?>         
                 </div>
 
-                <div>  <p class="share-section work-sans-fonts regular-text">Share: <?php echo do_shortcode( '[Sassy_Social_Share]' );?></p>
+                <div>  <p class="share-section roboto-font regular-text">Share: <?php echo do_shortcode( '[Sassy_Social_Share]' );?></p>
                 </div>
             </div>  
                 
@@ -84,11 +78,11 @@ get_header();
                 </div>
                 <!--
                 <div class="header-contact-details">
-                        <a class="work-sans-fonts font-s-med rm-txt-dec " href="tel:<? //php echo do_shortcode( '[gd_post_meta key="phone" show="value-raw" no_wrap="1"]');?>">
+                        <a class="roboto-font font-s-med rm-txt-dec " href="tel:<? //php echo do_shortcode( '[gd_post_meta key="phone" show="value-raw" no_wrap="1"]');?>">
                             <i class="fas fa-phone-alt"></i>
                             <?php //echo do_shortcode( '[gd_post_meta key="phone" show="value-raw" no_wrap="1"]');?>
                         </a>
-                        <a class="work-sans-fonts font-s-med rm-txt-dec " href=" <? //php echo do_shortcode( '[gd_post_meta key="website" show="value-raw" no_wrap="1"]');?>" target="_blank">
+                        <a class="roboto-font font-s-med rm-txt-dec " href=" <? //php echo do_shortcode( '[gd_post_meta key="website" show="value-raw" no_wrap="1"]');?>" target="_blank">
                             <i class="fas fa-globe"></i>
                             Website
                         </a>
@@ -104,6 +98,7 @@ get_header();
     
     <div class="row-container trade-main-row">
         <div class="trade-middle-column">
+            
             <div class="trade-nav-container" id="trade-nav-container">
                 <ul class="nav">
                     <li class="trade-nav-link active-nav">Profile</li>
@@ -112,29 +107,41 @@ get_header();
                     <li class="trade-nav-link">Gallery</li>
                 </ul>
 
-                <div class="trade-about-nav-content work-sans-fonts font-s-regular">
+                <div class="trade-about-nav-content roboto-font font-s-med">
                     <?php 
-                    echo do_shortcode( '[gd_post_meta key="post_content" show="value-raw" no_wrap="1"]');
+                    echo get_the_content();
                     ?>
                 </div>
 
                 <div class="trade-contact-nav-content">
-                    <table class="work-sans-fonts">
+                    <table class="roboto-font">
                         <tr>
-                            <td><i class="fas fa-phone-alt"></i></td>
-                            <td><?php echo do_shortcode('[gd_post_meta key="phone" show="value" no_wrap="1"]');?></td>
+                            <td><i class="fal fa-phone-alt"></i></td>
+                            <td class="font-s-med">
+                                <a class="rm-txt-dec thin roboto-font" href="tel:<?php echo geodir_get_post_meta($postID, 'phone', true);?>">
+                                    <?php echo geodir_get_post_meta($postID, 'phone', true);?>
+                                </a>
+                            </td>
                         </tr>
                         <tr>
-                            <td><i class="fas fa-envelope"></i></td>
-                            <td><?php echo do_shortcode('[gd_post_meta key="email" show="value" no_wrap="1"]');?></td>
+                            <td><i class="fal fa-envelope"></i></td>
+                            <td class="font-s-med">
+                                <a class="rm-txt-dec thin roboto-font" href="mailto:<?php echo geodir_get_post_meta($postID, 'email', true);?>">
+                                    <?php echo geodir_get_post_meta($postID, 'email', true);?>
+                                </a>
+                            </td>
                         </tr>
                         <tr>
-                            <td><i class="fas fa-globe"></i></td>
-                            <td><?php echo do_shortcode('[gd_post_meta key="website" show="value-raw" no_wrap="1]');?></td>
+                            <td><i class="fal fa-globe"></i></td>
+                            <td class="font-s-med">
+                                <a class="rm-txt-dec thin roboto-font" href="<?php echo geodir_get_post_meta($postID, 'website', true);?>"><?php echo geodir_get_post_meta($postID, 'website', true);?>
+                                </a>
+                            </td>
                         </tr>
                         <tr>
-                            <td><i class="fas fa-map-marker-alt"></i></td>
-                            <td><?php echo do_shortcode('[gd_post_meta key="address" show="value-raw" no_wrap="1]');?></td>
+                            <td><i class="fal fa-map-marker-alt"></i></td>
+                            <td class="font-s-med thin roboto-font"><?php echo geodir_get_post_meta($postID, 'address', true);
+                            echo geodir_get_post_meta($postID, 'regions_covered', true);?></td>
                         </tr>
                            
                     </table>
@@ -154,9 +161,68 @@ get_header();
                 </div>
 
                 <div class="trade-project-nav-content">
+
+
+                    <section class="trade-directory row-container">
                     <?php 
-                        echo do_shortcode( '[gd_linked_posts title="" link_type="from" post_type="gd_project" sort_by="az" title_tag="h3" layout="3" post_limit="50"]');
+                        $projectID = geodir_get_post_meta($postID, 'gd_project', true);
+                        //$projectIDArr = split(',', $projectID); 
+      
+                        $projectIDArr = explode(',', $projectID);
+
+                        foreach ($projectIDArr as $value) {
+                            if($value){
+                                ?>
+
+           
+                            
+                
+                
+                                            <div class="main-cards">
+                                                <!-- <div class="section-ft-size">Project Gallery </div>-->
+                                                <div class="flex">
+
+                    
+                    
+                                                    <div class="card project">
+                                                            <a href="<?php the_permalink(); ?>">
+                                                            <div class="logo">
+
+                                                                    <img src="<?php echo  get_the_post_thumbnail_url( $value, 'small'); ?>" alt="<?php the_title();?>">
+                                                                </div>
+                                                            </a>
+                                                
+
+                                                            <div class="design-board-save-btn-container" data-tracking-data='{"post_id":"<?php echo $value?>","name":"<?php echo get_the_title($value); ?>"}' <?php echo $link_attributes; ?>>
+                                                                        <i data-exists='<?php echo $existStatus?>' class="fal fa-plus open-board-container" ></i>
+                                                            </div>
+
+                                                            <a class='rm-txt-dec' href="<?php echo get_the_permalink( $value ); ?>">
+
+                                                                <div class="title regular font-s-med"><?php echo get_the_title( $value );?></div>
+                                                            </a>
+                                                            <a href="<?php echo get_the_permalink($postID); ?>" class='rm-txt-dec font-s-regular thin roboto-font'>
+                                                              <?php echo get_the_title($postID); ?>
+                                                          </a>
+
+                                                    </div>
+                        
+                    
+                                                </div>
+                                            </div>
+                        
+                                <?php
+                            }
+                            else{
+                                
+                                echo do_shortcode( '[gd_linked_posts title="" link_type="from" post_type="gd_project" sort_by="az" title_tag="h3" layout="3" post_limit="50"]');
+
+                            }
+                            
+                        }              
                     ?>
+                    </section>
+                    
                 </div>
 
                 <div class="trade-gallery-nav-content">

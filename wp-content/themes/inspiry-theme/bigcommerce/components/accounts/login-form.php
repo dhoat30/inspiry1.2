@@ -29,7 +29,7 @@
 			<div class="bc-account-login__register">
 				<div class="bc-account-login__register-inner">
 					<h3 class="bc-account-login__register-title"><?php esc_html_e( 'New Customer', 'bigcommerce' ); ?></h3>
-					<p class="bc-account-login__register-description work-sans-fonts"><?php esc_html_e( "Create an account with us and you'll be able to:", 'bigcommerce' ); ?></p>
+					<p class="bc-account-login__register-description roboto-font"><?php esc_html_e( "Create an account with us and you'll be able to:", 'bigcommerce' ); ?></p>
 					<ul class="bc-account-login__register-list">
 						<li><?php esc_html_e( 'Check out faster', 'bigcommerce' ); ?></li>
 						<li><?php esc_html_e( 'Save multiple shipping addresses', 'bigcommerce' ); ?></li>

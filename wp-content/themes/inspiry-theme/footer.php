@@ -3,7 +3,7 @@
     <div class="section-ft-size">
         Sign up For Inspiry Emails. 
     </div>
-    <div class="work-sans-fonts font-s-regular">
+    <div class="roboto-font font-s-regular">
       Plus hear about the latest and greatest from our family of brands!   
     </div>
   </div>
@@ -139,7 +139,7 @@
                                 <div class="project-save-form-section">
    
                                 <div class="project-save-form-container"> 
-                                    <div class="work-sans-fonts regular form-title font-s-med">Create Board</div>
+                                    <div class="roboto-font regular form-title font-s-med">Create Board</div>
                                     <div class="form-underline"></div>
                                     <div class="form">
                                         <form id="new-board-form">

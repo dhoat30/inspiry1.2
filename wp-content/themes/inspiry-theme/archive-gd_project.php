@@ -24,28 +24,25 @@ get_header();
 
             while($trade->have_posts()){ 
                 $trade->the_post(); 
+                $postID = get_the_ID();
           ?> 
           
               <div class="card project">
                     <a href="<?php the_permalink(); ?>">
                       <div class="logo">
-                              
-                              <?php
-                                  echo do_shortcode('[gd_post_images types="post_images" ajax_load="1" type="image" slideshow="1" controlnav="1" animation="slide" show_title="1"]');
-                              ?>
-                          
-                              <img src="<?php echo  $variable2?>" alt="<?php the_title();?>">
+
+                              <img src="<?php echo  get_the_post_thumbnail_url( $postID, 'small'); ?>" alt="<?php the_title();?>">
                         </div>
                       </a>
                       <div class="link">
                         <?php 
                           //remove http://
-                          $urlStr = do_shortcode('[gd_post_meta key="website" show="value-strip" no_wrap="1" alignment="left"]');
+                          $urlStr = geodir_get_post_meta($postID, 'website', true);
                           
                         ?>
-                        <a class="rm-txt-dec website-link" target="_blank" href="<?php echo do_shortcode('[gd_post_meta key="website" show="value-strip" no_wrap="1" alignment="left"]')?>">
+                        <a class="rm-txt-dec website-link" target="_blank" href="<?php echo $urlStr;?>">
                         <i class="fal fa-external-link-alt"></i>
-                          <?php  echo substr_replace($urlStr,"", 0, 7);?> 
+                          <?php  echo $urlStr;?> 
                         </a>
                         
 
@@ -58,6 +55,14 @@ get_header();
                       <a class='rm-txt-dec' href="<?php the_permalink(); ?>">
 
                          <div class="title regular font-s-med"><?php the_title();?></div>
+                      </a>
+
+                      <?php 
+                      //find the post id of trade proffessional 
+                      $placeID = geodir_get_post_meta($postID, 'gd_place', true); 
+                      ?>
+                      <a href="<?php echo get_the_permalink($placeID); ?>" class='rm-txt-dec font-s-regular thin roboto-font'>
+                          <?php echo get_the_title($placeID); ?>
                       </a>
 
               </div>

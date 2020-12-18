@@ -89,7 +89,7 @@
 }
 /*register area*/ 
 .bc-account-login__register-list li { 
-    font-family: 'work sans', sans-serif !important;
+     font-family: 'Roboto', sans-serif !important;
 }
 /*order history*/ 
 .bc-order__link a{ 

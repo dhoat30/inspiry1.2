@@ -12,8 +12,8 @@ get_header(); ?>
 
 			<div class="page-wrapper">
 				<div class="page-content">
-					<h2 class="work-sans-fonts center-align font-s-medium regular"><?php _e( 'This is somewhat embarrassing, isn’t it?', 'twentythirteen' ); ?></h2>
-					<p class="work-sans-fonts center-align font-s-regular regular"><?php _e( 'It looks like nothing was found at this location. Maybe try a search?', 'twentythirteen' ); ?></p>
+					<h2 class="roboto-font center-align font-s-medium regular"><?php _e( 'This is somewhat embarrassing, isn’t it?', 'twentythirteen' ); ?></h2>
+					<p class="roboto-font center-align font-s-regular regular"><?php _e( 'It looks like nothing was found at this location. Maybe try a search?', 'twentythirteen' ); ?></p>
 
 					<?php get_search_form(); ?>
 				</div><!-- .page-content -->

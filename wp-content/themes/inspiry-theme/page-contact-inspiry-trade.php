@@ -46,25 +46,25 @@ get_header();
     <section class="trade-usp">
         <div>
             <i class="fas fa-user-hard-hat"></i>
-            <div class="work-sans-fonts font-s-med center-align">
+            <div class="roboto-font font-s-med center-align">
                 Inspiry Trade connects you with your target audience
             </div>
         </div>
         <div>
         <i class="fas fa-clipboard-list-check"></i>
-                    <div class="work-sans-fonts font-s-med center-align">
+                    <div class="roboto-font font-s-med center-align">
                 Be listed on our Trade directory promoting your business and service
             </div>
         </div>
         <div>
             <i class="fab fa-google"></i>
-                    <div class="work-sans-fonts font-s-med center-align">
+                    <div class="roboto-font font-s-med center-align">
                 Quality traffic from Google to your projects and listing
             </div>
         </div>
         <div>
             <i class="fas fa-chart-network"></i>            
-            <div class="work-sans-fonts font-s-med center-align">
+            <div class="roboto-font font-s-med center-align">
                 Become part of our collaborative hub connecting you with our viewers
             </div>
         </div>
@@ -75,7 +75,7 @@ get_header();
         <div class="testimonials">
             <div>
                     <i class="fas fa-quote-left"></i>
-                        <div class="work-sans-fonts font-s-regular">
+                        <div class="roboto-font font-s-regular">
                         The Inspiry Trades Directory is the ideal place for Trades Professionals to come together to grow their business and share inspirational ideas. It's the perfect platform for those wanting to expand their business opportunities and reach potential new clients and customers. The Trades Directory allows registered users to promote their work and different projects that can be explored by other trades people as well as the general public.            
             
                     <br><br>
@@ -87,7 +87,7 @@ get_header();
             <div>
         
             <i class="fas fa-quote-left"></i>
-                        <div class="work-sans-fonts font-s-regular">
+                        <div class="roboto-font font-s-regular">
                         The Inspiry Trades Directory is your doorway to opening up a world of opportunities for your business. With the ability to save and share your favorite projects and ideas with family and friends over social media, users of the Trades Directory will be able reap the benefits of this exposure which can promote the growth of their business and expand their client base. 
                 <br><br>
                 Trades Professionals will have the ability to showcase their work and services, their way, on a comprehensive and easy to use platform shared by other like minded professionals. 
@@ -96,7 +96,7 @@ get_header();
             </div>
             <div>
             <i class="fas fa-quote-left"></i>
-                <div class="work-sans-fonts font-s-regular">
+                <div class="roboto-font font-s-regular">
                 Promote your services, projects, and latest products to a virtual community of Trades Professionals and My Inspiry users. The Trades Directory allows users to browse through a variety of work from a large spectrum of professionals and is open to home builders, architects,  interior and kitchen designers, kitchen and cabinet makers, renovators, landscape contractors & gardeners, electricians, and plumbers.
                 <br><br>   
                 Expose your services and innovative concepts to a world of loyal customers and clients who are looking for top tier professionals and inspiring ideas to fulfil their design dreams. 

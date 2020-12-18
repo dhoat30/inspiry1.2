@@ -36,12 +36,12 @@ get_header();
         <div class="content">
             <div class="first">
                 <div class="font-s-med bold"><span style="color: #891e32;" class="playfair-fonts">Inspiry:</span> A hub for all things interior design...</div>
-                <div class="font-s-regular work-sans-fonts">We are passionate about interior design and helping people with their design projects, so we've created a hub where you can shop for some of the best home furnishing products available locally and internationally; a hub where we share oodles of inspiration, tips and design ideas that you can save to your own personal design account;  a hub to link you directly with local Trade Professionals to view their profile and projects history and make contact. </div>
+                <div class="font-s-regular roboto-font">We are passionate about interior design and helping people with their design projects, so we've created a hub where you can shop for some of the best home furnishing products available locally and internationally; a hub where we share oodles of inspiration, tips and design ideas that you can save to your own personal design account;  a hub to link you directly with local Trade Professionals to view their profile and projects history and make contact. </div>
             </div>
 
             <div class="second">
                 <div class="font-s-med bold">We have made it easy for you to <span style="color: #891e32;" class="playfair-fonts">connect....</span></div>
-                <div class="font-s-regular work-sans-fonts">With Trade Professionals and Interior Designers for all your building, renovation or decorating project requirements.  Then with a click you can shop our online store for our hand picked and extensive range of interior decor products including soft furnishing fabrics for upholstery and drapery, wallpaper, furniture, lighting, designer rugs and homewares. Finally, connect with us to get expert advice when you need it on hand with our live chat.</div>
+                <div class="font-s-regular roboto-font">With Trade Professionals and Interior Designers for all your building, renovation or decorating project requirements.  Then with a click you can shop our online store for our hand picked and extensive range of interior decor products including soft furnishing fabrics for upholstery and drapery, wallpaper, furniture, lighting, designer rugs and homewares. Finally, connect with us to get expert advice when you need it on hand with our live chat.</div>
             </div>
            
         </div>
@@ -59,12 +59,12 @@ get_header();
         <div class="content">
             <div class="first">
                 <div class="font-s-med bold">Our <span style="color: #e9831f;" class="playfair-fonts">Brands </span>include...</div>
-                <div class="font-s-regular work-sans-fonts">Arte, Andrew Martin, Bill Beaumont, Cole and Son, Christian Lacroix, Designers Guild, French Country, Hooked on Walls, Inspiry Home, Loloi and Mind the Gap. You can order sample-cuttings of fabrics and wallpapers to enable you to see, touch and feel the products. Use our wallpaper and fabric calculator to estimate how much you need. Also our experienced team are ready to help you with your queries and purchases via live chat. We believe that Inspiry has something for everyone.</div>
+                <div class="font-s-regular roboto-font">Arte, Andrew Martin, Bill Beaumont, Cole and Son, Christian Lacroix, Designers Guild, French Country, Hooked on Walls, Inspiry Home, Loloi and Mind the Gap. You can order sample-cuttings of fabrics and wallpapers to enable you to see, touch and feel the products. Use our wallpaper and fabric calculator to estimate how much you need. Also our experienced team are ready to help you with your queries and purchases via live chat. We believe that Inspiry has something for everyone.</div>
             </div>
 
             <div class="second">
                 <div class="font-s-med bold">We'll keep you <span style="color: #e9831f;" class="playfair-fonts">informed with the latest..</span></div>
-                <div class="font-s-regular work-sans-fonts">Product releases and trends; sales and clearances; tips and design ideas; new services as they are added and oodles of inspiring images for you to live an inspired life!  We love options so either visit our Blog, sign up to our Newsletter or we have a free e-book about Discovering Your Inner Designer - sign up you'll receive 10% off your first purchase! We've got you covered!</div>
+                <div class="font-s-regular roboto-font">Product releases and trends; sales and clearances; tips and design ideas; new services as they are added and oodles of inspiring images for you to live an inspired life!  We love options so either visit our Blog, sign up to our Newsletter or we have a free e-book about Discovering Your Inner Designer - sign up you'll receive 10% off your first purchase! We've got you covered!</div>
             </div>
            
         </div>

@@ -69,7 +69,7 @@ body ul.geodir-category-list-view>li:nth-child(2n+0) {
 .geodir-field-business_hours>span {
     color: #303030;
     font-size: 15px; 
-    font-family: 'Work Sans', sans-serif !important;
+     font-family: 'Roboto', sans-serif !important;
 
 }
 
@@ -79,7 +79,7 @@ body ul.geodir-category-list-view>li:nth-child(2n+0) {
 
 .geodir-field-address>span{ 
     font-size: 15px !important;
-    font-family: 'Work Sans', sans-serif !important;
+     font-family: 'Roboto', sans-serif !important;
     letter-spacing: 1px;
 }
 .gd-read-more{ 

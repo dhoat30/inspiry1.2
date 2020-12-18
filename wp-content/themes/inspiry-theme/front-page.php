@@ -37,7 +37,7 @@ get_header();
                                         center top/cover;'>
                                                 <div class="content">
                                                     <h1 class="lg-font-sz center-align regular"><?php the_title();?></h1>
-                                                    <h3 class="work-sans-fonts center-align white section-ft-size regular">
+                                                    <h3 class="roboto-font center-align white section-ft-size regular">
                                                         <?php echo get_field('add_subtitle_');?>
                                                     </h3>
                                                     <a class="rm-txt-dec" href="<?php echo get_field('add_link');?>"><?php echo get_field('add_link_title');?>  <i class="fal fa-arrow-right"></i></a>
@@ -68,7 +68,7 @@ get_header();
          <div>
             <i class="fal fa-truck"></i>
             <div>
-                <span class="work-sans-fonts font-s-med ft-wt-med">Free Shipping NZ Wide</span> <br>
+                <span class="roboto-font font-s-med ft-wt-med">Free Shipping NZ Wide</span> <br>
                 <span>on all wallpaper and fabric</span>
             </div>
             
@@ -76,14 +76,14 @@ get_header();
          <div>
          <i class="fal fa-tag"></i>
                 <div>
-                <span class="work-sans-fonts font-s-med ft-wt-med">Beautiful Designer Brands</span> <br>
-                <span class="work-sans-fonts font-s-regular">furniture, homeware & rugs</span>
+                <span class="roboto-font font-s-med ft-wt-med">Beautiful Designer Brands</span> <br>
+                <span class="roboto-font font-s-regular">furniture, homeware & rugs</span>
             </div>
          </div>  
          <div>
          <i class="fal fa-shipping-timed"></i>
                      <div>
-                <span class="work-sans-fonts font-s-med ft-wt-med">shipped daily</span> <br>
+                <span class="roboto-font font-s-med ft-wt-med">shipped daily</span> <br>
                 <span>to your door</span>
             </div>         </div>                               
     </div>
