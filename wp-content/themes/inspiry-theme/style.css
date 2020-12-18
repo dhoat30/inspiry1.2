@@ -289,6 +289,9 @@
     .rm-txt-dec:hover{ 
         text-decoration: none;
     }
+    .add-txt-dec:hover{ 
+        text-decoration: underline !important;
+    }
 
 
     /*breadcrumbs*/ 
@@ -418,8 +421,25 @@
 
 /*tool tip */ 
 
+.tooltips{
+   padding: 3px 5px;
+    width: 170px;
+    background: white;
+    height: auto;
+    text-align: center;
+    position: absolute; 
+    left: -55px;
+    top: 50px;
+    display: none;
+    border-radius: 15px;
+    z-index: 10000;
+}
+.card .tooltips{
+    left: -115px;
+}
 
 /*bread crumb*/ 
 #breadcrumbs a:hover{
     text-decoration: underline;
 }
+

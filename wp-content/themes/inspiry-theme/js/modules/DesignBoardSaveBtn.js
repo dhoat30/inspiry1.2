@@ -268,6 +268,9 @@
                 console.log(response)
                 if(response){ 
                     console.log(response);
+                    //reload a window
+                    location.reload();
+
                     //show the list board name in the list 
                     $('.choose-board-container .board-list').append(`<li data-board-id=${response}>${boardName}</li>`);
                     //hide the form

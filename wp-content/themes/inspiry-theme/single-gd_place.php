@@ -72,7 +72,9 @@ get_header();
 
                 <div class="design-board-save-btn-container" data-tracking-data='{"post_id":"<?php the_id();?>","name":"<?php echo get_the_title(get_the_id()); ?>"}' <?php echo $link_attributes; ?>>
                     <i data-exists='<?php echo $existStatus?>' class="fal fa-plus open-board-container" ></i>
+                  
                 </div>
+                
                 <div class="header-contact-btn">
                         <?php echo do_shortcode('[gd_ninja_forms form_id="2" text="Contact Form" post_contact="1" output="button"]'); ?>
                 </div>
@@ -201,7 +203,7 @@ get_header();
 
                                                                 <div class="title regular font-s-med"><?php echo get_the_title( $value );?></div>
                                                             </a>
-                                                            <a href="<?php echo get_the_permalink($postID); ?>" class='rm-txt-dec font-s-regular thin roboto-font'>
+                                                            <a href="<?php echo get_the_permalink($postID); ?>" class='rm-txt-dec font-s-regular thin roboto-font add-txt-dec'>
                                                               <?php echo get_the_title($postID); ?>
                                                           </a>
 
@@ -226,7 +228,8 @@ get_header();
                 </div>
 
                 <div class="trade-gallery-nav-content">
-                    <?php echo do_shortcode('[gd_post_images type="gallery" ajax_load="1" slideshow="1" show_title="1" animation="slide" controlnav="1" link_to="lightbox"]'); ?>
+                    <?php echo do_shortcode('[gd_post_images type="gallery" ajax_load="0" slideshow="1" show_title="1" animation="slide" controlnav="1" link_to="lightbox"]'); ?>
+                        
                 </div>
 
 

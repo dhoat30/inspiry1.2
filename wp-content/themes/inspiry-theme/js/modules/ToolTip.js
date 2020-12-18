@@ -2,14 +2,22 @@ let $ = jQuery;
 
 class ToolTip {
     constructor(){
+        $('.design-board-save-btn-container').append(`
+                <div class="tooltips roboto-font font-s-regular box-shadow">
+                    Save to design board
+                </div>`); 
         this.events(); 
     }
     events(){
-        $('.prof-title').hover(this.projectPage); 
+        $('.design-board-save-btn-container i').hover(this.showTooltip, this.hideTooltip); 
     }
 
-    projectPage(e){
-        console.log(23); 
+    showTooltip(e){
+        $(e.target).siblings('.tooltips').slideDown('200'); 
+        console.log(23);
+    }
+    hideTooltip(e){
+        $('.tooltips').hide();
     }
 }
 

@@ -61,8 +61,8 @@ get_header();
                       //find the post id of trade proffessional 
                       $placeID = geodir_get_post_meta($postID, 'gd_place', true); 
                       ?>
-                      <a href="<?php echo get_the_permalink($placeID); ?>" class='rm-txt-dec font-s-regular thin roboto-font'>
-                          <?php echo get_the_title($placeID); ?>
+                      <a href="<?php echo get_the_permalink($placeID); ?>" class='rm-txt-dec font-s-regular thin roboto-font add-txt-dec'>
+                          By <?php echo get_the_title($placeID); ?>
                       </a>
 
               </div>
