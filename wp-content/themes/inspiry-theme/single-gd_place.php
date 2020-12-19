@@ -14,7 +14,7 @@ get_header();
         <img src="<?php  echo get_the_post_thumbnail_url( $postID, 'full' )  ?> " alt="<?php echo get_the_title();?>">
     </div>
 
-    <div class="row-container">
+    <div class="row-container trade-snippet-row">
             
         <div class="trade-header-section">
             <div class="trade-profile-img">
@@ -239,7 +239,7 @@ get_header();
             
     </div>
 
-    <div>
+<div>
 
     </div>
 

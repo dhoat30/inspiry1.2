@@ -5,7 +5,7 @@
    flex-wrap: wrap;
 }
 .geodir-category-list-view>li{ 
-    margin: 25px 30px 25px 30px !important;
+   /* margin: 25px 30px 25px 30px !important;*/
     display: block;
     
 }
@@ -55,14 +55,7 @@ body ul.geodir-category-list-view>li:nth-child(2n+0) {
     }
 }
 /*main Styles*/ 
-.geodir-entry-title a{ 
-    color: #303030 !important; 
-    font-size: 20px;
-    padding-bottom: 5px;
-    display: inline-block;
-    font-weight: 400;
-    text-decoration: none;
-}
+
 .geodir-entry-title a:hover{ 
     text-decoration: underline;
 }

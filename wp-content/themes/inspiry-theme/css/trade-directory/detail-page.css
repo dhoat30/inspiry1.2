@@ -118,6 +118,7 @@ transition-timing-function: ease-in-out;
         width: 20%;
         margin-top: 20px;
     }
+   
 }
 
 
@@ -197,7 +198,9 @@ transition-timing-function: ease-in-out;
 .trade-contact-nav-content i:hover{
     color: black;
 }
-
+.trade-contact-nav-content .social-media-icons{
+    display: none;
+}
 /*hide save pin in project area */ 
 .trade-project-nav-content .geodir-list-save-container{ 
     display: none;
@@ -262,29 +265,59 @@ transition-timing-function: ease-in-out;
     transition: all .5s;
     border: 1px solid #333;
 }
+@media(max-width:1135px){
+    .trade-main-row{
+        position: relative;
+        bottom: 80px;
+    }
+}
 
+/* project */
+.geodir-image-container ul.geodir-images.geodir-gallery li {
+    width: 100%;
+}
 
 /*gallery*/
 
-.geodir-image-container ul.geodir-images.geodir-gallery li {
-    box-sizing: border-box;
-    position: relative;
-    width: 100%;
-    margin-right: 1%;
-    margin-bottom: 1%;
-    display: inline-block;
-    text-align: center;
-    border: none !important;
-    overflow: hidden;
-    padding: 0;
-    border-radius: 0 !important;
+.trade-directory>div{
+    width: 100% !important;
+}
+.trade-directory .geodir-category-list-view{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+.trade-directory .geodir-post{
+    width: 250px !important;
+    margin: 10px 20px 10px 0 !important;
+    transition: 800ms;
+    transition-timing-function: ease-in-out;
+}
+.trade-directory .geodir-post:hover{
+    transform: translateY(-10px);
+}
+.trade-directory .geodir-post .geodir-post-content-container, .geodir-post-rating, .gd-badge-meta, .geodir-post-fav  {
+    display: none !important;
 }
 .geodir-image-container ul.geodir-images li img {
     border-radius: 0 !important;
     object-fit: cover;
-    height: 100%;
+    width: 100% !important;
 }
-
+.geodir-image-container ul.geodir-images li {
+    border-radius: 0 !important;
+}
+.geodir-entry-title a{ 
+    color: #303030 !important; 
+    font-size: 16px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    display: inline-block;
+    font-weight: 400;
+    text-decoration: none;
+    text-transform: capitalize;
+}
 
 /*project 
 .trade-project-nav-content .geodir-category-list-view{ 
