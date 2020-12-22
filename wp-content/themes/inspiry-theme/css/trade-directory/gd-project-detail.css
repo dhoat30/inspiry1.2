@@ -1,0 +1,32 @@
+.single-project-page .trade-header-section {
+    justify-content:center; 
+   
+}
+
+@media(max-width:1135px){
+    .single-project-page .trade-header-section{ 
+        bottom: 0;
+        position: relative;
+    }
+    .single-project-page .trade-hero{ 
+        display: none;
+    }
+    .single-project-page .header-middle-column {
+        width: 100%;
+    }
+    .trade-main-row {
+        position: relative;
+        bottom: 0;
+    }
+   
+}
+
+.single-project-page .fa-hammer{
+    font-size: 25px;
+}
+
+.single-project-page .design-board-save-btn-container{
+    margin-left: 15px;
+    position: relative;
+    top: 10px;
+}
