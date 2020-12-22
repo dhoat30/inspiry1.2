@@ -8,7 +8,6 @@ get_header();
         <?php //echo do_shortcode('[gd_categories post_type="0" max_level="1" max_count="all" max_count_child="all" title_tag="h4" sort_by="count"]');?>
           <?php  echo do_shortcode('[gd_search]');?>
         <?php echo do_shortcode('[gd_map width="100%" height="425px" maptype="ROADMAP" zoom="0" map_type="auto" post_settings="1"]');?>
-
       </div>
       <div class="main-cards">
         <div class="section-ft-size">Project Gallery</div>
@@ -41,12 +40,12 @@ get_header();
                       <div class="link">
                         <?php 
                           //remove http://
-                          $urlStr = do_shortcode('[gd_post_meta key="website" show="value-strip" no_wrap="1" alignment="left"]');
+                          $urlStr = geodir_get_post_meta($postID, 'website', true);
                           
                         ?>
-                        <a class="rm-txt-dec website-link" target="_blank" href="<?php echo do_shortcode('[gd_post_meta key="website" show="value-strip" no_wrap="1" alignment="left"]')?>">
+                        <a class="rm-txt-dec website-link" target="_blank" href="<?php echo $urlStr?>">
                         <i class="fal fa-external-link-alt"></i>
-                          <?php  echo substr_replace($urlStr,"", 0, 7);?> 
+                          <?php  echo $urlStr?> 
                         </a>
                         
 

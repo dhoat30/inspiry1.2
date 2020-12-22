@@ -4,7 +4,6 @@ get_header();
   ?>
     <section class="trade-directory row-container">
       <div class="sidebar">
-        <div class="scolumn-s-font margin-elements">Search </div>
         <?php //echo do_shortcode('[gd_categories post_type="0" max_level="1" max_count="all" max_count_child="all" title_tag="h4" sort_by="count"]');?>
           <?php  echo do_shortcode('[gd_search]');?>
         <?php echo do_shortcode('[gd_map width="100%" height="425px" maptype="ROADMAP" zoom="0" map_type="auto" post_settings="1"]');?>
@@ -38,6 +37,13 @@ get_header();
                         <?php 
                           //remove http://
                           $urlStr = geodir_get_post_meta($postID, 'website', true);
+                          if(strpos($urlStr, 'https://')){
+                            $urlStr = str_replace('https://', "", $urlStr); 
+                          }
+                          else{
+                            $urlStr = str_replace('http://', "", $urlStr);
+                          }
+                          
                           
                         ?>
                         <a class="rm-txt-dec website-link" target="_blank" href="<?php echo $urlStr;?>">

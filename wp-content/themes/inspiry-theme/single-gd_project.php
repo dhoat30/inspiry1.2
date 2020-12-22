@@ -9,10 +9,8 @@ get_header();
     ?>
     <div class="project-detail-page">
         
-        <div class="project-hero">
-                    <?php  
-                    $heroImage = geodir_get_post_meta($postID,'gd_place',true);
-                    echo do_shortcode('[gd_post_images type="image" ajax_load="1" slideshow="1" show_title="1" animation="slide" controlnav="1" types="post_images" fallback_types="logo" image_size="1536x1536"]');  ?>              
+        <div class="trade-hero">
+            <img src="<?php  echo get_the_post_thumbnail_url( $postID, 'full' )  ?> " alt="<?php echo get_the_title();?>">
         </div>
 
         <div class="full-width-paragraph-container">

@@ -279,9 +279,7 @@ transition-timing-function: ease-in-out;
 
 /*gallery*/
 
-.trade-directory>div{
-    width: 100% !important;
-}
+
 .trade-directory .geodir-category-list-view{
     display: flex;
     flex-direction: row;
