@@ -147,7 +147,13 @@
                                             <input type="text" name="board-name" id="board-name">
                                             <label for="description">Description</label>
                                             <textarea name="board-description" id="board-description" cols="30" rows="10"></textarea>
-                                            
+                                            <label class="tgl tgl-gray" style="font-size:30px">  
+                                              <input type="checkbox" checked />
+                                              <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+                                            </label>
+                                            <button class='testing'>
+                                              click
+                                            </button>
                                             <div class="btn-container">
                                                 <button type="button" class="cancel-btn btn"> Cancel</button>
                                                 <button type="submit" class="save-btn btn btn-dk-green"> Save</button>

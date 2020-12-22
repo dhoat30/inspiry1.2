@@ -2,14 +2,18 @@
  //Design board save button
  class DesignBoardSaveBtn{ 
     constructor(){ 
+        this.statusCheck = ''; 
         this.plusBtn = document.querySelectorAll('.design-board-save-btn-container .open-board-container');
         this.boardListItems = $('.choose-board-container .board-list li'); 
-       
+        this.checkboxInput = $('.tgl input[type="checkbox"]');
        this.events(); 
        this.fillHeartIcon();  
     }
     //events
     events(){ 
+        //public and private check
+        //this.checkboxInput.change(this.toggleBtnProcessor)
+
 
         $(document).on('click', '.design-board-save-btn-container .open-board-container', this.showChooseBoardContainer);
         //hide choose board container
@@ -43,7 +47,13 @@
 
 
     }
-
+    toggleBtnProcessor(e){
+        e.preventDefault();
+        console.log('this button is working');
+        console.log($('.tgl input[type="checkbox"]').val());
+        
+        
+    }
     //functions 
     //show icon on hover on product archive
     showPinIconOnHover(e){ 
@@ -234,9 +244,14 @@
     //create board function 
     createBoardFunc(e){ 
 
-        console.log('checking the values of input')
-    
-
+        let statusCheck;
+        if($('.tgl input[type="checkbox"]').is(":checked")){
+            statusCheck = 'private'; 
+        }
+        else{
+            statusCheck = 'publish'; 
+        }
+        console.log('this  is a status check' + statusCheck)
         let boardName = $(e.target).closest('.btn-container').siblings('#board-name').val();
    
         let boardDescription; 
@@ -259,7 +274,9 @@
             type: 'POST', 
             data: {
                 'board-name': boardName, 
-                'board-description': boardDescription
+                'board-description': boardDescription,
+                'status': statusCheck 
+
             },
             complete:()=>{
                 $('.project-save-form-section .loader').hide();

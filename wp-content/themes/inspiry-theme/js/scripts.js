@@ -77,8 +77,7 @@ $('.logo-container .slogan').css('opacity', '1');
 }
 
 
-
-
+const toggleButton = new ToggleButton();
 //log in 
 const logIn = new LogIn();
 //facet wp

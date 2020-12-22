@@ -31,6 +31,7 @@ function createBoard($data){
    if(is_user_logged_in()){
       $boardName = sanitize_text_field($data["board-name"]);
       $boardDescription = sanitize_text_field($data['board-description']); 
+      $publishStatus = sanitize_text_field($data['status']);
 
       $existQuery = new WP_Query(array(
         'author' => get_current_user_id(), 
@@ -40,7 +41,7 @@ function createBoard($data){
      if($existQuery->found_posts == 0){ 
         return wp_insert_post(array(
             "post_type" => "boards", 
-            "post_status" => "private", 
+            "post_status" => $publishStatus, 
             "post_title" => $boardName,
             'post_content' => $boardDescription
      )); 

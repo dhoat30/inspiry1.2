@@ -7,7 +7,7 @@ class LocationPage{
         let url = [];
         $('.trade-directory .main-cards .flex .card').hover(this.showElements, this.hideElements);
          url = $(document).find('.trade-directory .main-cards .flex .card .logo img').attr('data-src');
-         console.log(url);
+      
     }
 
     showElements(e){ 
