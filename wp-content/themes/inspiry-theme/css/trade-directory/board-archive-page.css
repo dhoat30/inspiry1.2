@@ -1,3 +1,7 @@
+.board-archive{
+    margin-top: 50px !important;
+}
+
 /*board-page*/ 
 .single-board h1{ 
   margin-top: 60px !important;
@@ -14,10 +18,11 @@
     height: 300px;
     object-fit: cover;
 }
-.board-page>div{ 
+.board-page .archive-cards-flex-container{ 
     display: flex;
     flex-direction: row;
     flex-wrap: wrap; 
+    margin-top: 30px;
 }
 
 .board-page .board-card-archive{ 
@@ -105,4 +110,23 @@
 
 .gd-badge i{ 
     color: white !important;
+}
+/*pin info*/ 
+.pin-info{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+.pin-info>div{
+    margin: 5px 5px 0 0;
+}
+
+
+/*create board button*/
+.create-board-btn-container{
+    margin: 30px 0 60px 0;
+}
+
+.board-archive .board-title{
+    margin: 10px 0 0 0 !important;
 }

@@ -162,6 +162,21 @@
 }
 
 /*toggle button*/ 
+.toggle-btn-container {
+    display: flex; 
+    justify-content: flex-start;
+    flex-direction: row;
+    align-items: center;
+}
+.toggle-btn-container .toggle-status{
+    margin-left: 10px;
+    position: relative;
+    top: 7px;
+}
+.toggle-status-info{
+    height: 50px;
+    max-width: 300px ;
+}
 .tgl {
     position: relative;
     outline: 0;
@@ -214,7 +229,7 @@
     position: absolute;
     display: block;
     content: "";
-    border-radius: 2em;
+    border-radius: 50%;
     width: 0.7em;
     height: 0.7em;
     margin-left: -1.2em;
@@ -230,6 +245,7 @@
     color: #ffffff;
     padding-left: 1.3em;
     padding-right: 0.4em;
+  
   }
   .tgl input[type="checkbox"]:not(:checked) + span:before {
     content: attr(data-off);

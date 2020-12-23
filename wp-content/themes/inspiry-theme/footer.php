@@ -119,7 +119,7 @@
                                             while($boardLoop->have_posts()){ 
                                                 $boardLoop->the_post(); 
                                                 ?>
-                                                        <li class="board-list-item" data-boardID='<?php echo get_the_id(); ?>'>
+                                                        <li class="board-list-item" data-boardID='<?php echo get_the_id(); ?>' data-postStatus='<?php echo get_post_status();?>'>
                                                         
                                                         <?php 
                                                             
@@ -142,21 +142,27 @@
                                     <div class="roboto-font regular form-title font-s-med">Create Board</div>
                                     <div class="form-underline"></div>
                                     <div class="form">
-                                        <form id="new-board-form">
+                                        <form>
                                             <label for="name">Give your board a title*</label>
                                             <input type="text" name="board-name" id="board-name">
                                             <label for="description">Description</label>
                                             <textarea name="board-description" id="board-description" cols="30" rows="10"></textarea>
-                                            <label class="tgl tgl-gray" style="font-size:30px">  
-                                              <input type="checkbox" checked />
-                                              <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
-                                            </label>
-                                            <button class='testing'>
-                                              click
-                                            </button>
+                                            <div class="toggle-btn-container">
+                                                <label class="tgl tgl-gray" style="font-size:30px">  
+                                                  <input type="checkbox" checked />
+                                                  <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+                                                </label>
+                                                <div class="toggle-status roboto-font thin"><i class="fal fa-lock"></i> Private
+                                                </div>
+                                           
+                                            </div>
+                                            <div class="toggle-status-info roboto-font font-s-regular regular">
+                                              Private boards cannot be shared with the general public. 
+                                            </div>
+                                            
                                             <div class="btn-container">
                                                 <button type="button" class="cancel-btn btn"> Cancel</button>
-                                                <button type="submit" class="save-btn btn btn-dk-green"> Save</button>
+                                                <button type="submit" class="save-btn btn btn-dk-green archive-save-btn"> Save</button>
                                               
                                                 <div class="loader"></div>
                                             </div>

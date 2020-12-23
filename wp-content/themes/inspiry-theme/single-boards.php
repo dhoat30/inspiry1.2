@@ -1,4 +1,6 @@
-
+<?php
+get_header(); 
+?>
 <div class="body-container">
     <div class="row-container board-loop-page single-board">
     
@@ -9,8 +11,7 @@
             $boardLoop = new WP_Query(array(
                 'post_type' => 'boards', 
                 'post_parent' => get_the_id(),
-                'posts_per_page' => -1, 
-                'author' => get_current_user_id()
+                'posts_per_page' => -1
             ));
 
             while($boardLoop->have_posts()){
@@ -58,3 +59,6 @@
 
                         </div>
 
+<?php 
+get_footer(); 
+?>

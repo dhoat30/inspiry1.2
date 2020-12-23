@@ -7,6 +7,23 @@ class DesignBoard{
 
     //events
     events(){ 
+        //check status 
+        $('.tgl input[type="checkbox"]').each(function(index){
+            $(this).on('click', function(){
+                if($(this).is(":checked")){
+                    console.log('toggle working')
+                    $('.toggle-status').html('<i class="fal fa-lock"></i>  Private'); 
+                    $('.toggle-status-info').html('Private boards cannot be shared with the general public.'); 
+                }
+                else{
+                    $('.toggle-status').html('<i class="fal fa-lock-open"></i> Public'); 
+                    $('.toggle-status-info').html(' Public boards can be shared with the general public.'); 
+    
+                }
+            })
+        })
+        
+       
         //show and hide option icon
         $('.board-card').mouseenter(this.showOptionIcon.bind(this)); 
         $('.board-card').mouseleave(this.hideOptionIcon.bind(this)); 

@@ -24,8 +24,98 @@ function inspiry_board_route(){
         "callback" => "deleteBoardFunc"
     ));
     
+    //update board 
+    register_rest_route("inspiry/v1/", "updateBoard", array(
+      "methods" => "POST",
+      "callback" => "updateBoard"
+  ));
+
+  //update board 
+  register_rest_route("inspiry/v1/", "board", array(
+   "methods" => "POST",
+   "callback" => "getBoard"
+));
 }
 
+function getBoard($data){
+   $postID = sanitize_text_field($data["id"] ); 
+
+   if(is_user_logged_in()){
+   $boards = new WP_Query(array(
+      'post_type' => 'boards',
+      'post_parent' => 0, 
+      'p' => $postID
+   )); 
+
+   $boardsResult = array(); 
+
+   while($boards->have_posts()){
+      $boards->the_post(); 
+
+      array_push($boardsResult, array(
+         'title' => get_the_title(),
+         'description' => get_the_content(), 
+         'id' => get_the_id(), 
+         'status' => get_post_status()
+
+      )); 
+
+      
+   }
+   return $boardsResult; 
+}
+else{
+   return 'you do not have permission' ;
+}
+}
+
+function updateBoard($data){
+   $parentID = sanitize_text_field($data["board-id"] ); 
+   $boardName = sanitize_text_field($data["board-name"] ); 
+   $boardDescription = sanitize_text_field($data["board-description"] );
+   $publishStatus  = sanitize_text_field($data["status"] );
+
+    // Delete the Parent Page
+    if(get_current_user_id() == get_post_field("post_author", $parentID) AND get_post_type($parentID)=="boards"){
+
+        //Instead of calling and passing query parameter differently, we're doing it exclusively
+        $all_locations = get_pages( array(
+            'post_type'         => 'boards', //here's my CPT
+            'post_status'       => array( 'private', 'pending', 'publish') //my custom choice
+        ) );
+
+        //Using the function
+        $inherited_locations = get_page_children( $parentID, $all_locations );
+        // echo what we get back from WP to the browser (@bhlarsen's part :) )
+            // Update all the Children of the Parent Page
+            foreach($inherited_locations as $post){
+               
+                wp_insert_post(array(
+                  "ID" => $post->ID, 
+                  "post_type" => "boards", 
+                  "post_status" => $publishStatus,
+                  'post_parent'=> $parentID, 
+                  "post_title" =>get_the_title($post->ID)
+
+
+               )); 
+            }
+
+        // Update the Parent Page
+        wp_insert_post(array(
+         "ID" => $parentID, 
+         "post_type" => "boards", 
+         "post_status" => $publishStatus, 
+         "post_title" => $boardName,
+         'post_content' => $boardDescription
+         )); 
+
+        return 'updation worked. congrats'; 
+     }
+     else{ 
+        die("You do not have permission to update a board");
+     }
+}
 function createBoard($data){ 
 
    if(is_user_logged_in()){
@@ -62,10 +152,11 @@ function addProjectToBoard($data){
       $projectID = sanitize_text_field($data["post-id"]);
       $boardID = sanitize_text_field($data["board-id"]);
       $postTitle = sanitize_text_field($data["post-title"]);
+      $publishStatus = sanitize_text_field($data['status']);
 
         return wp_insert_post(array(
             "post_type" => "boards", 
-            "post_status" => "private", 
+            "post_status" => $publishStatus, 
             "post_title" => $postTitle,
             "post_parent" => $boardID, 
             "meta_input" => array(

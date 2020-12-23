@@ -29,7 +29,7 @@ window.onload = function() {
     const designBoardSaveBtn = new DesignBoardSaveBtn();
 
 
-let designBoardAjax = new DesignBoardAjax(); 
+//let designBoardAjax = new DesignBoardAjax(); 
 
 const tradeNav = new TradeNav();
 
@@ -68,16 +68,10 @@ $('.logo-container .slogan').css('opacity', '1');
    }
 
    profileNavbar.eventListener();
-
-
-
-
-
-
 }
 
 
-const toggleButton = new ToggleButton();
+
 //log in 
 const logIn = new LogIn();
 //facet wp
