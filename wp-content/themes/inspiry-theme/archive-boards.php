@@ -129,7 +129,7 @@ get_header();
     <div class="board-overlay overlay project-update-overlay">
                                     
 
-                                    <div class="project-save-form-section project-update" data-post=''>
+                                    <div class="project-save-form-section project-update" data-postid='20'>
        
                                     <div class="project-save-form-container"> 
                                         <div class="roboto-font regular form-title font-s-med">Create Board</div>

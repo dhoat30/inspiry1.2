@@ -55,10 +55,14 @@
     //update container show
     showUpdateArchive(e){
         let postID = $(e.target).attr('data-pinid');
-       
+        console.log(postID)
+        //set post for form 
+        $('.project-update').attr('data-postid', postID);
+
+        //show container
         $('.project-update').show(300);
         $('.project-update-overlay').show(300);
-        $('.project-update').data('post', '20');
+        
 
         //clicking a save button 
         
@@ -130,6 +134,7 @@
     //update board function 
     updateBoardArchive(e){ 
         console.log('starting request' )
+        let postID = $('.project-update').attr('data-postid');
         let title = $('#update-board-name').val(); 
         let description = $('#update-board-description').val();
         let statusCheck;
@@ -141,7 +146,7 @@
         }
         console.log('this  is a status check' + statusCheck)
 
-        console.log(title + description + statusCheck)
+        console.log(title + description + statusCheck + postID)
         e.preventDefault();
         $('.project-save-form-section .loader').show();
 
@@ -150,10 +155,10 @@
             beforeSend: (xhr)=>{
                 xhr.setRequestHeader('X-WP-NONCE', inspiryData.nonce)
             },
-            url: inspiryData.root_url + '/wp-json/inspiry/v1/updateBoar',
+            url: inspiryData.root_url + '/wp-json/inspiry/v1/updateBoard',
             type: 'POST', 
             data: {
-                'board-id': 13819, 
+                'board-id': postID, 
                 'board-name': title, 
                 'board-description': description,
                 'status': statusCheck 
@@ -167,10 +172,10 @@
                 if(response){ 
                     console.log(response);
                     //reload a window
-                    //location.reload();
+                    location.reload();
 
                     //show the list board name in the list 
-                    $('.choose-board-container .board-list').append(`<li data-board-id=${response}>${boardName}</li>`);
+                  
                     //hide the form
                     $('.project-save-form-section').hide();   
 
