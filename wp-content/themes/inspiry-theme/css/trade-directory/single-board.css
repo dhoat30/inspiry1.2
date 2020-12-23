@@ -3,6 +3,14 @@
 .single-board{
      padding: 1px  30px 20px 30px;
      margin: 50px auto 0 auto !important;
+     position: relative;
+}
+
+/*back icon*/ 
+.single-board .back-icon-container{
+    position: absolute;
+    left: -10px;
+    top: 20px;
 }
 
 

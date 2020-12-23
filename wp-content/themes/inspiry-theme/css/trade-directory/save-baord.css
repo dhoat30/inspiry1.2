@@ -21,6 +21,20 @@
     background: #303030;
 }
 
+.back-icon-container i{
+  font-size: 30px;
+   padding: 8px 10px 6px 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-weight: 300 !important;
+    background: #efefef;
+    color: #303030;
+}
+.back-icon-container i:hover{ 
+  color:#efefef;
+  background: #303030;
+}
+
 .choose-board-container{ 
     margin: 20px 0;
     display: none;
