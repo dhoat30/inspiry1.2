@@ -129,16 +129,16 @@ get_header();
     <div class="board-overlay overlay project-update-overlay">
                                     
 
-                                    <div class="project-save-form-section project-update">
+                                    <div class="project-save-form-section project-update" data-post=''>
        
                                     <div class="project-save-form-container"> 
                                         <div class="roboto-font regular form-title font-s-med">Create Board</div>
                                         <div class="form-underline"></div>
                                         <div class="form">
-                                            <form >
+                                            <form id="new-board-form-update">
                                                
                                                 <label for="name">Give your board a title*</label>
-                                                <input type="text" name="board-name"  id='update-board-name' value="">
+                                                <input type="text" name="board-name" required id='update-board-name' value="">
                                                 <label for="description">Description</label>
                                                 <textarea name="board-description"  id="update-board-description"  cols="30" rows="10" value=""></textarea>
                                                 <div class="toggle-btn-container">
@@ -156,7 +156,7 @@ get_header();
                                                
                                                 <div class="btn-container">
                                                     <button type="button" class="btn cancel-btns"> Cancel</button>
-                                                    <button type="submit" class="btn btn-dk-green archive-update-btn"> Save</button>
+                                                    <button type="button" class="btn btn-dk-green archive-update-btn"> Save</button>
                                                   
                                                     <div class="loader"></div>
                                                 </div>
@@ -175,9 +175,9 @@ get_header();
                                     <div class="roboto-font regular form-title font-s-med">Create Board</div>
                                     <div class="form-underline"></div>
                                     <div class="form">
-                                        <form>
+                                        <form id="new-board-form-archive">
                                             <label for="name">Give your board a title*</label>
-                                            <input type="text" name="board-name" id="board-name-archive" >
+                                            <input type="text" name="board-name" required id="board-name-archive" >
                                             <label for="description">Description</label>
                                             <textarea name="board-description"  id="board-description-archive" cols="30" rows="10"></textarea>
                                             <div class="toggle-btn-container">

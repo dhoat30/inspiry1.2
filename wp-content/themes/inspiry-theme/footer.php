@@ -142,9 +142,9 @@
                                     <div class="roboto-font regular form-title font-s-med">Create Board</div>
                                     <div class="form-underline"></div>
                                     <div class="form">
-                                        <form>
+                                        <form id="new-board-form">
                                             <label for="name">Give your board a title*</label>
-                                            <input type="text" name="board-name" id="board-name">
+                                            <input type="text" name="board-name" id="board-name" required>
                                             <label for="description">Description</label>
                                             <textarea name="board-description" id="board-description" cols="30" rows="10"></textarea>
                                             <div class="toggle-btn-container">

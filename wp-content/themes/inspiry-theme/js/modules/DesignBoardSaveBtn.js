@@ -2,7 +2,7 @@
  //Design board save button
  class DesignBoardSaveBtn{ 
     constructor(){ 
-        this.statusCheck = ''; 
+        
         this.plusBtn = document.querySelectorAll('.design-board-save-btn-container .open-board-container');
         this.boardListItems = $('.choose-board-container .board-list li'); 
         this.checkboxInput = $('.tgl input[type="checkbox"]');
@@ -50,8 +50,7 @@
        
         //update a board 
         $(document).on('click', '.board-archive .edit-board', this.showUpdateArchive)
-        $(document).on('click', '.update-btn', this.updateBoardArchive);
-
+        $('.archive-update-btn').on('click', this.updateBoardArchive)
     }
     //update container show
     showUpdateArchive(e){
@@ -59,6 +58,7 @@
        
         $('.project-update').show(300);
         $('.project-update-overlay').show(300);
+        $('.project-update').data('post', '20');
 
         //clicking a save button 
         
@@ -106,7 +106,9 @@
                 console.log(response)
             }
         });
-        $('.archive-update-btn').on('click', this.updateBoardArchive); 
+
+       
+         
     }
     //crate a board on archive page
     //show archive add board container
@@ -127,27 +129,19 @@
 
     //update board function 
     updateBoardArchive(e){ 
-        console.log('starting request')
+        console.log('starting request' )
+        let title = $('#update-board-name').val(); 
+        let description = $('#update-board-description').val();
         let statusCheck;
-        if($('.tgl input[type="checkbox"]').is(":checked")){
-            statusCheck = 'private';
-            $('.toggle-status').html('Private');  
+        if($('.project-update .tgl input[type="checkbox"]').is(":checked")){
+            statusCheck = 'private'; 
         }
         else{
             statusCheck = 'publish'; 
-            $('.toggle-status').html('Public'); 
         }
         console.log('this  is a status check' + statusCheck)
-        let boardName = $(e.target).closest('.btn-container').siblings('#board-name').val();
-   
-        let boardDescription; 
-        if($(e.target).closest('.btn-container').siblings('#board-description').val()){ 
-            boardDescription = $(e.target).closest('.btn-container').siblings('#board-description').val();
-        }
-        else{ 
-            console.log('no description');
-        }
-       
+
+        console.log(title + description + statusCheck)
         e.preventDefault();
         $('.project-save-form-section .loader').show();
 
@@ -156,13 +150,13 @@
             beforeSend: (xhr)=>{
                 xhr.setRequestHeader('X-WP-NONCE', inspiryData.nonce)
             },
-            url: inspiryData.root_url + '/wp-json/inspiry/v1/updateBoard',
+            url: inspiryData.root_url + '/wp-json/inspiry/v1/updateBoar',
             type: 'POST', 
             data: {
                 'board-id': 13819, 
-                'board-name': 'gurpreet2', 
-                'board-description': 'desciption of a board',
-                'status': 'publish' 
+                'board-name': title, 
+                'board-description': description,
+                'status': statusCheck 
 
             },
             complete:()=>{
@@ -179,23 +173,7 @@
                     $('.choose-board-container .board-list').append(`<li data-board-id=${response}>${boardName}</li>`);
                     //hide the form
                     $('.project-save-form-section').hide();   
-                    function addToBoard2(){
-                        
-                    //add a post into baord
-                        let postID = $('.choose-board-container').attr('data-post-id');
-                        let postTitle = $('.choose-board-container').attr('data-post-title'); 
-                        
-                        
-            
-                    }
 
-                    addToBoard2();
-
-
-            
-                  
-
-                   
                 }
             }, 
             error: (response)=>{
@@ -203,7 +181,7 @@
                 console.log('this is a board error');
                 console.log(response)
                 console.log(response.responseText)
-                $('#new-board-form').before(` <div class="error-bg">${response.responseText}</div>`);
+                $('#new-board-form-update').before(` <div class="error-bg">${response.responseText}</div>`);
             }
         });
         
@@ -263,17 +241,9 @@
                     $('.choose-board-container .board-list').append(`<li data-board-id=${response}>${boardName}</li>`);
                     //hide the form
                     $('.project-save-form-section').hide();   
-                    function addToBoard2(){
-                        
-                    //add a post into baord
-                        let postID = $('.choose-board-container').attr('data-post-id');
-                        let postTitle = $('.choose-board-container').attr('data-post-title'); 
-                        
-                        
-            
-                    }
+                   
 
-                    addToBoard2();
+                    
 
 
             
@@ -287,7 +257,7 @@
                 console.log('this is a board error');
                 console.log(response)
                 console.log(response.responseText)
-                $('#new-board-form').before(` <div class="error-bg">${response.responseText}</div>`);
+                $('#new-board-form-archive').before(` <div class="error-bg">${response.responseText}</div>`);
             }
         });
         
