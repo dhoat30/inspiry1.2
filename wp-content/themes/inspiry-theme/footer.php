@@ -138,7 +138,7 @@
 
                                 <div class="project-save-form-section">
    
-                                <div class="project-save-form-container"> 
+                                  <div class="project-save-form-container"> 
                                     <div class="roboto-font regular form-title font-s-med">Create Board</div>
                                     <div class="form-underline"></div>
                                     <div class="form">
@@ -168,7 +168,7 @@
                                             </div>
                                         </form>
                                     </div>
-                                </div>
+                                  </div>
                             </div>
 </div>
 

@@ -1,5 +1,27 @@
 
 /*board-page styling*/ 
+.single-board{
+     padding: 1px  30px 20px 30px;
+     margin: 50px auto 0 auto !important;
+}
+
+
+/*social share*/ 
+.action-btn-container .share{
+    margin-bottom: 20px;
+}
+.action-btn-container .share-icons{
+    display: none;
+    max-width: 350px;
+    padding: 20px 0;
+    position: relative;
+    bottom: 50px;
+    background: white;
+}
+.action-btn-container h2, .heateor_sss_sharing_container{
+    padding: 0 20px;
+}
+
 .board-loop-page .board-flex{ 
     display: flex;
     flex-direction: row;

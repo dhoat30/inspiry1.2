@@ -212,7 +212,7 @@
 		border-bottom: none !important;
 		letter-spacing: 0.2em;
 		line-height: 1.3em;
-		padding: 12px 25px 12px 25px !important;
+		padding: 7px 25px 7px 25px !important;
 		border: none;
 		cursor: pointer;
     }
@@ -225,6 +225,22 @@
     outline: none;
     border: 1px solid #303030;
     cursor: pointer;
+    }
+    .btn-dk-green-border{
+        background-color: white;
+        border: 1px solid #303030;
+        color: #303030 !important;
+    }
+    .btn-dk-green-border:hover{
+        background-color: #303030;
+        border: 1px solid #303030;
+        color: white !important;
+    }
+    .btn-dk-green-border i {
+        color: #303030 !important;
+    }
+    .btn-dk-green-border:hover i {
+        color: white !important;
     }
     .btn-dk-green{ 
         background-color: #303030;
@@ -251,7 +267,7 @@
         color:#303030;
     }
     .light-grey{ 
-        color: #7e7e7e;
+        color: #b3b3b3 !important;
     }
     .dark-green{ 
         color: #303030; 

@@ -2,9 +2,19 @@
 get_header(); 
 ?>
 <div class="body-container">
-    <div class="row-container board-loop-page single-board">
-    
-    <h1 class="section-ft-size"> <?php echo get_the_title($parentID);?></h1>
+    <div class="row-container board-loop-page single-board box-shadow">
+
+        <h1 class="lg-font-sz playfair-fonts regular light-grey"> <?php echo get_the_title($parentID);?></h1>
+        <div class='action-btn-container'>
+            <button class="share btn btn-dk-green-border font-s-regular"><i class="fal fa-share-alt"></i> Share</button>
+            <div class="share-icons box-shadow">
+                <i class="fal fa-times"></i>
+                <h2 class="roboto-font font-s-medium medium">Share this board</h2>
+                <div class="underline underline-bg margin-elements"></div>
+                <?php echo do_shortcode('[Sassy_Social_Share]');?> 
+
+            </div>
+        </div>
         <div class="board-flex">
         
         <?php 

@@ -17,6 +17,7 @@ import TopNav from './modules/TopNav';
 import GeoTradeSearch from './modules/GeoTradeSearch';
 import ShopFav from './modules/ShopFav'; 
 import ToolTip from './modules/ToolTip'; 
+import SingleDesignBoard from './modules/SingleDesignBoard'; 
 
 window.onload = function() {
 
@@ -27,7 +28,7 @@ window.onload = function() {
     const overlay = new Overlay();
     const designBoardSinglePage = new DesignBoard(); 
     const designBoardSaveBtn = new DesignBoardSaveBtn();
-
+    const singleDesignBoard = new SingleDesignBoard();
 
 //let designBoardAjax = new DesignBoardAjax(); 
 
