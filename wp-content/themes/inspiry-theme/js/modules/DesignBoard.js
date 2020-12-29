@@ -23,6 +23,9 @@ class DesignBoard {
         })
 
 
+        //show and hide option icon
+        $('.board-card').mouseenter(this.showOptionIcon.bind(this));
+        $('.board-card').mouseleave(this.hideOptionIcon.bind(this));
 
         //show options on click
         $('.board-card .option-icon').on('click', this.showOptions.bind(this));

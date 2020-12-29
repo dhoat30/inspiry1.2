@@ -47,18 +47,20 @@ get_header();
                         </li>
 
                     </ul>
-                    <div class="overlay"></div>
-                    <div class="share-icon-container box-shadow">
-                        <div class="roboto-font regular font-s-med"> Share this pin </div>
-                        <div class="underline"></div>
-                        <div>
-                            <?php echo do_shortcode('[Sassy_Social_Share]');?>
-                        </div>
-                        <span class="close-icon">X</span>
-                    </div>
+                    
 
                 </div>
-
+                
+                    <div class="share-icon-container box-shadow">
+                            <div class="roboto-font regular font-s-med"> Share this pin </div>
+                            <div class="underline"></div>
+                            <div>
+                                <?php echo do_shortcode('[Sassy_Social_Share url="<?php echo get_the_permalink(get_field("saved_project_id")); ?>"]');?>
+                            </div>
+                            <span class="close-icon">X</span>
+                        </div>
+                
+           
                 <a href="<?php echo get_the_permalink(get_field('saved_project_id')); ?>">
                     <div class="thumbnail">
                         <?php echo get_the_post_thumbnail( get_field('saved_project_id'), 'post-thumbnail');?>

@@ -45,14 +45,10 @@
     flex-wrap: wrap;
 }
 
-.board-loop-page .board-flex>div {
+.board-loop-page .board-flex .board-card {
     margin: 0 30px 50px 0;
     transition: 500ms ease-in-out;
     width: 250px;
-}
-
-.board-loop-page .board-flex>div:hover {
-    transform: scale(1.04, 1.04);
 }
 
 .board-loop-page .board-card img {
@@ -168,15 +164,17 @@
 
 @media (max-width: 500px) {
     .share-icon-container {
-        height: 100vh;
-        width: 100vw;
+        height: auto;
+        width: 90%;
     }
 }
 
 .share-icon-container ul.heateor_sss_sharing_ul li.heateorSssSharingRound {
     background: 0 0!important;
-    margin: 0 35px 0 0 !important;
+    margin: 0 0 0 0 !important;
 }
+
+.share-icon-container .roboto-font {}
 
 .share-icon-container .underline {
     border: 1px solid #525659;
@@ -184,9 +182,12 @@
 }
 
 .share-icon-container>div:nth-child(1) {
-    padding: 30px 10px 10px 10px;
+    padding: 30px 10px 10px 33px;
 }
 
 .share-icon-container>div:nth-child(3) {
     padding: 10px 10px 30px 10px;
 }
+
+
+/*share container*/

@@ -20,13 +20,9 @@ class SingleDesignBoards {
     }
 
     showCardShareContainer(e) {
-        let container = $(e.target).closest('.dark-grey').siblings('.share-icon-container');
-        container.show();
-        $(e.target).closest('.dark-grey').siblings('.overlay').show();
-        $(e.target).closest('.dark-grey').siblings('.share-icon-container').find('.close-icon').on('click', () => {
-            container.hide();
-            $('.overlay').hide();
-
+        $(e.target).closest('.pin-options-container').siblings('.share-icon-container').show();
+        $(e.target).closest('.pin-options-container').siblings('.share-icon-container').find('.close-icon').on('click', () => {
+            $('.share-icon-container').hide();
         })
     }
 }
