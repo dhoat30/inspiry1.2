@@ -13,67 +13,35 @@ class ImageUpload {
         e.preventDefault();
 
         let data = {
-            'my_nonce_field': $('#my_nonce_field').val(),
-            '_wp_http_referer': $('#_wp_http_referer').val(),
-            'action': $('#action').val(),
-            'my_file_field': $('#my_file_field').val()
+            action: $('#action').val(),
+            my_file_field: $('#image').prop('files')[0]
 
         }
         console.log(data);
         let url = 'http://localhost/inspiry/wp-admin/admin-ajax.php';
 
 
-        /*
-        $.ajax({
-            beforeSend: (xhr)=>{
-                xhr.setRequestHeader('X-WP-NONCE', inspiryData.nonce)
-            },
-            url: inspiryData.root_url + '/wp-json/inspiry/v1/manageBoard',
-            type: 'POST', 
-            data: {
-                'board-name': boardName, 
-                'board-description': boardDescription,
-                'status': statusCheck 
+        var form_data = new FormData();
+        form_data.append('my_file_field', data.my_file_field);
+        form_data.append('action', 'my_file_upload');
 
-            },
-            complete:()=>{
-                $('.project-save-form-section .loader').hide();
-            },
-            success: (response)=>{
+
+        jQuery.ajax({
+            url: url,
+            type: 'post',
+            contentType: false,
+            processData: false,
+            data: form_data,
+            success: function(response) {
                 console.log(response)
-                if(response){ 
-                    console.log(response);
-                    //reload a window
-                     location.reload();
-
-                     //hide overloay
-                     $('.board-archive  .project-save-form-section').hide(300);
-                        $('.board-archive .overlay').hide(300); 
-
-                    //show the list board name in the list 
-                    $('.choose-board-container .board-list').append(`<li data-board-id=${response}>${boardName}</li>`);
-                    //hide the form
-                    $('.project-save-form-section').hide();   
-                   
-
-                    
-
-
-            
-                  
-
-                   
-                }
-            }, 
-            error: (response)=>{
-            
-                console.log('this is a board error');
-                console.log(response)
-                console.log(response.responseText)
-                $('#new-board-form-archive').before(` <div class="error-bg">${response.responseText}</div>`);
+                jQuery('.Success-div').html("Form Submit Successfully")
+            },
+            error: function(response) {
+                console.log(response);
             }
+
         });
-        */
+
     }
 }
 

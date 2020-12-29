@@ -9,25 +9,65 @@ get_header();
             </a>
         </div>
         <h1 class="lg-font-sz playfair-fonts regular light-grey"> <?php echo get_the_title($parentID);?></h1>
-        <?php 
+        <?php //check if the post status is publish 
                             if(get_post_status() == 'publish'){
                                 ?>
-            <div class='action-btn-container'>
-                <button class="share btn btn-dk-green-border font-s-regular"><i class="fal fa-share-alt"></i> Share</button>
-                <div class="share-icons box-shadow">
-                    <i class="fal fa-times"></i>
-                    <h2 class="roboto-font font-s-medium medium">Share this board</h2>
-                    <div class="underline underline-bg margin-elements"></div>
-                    <div>
-                        <?php echo do_shortcode('[Sassy_Social_Share]');?>
-                    </div>
-
+        <div class='action-btn-container'>
+            <button class="share btn btn-dk-green-border font-s-regular"><i class="fal fa-share-alt"></i> Share</button>
+            <div class="share-icons box-shadow">
+                <i class="fal fa-times"></i>
+                <h2 class="roboto-font font-s-medium medium">Share this board</h2>
+                <div class="underline underline-bg margin-elements"></div>
+                <div>
+                    <?php echo do_shortcode('[Sassy_Social_Share]');?>
                 </div>
+
             </div>
+        </div>
         <?php
                             }
                         ?>
-        
+        <?php //check if the post status is private 
+                            if(get_post_status() == 'private'){
+                                ?>
+        <div class="image-upload-container">
+            <button class="img-upload">Upload</button>
+
+            <div class="project-save-form-section">
+                <div class="project-save-form-container">
+                    <div class="roboto-font regular form-title font-s-med">Upload</div>
+                    <div class="form-underline"></div>
+                    <div class="form">
+                        <form action="{{admin_url}}" method="POST" enctype="multipart/form-data" id="upload-image">
+                            
+                            
+                            
+    
+ 
+                                <input type="hidden" name="action" value="my_file_upload" id="action"/>
+                                <label for="image">Select file:</label>
+                                <input type="file" id="image" name="my_file_field" accept="image/*"/>
+                            
+
+
+                            <div class="btn-container">
+                                <button type="button" class="cancel-btn btn"> Cancel</button>
+                                <button type="submit" class="save-btn btn btn-dk-green archive-save-btn"> Upload</button>
+
+                                <div class="loader"></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <?php
+                            }
+                        ?>
+
+
+
         <div class="board-flex">
 
             <?php 

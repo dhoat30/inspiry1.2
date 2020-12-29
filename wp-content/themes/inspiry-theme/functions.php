@@ -27,7 +27,7 @@ require get_theme_file_path('/inc/nav-registeration.php');
     } else {
       wp_enqueue_script('our-vendors-js', get_theme_file_uri('/bundled-assets/undefined'),  NULL, '1.0', true);
 
-      wp_enqueue_script('main', get_theme_file_uri('/bundled-assets/scripts.978809c06c4ca150dc19.js'), NULL, '1.0', true);
+      wp_enqueue_script('main', get_theme_file_uri('/bundled-assets/scripts.17b0eb7f2aecbd1c0a7f.js'), NULL, '1.0', true);
       wp_enqueue_style('our-main-styles', get_theme_file_uri('/bundled-assets/undefined'));
     }
     wp_localize_script("main", "inspiryData", array(
@@ -191,17 +191,7 @@ class CSS_Menu_Walker extends Walker {
 //upload images 
 
 function handle_my_file_upload() {
-  if (empty($_POST)) {
-    http_response_code(400);
-    echo 'No data received.';
-    die();
-}
-
-if (!wp_verify_nonce($_POST['my_nonce_field'], 'my_file_upload')) {
-    http_response_code(400);
-    echo 'Unknown error.';
-    die();
-}
+ 
 
   // will return the attachment id of the image in the media library
   $attachment_id = media_handle_upload('my_file_field', 0);
@@ -210,10 +200,12 @@ if (!wp_verify_nonce($_POST['my_nonce_field'], 'my_file_upload')) {
   if (is_wp_error($attachment_id)) {
       http_response_code(400);
       echo 'Failed to upload file.';
+      return 'failed to upload file';
   }
   else {
       http_response_code(200);
       echo $attachment_id;
+      return 'saved a file';
   }
 
   // done!
@@ -224,4 +216,4 @@ if (!wp_verify_nonce($_POST['my_nonce_field'], 'my_file_upload')) {
 add_action('wp_ajax_my_file_upload', 'handle_my_file_upload');
 
 // allow uploads from guests
-add_action('wp_ajax_nopriv_my_file_upload', 'handle_my_file_upload');
+//add_action('wp_ajax_nopriv_my_file_upload', 'handle_my_file_upload');
