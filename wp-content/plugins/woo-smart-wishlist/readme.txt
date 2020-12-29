@@ -3,7 +3,7 @@ Contributors: wpclever
 Donate link: https://wpclever.net
 Tags: woocommerce, woo, wpc, smart, wishlist, wish list
 Requires at least: 4.0
-Tested up to: 5.5.3
+Tested up to: 5.6.0
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -99,7 +99,14 @@ After that, use the shortcode to display the button where you want.
 
 `echo do_shortcode('[woosw id="{product_id}"]');`
 
+Example
+
+`echo do_shortcode('[woosw id="99"]');`
+
 == Changelog ==
+
+= 2.3.0 =
+* Updated: Compatible with WordPress 5.6.0 & WooCommerce 4.8.0
 
 = 2.2.6 =
 * Updated: Compatible with WooCommerce 4.7.0

@@ -649,6 +649,7 @@ class FacetWP_Renderer
      */
     function get_per_page_box() {
         $pager_class = FWP()->helper->facet_types['pager'];
+        $pager_class->pager_args = $this->pager_args;
 
         $options = apply_filters( 'facetwp_per_page_options', [ 10, 25, 50, 100 ] );
 

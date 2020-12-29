@@ -9,18 +9,25 @@ get_header();
             </a>
         </div>
         <h1 class="lg-font-sz playfair-fonts regular light-grey"> <?php echo get_the_title($parentID);?></h1>
-        <div class='action-btn-container'>
-            <button class="share btn btn-dk-green-border font-s-regular"><i class="fal fa-share-alt"></i> Share</button>
-            <div class="share-icons box-shadow">
-                <i class="fal fa-times"></i>
-                <h2 class="roboto-font font-s-medium medium">Share this board</h2>
-                <div class="underline underline-bg margin-elements"></div>
-                <div>
-                    <?php echo do_shortcode('[Sassy_Social_Share]');?>
-                </div>
+        <?php 
+                            if(get_post_status() == 'publish'){
+                                ?>
+            <div class='action-btn-container'>
+                <button class="share btn btn-dk-green-border font-s-regular"><i class="fal fa-share-alt"></i> Share</button>
+                <div class="share-icons box-shadow">
+                    <i class="fal fa-times"></i>
+                    <h2 class="roboto-font font-s-medium medium">Share this board</h2>
+                    <div class="underline underline-bg margin-elements"></div>
+                    <div>
+                        <?php echo do_shortcode('[Sassy_Social_Share]');?>
+                    </div>
 
+                </div>
             </div>
-        </div>
+        <?php
+                            }
+                        ?>
+        
         <div class="board-flex">
 
             <?php 
@@ -41,26 +48,33 @@ get_header();
                 <i class="fas fa-ellipsis-h option-icon"></i>
                 <div class="pin-options-container box-shadow">
                     <ul class="dark-grey">
+                        <?php 
+                            if(get_post_status() == 'publish'){
+                                ?>
                         <li class="share-btn"><i class="fas fa-share-alt"></i> Share</li>
+                        <?php
+                            }
+                        ?>
+
                         <!-- <li class="website-btn"><a class='rm-txt-dec' target="_blank" href='<?php// echo do_shortcode('[gd_post_meta key="website" id="7345" show="value-raw" no_wrap="1"]');?>'><i class="fas fa-globe"></i> Website</a></li>-->
                         <li class="delete-btn" data-pinid='<?php the_ID();?>'><i class="far fa-trash-alt"></i> Delete
                         </li>
 
                     </ul>
-                    
+
 
                 </div>
-                
-                    <div class="share-icon-container box-shadow">
-                            <div class="roboto-font regular font-s-med"> Share this pin </div>
-                            <div class="underline"></div>
-                            <div>
-                                <?php echo do_shortcode('[Sassy_Social_Share url="<?php echo get_the_permalink(get_field("saved_project_id")); ?>"]');?>
-                            </div>
-                            <span class="close-icon">X</span>
-                        </div>
-                
-           
+
+                <div class="share-icon-container box-shadow">
+                    <div class="roboto-font regular font-s-med"> Share this pin </div>
+                    <div class="underline"></div>
+                    <div>
+                        <?php echo do_shortcode('[Sassy_Social_Share url="<?php echo get_the_permalink(get_field("saved_project_id")); ?>"]');?>
+                    </div>
+                    <span class="close-icon">X</span>
+                </div>
+
+
                 <a href="<?php echo get_the_permalink(get_field('saved_project_id')); ?>">
                     <div class="thumbnail">
                         <?php echo get_the_post_thumbnail( get_field('saved_project_id'), 'post-thumbnail');?>

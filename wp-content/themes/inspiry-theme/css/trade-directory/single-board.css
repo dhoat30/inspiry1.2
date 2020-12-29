@@ -15,12 +15,12 @@
     top: 20px;
 }
 
+.single-board .board-flex {
+    margin-top: 30px;
+}
+
 
 /*social share*/
-
-.action-btn-container .share {
-    margin-bottom: 20px;
-}
 
 .action-btn-container .share-icons {
     display: none;
