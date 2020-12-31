@@ -30,10 +30,10 @@ get_header();
         <?php //check if the post status is private 
                             if(get_post_status() == 'private'){
                                 ?>
-        <div class="image-upload-container">
-            <button class="img-upload">Upload</button>
+        <div class="image-upload-container" data-parentid=<?php echo get_the_id();?>>
+            <button class="img-upload share btn btn-dk-green-border font-s-regular"> <i class="far fa-arrow-to-top"></i> Upload</button>
 
-            <div class="project-save-form-section">
+            <div>
                 <div class="project-save-form-container">
                     <div class="roboto-font regular form-title font-s-med">Upload</div>
                     <div class="form-underline"></div>
@@ -109,6 +109,7 @@ get_header();
                     <div class="roboto-font regular font-s-med"> Share this pin </div>
                     <div class="underline"></div>
                     <div>
+                        
                         <?php echo do_shortcode('[Sassy_Social_Share url="<?php echo get_the_permalink(get_field("saved_project_id")); ?>"]');?>
                     </div>
                     <span class="close-icon">X</span>
@@ -117,7 +118,20 @@ get_header();
 
                 <a href="<?php echo get_the_permalink(get_field('saved_project_id')); ?>">
                     <div class="thumbnail">
-                        <?php echo get_the_post_thumbnail( get_field('saved_project_id'), 'post-thumbnail');?>
+
+                        <?php 
+                        //check if the image id exists
+                        if(get_field('saved_image_id')){
+                            $img =  wp_get_attachment_image_src(get_field('saved_image_id'), 'large');
+                            ?>
+                                <img src="<?php echo $img[0] ?>" alt="<?php echo get_the_title();?>">
+                            <?php
+                        }
+                        else{
+                            echo get_the_post_thumbnail( get_field('saved_project_id'), 'post-thumbnail');
+
+                        }
+                        ?>
                     </div>
                     <div class="title font-s-regular rm-txt-dec">
                         <?php echo get_the_title(get_field('saved_project_id')); ?></div>
@@ -134,7 +148,9 @@ get_header();
         </div>
     </div>
 </div>
-
+<div>
+   
+</div>
 
 
 <?php 

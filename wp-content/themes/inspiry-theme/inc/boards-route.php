@@ -149,12 +149,27 @@ function addProjectToBoard($data){
    
    if(is_user_logged_in()){
      
-      $projectID = sanitize_text_field($data["post-id"]);
+      
       $boardID = sanitize_text_field($data["board-id"]);
       $postTitle = sanitize_text_field($data["post-title"]);
       $publishStatus = sanitize_text_field($data['status']);
+      $postImageID = sanitize_text_field($data['post-image-id']);
 
-        return wp_insert_post(array(
+      
+      if($postImageID){
+         return wp_insert_post(array(
+            "post_type" => "boards", 
+            "post_status" => $publishStatus, 
+            "post_parent" => $boardID, 
+            "post_title" => get_the_title($postImageID),
+            "meta_input" => array(
+               "saved_image_id" => $postImageID
+            )
+         )); 
+
+      }
+      else{
+         return wp_insert_post(array(
             "post_type" => "boards", 
             "post_status" => $publishStatus, 
             "post_title" => $postTitle,
@@ -163,6 +178,8 @@ function addProjectToBoard($data){
                "saved_project_id" => $projectID
             )
      )); 
+      }
+        
      
 
 

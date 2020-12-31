@@ -6,7 +6,19 @@ class ImageUpload {
     }
 
     events() {
+        //show container    
+        $('.img-upload').on('click', this.showContainer)
+        $('.image-upload-container .cancel-btn').on('click', () => {
+                $('.image-upload-container .project-save-form-container').hide();
+                $('.overlay').hide();
+            })
+            //save a photo
         $('#upload-image').submit(this.imageProcessor)
+    }
+
+    showContainer(e) {
+        $('.image-upload-container .project-save-form-container').show();
+        $('.overlay').show();
     }
 
     imageProcessor(e) {
@@ -34,7 +46,54 @@ class ImageUpload {
             data: form_data,
             success: function(response) {
                 console.log(response)
-                jQuery('.Success-div').html("Form Submit Successfully")
+
+
+                //add image to board
+
+
+                let boardID = $('.image-upload-container').attr('data-parentid');
+                let boardPostStatus = 'private';
+
+                let postImageID = response.slice(0, -1)
+                    //let postTitle = 'private upload';
+                console.log(postImageID)
+
+                //show loader icon
+                $(e.target).closest('.board-list-item').find('.loader').addClass('loader--visible');
+                $.ajax({
+                    beforeSend: (xhr) => {
+                        xhr.setRequestHeader('X-WP-NONCE', inspiryData.nonce)
+                    },
+                    url: inspiryData.root_url + '/wp-json/inspiry/v1/addToBoard',
+                    type: 'POST',
+                    data: {
+                        'board-id': boardID,
+                        'post-image-id': postImageID,
+                        'status': boardPostStatus
+                    },
+                    complete: () => {
+                        $(e.target).closest('.board-list-item').find('.loader').removeClass('loader--visible');
+                    },
+                    success: (response) => {
+                        console.log('this is a success area')
+                        if (response) {
+                            console.log(response);
+                            location.reload();
+
+
+
+                        }
+                    },
+                    error: (response) => {
+                        console.log('this is an error');
+                        console.log(response)
+                        $(e.target).closest('.board-list-item').find('.loader').removeClass('loader--visible');
+
+                    }
+                });
+
+
+
             },
             error: function(response) {
                 console.log(response);

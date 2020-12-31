@@ -81,7 +81,7 @@ function register_custom_type(){
          "add_new_item" => "Add New Board", 
          "edit_item" => "Edit Board", 
          "all_items" => "All Boards", 
-         "singular_name" => "Note"
+         "singular_name" => "Board"
       ), 
       "menu_icon" => "dashicons-heart"
       
