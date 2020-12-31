@@ -95,10 +95,19 @@ get_header();
                         <?php
                             }
                         ?>
-
-                        <!-- <li class="website-btn"><a class='rm-txt-dec' target="_blank" href='<?php// echo do_shortcode('[gd_post_meta key="website" id="7345" show="value-raw" no_wrap="1"]');?>'><i class="fas fa-globe"></i> Website</a></li>-->
+                        <?php 
+                        //check if the author is logged in 
+                        if( is_user_logged_in() && is_author(get_current_user_id()) ) {
+                            ?>
+                            
+                                 <!-- <li class="website-btn"><a class='rm-txt-dec' target="_blank" href='<?php// echo do_shortcode('[gd_post_meta key="website" id="7345" show="value-raw" no_wrap="1"]');?>'><i class="fas fa-globe"></i> Website</a></li>-->
                         <li class="delete-btn" data-pinid='<?php the_ID();?>'><i class="far fa-trash-alt"></i> Delete
                         </li>
+                        <?php
+                        }
+        
+                        ?>
+                       
 
                     </ul>
 

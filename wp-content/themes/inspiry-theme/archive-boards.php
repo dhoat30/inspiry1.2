@@ -1,7 +1,7 @@
 <?php 
 get_header(); 
 ?>
-<div class="body-container">
+<div class="body-container archive">
 
 <div class="row-container board-page board-archive">
     <h1 class="lg-font-sz playfair-fonts regular">Design Boards</h1>
@@ -30,7 +30,7 @@ get_header();
                 
             
                 
-                <div class="board-card-archive">
+                <div class="board-card-archive" data-imageexists=<?php echo get_field('image_upload_exists');?>>
                     <i class="fas fa-ellipsis-h option-icon"></i>
                     <div class="pin-options-container box-shadow">
                         <ul class="dark-grey">
@@ -50,12 +50,13 @@ get_header();
                             ) );
 
                             //Using the function
-                            $parent_id =get_the_id();
+                            $parent_id = get_the_id();
                             $inherited_locations = get_page_children( $parent_id, $all_locations );
                             $pinCount = count($inherited_locations);
 
                             // echo what we get back from WP to the browser (@bhlarsen's part :) )
                             $child_id = $inherited_locations[0]->ID;
+                            $childThumbnailImageID =  get_field('saved_image_id', $child_id); 
                             $childThumbnail = get_field('saved_project_id', $child_id); 
                             ?>
 
@@ -65,6 +66,15 @@ get_header();
                                         <div class="img-div"><?php echo get_the_post_thumbnail($childThumbnail);?></div>
                                     <?php
                                     
+                                }
+                                elseif ($childThumbnailImageID){
+                                    $img =  wp_get_attachment_image_src($childThumbnailImageID, 'large');
+
+                                    ?>
+                                        <div class="img-div">
+                                        <img src="<?php echo $img[0] ?>" alt="<?php echo get_the_title();?>">
+                                        </div>
+                                    <?php
                                 }
                                 else{
                                     ?>

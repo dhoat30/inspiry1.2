@@ -149,7 +149,7 @@ function addProjectToBoard($data){
    
    if(is_user_logged_in()){
      
-      
+      $projectID = sanitize_text_field($data["post-id"]);
       $boardID = sanitize_text_field($data["board-id"]);
       $postTitle = sanitize_text_field($data["post-title"]);
       $publishStatus = sanitize_text_field($data['status']);
