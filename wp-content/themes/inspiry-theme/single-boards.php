@@ -2,69 +2,70 @@
 get_header(); 
 ?>
 <div class="body-container">
-    <div class="row-container board-loop-page single-board box-shadow">
+    <div class="row-container board-loop-page single-board box-shadow" data-poststatus=<?php echo get_post_status(); ?>>
         <div class="back-icon-container">
             <a href="<?php echo get_site_url(); ?>/boards">
                 <i class="fal fa-arrow-left"></i>
             </a>
         </div>
         <h1 class="lg-font-sz playfair-fonts regular light-grey"> <?php echo get_the_title($parentID);?></h1>
-        <?php //check if the post status is publish 
-                            if(get_post_status() == 'publish'){
-                                ?>
-        <div class='action-btn-container'>
-            <button class="share btn btn-dk-green-border font-s-regular"><i class="fal fa-share-alt"></i> Share</button>
-            <div class="share-icons box-shadow">
-                <i class="fal fa-times"></i>
-                <h2 class="roboto-font font-s-medium medium">Share this board</h2>
-                <div class="underline underline-bg margin-elements"></div>
-                <div>
-                    <?php echo do_shortcode('[Sassy_Social_Share]');?>
+        <div class="btn-container">
+            <?php //check if the post status is publish 
+                                if(get_post_status() == 'publish'){
+                                    ?>
+            <div class='action-btn-container'>
+                <button class="share btn btn-dk-green-border font-s-regular"><i class="fal fa-share-alt"></i>
+                    Share</button>
+                <div class="share-icons box-shadow">
+                    <i class="fal fa-times"></i>
+                    <h2 class="roboto-font font-s-medium medium">Share this board</h2>
+                    <div class="underline underline-bg margin-elements"></div>
+                    <div>
+                        <?php echo do_shortcode('[Sassy_Social_Share]');?>
+                    </div>
+
                 </div>
-
             </div>
-        </div>
-        <?php
-                            }
-                        ?>
-        <?php //check if the post status is private 
-                            if(get_post_status() == 'private'){
-                                ?>
-        <div class="image-upload-container" data-parentid=<?php echo get_the_id();?>>
-            <button class="img-upload share btn btn-dk-green-border font-s-regular"> <i class="far fa-arrow-to-top"></i> Upload</button>
+            <?php
+                                }
+                            ?>
 
-            <div>
-                <div class="project-save-form-container">
-                    <div class="roboto-font regular form-title font-s-med">Upload</div>
-                    <div class="form-underline"></div>
-                    <div class="form">
-                        <form action="{{admin_url}}" method="POST" enctype="multipart/form-data" id="upload-image">
-                            
-                            
-                            
-    
- 
-                                <input type="hidden" name="action" value="my_file_upload" id="action"/>
+            <div class="image-upload-container" data-parentid=<?php echo get_the_id();?>>
+                <button class="img-upload share btn btn-dk-green-border font-s-regular"> <i
+                        class="far fa-arrow-to-top"></i> Upload</button>
+
+                <div>
+                    <div class="project-save-form-container">
+                        <div class="roboto-font regular form-title font-s-med">Upload</div>
+                        <div class="form-underline"></div>
+                        <div class="form">
+                            <form action="{{admin_url}}" method="POST" enctype="multipart/form-data" id="upload-image">
+
+
+
+
+
+                                <input type="hidden" name="action" value="my_file_upload" id="action" />
                                 <label for="image">Select file:</label>
-                                <input type="file" id="image" name="my_file_field" accept="image/*"/>
-                            
+                                <input type="file" id="image" name="my_file_field" accept="image/*" />
 
 
-                            <div class="btn-container">
-                                <button type="button" class="cancel-btn btn"> Cancel</button>
-                                <button type="submit" class="save-btn btn btn-dk-green archive-save-btn"> Upload</button>
 
-                                <div class="loader"></div>
-                            </div>
-                        </form>
+                                <div class="btn-container">
+                                    <button type="button" class="cancel-btn btn"> Cancel</button>
+                                    <button type="submit" class="save-btn btn btn-dk-green archive-save-btn">
+                                        Upload</button>
+
+                                    <div class="loader"></div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <?php
-                            }
-                        ?>
+
 
 
 
@@ -97,17 +98,21 @@ get_header();
                         ?>
                         <?php 
                         //check if the author is logged in 
-                        if( is_user_logged_in() && is_author(get_current_user_id()) ) {
+                        global $current_user;
+                        get_currentuserinfo();
+                        
+                        if (is_user_logged_in() && $current_user->ID == $post->post_author) {
+                             
                             ?>
-                            
-                                 <!-- <li class="website-btn"><a class='rm-txt-dec' target="_blank" href='<?php// echo do_shortcode('[gd_post_meta key="website" id="7345" show="value-raw" no_wrap="1"]');?>'><i class="fas fa-globe"></i> Website</a></li>-->
+
+                        <!-- <li class="website-btn"><a class='rm-txt-dec' target="_blank" href='<?php// echo do_shortcode('[gd_post_meta key="website" id="7345" show="value-raw" no_wrap="1"]');?>'><i class="fas fa-globe"></i> Website</a></li>-->
                         <li class="delete-btn" data-pinid='<?php the_ID();?>'><i class="far fa-trash-alt"></i> Delete
                         </li>
                         <?php
                         }
         
                         ?>
-                       
+
 
                     </ul>
 
@@ -118,7 +123,7 @@ get_header();
                     <div class="roboto-font regular font-s-med"> Share this pin </div>
                     <div class="underline"></div>
                     <div>
-                        
+
                         <?php echo do_shortcode('[Sassy_Social_Share url="<?php echo get_the_permalink(get_field("saved_project_id")); ?>"]');?>
                     </div>
                     <span class="close-icon">X</span>
@@ -133,8 +138,8 @@ get_header();
                         if(get_field('saved_image_id')){
                             $img =  wp_get_attachment_image_src(get_field('saved_image_id'), 'large');
                             ?>
-                                <img src="<?php echo $img[0] ?>" alt="<?php echo get_the_title();?>">
-                            <?php
+                        <img src="<?php echo $img[0] ?>" alt="<?php echo get_the_title();?>">
+                        <?php
                         }
                         else{
                             echo get_the_post_thumbnail( get_field('saved_project_id'), 'post-thumbnail');
@@ -158,7 +163,7 @@ get_header();
     </div>
 </div>
 <div>
-   
+
 </div>
 
 

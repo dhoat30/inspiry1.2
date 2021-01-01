@@ -96,8 +96,6 @@ function updateBoard($data){
                   "post_status" => $publishStatus,
                   'post_parent'=> $parentID, 
                   "post_title" =>get_the_title($post->ID)
-
-
                )); 
             }
 

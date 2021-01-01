@@ -52,11 +52,12 @@ class ImageUpload {
 
 
                 let boardID = $('.image-upload-container').attr('data-parentid');
-                let boardPostStatus = 'private';
+                let boardPostStatus = $('.single-board').attr('data-poststatus');
+
 
                 let postImageID = response.slice(0, -1)
                     //let postTitle = 'private upload';
-                console.log(postImageID)
+
 
                 //show loader icon
                 $(e.target).closest('.board-list-item').find('.loader').addClass('loader--visible');

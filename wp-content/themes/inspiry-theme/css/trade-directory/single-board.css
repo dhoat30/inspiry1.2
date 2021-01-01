@@ -20,6 +20,17 @@
 }
 
 
+/*action button*/
+
+.single-board .btn-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+
 /*social share*/
 
 .action-btn-container .share-icons {
