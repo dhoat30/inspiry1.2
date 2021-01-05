@@ -28,7 +28,7 @@ require get_theme_file_path('/inc/nav-registeration.php');
       wp_enqueue_script('our-vendors-js', get_theme_file_uri('/bundled-assets/undefined'),  NULL, '1.0', true);
 
       wp_enqueue_script('main', get_theme_file_uri('/bundled-assets/scripts.3a49754ba48f4f69bbac.js'), NULL, '1.0', true);
-      wp_enqueue_style('our-main-styles', get_theme_file_uri('/bundled-assets/undefined'));
+      wp_enqueue_style('our-main-styles', get_theme_file_uri('/bundled-assets/styles.3a49754ba48f4f69bbac.css'));
     }
     wp_localize_script("main", "inspiryData", array(
       "root_url" => get_site_url(),
@@ -217,3 +217,4 @@ add_action('wp_ajax_my_file_upload', 'handle_my_file_upload');
 
 // allow uploads from guests
 //add_action('wp_ajax_nopriv_my_file_upload', 'handle_my_file_upload');
+

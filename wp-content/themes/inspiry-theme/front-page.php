@@ -32,6 +32,7 @@ get_header();
                                             $query->the_post(); 
 
                                             ?>
+                                           
 
             <div class="slide" style='background: url("<?php echo get_the_post_thumbnail_url(null,"large"); ?>") no-repeat
                                         center top/cover;'>
@@ -170,10 +171,9 @@ get_header();
                 <div>
                     <picture>
                         <source media="(max-width: 500px)"
-                            srcset="<?php echo get_the_post_thumbnail_url(null,"small"); ?>">
-                        <source media="(max-width: 800px)"
                             srcset="<?php echo get_the_post_thumbnail_url(null,"medium"); ?>">
-                        <img src="<?php echo get_the_post_thumbnail_url(null,"large"); ?>"
+                       
+                        <img loading="lazy" src="<?php echo get_the_post_thumbnail_url(null,"large"); ?>"
                             alt="Khroma">
                     </picture>
                     <a class="rm-txt-dec center-align" href="<?php echo get_field('add_link');?>">Shop Now <i
@@ -194,25 +194,25 @@ get_header();
 </div>
 <section class="brand-stripe">
     <div class="flex">
-        <img src="<?php echo get_site_url();?>/wp-content/uploads/2020/11/CHRISTIANLACROIX-745.png" alt="Chirstian">
-        <img src="<?php echo get_site_url();?>/wp-content/uploads/2020/11/Logo-Variation-04-04-446.png" alt="logo">
-        <img src="<?php echo get_site_url();?>/wp-content/uploads/2020/11/cole_and_son_logo-500.png" alt="Cole and son">
-        <img src="<?php echo get_site_url();?>/wp-content/uploads/2020/11/BT_ny_logo_png-95.png" alt="Cole and son">
+        <img loading="lazy" src="<?php echo get_site_url();?>/wp-content/uploads/2020/11/CHRISTIANLACROIX-745.png" alt="Chirstian">
+        <img loading="lazy" src="<?php echo get_site_url();?>/wp-content/uploads/2020/11/Logo-Variation-04-04-446.png" alt="logo">
+        <img loading="lazy" src="<?php echo get_site_url();?>/wp-content/uploads/2020/11/cole_and_son_logo-500.png" alt="Cole and son">
+        <img loading="lazy" src="<?php echo get_site_url();?>/wp-content/uploads/2020/11/BT_ny_logo_png-95.png" alt="Cole and son">
 
-        <img src="<?php echo get_site_url();?>/wp-content/uploads/2020/11/ANDREWMARTINLOGO-690.png"
+        <img loading="lazy" src="<?php echo get_site_url();?>/wp-content/uploads/2020/11/ANDREWMARTINLOGO-690.png"
             alt="Andrew Marting">
-        <img src="<?php echo get_site_url();?>/wp-content/uploads/2020/11/JohnDerian_Logo-534.png" alt="John Derian">
-        <img src="<?php echo get_site_url();?>/wp-content/uploads/2020/11/MrP_logo_Pos-252.png" alt="MRP Logo">
-        <img src="<?php echo get_site_url();?>/wp-content/uploads/2020/11/ENGBLADANDCOPNG-64.png" alt="Engblad">
-        <img src="<?php echo get_site_url();?>/wp-content/uploads/2020/11/BILLBEAUMONTLOGO-565.png" alt="Bill Beau">
-        <img src="<?php echo get_site_url();?>/wp-content/uploads/2020/11/HOOKEDONWALLS-287.png" alt="Hooked on Walls">
-        <img src="<?php echo get_site_url();?>/wp-content/uploads/2020/11/ARTE-539.png" alt="Arte">
-        <img src="<?php echo get_site_url();?>/wp-content/uploads/2020/11/png-663.png" alt="Furniture by Design">
-        <img src="<?php echo get_site_url();?>/wp-content/uploads/2020/11/loloi-rugs-logo-102.png" alt="Loloi">
-        <img src="<?php echo get_site_url();?>/wp-content/uploads/2020/11/t5a94ab2a9556b-mtg-logo-3v-778.png"
+        <img loading="lazy" src="<?php echo get_site_url();?>/wp-content/uploads/2020/11/JohnDerian_Logo-534.png" alt="John Derian">
+        <img loading="lazy" src="<?php echo get_site_url();?>/wp-content/uploads/2020/11/MrP_logo_Pos-252.png" alt="MRP Logo">
+        <img loading="lazy" src="<?php echo get_site_url();?>/wp-content/uploads/2020/11/ENGBLADANDCOPNG-64.png" alt="Engblad">
+        <img loading="lazy" src="<?php echo get_site_url();?>/wp-content/uploads/2020/11/BILLBEAUMONTLOGO-565.png" alt="Bill Beau">
+        <img loading="lazy" src="<?php echo get_site_url();?>/wp-content/uploads/2020/11/HOOKEDONWALLS-287.png" alt="Hooked on Walls">
+        <img loading="lazy" src="<?php echo get_site_url();?>/wp-content/uploads/2020/11/ARTE-539.png" alt="Arte">
+        <img loading="lazy" src="<?php echo get_site_url();?>/wp-content/uploads/2020/11/png-663.png" alt="Furniture by Design">
+        <img loading="lazy" src="<?php echo get_site_url();?>/wp-content/uploads/2020/11/loloi-rugs-logo-102.png" alt="Loloi">
+        <img loading="lazy" src="<?php echo get_site_url();?>/wp-content/uploads/2020/11/t5a94ab2a9556b-mtg-logo-3v-778.png"
             alt="Furniture by Design">
 
-        <img src="<?php echo get_site_url();?>/wp-content/uploads/2020/11/Furniture-by-Design.png"
+        <img loading="lazy" src="<?php echo get_site_url();?>/wp-content/uploads/2020/11/Furniture-by-Design.png"
             alt="Furniture by Design">
 
 
@@ -241,7 +241,7 @@ get_header();
             <a href="<?php the_permalink();?>">
                 <div>
                    
-                    <img src="<?php echo get_the_post_thumbnail_url(null, 'large');?>" alt="">
+                    <img loading="lazy" src="<?php echo get_the_post_thumbnail_url(null, 'large');?>" alt="">
                     <div class="hover-overlay"></div>
                     <div class="column-s-font"><?php the_title();?></div>
                 </div>
@@ -283,7 +283,7 @@ get_header();
 
 
         <div class="card">
-            <img class="gallery" src="<?php echo get_the_post_thumbnail_url(null, 'medium');?>"
+            <img loading="lazy" class="gallery" src="<?php echo get_the_post_thumbnail_url(null, 'medium');?>"
                 alt="Trade Proffesionals">
             <div class="logo">
 
@@ -291,7 +291,7 @@ get_header();
                                 $variable =  do_shortcode('[gd_post_meta key="logo" show="value-raw" no_wrap="1" alignment="left"]');
                                 $variable = substr($variable, 0, strpos($variable, "|"));
                                 ?>
-                <img src="<?php echo  $variable?>" alt="">
+                <img loading="lazy" src="<?php echo  $variable?>" alt="">
             </div>
             <div class="font-s-med center-align regular light-grey"><?php the_title();  ?></div>
 

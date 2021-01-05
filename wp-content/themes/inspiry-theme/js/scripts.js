@@ -25,8 +25,6 @@ import ImageUpload from './modules/ImageUpload';
 
 window.onload = function() {
 
-
-
     const imageUpload = new ImageUpload();
     const shopFav = new ShopFav();
     const geoTradeSearch = new GeoTradeSearch();
