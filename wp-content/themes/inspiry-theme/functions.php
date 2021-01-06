@@ -42,7 +42,17 @@ require get_theme_file_path('/inc/nav-registeration.php');
 }
 add_action( "wp_enqueue_scripts", "inspiry_scripts" ); 
 
+//fix render blocking stylesheet
+function prefix_add_footer_styles() {
+  if (strstr($_SERVER['SERVER_NAME'], 'localhost')) {
+   wp_enqueue_script('main', 'http://localhost:3000/bundled.js',  NULL, '1.0', true);
 
+ } else {
+   //wp_enqueue_script('our-vendors-js', get_theme_file_uri('/bundled-assets/undefined'),  NULL, '1.0', true);
+   wp_enqueue_style('our-main-styles', get_theme_file_uri('/bundled-assets/styles.3a49754ba48f4f69bbac.css'));
+ }
+};
+add_action( 'get_footer', 'prefix_add_footer_styles' );
 
 
   //admin bar
@@ -225,20 +235,22 @@ function defer_parsing_of_js($url)
 {
   if (is_admin()) return $url; //don't break WP Admin
   if (false === strpos($url, '.js')) return $url;
-  if (strpos($url, 'jquery.js')) return $url;
+  if (strpos($url, 'jquery')) return $url;
+  if (strpos($url, 'jQuery')) return $url;
   return str_replace(' src', ' defer src', $url);
 }
 add_filter('script_loader_tag', 'defer_parsing_of_js', 10);
 
-//fix render blocking stylesheet
-function load_css_footer(){
-  if (strstr($_SERVER['SERVER_NAME'], 'localhost')) {
-    wp_enqueue_script('main', 'http://localhost:3000/bundled.js',  NULL, '1.0', true);
 
-  } else {
-    wp_enqueue_script('our-vendors-js', get_theme_file_uri('/bundled-assets/undefined'),  NULL, '1.0', true);
-    wp_enqueue_style('our-main-styles', get_theme_file_uri('/bundled-assets/styles.3a49754ba48f4f69bbac.css'));
-  }
+//preload css 
+function add_rel_preload($html, $handle, $href, $media) {
+    
+  if (is_admin())
+      return $html;
+
+   $html = <<<EOT
+<link rel='preload' as='style' onload="this.onload=null;this.rel='stylesheet'" id='$handle' href='$href' type='text/css' media='all' />
+EOT;
+  return $html;
 }
-
-add_action('get_footer', 'load_css_footer');
+add_filter( 'style_loader_tag', 'add_rel_preload', 10, 4 );
