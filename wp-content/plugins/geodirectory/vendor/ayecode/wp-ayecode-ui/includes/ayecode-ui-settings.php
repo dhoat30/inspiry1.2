@@ -12,6 +12,10 @@
 /**
  * Bail if we are not in WP.
  */
+?>
+
+<?php
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -129,7 +133,7 @@ if ( ! class_exists( 'AyeCode_UI_Settings' ) ) {
 			if (!defined('AUI_PRIMARY_COLOR')) define('AUI_PRIMARY_COLOR', AUI_PRIMARY_COLOR_ORIGINAL);
 			if (!defined('AUI_SECONDARY_COLOR')) define('AUI_SECONDARY_COLOR', AUI_SECONDARY_COLOR_ORIGINAL);
 		}
-
+		 
 		/**
 		 * Initiate the settings and add the required action hooks.
 		 */
@@ -275,7 +279,7 @@ if ( ! class_exists( 'AyeCode_UI_Settings' ) ) {
 			ob_start();
 			?>
 			<script>
-				
+				const $ = jQuery; 
 				/**
 				 * An AUI bootstrap adaptation of GreedyNav.js ( by Luke Jackson ).
 				 *

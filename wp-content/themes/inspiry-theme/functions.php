@@ -230,16 +230,6 @@ add_action('wp_ajax_my_file_upload', 'handle_my_file_upload');
 // allow uploads from guests
 //add_action('wp_ajax_nopriv_my_file_upload', 'handle_my_file_upload');
 
-//render blocking resources fix 
-function defer_parsing_of_js($url)
-{
-  if (is_admin()) return $url; //don't break WP Admin
-  if (false === strpos($url, '.js')) return $url;
-  if (strpos($url, 'jquery')) return $url;
-  if (strpos($url, 'jQuery')) return $url;
-  return str_replace(' src', ' defer src', $url);
-}
-add_filter('script_loader_tag', 'defer_parsing_of_js', 10);
 
 
 //preload css 
