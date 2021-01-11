@@ -9,13 +9,13 @@ get_header();
     ?>
 
 <div>
-        
+
     <div class="trade-hero">
         <img src="<?php  echo get_the_post_thumbnail_url( $postID, 'full' )  ?> " alt="<?php echo get_the_title();?>">
     </div>
 
     <div class="row-container">
-            
+
         <div class="trade-header-section">
             <div class="trade-profile-img">
                 <?php 
@@ -23,7 +23,7 @@ get_header();
                 ?>
                 <img src="<?php echo substr($logo, 0, strpos($logo,".jpg"));?>.jpg" alt="">
             </div>
-                
+
             <div class="header-middle-column">
 
                 <?php
@@ -32,20 +32,23 @@ get_header();
                 }
                 ?>
                 <div class="header-title">
-                    <h2 class="section-ft-size board-heading-post-id" data-postid='<?php echo get_the_id()?>'><?php echo get_the_title();?></h2>
-                </div>
-            
-                <div class="header-address regular">
-                    <i class="fal fa-map-marker-alt"></i>
-                    <?php echo do_shortcode('[gd_post_address show="value" address_template="%%city%%"]'); ?>         
+                    <h2 class="section-ft-size board-heading-post-id" data-postid='<?php echo get_the_id()?>'>
+                        <?php echo get_the_title();?></h2>
                 </div>
 
-                <div>  <p class="share-section roboto-font regular-text">Share: <?php echo do_shortcode( '[Sassy_Social_Share]' );?></p>
+                <div class="header-address regular">
+                    <i class="fal fa-map-marker-alt"></i>
+                    <?php echo do_shortcode('[gd_post_address show="value" address_template="%%city%%"]'); ?>
                 </div>
-            </div>  
-                
+
+                <div>
+                    <p class="share-section roboto-font regular-text">Share:
+                        <?php echo do_shortcode( '[Sassy_Social_Share]' );?></p>
+                </div>
+            </div>
+
             <div class="header-contact">
-            <?php 
+                <?php 
                         $existStatus = 'no'; 
 
                         if(is_user_logged_in( )){ 
@@ -70,11 +73,13 @@ get_header();
                                
                     ?>
 
-                <div class="design-board-save-btn-container" data-tracking-data='{"post_id":"<?php the_id();?>","name":"<?php echo get_the_title(get_the_id()); ?>"}' <?php echo $link_attributes; ?>>
-                    <i data-exists='<?php echo $existStatus?>' class="fal fa-plus open-board-container" ></i>
+                <div class="design-board-save-btn-container"
+                    data-tracking-data='{"post_id":"<?php the_id();?>","name":"<?php echo get_the_title(get_the_id()); ?>"}'
+                    <?php echo $link_attributes; ?>>
+                    <i data-exists='<?php echo $existStatus?>' class="fal fa-plus open-board-container"></i>
                 </div>
                 <div class="header-contact-btn">
-                        <?php echo do_shortcode('[gd_ninja_forms form_id="2" text="Contact Form" post_contact="1" output="button"]'); ?>
+                    <?php echo do_shortcode('[gd_ninja_forms form_id="2" text="Contact Form" post_contact="1" output="button"]'); ?>
                 </div>
                 <!--
                 <div class="header-contact-details">
@@ -88,17 +93,17 @@ get_header();
                         </a>
                 </div>
             -->
-          </div>
-        </div>   
-            
-            
+            </div>
+        </div>
+
+
     </div>
-        
-        
-    
+
+
+
     <div class="row-container trade-main-row">
         <div class="trade-middle-column">
-            
+
             <div class="trade-nav-container" id="trade-nav-container">
                 <ul class="nav">
                     <li class="trade-nav-link active-nav">Profile</li>
@@ -118,7 +123,8 @@ get_header();
                         <tr>
                             <td><i class="fal fa-phone-alt"></i></td>
                             <td class="font-s-med">
-                                <a class="rm-txt-dec thin roboto-font" href="tel:<?php echo geodir_get_post_meta($postID, 'phone', true);?>">
+                                <a class="rm-txt-dec thin roboto-font"
+                                    href="tel:<?php echo geodir_get_post_meta($postID, 'phone', true);?>">
                                     <?php echo geodir_get_post_meta($postID, 'phone', true);?>
                                 </a>
                             </td>
@@ -126,7 +132,8 @@ get_header();
                         <tr>
                             <td><i class="fal fa-envelope"></i></td>
                             <td class="font-s-med">
-                                <a class="rm-txt-dec thin roboto-font" href="mailto:<?php echo geodir_get_post_meta($postID, 'email', true);?>">
+                                <a class="rm-txt-dec thin roboto-font"
+                                    href="mailto:<?php echo geodir_get_post_meta($postID, 'email', true);?>">
                                     <?php echo geodir_get_post_meta($postID, 'email', true);?>
                                 </a>
                             </td>
@@ -134,7 +141,8 @@ get_header();
                         <tr>
                             <td><i class="fal fa-globe"></i></td>
                             <td class="font-s-med">
-                                <a class="rm-txt-dec thin roboto-font" href="<?php echo geodir_get_post_meta($postID, 'website', true);?>"><?php echo geodir_get_post_meta($postID, 'website', true);?>
+                                <a class="rm-txt-dec thin roboto-font"
+                                    href="<?php echo geodir_get_post_meta($postID, 'website', true);?>"><?php echo geodir_get_post_meta($postID, 'website', true);?>
                                 </a>
                             </td>
                         </tr>
@@ -143,17 +151,23 @@ get_header();
                             <td class="font-s-med thin roboto-font"><?php echo geodir_get_post_meta($postID, 'address', true);
                             echo geodir_get_post_meta($postID, 'regions_covered', true);?></td>
                         </tr>
-                           
+
                     </table>
                     <table>
-                    <tr class="social-media-icons">
-                                
-                            <td><a href='<?php echo  do_shortcode( '[gd_post_meta key="facebook" show="value-raw" no_wrap="1"]');?>' target="_blank"><?php echo  do_shortcode( '[gd_post_meta key="facebook" show="icon" no_wrap="1"]');?></a></td>
-                            <td><a href='<?php echo  do_shortcode( '[gd_post_meta key="instagram" show="value-raw" no_wrap="1"]');?>' target="_blank"><?php echo  do_shortcode( '[gd_post_meta key="instagram" show="icon" no_wrap="1"]');?></a></td>
-                            <td><a href='<?php echo  do_shortcode( '[gd_post_meta key="twitter" show="value-raw" no_wrap="1"]');?>' target="_blank"><?php echo  do_shortcode( '[gd_post_meta key="twitter" show="icon" no_wrap="1"]');?></a></td>
+                        <tr class="social-media-icons">
+
+                            <td><a href='<?php echo  do_shortcode( '[gd_post_meta key="facebook" show="value-raw" no_wrap="1"]');?>'
+                                    target="_blank"><?php echo  do_shortcode( '[gd_post_meta key="facebook" show="icon" no_wrap="1"]');?></a>
+                            </td>
+                            <td><a href='<?php echo  do_shortcode( '[gd_post_meta key="instagram" show="value-raw" no_wrap="1"]');?>'
+                                    target="_blank"><?php echo  do_shortcode( '[gd_post_meta key="instagram" show="icon" no_wrap="1"]');?></a>
+                            </td>
+                            <td><a href='<?php echo  do_shortcode( '[gd_post_meta key="twitter" show="value-raw" no_wrap="1"]');?>'
+                                    target="_blank"><?php echo  do_shortcode( '[gd_post_meta key="twitter" show="icon" no_wrap="1"]');?></a>
+                            </td>
                         </tr>
                     </table>
-                         
+
                     <?php 
                         echo do_shortcode('[gd_map width="100%" height="425px" maptype="ROADMAP" zoom="0" map_type="auto" post_settings="1"]');
 
@@ -164,7 +178,7 @@ get_header();
 
 
                     <section class="trade-directory row-container">
-                    <?php 
+                        <?php 
                         $projectID = geodir_get_post_meta($postID, 'gd_project', true);
                         //$projectIDArr = split(',', $projectID); 
       
@@ -174,44 +188,50 @@ get_header();
                             if($value){
                                 ?>
 
-           
-                            
-                
-                
-                                            <div class="main-cards">
-                                                <!-- <div class="section-ft-size">Project Gallery </div>-->
-                                                <div class="flex">
 
-                    
-                    
-                                                    <div class="card project">
-                                                            <a href="<?php the_permalink(); ?>">
-                                                            <div class="logo">
 
-                                                                    <img src="<?php echo  get_the_post_thumbnail_url( $value, 'small'); ?>" alt="<?php the_title();?>">
-                                                                </div>
-                                                            </a>
-                                                
 
-                                                            <div class="design-board-save-btn-container" data-tracking-data='{"post_id":"<?php echo $value?>","name":"<?php echo get_the_title($value); ?>"}' <?php echo $link_attributes; ?>>
-                                                                        <i data-exists='<?php echo $existStatus?>' class="fal fa-plus open-board-container" ></i>
-                                                            </div>
 
-                                                            <a class='rm-txt-dec' href="<?php echo get_the_permalink( $value ); ?>">
+                        <div class="main-cards">
+                            <!-- <div class="section-ft-size">Project Gallery </div>-->
+                            <div class="flex">
 
-                                                                <div class="title regular font-s-med"><?php echo get_the_title( $value );?></div>
-                                                            </a>
-                                                            <a href="<?php echo get_the_permalink($postID); ?>" class='rm-txt-dec font-s-regular thin roboto-font'>
-                                                              <?php echo get_the_title($postID); ?>
-                                                          </a>
 
-                                                    </div>
-                        
-                    
-                                                </div>
-                                            </div>
-                        
-                                <?php
+
+                                <div class="card project">
+                                    <a href="<?php the_permalink(); ?>">
+                                        <div class="logo">
+
+                                            <img src="<?php echo  get_the_post_thumbnail_url( $value, 'small'); ?>"
+                                                alt="<?php the_title();?>">
+                                        </div>
+                                    </a>
+
+
+                                    <div class="design-board-save-btn-container"
+                                        data-tracking-data='{"post_id":"<?php echo $value?>","name":"<?php echo get_the_title($value); ?>"}'
+                                        <?php echo $link_attributes; ?>>
+                                        <i data-exists='<?php echo $existStatus?>'
+                                            class="fal fa-plus open-board-container"></i>
+                                    </div>
+
+                                    <a class='rm-txt-dec' href="<?php echo get_the_permalink( $value ); ?>">
+
+                                        <div class="title regular font-s-med"><?php echo get_the_title( $value );?>
+                                        </div>
+                                    </a>
+                                    <a href="<?php echo get_the_permalink($postID); ?>"
+                                        class='rm-txt-dec font-s-regular thin roboto-font'>
+                                        <?php echo get_the_title($postID); ?>
+                                    </a>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                        <?php
                             }
                             else{
                                 
@@ -222,7 +242,7 @@ get_header();
                         }              
                     ?>
                     </section>
-                    
+
                 </div>
 
                 <div class="trade-gallery-nav-content">
@@ -233,7 +253,7 @@ get_header();
 
             </div>
         </div>
-            
+
     </div>
 
     <div>
@@ -242,7 +262,7 @@ get_header();
 
 
 
-        
+
 </div>
 
 
@@ -259,8 +279,8 @@ get_header();
 
 
 
-    
-    <?php
+
+<?php
 }
 ?>
 <?php 
@@ -270,4 +290,3 @@ get_header();
 <?php
 get_footer();
 ?>
-

@@ -101,8 +101,8 @@ function register_custom_type2(){
       "menu_icon" => "dashicons-shield"
    )
    );
-   
 
+  
 }
 
 add_action("init", "register_custom_type2"); 
