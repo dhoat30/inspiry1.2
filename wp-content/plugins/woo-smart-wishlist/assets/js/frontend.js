@@ -226,7 +226,7 @@
     });
   });
 
-  $(window).resize(function() {
+  $(window).on('resize', function() {
     woosw_fix_height();
   });
 

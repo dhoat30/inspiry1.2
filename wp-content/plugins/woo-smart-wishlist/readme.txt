@@ -105,6 +105,12 @@ Example
 
 == Changelog ==
 
+= 2.3.2 =
+* Updated: Optimized the code
+
+= 2.3.1 =
+* Fixed: The update checker URL
+
 = 2.3.0 =
 * Updated: Compatible with WordPress 5.6.0 & WooCommerce 4.8.0
 
