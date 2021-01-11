@@ -183,7 +183,7 @@
 <!-- Optional mobile plugin (uncomment the line below to enable): -->
 <!-- <script src="/js/jquery.magnify-mobile.js"></script> -->
 <script>
-  let $ = jQuery;
+  
   $(document).ready(function () {
     $('.zoom').magnify({
       magnifiedWidth: 1500
