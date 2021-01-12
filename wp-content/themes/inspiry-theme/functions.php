@@ -18,19 +18,17 @@ require get_theme_file_path('/inc/nav-registeration.php');
  //enqueue scripts
 
  function inspiry_scripts(){ 
-   wp_enqueue_script("jquery");
+   wp_enqueue_script("jQuery");
    wp_enqueue_script('font-awesome', 'https://kit.fontawesome.com/f3cb7ab01f.js', NULL, '1.0', false);
    wp_enqueue_style("google-fonts", "https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,900&display=swap", false);
   
    if (strstr($_SERVER['SERVER_NAME'], 'localhost')) {
-      //wp_enqueue_script('main', 'http://localhost:3000/bundled.js',  NULL, '1.0', true);
-      wp_deregister_style('main'); 
+      wp_enqueue_script('main', 'http://localhost:3000/bundled.js',  array( 'jquery' ), '1.0', true);
     } else {
-      wp_enqueue_script('our-vendors-js', get_theme_file_uri('/bundled-assets/undefined'),  NULL, '1.0', true);
+      wp_enqueue_script('our-vendors-js', get_theme_file_uri('/bundled-assets/undefined'),  array( 'jquery' ), '1.0', true);
 
-      wp_enqueue_script('main', get_theme_file_uri('/bundled-assets/scripts.020134c516c6042189c3.js'), NULL, '1.0', true);
-      //wp_enqueue_style('our-main-styles', get_theme_file_uri('/bundled-assets/styles.020134c516c6042189c3.css'));
-      wp_deregister_style('our-main-styles'); 
+      wp_enqueue_script('main', get_theme_file_uri('/bundled-assets/scripts.020134c516c6042189c3.js'), array( 'jquery' ), '1.0', true);
+      wp_enqueue_style('our-main-styles', get_theme_file_uri('/bundled-assets/styles.020134c516c6042189c3.css'));
     }
     wp_localize_script("main", "inspiryData", array(
       "root_url" => get_site_url(),
@@ -42,17 +40,6 @@ require get_theme_file_path('/inc/nav-registeration.php');
 }
 add_action( "wp_enqueue_scripts", "inspiry_scripts" ); 
 
-//fix render blocking stylesheet
-function prefix_add_footer_styles() {
-  if (strstr($_SERVER['SERVER_NAME'], 'localhost')) {
-   wp_enqueue_script('main', 'http://localhost:3000/bundled.js',  NULL, '1.0', true);
-
- } else {
-   //wp_enqueue_script('our-vendors-js', get_theme_file_uri('/bundled-assets/undefined'),  NULL, '1.0', true);
-   wp_enqueue_style('our-main-styles', get_theme_file_uri('/bundled-assets/styles.020134c516c6042189c3.css'));
- }
-};
-add_action( 'get_footer', 'prefix_add_footer_styles' );
 
 
   //admin bar
