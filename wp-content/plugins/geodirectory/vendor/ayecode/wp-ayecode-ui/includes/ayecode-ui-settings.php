@@ -13,7 +13,6 @@
  * Bail if we are not in WP.
  */
 ?>
-
 <?php
 
 if ( ! defined( 'ABSPATH' ) ) {
