@@ -10,7 +10,7 @@ get_header();
 
       </div>
       <div class="main-cards">
-        <div class="section-ft-size">Proffesionals </div>
+        <div class="section-ft-size">Professionals </div>
         <div class="flex">
 
         <?php 
