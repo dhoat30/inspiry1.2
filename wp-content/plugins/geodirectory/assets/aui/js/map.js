@@ -855,12 +855,28 @@ function geodir_map_sticky(map_options) {
             }
 
             var wheight = jQuery(window).height();
+            var wScrTop = jQuery(window).scrollTop();
+            var maxScr = 0;
+            if (jQuery('.geodir-category-list-view').length) {
+                maxScr = parseFloat(jQuery('.geodir-category-list-view:last').offset().top) + parseFloat(jQuery('.geodir-category-list-view:last').innerHeight()) - 50;
+            }
+            if (jQuery('.elementor-posts').length) {
+                var _maxScr = parseFloat(jQuery('.elementor-posts:last').offset().top) + parseFloat(jQuery('.elementor-posts:last').innerHeight()) - 50;
+                if (_maxScr > maxScr) {
+                    maxScr = _maxScr;
+                }
+            }
+            if (maxScr < catcher.offset().top) {
+                maxScr = 0;
+            }
+            var noSticky = maxScr > 0 && wScrTop > maxScr && wScrTop > catcher.offset().top ? true : false;
 
-            if (jQuery(window).scrollTop() >= catcher.offset().top) {
+            if (wScrTop >= catcher.offset().top && !noSticky) {
                 if (!sticky.hasClass('stickymap')) {
                     sticky.addClass('stickymap');
                     /// sticky.hide();
                     sticky.appendTo('body');
+                    sticky.removeClass('position-relative').addClass('position-fixed');
                     sticky.css({
                         'position': 'fixed',
                         'right': '0',
@@ -879,6 +895,7 @@ function geodir_map_sticky(map_options) {
                     }
                     window.dispatchEvent(new Event('resize')); // OSM does not work with the jQuery trigger so we do it old skool.
                 }
+                sticky_show_hide_trigger.removeClass('position-relative').addClass('position-fixed');
                 sticky_show_hide_trigger.css({
                     'top': '25%',
                     'position': 'fixed',
@@ -887,11 +904,12 @@ function geodir_map_sticky(map_options) {
                 sticky_show_hide_trigger.show();
             }
 
-            if (jQuery(window).scrollTop() < catcher.offset().top) {
+            if (wScrTop < catcher.offset().top || noSticky) {
                 if (sticky.hasClass('stickymap')) {
                     sticky.appendTo(map_parent);
                     sticky.hide();
                     sticky.removeClass('stickymap');
+                    sticky.removeClass('position-fixed').addClass('position-relative');
                     sticky.css({
                         'position': 'relative',
                         'border': 'none',
@@ -904,6 +922,7 @@ function geodir_map_sticky(map_options) {
                     });
                     sticky_show_hide_trigger.removeClass('triggeroff_sticky');
                     sticky_show_hide_trigger.addClass('triggeron_sticky');
+                    sticky_show_hide_trigger.removeClass('position-fixed').addClass('position-relative');
                     window.dispatchEvent(new Event('resize')); // OSM does not work with the jQuery trigger so we do it old skool.
                 }
                 sticky_show_hide_trigger.hide();
@@ -920,6 +939,7 @@ var rendererOptions = {
 };
 var directionsDisplay = (typeof google !== 'undefined' && typeof google.maps !== 'undefined') ? new google.maps.DirectionsRenderer(rendererOptions) : {};
 var directionsService = (typeof google !== 'undefined' && typeof google.maps !== 'undefined') ? new google.maps.DirectionsService() : {};
+var renderedDirections = [];
 
 function geodirFindRoute(map_canvas) {
     var map_options, destLat, destLng, $wrap;
@@ -936,6 +956,7 @@ function geodirFindRoute(map_canvas) {
                 ],
                 routeWhileDragging: true,
                 geocoder: L.Control.Geocoder.nominatim(),
+                language: geodir_params.osmRouteLanguage,
                 waypointNameFallback: function(latLng) {
                     function zeroPad(n) {
                         n = Math.round(n);
@@ -954,11 +975,17 @@ function geodirFindRoute(map_canvas) {
                     return hexagecimal(latLng.lat, 'N', 'S') + ' ' + hexagecimal(latLng.lng, 'E', 'W');
                 }
             });
-            control.addTo(jQuery.goMap.map);
+            var cExists = typeof jQuery.goMap.map._container != 'undefined' && jQuery('.leaflet-control.leaflet-routing-container', jQuery.goMap.map._container).length ? true : false;
+            if (!cExists) {
+                control.addTo(jQuery.goMap.map);
+            }
 
             L.Routing.errorControl(control).addTo(jQuery.goMap.map);
 
-            jQuery('#' + map_canvas + ' .leaflet-routing-geocoders .leaflet-routing-search-info').append('<span title="' + geodir_params.geoMyLocation + '" onclick="gdMyGeoDirection(' + map_canvas + ');" id="' + map_canvas + '_mylocation" class="gd-map-mylocation"><i class="fas fa-crosshairs" aria-hidden="true"></i></span>');
+            var $routing = jQuery('#' + map_canvas + ' .leaflet-routing-geocoders .leaflet-routing-search-info');
+            if (!$routing.find('#' + map_canvas + '_mylocation').length) {
+                $routing.append('<span title="' + geodir_params.geoMyLocation + '" onclick="gdMyGeoDirection(' + map_canvas + ');" id="' + map_canvas + '_mylocation" class="gd-map-mylocation c-pointer ml-1"><i class="fas fa-crosshairs" aria-hidden="true"></i></span>');
+            }
         } catch (e) {
             console.log(e.message);
         }
@@ -967,10 +994,16 @@ function geodirFindRoute(map_canvas) {
         var rendererOptions = {
             draggable: true
         };
+        if (renderedDirections.length) {
+            for(var i in renderedDirections) {
+                renderedDirections[i].setMap(null);
+            }
+        }
         var directionsDisplay = (typeof google !== 'undefined' && typeof google.maps !== 'undefined') ? new google.maps.DirectionsRenderer(rendererOptions) : {};
         var directionsService = (typeof google !== 'undefined' && typeof google.maps !== 'undefined') ? new google.maps.DirectionsService() : {};
         directionsDisplay.setMap(jQuery.goMap.map);
         directionsDisplay.setPanel(document.getElementById(map_canvas + "_directionsPanel"));
+        renderedDirections.push(directionsDisplay);
         google.maps.event.addListener(directionsDisplay, 'directions_changed', function() {
             geodirComputeTotalDistance(directionsDisplay.directions, map_canvas);
         });
@@ -984,9 +1017,8 @@ function geodirFindRoute(map_canvas) {
         };
         directionsService.route(request, function(response, status) {
             if (status == google.maps.DirectionsStatus.OK) {
+                jQuery('#' + map_canvas + '_directionsPanel', $wrap).html('');
                 directionsDisplay.setDirections(response);
-                //map = new google.maps.Map(document.getElementById(map_canvas), map_options);
-                //directionsDisplay.setMap(map);
             } else {
                 alert(geodir_params.address_not_found_on_map_msg + from_address);
             }

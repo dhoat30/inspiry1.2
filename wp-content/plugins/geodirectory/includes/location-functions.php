@@ -138,6 +138,11 @@ function geodir_get_current_location_terms( $location_array_from = null, $gd_pos
 		$location_array[ $location_term ] = isset( $geodirectory->location->{$location_term . "_slug"} ) ? $geodirectory->location->{$location_term . "_slug"} : '';
 	}
 
+	// Set empty locations terms when outside default location active. 
+	if ( geodir_core_multi_city() && ! geodir_is_page( 'single' ) && ! geodir_is_page( 'search' ) ) {
+		$location_array = array();
+	}
+
 	/**
 	 * Filter the location terms.
 	 *
@@ -910,4 +915,17 @@ function geodir_osm_get_gps_from_address( $address, $wp_error = false ) {
 	}
 
 	return $gps;
+}
+
+/**
+ * Check multi city active or not.
+ *
+ * @since 2.1.0.7
+ *
+ * @param array|string $address Array of address element or full address.
+ * @param bool $wp_error Optional. Whether to return a WP_Error on failure. Default false.
+ * @return bool|WP_Error GPS data or WP_Error on failure.
+ */
+function geodir_core_multi_city() {
+	return ( ! defined( 'GEODIRLOCATION_VERSION' ) && geodir_get_option( 'multi_city' ) );
 }
