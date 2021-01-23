@@ -446,18 +446,20 @@ if ( ! class_exists( 'AyeCode_UI_Settings' ) ) {
 				/**
 				 * Initiate tooltips on the page.
 				 */
+				 /*removed
 				function aui_init_tooltips(){
-					jQuery('[data-toggle="tooltip"]').tooltip();
-					jQuery('[data-toggle="popover"]').popover();
-					jQuery('[data-toggle="popover-html"]').popover({
+					$('[data-toggle="tooltip"]').tooltip();
+					$('[data-toggle="popover"]').popover();
+					$('[data-toggle="popover-html"]').popover({
 						html: true
 					});
 
 					// fix popover container compatibility
-					jQuery('[data-toggle="popover"],[data-toggle="popover-html"]').on('inserted.bs.popover', function () {
-						jQuery('body > .popover').wrapAll("<div class='bsui' />");
+					$('[data-toggle="popover"],[data-toggle="popover-html"]').on('inserted.bs.popover', function () {
+						$('body > .popover').wrapAll("<div class='bsui' />");
 					});
 				}
+				*/ 
 
 				/**
 				 * Initiate flatpickrs on the page.
@@ -735,7 +737,7 @@ if ( ! class_exists( 'AyeCode_UI_Settings' ) ) {
 					init_nav_sub_menus();
 					
 					// init tooltips
-					aui_init_tooltips();
+					// removed  aui_init_tooltips();
 
 					// init select2
 					aui_init_select2();
