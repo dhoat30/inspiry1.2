@@ -19,6 +19,7 @@ class FacetWP_Integration_WooCommerce
         $is_enabled = ( 'yes' === FWP()->helper->get_setting( 'wc_enable_variations', 'no' ) );
 
         if ( apply_filters( 'facetwp_enable_product_variations', $is_enabled ) ) {
+            add_filter( 'facetwp_indexer_post_facet_defaults', [ $this, 'force_taxonomy' ], 10, 2 );
             add_filter( 'facetwp_indexer_query_args', [ $this, 'index_variations' ] );
             add_filter( 'facetwp_index_row', [ $this, 'attribute_variations' ], 1 );
             add_filter( 'facetwp_wpdb_sql', [ $this, 'wpdb_sql' ], 10, 2 );
@@ -33,8 +34,8 @@ class FacetWP_Integration_WooCommerce
         // Prevent WooCommerce from redirecting to a single result page
         add_filter( 'woocommerce_redirect_single_search_result', [ $this, 'redirect_single_search_result' ] );
 
-		// Prevent WooCommerce sort (posts_clauses) when doing FacetWP sort
-		add_filter( 'woocommerce_default_catalog_orderby', [ $this, 'default_catalog_orderby' ] );
+        // Prevent WooCommerce sort (posts_clauses) when doing FacetWP sort
+        add_filter( 'woocommerce_default_catalog_orderby', [ $this, 'default_catalog_orderby' ] );
 
         // Dynamic counts when Shop Page Display = "Categories" or "Both"
         if ( apply_filters( 'facetwp_woocommerce_support_categories_display', false ) ) {
@@ -86,6 +87,23 @@ class FacetWP_Integration_WooCommerce
 
 
     /**
+     * Attributes for WC product variations are stored in postmeta
+     * @since 2.7.2
+     */
+    function force_taxonomy( $defaults, $params ) {
+        if ( 0 === strpos( $defaults['facet_source'], 'tax/pa_' ) ) {
+            $post_id = (int) $defaults['post_id'];
+
+            if ( 'product_variation' == get_post_type( $post_id ) ) {
+                $defaults['facet_source'] = str_replace( 'tax/', 'cf/attribute_', $defaults['facet_source'] );
+            }
+        }
+
+        return $defaults;
+    }
+
+
+    /**
      * Index product variations
      * @since 2.7
      */
@@ -133,14 +151,23 @@ class FacetWP_Integration_WooCommerce
      */
     function attribute_variations( $params ) {
         $post_id = (int) $params['post_id'];
-        $post_type = get_post_type( $post_id );
 
-        if ( 'product' == $post_type || 'product_variation' == $post_type ) {
-            $params['variation_id'] = $post_id;
-        }
+        // Set variation_id for all posts
+        $params['variation_id'] = $post_id;
 
-        if ( 'product_variation' == $post_type ) {
+        if ( 'product_variation' == get_post_type( $post_id ) ) {
             $params['post_id'] = wp_get_post_parent_id( $post_id );
+
+            // Lookup the term name for variation values
+            if ( 0 === strpos( $params['facet_source'], 'cf/attribute_pa_' ) ) {
+                $taxonomy = str_replace( 'cf/attribute_', '', $params['facet_source'] );
+                $term = get_term_by( 'slug', $params['facet_value'], $taxonomy );
+
+                if ( false !== $term ) {
+                    $params['term_id'] = $term->term_id;
+                    $params['facet_display_value'] = $term->name;
+                }
+            }
         }
 
         return $params;

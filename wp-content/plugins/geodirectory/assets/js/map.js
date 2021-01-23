@@ -901,6 +901,7 @@ var rendererOptions = {
 };
 var directionsDisplay = (typeof google !== 'undefined' && typeof google.maps !== 'undefined') ? new google.maps.DirectionsRenderer(rendererOptions) : {};
 var directionsService = (typeof google !== 'undefined' && typeof google.maps !== 'undefined') ? new google.maps.DirectionsService() : {};
+var renderedDirections = [];
 
 function geodirFindRoute(map_canvas) {
     var map_options, destLat, destLng, $wrap;
@@ -917,6 +918,7 @@ function geodirFindRoute(map_canvas) {
                 ],
                 routeWhileDragging: true,
                 geocoder: L.Control.Geocoder.nominatim(),
+                language: geodir_params.osmRouteLanguage,
                 waypointNameFallback: function(latLng) {
                     function zeroPad(n) {
                         n = Math.round(n);
@@ -939,7 +941,7 @@ function geodirFindRoute(map_canvas) {
 
             L.Routing.errorControl(control).addTo(jQuery.goMap.map);
 
-            jQuery('#' + map_canvas + ' .leaflet-routing-geocoders .leaflet-routing-search-info').append('<span title="' + geodir_params.geoMyLocation + '" onclick="gdMyGeoDirection(' + map_canvas + ');" id="' + map_canvas + '_mylocation" class="gd-map-mylocation"><i class="fas fa-crosshairs" aria-hidden="true"></i></span>');
+            jQuery('#' + map_canvas + ' .leaflet-routing-geocoders .leaflet-routing-search-info').append('<span title="' + geodir_params.geoMyLocation + '" onclick="gdMyGeoDirection(' + map_canvas + ');" id="' + map_canvas + '_mylocation" class="gd-map-mylocation"> <i class="fas fa-crosshairs" aria-hidden="true"></i></span>');
         } catch (e) {
             console.log(e.message);
         }
@@ -948,10 +950,16 @@ function geodirFindRoute(map_canvas) {
         var rendererOptions = {
             draggable: true
         };
+        if (renderedDirections.length) {
+            for(var i in renderedDirections) {
+                renderedDirections[i].setMap(null);
+            }
+        }
         var directionsDisplay = (typeof google !== 'undefined' && typeof google.maps !== 'undefined') ? new google.maps.DirectionsRenderer(rendererOptions) : {};
         var directionsService = (typeof google !== 'undefined' && typeof google.maps !== 'undefined') ? new google.maps.DirectionsService() : {};
         directionsDisplay.setMap(jQuery.goMap.map);
         directionsDisplay.setPanel(document.getElementById(map_canvas + "_directionsPanel"));
+        renderedDirections.push(directionsDisplay);
         google.maps.event.addListener(directionsDisplay, 'directions_changed', function() {
             geodirComputeTotalDistance(directionsDisplay.directions, map_canvas);
         });
@@ -965,9 +973,8 @@ function geodirFindRoute(map_canvas) {
         };
         directionsService.route(request, function(response, status) {
             if (status == google.maps.DirectionsStatus.OK) {
+                jQuery('#' + map_canvas + '_directionsPanel', $wrap).html('');
                 directionsDisplay.setDirections(response);
-                //map = new google.maps.Map(document.getElementById(map_canvas), map_options);
-                //directionsDisplay.setMap(map);
             } else {
                 alert(geodir_params.address_not_found_on_map_msg + from_address);
             }

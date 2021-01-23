@@ -1,44 +1,96 @@
+/*board-page styling*/
 
-/*board-page styling*/ 
-.board-loop-page .board-flex{ 
+.single-board {
+    padding: 1px 30px 20px 30px;
+    margin: 50px auto 0 auto !important;
+    position: relative;
+}
+
+
+/*back icon*/
+
+.single-board .back-icon-container {
+    position: absolute;
+    left: -10px;
+    top: 20px;
+}
+
+.single-board .board-flex {
+    margin-top: 30px;
+}
+
+
+/*action button*/
+
+.single-board .btn-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+
+/*social share*/
+
+.action-btn-container .share-icons {
+    display: none;
+    max-width: 350px;
+    padding: 20px 0;
+    position: relative;
+    bottom: 50px;
+    background: white;
+}
+
+.single-board .heateor_sss_sharing_container {
+    padding: 0 20px;
+}
+
+.single-board .action-btn-container h2 {
+    padding: 0 20px;
+}
+
+.board-loop-page .board-flex {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
-.board-loop-page .board-flex>div{ 
+
+.board-loop-page .board-flex .board-card {
     margin: 0 30px 50px 0;
     transition: 500ms ease-in-out;
     width: 250px;
 }
-.board-loop-page .board-flex>div:hover{ 
-   transform: scale(1.04,1.04);
-}
 
-.board-loop-page .board-card img{ 
+.board-loop-page .board-card img {
     width: 250px;
     height: 300px;
     object-fit: cover;
 }
-.board-loop-page .board-card a{ 
+
+.board-loop-page .board-card a {
     text-decoration: none !important;
 }
 
-/*delete icon*/ 
-.board-loop-page .board-card{ 
+
+/*delete icon*/
+
+.board-loop-page .board-card {
     position: relative;
-}   
-.board-loop-page .board-card .delete-icon{ 
+}
+
+.board-loop-page .board-card .delete-icon {
     position: absolute;
     right: 10px;
     top: 10px;
     font-size: 20px;
-    background: rgba(255,255,255,0.6);
+    background: rgba(255, 255, 255, 0.6);
     padding: 5px;
     cursor: pointer;
     display: none;
+}
 
-}  
-.board-loop-page .board-card .delete-icon>div{ 
+.board-loop-page .board-card .delete-icon>div {
     display: inline;
     font-family: 'work-sans', sans-serif;
     font-size: 12px;
@@ -47,43 +99,55 @@
     margin-left: 5px;
 }
 
-/*options*/ 
- .board-card>i{ 
+
+/*options*/
+
+.board-card>i {
     position: absolute;
     top: 10px;
     right: 10px;
-    background: rgba(255,255,255,0.8);
+    background: rgba(255, 255, 255, 0.8);
     padding: 10px;
     border-radius: 50%;
-    color:#525659;
+    color: #525659;
     display: none;
 }
- .pin-options-container{ 
-    width: 230px;   
+
+@media (max-width:900px) {
+    .board-card>i {
+        display: block;
+    }
+}
+
+.pin-options-container {
+    width: 230px;
     display: none;
     position: absolute;
     right: 10px;
     top: 10px;
     background: white;
 }
-.pin-options-container ul { 
+
+.pin-options-container ul {
     list-style: none;
     padding: 10px 0;
 }
-.pin-options-container ul li{ 
+
+.pin-options-container ul li {
     padding: 10px 20px;
     cursor: pointer;
     font-weight: 300;
-    color: #303030; 
+    color: #303030;
+}
+
+.pin-options-container ul li:hover {
+    background: #FFF1EB;
 }
 
 
-.pin-options-container ul li:hover{ 
-    background: #FFF1EB; 
-}
+/*share board*/
 
-/*share board*/ 
-  .share-icon-container{ 
+.share-icon-container {
     max-width: 400px;
     width: 100%;
     display: none;
@@ -94,37 +158,47 @@
     background: white;
     z-index: 3000;
 }
- .share-icon-container>span{ 
+
+.share-icon-container>span {
     position: absolute;
     right: 10px;
     top: 10px;
     font-size: 30px;
     font-weight: 300;
-    color:#303030; 
+    color: #303030;
     cursor: pointer;
 }
- .share-icon-container>span:hover{ 
-   color: #525659;
+
+.share-icon-container>span:hover {
+    color: #525659;
 }
 
-@media (max-width: 500px){ 
-     .share-icon-container{ 
-        height: 100vh;
-        width: 100vw;
+@media (max-width: 500px) {
+    .share-icon-container {
+        height: auto;
+        width: 90%;
     }
 }
- .share-icon-container ul.heateor_sss_sharing_ul li.heateorSssSharingRound {
+
+.share-icon-container ul.heateor_sss_sharing_ul li.heateorSssSharingRound {
     background: 0 0!important;
-    margin: 0 35px 0 0 !important;
+    margin: 0 0 0 0 !important;
 }
-  .share-icon-container .underline{ 
+
+.share-icon-container .roboto-font {}
+
+.share-icon-container .underline {
     border: 1px solid #525659;
     opacity: 10%;
 }
 
-  .share-icon-container>div:nth-child(1){ 
-    padding: 30px 10px 10px 10px;
+.share-icon-container>div:nth-child(1) {
+    padding: 30px 10px 10px 33px;
 }
-  .share-icon-container>div:nth-child(3){ 
+
+.share-icon-container>div:nth-child(3) {
     padding: 10px 10px 30px 10px;
 }
+
+
+/*share container*/

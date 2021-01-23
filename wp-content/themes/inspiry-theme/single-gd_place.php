@@ -14,8 +14,13 @@ get_header();
         <img src="<?php  echo get_the_post_thumbnail_url( $postID, 'full' )  ?> " alt="<?php echo get_the_title();?>">
     </div>
 
+<<<<<<< HEAD
     <div class="row-container">
 
+=======
+    <div class="row-container trade-snippet-row">
+            
+>>>>>>> 5f6fbd0d8da3759c0b6b1518e02d15b7ce109b9d
         <div class="trade-header-section">
             <div class="trade-profile-img">
                 <?php 
@@ -73,11 +78,18 @@ get_header();
                                
                     ?>
 
+<<<<<<< HEAD
                 <div class="design-board-save-btn-container"
                     data-tracking-data='{"post_id":"<?php the_id();?>","name":"<?php echo get_the_title(get_the_id()); ?>"}'
                     <?php echo $link_attributes; ?>>
                     <i data-exists='<?php echo $existStatus?>' class="fal fa-plus open-board-container"></i>
+=======
+                <div class="design-board-save-btn-container" data-tracking-data='{"post_id":"<?php the_id();?>","name":"<?php echo get_the_title(get_the_id()); ?>"}' <?php echo $link_attributes; ?>>
+                    <i data-exists='<?php echo $existStatus?>' class="fal fa-plus open-board-container" ></i>
+                  
+>>>>>>> 5f6fbd0d8da3759c0b6b1518e02d15b7ce109b9d
                 </div>
+                
                 <div class="header-contact-btn">
                     <?php echo do_shortcode('[gd_ninja_forms form_id="2" text="Contact Form" post_contact="1" output="button"]'); ?>
                 </div>
@@ -232,6 +244,7 @@ get_header();
                         </div>
 
                         <?php
+
                             }
                             else{
                                 
@@ -246,7 +259,8 @@ get_header();
                 </div>
 
                 <div class="trade-gallery-nav-content">
-                    <?php echo do_shortcode('[gd_post_images type="gallery" ajax_load="1" slideshow="1" show_title="1" animation="slide" controlnav="1" link_to="lightbox"]'); ?>
+                    <?php echo do_shortcode('[gd_post_images type="gallery" ajax_load="0" slideshow="1" show_title="1" animation="slide" controlnav="1" link_to="lightbox"]'); ?>
+                        
                 </div>
 
 
@@ -256,7 +270,7 @@ get_header();
 
     </div>
 
-    <div>
+<div>
 
     </div>
 

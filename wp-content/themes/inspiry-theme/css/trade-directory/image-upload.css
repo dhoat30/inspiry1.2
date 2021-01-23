@@ -1,0 +1,52 @@
+.image-upload-container::before {
+    content: "";
+    background: rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 1000;
+    display: none;
+}
+
+.image-upload-container .project-save-form-container {
+    display: none;
+}
+
+.image-upload-container {
+    display: block;
+}
+
+.image-upload-container #image {
+    width: 300px;
+}
+
+#image::-webkit-file-upload-button {
+    visibility: hidden;
+}
+
+#image::before {
+    content: 'Choose File';
+    display: inline-block;
+    width: 70px;
+    background: linear-gradient(top, #f9f9f9, #e3e3e3);
+    border: 1px solid #999;
+    border-radius: 0px;
+    padding: 5px 8px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    text-shadow: 1px 1px #fff;
+    font-weight: 500;
+    font-size: 10pt;
+}
+
+#image:hover::before {
+    border-color: black;
+}
+
+#image:active::before {
+    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}

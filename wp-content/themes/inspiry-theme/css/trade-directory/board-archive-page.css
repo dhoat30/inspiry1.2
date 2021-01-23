@@ -1,108 +1,163 @@
-/*board-page*/ 
-.single-board h1{ 
-  margin-top: 60px !important;
+.board-archive {
+    margin-top: 50px !important;
 }
-.board-archive-title{ 
+
+
+/*board-page*/
+
+.single-board h1 {
+    margin-top: 60px !important;
+}
+
+.board-archive-title {
     margin-top: 0 !important;
 }
-.board-page .img-div{ 
-    width: 250px; 
+
+.board-page .img-div {
+    width: 250px;
     height: 300px;
 }
-.board-page .img-div img{ 
-    width: 250px; 
+
+.board-page .img-div img {
+    width: 250px;
     height: 300px;
     object-fit: cover;
 }
-.board-page>div{ 
+
+.board-page .archive-cards-flex-container {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
+    margin-top: 30px;
 }
 
-.board-page .board-card-archive{ 
+.board-page .board-card-archive {
     margin: 0 30px 50px 0;
     position: relative;
 }
 
-.board-page .pin-count{
+.board-page .pin-count {
     font-family: 'work-sans', sans-serif;
 }
-.board-page .board-card-archive{ 
+
+.board-page .board-card-archive {
     transition: 500ms ease-in-out;
 }
-.board-page .board-card-archive:hover{ 
-    transform: scale(1.04,1.04);
+
+.board-page .board-card-archive:hover {
+    transform: scale(1.04, 1.04);
 }
 
-/*board card*/ 
-/*options*/ 
 
-.board-card-archive>i{ 
+/*board card*/
+
+
+/*options*/
+
+.board-card-archive>i {
     position: absolute;
     top: 10px;
     right: 10px;
-    background: rgba(255,255,255,0.8);
+    background: rgba(255, 255, 255, 0.8);
     padding: 10px;
     border-radius: 50%;
-    color:#525659;
+    color: #525659;
     display: none;
 }
- .pin-options-container{ 
-    width: 230px;   
+
+@media (max-width:900px) {
+    .board-card-archive>i {
+        display: block !important;
+    }
+}
+
+.pin-options-container {
+    width: 230px;
     display: none;
     position: absolute;
     right: 10px;
     top: 10px;
     background: white;
 }
-.pin-options-container ul { 
+
+.pin-options-container ul {
     list-style: none;
     padding: 10px 0;
 }
-.pin-options-container ul li{ 
+
+.pin-options-container ul li {
     padding: 10px 20px;
     cursor: pointer;
     font-weight: 300;
-    color: #303030; 
+    color: #303030;
+}
+
+.pin-options-container ul li:hover {
+    background: #FFF1EB;
 }
 
 
-.pin-options-container ul li:hover{ 
-    background: #FFF1EB; 
-}
+/*ajax overlay */
 
-
-/*ajax overlay */ 
-.ajax-result{ 
+.ajax-result {
     position: relative;
 }
-.ajax-result>i{ 
+
+.ajax-result>i {
     cursor: pointer;
     font-size: 20px;
-    color:#303030; 
+    color: #303030;
     position: absolute;
-    top: -60px; 
+    top: -60px;
     left: 20px;
     background: #F8F7F3;
     border-radius: 50%;
     padding: 10px;
 }
-.ajax-result>i:hover{
-    color: #525659; 
-} 
-.board-loop-page h1{ 
-    color: #303030; 
+
+.ajax-result>i:hover {
+    color: #525659;
 }
+
+.board-loop-page h1 {
+    color: #303030;
+}
+
 
 /*board card*/
-.design-board-card{
-    color:#303030 !important;
-}
-.design-board-card:hover{
-    color: #525659 !important; 
+
+.design-board-card {
+    color: #303030 !important;
 }
 
-.gd-badge i{ 
+.design-board-card:hover {
+    color: #525659 !important;
+}
+
+.gd-badge i {
     color: white !important;
+}
+
+
+/*pin info*/
+
+.pin-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.pin-info>div {
+    margin: 5px 5px 0 0;
+}
+
+
+/*create board button*/
+
+.create-board-btn-container {
+    margin: 30px 0 60px 0;
+}
+
+.board-archive .board-title {
+    margin: 10px 0 0 0 !important;
 }

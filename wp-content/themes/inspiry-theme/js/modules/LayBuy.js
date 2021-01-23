@@ -7,8 +7,14 @@ class Laybuy{
     }
 
     events(){ 
-        this.laybuyBtn.addEventListener('click', this.openLaybuy); 
-        this.laybuyCloseBtn.addEventListener('click', this.closeLaybuy); 
+        if(this.laybuyBtn){
+            this.laybuyBtn.addEventListener('click', this.openLaybuy); 
+
+        }
+        if(this.laybuyCloseBtn){
+            this.laybuyCloseBtn.addEventListener('click', this.closeLaybuy); 
+
+        }
     } 
 
     openLaybuy(){ 

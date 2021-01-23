@@ -12,17 +12,23 @@ class WallpaperCalc{
         const overlayBackground = document.querySelector('.overlay-background');
         const closeIcon = document.querySelector('.close'); 
 
-        calculatorButton.addEventListener('click', ()=>{
-            console.log('it is working')
-            overlayBackground.classList.add('overlay-background--visible');
-            calculatorOverlay.classList.add("calculator-overlay--visible");
+        if(calculatorButton){
+            calculatorButton.addEventListener('click', ()=>{
             
-        })
+                overlayBackground.classList.add('overlay-background--visible');
+                calculatorOverlay.classList.add("calculator-overlay--visible");
+                
+            })
+        }
+        
+        if(closeIcon){
+            closeIcon.addEventListener('click', ()=>{
+                overlayBackground.classList.remove('overlay-background--visible');
+                calculatorOverlay.classList.remove("calculator-overlay--visible");
+            }) 
+        }
 
-        closeIcon.addEventListener('click', ()=>{
-            overlayBackground.classList.remove('overlay-background--visible');
-            calculatorOverlay.classList.remove("calculator-overlay--visible");
-        }) 
+        
 
     }
 

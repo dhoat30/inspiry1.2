@@ -45,7 +45,7 @@ $has_zoom = $zoom ? 'bc-product-image-zoom' : '';
 						?>
 						<!-- class="swiper-slide" is required -->
 						<div class="swiper-slide bc-product-gallery__image-slide" data-index="<?php echo $index++; ?>">
-							<img	class='zoom'
+							<img class='zoom'
 							<?php 
 								$zoomImg = esc_url( $image_src );
 								$zoomImg = substr($zoomImg, 0, strpos($zoomImg, "-370x370.jpg"));

@@ -179,7 +179,50 @@ class FacetWP_Facet_Date_Range extends FacetWP_Facet
      * (Front-end) Attach settings to the AJAX response
      */
     function settings_js( $params ) {
-        $format = empty( $params['facet']['format'] ) ? 'Y-m-d' : $params['facet']['format'];
-        return [ 'format' => $format ];
+        global $wpdb;
+
+        $facet = $params['facet'];
+        $selected_values = $params['selected_values'];
+        $fields = empty( $facet['fields'] ) ? 'both' : $facet['fields'];
+        $format = empty( $facet['format'] ) ? 'Y-m-d' : $facet['format'];
+
+        // Use "OR" mode by excluding the facet's own selection
+        $where_clause = $this->get_where_clause( $facet );
+
+        $sql = "
+        SELECT MIN(facet_value) AS `minDate`, MAX(facet_display_value) AS `maxDate` FROM {$wpdb->prefix}facetwp_index
+        WHERE facet_name = '{$facet['name']}' AND facet_display_value != '' $where_clause";
+        $row = $wpdb->get_row( $sql );
+
+        $min = substr( $row->minDate, 0, 10 );
+        $max = substr( $row->maxDate, 0, 10 );
+
+        if ( 'both' == $fields ) {
+            $min_upper = ! empty( $selected_values[1] ) ? $selected_values[1] : $max;
+            $max_lower = ! empty( $selected_values[0] ) ? $selected_values[0] : $min;
+
+            $range = [
+                'min' => [
+                    'minDate' => $min,
+                    'maxDate' => $min_upper
+                ],
+                'max' => [
+                    'minDate' => $max_lower,
+                    'maxDate' => $max
+                ]
+            ];
+        }
+        else {
+            $range = [
+                'minDate' => $min,
+                'maxDate' => $max
+            ];
+        }
+
+        return [
+            'format' => $format,
+            'fields' => $fields,
+            'range' => $range
+        ];
     }
 }

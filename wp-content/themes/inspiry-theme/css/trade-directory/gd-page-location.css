@@ -10,9 +10,11 @@
 .trade-directory>div:nth-child(2){ 
     width: 70%;
 }
-.trade-directory>div { 
-    margin: 20px;
+
+.trade-directory>div{
+    margin: 50px 20px;
 }
+
 @media (max-width:1000px){ 
     .trade-directory>div:nth-child(1){ 
         width: 100%;
@@ -31,8 +33,9 @@
     margin-top: 10px;
 }
 .trade-directory .main-cards .flex .card{ 
-    width: 300px;
-    margin: 20px 30px 20px 0;
+    width: 250px;
+    height: 300px;
+    margin: 0 30px 90px 0;
     transition: 800ms;
     transition-timing-function: ease-in-out;
     position: relative;
@@ -42,7 +45,7 @@
 }
 .trade-directory .main-cards .flex .logo{ 
     background: #EFEAE5;
-    height: 350px;
+    height: 300px;
 
     display: flex;
     justify-content: center;

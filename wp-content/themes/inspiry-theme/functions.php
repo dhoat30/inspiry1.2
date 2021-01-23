@@ -18,17 +18,22 @@ require get_theme_file_path('/inc/nav-registeration.php');
  //enqueue scripts
 
  function inspiry_scripts(){ 
-   wp_enqueue_script("jquery");
+   wp_enqueue_script("jQuery");
    wp_enqueue_script('font-awesome', 'https://kit.fontawesome.com/f3cb7ab01f.js', NULL, '1.0', false);
    wp_enqueue_style("google-fonts", "https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,900&display=swap", false);
   
    if (strstr($_SERVER['SERVER_NAME'], 'localhost')) {
-      wp_enqueue_script('main', 'http://localhost:3000/bundled.js',  NULL, '1.0', true);
+      wp_enqueue_script('main', 'http://localhost:3000/bundled.js',  array( 'jquery' ), '1.0', true);
     } else {
-      wp_enqueue_script('our-vendors-js', get_theme_file_uri('/bundled-assets/undefined'),  NULL, '1.0', true);
+      //wp_enqueue_script('our-vendors-js', get_theme_file_uri('/bundled-assets/undefined'),  array( 'jquery' ), '1.0', true);
 
+<<<<<<< HEAD
       wp_enqueue_script('main', get_theme_file_uri('/bundled-assets/scripts.643600de0dfdde912435.js'), NULL, '1.0', true);
       wp_enqueue_style('our-main-styles', get_theme_file_uri('/bundled-assets/undefined'));
+=======
+      wp_enqueue_script('main', get_theme_file_uri('/bundled-assets/scripts.cf3a624a63935336c1b9.js'), array( 'jquery' ), '1.0', true);
+      wp_enqueue_style('our-main-styles', get_theme_file_uri('/bundled-assets/styles.cf3a624a63935336c1b9.css'));
+>>>>>>> 5f6fbd0d8da3759c0b6b1518e02d15b7ce109b9d
     }
     wp_localize_script("main", "inspiryData", array(
       "root_url" => get_site_url(),
@@ -39,7 +44,6 @@ require get_theme_file_path('/inc/nav-registeration.php');
   
 }
 add_action( "wp_enqueue_scripts", "inspiry_scripts" ); 
-
 
 
 
@@ -68,9 +72,10 @@ function mat_widget_areas() {
 //custom post register
 
 add_theme_support("post-thumbnails");
-add_post_type_support( "boards", "thumbnail" ); 
 function register_custom_type(){ 
    register_post_type("boards", array(
+     'show_in_rest' => true, 
+      'has_archive' => true,
       "supports" => array("title", "page-attributes", 'editor'), 
       "public" => true, 
       "show_ui" => true, 
@@ -80,7 +85,7 @@ function register_custom_type(){
          "add_new_item" => "Add New Board", 
          "edit_item" => "Edit Board", 
          "all_items" => "All Boards", 
-         "singular_name" => "Note"
+         "singular_name" => "Board"
       ), 
       "menu_icon" => "dashicons-heart"
       
@@ -186,3 +191,48 @@ class CSS_Menu_Walker extends Walker {
 		$output .= "</li>\n";
 	}
 }
+
+//upload images 
+
+function handle_my_file_upload() {
+ 
+
+  // will return the attachment id of the image in the media library
+  $attachment_id = media_handle_upload('my_file_field', 0);
+
+  // test if upload succeeded
+  if (is_wp_error($attachment_id)) {
+      http_response_code(400);
+      echo 'Failed to upload file.';
+      return 'failed to upload file';
+  }
+  else {
+      http_response_code(200);
+      echo $attachment_id;
+      return 'saved a file';
+  }
+
+  // done!
+  die();
+}
+
+// allow uploads from users that are logged in
+add_action('wp_ajax_my_file_upload', 'handle_my_file_upload');
+
+// allow uploads from guests
+//add_action('wp_ajax_nopriv_my_file_upload', 'handle_my_file_upload');
+
+
+
+//preload css 
+function add_rel_preload($html, $handle, $href, $media) {
+    
+  if (is_admin())
+      return $html;
+
+   $html = <<<EOT
+<link rel='preload' as='style' onload="this.onload=null;this.rel='stylesheet'" id='$handle' href='$href' type='text/css' media='all' />
+EOT;
+  return $html;
+}
+add_filter( 'style_loader_tag', 'add_rel_preload', 10, 4 );

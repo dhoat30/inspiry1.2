@@ -1,123 +1,144 @@
-
-
-.top-banner{ 
-    width: 100%; 
-    padding: 10px 0; 
+.top-banner {
+    width: 100%;
+    padding: 10px 0;
     display: flex;
     flex-direction: row !important;
     justify-content: flex-end;
     align-items: center;
     flex-wrap: wrap;
 }
-.top-banner>div{ 
+
+.top-banner>div {
     margin: 0 20px;
 }
-.top-banner .mobile-visible{ 
+
+.top-banner .mobile-visible {
     display: none;
 }
-.top-banner>div:hover{ 
+
+.top-banner>div:hover {
     color: grey;
     cursor: pointer;
 }
-.beige-color-bc{ 
-    background-color:#F8F7F3; 
+
+.beige-color-bc {
+    background-color: #F8F7F3;
 }
 
-.logo-container{ 
+.logo-container {
     padding: 20px 0 0 0;
 }
 
-.logo-container .slogan{ 
+.logo-container .slogan {
     width: 250px;
     margin: 10px auto 0 auto;
     display: block;
     opacity: 0;
-  
     transition: opacity 1s;
-  -webkit-transition: opacity 1s;
+    -webkit-transition: opacity 1s;
 }
-.logo-container .logo{ 
-    display: block; 
+
+.logo-container .logo {
+    display: block;
     margin: 0 auto;
-    width: 100%; 
+    width: 250px;
     max-width: 350px;
     min-width: 250px;
 }
-.navbar ul{ 
-    display: flex; 
+
+.navbar ul {
+    display: flex;
     justify-content: space-around;
 }
-.navbar ul li{ 
+
+.navbar ul li {
     display: inline-block;
 }
-.navbar a{ 
+
+.navbar a {
     text-decoration-line: none;
     color: #3F3F3F;
     padding: 10px 20px;
     transition: 0.5s ease-in-out;
 }
-.navbar a:hover{ 
-   color: black; 
+
+.navbar a:hover {
+    color: black;
 }
 
-/*login area*/ 
-.login-area a{ 
+
+/*login area*/
+
+.login-area a {
     text-transform: capitalize;
 }
 
-/*my account navbar*/ 
-.profile-trigger{ 
- position: relative; 
+
+/*my account navbar*/
+
+.profile-trigger {
+    position: relative;
 }
-.my-account-nav{
+
+.my-account-nav {
     background-color: #F8F7F3;
     width: 150px;
     display: none;
     position: absolute;
     z-index: 1005;
 }
-.my-account-nav ul { 
+
+.my-account-nav ul {
     list-style: none;
 }
-.profile-name-value:hover{ 
+
+.profile-name-value:hover {
     color: #525659;
 }
-.my-account-nav li a{ 
+
+.my-account-nav li a {
     padding: 10px 30px 10px 10px;
     display: block;
 }
 
-.my-account-nav li a:hover{ 
-   color: #525659;
+.my-account-nav li a:hover {
+    color: #525659;
 }
 
-.my-account-nav a{ 
+.my-account-nav a {
     text-decoration: none;
     color: #303030;
 }
 
-/*cart */ 
-.shopping-cart a:hover{ 
+
+/*cart */
+
+.shopping-cart a:hover {
     color: #525659;
 }
 
-/*wishlist */ 
-.wishlist a:hover{ 
+
+/*wishlist */
+
+.wishlist a:hover {
     color: #525659;
 }
-/*search bar*/ 
+
+
+/*search bar*/
+
 .mCS-dark-thick.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
     background-color: #303030 !important;
-    background-color: rgba(0,0,0,.75);
+    background-color: rgba(0, 0, 0, .75);
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     border-radius: 2px;
 }
 
-@media (max-width:767px){
-    .top-banner{ 
-        width: 100%; 
-        padding: 10px 0; 
+@media (max-width:767px) {
+    .top-banner {
+        width: 100%;
+        padding: 10px 0;
         display: flex;
         flex-direction: row !important;
         justify-content: space-between;
@@ -125,36 +146,35 @@
         flex-wrap: wrap;
         width: 100% !important;
     }
-    .top-banner>div{ 
+    .top-banner>div {
         margin: 0 10px;
     }
-    .top-banner>div:nth-child(1){ 
+    .top-banner>div:nth-child(1) {
         width: 160px !important;
     }
-    .top-banner .search-code{ 
+    .top-banner .search-code {
         width: 100% !important;
         margin-top: 10px;
     }
-  
-    .top-banner .shopping-cart{ 
+    .top-banner .shopping-cart {
         position: absolute;
         top: 102px;
         z-index: 1003;
     }
-    .top-banner .desktop-visible{ 
+    .top-banner .desktop-visible {
         display: none;
     }
-    .top-banner .mobile-visible{ 
+    .top-banner .mobile-visible {
         display: block;
     }
-    .header .logo-container{ 
+    .header .logo-container {
         position: relative;
         height: 50px;
         border: 2px solid black;
         border-left: none;
         border-right: none;
     }
-    .header .logo-container img{ 
+    .header .logo-container img {
         position: absolute;
         width: 150px !important;
         min-width: 20px !important;
@@ -163,18 +183,18 @@
         transform: translateX(-50%);
         z-index: 1002;
     }
-    .header .logo-container .slogan{ 
+    .header .logo-container .slogan {
         display: none;
     }
-    .navbar{ 
+    .navbar {
         position: relative;
     }
-    #mega-menu-wrap-top-navbar{ 
+    #mega-menu-wrap-top-navbar {
         display: none;
     }
-    #mega-menu-wrap-inspiry_main_menu{ 
+    #mega-menu-wrap-inspiry_main_menu {
         position: absolute;
-       right: 0;
+        right: 0;
         height: auto;
         top: -45px;
         left: 10px;
@@ -184,10 +204,10 @@
         justify-content: flex-start !important;
         align-items: flex-start;
     }
-    #mega-menu-inspiry_main_menu{ 
+    #mega-menu-inspiry_main_menu {
         width: 100% !important;
     }
-    .sidebar .is-search-form{ 
+    .sidebar .is-search-form {
         display: none;
     }
-    }
+}

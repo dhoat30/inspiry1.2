@@ -90,13 +90,16 @@
     FWP.hooks.addFilter('facetwp/selections/checkboxes', function(output, params) {
         var choices = [];
         $.each(params.selected_values, function(idx, val) {
-            var choice = params.el.find('.facetwp-checkbox[data-value="' + val + '"]').clone();
-            choice.find('.facetwp-counter').remove();
-            choice.find('.facetwp-expand').remove();
-            choices.push({
-                value: val,
-                label: choice.text()
-            });
+            var $item = params.el.find('.facetwp-checkbox[data-value="' + val + '"]');
+            if (0 < $item.length) {
+                var choice = $item.clone();
+                choice.find('.facetwp-counter').remove();
+                choice.find('.facetwp-expand').remove();
+                choices.push({
+                    value: val,
+                    label: choice.text()
+                });
+            }
         });
         return choices;
     });
@@ -238,7 +241,7 @@
             return;
         }
 
-        var flatpickr_opts = {
+        var defaults = {
             altInput: true,
             altInputClass: 'flatpickr-alt',
             altFormat: 'Y-m-d',
@@ -260,7 +263,19 @@
         $dates.each(function() {
             var $this = $(this);
             var facet_name = $this.closest('.facetwp-facet').attr('data-name');
-            flatpickr_opts.altFormat = FWP.settings[facet_name].format;
+            var settings = FWP.settings[facet_name];
+            var flatpickr_opts = defaults;
+            flatpickr_opts.altFormat = settings.format;
+
+            if ('both' == settings.fields) {
+                var which = $this.hasClass('facetwp-date-min') ? 'min' : 'max';
+                flatpickr_opts.minDate = settings.range[which].minDate;
+                flatpickr_opts.maxDate = settings.range[which].maxDate;
+            }
+            else {
+                flatpickr_opts.minDate = settings.range.minDate;
+                flatpickr_opts.maxDate = settings.range.maxDate;
+            }
 
             var opts = FWP.hooks.applyFilters('facetwp/set_options/date_range', flatpickr_opts, {
                 'facet_name': facet_name,
